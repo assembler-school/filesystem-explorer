@@ -1,0 +1,23 @@
+{
+  "name": "filesystem-explorer",
+  "version": "1.0.0",
+  "description": "`#html` `#css` `#js` `#php` `#master-in-software-engineering`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labietelabiete/filesystem-explorer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/labietelabiete/filesystem-explorer/issues"
+  },
+  "homepage": "https://github.com/labietelabiete/filesystem-explorer#readme",
+  "dependencies": {
+    "bootstrap": "^5.0.1"
+  }
+}
