@@ -1,38 +1,9 @@
 <?php
-$myPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
 $rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
-echo $myPath;
-echo "<br/>";
-
-// Getting last folder
-$lastFolder = basename($myPath);
-echo $lastFolder;
-echo "<br/>";
-
-// Adding path
-$pathAdded = "/firstPath";
-$myPath .= $pathAdded;
-echo $myPath;
-echo "<br/>";
-
-// Creating directory
-mkdir($myPath, 0700);
-
-// Removing directory
-rmdir($myPath);
-
-// is_dir
-if (is_dir($myPath)) {
-  echo "Existe el directorio";
-}
-echo "<br/>";
+$currentPath = $rootPath;
 
 // Getting files and folders from directory
-$myDir = scandir($rootPath);
-print_r($myDir);
-
-
-
+$filesDir = scandir($currentPath);
 ?>
 
 <html lang="en">
@@ -55,54 +26,45 @@ print_r($myDir);
       <button class="btn btn-primary" type="submit">New Folder</button>
     </div>
   </form>
-<main class="main_container">
-  <div class="top_container">
-  <form class="form-inline search_bar">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0 search_btn" type="submit">Search</button>
-     </form>
-     <div class="current_path"></div>
-</div>  
-
+  <main class="main_container">
+    <div class="top_container">
+      <form class="form-inline search_bar">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0 search_btn" type="submit">Search</button>
+      </form>
+      <div class="current_path"></div>
+    </div>
     <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">File name</th>
-      <th scope="col">Creation date</th>
-      <th scope="col">Modified date</th>
-      <th scope="col">Extension</th>
-      <th scope="col">Size</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>48mb</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>48mb</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>48mb</td>
-    </tr>
-    
-  </tbody>
-</table>
-    </main>
-    <aside class="aside_left">
-      <button class="new_fileBtn">+ New</button>
-    </aside>
+      <thead>
+        <tr>
+          <th scope="col">File name</th>
+          <th scope="col">Creation date</th>
+          <th scope="col">Modified date</th>
+          <th scope="col">Extension</th>
+          <th scope="col">Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php for ($i = 2; $i < count($filesDir); $i++) : ?>
+          <tr>
+            <th scope="row"><?php echo $filesDir[$i]; ?></th>
+            <td><?php echo (date("d-m-Y H:i", filectime($rootPath . "/" . $filesDir[$i]))); ?></td>
+            <td><?php echo (date("d-m-Y H:i", filemtime($rootPath . "/" . $filesDir[$i]))); ?></td>
+            <td><?php
+                if (!is_dir($rootPath . "/" . $filesDir[$i])) {
+                  echo (pathinfo($rootPath . "/" . $filesDir[$i])["extension"]);
+                }
+                ?></td>
+            <td><?php echo (filesize($rootPath . "/" . $filesDir[$i])) ?></td>
+          </tr>
+        <?php endfor ?>
+      </tbody>
+    </table>
+  </main>
+
+  <aside class="aside_left">
+    <button class="new_fileBtn">+ New</button>
+  </aside>
   <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 

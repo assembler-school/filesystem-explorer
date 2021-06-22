@@ -5,3 +5,5 @@
   $pathNewFolder = ("C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root");
   $pathNewFolder = $pathNewFolder ."/" . $newFolderName;
   mkdir($pathNewFolder, 0700);
+
+  header("Location:./../index.php");
