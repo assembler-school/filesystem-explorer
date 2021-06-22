@@ -10,7 +10,6 @@
 </head>
 <body>
 <?php
-
 function makedir(){
   $dirname=$_POST["dirname"];
   mkdir("./test/$dirname");
