@@ -19,21 +19,36 @@ session_start();
 
 <body class="d-flex flex-column justify-content-center align-items-center">
     <main class="d-flex flex-column justify-content-center m-0 mb-4">
-        <div class="row header m-0"></div>
-        <div class="row bottom m-0">
-            <div class="col col-2 sidebar-left">
+        <!-- HEADER -->
+        <div class="header m-0 p-2 d-flex justify-content-between align-items-center">
+            <h2 class="logo m-0">Hello</h2>
+            <input type="text" class="pl-3 search-bar"></input>
+            <div class="top-buttons">
+                <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
+                    <label class="custom-upload">
+                        <input value="New file" type="file" name="uploadedFile" class="btn btn-light" />
+                        <div class="btn btn-outline-dark">Choose file</div>
+                    </label>
+                    <input value="Upload" type="submit" class="btn btn-dark" />
+                </form>
             </div>
-            <div class="col col-6 central">
+        </div>
+        <!-- BOTTOM -->
+        <div class="row bottom m-0">
+            <div class="col col-2 bottom-block sidebar-left">
+            </div>
+            <div class="col col-6 bottom-block central">
                 <?php
                 require_once("./modules/directoryFiles.php");
                 ?>
             </div>
-            <div class="col col-4 sidebar-right">
+            <div class="col col-4 bottom-block sidebar-right">
             </div>
         </div>
     </main>
 
-    <div class="drop-wrapper">
+    <div class="drop-wrapper d-flex justify-content-center align-items-center">
+        <h4>Drop me a file</h4>
     </div>
 </body>
 
