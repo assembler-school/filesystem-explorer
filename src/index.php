@@ -1,3 +1,6 @@
+<?php
+header("Location:./pages/main/main.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
