@@ -6,10 +6,9 @@
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
->In this project you will have to create a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system. 
+> In this project you will have to create a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system.
 
->The file explorer is a tool that allows you to directly view and manipulate the files and directories associated with a path, so you must take into account from which path the user starts and which path they can access.
-
+> The file explorer is a tool that allows you to directly view and manipulate the files and directories associated with a path, so you must take into account from which path the user starts and which path they can access.
 
 ## Index <!-- omit in toc -->
 
@@ -32,7 +31,7 @@
 - In the case of using different programming languages ​​always define the implementation in separate terms
 - Remember that it is important to divide the tasks into several sub-tasks so that in this way you can associate each particular step of the construction with a specific commit
 - You should try as much as possible that the commits and the planned tasks are the same
-Delete files that are not used or are not necessary to evaluate the project
+  Delete files that are not used or are not necessary to evaluate the project
 
 ## Repository
 
@@ -67,10 +66,18 @@ To deliver this project you must follow the steps indicated in the document:
   - What problems have you encountered when developing this project?
   - How you have organized and distributed the tasks
 
-
 ## Resources
 
 - [File system](https://es.wikipedia.org/wiki/Administrador_de_archivos)
 - [PHP FileSystem W3C](https://www.w3schools.com/php/php_ref_filesystem.asp)
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
+- [fileSystem PHP](https://www.php.net/manual/en/ref.filesystem.php)
+
+### Dependencies:
+
+-[Dropzone](https://www.dropzonejs.com/#installation)
+
+## Important
+
+- `sass --watch ./src/assets/styles/main.scss ./src/assets/styles/styles.css`
