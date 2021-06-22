@@ -18,5 +18,9 @@
   "homepage": "https://github.com/jonathancede/filesystem-explorer#readme",
   "dependencies": {
     "bootstrap": "^5.0.1"
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.17.1",
+    "prettier": "^2.3.1"
   }
 }
