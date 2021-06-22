@@ -34,6 +34,11 @@ body main .header .top-buttons form .custom-upload input {
 body main .bottom {
   flex-grow: 1;
 }
+body main .bottom .bottom-block {
+  outline: 2px #671515 solid;
+  max-height: 100%;
+  overflow: scroll;
+}
 body .drop-wrapper {
   width: 90%;
   height: 20%;

@@ -42,6 +42,12 @@ body {
     }
     .bottom {
       flex-grow: 1;
+
+      .bottom-block {
+        outline: 2px rgb(103, 21, 21) solid;
+        max-height: 100%;
+        overflow: scroll;
+      }
     }
   }
   .drop-wrapper {
