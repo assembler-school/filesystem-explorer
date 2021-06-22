@@ -30,33 +30,18 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>48mb</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>48mb</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>48mb</td>
-    </tr>
-    
+<?php
+require("./upload.php")
+?>
+   
   </tbody>
 </table>
     </main>
     <aside class="aside_left">
-      <button class="new_fileBtn">+ New</button>
+      <form action="index.php" method="POST" enctype="multipart/form-data">
+      <input  type="file" name="file"> <br>
+      <input class="new_fileBtn" type="submit" value="upload">
+      </form>
     </aside>
   <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
