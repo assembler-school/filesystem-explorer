@@ -20,13 +20,11 @@ makedir();
 function scan(){
   $dirs= scandir("./test");
   foreach($dirs as $item){
-    echo "<form id='$item' class='folder'>";
+    echo "<div id='$item' class='folder'>";
     echo nl2br("\n $item");
     echo "<button type='submit' class='buton'>Delete";
     echo "</button>";
-    
-    
-    echo "</form>";
+    echo "</div>";
     }; 
 }
 scan();
