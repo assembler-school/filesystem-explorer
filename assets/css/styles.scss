@@ -1,0 +1,33 @@
+.main_container {
+  margin: auto;
+  height: 100%;
+  width: 70%;
+  outline: 1px solid black;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.top_container {
+  outline: 1px solid black;
+  height: 15%;
+  box-sizing: border-box;
+  padding: 25px;
+}
+.search_bar {
+  float: right;
+  width: 20%;
+  margin-top: 25px;
+}
+.new_fileBtn {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  height: 60px;
+  width: 120px;
+  border-radius: 60px;
+}
+.current_path {
+  height: 30px;
+  width: 50%;
+  outline: 1px solid black;
+  margin-top: 75px;
+}
