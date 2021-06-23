@@ -1,5 +1,17 @@
 <?php
-require("./modules/database/allFilesDb.php");
+session_start();
+
+/* -------------------------------------------------------------------------- */
+/*                              SESSION VARIABLES                             */
+/* -------------------------------------------------------------------------- */
+// if (!isset($_SESSION["directoryFiles"])) {
+//     $_SESSION["directoryFiles"] = array();
+// };
+
+if (!isset($_SESSION["basePath"])) {
+    $_SESSION["basePath"] = "./root/";
+};
+
 // unset($_SESSION);
 // session_destroy();
 ?>
@@ -15,6 +27,10 @@ require("./modules/database/allFilesDb.php");
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Link to icons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
     <!-- Styles -->
     <link rel="stylesheet" href="./assets/styles/styles.css">
     <title>File System</title>
@@ -26,7 +42,7 @@ require("./modules/database/allFilesDb.php");
         <div class="header m-0 p-2 d-flex justify-content-between align-items-center">
             <h2 class="logo m-0">Hello</h2>
             <input type="text" class="pl-3 search-bar"></input>
-            <button type="button" class="btn btn-primary ajax-test">Primary</button>
+            <!-- <button type="button" class="btn btn-primary ajax-test">Primary</button> -->
             <div class="top-buttons">
 
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">

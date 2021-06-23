@@ -18,8 +18,11 @@ foreach (scandir($target_dir) as $i) {
 
             // Creating the file block
             echo "<div class= 'row file-item d-flex justify-content-between align-items-center'>";
-            echo "<p class='col col-4 file-text file-name'>" . $fileArray["name"] . "</p>";
-            echo "<p class='col col-2 col file-text'>" . $fileArray["type"] . "</p>";
+            echo "<div class='row col col-4 icon-and-name d-flex justify-content-between align-items-center'>";
+            echo "<p class='col col-2 file-text file-icon p-0 d-flex justify-content-center'>" . "<i class='far fa-" . $fileArray["icon"] . "'></i>" . "</p>";
+            echo "<p class='col col-10 file-text file-name'>" . $fileArray["name"] . "</p>";
+            echo "</div>";
+            // echo "<p class='col col-2 col file-text'>" . $fileArray["type"] . "</p>";
             // echo "<p class='file-text'>" . $fileArray["path"] . "</p>";
             echo "<p class='col col-2 file-text'>" . $fileArray["size"] . "</p>";
             echo "<p class='col col-2 file-text'>" . $fileArray["creation"] . "</p>";

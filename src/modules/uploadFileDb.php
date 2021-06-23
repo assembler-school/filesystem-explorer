@@ -15,7 +15,7 @@ if (!file_exists($target_file)) {
 
     $rawType = $_FILES["uploadedFile"]["type"];
     $midType = explode("/", $rawType);
-    $fileType = $midType[1];
+    $fileType = end($midType);
 
     $fileCreation = filectime($target_file);
     $fileModification = filemtime($target_file);

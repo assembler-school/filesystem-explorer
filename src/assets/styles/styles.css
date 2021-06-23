@@ -40,12 +40,22 @@ body main .bottom {
 body main .bottom .central {
   outline: 2px black solid;
 }
-body main .bottom .central .file-item .file-text {
-  font-size: 12px;
-  color: lightgray;
+body main .bottom .central .file-item .icon-and-name {
+  display: flex;
 }
-body main .bottom .central .file-item .file-name {
+body main .bottom .central .file-item .icon-and-name .file-icon {
+  font-size: 18px;
   color: black;
+}
+body main .bottom .central .file-item .icon-and-name .file-name {
+  color: black;
+  max-height: 22px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+body main .bottom .central .file-item .file-text {
+  font-size: 15px;
+  color: lightgray;
 }
 body main .bottom .bottom-block {
   max-height: 490px;

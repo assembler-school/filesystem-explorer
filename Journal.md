@@ -16,8 +16,34 @@ Metting in the morning debates:
 
 **User cases:** leave it as generic as possible.
 
+DONE:
+
+* Display all files in root directory.
+* Upload file to root directory.
+* Display directories on sidebar.
+* Basic layout.
 
 
+## Day 2
+
+Hugo:
+
+* Edit file/folder
+* Delete file/folder
+
+Ricard:
+
+* Display file columns with icons.
+* Make dynamic path.
+
+DONE:
+
+
+TODO:
+ 
+* Session variable for url (GET method).
+
+-
 ## TODO
 
 ### Files
