@@ -5,3 +5,19 @@
 .side-span {
     padding-left: 10px;
 }
+
+.file-select {
+    margin-right: 10px;
+}
+
+.navbar {
+    width: 100vw;
+}
+
+.aside-bar {
+    width: 15vw;
+}
+
+.main-table {
+    width: 85vw;
+}
