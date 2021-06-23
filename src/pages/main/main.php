@@ -1,3 +1,9 @@
+<?php
+require_once "../../php/Login/login-control.php";
+revisar_si_existe_sesion();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +40,7 @@
 			</div>
 		</div>
 		<div class="logout__wrapper d-flex justify-content-center align-item-center h-100 d-inline-block">
-			<a href="../Login/logout.php" class="d-flex align-items-center">
+			<a href="../../php/login/logout.php" class="d-flex align-items-center">
 				<button type="button" class="btn btn-primary">Logout</button>
 			</a>
 		</div>
