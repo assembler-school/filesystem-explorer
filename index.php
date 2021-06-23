@@ -1,20 +1,11 @@
 <?php
 $rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
 
-session_start();
-if (!isset($_SESSION["currentPath"])) {
-  $currentPath = $rootPath;
-  $_SESSION["currentPath"] = $currentPath;
-} else {
-  $currentPath = $_SESSION["currentPath"];
-}
+require_once("./src/modules/set_dir.php");
 
 echo $_SESSION["currentPath"];
 echo "<br/>";
 
-
-// Getting files and folders from directory
-$filesDir = scandir($currentPath);
 ?>
 
 <html lang="en">
@@ -44,16 +35,7 @@ $filesDir = scandir($currentPath);
         <button class="btn btn-outline-success my-2 my-sm-0 search_btn" type="submit">Search</button>
       </form>
       <div class="current_path">
-        <a href="src/modules/updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root">root /</a>
-        <?php
-        $expPath = explode("/", $currentPath);
-        $folderHref = "";
-        for ($i = 8; $i < count($expPath); $i++) : ?>
-          <?php
-          $folderHref .= "/" . $expPath[$i];
-          ?>
-          <a href="src/modules/updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root<?php echo $folderHref ?>"><?php echo $expPath[$i] ?> /</a>
-        <?php endfor ?>
+        <?php require_once("./src/modules/set_navbar.php"); ?>
       </div>
     </div>
     <table class="table">
@@ -67,28 +49,12 @@ $filesDir = scandir($currentPath);
         </tr>
       </thead>
       <tbody>
-        <?php for ($i = 2; $i < count($filesDir); $i++) : ?>
-          <tr>
-            <?php if (is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) : ?>
-              <th scope="row"><a href="src/modules/updating_path.php?updatedPath=<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>"><?php echo $filesDir[$i]; ?></a></th>
-            <?php else : ?>
-              <th scope="row"><?php echo $filesDir[$i]; ?></th>
-            <?php endif ?>
-            <td><?php echo (date("d-m-Y H:i", filectime($_SESSION["currentPath"] . "/" . $filesDir[$i]))); ?></td>
-            <td><?php echo (date("d-m-Y H:i", filemtime($_SESSION["currentPath"] . "/" . $filesDir[$i]))); ?></td>
-            <td><?php
-                if (!is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) {
-                  echo (pathinfo($_SESSION["currentPath"] . "/" . $filesDir[$i])["extension"]);
-                }
-                ?></td>
-            <td><?php echo (filesize($_SESSION["currentPath"] . "/" . $filesDir[$i])) ?></td>
-          </tr>
-        <?php endfor ?>
+        <?php require_once("./src/modules/set_files_info.php") ?>
       </tbody>
     </table>
   </main>
   <?php
-  require("./src/modules/upload.php")
+  require("./src/modules/upload.php");
   ?>
   </main>
   <aside class="aside_left">
