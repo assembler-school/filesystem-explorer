@@ -21,13 +21,14 @@ Metting in the morning debates:
 ## TODO
 
 ### Files
-* Check if file exists
-* Calculate MB
+* (DONE) Check if file exists
+* (DONE) Calculate MB
+* Rename folders
+
+### Paths
 * Get all files in all directories:
-`$dirs = array_filter(glob(‘../root/*’), ‘is_dir’);`
-
-
-
+`$dirs = array_filter(glob(‘../root/*’), ‘is_dir’);
 ## Notes
 
 · To transpile .scss to .css files: `sass --watch ./src/assets/styles/main.scss ./src/assets/styles/styles.css`
+· Delete file

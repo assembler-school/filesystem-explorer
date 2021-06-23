@@ -1,5 +1,7 @@
 <?php
-session_start();
+require("./modules/database/allFilesDb.php");
+// unset($_SESSION);
+// session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +26,9 @@ session_start();
         <div class="header m-0 p-2 d-flex justify-content-between align-items-center">
             <h2 class="logo m-0">Hello</h2>
             <input type="text" class="pl-3 search-bar"></input>
+            <button type="button" class="btn btn-primary ajax-test">Primary</button>
             <div class="top-buttons">
+
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
                     <label class="custom-upload">
                         <input value="New file" type="file" name="uploadedFile" class="btn btn-light" />

@@ -1,19 +1,22 @@
 <?php
-// Database
-require("./database/allFilesDb.php");
+session_start();
 
 // Initial variables
-$target_dir = "../root/";
+$target_dir = "." . $_SESSION["basePath"];
 $target_file = $target_dir . basename($_FILES["uploadedFile"]["name"]);
 $uploadedFile = $_FILES["uploadedFile"];
 
 // Only uploading if file doesn't exist
 if (!file_exists($target_file)) {
     move_uploaded_file($_FILES["uploadedFile"]["tmp_name"], $target_file);
-    // echo "Uploaded file!";
+
     // Getting file's characteristics
     $fileName = $_FILES["uploadedFile"]["name"];
-    $fileType = $_FILES["uploadedFile"]["type"];
+
+    $rawType = $_FILES["uploadedFile"]["type"];
+    $midType = explode("/", $rawType);
+    $fileType = $midType[1];
+
     $fileCreation = filectime($target_file);
     $fileModification = filemtime($target_file);
     if ($_FILES["uploadedFile"]["size"] < 1000) {
@@ -26,8 +29,10 @@ if (!file_exists($target_file)) {
 
     // Appending to database
     $cookedFile = createFileArray($fileName, $fileType, $target_file, $fileSize, $fileCreation, $fileModification);
-    // array_push($allFiles, $cookedFile);
-} else {
+    $_SESSION["allFiles"][] = $cookedFile;
+}
+// File exists
+else {
     header("Location:../index.php");
 }
 
@@ -38,8 +43,12 @@ if (!file_exists($target_file)) {
 function createFileArray($fName, $fType, $fPath, $Size, $fCreation, $fModification = "")
 {
     $fileArray = array("name" => $fName, "type" => $fType, "path" => $fPath, "size" => $Size, "creation" => $fCreation, "modification" => $fModification);
-    echo "<pre>" . print_r($fileArray, true) . "</pre>";
+    return $fileArray;
 }
 
 
-echo "<pre>" . print_r($allFiles) . "</pre>";
+/* -------------------------------------------------------------------------- */
+/*                                    TEST                                    */
+/* -------------------------------------------------------------------------- */
+echo "This is the database: <pre>" . print_r($_SESSION["allFiles"], true) . "</pre>";
+echo "<a href='../index.php'>Back home</a>";
