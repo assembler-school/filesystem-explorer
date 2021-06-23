@@ -44,10 +44,10 @@ $filesDir = scandir($currentPath);
         <button class="btn btn-outline-success my-2 my-sm-0 search_btn" type="submit">Search</button>
       </form>
       <div class="current_path">
-        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root">root /</a>
+        <!-- <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root">root /</a>
         <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src">src</a>
         <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src/subsrc1">subsrc1</a>
-        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src/subsrc1/subsrc2">subsrc2</a>
+        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src/subsrc1/subsrc2">subsrc2</a> -->
 
         <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root">root /</a>
         <?php
@@ -57,7 +57,7 @@ $filesDir = scandir($currentPath);
           <?php
           $folderHref .= "/" . $expPath[$i];
           ?>
-          <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root<?php echo $folderHref ?>"><?php echo $expPath[$i]?> /</a>
+          <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root<?php echo $folderHref ?>"><?php echo $expPath[$i] ?> /</a>
         <?php endfor ?>
       </div>
     </div>
@@ -74,7 +74,11 @@ $filesDir = scandir($currentPath);
       <tbody>
         <?php for ($i = 2; $i < count($filesDir); $i++) : ?>
           <tr>
-            <th scope="row"><?php echo $filesDir[$i]; ?></th>
+            <?php if (is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) : ?>
+              <th scope="row"><a href="updating_path.php?updatedPath=<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>"><?php echo $filesDir[$i]; ?></a></th>
+            <?php else : ?>
+              <th scope="row"><?php echo $filesDir[$i]; ?></th>
+            <?php endif ?>
             <td><?php echo (date("d-m-Y H:i", filectime($_SESSION["currentPath"] . "/" . $filesDir[$i]))); ?></td>
             <td><?php echo (date("d-m-Y H:i", filemtime($_SESSION["currentPath"] . "/" . $filesDir[$i]))); ?></td>
             <td><?php
