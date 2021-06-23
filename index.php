@@ -24,12 +24,12 @@ $filesDir = scandir($currentPath);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP File Manager</title>
-  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./src/assets/css/styles.css">
   <link href="node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
 <body>
-  <form class="form-login row" action="./src/creatingFolder.php" method="POST">
+  <form class="form-login row" action="./src/modules/creating_folder.php" method="POST">
     <div class="col col-6">
       <input type="text" name="folderName" placeholder="Folder name" id="folderName" class="form-control">
     </div>
@@ -44,12 +44,7 @@ $filesDir = scandir($currentPath);
         <button class="btn btn-outline-success my-2 my-sm-0 search_btn" type="submit">Search</button>
       </form>
       <div class="current_path">
-        <!-- <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root">root /</a>
-        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src">src</a>
-        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src/subsrc1">subsrc1</a>
-        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src/subsrc1/subsrc2">subsrc2</a> -->
-
-        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root">root /</a>
+        <a href="src/modules/updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root">root /</a>
         <?php
         $expPath = explode("/", $currentPath);
         $folderHref = "";
@@ -57,7 +52,7 @@ $filesDir = scandir($currentPath);
           <?php
           $folderHref .= "/" . $expPath[$i];
           ?>
-          <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root<?php echo $folderHref ?>"><?php echo $expPath[$i] ?> /</a>
+          <a href="src/modules/updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root<?php echo $folderHref ?>"><?php echo $expPath[$i] ?> /</a>
         <?php endfor ?>
       </div>
     </div>
@@ -75,7 +70,7 @@ $filesDir = scandir($currentPath);
         <?php for ($i = 2; $i < count($filesDir); $i++) : ?>
           <tr>
             <?php if (is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) : ?>
-              <th scope="row"><a href="updating_path.php?updatedPath=<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>"><?php echo $filesDir[$i]; ?></a></th>
+              <th scope="row"><a href="src/modules/updating_path.php?updatedPath=<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>"><?php echo $filesDir[$i]; ?></a></th>
             <?php else : ?>
               <th scope="row"><?php echo $filesDir[$i]; ?></th>
             <?php endif ?>
@@ -93,7 +88,7 @@ $filesDir = scandir($currentPath);
     </table>
   </main>
   <?php
-  require("./upload.php")
+  require("./src/modules/upload.php")
   ?>
   </main>
   <aside class="aside_left">

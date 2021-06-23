@@ -1,7 +1,7 @@
 <?php
 session_start();
 checkPath();
-header("Location:./index.php");
+header("Location:./../../index.php");
 
 function checkPath()
 {
