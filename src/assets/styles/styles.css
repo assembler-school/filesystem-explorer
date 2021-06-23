@@ -40,26 +40,48 @@ body main .bottom {
 body main .bottom .central {
   outline: 2px black solid;
 }
-body main .bottom .central .file-item .icon-and-name {
+body main .bottom .central .central-columns {
+  height: 40px;
+  width: 100%;
+  border-bottom: 2px black solid;
+}
+body main .bottom .central .central-columns .column-text {
+  font-weight: bold;
+  font-size: 10px;
   display: flex;
 }
-body main .bottom .central .file-item .icon-and-name .file-icon {
+body main .bottom .central .central-files {
+  flex-grow: 1;
+  overflow-y: scroll;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: central;
+}
+body main .bottom .central .central-files .file-item {
+  width: 100%;
+}
+body main .bottom .central .central-files .file-item .icon-and-name {
+  display: flex;
+}
+body main .bottom .central .central-files .file-item .icon-and-name .file-icon {
   font-size: 18px;
   color: black;
 }
-body main .bottom .central .file-item .icon-and-name .file-name {
+body main .bottom .central .central-files .file-item .icon-and-name .file-name {
   color: black;
   max-height: 22px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-body main .bottom .central .file-item .file-text {
+body main .bottom .central .central-files .file-item .file-text {
   font-size: 15px;
   color: lightgray;
 }
 body main .bottom .bottom-block {
   max-height: 490px;
-  overflow: scroll;
+  height: 100%;
 }
 body .drop-wrapper {
   width: 90%;

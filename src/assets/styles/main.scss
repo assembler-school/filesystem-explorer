@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  // border: 1px solid red;
+  // outline: 1px solid blue;
 }
 
 input:focus,
@@ -47,31 +47,54 @@ body {
       flex-grow: 1;
       .central {
         outline: 2px rgb(0, 0, 0) solid;
-        .file-item {
-          .icon-and-name {
-            display: flex;
-            .file-icon {
-              font-size: 18px;
-              color: black;
-            }
-            .file-name {
-              color: rgb(0, 0, 0);
-              max-height: 22px;
-              text-overflow: ellipsis;
-              overflow: hidden;
-            }
-          }
 
-          .file-text {
-            font-size: 15px;
-            color: lightgray;
+        .central-columns {
+          height: 40px;
+          width: 100%;
+          border-bottom: 2px black solid;
+
+          .column-text {
+            font-weight: bold;
+            font-size: 10px;
+            display: flex;
+          }
+        }
+        .central-files {
+          flex-grow: 1;
+          overflow-y: scroll;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: central;
+
+          .file-item {
+            width: 100%;
+            .icon-and-name {
+              display: flex;
+              .file-icon {
+                font-size: 18px;
+                color: black;
+              }
+              .file-name {
+                color: rgb(0, 0, 0);
+                max-height: 22px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+              }
+            }
+
+            .file-text {
+              font-size: 15px;
+              color: lightgray;
+            }
           }
         }
       }
 
       .bottom-block {
         max-height: 490px;
-        overflow: scroll;
+        height: 100%;
       }
     }
   }

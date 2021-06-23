@@ -39,12 +39,11 @@ if (!isset($_SESSION["basePath"])) {
 <body class="d-flex flex-column justify-content-center align-items-center">
     <main class="d-flex flex-column justify-content-center m-0 mb-4">
         <!-- HEADER -->
-        <div class="header m-0 p-2 d-flex justify-content-between align-items-center">
-            <h2 class="logo m-0">Hello</h2>
-            <input type="text" class="pl-3 search-bar"></input>
+        <div class="row header m-0 p-2 d-flex justify-content-between align-items-center">
+            <h2 class="col col-2 logo p-0 m-0">Hello</h2>
+            <input type="text" class="col col-7 pl-3 search-bar" placeholder="Search files" autofocus></input>
             <!-- <button type="button" class="btn btn-primary ajax-test">Primary</button> -->
-            <div class="top-buttons">
-
+            <div class="col col-3 top-buttons d-flex justify-content-end align-items-center p-0">
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
                     <label class="custom-upload">
                         <input value="New file" type="file" name="uploadedFile" class="btn btn-light" />
@@ -61,10 +60,21 @@ if (!isset($_SESSION["basePath"])) {
                 require_once("./modules/allDirectories.php");
                 ?>
             </div>
-            <div class="col col-7 p-4 bottom-block central">
-                <?php
-                require_once("./modules/directoryFiles.php");
-                ?>
+            <div class="col col-7 px-0 bottom-block central d-flex flex-column justify-content-center align-items-center">
+                <div class="row px-2 central-columns d-flex justify-content-center align-items-center">
+                    <div class="row col col-6 p-0 icon-and-name-col d-flex justify-content-center">
+                        <p class="col col-2 column-text">Type</p>
+                        <p class="col col-10 column-text">Name</p>
+                    </div>
+                    <p class="col col-2 column-text">Size</p>
+                    <p class="col col-2 column-text">Creation</p>
+                    <p class="col col-2 column-text">Modification</p>
+                </div>
+                <div class="central-files px-2">
+                    <?php
+                    require_once("./modules/directoryFiles.php");
+                    ?>
+                </div>
             </div>
             <div class="col col-3 bottom-block sidebar-right">
             </div>
