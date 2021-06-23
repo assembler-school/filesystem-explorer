@@ -5,66 +5,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
     <header>
-        <div class="headerLeft"> logo </div>
+        <div class="headerLeft">
+            <img src="./assets/img/logo.png"
+     alt="Logo"  />
+        </div>
         <div class="headerCenter"> 
             <input class="searchBar" type="text">
         </div>
         <div class="headerRight"> 
-            <div class="icon"> view </div>
-            <div class="icon"> trash </div>
-            <div class="icon"> user </div>
+            <div class="icon"> 
+            <i class="bi bi-gear"></i>
+            </div>
+            <div class="iconUser"> user </div>
         </div>
     </header>
     <main>
         <section class="mainLeft">
             <div class="newFile"> 
-                <button class ="" type="button"> + </button>
+                <div class ="newFile__btn"> 
+                    <span>+</span>
+                </div>
             </div>
             <hr>
             <div class="fdContainer">
-                <div> File </div>
-                <div> Directory </div>
+                <div class="root"><i class="bi bi-folder"></i> File </div>
+                <div class="prueba"> <i class="bi bi-folder"></i>Directory </div>
             </div>
         </section>
         <section class="mainCenter">
             <div class ="fileWrapper">
-                <div class="fileIcon">icon</div>
-                <div class="fileName">filename</div>
+                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
+                <div class="mainCenter__fileName">Documents</div>
+            </div>
+            <div class ="fileWrapper">
+                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
+                <div class="mainCenter__fileName">Audio</div>
+            </div>
+            <div class ="fileWrapper">
+                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
+                <div class="mainCenter__fileName">Video</div>
+            </div>
+            <div class ="fileWrapper">
+                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
+                <div class="mainCenter__fileName">Images</div>
             </div>
         </section>
         <section class="mainRight">
-            <div class="fileHeader">
-                <div class="fileIcon">icon</div>
-                <div class="fileName">filename</div>
+            <div class="mainRight__fileHeader">
+                <div class="mainRight__fileIcon"><i class="bi bi-folder-fill"></i></div>
+                <div class="mainRight__fileName">filename</div>
             </div>
+            <hr class="mainRight__hr">
             <div class="fileInfoContainer">
-                <div class="fileInfoWrapper">
-                    <div class="label"> Label</div>
-                    <div class="labelType">APPROVED</div>
+            <div class="fileInfoWrapper">
+                    <div class="label"> Name: </div>
+                    <div class="labelType">MasterClass Pc</div>
                 </div>
                 <div class="fileInfoWrapper">
-                    <div class="label"> Type</div>
-                    <div class="labelType">MSExcel Document</div>
+                    <div class="label"> Creation date: </div>
+                    <div class="labelType">17/03/2021</div>
                 </div>
                 <div class="fileInfoWrapper">
-                    <div class="label"> Size</div>
+                    <div class="label"> Modification date: </div>
+                    <div class="labelType">11/05/2021</div>
+                </div>
+                <div class="fileInfoWrapper">
+                    <div class="label"> Size: </div>
                     <div class="labelType">38 KB</div>
                 </div>
                 <div class="fileInfoWrapper">
-                    <div class="label"> Modified</div>
-                    <div class="labelType">Feb 23, 2016</div>
-                </div>
-                <div class="fileInfoWrapper">
-                    <div class="label"> Created</div>
-                    <div class="labelType">00:00</div>
-                </div>
-                <div class="fileInfoWrapper">
-                    <div class="label"> Rating</div>
-                    <div class="labelType">Stars</div>
+                    <div class="label"> Extension: </div>
+                    <div class="labelType">.Doc</div>
                 </div>
             </div>
         </section>
