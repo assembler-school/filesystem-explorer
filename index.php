@@ -1,3 +1,11 @@
+<?php
+$currentDir = "root/folder2";
+
+if (isset($_GET["path"])) {
+  $currentDir = $_GET["path"];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,8 +36,24 @@
   </header>
   <nav class="navbar navbar-dark bg-secondary mx-4 rounded px-3">
     <!-- botones ruta -->
-    <div>
-      <button class="btn btn-danger">BACK</button>
+    <div class="d-flex">
+      <div>
+        <button class="btn btn-danger me-2">BACK</button>
+      </div>
+      <div>
+        <?php
+        $pathArr = explode("/", $currentDir);
+
+        foreach ($pathArr as $dir) {
+          $originalPath = substr($currentDir, 0, strpos($currentDir, $dir));
+          if ($originalPath . $dir == $currentDir) {
+            echo "<div class='btn bg-primary text-white'>$dir</div>";
+          } else {
+            echo "<a href='?path={$originalPath}{$dir}'><div class='btn btn-primary me-2'>$dir</div></a>";
+          }
+        }
+        ?>
+      </div>
     </div>
     <!-- botones createfolder && upload -->
     <div>
@@ -38,7 +62,7 @@
     </div>
   </nav>
 
-  <main class="mx-4">
+  <main class="mx-4 text-white">
     <div>Directories</div>
     <div>
 
