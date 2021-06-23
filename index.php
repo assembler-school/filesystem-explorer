@@ -1,6 +1,17 @@
 <?php
 $rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
-$currentPath = $rootPath;
+
+session_start();
+if (!isset($_SESSION["currentPath"])) {
+  $currentPath = $rootPath;
+  $_SESSION["currentPath"] = $currentPath;
+} else {
+  $currentPath = $_SESSION["currentPath"];
+}
+
+echo $_SESSION["currentPath"];
+echo "<br/>";
+
 
 // Getting files and folders from directory
 $filesDir = scandir($currentPath);
@@ -32,7 +43,20 @@ $filesDir = scandir($currentPath);
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0 search_btn" type="submit">Search</button>
       </form>
-      <div class="current_path"></div>
+      <div class="current_path">
+        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root">root /</a>
+        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src">src</a>
+        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src/subsrc1">subsrc1</a>
+        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src/subsrc1/subsrc2">subsrc2</a>
+        <?php
+        $expPath = explode("/", $currentPath);
+        for ($i = 8; $i < count($expPath); $i++) : ?>
+          <?php for ($j = 1; $j < $i; $j++) : ?>
+            <?php echo $expPath[$j]; ?>
+          <?php endfor ?>
+          <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/<?php echo $folderHref ?>"><?php echo $expPath[$i] ?></a>
+        <?php endfor ?>
+      </div>
     </div>
     <table class="table">
       <thead>
@@ -48,14 +72,14 @@ $filesDir = scandir($currentPath);
         <?php for ($i = 2; $i < count($filesDir); $i++) : ?>
           <tr>
             <th scope="row"><?php echo $filesDir[$i]; ?></th>
-            <td><?php echo (date("d-m-Y H:i", filectime($rootPath . "/" . $filesDir[$i]))); ?></td>
-            <td><?php echo (date("d-m-Y H:i", filemtime($rootPath . "/" . $filesDir[$i]))); ?></td>
+            <td><?php echo (date("d-m-Y H:i", filectime($_SESSION["currentPath"] . "/" . $filesDir[$i]))); ?></td>
+            <td><?php echo (date("d-m-Y H:i", filemtime($_SESSION["currentPath"] . "/" . $filesDir[$i]))); ?></td>
             <td><?php
-                if (!is_dir($rootPath . "/" . $filesDir[$i])) {
-                  echo (pathinfo($rootPath . "/" . $filesDir[$i])["extension"]);
+                if (!is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) {
+                  echo (pathinfo($_SESSION["currentPath"] . "/" . $filesDir[$i])["extension"]);
                 }
                 ?></td>
-            <td><?php echo (filesize($rootPath . "/" . $filesDir[$i])) ?></td>
+            <td><?php echo (filesize($_SESSION["currentPath"] . "/" . $filesDir[$i])) ?></td>
           </tr>
         <?php endfor ?>
       </tbody>
