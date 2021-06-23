@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +15,7 @@ session_start();
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./assets/styles/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <title>File System</title>
 </head>
 
@@ -24,9 +26,12 @@ session_start();
             <div class="col col-2 sidebar-left">
             </div>
             <div class="col col-6 central">
-                <?php
-                require_once("./modules/directoryFiles.php");
-                ?>
+
+                <!-- <?php
+                        require_once("./modules/directoryFiles.php");
+                        ?> -->
+
+
             </div>
             <div class="col col-4 sidebar-right">
             </div>
