@@ -26,8 +26,11 @@
         } elseif (!in_array($file_ext, $extensions)) {
             $invalid_msg = "has invalid file extension!";
         } else {
-            move_uploaded_file($_FILES["file"]["tmp_name"], "root/" . $_FILES["file"]["name"]);
-            $_FILES["file"]["name"];
+            if (isset($_SESSION["currentPath"]) && $_SESSION["currentPath"] == "") {
+                move_uploaded_file($_FILES["file"]["tmp_name"], "root/" . $_FILES["file"]["name"]);
+            } else {
+                move_uploaded_file($_FILES["file"]["tmp_name"], "./root" . $_SESSION["currentPath"] . "/" . $_FILES["file"]["name"]);
+            }
             $success_msg = "has been uploaded";
         }
         // pre_r($ext_error);

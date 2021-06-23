@@ -37,6 +37,6 @@ function clean_readdir($dir)
     return $files;
 }
 pre_r(clean_readdir($local_dir));
-$ext_local = explode(".", clean_readdir($local_dir));
+// $ext_local = explode(".", clean_readdir($local_dir));
 $ext_local = end($ext_local);
 ?>

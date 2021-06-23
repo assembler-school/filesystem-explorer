@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("./modules/upload.php");
 ?>
 <!DOCTYPE html>
@@ -83,19 +84,22 @@ include_once("./modules/upload.php");
             </div>
             <div class="p-0 main-table">
                 <?php
-                if ($success_msg) {
+                if (isset($success_msg) && $success_msg) {
                     echo "<div class='alert alert-success' role='alert'>";
                     echo
-                        $_FILES["file"]["name"] . " " . $success_msg;
+                    $_FILES["file"]["name"] . " " . $success_msg;
                     echo "</div>";
-                } elseif ($invalid_msg) {
+                    $success_msg = false;
+                } elseif (isset($invalid_msg) && $invalid_msg) {
                     echo "<div class='alert alert-warning' role='alert'>";
                     echo $_FILES["file"]["name"] . " " . $invalid_msg;
                     echo "</div>";
-                } elseif ($error_msg) {
+                    $invalid_msg = false;
+                } elseif (isset($error_msg) && $error_msg) {
                     echo "<div class='alert alert-danger' role='alert'>";
                     echo $error_msg;
                     echo "</div>";
+                    $error_msg = false;
                 } else {
                     echo NULL;
                 }
@@ -113,46 +117,9 @@ include_once("./modules/upload.php");
                     </thead>
                     <tbody>
                         <?php
-
-                        include "./modules/directory-list.php";
+                        include_once "./modules/up-folder-list.php";
+                        include_once "./modules/directory-list.php";
                         ?>
-                        <!-- <tr>
-                            <th scope="row"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
-                                    <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z" />
-                                </svg></th>
-                            <td>Music</td>
-                            <td></td>
-                            <td>00:10</td>
-                            <td>Feb 10 2010</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
-                                    <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z" />
-                                </svg></th>
-                            <td>Photos</td>
-                            <td></td>
-                            <td>00:10</td>
-                            <td>Feb 10 2010</td>
-                        </tr> -->
-                        <!-- <tr>
-                            <th scope="row"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
-                                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z" />
-                                </svg></th>
-                            <td>My SpreadSheet <span class="text-muted"><?php echo $file_ext ?></span></td>
-                            <td>24 MB</td>
-                            <td>00:10</td>
-                            <td>Feb 10 2010</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-image-fill" viewBox="0 0 16 16">
-                                    <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707v5.586l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zm-1.498 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z" />
-                                    <path d="M10.564 8.27 14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z" />
-                                </svg></th>
-                            <td>Friends</td>
-                            <td>24 MB</td>
-                            <td>00:10</td>
-                            <td>Feb 10 2010</td> -->
-                        </tr>
                     </tbody>
                 </table>
             </div>
