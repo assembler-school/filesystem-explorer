@@ -1,6 +1,6 @@
 <?php
 // Required files
-require_once("./fileStats.php");
+require_once("./modules/fileStats.php");
 
 // Root folder
 $target_dir = $_SESSION["basePath"];
@@ -14,8 +14,17 @@ foreach (scandir($target_dir) as $i) {
         if ($firstCharacter != ".") {
             $target_file = $target_dir . basename($i);
             $fileArray = getFileStats($target_file, $i);
-            $directoryFiles[] = $fileArray;
-            // echo $i, "<br>";
+            //$directoryFiles[] = $fileArray;
+
+            // Creating the file block
+            echo "<div class= 'row file-item d-flex justify-content-between align-items-center'>";
+            echo "<p class='col col-4 file-text file-name'>" . $fileArray["name"] . "</p>";
+            echo "<p class='col col-2 col file-text'>" . $fileArray["type"] . "</p>";
+            // echo "<p class='file-text'>" . $fileArray["path"] . "</p>";
+            echo "<p class='col col-2 file-text'>" . $fileArray["size"] . "</p>";
+            echo "<p class='col col-2 file-text'>" . $fileArray["creation"] . "</p>";
+            echo "<p class='col col-2 file-text'>" . $fileArray["modification"] . "</p>";
+            echo "</div>";
         }
     }
 };
@@ -23,10 +32,7 @@ foreach (scandir($target_dir) as $i) {
 /* -------------------------------------------------------------------------- */
 /*                                    TEST                                    */
 /* -------------------------------------------------------------------------- */
-echo "These are the directory files: <pre>" . print_r($_SESSION["allFiles"], true) . "</pre>";
-echo "<a href='../index.php'>Back home</a>";
-
-
+// echo "These are the directory files: <pre>" . print_r($directoryFiles, true) . "</pre>";
 
 ?>
 <script>

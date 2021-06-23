@@ -1,9 +1,12 @@
 <?php
+// session_start();
 
-function getFileStats($pathToFile, $fName)
+function getFileStats($pathToFile, $rawName)
 {
     // Setting all variables
-    $fType = filetype($pathToFile);
+    $fName = explode(".", $rawName)[0];
+    $rawType = explode("/", mime_content_type($pathToFile));
+    $fType = end($rawType);
     $fPath = $pathToFile;
     if (filesize($pathToFile) < 1000) {
         $fSize =  filesize($pathToFile) . "KB";
@@ -12,9 +15,8 @@ function getFileStats($pathToFile, $fName)
         // echo $mbSize;
         $fSize = number_format($mbSize, 2) . "MB";
     }
-    $fCreation = filectime($pathToFile);
-    $fModification = filemtime($pathToFile);
-
+    $fCreation = date("m/d/y", filectime($pathToFile));
+    $fModification = date("m/d/y", filemtime($pathToFile));
 
     $fileArray = array("name" => $fName, "type" => $fType, "path" => $fPath, "size" => $fSize, "creation" => $fCreation, "modification" => $fModification);
     return $fileArray;

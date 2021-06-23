@@ -40,6 +40,16 @@ body main .bottom {
 body main .bottom .central {
   outline: 2px black solid;
 }
+body main .bottom .central .file-item {
+  background-color: blue;
+}
+body main .bottom .central .file-item .file-text {
+  font-size: 3px;
+  color: lightgray;
+}
+body main .bottom .central .file-item .file-name {
+  color: black;
+}
 body main .bottom .bottom-block {
   max-height: 490px;
   overflow: scroll;
@@ -47,7 +57,7 @@ body main .bottom .bottom-block {
 body .drop-wrapper {
   width: 90%;
   height: 20%;
-  background-color: rgba(0, 0, 0, 0.139);
+  background-color: rgba(225, 225, 225, 0.194);
   border-radius: 5px;
 }
 

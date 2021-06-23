@@ -42,12 +42,12 @@ require("./modules/database/allFilesDb.php");
         <div class="row bottom m-0">
             <div class="col col-2 bottom-block sidebar-left">
             </div>
-            <div class="col col-6 bottom-block central">
+            <div class="col col-7 bottom-block central">
                 <?php
                 require_once("./modules/directoryFiles.php");
                 ?>
             </div>
-            <div class="col col-4 bottom-block sidebar-right">
+            <div class="col col-3 bottom-block sidebar-right">
             </div>
         </div>
     </main>

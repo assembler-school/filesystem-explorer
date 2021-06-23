@@ -47,6 +47,16 @@ body {
       flex-grow: 1;
       .central {
         outline: 2px rgb(0, 0, 0) solid;
+        .file-item {
+          background-color: blue;
+          .file-text {
+            font-size: 3px;
+            color: lightgray;
+          }
+          .file-name {
+            color: rgb(0, 0, 0);
+          }
+        }
       }
 
       .bottom-block {
@@ -58,7 +68,7 @@ body {
   .drop-wrapper {
     width: 90%;
     height: 20%;
-    background-color: rgba(0, 0, 0, 0.139);
+    background-color: rgba(225, 225, 225, 0.194);
     border-radius: 5px;
   }
 }
