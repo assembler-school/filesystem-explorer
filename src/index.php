@@ -41,8 +41,11 @@ require("./modules/database/allFilesDb.php");
         <!-- BOTTOM -->
         <div class="row bottom m-0">
             <div class="col col-2 bottom-block sidebar-left">
+                <?php
+                require_once("./modules/allDirectories.php");
+                ?>
             </div>
-            <div class="col col-7 bottom-block central">
+            <div class="col col-7 p-4 bottom-block central">
                 <?php
                 require_once("./modules/directoryFiles.php");
                 ?>

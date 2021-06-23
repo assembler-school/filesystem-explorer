@@ -32,3 +32,8 @@ Metting in the morning debates:
 
 · To transpile .scss to .css files: `sass --watch ./src/assets/styles/main.scss ./src/assets/styles/styles.css`
 · Delete file
+
+-
+### WISHLIST
+* Delete all/some files (checkbox).
+* Bottom path functionality.

@@ -4,7 +4,7 @@ require_once("./modules/fileStats.php");
 
 // Root folder
 $target_dir = $_SESSION["basePath"];
-$directoryFiles = $_SESSION["directoryFiles"];
+// $directoryFiles = $_SESSION["directoryFiles"];
 
 // List all files
 foreach (scandir($target_dir) as $i) {

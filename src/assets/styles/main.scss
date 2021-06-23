@@ -48,9 +48,8 @@ body {
       .central {
         outline: 2px rgb(0, 0, 0) solid;
         .file-item {
-          background-color: blue;
           .file-text {
-            font-size: 3px;
+            font-size: 12px;
             color: lightgray;
           }
           .file-name {
@@ -68,7 +67,7 @@ body {
   .drop-wrapper {
     width: 90%;
     height: 20%;
-    background-color: rgba(225, 225, 225, 0.194);
+    background-color: rgba(255, 255, 255, 0.632);
     border-radius: 5px;
   }
 }

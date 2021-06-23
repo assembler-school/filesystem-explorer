@@ -29,7 +29,8 @@ if (!file_exists($target_file)) {
 
     // Appending to database
     $cookedFile = createFileArray($fileName, $fileType, $target_file, $fileSize, $fileCreation, $fileModification);
-    $_SESSION["allFiles"][] = $cookedFile;
+    // $_SESSION["allFiles"][] = $cookedFile;
+    header("Location:../index.php");
 }
 // File exists
 else {
@@ -50,5 +51,5 @@ function createFileArray($fName, $fType, $fPath, $Size, $fCreation, $fModificati
 /* -------------------------------------------------------------------------- */
 /*                                    TEST                                    */
 /* -------------------------------------------------------------------------- */
-echo "This is the database: <pre>" . print_r($_SESSION["allFiles"], true) . "</pre>";
-echo "<a href='../index.php'>Back home</a>";
+// echo "This is the database: <pre>" . print_r($_SESSION["allFiles"], true) . "</pre>";
+// echo "<a href='../index.php'>Back home</a>";
