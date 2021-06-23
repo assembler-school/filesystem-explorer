@@ -7,6 +7,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
 </head>
 <body>
     <header>
@@ -27,8 +32,28 @@
     <main>
         <section class="mainLeft">
             <div class="newFile"> 
-                <div class ="newFile__btn"> 
+                <div id="addNew" class ="newFile__btn"> 
                     <span>+</span>
+                </div>
+                <div id="newOptionsPanel" class="newOptions">
+                    <div id="newFolder" class="optionWrapper"> 
+                        <div class="optionIconWrapper">
+                            <i class="bi bi-folder-plus"></i>
+                        </div>
+                        <span>Create Folder</span>
+                    </div>
+                    <hr>
+                    <div id="uploadFolder" class="optionWrapper">
+                        <div class="optionIconWrapper">
+                            <i class="bi bi-upload"></i>
+                        </div>
+                         <span>Upload Folder</span></div>
+                    <div id="uploadFile" class="optionWrapper"> 
+                        <div class="optionIconWrapper">
+                            <i class="bi bi-upload"></i>
+                        </div>
+                        <span>Upload File</span>
+                    </div>
                 </div>
             </div>
             <hr>
@@ -85,5 +110,7 @@
             </div>
         </section>
     </main>
+    <!-- <script type="text/javascript" src="/node_modules/jquery/dist/jquery.js"></script> -->
+    <script type="text/javascript" src="./js/render.js"></script>
 </body>
 </html>
