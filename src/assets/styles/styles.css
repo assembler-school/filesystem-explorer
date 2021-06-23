@@ -88,6 +88,12 @@ body main .bottom .central .central-files .file-item .icon-and-name .file-name {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+body main .bottom .central .central-files .file-item .icon-and-name .file-name a {
+  color: black;
+}
+body main .bottom .central .central-files .file-item .icon-and-name .file-name a:hover {
+  color: gray;
+}
 body main .bottom .central .central-files .file-item .file-text {
   font-size: 15px;
   color: lightgray;

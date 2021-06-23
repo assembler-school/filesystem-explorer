@@ -4,7 +4,6 @@ session_start();
 /* -------------------------------------------------------------------------- */
 /*                              SESSION VARIABLES                             */
 /* -------------------------------------------------------------------------- */
-
 if (!isset($_SESSION["basePath"])) {
     $_SESSION["basePath"] = "./root";
 };
@@ -45,7 +44,7 @@ if (!isset($_SESSION["currentPath"])) {
     <main class="d-flex flex-column justify-content-center m-0 mb-4">
         <!-- HEADER -->
         <div class="row header m-0 p-2 d-flex justify-content-between align-items-center">
-            <h2 class="col col-2 logo p-0 m-0">Hello</h2>
+            <h2 class="col col-2 logo p-0 m-0">SpamFile</h2>
             <input type="text" class="col col-7 pl-3 search-bar" placeholder="Search files" autofocus></input>
             <!-- <button type="button" class="btn btn-primary ajax-test">Primary</button> -->
             <div class="col col-3 top-buttons d-flex justify-content-end align-items-center p-0">

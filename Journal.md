@@ -51,6 +51,7 @@ TODO:
 * (DONE) Calculate MB
 * Rename folders
 * Clean .scss
+* Solve whitespaces in file names
 
 ### Paths
 * Get all files in all directories:

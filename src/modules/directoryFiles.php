@@ -14,7 +14,6 @@ foreach (scandir($target_dir) as $i) {
         if ($firstCharacter != ".") {
             $target_file = $target_dir . "/" . basename($i);
             $fileArray = getFileStats($target_file, $i);
-            //$directoryFiles[] = $fileArray;
 
             // Creating the file block
             echo "<div class= 'row file-item d-flex justify-content-center align-items-center'>";
@@ -22,7 +21,16 @@ foreach (scandir($target_dir) as $i) {
             echo "<p class='col col-2 file-text file-icon p-0 d-flex justify-content-center'>";
             echo "<i class='far fa-" . $fileArray["icon"] . "'></i>";
             echo "</p>";
-            echo "<p class='col col-10 file-text file-name'>" . $fileArray["name"] . "</p>";
+            // Adding a link for directories
+            if ($fileArray["type"] == "directory") {
+                echo "<p class='col col-10 file-text file-name'>";
+                echo "<a class='dir dir-link dir-child' href=./modules/updatingPath.php?updatedPath=" . $_SESSION["currentPath"] . "/" . $fileArray["name"] . ">";
+                echo $fileArray["name"];
+                echo "</a>";
+                echo "</p>";
+            } else {
+                echo "<p class='col col-10 file-text file-name'>" . $fileArray["name"] . "</p>";
+            }
             echo "</div>";
             // echo "<p class='col col-2 col file-text'>" . $fileArray["type"] . "</p>";
             // echo "<p class='file-text'>" . $fileArray["path"] . "</p>";

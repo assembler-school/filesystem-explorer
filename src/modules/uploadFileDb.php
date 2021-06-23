@@ -2,13 +2,15 @@
 session_start();
 
 // Initial variables
-$target_dir = "." . $_SESSION["basePath"];
-$target_file = $target_dir . basename($_FILES["uploadedFile"]["name"]);
+$target_dir = "." . $_SESSION["currentPath"];
+// echo $target_dir;
+$target_file =  $target_dir . "/" . basename($_FILES["uploadedFile"]["name"]);
 $uploadedFile = $_FILES["uploadedFile"];
-
+echo $target_file;
 // Only uploading if file doesn't exist
 if (!file_exists($target_file)) {
     move_uploaded_file($_FILES["uploadedFile"]["tmp_name"], $target_file);
+    echo "Uploaded file to " . $target_file;
 
     // Getting file's characteristics
     $fileName = $_FILES["uploadedFile"]["name"];

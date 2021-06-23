@@ -97,6 +97,14 @@ body {
                 max-height: 22px;
                 text-overflow: ellipsis;
                 overflow: hidden;
+
+                // Directory links
+                a {
+                  color: black;
+                }
+                a:hover {
+                  color: gray;
+                }
               }
             }
 
