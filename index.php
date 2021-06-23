@@ -1,6 +1,7 @@
 <?php
 include_once("./modules/upload.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,9 +20,9 @@ include_once("./modules/upload.php");
                 <h1>LOGO</h1>
             </a>
 
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+            <form class="d-flex" method="POST">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-outline-success" type="submit" name="submit">Search</button>
             </form>
         </div>
     </nav>
@@ -100,7 +101,7 @@ include_once("./modules/upload.php");
                     echo NULL;
                 }
                 ?>
-
+                <?php include("./modules/search.php") ?>
                 <table class="table table-light table-borderless">
                     <thead class="table-primary">
                         <tr>
