@@ -13,9 +13,16 @@
         <input type="text" name="dirname" id="submitButon">
         <input type="submit" >
     </form>
+    
+        <input type="text" name="newname" id="NameButon">
+        <a href=´./dirManege/edit.php?hola´>ddd</a>
+    
     <?php
       require("./functions/dirManege.php");
         scan();
+        if(isset($_SESSION["existingFolder"])){
+          echo $_SESSION["existingFolder"];
+        }    
     ?>
   <!-- 
   <script src="script.js"></script> -->
