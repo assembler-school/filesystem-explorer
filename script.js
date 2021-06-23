@@ -1,5 +1,5 @@
 
-let deleteButtons = document.querySelectorAll(".folder")
+let deleteButtons = document.querySelectorAll(".buton")
 console.log(deleteButtons)
 
  
@@ -9,7 +9,7 @@ deleteButtons.forEach((each)=>{
        console.log(e.target)
     
     $.ajax({
-        url: "root.php?action=funciona",
+        url: "./root.php",
         type:"POST",
         //data:new FormData(this),
         contentType: false,
