@@ -117,8 +117,8 @@ include_once("./modules/upload.php");
                     </thead>
                     <tbody>
                         <?php
-                        include "./modules/up-folder-list.php";
-                        include "./modules/directory-list.php";
+                        include_once "./modules/up-folder-list.php";
+                        include_once "./modules/directory-list.php";
                         ?>
                     </tbody>
                 </table>
