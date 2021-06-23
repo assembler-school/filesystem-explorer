@@ -1,7 +1,3 @@
-<?php
-
-include "./modules/directory-list.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,7 +81,11 @@ include "./modules/directory-list.php";
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <?php
+
+                        include "./modules/directory-list.php";
+                        ?>
+                        <!-- <tr>
                             <th scope="row"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
                                     <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z" />
                                 </svg></th>
@@ -102,8 +102,8 @@ include "./modules/directory-list.php";
                             <td></td>
                             <td>00:10</td>
                             <td>Feb 10 2010</td>
-                        </tr>
-                        <tr>
+                        </tr> -->
+                        <!-- <tr>
                             <th scope="row"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
                                     <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z" />
                                 </svg></th>
@@ -120,7 +120,7 @@ include "./modules/directory-list.php";
                             <td>Friends</td>
                             <td>24 MB</td>
                             <td>00:10</td>
-                            <td>Feb 10 2010</td>
+                            <td>Feb 10 2010</td> -->
                         </tr>
                     </tbody>
                 </table>
