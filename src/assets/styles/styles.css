@@ -37,11 +37,24 @@ body main .header .top-buttons form .custom-upload input {
 body main .bottom {
   flex-grow: 1;
 }
+body main .bottom .sidebar-left .dir {
+  margin: 0;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+body main .bottom .sidebar-left .dir-child {
+  margin-left: 20px;
+}
+body main .bottom .sidebar-left .dir-link:hover {
+  text-decoration: underline;
+  color: gray;
+}
 body main .bottom .central {
   outline: 2px black solid;
 }
 body main .bottom .central .central-columns {
-  height: 40px;
+  max-height: 40px;
   width: 100%;
   border-bottom: 2px black solid;
 }

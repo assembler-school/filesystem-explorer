@@ -50,6 +50,7 @@ TODO:
 * (DONE) Check if file exists
 * (DONE) Calculate MB
 * Rename folders
+* Clean .scss
 
 ### Paths
 * Get all files in all directories:

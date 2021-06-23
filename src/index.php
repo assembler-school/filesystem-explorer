@@ -4,13 +4,18 @@ session_start();
 /* -------------------------------------------------------------------------- */
 /*                              SESSION VARIABLES                             */
 /* -------------------------------------------------------------------------- */
-// if (!isset($_SESSION["directoryFiles"])) {
-//     $_SESSION["directoryFiles"] = array();
-// };
 
 if (!isset($_SESSION["basePath"])) {
-    $_SESSION["basePath"] = "./root/";
+    $_SESSION["basePath"] = "./root";
 };
+
+// echo getcwd();
+
+if (!isset($_SESSION["currentPath"])) {
+    $_SESSION["currentPath"] = $_SESSION["basePath"];
+}
+
+// echo "This is the current path" . $_SESSION["currentPath"];
 
 // unset($_SESSION);
 // session_destroy();
@@ -55,7 +60,7 @@ if (!isset($_SESSION["basePath"])) {
         </div>
         <!-- BOTTOM -->
         <div class="row bottom m-0">
-            <div class="col col-2 bottom-block sidebar-left">
+            <div class="col col-2 bottom-block sidebar-left d-flex flex-column pt-2">
                 <?php
                 require_once("./modules/allDirectories.php");
                 ?>
@@ -70,7 +75,7 @@ if (!isset($_SESSION["basePath"])) {
                     <p class="col col-2 column-text">Creation</p>
                     <p class="col col-2 column-text">Modification</p>
                 </div>
-                <div class="central-files px-2">
+                <div class="central-files px-2 pt-3">
                     <?php
                     require_once("./modules/directoryFiles.php");
                     ?>

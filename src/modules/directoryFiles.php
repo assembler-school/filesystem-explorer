@@ -3,7 +3,7 @@
 require_once("./modules/fileStats.php");
 
 // Root folder
-$target_dir = $_SESSION["basePath"];
+$target_dir = $_SESSION["currentPath"];
 // $directoryFiles = $_SESSION["directoryFiles"];
 
 // List all files
@@ -12,7 +12,7 @@ foreach (scandir($target_dir) as $i) {
     if ($i != "..") {
         // Not show hidden folders
         if ($firstCharacter != ".") {
-            $target_file = $target_dir . basename($i);
+            $target_file = $target_dir . "/" . basename($i);
             $fileArray = getFileStats($target_file, $i);
             //$directoryFiles[] = $fileArray;
 
