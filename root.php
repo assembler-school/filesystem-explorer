@@ -9,10 +9,12 @@
     <title>Document</title>
 </head>
   <body>
+  <form  action="./dirManege/create.php" method="post">
+        <input type="text" name="dirname" id="submitButon">
+        <input type="submit" >
+    </form>
     <?php
-    
       require("./functions/dirManege.php");
-        makedir();
         scan();
     ?>
   <!-- 
