@@ -19,7 +19,7 @@
         </div>
         <div class="headerRight"> 
             <div class="icon"> 
-            <i class="bi bi-gear"></i>
+            <i class="bi bi-gear-fill"></i>
             </div>
             <div class="iconUser"> user </div>
         </div>
