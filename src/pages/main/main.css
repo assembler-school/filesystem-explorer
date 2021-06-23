@@ -53,6 +53,17 @@ textarea:focus, input:focus{
   height: 70px;
 }
 
+.trash__select{
+  padding-left: 10px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.trash__select:hover {
+  background-color: rgb(240, 240, 240);
+  border-radius: 50px;
+}
+
 .edit__buttons--wrapper {
   min-height: 50px;
 	padding:0px 20px;
@@ -65,6 +76,16 @@ textarea:focus, input:focus{
   height: fit-content;
   overflow-y: auto;
 }
+
+#menu * { list-style:none;}
+#menu ul {margin: 0;}
+#menu input[name="list"] {display: none;}
+#menu label {padding-left: 10px; height: 30px; cursor: pointer;}
+#menu label:before{ content:"\025b8"; margin-right:4px;}
+#menu label:hover { background-color: rgb(240, 240, 240); border-radius: 50px;}
+#menu input:checked ~ label:before{ content:"\025be";}
+#menu .interior{display: none;}
+#menu input:checked ~ ul{display:block;}
 
 .logo__app {
   height: 100%;
