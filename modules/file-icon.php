@@ -51,11 +51,9 @@ function fileIcon($file)
     switch ($extension) {
         case 'jpg':
         case 'png':
+        case 'svg':
             return $imgIcon;
             break;
-            // case 'svg':
-            //     # code...
-            //     break;
         case 'txt':
             return $txtIcon;
             break;
