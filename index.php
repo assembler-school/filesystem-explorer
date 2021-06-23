@@ -48,13 +48,16 @@ $filesDir = scandir($currentPath);
         <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src">src</a>
         <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src/subsrc1">subsrc1</a>
         <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/src/subsrc1/subsrc2">subsrc2</a>
+
+        <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root">root /</a>
         <?php
         $expPath = explode("/", $currentPath);
+        $folderHref = "";
         for ($i = 8; $i < count($expPath); $i++) : ?>
-          <?php for ($j = 1; $j < $i; $j++) : ?>
-            <?php echo $expPath[$j]; ?>
-          <?php endfor ?>
-          <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root/<?php echo $folderHref ?>"><?php echo $expPath[$i] ?></a>
+          <?php
+          $folderHref .= "/" . $expPath[$i];
+          ?>
+          <a href="updating_path.php?updatedPath=C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root<?php echo $folderHref ?>"><?php echo $expPath[$i]?> /</a>
         <?php endfor ?>
       </div>
     </div>
