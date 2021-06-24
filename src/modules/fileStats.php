@@ -1,5 +1,4 @@
 <?php
-// session_start();
 require("./modules/fileIcon.php");
 
 function getFileStats($pathToFile, $rawName)
