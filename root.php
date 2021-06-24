@@ -10,10 +10,6 @@
     <title>Document</title>
 </head>
   <body class="bod">
-  <form class="newFolderForm" action="./dirManege/create.php" method="post">
-        <input type="text" name="dirname" id="submitButon">
-        <input type="submit" >
-    </form>
       
     <header class="navBarContain">
       <nav class="navbar navbar-light bg-light">
@@ -29,6 +25,23 @@
     <main>
       <section class="aside">
         <button  class="newFolderButon">+</button>
+        <div class="optionsMenu">
+          <ul class="options">
+            <li class="Option"><button id="showNewFolderForm">New folder</button></li>
+            <li class="Option"><button>Upload Item</button></li>
+          </ul>
+          <div class="newFolderForm">
+            <form  action="./dirManege/create.php" method="post">
+              <div class="form-floating">
+                <input id="floatingInput" class="form-control" type="text" name="dirname" id="submitButon">
+                <label for="floatingInput">Write your new folder name</label>
+              </div>
+              <button type="submit" class="btn btn-outline-success">submit</button>   
+            </form>
+          </div>
+        </div>
+       
+        
       </section>
             
       <section class="folders">

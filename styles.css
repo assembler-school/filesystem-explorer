@@ -4,6 +4,11 @@ body {
   font-family: "Ubuntu", sans-serif;
 }
 
+button {
+  border: none;
+  background-color: none;
+}
+
 .navBarContain {
   background-color: #cce8f8;
   width: 100%;
@@ -16,8 +21,24 @@ body {
 }
 
 .folders {
-  background-color: #f0ece5;
+  background-color: #f7f2ec;
   min-height: 500px;
+  margin-top: 20px;
+  display: grid;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 30px;
+  justify-content: left;
+  align-content: flex-start;
+}
+
+.deleteEditOp {
+  position: absolute;
+  z-index: 100;
+  background-color: whitesmoke;
+  border: 1px solid #cccbcb;
+  list-style: none;
 }
 
 .aside {
@@ -28,15 +49,73 @@ body {
 .newFolderButon {
   border-radius: 50%;
   border: 1px solid #dbdbdb;
-  height: 80px;
-  width: 80px;
+  height: 40px;
+  width: 40px;
   justify-content: center;
   align-items: center;
-  background-color: "white";
-  margin-top: "20px";
+  background-color: "red";
+  margin-top: "100px";
   margin-left: 50px;
 }
 
+.optionsMenu {
+  position: relative;
+}
+
+.options {
+  position: absolute;
+  background-color: whitesmoke;
+  list-style: none;
+  width: 40%;
+  border-radius: 10px;
+  animation-name: displayList;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+  font-size: 20px;
+  left: 120px;
+  top: -30px;
+}
+
+.newFolderForm {
+  position: absolute;
+  left: 350px;
+  top: -30px;
+  padding: 50px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  animation-name: displayList;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+  min-width: 300px;
+}
+
+.options button {
+  border: none;
+  background-color: whitesmoke;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.Option {
+  border-top: 1px solid #c0bfbf;
+  border-bottom: 1px solid #c0bfbf;
+}
+
+@keyframes displayList {
+  0% {
+    width: 2%;
+    font-size: 2px;
+    color: whitesmoke;
+  }
+  40% {
+    color: whitesmoke;
+  }
+  100% {
+    width: 40%;
+    font-size: 20px;
+    color: black;
+  }
+}
 main {
   display: grid;
   grid-template-columns: 1fr 3fr;

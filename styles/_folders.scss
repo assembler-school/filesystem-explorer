@@ -1,5 +1,17 @@
 @use "./global" as global;
 .folders{
-    background-color: rgb(240, 236, 229);
+    background-color: rgb(247, 242, 236);
     min-height: 500px;
+    margin-top: 20px;
+    display: grid;
+    @include global.grid5(1fr,1fr,1fr,1fr,1fr,20px,30px);
+
+}
+.deleteEditOp{
+    position:absolute;
+    z-index:100;
+    background-color:  rgba(245, 245, 245);
+    border:1px solid rgb(204, 203, 203);
+    list-style: none;
+
 }

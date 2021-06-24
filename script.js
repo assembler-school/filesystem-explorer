@@ -1,12 +1,26 @@
+$(".optionsMenu").hide();
 $(".newFolderForm").hide();
+$(".deleteEditOp").hide();
+
 $(".newFolderButon").on("click",()=>{
-    if($(".newFolderForm").hide()){
-        $(".newFolderForm").show();
-    }else{
-        $(".newFolderForm").hide();
-    }
-  }
+        $(".optionsMenu").show();  
+    } 
 )
+
+$("#showNewFolderForm").on("click",()=>{
+    $(".newFolderForm").show();  
+    }
+)
+
+$(".folder").contextmenu((event)=>{
+    $(".deleteEditOp").hide();
+    console.log(event.target.id)
+    $("#"+`${event.target.id}`+" "+".deleteEditOp").show();
+})
+
+
+
+
 
 // let deleteButtons = document.querySelectorAll(".buton")
 // console.log(deleteButtons)
