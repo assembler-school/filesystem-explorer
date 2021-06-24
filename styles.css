@@ -1,0 +1,18 @@
+/* Error: expected "{".
+ *    ,
+ * 70 | >>>>>>> ab232747358c268a12f151a02573b1c31edf1cc0
+ *    |                                                 ^
+ *    '
+ *   styles/_global.scss 70:49  @use
+ *   styles/main.scss 1:1       root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: expected "{".\a    \2577 \a 70 \2502  >>>>>>> ab232747358c268a12f151a02573b1c31edf1cc0\a    \2502                                                  ^\a    \2575 \a   styles/_global.scss 70:49  @use\a   styles/main.scss 1:1       root stylesheet';
+}
