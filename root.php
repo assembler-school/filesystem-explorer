@@ -1,3 +1,6 @@
+<?php
+  require("./functions/dirManege.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +37,7 @@
             <form  action="./dirManege/create.php" method="post">
               <div class="form-floating">
                 <input id="floatingInput" class="form-control" type="text" name="dirname" id="submitButon">
-                <label for="floatingInput">Write your new folder name</label>
+                <label for="floatingInput">New folder name</label>
               </div>
               <button type="submit" class="btn btn-outline-success">submit</button>   
             </form>
@@ -46,7 +49,6 @@
             
       <section class="folders">
           <?php
-            require("./functions/dirManege.php");
               scan();
               if(isset($_SESSION["existingFolder"])){
                 echo $_SESSION["existingFolder"];

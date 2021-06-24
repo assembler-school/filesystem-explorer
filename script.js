@@ -17,7 +17,9 @@ $(".folder").contextmenu((event)=>{
     console.log(event.target.id)
     $("#"+`${event.target.id}`+" "+".deleteEditOp").show();
 })
-
+$(".editBox").on("click",(event)=>{
+    $("body").append("<div class=editFoldername>"+event.target.id+"</div>")
+})
 
 
 

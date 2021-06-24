@@ -33,6 +33,10 @@ button {
   align-content: flex-start;
 }
 
+svg {
+  pointer-events: none;
+}
+
 .deleteEditOp {
   position: absolute;
   z-index: 100;

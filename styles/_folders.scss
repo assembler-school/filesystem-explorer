@@ -5,7 +5,11 @@
     margin-top: 20px;
     display: grid;
     @include global.grid5(1fr,1fr,1fr,1fr,1fr,20px,30px);
+    
 
+}
+svg{
+    pointer-events: none;
 }
 .deleteEditOp{
     position:absolute;

@@ -25,15 +25,18 @@
         echo nl2br("\n $item\n");
         echo "<ul class='deleteEditOp'>";
        
-        echo "<li class=Option><button>Delete</button>";
+        echo "<li class=Option><a href='./dirManege/delete.php?deletedDir=$item' class='buton'>Delete</a>";
         echo "</li>";
-        echo "<li class=Option><button>Edit</button>";
+        echo "<li class=Option><button id='$item' class='editBox'>Edit</button>";
         echo "</li>";
         echo "</ul>";
         
         echo "</div>";
 
         }; 
+    }
+    function edit(){
+      echo "hola";
     }
     // echo "<a href='./dirManege/delete.php?deletedDir=$item' class='buton'>Delete";
     //     echo "</a>";
