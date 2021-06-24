@@ -55,6 +55,9 @@ if (!isset($_SESSION["currentPath"])) {
                     </label>
                     <input value="Upload" type="submit" class="btn btn-dark" />
                 </form>
+                <!-- <button class="create-folder btn btn-dark">
+                    <i class="fas fa-folder-plus"></i>
+                </button> -->
             </div>
         </div>
         <!-- BOTTOM -->
