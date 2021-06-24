@@ -61,13 +61,7 @@ $anchor:100%;
     justify-content: $xPos;
     align-items: $ypos;
     width: $anchor;
-<<<<<<< HEAD
-
-=======
-    
-   
-  
->>>>>>> ab232747358c268a12f151a02573b1c31edf1cc0
+      
   }
 @mixin aHref ($color,$fonts){
   text-decoration: none;
