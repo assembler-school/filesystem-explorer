@@ -1,7 +1,30 @@
-.folder {
-  border: 1px solid red;
-  color: red;
+/*_________________*/
+body {
+  background-color: #fafafa;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.navBar {
   background-color: blue;
+  width: 100%;
+  height: 50px;
+}
+
+.folders {
+  background-color: orange;
+}
+
+.aside {
+  background-color: blue;
+  min-width: 300px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 20px;
+  justify-content: left;
+  align-content: flex-start;
 }
 
 /*# sourceMappingURL=styles.css.map */

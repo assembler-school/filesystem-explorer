@@ -14,19 +14,21 @@
         <input type="text" name="dirname" id="submitButon">
         <input type="submit" >
     </form>
-  
-      <section class="navBar"></section>
+      
+    <header class="navBar"></header>
+    <main>
       <section class="aside"></section>
-        
+            
       <section class="folders">
-        <?php
-          require("./functions/dirManege.php");
-            scan();
-            if(isset($_SESSION["existingFolder"])){
-              echo $_SESSION["existingFolder"];
-            }    
-        ?>
+          <?php
+            require("./functions/dirManege.php");
+              scan();
+              if(isset($_SESSION["existingFolder"])){
+                echo $_SESSION["existingFolder"];
+              }    
+            ?>
       </section>
+      </main>
  
   <!-- 
   <script src="script.js"></script> -->
