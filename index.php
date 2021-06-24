@@ -49,10 +49,15 @@
                         </div>
                             <span>Upload Folder</span></div>
                     <div id="uploadFile" class="optionWrapper"> 
-                        <div class="optionIconWrapper">
-                            <i class="bi bi-upload"></i>
-                        </div>
-                        <span>Upload File</span>
+                        <form action="./includes/upload.php" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="file">
+                            <button class="btn" type="submit" name="submit">
+                                <div class="optionIconWrapper">
+                                    <i class="bi bi-upload"></i>
+                                </div>
+                                <span>Upload File</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
