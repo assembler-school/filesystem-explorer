@@ -36,19 +36,50 @@ Ricard:
 * Display file columns with icons.
 * Make dynamic path.
 
-DONE:
+**DONE**:
 
-
-TODO:
- 
+* Display file columns with icons.
+* Make dynamic path.
 * Session variable for url (GET method).
+
+
+**TODO**:
+ 
+
+## Day 3
+
+How to edit, delete and download files:
+
+```
+// Delete
+echo "<a href=deleteFile.php?delete=./path/to/file.txt >Delete</a>";
+
+// deleteFile.php
+$pathToDelete = $_GET["delete"];
+unlink($pathToDelete);
+
+header("Location:./index.php");
+
+
+// Download
+echo "<a href=downloadFile.php?download=./path/to/file.txt >Delete</a>";
+
+// deleteFile.php
+$pathToDelete = $_GET["delete"];
+unlink($pathToDelete);
+
+header("Location:./index.php");
+
+
+
+```
+
 
 -
 ## TODO
 
 ### Files
-* (DONE) Check if file exists
-* (DONE) Calculate MB
+* Calculate MB
 * Rename folders
 * Clean .scss
 * Solve whitespaces in file names
@@ -65,3 +96,4 @@ TODO:
 ### WISHLIST
 * Delete all/some files (checkbox).
 * Bottom path functionality.
+

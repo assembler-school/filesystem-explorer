@@ -46,23 +46,3 @@ foreach (scandir($target_dir) as $i) {
 /*                                    TEST                                    */
 /* -------------------------------------------------------------------------- */
 // echo "These are the directory files: <pre>" . print_r($directoryFiles, true) . "</pre>";
-
-?>
-<script>
-    // $(".ajax-test").click(function() {
-    //     $.ajax({
-    //         method: "POST",
-    //         url: "./modules/test.php",
-    //         data: {
-    //             path: "hey"
-    //         }
-    //     }).done(function(data) {
-    //         console.log("Hello ajax");
-    //         // <?php
-                    //             // header("Location:src/$data");
-                    //             // 
-                    //             
-                    ?>
-    //     })
-    // });
-</script>
