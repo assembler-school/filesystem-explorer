@@ -1,5 +1,8 @@
 @use "./global" as global;
 .aside{
-    background-color: blue;
+    background-color: rgb(204, 232, 248);
     min-width: 300px;
+}
+.newFolderButon{
+  @include global.inputs("white", "20px");
 }

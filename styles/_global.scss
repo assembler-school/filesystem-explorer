@@ -18,16 +18,18 @@ $anchor:100%;
     margin: 0;
     padding: 0;
   }
-@mixin inputs($color,$top,$bot){
-    border-radius: 3px;
+@mixin inputs($color,$top){
+    border-radius: 50%;
     border: $borderColor;
-    height: 40px;
-    width: 80%;
+    height: 80px;
+    width: 80px;
     justify-content: center;
     align-items: center;
     background-color: $color;
     margin-top: $top;
-    margin-bottom: $bot;
+    margin-left: 50px;
+    
+    
     
   }
 @mixin image ($ejeZ){

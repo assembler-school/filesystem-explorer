@@ -1,6 +1,10 @@
 @use "./global" as global;
-.navBar{
-    background-color: blue;
+.navBarContain{
+    background-color: rgb(204, 232, 248);
     width: 100%;
-    height: 50px;
+   min-height: 50px;
+   padding: 10px 50px;
+}
+.navbar{
+    background-color: rgb(204, 232, 248) !important; 
 }

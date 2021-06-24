@@ -4,19 +4,37 @@ body {
   font-family: "Ubuntu", sans-serif;
 }
 
-.navBar {
-  background-color: blue;
+.navBarContain {
+  background-color: #cce8f8;
   width: 100%;
-  height: 50px;
+  min-height: 50px;
+  padding: 10px 50px;
+}
+
+.navbar {
+  background-color: #cce8f8 !important;
 }
 
 .folders {
-  background-color: orange;
+  background-color: #f0ece5;
+  min-height: 500px;
 }
 
 .aside {
-  background-color: blue;
+  background-color: #cce8f8;
   min-width: 300px;
+}
+
+.newFolderButon {
+  border-radius: 50%;
+  border: 1px solid #dbdbdb;
+  height: 80px;
+  width: 80px;
+  justify-content: center;
+  align-items: center;
+  background-color: "white";
+  margin-top: "20px";
+  margin-left: 50px;
 }
 
 main {
