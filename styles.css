@@ -9,6 +9,13 @@ button {
   background-color: none;
 }
 
+.closeDiv {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
 .navBarContain {
   background-color: #cce8f8;
   width: 100%;
@@ -68,6 +75,7 @@ svg {
 
 .options {
   position: absolute;
+  z-index: 1;
   background-color: whitesmoke;
   list-style: none;
   width: 40%;
@@ -82,6 +90,7 @@ svg {
 
 .newFolderForm {
   position: absolute;
+  z-index: 1;
   left: 350px;
   top: -30px;
   padding: 50px;

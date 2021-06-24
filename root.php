@@ -13,7 +13,7 @@
     <title>Document</title>
 </head>
   <body class="bod">
-      
+   <div class="closeDiv"></div>   
     <header class="navBarContain">
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">

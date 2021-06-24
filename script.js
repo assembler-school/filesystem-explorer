@@ -1,14 +1,17 @@
 $(".optionsMenu").hide();
 $(".newFolderForm").hide();
 $(".deleteEditOp").hide();
+$(".closeDiv").hide();
 
 $(".newFolderButon").on("click",()=>{
-        $(".optionsMenu").show();  
+    $(".optionsMenu").show();
+    $(".closeDiv").show();  
     } 
 )
 
 $("#showNewFolderForm").on("click",()=>{
-    $(".newFolderForm").show();  
+    $(".newFolderForm").show();
+    $(".closeDiv").show();  
     }
 )
 
@@ -16,11 +19,23 @@ $(".folder").contextmenu((event)=>{
     $(".deleteEditOp").hide();
     console.log(event.target.id)
     $("#"+`${event.target.id}`+" "+".deleteEditOp").show();
-})
+    $(".closeDiv").show();
+    }
+)
+
 $(".editBox").on("click",(event)=>{
     $("body").append("<div class=editFoldername>"+event.target.id+"</div>")
-})
+    }
+)
 
+$(".closeDiv").on("click",()=>{
+    
+         $(".optionsMenu").hide();
+         $(".newFolderForm").hide();
+         $(".deleteEditOp").hide();
+         $(".closeDiv").hide();
+    }
+)
 
 
 
