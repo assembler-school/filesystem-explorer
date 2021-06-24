@@ -1,6 +1,7 @@
-.folder{
-    width: 100px;
-    height: 50px;
-    background-color: burlywood;
-    margin: 20px;
+.folder {
+  border: 1px solid red;
+  color: red;
+  background-color: blue;
 }
+
+/*# sourceMappingURL=styles.css.map */
