@@ -25,7 +25,6 @@
         echo "<a href='./dirManege/edit.php?renamedDir=$item'>Edit";
         echo "</a>";
         echo "</div>";
-
         }; 
     }
 
