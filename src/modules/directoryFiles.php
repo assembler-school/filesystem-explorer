@@ -16,7 +16,8 @@ foreach (scandir($target_dir) as $i) {
             $fileArray = getFileStats($target_file, $i);
 
             // Creating the file block
-            echo "<div class= 'row file-item d-flex justify-content-center align-items-center'>";
+            // echo "<a class='row file-item px-3 py-2 d-flex justify-content-center align-items-center' href=./modules/filePreview.php?filePath=" . $_SESSION["currentPath"] . "/" . $fileArray["name"] . "&fileName=" . $fileArray["name"] . ">";
+            echo "<div class= 'row file-item px-3 py-2 d-flex justify-content-center align-items-center'>";
             echo "<div class='row col col-6 p-0 icon-and-name d-flex justify-content-between align-items-center'>";
             echo "<p class='col col-2 file-text file-icon p-0 d-flex justify-content-center'>";
             echo "<i class='far fa-" . $fileArray["icon"] . "'></i>";

@@ -54,6 +54,7 @@ body main .bottom .central {
   outline: 2px black solid;
 }
 body main .bottom .central .central-columns {
+  height: fit-content;
   max-height: 40px;
   width: 100%;
   border-bottom: 2px black solid;
@@ -62,6 +63,7 @@ body main .bottom .central .central-columns .column-text {
   font-weight: bold;
   font-size: 10px;
   display: flex;
+  margin-bottom: 0;
 }
 body main .bottom .central .central-files {
   flex-grow: 1;
@@ -73,7 +75,10 @@ body main .bottom .central .central-files {
   justify-content: central;
 }
 body main .bottom .central .central-files .file-item {
+  transition: 0.2s;
   width: 100%;
+  cursor: pointer;
+  text-decoration: none;
 }
 body main .bottom .central .central-files .file-item .icon-and-name {
   display: flex;
@@ -96,7 +101,11 @@ body main .bottom .central .central-files .file-item .icon-and-name .file-name a
 }
 body main .bottom .central .central-files .file-item .file-text {
   font-size: 15px;
+  margin-bottom: 0;
   color: lightgray;
+}
+body main .bottom .central .central-files .file-item:hover {
+  background-color: #f0f0f0;
 }
 body main .bottom .bottom-block {
   max-height: 490px;

@@ -68,7 +68,7 @@ if (!isset($_SESSION["currentPath"])) {
                 ?>
             </div>
             <div class="col col-7 px-0 bottom-block central d-flex flex-column justify-content-center align-items-center">
-                <div class="row px-2 central-columns d-flex justify-content-center align-items-center">
+                <div class="row px-3 py-2 central-columns d-flex justify-content-center align-items-center">
                     <div class="row col col-6 p-0 icon-and-name-col d-flex justify-content-center">
                         <p class="col col-2 column-text">Type</p>
                         <p class="col col-10 column-text">Name</p>
@@ -77,13 +77,17 @@ if (!isset($_SESSION["currentPath"])) {
                     <p class="col col-2 column-text">Creation</p>
                     <p class="col col-2 column-text">Modification</p>
                 </div>
-                <div class="central-files px-2 pt-3">
+                <div class="central-files">
                     <?php
                     require_once("./modules/directoryFiles.php");
                     ?>
                 </div>
             </div>
             <div class="col col-3 bottom-block sidebar-right">
+                <!-- <?php
+                        require_once("./modules/filePreview.php");
+                        ?>
+                -->
             </div>
         </div>
     </main>
