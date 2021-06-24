@@ -1,21 +1,14 @@
 // Adding listeners
+$("body").on("click", showHideNewOptions);
 
-$("#addNew").on("click", showNewOptions);
-// $("body").on("click", hideNewOptions);
-
-function showNewOptions() {
-  if ($("#newOptionsPanel").css("display") === "none") {
-    $("#newOptionsPanel").show();
-  }
-}
-
-function hideNewOptions(event) {
-  console.log($("#newOptionsPanel").css("display"));
-  console.log(event.target);
+// Render Functions
+function showHideNewOptions(event) {
   if (
-    $("#newOptionsPanel").css("display") !== "none" &&
-    event.target !== $("#newOptionsPanel")
+    $("#newOptionsPanel").css("display") === "none" &&
+    event.target.id === "addNew"
   ) {
+    $("#newOptionsPanel").show();
+  } else {
     $("#newOptionsPanel").hide();
   }
 }

@@ -32,8 +32,8 @@
     <main>
         <section class="mainLeft">
             <div class="newFile"> 
-                <div id="addNew" class ="newFile__btn"> 
-                    <span>+</span>
+                <div class ="newFile__btn"> 
+                    <span id="addNew">+</span>
                 </div>
                 <div id="newOptionsPanel" class="newOptions">
                     <div id="newFolder" class="optionWrapper"> 
@@ -47,7 +47,7 @@
                         <div class="optionIconWrapper">
                             <i class="bi bi-upload"></i>
                         </div>
-                         <span>Upload Folder</span></div>
+                            <span>Upload Folder</span></div>
                     <div id="uploadFile" class="optionWrapper"> 
                         <div class="optionIconWrapper">
                             <i class="bi bi-upload"></i>
