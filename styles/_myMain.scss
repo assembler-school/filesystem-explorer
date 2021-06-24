@@ -1,0 +1,7 @@
+@use "./global" as global;
+
+main{
+    
+    @include global.grid2(1fr,3fr,20px);
+    
+}
