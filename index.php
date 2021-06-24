@@ -14,6 +14,27 @@
     ></script>
 </head>
 <body>
+    <div id="newOptionsPanel" class="newOptions">
+        <div id="newFolder" class="optionWrapper"> 
+            <div class="optionIconWrapper">
+                <i class="bi bi-folder-plus"></i>
+            </div>
+            <span>Create Folder</span>
+        </div>
+        <hr>
+        <div id="uploadFolder" class="optionWrapper">
+            <div class="optionIconWrapper">
+                <i class="bi bi-upload"></i>
+            </div>
+                <span>Upload Folder</span></div>
+        <div id="uploadFile" class="optionWrapper"> 
+            <div class="optionIconWrapper">
+                <i class="bi bi-upload"></i>
+            </div>
+            <span>Upload File</span>
+        </div>
+    </div>
+    <div id ="newOptionsPanelBackground"></div>
     <header>
         <div class="headerLeft">
             <img src="./assets/img/logo.png"
@@ -35,26 +56,7 @@
                 <div class ="newFile__btn"> 
                     <span id="addNew">+</span>
                 </div>
-                <div id="newOptionsPanel" class="newOptions">
-                    <div id="newFolder" class="optionWrapper"> 
-                        <div class="optionIconWrapper">
-                            <i class="bi bi-folder-plus"></i>
-                        </div>
-                        <span>Create Folder</span>
-                    </div>
-                    <hr>
-                    <div id="uploadFolder" class="optionWrapper">
-                        <div class="optionIconWrapper">
-                            <i class="bi bi-upload"></i>
-                        </div>
-                            <span>Upload Folder</span></div>
-                    <div id="uploadFile" class="optionWrapper"> 
-                        <div class="optionIconWrapper">
-                            <i class="bi bi-upload"></i>
-                        </div>
-                        <span>Upload File</span>
-                    </div>
-                </div>
+                
             </div>
             <hr>
             <div class="fdContainer">
