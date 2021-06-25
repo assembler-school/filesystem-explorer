@@ -1,0 +1,17 @@
+@use "colors";
+
+.hide {
+  display: none;
+}
+
+.son {
+  background-color: red;
+}
+
+.back {
+  background-color: colors.$lightBlue;
+
+  &:hover {
+    background-color: colors.$blue;
+  }
+}
