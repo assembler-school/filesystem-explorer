@@ -1,6 +1,11 @@
 <?php
 require_once "../../php/Login/login-control.php";
 revisar_si_existe_sesion();
+
+// echo $_SESSION["user_img"];
+// echo $_SESSION["email"];
+// echo $_SESSION["loginInfo"];
+// echo $_SESSION["ErrorDeAcceso"];
 ?>
 
 
@@ -39,7 +44,19 @@ revisar_si_existe_sesion();
 				<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
 			</div>
 		</div>
-		<div class="logout__wrapper d-flex justify-content-center align-item-center h-100 d-inline-block">
+		<div class="logout__wrapper d-flex justify-content-center align-item-center h-100 d-inline-block gap-3">
+			<div class="d-flex align-items-center">
+				<h5>Welcome <span class="text-primary"><?= strstr(
+      $_SESSION["email"],
+      "@",
+      true
+    ) ?></span></h5>
+			</div>
+			<div class=" d-flex align-items-center justify-content-center h-100">
+				<div class="profile_picture">
+					<img src='<?= $_SESSION["user_img"] ?>' alt="no user">
+				</div>
+			</div>
 			<a href="../../php/login/logout.php" class="d-flex align-items-center">
 				<button type="button" class="btn btn-primary">Logout</button>
 			</a>
@@ -144,153 +161,21 @@ revisar_si_existe_sesion();
 				</div>
 			</nav>
 			<div class="files__wrapper">
-				<div class="container-fluid">
+				<div class="container-fluid folder_container">
 					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-						<div class="col d-flex justify-content-center align-items-center">
-							<section class="file__item--wrapper d-flex flex-column align-items-center">
-								<div>
-									<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-								</div>
-								<div>
-									<h6>
-										titulo de la carpeta
-									</h6>
-								</div>
-							</section>
-						</div>
-
+						<?php
+      require_once "../../php/local_files/read_local_files.php";
+      read_local_folders();
+      ?>
+					</div>
+				</div>
+			<div class="files__wrapper">
+				<div class="container-fluid file_container">
+					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
+						<?php
+      require_once "../../php/local_files/read_local_files.php";
+      read_local_files();
+      ?>
 					</div>
 				</div>
 		</section>

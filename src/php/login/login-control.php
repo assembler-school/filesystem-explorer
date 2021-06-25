@@ -18,8 +18,20 @@ function autentificar_usuario()
 
 function check_usuario_on_database($email, $pass)
 {
-  $emailFalso = "info@info.com";
-  $passwordFalsa = "1234";
+  session_start();
+
+  require_once "./myDatabase.php";
+  foreach ($my_data_base_of_users as $user) {
+    if (in_array($email, $user) && in_array($pass, $user)) {
+      $emailFalso = $user[0];
+      $passwordFalsa = $user[1];
+      $user_picture = $user[2];
+    } else {
+      echo "no coincide";
+    }
+  }
+
+  $_SESSION["user_img"] = $user_picture;
 
   // Encriptamos la contraseña porque en la realidad deberia estar encriptada por seguridad
   $passwordFalsaEncriptada = password_hash($passwordFalsa, PASSWORD_DEFAULT);
@@ -35,6 +47,7 @@ function check_usuario_on_database($email, $pass)
     echo "esta todo mal";
     return false;
   }
+
 }
 
 function revisar_si_existe_sesion()

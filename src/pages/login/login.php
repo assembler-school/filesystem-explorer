@@ -72,7 +72,6 @@ $alert = revisar_si_existe_sesion();
 							</div>
 						</div>
 					</div>" : "<div class='advise__login'></div>" ?>
-
 			</form>
 		</section>
 	</main>
