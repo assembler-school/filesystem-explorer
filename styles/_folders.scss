@@ -12,10 +12,34 @@ svg{
     pointer-events: none;
 }
 .deleteEditOp{
-    position:absolute;
-    z-index:100;
-    background-color:  rgba(245, 245, 245);
-    border:1px solid rgb(204, 203, 203);
+    
+    position: absolute;
+    z-index: 100;
+    background-color:rgb(248, 245, 241);
     list-style: none;
+    width: 10%;
+    border-radius: 10px;
+    animation-name: displayList2;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    font-size: 20px;
+    
+    
+   
+}
 
+.OpEditDel{
+margin:20px;
+}
+
+.editFoldername{
+    position: absolute;
+    padding: 20px;
+    z-index: 200;
+    border-radius: 20px;
+    width: 40%;
+    min-height: 100px;
+    left:30%;
+    top:10%;
+    background-color:rgb(255, 255, 255);
 }

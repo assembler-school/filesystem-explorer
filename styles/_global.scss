@@ -14,6 +14,7 @@ $anchor:100%;
   justify-content: left;
   align-content: flex-start;
 }
+
 @mixin grid5($col1,$col2,$col3,$col4,$col5,$gapX,$gapY) {
   display: grid;
   grid-template-columns: $col1 $col2 $col3 $col4 $col5;
@@ -22,30 +23,32 @@ $anchor:100%;
   justify-content: left;
   align-content: flex-start;
 }
+
 @mixin resetMarginPadding {
     margin: 0;
     padding: 0;
-  }
+}
+
 @mixin inputs($color,$top){
   
-    border-radius: 50%;
-    border: $borderColor;
-    height: 40px;
-    width: 40px;
-    justify-content: center;
-    align-items: center;
-    background-color: $color;
-    margin-top: $top;
-    margin-left: 50px;
-    
-    
-    
-  }
+  border-radius: 50%;
+  border: $borderColor;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  background-color: $color;
+  margin-top: $top;
+  margin-left: 50px;
+   
+}
+
 @mixin image ($ejeZ){
-    position: absolute;
-    z-index: $ejeZ;
-    width: 50%; 
-  }
+  position: absolute;
+  z-index: $ejeZ;
+  width: 50%; 
+}
+
 @mixin backimag ($ejeX,$ejeY,$bordeR,$url){
   height: $ejeX;
   width: $ejeY;
@@ -55,28 +58,30 @@ $anchor:100%;
   background-size: cover;
   background-position: center;
 }
+
 @mixin flex ($direction,$xPos,$ypos,$anchor){
-    display: $flexbox;
-    flex-direction: $direction;  
-    justify-content: $xPos;
-    align-items: $ypos;
-    width: $anchor;
+  display: $flexbox;
+  flex-direction: $direction;  
+  justify-content: $xPos;
+  align-items: $ypos;
+  width: $anchor;
       
-  }
+}
+
 @mixin aHref ($color,$fonts){
   text-decoration: none;
   color: $color;
   font-weight: 700;
   font-family: $fonts;
   justify-self: center;
-    align-self: center;
+  align-self: center;
   
 }
 
 body {
   background-color: $backgroundC;
   font-family: $font;
-  //@include resetMarginPadding;
+  @include resetMarginPadding;
  
 }
 button{
