@@ -13,13 +13,32 @@
       crossorigin="anonymous"
     ></script>
 </head>
+
 <body>
+
+    <div id="createFolderForm" class="createFolderPanel">
+        <form action="./includes/createFolder.php" method="POST">
+            <div class="createFolderHeader">
+                <h4 class="createFolderFormTitle">New folder</h4>
+                <i id="closeCreateFolderBtn" class="bi bi-x-lg"></i>
+            </div>
+            <input type="text" name="folderName" placeholder="Input new folder name">
+            <div class="buttons">
+                <button type="submit" name="submitFolder" class="createFolderPanelBtn submit"> CREATE</button>
+                <button type="button" id="cancelBtnForm" class="createFolderPanelBtn cancel">CANCEL</button>
+            </div>
+        </form>
+    </div>
+    <div id="createFolderBackground"></div>
+
     <div id="newOptionsPanel" class="newOptions">
         <div id="newFolder" class="optionWrapper"> 
-            <div class="optionIconWrapper">
-                <i class="bi bi-folder-plus"></i>
-            </div>
-            <span>Create Folder</span>
+            <button id ="createFolder" class="panelBtn" type="button">
+                <div class="optionIconWrapper">
+                    <i class="bi bi-folder-plus"></i>
+                </div>
+                <span>Create Folder</span>
+            </button>
         </div>
         <hr>
         <div id="uploadFolder" class="optionWrapper">
@@ -28,9 +47,9 @@
             </div>
                 <span>Upload Folder</span></div>
         <div id="uploadFile" class="optionWrapper"> 
-            <form action="./includes/upload.php" method="POST" enctype="multipart/form-data">
+            <form action="./includes/uploadFile.php" method="POST" enctype="multipart/form-data">
                 <input type="file" name="file">
-                <button class="btn" type="submit" name="submit">
+                <button class="panelBtn" type="submit" name="submit">
                     <div class="optionIconWrapper">
                         <i class="bi bi-upload"></i>
                     </div>

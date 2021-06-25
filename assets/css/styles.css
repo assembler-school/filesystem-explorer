@@ -127,7 +127,7 @@ main {
 
 .newOptions {
   display: none;
-  padding: 0.2rem 1rem;
+  padding: 0.2rem 0.8rem;
   position: absolute;
   top: 6.4%;
   left: 1%;
@@ -139,13 +139,81 @@ main {
   box-shadow: 6px 3px 20px 0px black;
 }
 
+.createFolderPanel {
+  display: none;
+  padding: 0.2rem 0.8rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 15%;
+  height: auto;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 6px 3px 20px 0px rgb(65, 64, 64);
+}
+
+.createFolderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#closeCreateFolderBtn{
+  cursor: pointer;
+}
+
+.createFolderFormTitle {
+  margin: 0.8rem 0;
+}
+
+.buttons {
+  margin: 8px 0;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.createFolderPanelBtn {
+  margin-right: 8px;
+  width: 40%;
+  color: white;
+  padding: 5px;
+  border: 1px solid rgb(194, 194, 194);
+  cursor: pointer;
+}
+
+.submit {
+  background-color: rgb(71, 111, 196);
+}
+
+.cancel {
+  background-color: rgb(196, 86, 71);
+}
+
+#createFolderBackground {
+  position: absolute;
+  display: none;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 .optionWrapper {
   display: flex;
   margin: 0.5rem 0;
 }
+.panelBtn {
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+}
 
 .optionIconWrapper {
   width: 12%;
+  margin-right: 0.4rem;
 }
 
 .fdContainer {
