@@ -85,5 +85,23 @@
             </div>
         </section>
     </main>
+    <template>
+    <div class ="fileWrapper">
+                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
+                <div class="mainCenter__fileName">Documents</div>
+            </div>
+            <div class ="fileWrapper">
+                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
+                <div class="mainCenter__fileName">Audio</div>
+            </div>
+            <div class ="fileWrapper">
+                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
+                <div class="mainCenter__fileName">Video</div>
+            </div>
+            <div class ="fileWrapper">
+                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
+                <div class="mainCenter__fileName">Images</div>
+            </div>
+    </template>
 </body>
 </html>
