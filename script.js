@@ -34,7 +34,7 @@ $("#edit button").on("click",(event)=>{
 )
 
 $(".closeDiv").on("click",()=>{
-        // $(".editFoldername").remove();
+        $(".editFoldername").remove();
          $(".optionsMenu").hide();
          $(".newFolderForm").hide();
          $(".deleteEditOp").hide();
@@ -42,27 +42,17 @@ $(".closeDiv").on("click",()=>{
     }
 )
 
+$(".folder").on("dblclick",(e)=>{
+    $(".folder").hide();
+    $.ajax({
+                url: "./dirManege/dirContent.php?dirToRender="+`${e.target.id}`,
+                type:"POST",
+                //data:new FormData(this),
+                contentType: false,
+            	cache: false,
+                processData:false,
+                success: function(response)
+                {$(".folders").append(response);}
+    })
+})
 
-
-// let deleteButtons = document.querySelectorAll(".buton")
-// console.log(deleteButtons)
-
- 
-// deleteButtons.forEach((each)=>{
-//    each.addEventListener("submit",(e)=>{
-//        e.preventDefault();
-//        console.log(e.target)
-    
-//     $.ajax({
-//         url: "./root.php",
-//         type:"POST",
-//         //data:new FormData(this),
-//         contentType: false,
-//     	cache: false,
-//         processData:false,
-//         success: function(response)
-//       {console.log(response);}
-      
-//    });
-// })
-// })
