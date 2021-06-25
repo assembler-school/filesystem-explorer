@@ -1,3 +1,29 @@
+<?php
+$currentDir = "root/folder2";
+
+function newFolder($currentDir)
+{
+  if (isset($_POST['newFile'])) {
+    $newFileName = $_POST['newFile'];
+    $directoryFolders = scandir($currentDir);
+
+    if (in_array($newFileName, $directoryFolders)) {
+      $n = 0;
+      $adaptedFileName = $newFileName;
+      while (in_array($adaptedFileName, $directoryFolders)) {
+        $n++;
+        $adaptedFileName = $newFileName . "(" . $n . ")";
+      }
+      mkdir($currentDir . "/" . $adaptedFileName);
+    } else {
+      mkdir($currentDir . "/" . $newFileName);
+    }
+
+    header("Location: index.php");
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +32,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../filesystem-explorer/assets/style/style.css">
   <title>FileSystem Explorer</title>
 </head>
 
@@ -33,21 +60,43 @@
     </div>
     <!-- botones createfolder && upload -->
     <div>
-      <button class="btn btn-dark">CREATE FOLDER</button>
+      <button class="btn btn-dark" id="folderBtn">CREATE FOLDER</button>
       <button class="btn btn-light">UPLOAD FILE</button>
     </div>
   </nav>
 
-  <main class="mx-4">
+  <main class="mx-4 text-white">
     <div>Directories</div>
     <div>
-
     </div>
     <div>Files</div>
     <div>
 
     </div>
   </main>
+
+  <!-- Create Folder Modal -->
+  <div class='position-fixed vw-100 vh-100 bg-dark modal-shadow modal-hidden'></div>
+  <div class='modal-form position-fixed p-3 rounded bg-secondary modal-hidden'>
+    <div class="d-flex space-between justify-content-between">
+      <h3 class='text-white'>New folder</h3>
+      <svg class='text-white btn-x' role='img' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+        <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+      </svg>
+    </div>
+    <hr class='text-white' />
+    <form method='POST' action='<?php newFolder($currentDir); ?>' class="d-flex flex-column text-white">
+      <label for='newFile' class='mb-3'>Name of the new file</label>
+      <input type='text' id='newFile' name='newFile' value='Unnamed folder' class='mb-3' required pattern="^[a-zA-Z0-9 _.-]*$">
+
+      <div>
+        <button type='button' id='modalCancel' class='btn btn-danger'>CANCEL</button>
+        <input type='submit' class='btn btn-dark' value="CREATE">
+      </div>
+    </form>
+  </div>
+
+  <script src="../filesystem-explorer/assets/js/modal.js" type="module"></script>
 </body>
 
 </html>
