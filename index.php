@@ -45,7 +45,8 @@
             <div class="optionIconWrapper">
                 <i class="bi bi-upload"></i>
             </div>
-                <span>Upload Folder</span></div>
+                <span>Upload Folder</span>
+        </div>
         <div id="uploadFile" class="optionWrapper"> 
             <form action="./includes/uploadFile.php" method="POST" enctype="multipart/form-data">
                 <input type="file" name="file">
