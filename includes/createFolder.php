@@ -11,7 +11,7 @@
         // Completing directory path
         $finalDirectoryPath = $root."/".$folderName;
 
-        // Create new folder
+        // Create new folder permissions (0777 means everything allowed)
         mkdir($finalDirectoryPath, 0777);
 
         header("Location: ../index.php?foldercreationsuccess");

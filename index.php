@@ -22,7 +22,7 @@
                 <h4 class="createFolderFormTitle">New folder</h4>
                 <i id="closeCreateFolderBtn" class="bi bi-x-lg"></i>
             </div>
-            <input type="text" name="folderName" placeholder="Input new folder name">
+            <input class="newFolderInput" type="text" name="folderName" placeholder="Input new folder name">
             <div class="buttons">
                 <button type="submit" name="submitFolder" class="createFolderPanelBtn submit"> CREATE</button>
                 <button type="button" id="cancelBtnForm" class="createFolderPanelBtn cancel">CANCEL</button>

@@ -159,12 +159,16 @@ main {
   align-items: center;
 }
 
-#closeCreateFolderBtn{
+#closeCreateFolderBtn {
   cursor: pointer;
 }
 
 .createFolderFormTitle {
   margin: 0.8rem 0;
+}
+
+.newFolderInput {
+  width: 100%;
 }
 
 .buttons {
