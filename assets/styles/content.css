@@ -1,0 +1,31 @@
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  font-size: 16px;
+  font-family: sans-serif;
+  color: white;
+}
+
+.folder {
+  background-color: grey;
+  border-radius: 4px 18px 4px 4px;
+  height: 80px;
+  width: 120px;
+}
+
+.file {
+  background-color: grey;
+  border-radius: 8px;
+  height: 160px;
+  width: 200px;
+}
+.file-top {
+    height: 65%;
+}
+.file-bottom {
+    height: 35%;
+    background-color: white;
+    color: black;
+}
