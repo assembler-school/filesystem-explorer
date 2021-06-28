@@ -4,7 +4,7 @@ if (!isset($_SESSION['currentPath'])) {
   $_SESSION['currentPath'] = './root';
 };
 
-// $currentPath = "root/folder2";
+$currentPath = $_SESSION['currentPath'];
 
 if (isset($_GET["path"])) {
   $currentPath = $_GET["path"];
@@ -49,7 +49,8 @@ if (isset($_GET["path"])) {
       </div>
       <div>
         <?php
-        $pathArr = explode("/", $currentPath);
+        $cleanPath = substr($currentPath, strpos($currentPath, "root"));
+        $pathArr = explode("/", $cleanPath);
 
         foreach ($pathArr as $dir) {
           $originalPath = substr($currentPath, 0, strpos($currentPath, $dir));
