@@ -1,12 +1,12 @@
 <!-- Modal -->
 <?php
-function deleteModal()
+function deleteFileModal()
 {
-    echo ("<div class='modal fade' id='deleteModal' tabindex='-1' aria-labelledby='deleteModalLabel' aria-hidden='true'>
+    echo ("<div class='modal fade' id='deleteFileModal' tabindex='-1' aria-labelledby='deleteFileModalLabel' aria-hidden='true'>
             <div class='modal-dialog modal-dialog-centered'>
                 <div class='modal-content'>
                     <div class='modal-header'>
-                        <h5 class='modal-title' id='deleteModalLabel'>Delete file</h5>
+                        <h5 class='modal-title' id='deleteFileModalLabel'>Delete file</h5>
                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                     </div>
                     <div class='modal-body'>
@@ -15,20 +15,42 @@ function deleteModal()
                     <div class='modal-footer'>
                         <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
                         <form class='' method='POST' action='./modules/file-actions.php'>
-                            <button type='submit' class='btn btn-danger' name='delete' value='' id='deleteButton'>Delete</button>
+                            <button type='submit' class='btn btn-danger' name='delete' value='' id='deleteFileButton'>Delete</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>");
 }
-function renameModal()
+function deleteFolderModal()
 {
-    echo ("<div class='modal fade' id='renameModal' tabindex='-1' aria-labelledby='renameModalLabel' aria-hidden='true'>
+    echo ("<div class='modal fade' id='deleteFolderModal' tabindex='-1' aria-labelledby='deleteFolderModalLabel' aria-hidden='true'>
             <div class='modal-dialog modal-dialog-centered'>
                 <div class='modal-content'>
                     <div class='modal-header'>
-                        <h5 class='modal-title' id='renameModalLabel'>Rename file</h5>
+                        <h5 class='modal-title' id='deleteFolderModalLabel'>Delete folder</h5>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
+                    <div class='modal-body'>
+                        Are you sure you want to delete the folder <b id='deleteFolderName'></b>?
+                    </div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                        <form class='' method='POST' action='./modules/file-actions.php'>
+                            <button type='submit' class='btn btn-danger' name='delete' value='' id='deleteFolderButton'>Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>");
+}
+function renameFileModal()
+{
+    echo ("<div class='modal fade' id='renameFileModal' tabindex='-1' aria-labelledby='renameFileModalLabel' aria-hidden='true'>
+            <div class='modal-dialog modal-dialog-centered'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h5 class='modal-title' id='renameFileModalLabel'>Rename file</h5>
                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                     </div>
                     <form class='' method='POST' action='./modules/file-actions.php'>
@@ -41,7 +63,30 @@ function renameModal()
                         </div>
                         <div class='modal-footer'>
                             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                            <button type='submit' class='btn btn-primary' name='rename' value='' id='renameButton'>Rename</button>
+                            <button type='submit' class='btn btn-primary' name='rename' value='' id='renameFileButton'>Rename</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>");
+}
+function renameFolderModal()
+{
+    echo ("<div class='modal fade' id='renameFolderModal' tabindex='-1' aria-labelledby='renameFolderModalLabel' aria-hidden='true'>
+            <div class='modal-dialog modal-dialog-centered'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h5 class='modal-title' id='renameFolderModalLabel'>Rename file</h5>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
+                    <form class='' method='POST' action='./modules/file-actions.php'>
+                        <div class='modal-body'>
+                            <label for='newName' class='form-label'> New name for <b id='renameFolderName'></b>:</label>
+                            <input type='text' class='form-control' id='newName' name='newName'>
+                        </div>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                            <button type='submit' class='btn btn-primary' name='rename' value='' id='renameFolderButton'>Rename</button>
                         </div>
                     </form>
                 </div>

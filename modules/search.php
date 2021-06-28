@@ -1,8 +1,10 @@
 <?php
-session_start();
+// session_start();
 require_once("./modules/file-icon.php");
 
-$searchValue = $_POST["search"];
+if (isset($_POST["search"])) {
+    $searchValue = $_POST["search"];
+}
 
 // function getDirContents($dir, &$results = array())
 // {

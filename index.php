@@ -89,7 +89,7 @@ include_once("./templates/modals.php")
                 if (isset($success_msg) && $success_msg) {
                     echo "<div class='alert alert-success' role='alert'>";
                     echo
-                        $_FILES["file"]["name"] . " " . $success_msg;
+                    $_FILES["file"]["name"] . " " . $success_msg;
                     echo "</div>";
                     $success_msg = false;
                 } elseif (isset($invalid_msg) && $invalid_msg) {
@@ -130,8 +130,10 @@ include_once("./templates/modals.php")
     </div>
 </body>
 <?php
-deleteModal();
-renameModal();
+deleteFileModal();
+renameFileModal();
+deleteFolderModal();
+renameFolderModal();
 ?>
 
 
