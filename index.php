@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../filesystem-explorer/assets/style/style.css">
   <title>FileSystem Explorer</title>
 </head>
 
@@ -29,12 +30,16 @@
   <nav class="navbar navbar-dark bg-secondary mx-4 rounded px-3">
     <!-- botones ruta -->
     <div>
+
       <button class="btn btn-danger">BACK</button>
     </div>
     <!-- botones createfolder && upload -->
-    <div>
-      <button class="btn btn-dark">CREATE FOLDER</button>
-      <button class="btn btn-light">UPLOAD FILE</button>
+    <div class="d-flex">
+      <button class="btn btn-dark me-3">CREATE FOLDER</button>
+      <form method="POST" enctype="multipart/form-data" action="uploadFile.php">
+        <label for="uploadFile" class="btn btn-light">UPLOAD FILE</label>
+        <input type="file" name="uploadFile" id="uploadFile" class="modal-hidden" onchange="form.submit()">
+      </form>
     </div>
   </nav>
 
