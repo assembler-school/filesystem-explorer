@@ -3,22 +3,22 @@
   <tr>
     <!-- Icon/url depending of the type of file -->
     <?php if (is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) : ?>
-      <th scope="row"><a href="src/modules/updating_path.php?updatedPath=<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>"><?php echo $filesDir[$i]; ?></a></th>
+      <td class="file-name col col-4" scope="row"><a class="folder-name" href="src/modules/updating_path.php?updatedPath=<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>"><?php echo $filesDir[$i]; ?></a></td>
     <?php else : ?>
-      <th scope="row"><?php echo $filesDir[$i]; ?></th>
+      <td class="file-name col col-4" scope="row"><?php echo $filesDir[$i]; ?></td>
     <?php endif ?>
     <!-- Creation date -->
-    <td><?php echo (date("d-m-Y H:i", filectime($_SESSION["currentPath"] . "/" . $filesDir[$i]))); ?></td>
+    <td class="col col-2"><?php echo (date("d-m-Y H:i", filectime($_SESSION["currentPath"] . "/" . $filesDir[$i]))); ?></td>
     <!-- Las modification date -->
-    <td><?php echo (date("d-m-Y H:i", filemtime($_SESSION["currentPath"] . "/" . $filesDir[$i]))); ?></td>
+    <td class="col col-2"><?php echo (date("d-m-Y H:i", filemtime($_SESSION["currentPath"] . "/" . $filesDir[$i]))); ?></td>
     <!-- The file extension if it is not a folder -->
-    <td><?php
+    <td class="col col-2"><?php
         if (!is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) {
           echo (pathinfo($_SESSION["currentPath"] . "/" . $filesDir[$i])["extension"]);
         }
         ?></td>
     <!-- The file size -->
-    <td><?php
+    <td class="col col-2"><?php
         if (!is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) {
           echo (filesize($_SESSION["currentPath"] . "/" . $filesDir[$i]));
         }
