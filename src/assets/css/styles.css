@@ -83,6 +83,10 @@ input[value^="+"] {
   color: #F06543;
 }
 
+.content-container {
+  min-height: 300px;
+}
+
 tbody, td, tfoot, th, thead, tr {
   border-color: inherit;
   border-style: solid;

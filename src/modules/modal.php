@@ -1,8 +1,3 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
-  Launch demo modal
-</button>
-
 <!-- Delete file modal -->
 <div class="modal fade" id="deleteFileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -14,14 +9,40 @@
       <div class="modal-body">
         <div class="row">
           <div class="col">
-            <p class="detelePostText">Are you sure you want to delete this file?</p>
+            <h5 class="detelePostText">Are you sure you want to delete this file?</h5>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-search">Yes</a>
+        <a id="deleteLink" href="" class="btn btn-search">Yes</a>
         <button type="button" class="btn btn-new-folder" data-bs-dismiss="modal">No</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Editing name folder modal -->
+<div class="modal fade" id="renameFolderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Rename Folder</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form class="form-inline" action="./src/modules/renaming_folder.php" method="POST">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col">
+            <input class="form-control" type="text" name="newFolderName" placeholder="New folder name..." id="newFolderName">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="btnRenameFolder" name="folderPath" value="" class="btn btn-search" type="submit">Save</button>
+          <button type="button" class="btn btn-new-folder" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+
     </div>
   </div>
 </div>

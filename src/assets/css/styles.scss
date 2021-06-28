@@ -88,6 +88,7 @@ input[value^="+"] {
 .content-container{
   // height: 300px;
   // overflow: scroll;
+  min-height: 300px;
 }
 tbody, td, tfoot, th, thead, tr {
   border-color: inherit;

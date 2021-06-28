@@ -90,17 +90,20 @@
                           }
                           ?></td>
     <?php if (is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) : ?>
-      <td><button type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
+      <td>
+        <button data-delete="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i])?>" type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
           <i class="fas fa-trash-alt"></i>
         </button>
-        <button type="button" class="btn btn-edit-file" data-toggle="modal" data-target="#deletePostModal">
+        <button data-edit="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i])?>" type="button" class="btn btn-edit-file" data-bs-toggle="modal" data-bs-target="#renameFolderModal">
           <i class="fas fa-edit"></i></i>
         </button>
       </td>
     <?php else : ?>
-      <td><button type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
+      <td>
+        <button data-delete="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i])?>" type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
           <i class="fas fa-trash-alt"></i>
-        </button></td>
+        </button>
+      </td>
     <?php endif ?>
   </tr>
 <?php endfor ?>
