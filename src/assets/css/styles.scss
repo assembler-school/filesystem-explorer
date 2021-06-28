@@ -1,3 +1,5 @@
+$primary-color: #2ED297;
+$secondary-color: #F06543;
 *{
   font-family: 'IBM Plex Sans', sans-serif;
 }
@@ -41,7 +43,7 @@ body{
   // margin-top: 25px;
 }
 .btn-search{
-  background-color: #F06543;
+  background-color: $secondary-color;
   color: white;
   margin-left: 10px;
   width: 150px;
@@ -51,7 +53,7 @@ body{
   color: white;
 }
 .btn-new-folder{
-  background-color: #2ED297;
+  background-color: $primary-color;
   color: white;
   margin-left: 10px;
   width: 190px;
@@ -81,7 +83,7 @@ input[value^="+"] {
   color: #6ecfac;
 }
 .current-path:hover{
-  color: #ee866c;
+  color: $secondary-colorv;
 }
 .content-container{
   // height: 300px;
@@ -93,7 +95,7 @@ tbody, td, tfoot, th, thead, tr {
   border-width: 0;
 }
 th{
-  color:#F06543;
+  color:$secondary-color;
   font-family: 'Anton', sans-serif;
   font-weight: 300;
   font-size: 20px;
@@ -114,8 +116,8 @@ td{
   color: black;
 }
 .folder-name:hover{
-  color: #6ecfac;
+  color: $primary-color;
 }
 .fileIcon{
-  color:#F06543;
-} 
+  color:$secondary-color;
+}

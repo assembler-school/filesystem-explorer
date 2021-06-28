@@ -5,7 +5,7 @@ header("Location:./../../index.php");
 
 function checkPath()
 {
-  $rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
+  $rootPath = "./root";
   if (isset($_GET["updatedPath"])) {
     $_SESSION["currentPath"] = $_GET["updatedPath"];
   } else {
