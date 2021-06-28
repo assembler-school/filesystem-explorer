@@ -93,7 +93,6 @@ tbody, td, tfoot, th, thead, tr {
   border-width: 0;
 }
 th{
-  // color: #6ecfac;
   color:#F06543;
   font-family: 'Anton', sans-serif;
   font-weight: 300;
@@ -115,7 +114,8 @@ td{
   color: black;
 }
 .folder-name:hover{
-  // color:#F06543;
   color: #6ecfac;
-
 }
+.fileIcon{
+  color:#F06543;
+} 
