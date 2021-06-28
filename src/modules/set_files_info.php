@@ -3,14 +3,14 @@
   <tr>
     <!-- Icon/url depending of the type of file -->
     <?php if (is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) : ?>
-      <td class="file-name col col-4" scope="row"><a class="folder-name" href="src/modules/updating_path.php?updatedPath=<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>">
+      <td class="file-name col col-3" scope="row"><a class="folder-name" href="src/modules/updating_path.php?updatedPath=<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>">
           <?php
           echo "<i class='fileIcon far fa-folder-open'></i> ";
           echo $filesDir[$i];
           ?>
         </a></td>
     <?php else : ?>
-      <td class="file-name col col-4" scope="row">
+      <td class="file-name col col-3" scope="row">
         <?php
         $fileExtension = pathinfo($_SESSION["currentPath"] . "/" . $filesDir[$i])["extension"];
         switch ($fileExtension) {
@@ -72,7 +72,7 @@
     <!-- Las modification date -->
     <td class="col col-2"><?php echo (date("d-m-Y H:i", filemtime($_SESSION["currentPath"] . "/" . $filesDir[$i]))); ?></td>
     <!-- The file extension if it is not a folder -->
-    <td class="col col-2"><?php
+    <td class="col col-1"><?php
                           if (!is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) {
                             echo (pathinfo($_SESSION["currentPath"] . "/" . $filesDir[$i])["extension"]);
                           }
@@ -80,14 +80,27 @@
     <!-- The file size -->
     <td class="col col-2"><?php
                           if (!is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) {
-                            if(filesize($_SESSION["currentPath"] . "/" . $filesDir[$i]) < 1000){
+                            if (filesize($_SESSION["currentPath"] . "/" . $filesDir[$i]) < 1000) {
                               echo (filesize($_SESSION["currentPath"] . "/" . $filesDir[$i]));
                               echo " kB";
-                              } else{
-                                echo (number_format((filesize($_SESSION["currentPath"] . "/" . $filesDir[$i]))/1000, 2));
-                                echo " MB";
-                                }
+                            } else {
+                              echo (number_format((filesize($_SESSION["currentPath"] . "/" . $filesDir[$i])) / 1000, 2));
+                              echo " MB";
+                            }
                           }
                           ?></td>
+    <?php if (is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) : ?>
+      <td><button type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        <button type="button" class="btn btn-edit-file" data-toggle="modal" data-target="#deletePostModal">
+          <i class="fas fa-edit"></i></i>
+        </button>
+      </td>
+    <?php else : ?>
+      <td><button type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
+          <i class="fas fa-trash-alt"></i>
+        </button></td>
+    <?php endif ?>
   </tr>
 <?php endfor ?>
