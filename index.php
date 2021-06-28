@@ -1,9 +1,15 @@
 <?php
-$currentPath = "root/folder2";
+session_start();
+if (!isset($_SESSION['currentPath'])) {
+  $_SESSION['currentPath'] = './root';
+};
+
+// $currentPath = "root/folder2";
 
 if (isset($_GET["path"])) {
   $currentPath = $_GET["path"];
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +20,7 @@ if (isset($_GET["path"])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/styles/content.css">
   <title>FileSystem Explorer</title>
 </head>
 
@@ -62,14 +69,16 @@ if (isset($_GET["path"])) {
     </div>
   </nav>
 
-  <main class="mx-4 text-white">
-    <div>Directories</div>
-    <div>
-
+  <main class="mx-4">
+    <div class="my-2">Directories</div>
+    <!-- folder container -->
+    <div class="d-flex">
+      <?php require_once('./src/fillContentDirectories.php'); ?>
     </div>
-    <div>Files</div>
-    <div>
-
+    <div class="my-2">Files</div>
+    <!-- files container -->
+    <div class="d-flex">
+      <?php require_once('./src/fillContentFiles.php'); ?>
     </div>
   </main>
 </body>
