@@ -9,7 +9,7 @@ if (isset($_SESSION["path"])) {
   }
 } else {
   $_SESSION["prevPath"] = "";
-  $_SESSION["path"] = '\xampp\htdocs\filesystem-explorer\src\dir';
+  $_SESSION["path"] = '\xampp\htdocs\filesystem-explorer\src\UNIT';
   $sessionPath = $_SESSION["path"];
 }
 

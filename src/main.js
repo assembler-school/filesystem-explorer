@@ -1,11 +1,18 @@
 targetClassName = "";
+targetIdName = "";
 
 $(document).on("click", (e) => {
   targetClassName = e.target.className;
+  targetIdName = e.target.id;
   path = e.target.dataset.dir;
   if (targetClassName.indexOf("file-info") !== -1) {
     $(".file-info-container").removeClass("info-container-anim");
-    updatePath(path);
+    if (path) {
+      updatePath(path);
+    }
+    if (targetIdName === "delete-file") {
+      deleteFile(path);
+    }
   } else {
     $(".file-info-container").addClass("info-container-anim");
   }
@@ -51,6 +58,19 @@ function searchFileInfo(path) {
     data: { path: path, valid: "yes" },
     success: function (response) {
       $(".file-info-container").html(response);
+    },
+  });
+}
+
+function deleteFile(path) {
+  $.ajax({
+    url: "fileControll/deleteFile.php",
+    success: function (response) {
+      $(".file-info-container").html(response);
+
+      var split = path.split("/");
+      path = split.slice(0, split.length - 1).join("/");
+      selectFolder(path);
     },
   });
 }
