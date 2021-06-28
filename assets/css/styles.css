@@ -228,6 +228,7 @@ main {
   padding: 1rem;
 }
 .mainCenter {
+  padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
   width: 65%;
@@ -247,15 +248,48 @@ main {
 
 .renderUpdateLink {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   width: 100%;
+  text-decoration: none;
+  color: black;
 }
+
+.renderUpdateLink:visited {
+  display: flex;
+  /* justify-content: space-between; */
+  width: 100%;
+  text-decoration: none;
+  color: black;
+}
+
+.renderUpdateLink:hover {
+  display: flex;
+  /* justify-content: space-between; */
+  width: 100%;
+  text-decoration: none;
+  color: black;
+}
+
 .mainCenter__fileIcon {
   width: 4%;
 }
 
 .mainCenter__fileName {
   width: 96%;
+}
+
+.fileDirOptions {
+  display: none;
+  padding: 0.2rem 0.8rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 10%;
+  height: auto;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 6px 3px 20px 0px rgb(65, 64, 64);
 }
 
 .mainRight {
@@ -309,9 +343,23 @@ hr {
 }
 
 /*   PRUEBA LISTA DERECHA    */
-.root {
+.mainLeft__fileIcon {
   display: flex;
+  margin-right: 6px;
 }
+
+.mainLeft__container {
+  width: inherit;
+  display: flex;
+  align-items: start;
+}
+
+.mainLeft__fileName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .prueba {
   display: flex;
   flex: 10 10 auto;

@@ -18,7 +18,9 @@
 </head>
 
 <body>
+    <!-- --------------Panels section------------------ -->
 
+    <!-- CreateFolderPanel -->
     <div id="createFolderForm" class="createFolderPanel">
         <form action="./includes/createFolder.php" method="POST">
             <div class="createFolderHeader">
@@ -34,6 +36,7 @@
     </div>
     <div id="createFolderBackground"></div>
 
+    <!-- NewOptionsPanel -->
     <div id="newOptionsPanel" class="newOptions">
         <div id="newFolder" class="optionWrapper"> 
             <button id ="createFolder" class="panelBtn" type="button">
@@ -63,6 +66,36 @@
         </div>
     </div>
     <div id ="newOptionsPanelBackground"></div>
+
+    <!-- FileDirOptionsPanel  -->
+    <div id="fileDirOptionsPanel" class="fileDirOptions">
+        <div id="rename" class="optionWrapper"> 
+            <button id ="renameBtn" class="panelBtn" type="button">
+                <div class="optionIconWrapper">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+                <span>Rename</span>
+            </button>
+        </div>
+        <div id="delete" class="optionWrapper"> 
+            <button id ="deleteBtn" class="panelBtn" type="button">
+                <div class="optionIconWrapper">
+                    <i class="bi bi-trash-fill"></i>
+                </div>
+                <span>Delete</span>
+            </button>
+        </div>
+        <div id="open" class="optionWrapper"> 
+            <button id ="openBtn" class="panelBtn" type="button">
+                <div class="optionIconWrapper">
+                    <i class="bi bi-eye-fill"></i>
+                </div>
+                <span>Open</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Header section -->
     <header>
         <div class="headerLeft">
             <img src="./assets/img/logo.png"
@@ -78,6 +111,8 @@
             <div class="iconUser"> user </div>
         </div>
     </header>
+
+    <!-- Main section -->
     <main>
         <section class="mainLeft">
             <div class="newFile"> 
@@ -89,6 +124,9 @@
             <div class="fdContainer">
                 <div class="root"><i class="bi bi-folder"></i> File </div>
                 <div class="prueba"> <i class="bi bi-folder"></i>Directory </div>
+                <?php 
+                    renderItemListLeft($dirPath, $dirPathItemList);
+                ?>
             </div>
         </section>
         <section class="mainCenter">
@@ -108,9 +146,11 @@
                 <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
                 <div class="mainCenter__fileName">Images</div>
             </div>
+
             <?php 
                 renderDirItemList($dirPath, $dirPathItemList);
             ?>
+
         </section>
         <section class="mainRight">
             <div class="mainRight__fileHeader">
