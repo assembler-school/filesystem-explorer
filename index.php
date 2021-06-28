@@ -3,6 +3,7 @@ session_start();
 include_once("./modules/upload.php");
 include_once("./templates/modals.php")
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,9 +22,9 @@ include_once("./templates/modals.php")
                 <h1>LOGO</h1>
             </a>
 
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+            <form class="d-flex" method="POST">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-outline-success" type="submit" name="submit">Search</button>
             </form>
         </div>
     </nav>
@@ -88,7 +89,7 @@ include_once("./templates/modals.php")
                 if (isset($success_msg) && $success_msg) {
                     echo "<div class='alert alert-success' role='alert'>";
                     echo
-                    $_FILES["file"]["name"] . " " . $success_msg;
+                        $_FILES["file"]["name"] . " " . $success_msg;
                     echo "</div>";
                     $success_msg = false;
                 } elseif (isset($invalid_msg) && $invalid_msg) {
@@ -105,7 +106,6 @@ include_once("./templates/modals.php")
                     echo NULL;
                 }
                 ?>
-
                 <table class="table table-light table-borderless">
                     <thead class="table-primary">
                         <tr>
@@ -118,6 +118,7 @@ include_once("./templates/modals.php")
                     </thead>
                     <tbody>
                         <?php
+                        include_once "./modules/search.php";
                         include_once "./modules/up-folder-list.php";
                         include_once "./modules/directory-list.php"; // Have to be cautious, this file changes current working directory
                         ?>

@@ -12,10 +12,9 @@
             8 => "A PHP extension stopped the file upload",
         );
 
-        // pre_r($_FILES);
-        $ext_error = 0;
+        //pre_r($_FILES);
 
-        $extensions = array("jpg", "jpeg", "png", "gif");
+        $extensions = array("jpg", "jpeg", "png", "gif", "svg", "txt", "xsl", "xslx", "mp3", "flac", "aac", "wav", "aiff", "pdf", "mpeg", "mp4", "mov", "wmv", "avi", "avchd", "flv", "ppt", "pptx", "doc", "docx", "zip", "rar", "php", "html", "css", "sass", "scss", "ini", "json");
         $file_ext = explode(".", $_FILES["file"]["name"]);
         $file_ext = end($file_ext);
         // pre_r($file_ext);
