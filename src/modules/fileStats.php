@@ -4,7 +4,8 @@
 function getFileStats($pathToFile, $rawName)
 {
     // Setting all variables
-    $fName = explode(".", $rawName)[0];
+    // $fName = explode(".", $rawName)[0];
+    $fName = $rawName;
     $rawType = explode("/", mime_content_type($pathToFile));
     $fType = end($rawType);
     $fPath = $pathToFile;

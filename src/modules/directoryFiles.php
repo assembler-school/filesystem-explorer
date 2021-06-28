@@ -1,6 +1,8 @@
 <?php
 // Required files
 require_once("./modules/fileStats.php");
+// require_once("../modules/deleteFiles.php");
+
 
 // Root folder
 $target_dir = $_SESSION["basePath"];
@@ -29,12 +31,23 @@ foreach (scandir($target_dir) as $i) {
     }
 };
 
+
+// Delete button link
+echo "<a href=./modules/deleteFiles.php?delete=" . $fileArray["name"] . ">delete</a>";
+
+// Download
+
+echo "<br>";
+
+echo "<a href=./modules/editFiles.php?donwload=" . $fileArray["name"] . ">download</a>"
+
 /* -------------------------------------------------------------------------- */
 /*                                    TEST                                    */
 /* -------------------------------------------------------------------------- */
 // echo "These are the directory files: <pre>" . print_r($directoryFiles, true) . "</pre>";
 
 ?>
+
 <script>
     // $(".ajax-test").click(function() {
     //     $.ajax({

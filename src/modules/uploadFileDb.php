@@ -17,6 +17,7 @@ if (!file_exists($target_file)) {
     $midType = explode("/", $rawType);
     $fileType = $midType[1];
 
+
     $fileCreation = filectime($target_file);
     $fileModification = filemtime($target_file);
     if ($_FILES["uploadedFile"]["size"] < 1000) {
