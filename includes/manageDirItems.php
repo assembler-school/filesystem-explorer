@@ -69,7 +69,7 @@
                             .$icon.
                             "<div class='mainCenter__fileName'>".$fileName."</div>
                         </a>
-                        <i class='renderOptions bi bi-three-dots-vertical'></i>
+                        <i id='".$fileName."' class='renderOptions bi bi-three-dots-vertical'></i>
                     </div>
                 ";
 
@@ -79,7 +79,7 @@
                     <div class ='fileWrapper'>"
                         .$icon.
                         "<div class='mainCenter__fileName'>".$fileName."</div>
-                        <i class='renderOptions bi bi-three-dots-vertical'></i>
+                        <i id='".$fileName."' class='renderOptions bi bi-three-dots-vertical'></i>
                     </div>
                 ";
 

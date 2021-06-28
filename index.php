@@ -95,6 +95,21 @@
         </div>
     </div>
 
+    <!-- Rename file or folder form  -->
+    <div id="renamerForm" class="createFolderPanel">
+        <form action="./includes/updateName.php" method="POST">
+            <div class="createFolderHeader">
+                <h4 class="createFolderFormTitle">Choose new name</h4>
+                <i id="closeRenameFolderBtn" class="bi bi-x-lg"></i>
+            </div>
+            <input id="oldName" class="invisibleInput" type="text" name="oldName" value="">
+            <input class="newFolderInput" type="text" name="newName" placeholder="Input new name">
+            <div class="buttons">
+                <button type="submit" name="submitRename" class="createFolderPanelBtn submit"> SUBMIT</button>
+                <button type="button" id="cancelRenameBtnForm" class="createFolderPanelBtn cancel">CANCEL</button>
+            </div>
+        </form>
+    </div>
     <!-- Header section -->
     <header>
         <div class="headerLeft">

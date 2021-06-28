@@ -18,7 +18,13 @@ $("#closeCreateFolderBtn").on("click", hideCreateFolderForm);
 $(".renderOptions").on("click", showFileDirOptions);
 $("#newOptionsPanelBackground").on("click", hideFileDirOptions);
 
-// Render Functions
+// Render Rename form
+$("#renameBtn").on("click", showRenameForm);
+$("#createFolderBackground").on("click", hideRenameForm);
+$("#closeRenameFolderBtn").on("click", hideRenameForm);
+$("#cancelRenameBtnForm").on("click", hideRenameForm);
+
+// -------- Render Functions -----------
 function showNewOptions(event) {
   if (
     $("#newOptionsPanel").css("display") === "none" &&
@@ -47,11 +53,13 @@ function hideCreateFolderForm() {
 }
 
 function showFileDirOptions(event) {
+  getOldName(event);
   getWindowXY(event);
   $("#fileDirOptionsPanel").css("top", relativeY);
   $("#fileDirOptionsPanel").css("left", relativeX);
   $("#fileDirOptionsPanel").show();
   $("#newOptionsPanelBackground").show();
+  console.log("$('#oldName').value -->", $("#oldName").val());
 }
 
 function hideFileDirOptions() {
@@ -59,8 +67,26 @@ function hideFileDirOptions() {
   $("#newOptionsPanelBackground").hide();
 }
 
-// Other functions
+function showRenameForm() {
+  $("#fileDirOptionsPanel").hide();
+  $("#newOptionsPanelBackground").hide();
+  $("#renamerForm").show();
+  $("#createFolderBackground").show();
+}
+
+function hideRenameForm() {
+  $("#renamerForm").hide();
+  $("#createFolderBackground").hide();
+}
+
+// --------- Other functions --------------
 function getWindowXY(event) {
   relativeX = event.pageX;
   relativeY = event.pageY;
+}
+
+function getOldName(event) {
+  console.log("event.target.id -->", event.target.id);
+  console.log("$('#oldName') -->", $("#oldName"));
+  $("#oldName").attr("value", event.target.id);
 }
