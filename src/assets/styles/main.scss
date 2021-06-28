@@ -126,6 +126,14 @@ body {
               margin-bottom: 0;
               color: lightgray;
             }
+
+            .file-buttons {
+              form {
+                input {
+                  display: none;
+                }
+              }
+            }
           }
 
           .file-item:hover {

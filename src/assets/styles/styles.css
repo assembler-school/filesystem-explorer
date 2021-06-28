@@ -109,6 +109,9 @@ body main .bottom .central .central-files .file-item .file-text {
   margin-bottom: 0;
   color: lightgray;
 }
+body main .bottom .central .central-files .file-item .file-buttons form input {
+  display: none;
+}
 body main .bottom .central .central-files .file-item:hover {
   background-color: #f0f0f0;
 }
