@@ -1,12 +1,16 @@
 <?php
 
 echo "file actions" . "<br>";
+// echo "file name " . $_POST['value'] . "<br>";
 
-if ($_POST['action'] == 'delete') {
+if (isset($_POST['delete'])) {
     //action for update her
+    echo "file name " . $_POST['delete'] . "<br>";
     echo "delete";
-} else if ($_POST['action'] == 'Delete') {
+} else if (isset($_POST['open'])) {
+    echo "open";
     //action for delete
 } else {
+    echo "other";
     //invalid action!
 }
