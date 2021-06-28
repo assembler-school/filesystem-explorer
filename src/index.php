@@ -9,6 +9,13 @@ if (!isset($_SESSION["currentPath"])) {
     // echo "This is the current path" . $_SESSION["currentPath"];
 }
 
+if (!isset($_SESSION["currentDirectories"])) {
+    $_SESSION["currentDirectories"] = [];
+    // echo "This is the current path" . $_SESSION["currentPath"];
+}
+
+
+
 // unset($_SESSION);
 // session_destroy();
 ?>
@@ -45,9 +52,9 @@ if (!isset($_SESSION["currentPath"])) {
                     </label>
                     <input value="Upload" type="submit" class="btn btn-dark" />
                 </form>
-                <!-- <button class="create-folder btn btn-dark">
+                <button class="create-folder btn btn-dark" data-bs-toggle="modal" data-bs-target="#newDirectoryModal">
                     <i class="fas fa-folder-plus"></i>
-                </button> -->
+                </button>
             </div>
         </div>
         <!-- BOTTOM -->
@@ -84,6 +91,34 @@ if (!isset($_SESSION["currentPath"])) {
     <div class="drop-wrapper d-flex justify-content-center align-items-center">
         <h4>Drop me a file</h4>
     </div>
+
+    <!-- -------------------- -->
+    <!-- MODALS -->
+    <!-- -------------------- -->
+
+    <!-- Create directory -->
+    <div class="modal fade" id="newDirectoryModal" tabindex="-1" aria-labelledby="newDirectoryLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newDirectoryLabel">Add new folder</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="./modules/createFolder.php" id="newFolderForm">
+                        <label for="directoryName" class="mb-2 modal-item modal-title">Folder name</label>
+                        <input type="text" name="directoryName" class="pl-3 modal-item modal-input" placeholder="Insert name" required autofocus>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-dark" form="newFolderForm">Add folder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
 </html>

@@ -1,7 +1,8 @@
 <?php
+// session_start();
 
 $dirsInside = array_filter(glob($_SESSION["currentPath"] . "/*"), "is_dir");
-
+$_SESSION["currentDirectories"] = $dirsInside;
 $parentDirRaw = $_SESSION["currentPath"];
 $explodedDirRaw = explode("/", $parentDirRaw);
 $parentDir = $explodedDirRaw[count($explodedDirRaw) - 2];

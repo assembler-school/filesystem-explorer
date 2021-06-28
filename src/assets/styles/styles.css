@@ -35,6 +35,9 @@ body main .header .search-bar {
 body main .header .top-buttons form .custom-upload input {
   display: none;
 }
+body main .header .top-buttons .create-folder {
+  margin-left: 5px;
+}
 body main .bottom {
   flex-grow: 1;
 }
@@ -149,6 +152,18 @@ body .drop-wrapper {
   height: 20%;
   background-color: rgba(255, 255, 255, 0.632);
   border-radius: 5px;
+}
+body .modal .modal-dialog .modal-content .modal-body form .modal-item {
+  width: 100%;
+}
+body .modal .modal-dialog .modal-content .modal-body form .modal-title {
+  transform: translateX(3px);
+}
+body .modal .modal-dialog .modal-content .modal-body form .modal-input {
+  border: none;
+  background-color: #e9e9e9;
+  border-radius: 6px;
+  padding: 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */

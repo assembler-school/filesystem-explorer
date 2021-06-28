@@ -43,6 +43,9 @@ body {
             }
           }
         }
+        .create-folder {
+          margin-left: 5px;
+        }
       }
     }
     .bottom {
@@ -177,5 +180,30 @@ body {
     height: 20%;
     background-color: rgba(255, 255, 255, 0.632);
     border-radius: 5px;
+  }
+
+  // Modals
+  .modal {
+    .modal-dialog {
+      .modal-content {
+        .modal-body {
+          form {
+            .modal-item {
+              width: 100%;
+            }
+            .modal-title {
+              transform: translateX(3px);
+            }
+
+            .modal-input {
+              border: none;
+              background-color: rgb(233, 233, 233);
+              border-radius: 6px;
+              padding: 10px;
+            }
+          }
+        }
+      }
+    }
   }
 }
