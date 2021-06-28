@@ -19,7 +19,7 @@
   "homepage": "https://github.com/Ricard-Garcia/filesystem-explorer#readme",
   "dependencies": {
     "bootstrap": "^5.0.1",
-    "jquery": "^3.6.0",
+    "dropzone": "^5.9.2",
     "sass": "^1.35.1"
   }
 }

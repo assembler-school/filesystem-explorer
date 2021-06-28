@@ -5,8 +5,7 @@ require_once("./modules/fileStats.php");
 
 
 // Root folder
-$target_dir = $_SESSION["basePath"];
-// $directoryFiles = $_SESSION["directoryFiles"];
+$target_dir = $_SESSION["currentPath"];
 
 // List all files
 foreach (scandir($target_dir) as $i) {
@@ -14,19 +13,30 @@ foreach (scandir($target_dir) as $i) {
     if ($i != "..") {
         // Not show hidden folders
         if ($firstCharacter != ".") {
-            $target_file = $target_dir . basename($i);
+            $target_file = $target_dir . "/" . basename($i);
             $fileArray = getFileStats($target_file, $i);
-            //$directoryFiles[] = $fileArray;
 
             // Creating the file block
-            echo "<div class= 'row file-item d-flex justify-content-between align-items-center'>";
-            echo "<p class='col col-4 file-text file-name'>" . $fileArray["name"] . "</p>";
-            echo "<p class='col col-2 col file-text'>" . $fileArray["type"] . "</p>";
+            if ($fileArray["type"] == "directory") {
+                echo "<a class='dir dir-link dir-child row file-item px-3 py-2 d-flex justify-content-center align-items-center' href=./modules/updatingPath.php?updatedPath=" . $_SESSION["currentPath"] . "/" . $fileArray["name"] . ">";
+            } else {
+                echo "<a class='dir dir-link dir-child row file-item px-3 py-2 d-flex justify-content-center align-items-center' href=./index.php?filePath=" . $_SESSION["currentPath"] . "/" . $fileArray["name"] . "&fileName=" . $fileArray["name"] . ">";
+            }
+            // echo "<a class='row file-item px-3 py-2 d-flex justify-content-center align-items-center'>";
+            echo "<div class='row col col-6 p-0 icon-and-name d-flex justify-content-between align-items-center'>";
+            echo "<p class='col col-2 file-text file-icon p-0 d-flex justify-content-center'>";
+            echo "<i class='far fa-" . $fileArray["icon"] . "'></i>";
+            echo "</p>";
+            echo "<p class='col col-10 file-text file-name'>";
+            echo $fileArray["name"];
+            echo "</p>";
+            echo "</div>";
+            // echo "<p class='col col-2 col file-text'>" . $fileArray["type"] . "</p>";
             // echo "<p class='file-text'>" . $fileArray["path"] . "</p>";
             echo "<p class='col col-2 file-text'>" . $fileArray["size"] . "</p>";
             echo "<p class='col col-2 file-text'>" . $fileArray["creation"] . "</p>";
             echo "<p class='col col-2 file-text'>" . $fileArray["modification"] . "</p>";
-            echo "</div>";
+            echo "</a>";
         }
     }
 };
@@ -39,30 +49,9 @@ echo "<a href=./modules/deleteFiles.php?delete=" . $fileArray["name"] . ">delete
 
 echo "<br>";
 
-echo "<a href=./modules/editFiles.php?donwload=" . $fileArray["name"] . ">download</a>"
+echo "<a href=./modules/editFiles.php?donwload=" . $fileArray["name"] . ">download</a>";
 
 /* -------------------------------------------------------------------------- */
 /*                                    TEST                                    */
 /* -------------------------------------------------------------------------- */
 // echo "These are the directory files: <pre>" . print_r($directoryFiles, true) . "</pre>";
-
-?>
-
-<script>
-    // $(".ajax-test").click(function() {
-    //     $.ajax({
-    //         method: "POST",
-    //         url: "./modules/test.php",
-    //         data: {
-    //             path: "hey"
-    //         }
-    //     }).done(function(data) {
-    //         console.log("Hello ajax");
-    //         // <?php
-                    //             // header("Location:src/$data");
-                    //             // 
-                    //             
-                    ?>
-    //     })
-    // });
-</script>

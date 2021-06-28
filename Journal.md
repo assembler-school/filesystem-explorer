@@ -16,14 +16,76 @@ Metting in the morning debates:
 
 **User cases:** leave it as generic as possible.
 
+DONE:
+
+* Display all files in root directory.
+* Upload file to root directory.
+* Display directories on sidebar.
+* Basic layout.
 
 
+## Day 2
+
+Hugo:
+
+* Edit file/folder
+* Delete file/folder
+
+Ricard:
+
+* Display file columns with icons.
+* Make dynamic path.
+
+**DONE**:
+
+* Display file columns with icons.
+* Make dynamic path.
+* Session variable for url (GET method).
+
+
+**TODO**:
+ 
+
+## Day 3
+
+How to edit, delete and download files:
+
+```
+// Delete
+echo "<a href=deleteFile.php?delete=./path/to/file.txt >Delete</a>";
+
+// deleteFile.php
+$pathToDelete = $_GET["delete"];
+unlink($pathToDelete);
+
+header("Location:./index.php");
+
+
+// Download
+echo "<a href=downloadFile.php?download=./path/to/file.txt >Delete</a>";
+
+// deleteFile.php
+$pathToDelete = $_GET["delete"];
+unlink($pathToDelete);
+
+header("Location:./index.php");
+
+
+
+```
+
+
+-
 ## TODO
 
 ### Files
-* (DONE) Check if file exists
 * (DONE) Calculate MB
 * Rename folders
+* Clean .scss
+* Solve whitespaces in file names
+* Use `embed` tag to preview files.
+* Not upload if there are no files
+* Copy-copy (...) folder name: alert
 
 ### Paths
 * Get all files in all directories:
@@ -37,3 +99,4 @@ Metting in the morning debates:
 ### WISHLIST
 * Delete all/some files (checkbox).
 * Bottom path functionality.
+

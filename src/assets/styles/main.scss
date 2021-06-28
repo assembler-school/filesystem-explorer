@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  //   border: 1px solid red;
+  // outline: 1px solid blue;
 }
 
 input:focus,
@@ -17,13 +17,14 @@ body {
   main {
     border: 3px solid black;
     border-radius: 5px;
-    height: 60%;
+    height: 64%;
     width: 90%;
     background-color: white;
 
     .header {
       height: 10%;
       border-bottom: 2px black solid;
+      margin-bottom: 25px;
 
       .search-bar {
         border: none;
@@ -35,32 +36,145 @@ body {
 
       .top-buttons {
         form {
+          // margin-right: 10px;
           .custom-upload {
             input {
               display: none;
             }
           }
         }
+        .create-folder {
+          margin-left: 5px;
+        }
       }
     }
     .bottom {
       flex-grow: 1;
+      .bottom-block {
+        max-height: 525px;
+        height: 100%;
+      }
+
+      // Directories
+      .sidebar-left {
+        .dir {
+          margin: 0;
+          color: black;
+          text-decoration: none;
+        }
+        .dir-child {
+          margin-left: 20px;
+        }
+        .dir-link:hover {
+          cursor: pointer;
+          text-decoration: none;
+          color: gray;
+        }
+        .current-dir {
+          font-weight: bold;
+        }
+      }
+
+      // Files
       .central {
         outline: 2px rgb(0, 0, 0) solid;
-        .file-item {
-          .file-text {
-            font-size: 12px;
-            color: lightgray;
+
+        .central-columns {
+          height: fit-content;
+          max-height: 40px;
+          width: 100%;
+          border-bottom: 2px black solid;
+
+          .column-text {
+            font-weight: bold;
+            font-size: 10px;
+            display: flex;
+            margin-bottom: 0;
           }
-          .file-name {
-            color: rgb(0, 0, 0);
+        }
+        .central-files {
+          flex-grow: 1;
+          overflow-y: scroll;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: central;
+
+          .file-item {
+            transition: 0.2s;
+            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+
+            .icon-and-name {
+              display: flex;
+              .file-icon {
+                font-size: 18px;
+                color: black;
+              }
+              .file-name {
+                color: rgb(0, 0, 0);
+                max-height: 22px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+              }
+            }
+
+            .file-text {
+              font-size: 15px;
+              margin-bottom: 0;
+              color: lightgray;
+            }
+          }
+
+          .file-item:hover {
+            background-color: rgb(240, 240, 240);
           }
         }
       }
 
-      .bottom-block {
-        max-height: 490px;
-        overflow: scroll;
+      // File preview
+      .sidebar-right {
+        height: 100%;
+        .preview-wrapper {
+          .icon-wrapper {
+            margin-bottom: 40px;
+            .preview-icon {
+              font-size: 120px;
+            }
+            .badge-dark {
+              background-color: var(--bs-dark);
+              .preview-link {
+                color: white;
+                text-decoration: none;
+              }
+            }
+          }
+          .preview-info {
+            margin-bottom: 10px;
+            font-size: 10px;
+            height: fit-content;
+            * {
+              padding: 0;
+            }
+            hr {
+              margin-bottom: 5px;
+            }
+            .preview-title {
+              font-weight: bold;
+            }
+            .preview-text {
+              text-overflow: ellipsis;
+            }
+            .preview-title,
+            .preview-text {
+              // max-height: 15px;
+              padding: 0;
+              margin-bottom: 5px;
+            }
+          }
+        }
       }
     }
   }
@@ -69,5 +183,30 @@ body {
     height: 20%;
     background-color: rgba(255, 255, 255, 0.632);
     border-radius: 5px;
+  }
+
+  // Modals
+  .modal {
+    .modal-dialog {
+      .modal-content {
+        .modal-body {
+          form {
+            .modal-item {
+              width: 100%;
+            }
+            .modal-title {
+              transform: translateX(3px);
+            }
+
+            .modal-input {
+              border: none;
+              background-color: rgb(233, 233, 233);
+              border-radius: 6px;
+              padding: 10px;
+            }
+          }
+        }
+      }
+    }
   }
 }

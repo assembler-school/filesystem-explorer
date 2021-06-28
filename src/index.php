@@ -1,5 +1,20 @@
 <?php
-require("./modules/database/allFilesDb.php");
+session_start();
+
+/* -------------------------------------------------------------------------- */
+/*                              SESSION VARIABLES                             */
+/* -------------------------------------------------------------------------- */
+if (!isset($_SESSION["currentPath"])) {
+    $_SESSION["currentPath"] = "root";
+    // echo "This is the current path" . $_SESSION["currentPath"];
+}
+
+if (!isset($_SESSION["currentDirectories"])) {
+    $_SESSION["currentDirectories"] = [];
+    // echo "These are the current directories" . $_SESSION["currentDirectories"];
+}
+
+
 // unset($_SESSION);
 // session_destroy();
 
@@ -19,37 +34,21 @@ require("./modules/database/allFilesDb.php");
     <!-- Dependencies -->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script>
-        var exampleModal = document.getElementById('exampleModal')
-        exampleModal.addEventListener('show.bs.modal', function(event) {
+    <!-- Link to icons -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-            var button = event.relatedTarget
-
-            var recipient = button.getAttribute('delete')
-
-            var modalTitle = exampleModal.querySelector('.modal-title')
-            var modalBodyInput = exampleModal.querySelector('.modal-body input')
-
-            modalTitle.textContent = 'New message to ' + recipient
-            modalBodyInput.value = recipient
-        })
-    </script>
     <!-- Styles -->
     <link rel="stylesheet" href="./assets/styles/styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <title>File System</title>
 </head>
 
 <body class="d-flex flex-column justify-content-center align-items-center">
     <main class="d-flex flex-column justify-content-center m-0 mb-4">
         <!-- HEADER -->
-        <div class="header m-0 p-2 d-flex justify-content-between align-items-center">
-            <h2 class="logo m-0">Hello</h2>
-            <input type="text" class="pl-3 search-bar"></input>
-            <button type="button" class="btn btn-primary ajax-test">Primary</button>
-            <div class="top-buttons">
-
+        <div class="row header m-0 p-2 d-flex justify-content-between align-items-center">
+            <h2 class="col col-2 logo p-0 m-0">SpamFile!</h2>
+            <input type="text" class="col col-7 pl-3 search-bar" placeholder="Search files" autofocus></input>
+            <div class="col col-3 top-buttons d-flex justify-content-end align-items-center p-0">
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
                     <label class="custom-upload">
                         <input value="New file" type="file" name="uploadedFile" class="btn btn-light" />
@@ -57,50 +56,38 @@ require("./modules/database/allFilesDb.php");
                     </label>
                     <input value="Upload" type="submit" class="btn btn-dark" />
                 </form>
+                <button class="create-folder btn btn-dark" data-bs-toggle="modal" data-bs-target="#newDirectoryModal">
+                    <i class="fas fa-folder-plus"></i>
+                </button>
             </div>
         </div>
         <!-- BOTTOM -->
         <div class="row bottom m-0">
-            <div class="col col-2 bottom-block sidebar-left">
+            <div class="col col-2 bottom-block sidebar-left d-flex flex-column pt-2">
                 <?php
                 require_once("./modules/allDirectories.php");
                 ?>
             </div>
-            <div class="col col-7 p-4 bottom-block central">
-                <?php
-                require_once("./modules/directoryFiles.php");
-
-                ?>
-
-                <button type="submit" name="new_name" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="delete">TESTEDIT</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="directoryFiles">TESTDELETE</button>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="directoryFiles">TESTDOWNLOAD</button>
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Rename this file</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">New file name:</label>
-                                        <input type="text" class="form-control" id="recipient-name">
-                                    </div>
-
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Accept changes</button>
-                            </div>
-                        </div>
+            <div class="col col-7 px-0 bottom-block central d-flex flex-column justify-content-center align-items-center">
+                <div class="row px-3 py-2 central-columns d-flex justify-content-center align-items-center">
+                    <div class="row col col-6 p-0 icon-and-name-col d-flex justify-content-center">
+                        <p class="col col-2 column-text">Type</p>
+                        <p class="col col-10 column-text">Name</p>
                     </div>
+                    <p class="col col-2 column-text">Size</p>
+                    <p class="col col-2 column-text">Creation</p>
+                    <p class="col col-2 column-text">Modification</p>
+                </div>
+                <div class="central-files">
+                    <?php
+                    require_once("./modules/directoryFiles.php");
+                    ?>
                 </div>
             </div>
             <div class="col col-3 bottom-block sidebar-right">
+                <?php
+                require_once("./modules/filePreview.php");
+                ?>
             </div>
         </div>
     </main>
@@ -108,6 +95,34 @@ require("./modules/database/allFilesDb.php");
     <div class="drop-wrapper d-flex justify-content-center align-items-center">
         <h4>Drop me a file</h4>
     </div>
+
+    <!-- -------------------- -->
+    <!-- MODALS -->
+    <!-- -------------------- -->
+
+    <!-- Create directory -->
+    <div class="modal fade" id="newDirectoryModal" tabindex="-1" aria-labelledby="newDirectoryLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newDirectoryLabel">Add new folder</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="./modules/createFolder.php" id="newFolderForm">
+                        <label for="directoryName" class="mb-2 modal-item modal-title">Folder name</label>
+                        <input type="text" name="directoryName" class="pl-3 modal-item modal-input" placeholder="Insert name" required autofocus>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-dark" form="newFolderForm">Add folder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
 </html>
