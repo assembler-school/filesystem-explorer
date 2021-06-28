@@ -52,6 +52,8 @@ function fileIcon($file)
         case 'jpg':
         case 'png':
         case 'svg':
+        case 'jpeg':
+        case 'gif':
             return $imgIcon;
             break;
         case 'txt':

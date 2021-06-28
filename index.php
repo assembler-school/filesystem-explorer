@@ -88,7 +88,7 @@ include_once("./modules/upload.php");
                 if (isset($success_msg) && $success_msg) {
                     echo "<div class='alert alert-success' role='alert'>";
                     echo
-                    $_FILES["file"]["name"] . " " . $success_msg;
+                        $_FILES["file"]["name"] . " " . $success_msg;
                     echo "</div>";
                     $success_msg = false;
                 } elseif (isset($invalid_msg) && $invalid_msg) {
@@ -105,7 +105,6 @@ include_once("./modules/upload.php");
                     echo NULL;
                 }
                 ?>
-                <?php include("./modules/search.php") ?>
                 <table class="table table-light table-borderless">
                     <thead class="table-primary">
                         <tr>
@@ -118,6 +117,7 @@ include_once("./modules/upload.php");
                     </thead>
                     <tbody>
                         <?php
+                        // include_once "./modules/search.php";
                         include_once "./modules/up-folder-list.php";
                         include_once "./modules/directory-list.php";
                         ?>
