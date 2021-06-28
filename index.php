@@ -1,3 +1,6 @@
+<?php 
+    require("./includes/manageDirItems.php")
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,6 +108,9 @@
                 <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
                 <div class="mainCenter__fileName">Images</div>
             </div>
+            <?php 
+                renderDirItemList($dirPath, $dirPathItemList);
+            ?>
         </section>
         <section class="mainRight">
             <div class="mainRight__fileHeader">
