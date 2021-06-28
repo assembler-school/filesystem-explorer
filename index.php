@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once("./modules/upload.php");
+include_once("./templates/modals.php")
 ?>
 
 <!DOCTYPE html>
@@ -88,7 +89,7 @@ include_once("./modules/upload.php");
                 if (isset($success_msg) && $success_msg) {
                     echo "<div class='alert alert-success' role='alert'>";
                     echo
-                        $_FILES["file"]["name"] . " " . $success_msg;
+                    $_FILES["file"]["name"] . " " . $success_msg;
                     echo "</div>";
                     $success_msg = false;
                 } elseif (isset($invalid_msg) && $invalid_msg) {
@@ -119,7 +120,7 @@ include_once("./modules/upload.php");
                         <?php
                         include_once "./modules/search.php";
                         include_once "./modules/up-folder-list.php";
-                        include_once "./modules/directory-list.php";
+                        include_once "./modules/directory-list.php"; // Have to be cautious, this file changes current working directory
                         ?>
                     </tbody>
                 </table>
@@ -127,9 +128,16 @@ include_once("./modules/upload.php");
         </div>
     </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
-
 </body>
+<?php
+deleteFileModal();
+renameFileModal();
+deleteFolderModal();
+renameFolderModal();
+?>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="./assets/js/script.js"></script>
 
 </html>
