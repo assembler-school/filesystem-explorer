@@ -83,6 +83,7 @@ header("Location:./index.php");
 * Rename folders
 * Clean .scss
 * Solve whitespaces in file names
+* Use `embed` tag to preview files.
 
 ### Paths
 * Get all files in all directories:
