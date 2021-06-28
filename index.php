@@ -7,8 +7,59 @@
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
 </head>
+
 <body>
+
+    <div id="createFolderForm" class="createFolderPanel">
+        <form action="./includes/createFolder.php" method="POST">
+            <div class="createFolderHeader">
+                <h4 class="createFolderFormTitle">New folder</h4>
+                <i id="closeCreateFolderBtn" class="bi bi-x-lg"></i>
+            </div>
+            <input class="newFolderInput" type="text" name="folderName" placeholder="Input new folder name">
+            <div class="buttons">
+                <button type="submit" name="submitFolder" class="createFolderPanelBtn submit"> CREATE</button>
+                <button type="button" id="cancelBtnForm" class="createFolderPanelBtn cancel">CANCEL</button>
+            </div>
+        </form>
+    </div>
+    <div id="createFolderBackground"></div>
+
+    <div id="newOptionsPanel" class="newOptions">
+        <div id="newFolder" class="optionWrapper"> 
+            <button id ="createFolder" class="panelBtn" type="button">
+                <div class="optionIconWrapper">
+                    <i class="bi bi-folder-plus"></i>
+                </div>
+                <span>Create Folder</span>
+            </button>
+        </div>
+        <hr>
+        <div id="uploadFolder" class="optionWrapper">
+            <div class="optionIconWrapper">
+                <i class="bi bi-upload"></i>
+            </div>
+                <span>Upload Folder</span>
+        </div>
+        <div id="uploadFile" class="optionWrapper"> 
+            <form action="./includes/uploadFile.php" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <button class="panelBtn" type="submit" name="submit">
+                    <div class="optionIconWrapper">
+                        <i class="bi bi-upload"></i>
+                    </div>
+                    <span>Upload File</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div id ="newOptionsPanelBackground"></div>
     <header>
         <div class="headerLeft">
             <img src="./assets/img/logo.png"
@@ -28,7 +79,7 @@
         <section class="mainLeft">
             <div class="newFile"> 
                 <div class ="newFile__btn"> 
-                    <span>+</span>
+                    <span id="addNew">+</span>
                 </div>
             </div>
             <hr>
@@ -103,5 +154,7 @@
                 <div class="mainCenter__fileName">Images</div>
             </div>
     </template>
+    <!-- <script type="text/javascript" src="/node_modules/jquery/dist/jquery.js"></script> -->
+    <script type="text/javascript" src="./js/render.js"></script>
 </body>
 </html>
