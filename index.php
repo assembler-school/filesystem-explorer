@@ -1,5 +1,6 @@
 <?php
-$rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
+// $rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
+$rootPath = "C:/xampp/htdocs/Assembler/filesystem-explorer/root";
 $currentPath = $rootPath;
 
 // Getting files and folders from directory
