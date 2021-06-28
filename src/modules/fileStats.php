@@ -13,6 +13,7 @@ function getFileStats($pathToFile, $rawName)
     $fType = end($rawType);
     $fIcon = getFileIcon($fType);
     $fPath = $pathToFile;
+
     if (filesize($pathToFile) < 1000) {
         $fSize =  filesize($pathToFile) . " B";
     } else {
@@ -25,6 +26,7 @@ function getFileStats($pathToFile, $rawName)
             $fSize = number_format($mbSize, 2) . " MB";
         }
     }
+
     $fCreation = date("m/d/y", filectime($pathToFile));
     $fModification = date("m/d/y", filemtime($pathToFile));
 

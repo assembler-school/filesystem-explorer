@@ -12,7 +12,7 @@ if (isset($_GET["fileName"])) {
     echo "<div class='px-3 py-4 d-flex flex-column preview-wrapper'>";
 
     // Big icon / preview
-    echo "<div class='d-flex flex-column align-items-center icon-wrapper mb-4 px-0'>";
+    echo "<div class='d-flex flex-column align-items-center icon-wrapper px-0'>";
     echo "<i class='mb-4 preview-icon far fa-" . $fileArray["icon"] . "'></i>";
     echo "<span class='badge badge-dark'>";
     echo "<a href=" . $fileArray["path"] . " class='col col-md-8 text-center preview-link' target='_blank'>Preview</a>";
