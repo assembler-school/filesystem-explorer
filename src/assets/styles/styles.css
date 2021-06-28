@@ -91,6 +91,9 @@ body main .bottom .central .central-files .file-item {
   cursor: pointer;
   text-decoration: none;
 }
+body main .bottom .central .central-files .file-item a {
+  text-decoration: none;
+}
 body main .bottom .central .central-files .file-item .icon-and-name {
   display: flex;
 }

@@ -56,7 +56,7 @@ if (!isset($_SESSION["currentDirectories"])) {
                     </label>
                     <input value="Upload" type="submit" class="btn btn-dark" />
                 </form>
-                <button class="create-folder btn btn-dark" data-bs-toggle="modal" data-bs-target="#newDirectoryModal">
+                <button type='button' class="create-folder btn btn-dark" data-bs-toggle="modal" data-bs-target="#newDirectoryModal">
                     <i class="fas fa-folder-plus"></i>
                 </button>
             </div>
@@ -117,6 +117,28 @@ if (!isset($_SESSION["currentDirectories"])) {
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-dark" form="newFolderForm">Add folder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit file -->
+    <div class="modal fade" id="editFileModal" tabindex="-1" aria-labelledby="editFileLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editFileLabel">New file name</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="./modules/editFiles.php" id="editFileForm">
+                        <label for="fileName" class="mb-2 modal-item modal-title">File name</label>
+                        <input type="text" name="fileName" class="pl-3 modal-item modal-input" placeholder="Insert new name" required autofocus>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-dark" form="editFileForm">Rename</button>
                 </div>
             </div>
         </div>

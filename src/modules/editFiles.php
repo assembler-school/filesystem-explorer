@@ -1,7 +1,20 @@
 <?php
-
-
 session_start();
+
+echo "Old name: " . $_GET["oldName"] . "<br>";
+$nameToEdit = $_POST["fileName"];
+$pathToEdit =  dirname(getcwd()) . "/root/" . $nameToEdit;
+
+
+echo $nameToEdit . "<br>";
+echo $pathToEdit;
+
+
+
+
+
+
+
 // function renameFiles2()
 // {
 //     if ($handle = opendir("./root")) {
@@ -44,25 +57,25 @@ session_start();
 
 
 
-function downloadFile()
-{
-    $pathToDownload = $_GET["download"];
+// function downloadFile()
+// {
+//     $pathToDownload = $_GET["download"];
 
-    $path_file_dw =  dirname(getcwd()) . "/root/" . $pathToDownload;
+//     $path_file_dw =  dirname(getcwd()) . "/root/" . $pathToDownload;
 
-    if (file_exists($path_file_dw)) {
-        header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . basename($path_file_dw) . '"');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize($path_file_dw));
-        ob_clean();
-        flush();
-        readfile($path_file_dw);
-        exit;
-    }
-}
+//     if (file_exists($path_file_dw)) {
+//         header('Content-Description: File Transfer');
+//         header('Content-Type: application/octet-stream');
+//         header('Content-Disposition: attachment; filename="' . basename($path_file_dw) . '"');
+//         header('Expires: 0');
+//         header('Cache-Control: must-revalidate');
+//         header('Pragma: public');
+//         header('Content-Length: ' . filesize($path_file_dw));
+//         ob_clean();
+//         flush();
+//         readfile($path_file_dw);
+//         exit;
+//     }
+// }
 
-header("Location: ../index.php");
+// header("Location: ../index.php");
