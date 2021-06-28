@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 // Setting our first path or getting it to refresh the scandir
 if (!isset($_SESSION["currentPath"])) {

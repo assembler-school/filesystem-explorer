@@ -91,16 +91,16 @@
                           ?></td>
     <?php if (is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) : ?>
       <td>
-        <button data-delete="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i])?>" type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
+        <button data-delete="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>" type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
           <i class="fas fa-trash-alt"></i>
         </button>
-        <button data-edit="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i])?>" type="button" class="btn btn-edit-file" data-bs-toggle="modal" data-bs-target="#renameFolderModal">
+        <button data-edit="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>" type="button" class="btn btn-edit-file" data-bs-toggle="modal" data-bs-target="#renameFolderModal">
           <i class="fas fa-edit"></i></i>
         </button>
       </td>
     <?php else : ?>
       <td>
-        <button data-delete="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i])?>" type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
+        <button data-delete="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>" type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
           <i class="fas fa-trash-alt"></i>
         </button>
       </td>

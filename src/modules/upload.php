@@ -23,10 +23,9 @@ if (isset($_FILES['file'])) {
                 $file_dest = $_SESSION["currentPath"] . "/" . $file_name_new;
 
                 if (move_uploaded_file($file_tmp, $file_dest)) {
-                    echo $file_dest;
                 };
             }
         }
     }
-    header("Location:./index.php");
+    // header("Location: ./index.php");
 }
