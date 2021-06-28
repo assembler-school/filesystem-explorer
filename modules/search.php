@@ -2,13 +2,6 @@
 session_start();
 require_once("./modules/file-icon.php");
 
-// $local_dir = "./root";
-// print_r(glob($local_dir));
-
-// $allFiles = scandir($local_dir);
-// $allFiles = array_diff($allFiles, array(".", "..", ".DS_Store"));
-// $allFiles = array_values($allFiles);
-
 $searchValue = $_POST["search"];
 
 // function getDirContents($dir, &$results = array())
@@ -17,17 +10,14 @@ $searchValue = $_POST["search"];
 //     foreach ($files as $key => $value) {
 //         $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
 //         if (!is_dir($path)) {
-//             $results[] = ['path' => $path, 'size' => filesize($path)];
+//             $results[] = ['name' => $value, 'size' => filesize($path), "modified" => date("m/d/Y H:i", filemtime($path)), "created" => date("m/d/Y H:i", filectime($path)),];
 //         } else if ($value != "." && $value != "..") {
 //             getDirContents($path, $results);
-//             $results[] = ['path' => $path, 'size' => filesize($path)];
+//             $results[] = ['name' => $value, "modified" => date("m/d/Y H:i", filemtime($path)), "created" => date("m/d/Y H:i", filectime($path))];
 //         }
 //     }
 //     return $results;
 // }
-// $filesList = getDirContents('./root');
-echo "<pre>";
-// print_r($filesList);
 
 function convert_filesize($bytes, $decimals = 2)
 {
@@ -42,7 +32,6 @@ $iterator = new RecursiveIteratorIterator(
 );
 
 $searchedFiles = [];
-// print_r(scandir($path));
 foreach ($iterator as $fileInfo) {
     if ($fileInfo->isFile()) {
         $searchedFiles[] = [
@@ -56,32 +45,16 @@ foreach ($iterator as $fileInfo) {
     }
 }
 
-//print_r($files);
-// foreach ($searchedFiles as $searchFile) {
-//     if (isset($searchValue) && $searchValue) {
-//         if (stristr($searchFile[0], $searchValue)) {
-//             echo "<tr><th scope='row'>" . fileIcon($searchFile[0]) . "</th>
-//     <td><span>" . explode(".", $searchFile[0])[0] . "</span><span class='text-uppercase text-black-50 p-2' style='font-size: 0.8rem'>" .  explode(".", $searchFile[0])[1] . "</span>" . "</td>
-//     <td>" . $searchFile[2] . "</td>
-//     <td>" . $searchFile[3] . "</td>
-//     <td>" . $searchFile[4] . "</td>
-//     </tr> 
-//     ";
-//         }
-//     }
-// }
-// echo "<tr>
-//     <th scope='row'>" . fileIcon($searchFile[0]) . "</th>
-//     <td><span>" . explode(".", $searchFile[0])[0] . "</span><span class='text-uppercase text-black-50 p-2' style='font-size: 0.8rem'>" .  explode(".", $file)[1] . "</span>" . "</td>
-//     <td>" . $searchFile[2] . "</td>
-//     <td>" . $searchFile[3] . "</td>
-//     <td>" . $searchFile[4] . "</td>
-//     </tr> ";
-
-
-// foreach ($files as $searchedFile) {
-//     if (strpbrk($searchedFile["name"], $searchValue)) {
-//         print_r($searchedFile);
-//         print_r(filesize($searchedFile));
-//     }
-// }
+foreach ($searchedFiles as $searchFile) {
+    if (isset($searchValue) && $searchValue) {
+        if (stristr($searchFile[0], $searchValue)) {
+            echo "<tr><th scope='row'>" . fileIcon($searchFile[0]) . "</th>
+    <td><span>" . explode(".", $searchFile[0])[0] . "</span><span class='text-uppercase text-black-50 p-2' style='font-size: 0.8rem'>" .  explode(".", $searchFile[0])[1] . "</span>" . "</td>
+    <td>" . $searchFile[2] . "</td>
+    <td>" . $searchFile[3] . "</td>
+    <td>" . $searchFile[4] . "</td>
+    </tr> 
+    ";
+        }
+    }
+}

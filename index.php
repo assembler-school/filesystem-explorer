@@ -117,7 +117,7 @@ include_once("./modules/upload.php");
                     </thead>
                     <tbody>
                         <?php
-                        // include_once "./modules/search.php";
+                        include_once "./modules/search.php";
                         include_once "./modules/up-folder-list.php";
                         include_once "./modules/directory-list.php";
                         ?>
