@@ -34,6 +34,7 @@ if (!isset($_SESSION["currentDirectories"])) {
     <!-- Dependencies -->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
     <!-- Link to icons -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
@@ -69,8 +70,8 @@ if (!isset($_SESSION["currentDirectories"])) {
                 ?>
             </div>
             <div class="col col-7 px-0 bottom-block central d-flex flex-column justify-content-center align-items-center">
-                <div class="row px-3 py-2 central-columns d-flex justify-content-center align-items-center">
-                    <div class="row col col-6 p-0 icon-and-name-col d-flex justify-content-center">
+                <div class="row central-columns py-2 d-flex justify-content-start align-items-center">
+                    <div class="row col col-5 px-0 icon-and-name-col d-flex justify-content-center">
                         <p class="col col-2 column-text">Type</p>
                         <p class="col col-10 column-text">Name</p>
                     </div>
@@ -123,7 +124,7 @@ if (!isset($_SESSION["currentDirectories"])) {
     </div>
 
     <!-- Edit file -->
-    <div class="modal fade" id="editFileModal" tabindex="-1" aria-labelledby="editFileLabel" aria-hidden="true">
+    <div class="modal fade" id="editFileModal" role="dialog" tabindex="-1" aria-labelledby="editFileLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -134,6 +135,7 @@ if (!isset($_SESSION["currentDirectories"])) {
                     <form method="POST" action="./modules/editFiles.php" id="editFileForm">
                         <label for="fileName" class="mb-2 modal-item modal-title">File name</label>
                         <input type="text" name="fileName" class="pl-3 modal-item modal-input" placeholder="Insert new name" required autofocus>
+                        <input name="oldFileName" id="oldName" class="pt-2 pl-3 modal-item" required>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -145,6 +147,15 @@ if (!isset($_SESSION["currentDirectories"])) {
     </div>
 
 
+    <script>
+        $('#editFileModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var recipient = button.data('whatever')
+            var modal = $(this);
+            console.log("This is the recipient ", recipient);
+            modal.find('.modal-body form #oldName').val(recipient);
+        })
+    </script>
 </body>
 
 </html>
