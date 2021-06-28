@@ -4,7 +4,6 @@ require_once("./modules/fileStats.php");
 
 // Root folder
 $target_dir = $_SESSION["currentPath"];
-// $directoryFiles = $_SESSION["directoryFiles"];
 
 // List all files
 foreach (scandir($target_dir) as $i) {
@@ -16,8 +15,6 @@ foreach (scandir($target_dir) as $i) {
             $fileArray = getFileStats($target_file, $i);
 
             // Creating the file block
-            // echo "<a class='row file-item px-3 py-2 d-flex justify-content-center align-items-center' href=./modules/filePreview.php?filePath=" . $_SESSION["currentPath"] . "/" . $fileArray["name"] . "&fileName=" . $fileArray["name"] . ">";
-            // Adding a link for directories
             if ($fileArray["type"] == "directory") {
                 echo "<a class='dir dir-link dir-child row file-item px-3 py-2 d-flex justify-content-center align-items-center' href=./modules/updatingPath.php?updatedPath=" . $_SESSION["currentPath"] . "/" . $fileArray["name"] . ">";
             } else {

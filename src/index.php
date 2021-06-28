@@ -4,17 +4,10 @@ session_start();
 /* -------------------------------------------------------------------------- */
 /*                              SESSION VARIABLES                             */
 /* -------------------------------------------------------------------------- */
-if (!isset($_SESSION["basePath"])) {
-    $_SESSION["basePath"] = "./root";
-};
-
-// echo getcwd();
-
 if (!isset($_SESSION["currentPath"])) {
-    $_SESSION["currentPath"] = $_SESSION["basePath"];
+    $_SESSION["currentPath"] = "./root";
+    // echo "This is the current path" . $_SESSION["currentPath"];
 }
-
-// echo "This is the current path" . $_SESSION["currentPath"];
 
 // unset($_SESSION);
 // session_destroy();
@@ -30,9 +23,7 @@ if (!isset($_SESSION["currentPath"])) {
     <!-- Dependencies -->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <!-- Link to icons -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
     <!-- Styles -->
@@ -44,9 +35,8 @@ if (!isset($_SESSION["currentPath"])) {
     <main class="d-flex flex-column justify-content-center m-0 mb-4">
         <!-- HEADER -->
         <div class="row header m-0 p-2 d-flex justify-content-between align-items-center">
-            <h2 class="col col-2 logo p-0 m-0">SpamFile</h2>
+            <h2 class="col col-2 logo p-0 m-0">SpamFile!</h2>
             <input type="text" class="col col-7 pl-3 search-bar" placeholder="Search files" autofocus></input>
-            <!-- <button type="button" class="btn btn-primary ajax-test">Primary</button> -->
             <div class="col col-3 top-buttons d-flex justify-content-end align-items-center p-0">
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
                     <label class="custom-upload">
@@ -84,10 +74,9 @@ if (!isset($_SESSION["currentPath"])) {
                 </div>
             </div>
             <div class="col col-3 bottom-block sidebar-right">
-                <!-- <?php
-                        require_once("./modules/filePreview.php");
-                        ?>
-                -->
+                <?php
+                require_once("./modules/filePreview.php");
+                ?>
             </div>
         </div>
     </main>

@@ -12,7 +12,7 @@ if ($parentDir != ".") {
     echo $parentDir;
     echo "</a>";
 } else {
-    echo "<p class='dir mb-0'>";
+    echo "<p class='dir dir-no-click mb-0'>";
     echo "~";
     echo "</p>";
 }
