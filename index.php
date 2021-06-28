@@ -1,4 +1,16 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['currentPath'])) {
+  $_SESSION['currentPath'] = './root';
+};
+
+$currentPath = $_SESSION['currentPath'];
+
+if (isset($_GET["path"])) {
+  $currentPath = $_GET["path"];
+}
+
 include_once './src/newFolder.php';
 
 ?>
@@ -11,7 +23,7 @@ include_once './src/newFolder.php';
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../filesystem-explorer/assets/style/style.css">
+  <link rel="stylesheet" href="./assets/styles/content.css">
   <title>FileSystem Explorer</title>
 </head>
 
@@ -34,23 +46,46 @@ include_once './src/newFolder.php';
   </header>
   <nav class="navbar navbar-dark bg-secondary mx-4 rounded px-3">
     <!-- botones ruta -->
-    <div>
-      <button class="btn btn-danger">BACK</button>
+    <div class="d-flex">
+      <div>
+        <button class="btn btn-danger me-2">BACK</button>
+      </div>
+      <div>
+        <?php
+        $cleanPath = substr($currentPath, strpos($currentPath, "root"));
+        $pathArr = explode("/", $cleanPath);
+
+        foreach ($pathArr as $dir) {
+          $originalPath = substr($currentPath, 0, strpos($currentPath, $dir));
+          if ($originalPath . $dir == $currentPath) {
+            echo "<div class='btn bg-primary text-white'>$dir</div>";
+          } else {
+            echo "<a href='?path={$originalPath}{$dir}'><div class='btn btn-primary me-2'>$dir</div></a>";
+          }
+        }
+        ?>
+      </div>
     </div>
     <!-- botones createfolder && upload -->
-    <div>
-      <button class="btn btn-dark" id="folderBtn">CREATE FOLDER</button>
-      <button class="btn btn-light">UPLOAD FILE</button>
+    <div class="d-flex">
+      <button class="btn btn-dark me-3">CREATE FOLDER</button>
+      <form method="POST" enctype="multipart/form-data" action="uploadFile.php">
+        <label for="uploadFile" class="btn btn-light">UPLOAD FILE</label>
+        <input type="file" name="uploadFile" id="uploadFile" class="modal-hidden" onchange="form.submit()">
+      </form>
     </div>
   </nav>
 
-  <main class="mx-4 text-white">
-    <div>Directories</div>
-    <div>
+  <main class="mx-4">
+    <div class="my-2">Directories</div>
+    <!-- folder container -->
+    <div class="d-flex">
+      <?php require_once('./src/fillContentDirectories.php'); ?>
     </div>
-    <div>Files</div>
-    <div>
-
+    <div class="my-2">Files</div>
+    <!-- files container -->
+    <div class="d-flex">
+      <?php require_once('./src/fillContentFiles.php'); ?>
     </div>
   </main>
 
