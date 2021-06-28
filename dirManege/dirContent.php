@@ -1,12 +1,12 @@
 
 <div>
-    <button onclick="()=>{
-        console.log('hola');
-    }" ><</button>
     <?php
     require('../functions/dirManege.php');
-    $dirToScan= $_GET["dirToRender"];   
-    scanDirsContent($dirToScan);    
+    //unset($_SESSION["actualDir"]);
+    $_SESSION["actualDir"] = $_POST["dirToRender"];   
+    $_SESSION["inside"]=$_POST["inside"]; 
+    scanDirsContent();
+    
     ?>
 </div>
 

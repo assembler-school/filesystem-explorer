@@ -4,10 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- <script lenguage="javascipt" type="text/javascript"> 
-    // window.history.forward();
-    // window.onunload=function(){null};
-    </script> -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,8 +18,9 @@
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand">Navbar</a>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form action="./search/search.php" method="post" class="d-flex">
+            <input class="form-control me-2"  name="file" type="search" placeholder="Search" aria-label="Search">
+            <div id="livesearch"></div>
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
