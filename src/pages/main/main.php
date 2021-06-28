@@ -65,7 +65,48 @@ revisar_si_existe_sesion();
 	<main class="main__container">
 		<aside class="d-flex flex-column justify-content-between">
 			<section id="menu" class="h-100 p-2 overflow-auto">
-				<li>
+				<?php
+				$count = 0;
+				$array_folders = array();
+
+				function listFolders($dir)
+				{
+					$files = array_diff(scandir($dir), array('.', '..'));
+
+					// prevent empty ordered elements
+					if ((count($files) < 1) && ($GLOBALS["count"] == 0)) {
+						// echo 'No folders';
+						return;
+					}
+
+					if ($GLOBALS["count"] != 0) echo '<ul class="interior">';
+					foreach ($files as $file_item) {
+						if (is_dir($dir . '/' . $file_item)) {
+							array_push($GLOBALS["array_folders"], $dir . '/' . $file_item);
+
+							$cnt = $GLOBALS["count"];
+
+							echo '<li>';
+							echo "<input type='checkbox' name='list' id='folder_$cnt'>";
+							echo "<label class='d-flex align-items-center' for='folder_$cnt' onclick='showFiles($cnt)'>";
+							echo "<i class='uil uil-folder me-2'></i>";
+							echo "<div>$file_item</div>";
+							echo "</label>";
+
+							$GLOBALS["count"] += 1;
+							listFolders($dir . '/' . $file_item);
+
+							echo '</li>';
+						}
+					}
+					if ($GLOBALS["count"] != 0) echo '</ul>';
+				}
+
+				$root_dir = 'C:\xampp\htdocs\filesystem-explorer\root\jonathan';
+				listFolders($root_dir, $count);
+
+				?>
+				<!-- <li>
 					<input type="checkbox" name="list" id="folder_1">
 					<label class="d-flex align-items-center" for="folder_1">
 						<i class="uil uil-folder me-2"></i>
@@ -127,7 +168,7 @@ revisar_si_existe_sesion();
 							</ul>
 						</li>
 					</ul>
-				</li>
+				</li> -->
 			</section>
 			<div class="d-flex flex-column justify-content-evenly px-2 trash__wrapper">
 				<div class="d-flex align-items-center trash__select">
@@ -181,6 +222,7 @@ revisar_si_existe_sesion();
 		</section>
 	</main>
 	<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="main.js"></script>
 </body>
 
 </html>
