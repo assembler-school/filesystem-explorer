@@ -79,11 +79,13 @@ header("Location:./index.php");
 ## TODO
 
 ### Files
-* Calculate MB
+* (DONE) Calculate MB
 * Rename folders
 * Clean .scss
 * Solve whitespaces in file names
 * Use `embed` tag to preview files.
+* Not upload if there are no files
+* Copy-copy (...) folder name: alert
 
 ### Paths
 * Get all files in all directories:

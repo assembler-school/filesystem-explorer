@@ -2,7 +2,7 @@
 // session_start();
 
 $dirsInside = array_filter(glob($_SESSION["currentPath"] . "/*"), "is_dir");
-$_SESSION["currentDirectories"] = $dirsInside;
+$_SESSION["currentDirectories"] = [];
 $parentDirRaw = $_SESSION["currentPath"];
 $explodedDirRaw = explode("/", $parentDirRaw);
 $parentDir = $explodedDirRaw[count($explodedDirRaw) - 2];
@@ -23,6 +23,9 @@ if ($dirsInside) {
     foreach ($dirsInside as $dir) {
         $dirExploded = explode("/", $dir);
         $dirName = end($dirExploded);
+
+        // Creating array with folder names
+        array_push($_SESSION["currentDirectories"], $dirName);
 
         // Directory link
         echo "<a class='dir dir-link dir-child' href=./modules/updatingPath.php?updatedPath=" . $_SESSION["currentPath"] . "/" . $dirName . ">";

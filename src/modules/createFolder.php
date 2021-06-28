@@ -3,10 +3,14 @@ session_start();
 
 $newFolderName = $_POST["directoryName"];
 $directoriesFolder = $_SESSION["currentDirectories"];
+$newDirectoryPath = dirname(getcwd()) . "/" . $_SESSION["currentPath"] . "/" . $newFolderName;
 
-echo "<pre>" . print_r($directoriesFolder, true) . "</pre>";
+echo $newDirectoryPath;
 
+if (file_exists($newDirectoryPath)) {
+    mkdir($newDirectoryPath . "-copy");
+} else {
+    mkdir($newDirectoryPath);
+}
 
-
-
-echo $newFolderName;
+header("Location:../index.php");

@@ -5,7 +5,7 @@ session_start();
 /*                              SESSION VARIABLES                             */
 /* -------------------------------------------------------------------------- */
 if (!isset($_SESSION["currentPath"])) {
-    $_SESSION["currentPath"] = "./root";
+    $_SESSION["currentPath"] = "root";
     // echo "This is the current path" . $_SESSION["currentPath"];
 }
 
