@@ -64,12 +64,13 @@
             if(is_dir($dirPath."/".$fileName)){
 
                 echo "
-                    <a href='./includes/manageDirItems.php?updateDir'>
-                        <div class ='fileWrapper'>"
+                    <div class ='fileWrapper'>
+                        <a class='renderUpdateLink' href='./includes/manageDirItems.php?updateDir'>"
                             .$icon.
                             "<div class='mainCenter__fileName'>".$fileName."</div>
-                        </div>
-                    </a>
+                        </a>
+                        <i class='renderOptions bi bi-three-dots-vertical'></i>
+                    </div>
                 ";
 
             }else{
@@ -78,9 +79,10 @@
                     <div class ='fileWrapper'>"
                         .$icon.
                         "<div class='mainCenter__fileName'>".$fileName."</div>
+                        <i class='renderOptions bi bi-three-dots-vertical'></i>
                     </div>
                 ";
-                
+
             }
         }
     }

@@ -245,6 +245,11 @@ main {
   border-bottom-color: rgb(197, 197, 197);
 }
 
+.renderUpdateLink {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 .mainCenter__fileIcon {
   width: 4%;
 }
