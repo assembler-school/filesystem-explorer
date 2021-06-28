@@ -15,7 +15,7 @@ if (isset($_FILES['file'])) {
 
     // Set allowed extensions 
     $allowed = array('doc', 'csv', 'jpg', 'png', 'txt', 'ppt', 'odt', 'pdf', 'zip', 'rar', 'exe', 'svg', 'mp3', 'mp4');
-
+    
     if (in_array($file_ext, $allowed)) {
         if ($file_error == 0) {
             if ($file_size <= 2097152) {
