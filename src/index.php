@@ -1,5 +1,5 @@
 <?php
-header("Location:./pages/main/main.php"); ?>
+header("Location:./pages/login/login.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
