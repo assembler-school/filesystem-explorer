@@ -1,11 +1,7 @@
 <?php
-<<<<<<< HEAD
 // $rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
-$rootPath = "C:/xampp/htdocs/Assembler/filesystem-explorer/root";
+ $rootPath = "C:/xampp/htdocs/Assembler/filesystem-explorer/root";
 $currentPath = $rootPath;
-=======
-$rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
->>>>>>> 91dda736af90ad0fb9c121a0b2ebeea7c600b18b
 
 require_once("./src/modules/set_dir.php");
 
