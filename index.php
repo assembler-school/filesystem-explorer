@@ -1,8 +1,8 @@
 <?php
-$currentDir = "root/folder2";
+$currentPath = "root/folder2";
 
 if (isset($_GET["path"])) {
-  $currentDir = $_GET["path"];
+  $currentPath = $_GET["path"];
 }
 ?>
 
@@ -42,11 +42,11 @@ if (isset($_GET["path"])) {
       </div>
       <div>
         <?php
-        $pathArr = explode("/", $currentDir);
+        $pathArr = explode("/", $currentPath);
 
         foreach ($pathArr as $dir) {
-          $originalPath = substr($currentDir, 0, strpos($currentDir, $dir));
-          if ($originalPath . $dir == $currentDir) {
+          $originalPath = substr($currentPath, 0, strpos($currentPath, $dir));
+          if ($originalPath . $dir == $currentPath) {
             echo "<div class='btn bg-primary text-white'>$dir</div>";
           } else {
             echo "<a href='?path={$originalPath}{$dir}'><div class='btn btn-primary me-2'>$dir</div></a>";
