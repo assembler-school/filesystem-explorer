@@ -164,18 +164,18 @@ revisar_si_existe_sesion();
 				<div class="container-fluid folder_container">
 					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
 						<?php
-      require_once "../../php/local_files/read_local_files.php";
-      read_local_folders();
-      ?>
+						require_once "../../php/local_files/read_local_files.php";
+						read_local_folders();
+						?>
 					</div>
 				</div>
 			<div class="files__wrapper">
 				<div class="container-fluid file_container">
 					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
 						<?php
-      require_once "../../php/local_files/read_local_files.php";
-      read_local_files();
-      ?>
+						// require_once "../../php/local_files/read_local_files.php";
+						read_local_files();
+						?>
 					</div>
 				</div>
 		</section>
