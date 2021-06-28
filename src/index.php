@@ -11,9 +11,8 @@ if (!isset($_SESSION["currentPath"])) {
 
 if (!isset($_SESSION["currentDirectories"])) {
     $_SESSION["currentDirectories"] = [];
-    // echo "This is the current path" . $_SESSION["currentPath"];
+    // echo "These are the current directories" . $_SESSION["currentDirectories"];
 }
-
 
 
 // unset($_SESSION);

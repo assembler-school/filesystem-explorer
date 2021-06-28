@@ -55,8 +55,11 @@ body main .bottom .sidebar-left .dir-child {
 }
 body main .bottom .sidebar-left .dir-link:hover {
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
   color: gray;
+}
+body main .bottom .sidebar-left .current-dir {
+  font-weight: bold;
 }
 body main .bottom .central {
   outline: 2px black solid;
@@ -134,7 +137,7 @@ body main .bottom .sidebar-right .preview-wrapper .preview-info * {
   padding: 0;
 }
 body main .bottom .sidebar-right .preview-wrapper .preview-info hr {
-  margin-bottom: 7px;
+  margin-bottom: 5px;
 }
 body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-title {
   font-weight: bold;
@@ -145,7 +148,7 @@ body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-text {
 body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-title,
 body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-text {
   padding: 0;
-  margin-bottom: 0;
+  margin-bottom: 5px;
 }
 body .drop-wrapper {
   width: 90%;

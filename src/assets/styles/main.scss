@@ -67,8 +67,11 @@ body {
         }
         .dir-link:hover {
           cursor: pointer;
-          text-decoration: underline;
+          text-decoration: none;
           color: gray;
+        }
+        .current-dir {
+          font-weight: bold;
         }
       }
 
@@ -156,7 +159,7 @@ body {
               padding: 0;
             }
             hr {
-              margin-bottom: 7px;
+              margin-bottom: 5px;
             }
             .preview-title {
               font-weight: bold;
@@ -168,7 +171,7 @@ body {
             .preview-text {
               // max-height: 15px;
               padding: 0;
-              margin-bottom: 0;
+              margin-bottom: 5px;
             }
           }
         }
