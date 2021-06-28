@@ -17,13 +17,14 @@ body {
   main {
     border: 3px solid black;
     border-radius: 5px;
-    height: 60%;
+    height: 64%;
     width: 90%;
     background-color: white;
 
     .header {
       height: 10%;
       border-bottom: 2px black solid;
+      margin-bottom: 25px;
 
       .search-bar {
         border: none;
@@ -46,22 +47,29 @@ body {
     }
     .bottom {
       flex-grow: 1;
+      .bottom-block {
+        max-height: 525px;
+        height: 100%;
+      }
 
+      // Directories
       .sidebar-left {
         .dir {
           margin: 0;
           color: black;
           text-decoration: none;
-          cursor: pointer;
         }
         .dir-child {
           margin-left: 20px;
         }
         .dir-link:hover {
+          cursor: pointer;
           text-decoration: underline;
           color: gray;
         }
       }
+
+      // Files
       .central {
         outline: 2px rgb(0, 0, 0) solid;
 
@@ -104,14 +112,6 @@ body {
                 max-height: 22px;
                 text-overflow: ellipsis;
                 overflow: hidden;
-
-                // Directory links
-                a {
-                  color: black;
-                }
-                a:hover {
-                  color: gray;
-                }
               }
             }
 
@@ -128,9 +128,48 @@ body {
         }
       }
 
-      .bottom-block {
-        max-height: 490px;
+      // File preview
+      .sidebar-right {
         height: 100%;
+        // background-color: red;
+        .preview-wrapper {
+          .icon-wrapper {
+            margin-bottom: 20px;
+            .preview-icon {
+              font-size: 120px;
+            }
+            .badge-dark {
+              background-color: var(--bs-dark);
+              .preview-link {
+                color: white;
+                text-decoration: none;
+              }
+            }
+          }
+          .preview-info {
+            margin-bottom: 10px;
+            font-size: 10px;
+            height: fit-content;
+            * {
+              padding: 0;
+            }
+            hr {
+              margin-bottom: 7px;
+            }
+            .preview-title {
+              font-weight: bold;
+            }
+            .preview-text {
+              text-overflow: ellipsis;
+            }
+            .preview-title,
+            .preview-text {
+              // max-height: 15px;
+              padding: 0;
+              margin-bottom: 0;
+            }
+          }
+        }
       }
     }
   }

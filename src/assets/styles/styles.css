@@ -16,13 +16,14 @@ body {
 body main {
   border: 3px solid black;
   border-radius: 5px;
-  height: 60%;
+  height: 64%;
   width: 90%;
   background-color: white;
 }
 body main .header {
   height: 10%;
   border-bottom: 2px black solid;
+  margin-bottom: 25px;
 }
 body main .header .search-bar {
   border: none;
@@ -37,16 +38,20 @@ body main .header .top-buttons form .custom-upload input {
 body main .bottom {
   flex-grow: 1;
 }
+body main .bottom .bottom-block {
+  max-height: 525px;
+  height: 100%;
+}
 body main .bottom .sidebar-left .dir {
   margin: 0;
   color: black;
   text-decoration: none;
-  cursor: pointer;
 }
 body main .bottom .sidebar-left .dir-child {
   margin-left: 20px;
 }
 body main .bottom .sidebar-left .dir-link:hover {
+  cursor: pointer;
   text-decoration: underline;
   color: gray;
 }
@@ -93,12 +98,6 @@ body main .bottom .central .central-files .file-item .icon-and-name .file-name {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-body main .bottom .central .central-files .file-item .icon-and-name .file-name a {
-  color: black;
-}
-body main .bottom .central .central-files .file-item .icon-and-name .file-name a:hover {
-  color: gray;
-}
 body main .bottom .central .central-files .file-item .file-text {
   font-size: 15px;
   margin-bottom: 0;
@@ -107,9 +106,43 @@ body main .bottom .central .central-files .file-item .file-text {
 body main .bottom .central .central-files .file-item:hover {
   background-color: #f0f0f0;
 }
-body main .bottom .bottom-block {
-  max-height: 490px;
+body main .bottom .sidebar-right {
   height: 100%;
+}
+body main .bottom .sidebar-right .preview-wrapper .icon-wrapper {
+  margin-bottom: 20px;
+}
+body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .preview-icon {
+  font-size: 120px;
+}
+body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .badge-dark {
+  background-color: var(--bs-dark);
+}
+body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .badge-dark .preview-link {
+  color: white;
+  text-decoration: none;
+}
+body main .bottom .sidebar-right .preview-wrapper .preview-info {
+  margin-bottom: 10px;
+  font-size: 10px;
+  height: fit-content;
+}
+body main .bottom .sidebar-right .preview-wrapper .preview-info * {
+  padding: 0;
+}
+body main .bottom .sidebar-right .preview-wrapper .preview-info hr {
+  margin-bottom: 7px;
+}
+body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-title {
+  font-weight: bold;
+}
+body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-text {
+  text-overflow: ellipsis;
+}
+body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-title,
+body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-text {
+  padding: 0;
+  margin-bottom: 0;
 }
 body .drop-wrapper {
   width: 90%;
