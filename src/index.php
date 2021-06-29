@@ -105,9 +105,9 @@ require_once("./modules/searchFile.php");
         </div>
     </main>
 
-    <!-- <div class="drop-wrapper d-flex justify-content-center align-items-center">
+    <div class="drop-wrapper d-flex justify-content-center align-items-center">
         <h4>Drop me a file</h4>
-    </div> -->
+    </div>
 
     <!-- -------------------- -->
     <!-- MODALS -->
