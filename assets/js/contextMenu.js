@@ -48,11 +48,13 @@ const rClosing = [rShadow, rCancelBtn, rCrossBtn];
 const rModal = document.getElementById("formRename");
 
 const modalRenameInput = document.getElementById("renameInput");
+const oldNameInput = document.getElementById("oldNameInput");
 
 document.getElementById("renameOption").addEventListener("click", function (e) {
   rModal.classList.toggle("hidden");
   rShadow.classList.toggle("hidden");
   modalRenameInput.value = e.target.getAttribute("data-title");
+  oldNameInput.value = e.target.getAttribute("data-title");
   modalRenameInput.select();
 });
 
