@@ -80,11 +80,11 @@
     <!-- The file size -->
     <td class="col col-2"><?php
                           if (!is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) {
-                            if (filesize($_SESSION["currentPath"] . "/" . $filesDir[$i]) < 1000) {
-                              echo (filesize($_SESSION["currentPath"] . "/" . $filesDir[$i]));
+                            if (filesize($_SESSION["currentPath"] . "/" . $filesDir[$i]) < 1000000) {
+                              echo (number_format((filesize($_SESSION["currentPath"] . "/" . $filesDir[$i])) / 1000, 2));
                               echo " kB";
                             } else {
-                              echo (number_format((filesize($_SESSION["currentPath"] . "/" . $filesDir[$i])) / 1000, 2));
+                              echo (number_format((filesize($_SESSION["currentPath"] . "/" . $filesDir[$i])) / 1000000, 2));
                               echo " MB";
                             }
                           }
