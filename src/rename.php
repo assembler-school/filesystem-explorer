@@ -17,12 +17,16 @@ if (isset($_POST['renameInput'])) {
         $adaptedFileName = $newFileName;
         while (in_array($adaptedFileName, $directory)) {
             $n++;
-            $adaptedFileName = $file_parts['filename'] . "(" . $n . ")." . $file_parts['extension'];
+            if ($file_parts['extension']) {
+                $adaptedFileName = $file_parts['filename'] . "(" . $n . ")." . $file_parts['extension'];
+            } else {
+                $adaptedFileName = $file_parts['filename'] . "(" . $n . ")";
+            }
         }
         rename("../" . $currentPath . "/" . $oldFileName, "../" . $currentPath . "/" . $adaptedFileName);
     } else {
         rename("../" . $currentPath . "/" . $oldFileName, "../" . $currentPath . "/" . $newFileName);
     }
 
-    header("Location: ../index.php?exit");
+    header("Location: ../index.php");
 }

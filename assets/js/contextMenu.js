@@ -39,31 +39,3 @@ files.forEach(function (file) {
 folders.forEach(function (folder) {
   folder.addEventListener("contextmenu", customContextMenu);
 });
-
-/* Rename modal */
-const rShadow = document.getElementById("shadowRename");
-const rCancelBtn = document.getElementById("modalRenameCancel");
-const rCrossBtn = document.querySelector("#formRename .btn-x");
-const rClosing = [rShadow, rCancelBtn, rCrossBtn];
-const rModal = document.getElementById("formRename");
-
-const modalRenameInput = document.getElementById("renameInput");
-const oldNameInput = document.getElementById("oldNameInput");
-
-document.getElementById("renameOption").addEventListener("click", function (e) {
-  rModal.classList.toggle("hidden");
-  rShadow.classList.toggle("hidden");
-  modalRenameInput.value = e.target.getAttribute("data-title");
-  oldNameInput.value = e.target.getAttribute("data-title");
-  modalRenameInput.select();
-});
-
-rClosing.forEach((element) => {
-  element.addEventListener("click", function (e) {
-    e.preventDefault();
-    rModal.classList.toggle("hidden");
-    rShadow.classList.toggle("hidden");
-    modalRenameInput.value = e.target.getAttribute("data-title");
-    modalRenameInput.select();
-  });
-});

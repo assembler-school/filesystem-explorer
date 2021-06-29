@@ -91,6 +91,7 @@ if (isset($_GET["path"])) {
 
   <script src="../filesystem-explorer/assets/js/modal.js" type="module"></script>
   <script src="../filesystem-explorer/assets/js/contextMenu.js" type="module"></script>
+  <script src="../filesystem-explorer/assets/js/contextOptions.js" type="module"></script>
 </body>
 
 </html>
