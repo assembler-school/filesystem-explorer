@@ -52,7 +52,7 @@ if (!isset($_SESSION["currentDirectories"])) {
             <div class="col col-3 top-buttons d-flex justify-content-end align-items-center p-0">
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
                     <label class="custom-upload">
-                        <input value="New file" type="file" name="uploadedFile" class="btn btn-light" />
+                        <input value="New file" type="file" id="uploadedFile" name="uploadedFile" class="btn btn-light" />
                         <div class="btn btn-outline-dark">Choose file</div>
                     </label>
                     <input value="Upload" type="submit" class="btn btn-dark" />
@@ -103,7 +103,7 @@ if (!isset($_SESSION["currentDirectories"])) {
 
     <!-- Create directory -->
     <div class="modal fade" id="newDirectoryModal" tabindex="-1" aria-labelledby="newDirectoryLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="newDirectoryLabel">Add new folder</h5>
@@ -125,7 +125,7 @@ if (!isset($_SESSION["currentDirectories"])) {
 
     <!-- Edit file -->
     <div class="modal fade" id="editFileModal" role="dialog" tabindex="-1" aria-labelledby="editFileLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editFileLabel">New file name</h5>
@@ -148,6 +148,7 @@ if (!isset($_SESSION["currentDirectories"])) {
 
 
     <script>
+        // Passing data to the modal
         $('#editFileModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var recipient = button.data('whatever')
@@ -155,6 +156,9 @@ if (!isset($_SESSION["currentDirectories"])) {
             console.log("This is the recipient ", recipient);
             modal.find('.modal-body form #oldName').val(recipient);
         })
+
+        // Disabling upload button
+        console.log($("#uploadedFile").files.length);
     </script>
 </body>
 
