@@ -64,7 +64,7 @@
             if(is_dir($dirPath."/".$fileName)){
 
                 echo "
-                    <div class ='fileWrapper'>
+                    <div class ='fileWrapper' data-id='".uniqid()."'>
                         <a class='renderUpdateLink' href='./includes/manageDirItems.php?updateDir'>"
                             .$icon.
                             "<div class='mainCenter__fileName'>".$fileName."</div>
@@ -76,7 +76,7 @@
             }else{
 
                 echo "
-                    <div class ='fileWrapper'>"
+                    <div class ='fileWrapper' data-id='".uniqid()."'>"
                         .$icon.
                         "<div class='mainCenter__fileName'>".$fileName."</div>
                         <i id='".$fileName."' class='renderOptions bi bi-three-dots-vertical'></i>
