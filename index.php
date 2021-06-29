@@ -55,7 +55,7 @@ require_once("./src/modules/set_dir.php");
             <th class="col col-3" scope="col">File name</th>
             <th class="col col-2" scope="col">Creation date</th>
             <th class="col col-2" scope="col">Modified date</th>
-            <th class="col col-1" scope="col">Ext</th>
+            <th class="col col-1" scope="col">Type</th>
             <th class="col col-2" scope="col">Size</th>
             <th class="col col-2" scope="col"></th>
           </tr>
