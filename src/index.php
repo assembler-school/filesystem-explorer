@@ -26,10 +26,8 @@ if (!isset($_SESSION["isSearching"])) {
 
 require_once("./modules/searchFile.php");
 
-
 // unset($_SESSION);
 // session_destroy();
-
 ?>
 
 <!DOCTYPE html>
