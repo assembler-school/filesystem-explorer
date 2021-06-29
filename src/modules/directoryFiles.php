@@ -5,7 +5,7 @@ require_once("./modules/fileStats.php");
 // Session variables
 $matchedFiles = $_SESSION["matchedFiles"];
 
-//Display in central (DIRECTORY or SEARCH)
+// DIRECTORY or SEARCH
 if ($_SESSION["isSearching"]) {
     foreach ($matchedFiles as $matchedFile) {
         $fileArray = getFileStats($matchedFile["path"], $matchedFile["name"]);

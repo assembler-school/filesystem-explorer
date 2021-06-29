@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-
-
-
 /* -------------------------------------------------------------------------- */
 /*                              SESSION VARIABLES                             */
 /* -------------------------------------------------------------------------- */
@@ -12,7 +9,7 @@ if (!isset($_SESSION["currentPath"])) {
 }
 
 if (!isset($_SESSION["currentDirectories"])) {
-    $_SESSION["currentDirectories"] = [];
+    $_SESSION["currentDirectories"] = array();
 }
 
 if (!isset($_SESSION["searchFiles"])) {
@@ -28,8 +25,6 @@ if (!isset($_SESSION["isSearching"])) {
 }
 
 require_once("./modules/searchFile.php");
-
-
 
 
 // unset($_SESSION);
@@ -65,8 +60,8 @@ require_once("./modules/searchFile.php");
         <!-- HEADER -->
         <div class="row header m-0 p-2 d-flex justify-content-between align-items-center">
             <h2 class="col col-2 logo p-0 m-0">SpamFile!</h2>
-            <form class="col col-7 p-0" action="./modules/searchSubmit.php" method="POST" enctype="multipart/form-data">
-                <input type="text" name="searchValue" class="search-bar px-3" placeholder="Search files" autofocus></input>
+            <form class="col col-7 p-0" id="searchForm" action="./modules/searchSubmit.php" method="POST" enctype="multipart/form-data">
+                <input type="text" id="searchInput" name="searchValue" class="search-bar px-3" onchange=submit() placeholder="Search files" autofocus></input>
             </form>
             <div class="col col-3 top-buttons d-flex justify-content-end align-items-center p-0">
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
@@ -112,9 +107,9 @@ require_once("./modules/searchFile.php");
         </div>
     </main>
 
-    <div class="drop-wrapper d-flex justify-content-center align-items-center">
+    <!-- <div class="drop-wrapper d-flex justify-content-center align-items-center">
         <h4>Drop me a file</h4>
-    </div>
+    </div> -->
 
     <!-- -------------------- -->
     <!-- MODALS -->
@@ -178,6 +173,16 @@ require_once("./modules/searchFile.php");
 
         // Disabling upload button
         // console.log($("#uploadedFile").files.length);
+
+        // Submit search on change
+        // let searchText = "";
+        // $(document).ready(function() {
+        //     $('#searchInput').on('keypress', function() {
+        //         if ($('#searchInput').val() == "") {
+        //             document.forms["searchForm"].submit();
+        //         }
+        //     });
+        // });
     </script>
 </body>
 
