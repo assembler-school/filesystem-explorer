@@ -70,9 +70,7 @@ require_once("./src/modules/set_dir.php");
   ?>
   <aside class="aside_left">
     <form action="" method="POST" enctype="multipart/form-data">
-      <input class="text-center align-items-center" type="file" name="file">
-      <p>+</p><br>
-      <input class="new_fileBtn" type="submit" value="+">
+      <input class="text-center new_fileBtn align-items-center" type="file" name="file" onchange="form.submit()">
     </form>
   </aside>
 </body>
