@@ -1,13 +1,19 @@
 <?php
   session_start();
     function makedir(){ 
+      if($_SESSION["path"]){
+        $path=$_SESSION["path"];
+        echo $path;
+        mkdir(".$path"); 
+      }else{
       $dirname=$_POST["dirname"];
         if(is_dir("../directories/$dirname")){
           $_SESSION["existingFolder"]= "this folder already exist";   
         }else{
           mkdir("../directories/$dirname"); 
           unset($_SESSION["existingFolder"]); 
-        }          
+        } 
+      }         
         header("Location:../root.php");    
     }
 

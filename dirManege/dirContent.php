@@ -5,7 +5,10 @@
     }" ><</button>
     <?php
     require('../functions/dirManege.php');
-    $dirToScan= $_GET["dirToRender"];   
+    $dirToScan= $_POST["dirToRender"];   
+    $path= $_POST["path"];
+    $_SESSION["path"]=$path;
+    echo $path;
     scanDirsContent($dirToScan);    
     ?>
 </div>
