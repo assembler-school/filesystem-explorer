@@ -55,15 +55,15 @@ function directoryTree()
             if (is_dir($dir . '/' . $node)) {
                 echo "<li class='w-100'>";
                 if (directoryHasDirectories($dir . '/' . $node)) {
-                    echo "<a href='#" . $dirToId . '-' . $node . "' data-bs-toggle='collapse'  role='button' aria-expanded='false' aria-controls='Home' class='nav-link px-0 text-white folder-toggle'>" . $folderIcon;
-                    echo "<span class='ms-1 d-none d-sm-inline'>";
+                    echo "<a href='#" . $dirToId . '-' . $node . "' data-bs-toggle='collapse'  role='button' aria-expanded='false' aria-controls='Home' class='nav-link px-0 text-white folder-toggle'>" . $folderIcon . "</a>";
+                    echo "<a href ='./modules/open-directory.php?directory=" . $dir . '/' . $node . "' class='px-0 text-white' ><span class='ms-1 d-none d-sm-inline'>";
                     echo $node;
                     echo "</span></a>";
                     echo "<ul class='collapse nav flex-column ms-1' id='" . $dirToId  . '-' . $node . "' data-bs-parent='#" . $dirToId . "'>";
                     makeRecursiveTree($dir . '/' . $node);
                     echo "</ul>";
                 } else {
-                    echo "<a href='#' data-bs-toggle='collapse' class='nav-link px-0 text-white'>" . $folderIcon;
+                    echo "<a href='./modules/open-directory.php?directory=" . $dir . '/' . $node . "' class='nav-link px-0 text-white ms-4'>" . $folderIcon;
                     echo "<span class='ms-1 d-none d-sm-inline'>";
                     echo $node;
                     echo "</span></a>";
