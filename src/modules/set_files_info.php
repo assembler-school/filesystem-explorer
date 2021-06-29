@@ -6,8 +6,9 @@ $startRoothPath = "./";
 for ($i = $startIndexRootPath; $i < count($expPath); $i++) {
   $startRoothPath .=  $expPath[$i] . "/";
 }
-echo $startRoothPath;
 ?>
+
+
 <!-- For each file or directory on the current folder -->
 <?php for ($i = 2; $i < count($filesDir); $i++) : ?>
   <tr>
@@ -38,15 +39,21 @@ echo $startRoothPath;
             break;
           case "jpg":
             echo "<i class='fileIcon far fa-file-image'></i> ";
-            echo $filesDir[$i];
+        ?>
+            <a data-img="<?php echo ($startRoothPath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#imgModal'><?php echo $filesDir[$i]; ?></a>
+          <?php
             break;
           case "png":
             echo "<i class='fileIcon far fa-file-image'></i> ";
-            echo $filesDir[$i];
+          ?>
+            <a data-img="<?php echo ($startRoothPath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#imgModal'><?php echo $filesDir[$i]; ?></a>
+          <?php
             break;
           case "svg":
             echo "<i class='fileIcon far fa-file-image'></i> ";
-            echo $filesDir[$i];
+          ?>
+            <a data-img="<?php echo ($startRoothPath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#imgModal'><?php echo $filesDir[$i]; ?></a>
+          <?php
             break;
           case "ppt":
             echo "<i class='fileIcon far fa-file-powerpoint'></i> ";
@@ -86,7 +93,7 @@ echo $startRoothPath;
             break;
           case "mp4":
             echo "<i class='fileIcon far far fa-file-video'></i> ";
-        ?>
+          ?>
             <a data-video="<?php echo ($startRoothPath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#videoModal'><?php echo $filesDir[$i]; ?></a>
         <?php
             break;

@@ -127,12 +127,13 @@ td{
   color: black;
   font-size: 15px;
 }
-.folder-name{
+.folder-name, .fileA{
   text-decoration: none;
   color: black;
 }
-.folder-name:hover{
+.folder-name:hover, .fileA:hover{
   color: $primary-color;
+  cursor: pointer;
 }
 .fileIcon{
   color:$secondary-color;

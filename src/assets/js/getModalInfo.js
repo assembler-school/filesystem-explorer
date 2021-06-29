@@ -1,6 +1,7 @@
 const deleteModal = document.getElementById('deleteFileModal');
 const renameModal = document.getElementById('renameFolderModal');
 const videoModal = document.getElementById('videoModal');
+const imgModal = document.getElementById('imgModal');
 
 deleteModal.addEventListener('show.bs.modal', function (e) {
   modalFilePath = e.relatedTarget.getAttribute('data-delete');
@@ -17,18 +18,39 @@ renameModal.addEventListener('show.bs.modal', function (e) {
 videoModal.addEventListener('show.bs.modal', function (e) {
   videoPath = e.relatedTarget.getAttribute('data-video');
   videoParent = document.getElementById('colVideo');
-  console.log(videoPath);
 
+  // If we have the modal empty, we fill with the video or we replace with the new one
   if (videoParent.childElementCount === 0) {
     var video = document.createElement('video');
     video.src = videoPath;
-    video.setAttribute('controls', 'width=300');
+    video.setAttribute('controls', 'controls');
+    video.setAttribute('style', 'max-width=300px');
     document.getElementById('colVideo').appendChild(video);
   } else {
     videoParent.innerHTML = '';
     var video = document.createElement('video');
     video.src = videoPath;
-    video.setAttribute('controls', 'width=300', 'height=300');
+    video.setAttribute('controls', 'controls');
+    video.setAttribute('style', 'max-width=300px');
     document.getElementById('colVideo').appendChild(video);
   }
 })
+
+imgModal.addEventListener('show.bs.modal', function (e) {
+  imgPath = e.relatedTarget.getAttribute('data-img');
+  imgParent = document.getElementById('colImg');
+  console.log(imgPath);
+
+  // If we have the modal empty, we fill with the picture or we replace with the new one
+  if (imgParent.childElementCount === 0) {
+    var img = document.createElement('img');
+    img.src = imgPath;
+    document.getElementById('colImg').appendChild(img);
+  } else {
+    imgParent.innerHTML = '';
+    var img = document.createElement('img');
+    img.src = imgPath;
+    document.getElementById('colImg').appendChild(img);
+  }
+})
+

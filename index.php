@@ -4,13 +4,9 @@
 $rootPath = getcwd();
 $rootPath .= "/root";
 $rootPath = str_replace("\\", "/", $rootPath);
-echo $rootPath;
 session_start();
 require("./src/modules/upload.php");
 require_once("./src/modules/set_dir.php");
-
-// echo $_SESSION["currentPath"];
-// echo "<br/>";
 
 ?>
 
