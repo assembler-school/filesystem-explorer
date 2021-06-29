@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once("./modules/fileStats.php");
 
 /* -------------------------------------------------------------------------- */
 /*                              SESSION VARIABLES                             */
@@ -19,21 +20,16 @@ if (!isset($_SESSION["searchFiles"])) {
 }
 
 
+
 // unset($_SESSION);
 // session_destroy();
 
+
 $currPath = $_SESSION["currentPath"];
-
-
-// if (!is_dir($currPath)) {
-//     // unlink($currPath);
-//     echo "File executed: $currPath";
-// } else {
-//     
-// }
 
 $_SESSION["searchFiles"] = array();
 searchFilesInside($currPath);
+
 
 
 function searchFilesInside($path_file)
@@ -41,16 +37,21 @@ function searchFilesInside($path_file)
     if (is_dir($path_file)) {
         $files = array_diff(scandir($path_file), [".", "..", ".DS_Store"]);
         foreach ($files as $file) {
+
             searchFilesInside("$path_file/$file");
         }
-        // echo "Directory: " . $path_file . "<br>";
-        array_push($_SESSION["searchFiles"], $path_file);
+        $pathArray = explode("/", $path_file);
+        $fileName = end($pathArray);
+        $fileArray = getFileStats($path_file, $fileName);
+        array_push($_SESSION["searchFiles"], $fileArray);
     } else {
-        // echo "File: " . $path_file . "<br>";
-        array_push($_SESSION["searchFiles"], $path_file);
+        $pathArray = explode("/", $path_file);
+        $fileName = end($pathArray);
+        $fileArray = getFileStats($path_file, $fileName);
+        array_push($_SESSION["searchFiles"], $fileArray);
     }
 }
-echo "<pre>" . print_r($_SESSION["searchFiles"], true) . "</pre>";
+// echo "<pre>" . print_r($_SESSION["searchFiles"], true) . "</pre>";
 
 
 ?>
