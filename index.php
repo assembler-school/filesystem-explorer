@@ -1,5 +1,10 @@
 <?php
-$rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
+// $rootPathManual = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
+
+$rootPath = getcwd();
+$rootPath .= "/root";
+$rootPath = str_replace("\\", "/", $rootPath);
+echo $rootPath;
 session_start();
 require("./src/modules/upload.php");
 require_once("./src/modules/set_dir.php");
@@ -20,7 +25,7 @@ require_once("./src/modules/set_dir.php");
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/ecea200bd3.js" crossorigin="anonymous"></script>
-  <link href="node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link href="node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
   <link rel="stylesheet" href="./src/assets/css/styles.css">
 </head>
 
@@ -70,13 +75,13 @@ require_once("./src/modules/set_dir.php");
   ?>
   <aside class="aside_left">
     <form action="" method="POST" enctype="multipart/form-data">
-      <input class="text-center align-items-center" type="file" name="file" onchange="form.submit()">
+      <input class="text-center align-items-center" type="file" name="file" onchange="form.submit()" style="display: none">
       <!-- <input class="new_fileBtn" type="submit" value="+" style="display: none"> -->
     </form>
   </aside>
 </body>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
-<script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="src/assets/js/getModalInfo.js"></script>
 
 </html>
