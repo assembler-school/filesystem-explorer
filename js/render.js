@@ -53,7 +53,7 @@ function hideCreateFolderForm() {
 }
 
 function showFileDirOptions(event) {
-  getOldName(event);
+  getCurrentName(event);
   getWindowXY(event);
   $("#fileDirOptionsPanel").css("top", relativeY);
   $("#fileDirOptionsPanel").css("left", relativeX);
@@ -85,7 +85,7 @@ function getWindowXY(event) {
   relativeY = event.pageY;
 }
 
-function getOldName(event) {
+function getCurrentName(event) {
   console.log("event.target.id -->", event.target.id);
   console.log("$('#oldName') -->", $("#oldName"));
   $("#oldName").attr("value", event.target.id);
