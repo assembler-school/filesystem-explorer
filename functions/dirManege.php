@@ -50,8 +50,6 @@
       $dirs=array_diff($allDirs,array('.','..'));
       echo $_SESSION["actualDir"];
    
-
-      // $_SESSION["dirs"]=$dirs;
       foreach($dirs as $item){
         if(is_dir("$path/$item")){
           echo "<div id='$item' class='folder'>";
