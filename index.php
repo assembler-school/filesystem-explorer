@@ -52,11 +52,12 @@ require_once("./src/modules/set_dir.php");
       <table class="table">
         <thead>
           <tr>
-            <th class="col col-4" scope="col">File name</th>
+            <th class="col col-3" scope="col">File name</th>
             <th class="col col-2" scope="col">Creation date</th>
             <th class="col col-2" scope="col">Modified date</th>
-            <th class="col col-2" scope="col">Extension</th>
+            <th class="col col-1" scope="col">Ext</th>
             <th class="col col-2" scope="col">Size</th>
+            <th class="col col-2" scope="col"></th>
           </tr>
         </thead>
         <tbody class="table-content">
@@ -66,17 +67,18 @@ require_once("./src/modules/set_dir.php");
     </div>
   </main>
   <?php
-  require("./src/modules/upload.php");
+  require("./src/modules/modal.php");
   ?>
-  </main>
   <aside class="aside_left">
-    <form action="index.php" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
       <input class="text-center align-items-center" type="file" name="file">
       <p>+</p><br>
       <input class="new_fileBtn" type="submit" value="+">
     </form>
   </aside>
-  <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="src/assets/js/getModalInfo.js"></script>
 
 </html>

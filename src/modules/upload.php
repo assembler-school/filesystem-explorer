@@ -20,20 +20,12 @@ if (isset($_FILES['file'])) {
         if ($file_error == 0) {
             if ($file_size <= 2097152) {
                 $file_name_new = $file_name;
-                $file_dest = $_SESSION["currentPath"] ."/" . $file_name_new;
+                $file_dest = $_SESSION["currentPath"] . "/" . $file_name_new;
 
                 if (move_uploaded_file($file_tmp, $file_dest)) {
-                    echo $file_dest;
                 };
             }
         }
     }
-    // echo "<tr>";
-    // echo "<th class='file_name' scope='row'>$file_name</th>";
-    // echo  "<td class='cd_date'>Mark</td>";
-    // echo "<td class='md_date'>Otto</td>";
-    // echo "<td class='extension'>$file_ext</td>";
-    // echo "<td class='size'>$file_size</td>";
-    // echo "</tr>";
-    header("Location:./index.php");
+    // header("Location: ./index.php");
 }

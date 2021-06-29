@@ -1,9 +1,11 @@
+$primary-color: #2ED297;
+$secondary-color: #F06543;
 *{
   font-family: 'IBM Plex Sans', sans-serif;
 }
 body{
   // outline: 1px solid black;
-  background-color: #2ED297;
+  background-color: $primary-color;
 }
 .title{
   margin-top: 30px;
@@ -41,7 +43,7 @@ body{
   // margin-top: 25px;
 }
 .btn-search{
-  background-color: #F06543;
+  background-color: $secondary-color;
   color: white;
   margin-left: 10px;
   width: 150px;
@@ -51,7 +53,7 @@ body{
   color: white;
 }
 .btn-new-folder{
-  background-color: #2ED297;
+  background-color: $primary-color;
   color: white;
   margin-left: 10px;
   width: 190px;
@@ -81,11 +83,12 @@ input[value^="+"] {
   color: #6ecfac;
 }
 .current-path:hover{
-  color: #ee866c;
+  color: $secondary-color;
 }
 .content-container{
   // height: 300px;
   // overflow: scroll;
+  min-height: 300px;
 }
 tbody, td, tfoot, th, thead, tr {
   border-color: inherit;
@@ -93,8 +96,7 @@ tbody, td, tfoot, th, thead, tr {
   border-width: 0;
 }
 th{
-  // color: #6ecfac;
-  color:#F06543;
+  color:$secondary-color;
   font-family: 'Anton', sans-serif;
   font-weight: 300;
   font-size: 20px;
@@ -104,6 +106,21 @@ td{
   font-size: 12px;
   font-weight: 700;
   color: rgb(151, 151, 151);
+  .btn-delete-file{
+    color:$secondary-color;
+    font-size: 16px;
+  }
+  .btn-delete-file:hover{
+    color: #ee866c;
+  }
+  .btn-edit-file{
+    color:$primary-color;
+    font-size: 16px;
+  }
+  .btn-edit-file:hover{
+    color: #6ecfac;
+  }
+
 }
 .file-name{
   font-weight: 700;
@@ -115,7 +132,8 @@ td{
   color: black;
 }
 .folder-name:hover{
-  // color:#F06543;
-  color: #6ecfac;
-
+  color: $primary-color;
+}
+.fileIcon{
+  color:$secondary-color;
 }

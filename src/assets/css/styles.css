@@ -80,7 +80,11 @@ input[value^="+"] {
 }
 
 .current-path:hover {
-  color: #ee866c;
+  color: #F06543;
+}
+
+.content-container {
+  min-height: 300px;
 }
 
 tbody, td, tfoot, th, thead, tr {
@@ -103,6 +107,24 @@ td {
   color: #979797;
 }
 
+td .btn-delete-file {
+  color: #F06543;
+  font-size: 16px;
+}
+
+td .btn-delete-file:hover {
+  color: #ee866c;
+}
+
+td .btn-edit-file {
+  color: #2ED297;
+  font-size: 16px;
+}
+
+td .btn-edit-file:hover {
+  color: #6ecfac;
+}
+
 .file-name {
   font-weight: 700;
   color: black;
@@ -115,6 +137,10 @@ td {
 }
 
 .folder-name:hover {
-  color: #6ecfac;
+  color: #2ED297;
+}
+
+.fileIcon {
+  color: #F06543;
 }
 /*# sourceMappingURL=styles.css.map */
