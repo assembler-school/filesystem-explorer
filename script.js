@@ -1,7 +1,7 @@
 
-document.oncontextmenu = function () {
-    return false; 
-}
+// document.oncontextmenu = function () {
+//     return false; 
+// }
 
 $(".optionsMenu").hide();
 $(".newFolderForm").hide();
@@ -61,7 +61,19 @@ $(".folder").on("dblclick",(e)=>{
                 {$(".folders").append(response);}
     })
 })
-
+function scanAjax(){
+    $.ajax({
+        url: "./dirContent.php",
+        type:"post",
+        data:{
+            "dirToRender": `/`,
+            "inside":true
+            },
+        success: function(response)
+        {$(".folders").append(response);}
+})
+}
+scanAjax();
 
 // function showResult(str) {
 //     if (str.length==0) {
