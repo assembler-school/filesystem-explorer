@@ -4,26 +4,26 @@ function autentificar_usuario()
 {
   session_start();
 
-  $email = $_POST["email"];
+  $username = $_POST["username"];
   $pass = $_POST["password"];
 
-  if (check_usuario_on_database($email, $pass) == true) {
-    $_SESSION["email"] = $email;
+  if (check_usuario_on_database($username, $pass) == true) {
+    $_SESSION["username"] = $username;
     header("Location:../../pages/main/main.php");
   } else {
-    $_SESSION["ErrorDeAcceso"] = "Email y contraseña incorrectos";
+    $_SESSION["ErrorDeAcceso"] = "Username y contraseña incorrectos";
     header("location:../../pages/login/login.php");
   }
 }
 
-function check_usuario_on_database($email, $pass)
+function check_usuario_on_database($username, $pass)
 {
   session_start();
 
   require_once "./myDatabase.php";
   foreach ($my_data_base_of_users as $user) {
-    if (in_array($email, $user) && in_array($pass, $user)) {
-      $emailFalso = $user[0];
+    if (in_array($username, $user) && in_array($pass, $user)) {
+      $usernameFalso = $user[0];
       $passwordFalsa = $user[1];
       $user_picture = $user[2];
     } else {
@@ -37,17 +37,16 @@ function check_usuario_on_database($email, $pass)
   $passwordFalsaEncriptada = password_hash($passwordFalsa, PASSWORD_DEFAULT);
 
   if (
-    $email == $emailFalso &&
+    $username == $usernameFalso &&
     password_verify($pass, $passwordFalsaEncriptada)
   ) {
     echo $passwordFalsaEncriptada;
-    echo $email;
+    echo $username;
     return true;
   } else {
     echo "esta todo mal";
     return false;
   }
-
 }
 
 function revisar_si_existe_sesion()
@@ -58,7 +57,7 @@ function revisar_si_existe_sesion()
   $checkUrl = basename($_SERVER["REQUEST_URI"], "?" . $_SERVER["QUERY_STRING"]);
 
   if ($checkUrl == "login.php" || $checkUrl == "src") {
-    if (isset($_SESSION["email"]) == true) {
+    if (isset($_SESSION["username"]) == true) {
       header("Location:../main/main.php");
     } else {
       if ($alert = check_error_de_login()) {
@@ -72,8 +71,8 @@ function revisar_si_existe_sesion()
       }
     }
   } else {
-    if (isset($_SESSION["email"]) == false) {
-			echo "email false?";
+    if (isset($_SESSION["username"]) == false) {
+      echo "username false?";
       $_SESSION["loginInfo"] =
         "No tienes permisos para entrar, por favor. Indentifícate.";
       header("Location:../login/login.php");
@@ -119,7 +118,7 @@ function check_error_de_login()
   if (isset($_SESSION["ErrorDeAcceso"])) {
     $texto_de_error = $_SESSION["ErrorDeAcceso"];
     unset($_SESSION["ErrorDeAcceso"]);
-    return ["bg"=>"bg-white","type" => "text-danger","emoticon" => "&#128557;","texto" => $texto_de_error];
+    return ["bg" => "bg-white", "type" => "text-danger", "emoticon" => "&#128557;", "texto" => $texto_de_error];
   }
 }
 
@@ -128,13 +127,13 @@ function check_login_info()
   if (isset($_SESSION["loginInfo"])) {
     $texto_de_info = $_SESSION["loginInfo"];
     unset($_SESSION["loginInfo"]);
-    return ["bg"=>"bg-warning","type" => "text-dark","emoticon" => "&#128536;","texto" => $texto_de_info];
+    return ["bg" => "bg-warning", "type" => "text-dark", "emoticon" => "&#128536;", "texto" => $texto_de_info];
   }
 }
 
 function check_logout()
 {
-  if (isset($_GET["logout"]) && !isset($_SESSION["email"])) {
-    return ["bg"=>"bg-white","type" => "text-dark","emoticon" => "&#128524;","texto" => "Logout succesful"];
+  if (isset($_GET["logout"]) && !isset($_SESSION["username"])) {
+    return ["bg" => "bg-white", "type" => "text-dark", "emoticon" => "&#128524;", "texto" => "Logout succesful"];
   }
 }

@@ -5,6 +5,7 @@ $alert = revisar_si_existe_sesion();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,17 +16,12 @@ $alert = revisar_si_existe_sesion();
 	<link rel="stylesheet" href="./login.css">
 
 	<!-- Iconos traidos de Font Awesome -->
-	<link
-	rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-	integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
-	crossorigin="anonymous"
-	/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
 
 </head>
 
 <body class="container-fluid min-vh-100 d-inline-block bg-light m-0 p-0">
-<header class="container-fluid bg-white">
+	<header class="container-fluid bg-white">
 		<div class="d-flex flex-row justify-content-center align-items-center pt-2 pb-2 mb-3 border-bottom">
 			<h3>
 				File System Explorer
@@ -33,30 +29,30 @@ $alert = revisar_si_existe_sesion();
 		</div>
 	</header>
 
-<main class="container-fluid">
+	<main class="container-fluid">
 		<section class="container-sm w-25 main__container">
 			<form action="../../php/login/login.php" method="POST" class="d-flex flex-column gap-3">
-			<div class="logo__wrapper d-flex flex-row justify-content-center align-items-center">
-				<div class="logo__app">
-					<img src="../../../doc/img/RPC-JP_Logo.png" alt="logo">
-				</div>
-			</div>
-			<div class="w-100 d-flex justify-content-center pt-2 pb-2 h-100">
-				<div class="d-flex flex-row gap-3 pt-2 pb-2 h-100 search__component border border-secondary">
-					<div class="d-flex justify-content-center align-item-center">
-						<i class="fas fa-users"></i>
+				<div class="logo__wrapper d-flex flex-row justify-content-center align-items-center">
+					<div class="logo__app">
+						<img src="../../../doc/img/RPC-JP_Logo.png" alt="logo">
 					</div>
-					<input class="form-control form-control-dark w-100" name="email" type="email" placeholder="Entre su usuario plz">
 				</div>
-			</div>
-			<div class="w-100 d-flex justify-content-center pt-2 pb-2 h-100">
-				<div class="d-flex flex-row gap-3 pt-2 pb-2 h-100 search__component border border-secondary">
-					<div class="d-flex justify-content-center align-item-center">
-						<i class="fas fa-key"></i>
+				<div class="w-100 d-flex justify-content-center pt-2 pb-2 h-100">
+					<div class="d-flex flex-row gap-3 pt-2 pb-2 h-100 search__component border border-secondary">
+						<div class="d-flex justify-content-center align-item-center">
+							<i class="fas fa-users"></i>
+						</div>
+						<input class="form-control form-control-dark w-100" name="username" type="text" placeholder="Your username...">
 					</div>
-					<input class="form-control form-control-dark w-100" type="input" name="password" type="password" placeholder="Sus passwordz">
 				</div>
-			</div>
+				<div class="w-100 d-flex justify-content-center pt-2 pb-2 h-100">
+					<div class="d-flex flex-row gap-3 pt-2 pb-2 h-100 search__component border border-secondary">
+						<div class="d-flex justify-content-center align-item-center">
+							<i class="fas fa-key"></i>
+						</div>
+						<input class="form-control form-control-dark w-100" name="password" type="password" placeholder="Your password...">
+					</div>
+				</div>
 				<button type="submit" class="btn btn-primary border border-secondary pt-3 pb-3">Log in</button>
 				<div class="text__password--forgot d-flex flex-row justify-content-start align-items-center">
 					<p class="text-primary">Forgot your password?</p>
@@ -77,4 +73,5 @@ $alert = revisar_si_existe_sesion();
 	</main>
 	<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
