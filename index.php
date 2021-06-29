@@ -97,19 +97,22 @@
 
     <!-- Rename file or folder form  -->
     <div id="renamerForm" class="createFolderPanel">
-        <form action="./includes/updateName.php" method="POST">
+        <form name="renameForm" action="./includes/updateName.php" onsubmit="return renameValidation()" method="POST">
             <div class="createFolderHeader">
                 <h4 class="createFolderFormTitle">Choose new name</h4>
                 <i id="closeRenameFolderBtn" class="bi bi-x-lg"></i>
             </div>
-            <input id="oldName" class="invisibleInput" type="text" name="oldName" value="">
-            <input class="newFolderInput" type="text" name="newName" placeholder="Input new name" required>
+            <label for="oldName">Current Name</label>
+            <input id="oldName" class="newFolderInput" type="text" name="oldName" value="" readonly>
+            <label for="newName">New Name</label>
+            <input id="newName" class="newFolderInput" type="text" name="newName" placeholder="Input new name" required>
             <div class="buttons">
-                <button type="submit" name="submitRename" class="createFolderPanelBtn submit"> SUBMIT</button>
+                <button type="submit" name="submitRename" class="createFolderPanelBtn submit">SUBMIT</button>
                 <button type="button" id="cancelRenameBtnForm" class="createFolderPanelBtn cancel">CANCEL</button>
             </div>
         </form>
     </div>
+
     <!-- Header section -->
     <header>
         <div class="headerLeft">
@@ -207,5 +210,6 @@
     </template>
     <!-- <script type="text/javascript" src="/node_modules/jquery/dist/jquery.js"></script> -->
     <script type="text/javascript" src="./js/render.js"></script>
+    <script type="text/javascript" src="./js/formValidation.js"></script>
 </body>
 </html>

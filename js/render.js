@@ -59,7 +59,7 @@ function showFileDirOptions(event) {
   $("#fileDirOptionsPanel").css("left", relativeX);
   $("#fileDirOptionsPanel").show();
   $("#newOptionsPanelBackground").show();
-  console.log("$('#oldName').value -->", $("#oldName").val());
+  // console.log("$('#oldName').value -->", $("#oldName").val());
 }
 
 function hideFileDirOptions() {
@@ -86,7 +86,8 @@ function getWindowXY(event) {
 }
 
 function getCurrentName(event) {
-  console.log("event.target.id -->", event.target.id);
-  console.log("$('#oldName') -->", $("#oldName"));
+  // console.log("event.target -->", event.target);
+  // console.log("event.target.namedata -->", event.target.id);
+  // console.log("$('#oldName') -->", $("#oldName"));
   $("#oldName").attr("value", event.target.id);
 }
