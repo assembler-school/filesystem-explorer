@@ -2,7 +2,7 @@
 session_start();
 
 // Initial variables
-$target_dir = "." . $_SESSION["currentPath"];
+$target_dir = "../" . $_SESSION["currentPath"];
 // echo $target_dir;
 $target_file =  $target_dir . "/" . basename($_FILES["uploadedFile"]["name"]);
 $uploadedFile = $_FILES["uploadedFile"];
@@ -32,11 +32,12 @@ if (!file_exists($target_file)) {
 
     // Appending to database
     $cookedFile = createFileArray($fileName, $fileType, $target_file, $fileSize, $fileCreation, $fileModification);
-    // $_SESSION["allFiles"][] = $cookedFile;
+
     header("Location:../index.php");
 }
 // File exists
 else {
+    echo "Error uploading";
     header("Location:../index.php");
 }
 

@@ -158,7 +158,7 @@ if (!isset($_SESSION["currentDirectories"])) {
         })
 
         // Disabling upload button
-        console.log($("#uploadedFile").files.length);
+        // console.log($("#uploadedFile").files.length);
     </script>
 </body>
 
