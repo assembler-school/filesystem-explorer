@@ -26,12 +26,15 @@ body {
       border-bottom: 2px black solid;
       margin-bottom: 25px;
 
-      .search-bar {
-        border: none;
-        background-color: rgb(233, 233, 233);
-        border-radius: 6px;
+      form {
         height: 90%;
-        min-width: 30%;
+        .search-bar {
+          height: 100%;
+          width: 100%;
+          border: none;
+          background-color: rgb(233, 233, 233);
+          border-radius: 6px;
+        }
       }
 
       .top-buttons {

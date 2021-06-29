@@ -9,19 +9,29 @@ session_start();
 /* -------------------------------------------------------------------------- */
 if (!isset($_SESSION["currentPath"])) {
     $_SESSION["currentPath"] = "root";
-    // echo "This is the current path" . $_SESSION["currentPath"];
 }
 
 if (!isset($_SESSION["currentDirectories"])) {
     $_SESSION["currentDirectories"] = [];
-    // echo "These are the current directories" . $_SESSION["currentDirectories"];
 }
 
 if (!isset($_SESSION["searchFiles"])) {
     $_SESSION["searchFiles"] = array();
 }
 
+if (!isset($_SESSION["matchedFiles"])) {
+    $_SESSION["matchedFiles"] = array();
+}
+
+if (!isset($_SESSION["isSearching"])) {
+    $_SESSION["isSearching"] = false;
+}
+
 require_once("./modules/searchFile.php");
+
+
+
+
 // unset($_SESSION);
 // session_destroy();
 
@@ -55,7 +65,9 @@ require_once("./modules/searchFile.php");
         <!-- HEADER -->
         <div class="row header m-0 p-2 d-flex justify-content-between align-items-center">
             <h2 class="col col-2 logo p-0 m-0">SpamFile!</h2>
-            <input type="text" class="col col-7 pl-3 search-bar" placeholder="Search files" autofocus></input>
+            <form class="col col-7 p-0" action="./modules/searchSubmit.php" method="POST" enctype="multipart/form-data">
+                <input type="text" name="searchValue" class="search-bar px-3" placeholder="Search files" autofocus></input>
+            </form>
             <div class="col col-3 top-buttons d-flex justify-content-end align-items-center p-0">
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
                     <label class="custom-upload">
