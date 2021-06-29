@@ -3,7 +3,7 @@ require_once("./modules/file-icon.php");
 require_once("./modules/dropdowns.php");
 
 // Change current directory to root
-$homeDir = "./root";
+$homeDir = "root";
 
 if (isset($_SESSION["currentPath"])) {
     // echo ($homeDir . $_SESSION["currentPath"]);
