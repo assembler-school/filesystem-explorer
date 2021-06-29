@@ -122,30 +122,20 @@
             </div>
             <hr>
             <div class="fdContainer">
-                <div class="root"><i class="bi bi-folder"></i> File </div>
-                <div class="prueba"> <i class="bi bi-folder"></i>Directory </div>
+                
                 <?php 
                     renderItemListLeft($dirPath, $dirPathItemList);
                 ?>
+                                
+            </div>
+            <hr>
+            <div class ='fileWrapperDelete'>
+                <a class='renderUpdateLink' href='./includes/manageDirItems.php?updateDir'>
+                <i class="bi bi-trash2-fill"></i><div class='mainCenter__fileName'>Delete</div></a>
             </div>
         </section>
         <section class="mainCenter">
-            <div class ="fileWrapper">
-                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
-                <div class="mainCenter__fileName">Documents</div>
-            </div>
-            <div class ="fileWrapper">
-                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
-                <div class="mainCenter__fileName">Audio</div>
-            </div>
-            <div class ="fileWrapper">
-                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
-                <div class="mainCenter__fileName">Video</div>
-            </div>
-            <div class ="fileWrapper">
-                <div class="mainCenter__fileIcon"><i class="bi bi-folder-fill"></i></div>
-                <div class="mainCenter__fileName">Images</div>
-            </div>
+            
 
             <?php 
                 renderDirItemList($dirPath, $dirPathItemList);

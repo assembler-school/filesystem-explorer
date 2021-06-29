@@ -245,10 +245,17 @@ main {
   border-bottom: 0.5px solid;
   border-bottom-color: rgb(197, 197, 197);
 }
-
+.fileWrapperDelete {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 1.8rem;
+  
+}
 .renderUpdateLink {
   display: flex;
-  /* justify-content: space-between; */
   width: 100%;
   text-decoration: none;
   color: black;
@@ -256,7 +263,6 @@ main {
 
 .renderUpdateLink:visited {
   display: flex;
-  /* justify-content: space-between; */
   width: 100%;
   text-decoration: none;
   color: black;
@@ -264,7 +270,6 @@ main {
 
 .renderUpdateLink:hover {
   display: flex;
-  /* justify-content: space-between; */
   width: 100%;
   text-decoration: none;
   color: black;
