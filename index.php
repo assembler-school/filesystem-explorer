@@ -79,12 +79,12 @@ include_once './src/newFolder.php';
   <main class="mx-4">
     <div class="my-2">Directories</div>
     <!-- folder container -->
-    <div class="d-flex">
+    <div class="d-flex flex-wrap">
       <?php require_once('./src/fillContentDirectories.php'); ?>
     </div>
     <div class="my-2">Files</div>
     <!-- files container -->
-    <div class="d-flex">
+    <div class="d-flex flex-wrap">
       <?php require_once('./src/fillContentFiles.php'); ?>
     </div>
   </main>
