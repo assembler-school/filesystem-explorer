@@ -1,5 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap");
+body {
+  font-family: "Nunito", sans-serif;
+}
+.searchBox {
+  width: 400px;
+}
+.searchButton {
+  background-color: #048a81;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer !important;
+}
+.logoContainer {
+  width: 200px;
+  margin-left: 15px;
+}
 .sideButtons {
   width: 150px;
+  /* border: 1px solid #048A81; */
 }
 
 .side-span {
@@ -20,6 +38,10 @@
 
 .main-table {
   width: 85vw;
+}
+.tableHead {
+  background-color: #048a81;
+  color: #ffffff;
 }
 
 .folder-toggle {
