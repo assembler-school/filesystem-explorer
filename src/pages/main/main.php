@@ -2,10 +2,6 @@
 require_once "../../php/Login/login-control.php";
 revisar_si_existe_sesion();
 
-// echo $_SESSION["user_img"];
-// echo $_SESSION["email"];
-// echo $_SESSION["loginInfo"];
-// echo $_SESSION["ErrorDeAcceso"];
 ?>
 
 
@@ -17,6 +13,14 @@ revisar_si_existe_sesion();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>File System Explorer</title>
+
+	<!-- Script del CDN de Jquery -->
+	<script
+	src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"
+	></script>
+
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 
@@ -164,21 +168,23 @@ revisar_si_existe_sesion();
 				<div class="container-fluid folder_container">
 					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
 						<?php
-						require_once "../../php/local_files/read_local_files.php";
-						read_local_folders();
-						?>
+      require_once "../../php/local_files/read_local_files.php";
+      read_local_folders();
+      ?>
 					</div>
 				</div>
 			<div class="files__wrapper">
 				<div class="container-fluid file_container">
-					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
+					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6" id="file_container">
 						<?php
-						// require_once "../../php/local_files/read_local_files.php";
-						read_local_files();
-						?>
+      read_local_files();
+      require_once "../modal-play/modal-play.php";
+
+      ?>
 					</div>
 				</div>
 		</section>
+		<section class="section_modal" id="section_modal"></section>
 	</main>
 	<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>

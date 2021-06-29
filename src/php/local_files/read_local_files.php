@@ -13,6 +13,7 @@
 // copy("nombre de carpeta", "nombre de  arpeta");
 
 // (1) Manera de hacerlo con Scandir
+
 function clean_scandir($dir)
 {
   $files = scandir($dir);
@@ -24,16 +25,18 @@ function clean_scandir($dir)
   return $values_of_array;
 }
 
-function read_local_folders(){
-	$sesion_name = strstr($_SESSION["email"], "@", true);
+function read_local_folders()
+{
+  $sesion_name = strstr($_SESSION["email"], "@", true);
   $local_dir = "C:/xampp\htdocs/filesystem-explorer/root/$sesion_name";
   $files = clean_scandir($local_dir);
 
   foreach ($files as $dir) {
     if (is_dir($local_dir . "/" . $dir)) {
       $name_file = $dir;
+      $complete_name_file = $dir;
       $extension_file = "./../../../doc/img/folder-invoices--v1.png";
-      create_div_template($name_file, $extension_file);
+      create_div_template($name_file, $extension_file, $complete_name_file);
     }
   }
 }
@@ -43,13 +46,17 @@ function read_local_files()
   $sesion_name = strstr($_SESSION["email"], "@", true);
   $local_dir = "C:/xampp\htdocs/filesystem-explorer/root/$sesion_name";
   $files = clean_scandir($local_dir);
+  // var_dump ($files);
 
   foreach ($files as $dir) {
     if (is_file($local_dir . "/" . $dir)) {
       $name_file = strstr($dir, ".", true);
+      // $complete_name_file = strstr($dir, ".", true);
+      $complete_name_file = $dir;
       $extension_file = strstr($dir, ".");
       $new_extension_file = check_extension_file($extension_file);
-      create_div_template($name_file, $new_extension_file);
+
+      create_div_template($name_file, $new_extension_file, $complete_name_file);
     }
   }
 }
@@ -103,16 +110,26 @@ function check_extension_file($extension_file)
   }
 }
 
-function create_div_template($name_file, $new_extension_file)
-{
+function create_div_template(
+  $name_file,
+  $new_extension_file,
+  $complete_name_file
+) {
+  $sesion_name = strstr($_SESSION["email"], "@", true);
+  $local_dir = "C:/xampp\htdocs/filesystem-explorer/root/$sesion_name";
+
   $html = new DOMDocument("1.0", "iso-8859-1");
   $html->formatOutput = true;
 
   $maindiv = $html->createElement("div");
   $maindiv->setAttribute(
     "class",
-    "col d-flex justify-content-center align-items-center"
+    "col d-flex justify-content-center align-items-center open_modal"
   );
+
+  $maindiv->setAttribute("aria-disabled", "true");
+  $maindiv->setAttribute("data-source", "$local_dir/$complete_name_file");
+  $maindiv->setAttribute("id", $complete_name_file);
   $html->appendChild($maindiv);
 
   $mainSection = $html->createElement("section");
@@ -120,42 +137,30 @@ function create_div_template($name_file, $new_extension_file)
     "class",
     "file__item--wrapper d-flex flex-column align-items-center"
   );
+  $mainSection->setAttribute("data-source", "$local_dir/$complete_name_file");
   $maindiv->appendChild($mainSection);
 
   $first_div = $html->createElement("div");
+  $first_div->setAttribute("data-source", "$local_dir/$complete_name_file");
   $mainSection->appendChild($first_div);
 
   $file_img = $html->createElement("img");
   $file_img->setAttribute("src", $new_extension_file);
+  $file_img->setAttribute("data-source", "$local_dir/$complete_name_file");
   $file_img->setAttribute("alt", "");
   $first_div->appendChild($file_img);
 
   $second_div = $html->createElement("div");
+  $second_div->setAttribute("data-source", "$local_dir/$complete_name_file");
   $mainSection->appendChild($second_div);
 
   $title_folder = $html->createElement("h6");
+  $title_folder->setAttribute("data-source", "$local_dir/$complete_name_file");
   $title_folder->appendChild($html->createTextNode($name_file));
   $second_div->appendChild($title_folder);
 
   echo html_entity_decode($html->saveHTML());
 }
-
-// (2) Manera de hacerlo con Opendir y readdir
-
-// function clean_readdir($dir)
-// {
-//   $filesTwo = [];
-
-//   if ($handle = opendir($dir)) {
-//     while (false !== ($file = readdir($handle))) {
-//       if ($file != "." && $file != "..") {
-//         $filesTwo[] = $file;
-//       }
-//     }
-//     closedir($handle);
-//   }
-//   return $filesTwo;
-// }
 ?>
 
 <!-- Este seria nuestro Template -->
