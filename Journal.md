@@ -75,12 +75,26 @@ header("Location:./index.php");
 ```
 
 
+## Day 4
+
+· Create folder
+· Edit & delete files/directories
+
+
+
+
+
+
+
+
+
 -
 ## TODO
 
 ### Files
 * (DONE) Calculate MB
-* Rename folders
+* (DONE)Rename folders
+* Filename validation
 * Clean .scss
 * Solve whitespaces in file names
 * Use `embed` tag to preview files.
