@@ -25,12 +25,15 @@ body main .header {
   border-bottom: 2px black solid;
   margin-bottom: 25px;
 }
-body main .header .search-bar {
+body main .header form {
+  height: 90%;
+}
+body main .header form .search-bar {
+  height: 100%;
+  width: 100%;
   border: none;
   background-color: #e9e9e9;
   border-radius: 6px;
-  height: 90%;
-  min-width: 30%;
 }
 body main .header .top-buttons form .custom-upload input {
   display: none;
