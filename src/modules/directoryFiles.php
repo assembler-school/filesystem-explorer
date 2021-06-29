@@ -38,7 +38,7 @@ function createFileRow($fileArray, $filePath)
 
     // Creating the file block
     if ($fileArray["type"] == "directory") {
-        echo "<a class='row col col-11' href=./modules/updatingPath.php?updatedPath=" . $_SESSION["currentPath"] . "/" . $fileArray["name"] . ">";
+        echo "<a class='row col col-11' href=./modules/updatingPath.php?updatedPath=" . $filePath . "/" . $fileArray["name"] . ">";
     } else {
         echo "<a class='row col col-11' href=./index.php?filePath=" . $filePath . "/" . $fileArray["name"] . "&fileName=" . $fileArray["name"] . ">";
     }
@@ -56,12 +56,13 @@ function createFileRow($fileArray, $filePath)
     echo "<p class='col col-2 file-text'>" . $fileArray["modification"] . "</p>";
     echo "</a>";
 
-    // Delete button link
+    // Edit button link
     echo "<div class='row col col-1 file-buttons file-text p-0'>";
-    echo "<button id='oldName' data-old='" . $fileArray["name"] . "' class='col col-6 btn button-file' type='button' class='btn col col-6' data-bs-toggle='modal' data-bs-target='#editFileModal'>";
+    echo "<button id='oldName' data-old='" . $fileArray["name"] . "' data-path='" . $fileArray["path"] . "' class='col col-6 btn button-file' type='button' class='btn col col-6' data-bs-toggle='modal' data-bs-target='#editFileModal'>";
     echo "<i class='far fa-edit'></i>";
     echo "</button>";
 
+    // Delete button link
     echo "<a class='col col-6 btn button-file' href=./modules/deleteFiles.php?filePath=" . $fileArray["path"] . "&fileType=" . $fileArray["type"] . ">";
     echo "<i class='far fa-trash-alt'></i>";
     echo "</a>";

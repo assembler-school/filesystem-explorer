@@ -1,9 +1,10 @@
 <?php
-// session_start();
+session_start();
 
+$basePath = $_SESSION["basePath"];
 $nameToDelete = $_GET["filePath"];
 $typeToDelete = $_GET["fileType"];
-$pathToDelete =  dirname(getcwd()) . "/" . $nameToDelete;
+$pathToDelete =  $basePath . "/" . $nameToDelete;
 
 echo "Deleted file: " . $nameToDelete . "<br>";
 echo "Deleted type: " . $typeToDelete . "<br>";
@@ -31,4 +32,7 @@ function deleteDir($path_file)
 }
 
 
+$_SESSION["isSearching"] = false;
+
+// Redirecting
 header("Location:../index.php");

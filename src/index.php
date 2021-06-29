@@ -4,6 +4,10 @@ session_start();
 /* -------------------------------------------------------------------------- */
 /*                              SESSION VARIABLES                             */
 /* -------------------------------------------------------------------------- */
+if (!isset($_SESSION["basePath"])) {
+    $_SESSION["basePath"] = getcwd();
+}
+
 if (!isset($_SESSION["currentPath"])) {
     $_SESSION["currentPath"] = "root";
 }
@@ -23,9 +27,13 @@ if (!isset($_SESSION["matchedFiles"])) {
 if (!isset($_SESSION["isSearching"])) {
     $_SESSION["isSearching"] = false;
 }
+if (!isset($_SESSION["searchText"])) {
+    $_SESSION["searchText"] = "";
+}
 
 if (isset($_GET["deleteSearch"])) {
     $_SESSION["isSearching"] = false;
+    $_SESSION["searchText"] = "";
 }
 
 require_once("./modules/searchFile.php");
@@ -64,7 +72,7 @@ require_once("./modules/searchFile.php");
         <div class="row header m-0 p-2 d-flex justify-content-between align-items-center">
             <h2 class="col col-2 logo p-0 m-0">SpamFile!</h2>
             <form class="col col-7 p-0 px-3 d-flex justify-content-between align-items-center" id="searchForm" action="./modules/searchSubmit.php" method="POST" enctype="multipart/form-data">
-                <input type="text" id="searchInput" name="searchValue" class="search-bar" placeholder="Search files" autofocus></input>
+                <input type="text" id="searchInput" name="searchValue" class="search-bar" placeholder="Search files" value="<?php echo $_SESSION["searchText"] ?>">
                 <a href="./index.php?deleteSearch=true">
                     <i class="uil uil-backspace"></i>
                 </a>
@@ -156,6 +164,7 @@ require_once("./modules/searchFile.php");
                         <label for="fileName" class="mb-2 modal-item modal-title">File name</label>
                         <input type="text" name="fileName" class="pl-3 modal-item modal-input" placeholder="Insert new name" required autofocus>
                         <input name="oldFileName" id="oldName" class="pt-2 pl-3 modal-item" required>
+                        <input name="oldPath" id="oldPath" class="pt-2 pl-3 modal-item" required>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -172,9 +181,11 @@ require_once("./modules/searchFile.php");
         $('#editFileModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var recipient = button.data('old')
+            var oldpath = button.data('path')
             var modal = $(this);
             console.log("This is the recipient ", recipient);
             modal.find('.modal-body form #oldName').val(recipient);
+            modal.find('.modal-body form #oldPath').val(oldpath);
         })
 
         // Disabling upload button
@@ -182,6 +193,9 @@ require_once("./modules/searchFile.php");
             console.log("Changed!");
             $("#uploadButton").prop('disabled', false);
         })
+
+        // Focus search bar
+        $('#searchInput').focus()
     </script>
 </body>
 

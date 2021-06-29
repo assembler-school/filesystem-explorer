@@ -26,7 +26,7 @@ body {
       border-bottom: 2px black solid;
       margin-bottom: 25px;
 
-      form {
+      #searchForm {
         height: 90%;
         background-color: rgb(233, 233, 233);
         border-radius: 6px;
@@ -236,7 +236,8 @@ body {
               padding: 10px;
             }
 
-            #oldName {
+            #oldName,
+            #oldPath {
               font-size: 12px;
               border: none;
             }
