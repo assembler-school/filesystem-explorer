@@ -121,6 +121,7 @@ function get_total_size()
 // copy("nombre de carpeta", "nombre de  arpeta");
 
 // (1) Manera de hacerlo con Scandir
+
 function clean_scandir($dir)
 {
   $files = scandir($dir);
@@ -149,8 +150,9 @@ function read_local_folders()
     if (is_dir($local_dir . "/" . $dir)) {
       $n_folders += 1;
       $name_file = $dir;
+      $complete_name_file = $dir;
       $extension_file = "./../../../doc/img/folder-invoices--v1.png";
-      create_div_template($name_file, $extension_file);
+      create_div_template($name_file, $extension_file, $complete_name_file);
     }
   }
   if ($n_folders == 0) echo "<div>No folders</div>";
@@ -167,15 +169,19 @@ function read_local_files()
   if (isset($_GET["trash"])) $local_dir = 'C:/xampp\htdocs/filesystem-explorer/root/' . $sesion_name . '__trash';
 
   $files = clean_scandir($local_dir);
+  // var_dump ($files);
 
   $n_files = 0;
   foreach ($files as $dir) {
     if (is_file($local_dir . "/" . $dir)) {
       $n_files += 1;
       $name_file = strstr($dir, ".", true);
+      // $complete_name_file = strstr($dir, ".", true);
+      $complete_name_file = $dir;
       $extension_file = strstr($dir, ".");
       $new_extension_file = check_extension_file($extension_file);
-      create_div_template($name_file, $new_extension_file);
+
+      create_div_template($name_file, $new_extension_file, $complete_name_file);
     }
   }
   if ($n_files == 0) echo "<div>No files</div>";
@@ -230,16 +236,26 @@ function check_extension_file($extension_file)
   }
 }
 
-function create_div_template($name_file, $new_extension_file)
-{
+function create_div_template(
+  $name_file,
+  $new_extension_file,
+  $complete_name_file
+) {
+  $sesion_name = $_SESSION["username"];
+  $local_dir = "C:/xampp\htdocs/filesystem-explorer/root/$sesion_name";
+
   $html = new DOMDocument("1.0", "iso-8859-1");
   $html->formatOutput = true;
 
   $maindiv = $html->createElement("div");
   $maindiv->setAttribute(
     "class",
-    "col d-flex justify-content-center align-items-center"
+    "col d-flex justify-content-center align-items-center open_modal"
   );
+
+  $maindiv->setAttribute("aria-disabled", "true");
+  $maindiv->setAttribute("data-source", "$local_dir/$complete_name_file");
+  $maindiv->setAttribute("id", $complete_name_file);
   $html->appendChild($maindiv);
 
   $mainSection = $html->createElement("section");
@@ -247,42 +263,30 @@ function create_div_template($name_file, $new_extension_file)
     "class",
     "file__item--wrapper d-flex flex-column align-items-center"
   );
+  $mainSection->setAttribute("data-source", "$local_dir/$complete_name_file");
   $maindiv->appendChild($mainSection);
 
   $first_div = $html->createElement("div");
+  $first_div->setAttribute("data-source", "$local_dir/$complete_name_file");
   $mainSection->appendChild($first_div);
 
   $file_img = $html->createElement("img");
   $file_img->setAttribute("src", $new_extension_file);
+  $file_img->setAttribute("data-source", "$local_dir/$complete_name_file");
   $file_img->setAttribute("alt", "");
   $first_div->appendChild($file_img);
 
   $second_div = $html->createElement("div");
+  $second_div->setAttribute("data-source", "$local_dir/$complete_name_file");
   $mainSection->appendChild($second_div);
 
   $title_folder = $html->createElement("h6");
+  $title_folder->setAttribute("data-source", "$local_dir/$complete_name_file");
   $title_folder->appendChild($html->createTextNode($name_file));
   $second_div->appendChild($title_folder);
 
   echo html_entity_decode($html->saveHTML());
 }
-
-// (2) Manera de hacerlo con Opendir y readdir
-
-// function clean_readdir($dir)
-// {
-//   $filesTwo = [];
-
-//   if ($handle = opendir($dir)) {
-//     while (false !== ($file = readdir($handle))) {
-//       if ($file != "." && $file != "..") {
-//         $filesTwo[] = $file;
-//       }
-//     }
-//     closedir($handle);
-//   }
-//   return $filesTwo;
-// }
 ?>
 
 <!-- Este seria nuestro Template -->
