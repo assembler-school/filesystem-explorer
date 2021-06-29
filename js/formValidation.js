@@ -18,6 +18,7 @@ function renameValidation() {
     "mp3",
     "mp4",
   ];
+  
   if (currentName === newName) {
     alert("The new name needs to be different to the current name");
     return false;
