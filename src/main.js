@@ -25,7 +25,6 @@ $(document).on("click", (e) => {
 });
 
 $("#search-bar").on("input", (e) => {
-  // $("#printer").html(e.target.value);
   let path = "/xampp/htdocs/filesystem-explorer/src/UNIT";
   let pattern = e.target.value;
   searchPatternInDir(path, pattern);
@@ -89,7 +88,8 @@ function searchPatternInDir(path, pattern) {
     url: "fileControll/searchPatternInDir.php",
     data: { path: path, valid: "yes", pattern: pattern },
     success: function (response) {
-      $("#printer").html(response);
+      // $(".main-content-ul").html(`<li>${response}</li>`);
+      $(".main-content-ul").html(response);
     },
   });
 }

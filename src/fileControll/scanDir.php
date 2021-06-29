@@ -3,15 +3,28 @@ $directory = '/xampp/htdocs/filesystem-explorer/src/UNIT';
 
 function iterateDirectory($i)
 {
-  $allPaths = array();
+  $directory = '/xampp/htdocs/filesystem-explorer/src/UNIT';
+  $prevPath = $directory;
+  $allPaths = array($prevPath => $prevPath);
 
   echo '<ul>';
   foreach ($i as $path) {
     if ($path->getFilename() != "..") {
-      if (is_dir($path)) {
-        array_push($allPaths, dirname($path));
-      } else {
-        array_push($allPaths, pathinfo($path)["dirname"] . "\\" . pathinfo($path)["basename"]);
+      if ($path->isDir()) {
+        if (in_array($prevPath, $allPaths)) {
+          $newPath = dirname($path);
+          if (!in_array($newPath, $allPaths)) {
+            $newArray = array(dirname($path) => $path);
+            array_push($allPaths, $newArray);
+            array_pop($newArray);
+            $prevPath = dirname($path);
+            echo '<li class="folder-tree-folder son hide" data-dir=' . dirname($path) . '>' . basename(dirname($path)) . '</li>';
+          } else {
+            echo '<li class="folder-tree-folder" data-dir=' . dirname($path) . '>' . basename(dirname($path)) . '</li>';
+          }
+        } else {
+          echo '<li class="folder-tree-folder son hide" data-dir=' . dirname($path) . '>' . basename(dirname($path)) . '</li>';
+        }
       }
     }
     // echo array_key_last($allPaths);
