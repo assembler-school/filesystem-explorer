@@ -2,8 +2,9 @@
 <!-- Loop to complete the navbar with the differents folders -->
 <?php
 $expPath = explode("/", $_SESSION["currentPath"]);
+$startIndexNavbar = array_search("root", $expPath, true) + 1;
 $folderHref = "";
-for ($i = 8; $i < count($expPath); $i++) : ?>
+for ($i = $startIndexNavbar; $i < count($expPath); $i++) : ?>
   <?php
   $folderHref .= "/" . $expPath[$i];
   ?>

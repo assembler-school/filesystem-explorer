@@ -75,7 +75,7 @@ require_once("./src/modules/set_dir.php");
   ?>
   <aside class="aside_left">
     <form action="" method="POST" enctype="multipart/form-data">
-      <input class="text-center align-items-center" type="file" name="file" onchange="form.submit()" style="display: none">
+      <input class="text-center align-items-center" type="file" name="file" onchange="form.submit()">
       <!-- <input class="new_fileBtn" type="submit" value="+" style="display: none"> -->
     </form>
   </aside>
