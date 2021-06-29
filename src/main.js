@@ -22,6 +22,15 @@ $(document).on("click", (e) => {
   if (targetClassName.indexOf("folder-tree-file") !== -1) {
     searchFileInfo(path);
   }
+  if (targetIdName === "create-folder") {
+    openCreateFolderModal();
+  }
+  if (targetClassName.indexOf("modal-background") !== -1) {
+    closeCreateFolderModal();
+  }
+  if (targetIdName === "create-folder-btn") {
+    createFolder(e);
+  }
 });
 
 $("#search-bar").on("input", (e) => {
@@ -51,13 +60,12 @@ function updatePath(path) {
     url: "fileControll/session.php",
     data: { path: path, valid: "yes" },
     success: function (response) {
-      $("#printer").html(response);
+      $(".header-test").html(response);
     },
   });
 }
 
 function searchFileInfo(path) {
-  console.log(path);
   $.ajax({
     type: "POST",
     url: "fileControll/searchFileInfo.php",
@@ -89,6 +97,42 @@ function searchPatternInDir(path, pattern) {
     data: { path: path, valid: "yes", pattern: pattern },
     success: function (response) {
       $(".main-content-ul").html(response);
+    },
+  });
+}
+
+function openCreateFolderModal() {
+  $.ajax({
+    url: "fileControll/session.php",
+    success: function (response) {
+      $(".file-info-container").html(response);
+
+      const templateContent = document.querySelector(
+        "#create-folder-modal"
+      ).content;
+      document
+        .querySelector("main")
+        .appendChild(document.importNode(templateContent, true));
+      $("#session-path").html(response);
+    },
+  });
+}
+
+function closeCreateFolderModal() {
+  document.querySelector(".create-folder-modal")?.remove();
+  document.querySelector(".modal-background")?.remove();
+}
+
+function createFolder(e) {
+  e.preventDefault();
+  let newFolderName = $("#create-folder-name").val();
+  $.ajax({
+    type: "POST",
+    url: "fileControll/createFolder.php",
+    data: { newFolderName: newFolderName, valid: "yes" },
+    success: function (response) {
+      selectFolder(response);
+      closeCreateFolderModal();
     },
   });
 }

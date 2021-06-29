@@ -16,8 +16,11 @@ session_start()
 
 <body>
   <header>
-    <input id="search-bar" type="text">
-    <div id="printer"></div>
+    <div class="search-bar">Search <input id="search-bar" type="text"> </div>
+    <div class="header-test"></div>
+    <div class="actions">
+      <button id="create-folder" class="circle-icon create-folder">+</button>
+    </div>
   </header>
   <main>
     <aside class="folder-tree-container">
@@ -42,7 +45,7 @@ session_start()
       <div class="container">
         <div class="rightClick showing">
           <div class="buttons">
-            <button class="but edit">&#x270E;</button>
+            <button class="but new"><img id="create-folder" src="img/addFolder.svg" class="context-menu-icon" /></button>
             <button class="but fav">&#x2764;</button>
             <button class="but help">&#x2753;</button>
           </div>
@@ -56,3 +59,17 @@ session_start()
 </html>
 <script src="main.js"></script>
 <script src="contextMenu/contextMenu.js"></script>
+
+
+<template id="create-folder-modal">
+  <div class="modal-background"></div>
+  <div class="create-folder-modal">
+    <h2>CREATE NEW FOLDER</h2>
+    <h4>LOCATION</h4>
+    <p id="session-path"></p>
+    <form type="post" action="fileControll/createFolder.php">
+      <input id="create-folder-name" type="text" required />
+      <button type="submit" id="create-folder-btn">CREATE NEW FOLDER</button>
+    </form>
+  </div>
+</template>
