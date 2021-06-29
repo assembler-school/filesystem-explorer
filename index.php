@@ -28,8 +28,6 @@ include_once("./templates/modals.php");
             </form>
         </div>
     </nav>
-    <?php include_once("./modules/file-actions.php");
-    ?>
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark aside-bar">
@@ -90,7 +88,7 @@ include_once("./templates/modals.php");
                 if (isset($success_msg) && $success_msg) {
                     echo "<div class='alert alert-success' role='alert'>";
                     echo
-                    $_FILES["file"]["name"] . " " . $success_msg;
+                        $_FILES["file"]["name"] . " " . $success_msg;
                     echo "</div>";
                     $success_msg = false;
                 } elseif (isset($invalid_msg) && $invalid_msg) {
