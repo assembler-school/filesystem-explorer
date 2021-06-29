@@ -46,11 +46,11 @@ $(".folder").on("dblclick",(e)=>{
     $(".folder").hide();
     let path="./directories/"+ e.target.id;
     $.ajax({
-                url: "./dirManege/dirContent.php?dirToRender="+`${e.target.id}`,
+                url: "./dirManege/dirContent.php",
                 type:"post",
                 data:{
                     "dirToRender":e.target.id,
-                    "path":path,
+                    "path":path
             },
              
                 success: function(response)

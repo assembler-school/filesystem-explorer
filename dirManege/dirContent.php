@@ -9,7 +9,8 @@
     $path= $_POST["path"];
     $_SESSION["path"]=$path;
     echo $path;
-    scanDirsContent($dirToScan);    
+    scanDirsContent($dirToScan);  
+    
     ?>
 </div>
 

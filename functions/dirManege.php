@@ -1,19 +1,27 @@
 <?php
   session_start();
     function makedir(){ 
-      if($_SESSION["path"]){
-        $path=$_SESSION["path"];
-        echo $path;
-        mkdir(".$path"); 
-      }else{
+      //echo $_SESSION["path"];
       $dirname=$_POST["dirname"];
-        if(is_dir("../directories/$dirname")){
-          $_SESSION["existingFolder"]= "this folder already exist";   
-        }else{
-          mkdir("../directories/$dirname"); 
-          unset($_SESSION["existingFolder"]); 
-        } 
-      }         
+      if(isset($_SESSION["path"])){
+        $path=$_SESSION["path"];
+        mkdir(".$path/$dirname");
+        session_unset();
+           
+      }else{
+        mkdir("../directories/$dirname");
+      }
+      
+        //  if(file_exists(".$path/$dirname")){
+        //   $_SESSION["existingFolder"]= "this folder already exist";   
+        //  }else{
+        //   mkdir(".$path/$dirname");
+        //   unset($_SESSION["existingFolder"]); 
+        //  } 
+       // $path=$_SESSION["path"];
+        //echo ".$path/$dirname";
+        //mkdir(".$path/$dirname");
+        
         header("Location:../root.php");    
     }
 
@@ -34,7 +42,6 @@
         echo "<li id='edit' class=OpEditDel><button id='$item' class='btn btn-outline-secondary'>Edit</button>";
         echo "</li>";
         echo "</ul>";
-        
         echo "</div>";
         }; 
     }
