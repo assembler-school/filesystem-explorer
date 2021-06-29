@@ -60,7 +60,11 @@ function updatePath(path) {
     url: "fileControll/session.php",
     data: { path: path, valid: "yes" },
     success: function (response) {
-      $(".header-test").html(response);
+      $(".subheader").html("");
+      let splited = response.split("/");
+      splited.forEach((i) => {
+        $(".subheader").append(" &#10148; " + i);
+      });
     },
   });
 }

@@ -16,11 +16,14 @@ session_start()
 
 <body>
   <header>
-    <div class="search-bar">Search <input id="search-bar" type="text"> </div>
-    <div class="header-test"></div>
-    <div class="actions">
-      <button id="create-folder" class="circle-icon create-folder">+</button>
+    <div class="main-header">
+      <div class="header-test"></div>
+      <div class="search-bar"><input id="search-bar" type="text" placeholder="Search"> </div>
+      <div class="actions">
+        <button id="create-folder" class="circle-icon create-folder">+</button>
+      </div>
     </div>
+    <div class="subheader"></div>
   </header>
   <main>
     <aside class="folder-tree-container">
