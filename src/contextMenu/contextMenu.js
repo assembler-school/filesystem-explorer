@@ -23,11 +23,12 @@ $(document).mousedown(function (e) {
   }
 });
 $(".rightClick .overlap").click(function () {
-  // history.back(1); // To go back
+  history.back(1); // To go back
   $(".showVal1").text("Back Button Pressed");
 });
-$(".rightClick .edit").click(function () {
-  $(".showVal1").text("Edit Button Pressed");
+$(".rightClick .new").click(function () {
+  console.log("test new button");
+  $(".showVal1").text("New Button Pressed");
 });
 $(".rightClick .fav").click(function () {
   $(".showVal1").text("Favourites Button Pressed");

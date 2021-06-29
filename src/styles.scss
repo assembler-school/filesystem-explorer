@@ -2,6 +2,7 @@
 @use 'generalStyles';
 @use 'animations';
 @use "extensions";
+@use 'modals';
 @import "mixins";
 @import "contextMenu";
 
@@ -25,13 +26,42 @@ body {
 }
 
 header {
+  display: flex;
   height: 5%;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   background-color: colors.$white;
   border-width: 0px 0px 1px 0px;
   border-style: solid;
   border-color: colors.$gray;
   z-index: 1;
+
+  .search-bar {
+    min-width: 40%;
+  }
+
+  .header-test {
+    min-width: 40%;
+  }
+
+  .actions {
+    min-width: 20%;
+    display: flex;
+    justify-content: flex-end;
+
+    .circle-icon {
+      width: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid black;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    .circle-icon:hover {
+      background-color: colors.$blue;
+    }
+  }
 }
 
 main {

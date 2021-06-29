@@ -136,6 +136,44 @@
   background-image: url("img/mp4.svg");
 }
 
+.modal-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(102, 102, 102, 0.644);
+  z-index: 9;
+}
+
+.create-folder-modal {
+  position: fixed;
+  width: 30%;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  border: 1px solid black;
+  padding: 2rem;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+.create-folder-modal h2 {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+.create-folder-modal h2 {
+  margin-bottom: 0.5rem;
+}
+.create-folder-modal input {
+  margin-top: 1rem;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-size: 1.5rem;
+}
+
 .rightClick {
   width: 200px;
   height: 200px;
@@ -231,6 +269,10 @@
   -o-transform: rotate(0deg);
 }
 
+.context-menu-icon {
+  width: 2rem;
+}
+
 * {
   padding: 0px;
   margin: 0;
@@ -250,13 +292,37 @@ body {
 }
 
 header {
+  display: flex;
   height: 5%;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   background-color: #ffffff;
   border-width: 0px 0px 1px 0px;
   border-style: solid;
   border-color: #dadada;
   z-index: 1;
+}
+header .search-bar {
+  min-width: 40%;
+}
+header .header-test {
+  min-width: 40%;
+}
+header .actions {
+  min-width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+header .actions .circle-icon {
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 50%;
+}
+header .actions .circle-icon:hover {
+  background-color: #1b8ddf8a;
 }
 
 main {
