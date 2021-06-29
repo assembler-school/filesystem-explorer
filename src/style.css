@@ -216,12 +216,13 @@
   outline: none;
   width: 50px;
   height: 50px;
-  background: #79b3a6;
+  background: white;
   border-radius: 50%;
   display: block;
   position: absolute;
   color: #fff;
   font-size: 20px;
+  border: 3px solid black;
 }
 
 .rightClick .buttons button.but:nth-child(1) {

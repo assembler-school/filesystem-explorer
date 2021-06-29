@@ -46,7 +46,7 @@ session_start()
         <div class="rightClick showing">
           <div class="buttons">
             <button class="but new"><img id="create-folder" src="img/addFolder.svg" class="context-menu-icon" /></button>
-            <button class="but fav">&#x2764;</button>
+            <button class="but edit"><img id="edit-folder" src="img/editFolder.svg" class="context-menu-icon" /></button>
             <button class="but help">&#x2753;</button>
           </div>
           <div class="overlap">&#x2190;</div>

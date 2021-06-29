@@ -4,6 +4,7 @@ document.oncontextmenu = function () {
 
 $(document).mousedown(function (e) {
   if (e.button === 2) {
+    console.log(e.target);
     $(".rightClick").removeClass("showing");
     var n = $(".rightClick").clone(true);
     $(".rightClick").fadeOut(100);
@@ -30,8 +31,8 @@ $(".rightClick .new").click(function () {
   console.log("test new button");
   $(".showVal1").text("New Button Pressed");
 });
-$(".rightClick .fav").click(function () {
-  $(".showVal1").text("Favourites Button Pressed");
+$(".rightClick .edit").click(function () {
+  $(".showVal1").text("Edit Button Pressed");
 });
 $(".rightClick .help").click(function () {
   $(".showVal1").text("Help Button Pressed");
