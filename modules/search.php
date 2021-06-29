@@ -39,9 +39,9 @@ foreach ($searchedFiles as $searchFile) {
         if (stristr($searchFile[0], $searchValue)) {
             echo "<tr><th scope='row'>" . fileIcon($searchFile[0]) . "</th>
     <td><span>" . explode(".", $searchFile[0])[0] . "</span><span class='text-uppercase text-black-50 p-2' style='font-size: 0.8rem'>" .  explode(".", $searchFile[0])[1] .  "</span><span>" . dropdownMenuFile($searchFile[0]) . "</span></td>
-    <td>" . $searchFile[2] . "</td>
-    <td>" . $searchFile[3] . "</td>
-    <td>" . $searchFile[4] . "</td>
+    <td class='align-middle text-center'>" . $searchFile[2] . "</td>
+    <td class='align-middle text-center'>" . $searchFile[3] . "</td>
+    <td class='align-middle text-center'>" . $searchFile[4] . "</td>
     </tr> 
     ";
         }
