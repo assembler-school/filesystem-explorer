@@ -28,12 +28,18 @@ body {
 
       form {
         height: 90%;
+        background-color: rgb(233, 233, 233);
+        border-radius: 6px;
+        color: darkgray;
         .search-bar {
+          background-color: transparent;
           height: 100%;
           width: 100%;
           border: none;
-          background-color: rgb(233, 233, 233);
-          border-radius: 6px;
+        }
+        a {
+          color: darkgray;
+          font-size: 24px;
         }
       }
 

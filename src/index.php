@@ -24,6 +24,10 @@ if (!isset($_SESSION["isSearching"])) {
     $_SESSION["isSearching"] = false;
 }
 
+if (isset($_GET["deleteSearch"])) {
+    $_SESSION["isSearching"] = false;
+}
+
 require_once("./modules/searchFile.php");
 
 // unset($_SESSION);
@@ -45,9 +49,10 @@ require_once("./modules/searchFile.php");
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../node_modules/jquery/dist/jquery.js"></script>
+
     <!-- Link to icons -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!-- Styles -->
     <link rel="stylesheet" href="./assets/styles/styles.css">
     <title>File System</title>
@@ -58,8 +63,11 @@ require_once("./modules/searchFile.php");
         <!-- HEADER -->
         <div class="row header m-0 p-2 d-flex justify-content-between align-items-center">
             <h2 class="col col-2 logo p-0 m-0">SpamFile!</h2>
-            <form class="col col-7 p-0" id="searchForm" action="./modules/searchSubmit.php" method="POST" enctype="multipart/form-data">
-                <input type="text" id="searchInput" name="searchValue" class="search-bar px-3" placeholder="Search files" autofocus></input>
+            <form class="col col-7 p-0 px-3 d-flex justify-content-between align-items-center" id="searchForm" action="./modules/searchSubmit.php" method="POST" enctype="multipart/form-data">
+                <input type="text" id="searchInput" name="searchValue" class="search-bar" placeholder="Search files" autofocus></input>
+                <a href="./index.php?deleteSearch=true">
+                    <i class="uil uil-backspace"></i>
+                </a>
             </form>
             <div class="col col-3 top-buttons d-flex justify-content-end align-items-center p-0">
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
