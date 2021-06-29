@@ -59,7 +59,7 @@ require_once("./modules/searchFile.php");
         <div class="row header m-0 p-2 d-flex justify-content-between align-items-center">
             <h2 class="col col-2 logo p-0 m-0">SpamFile!</h2>
             <form class="col col-7 p-0" id="searchForm" action="./modules/searchSubmit.php" method="POST" enctype="multipart/form-data">
-                <input type="text" id="searchInput" name="searchValue" class="search-bar px-3" onchange=submit() placeholder="Search files" autofocus></input>
+                <input type="text" id="searchInput" name="searchValue" class="search-bar px-3" placeholder="Search files" autofocus></input>
             </form>
             <div class="col col-3 top-buttons d-flex justify-content-end align-items-center p-0">
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
@@ -67,7 +67,7 @@ require_once("./modules/searchFile.php");
                         <input value="New file" type="file" id="uploadedFile" name="uploadedFile" class="btn btn-light" />
                         <div class="btn btn-outline-dark">Choose file</div>
                     </label>
-                    <input value="Upload" type="submit" class="btn btn-dark" />
+                    <input id="uploadButton" value="Upload" type="submit" class="btn btn-dark" disabled />
                 </form>
                 <button type='button' class="create-folder btn btn-dark" data-bs-toggle="modal" data-bs-target="#newDirectoryModal">
                     <i class="fas fa-folder-plus"></i>
@@ -170,7 +170,10 @@ require_once("./modules/searchFile.php");
         })
 
         // Disabling upload button
-        // console.log($("#uploadedFile").files.length);
+        $("#uploadedFile").on("change", function() {
+            console.log("Changed!");
+            $("#uploadButton").prop('disabled', false);
+        })
 
         // Submit search on change
         // let searchText = "";
