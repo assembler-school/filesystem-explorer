@@ -14,9 +14,44 @@ if (!isset($_SESSION["currentDirectories"])) {
     // echo "These are the current directories" . $_SESSION["currentDirectories"];
 }
 
+if (!isset($_SESSION["searchFiles"])) {
+    $_SESSION["searchFiles"] = array();
+}
+
 
 // unset($_SESSION);
 // session_destroy();
+
+$currPath = $_SESSION["currentPath"];
+
+
+// if (!is_dir($currPath)) {
+//     // unlink($currPath);
+//     echo "File executed: $currPath";
+// } else {
+//     
+// }
+
+$_SESSION["searchFiles"] = array();
+searchFilesInside($currPath);
+
+
+function searchFilesInside($path_file)
+{
+    if (is_dir($path_file)) {
+        $files = array_diff(scandir($path_file), [".", "..", ".DS_Store"]);
+        foreach ($files as $file) {
+            searchFilesInside("$path_file/$file");
+        }
+        // echo "Directory: " . $path_file . "<br>";
+        array_push($_SESSION["searchFiles"], $path_file);
+    } else {
+        // echo "File: " . $path_file . "<br>";
+        array_push($_SESSION["searchFiles"], $path_file);
+    }
+}
+echo "<pre>" . print_r($_SESSION["searchFiles"], true) . "</pre>";
+
 
 ?>
 
@@ -158,7 +193,7 @@ if (!isset($_SESSION["currentDirectories"])) {
         })
 
         // Disabling upload button
-        console.log($("#uploadedFile").files.length);
+        // console.log($("#uploadedFile").files.length);
     </script>
 </body>
 
