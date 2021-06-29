@@ -47,3 +47,11 @@ dClosing.forEach((element) => {
     dShadow.classList.toggle("hidden");
   });
 });
+
+/* Download event listener */
+document
+  .getElementById("downloadOption")
+  .addEventListener("click", function (e) {
+    const data = e.target.getAttribute("data-title");
+    window.location.replace("./src/download.php?data=" + data);
+  });

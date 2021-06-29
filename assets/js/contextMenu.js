@@ -6,6 +6,14 @@ function customContextMenu(e) {
   let menu = document.getElementById("customContextMenu");
   let options = Array.from(document.querySelectorAll("#customContextMenu li"));
 
+  if (e.target.classList.contains("folderSelector")) {
+    document.getElementById("downloadOption").style.display = "none";
+    document.getElementById("previewOption").style.display = "none";
+  } else {
+    document.getElementById("downloadOption").style.display = "list-item";
+    document.getElementById("previewOption").style.display = "list-item";
+  }
+
   options.map(function (option) {
     option.setAttribute("data-title", e.target.title);
   });
