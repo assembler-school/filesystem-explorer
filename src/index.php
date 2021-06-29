@@ -151,7 +151,7 @@ if (!isset($_SESSION["currentDirectories"])) {
         // Passing data to the modal
         $('#editFileModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var recipient = button.data('whatever')
+            var recipient = button.data('old')
             var modal = $(this);
             console.log("This is the recipient ", recipient);
             modal.find('.modal-body form #oldName').val(recipient);
