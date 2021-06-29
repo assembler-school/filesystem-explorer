@@ -1,7 +1,8 @@
 <?php
-$rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
-session_start();
-require("./src/modules/upload.php");
+// $rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
+ $rootPath = "C:/xampp/htdocs/Assembler/filesystem-explorer/root";
+$currentPath = $rootPath;
+
 require_once("./src/modules/set_dir.php");
 
 // echo $_SESSION["currentPath"];
