@@ -33,13 +33,36 @@
         <div class="modal-body">
           <div class="row">
             <div class="col">
-            <input class="form-control" type="text" name="newFolderName" placeholder="New folder name..." id="newFolderName">
+              <input class="form-control" type="text" name="newFolderName" placeholder="New folder name..." id="newFolderName">
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button id="btnRenameFolder" name="folderPath" value="" class="btn btn-search" type="submit">Save</button>
           <button type="button" class="btn btn-new-folder" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- Video player modal -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Video Player</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form class="form-inline" action="./src/modules/renaming_folder.php" method="POST">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col" id="colVideo">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
         </div>
       </form>
 

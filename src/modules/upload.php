@@ -18,7 +18,7 @@ if (isset($_FILES['file'])) {
 
     if (in_array($file_ext, $allowed)) {
         if ($file_error == 0) {
-            if ($file_size <= 2097152) {
+            if ($file_size <= 1000000000000000) {
                 $file_name_new = $file_name;
                 $file_dest = $_SESSION["currentPath"] . "/" . $file_name_new;
 

@@ -1,6 +1,6 @@
 const deleteModal = document.getElementById('deleteFileModal');
 const renameModal = document.getElementById('renameFolderModal');
-console.log("Enter on getModalInfo");
+const videoModal = document.getElementById('videoModal');
 
 deleteModal.addEventListener('show.bs.modal', function (e) {
   modalFilePath = e.relatedTarget.getAttribute('data-delete');
@@ -14,4 +14,21 @@ renameModal.addEventListener('show.bs.modal', function (e) {
   renameButton.value = modalFolderPath;
 })
 
+videoModal.addEventListener('show.bs.modal', function (e) {
+  videoPath = e.relatedTarget.getAttribute('data-video');
+  videoParent = document.getElementById('colVideo');
+  console.log(videoPath);
 
+  if (videoParent.childElementCount === 0) {
+    var video = document.createElement('video');
+    video.src = videoPath;
+    video.setAttribute('controls', 'width=300');
+    document.getElementById('colVideo').appendChild(video);
+  } else {
+    videoParent.innerHTML = '';
+    var video = document.createElement('video');
+    video.src = videoPath;
+    video.setAttribute('controls', 'width=300', 'height=300');
+    document.getElementById('colVideo').appendChild(video);
+  }
+})
