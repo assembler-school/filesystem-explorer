@@ -1,13 +1,13 @@
 <?php
 // session_start();
 
-$nameToDelete = $_GET["fileName"];
+$nameToDelete = $_GET["filePath"];
 $typeToDelete = $_GET["fileType"];
-$pathToDelete =  dirname(getcwd()) . "/root/" . $nameToDelete;
+$pathToDelete =  dirname(getcwd()) . "/" . $nameToDelete;
 
 echo "Deleted file: " . $nameToDelete . "<br>";
 echo "Deleted type: " . $typeToDelete . "<br>";
-echo $pathToDelete;
+echo "Path to delete " . $pathToDelete . "<br>";
 
 
 if (!is_dir($pathToDelete)) {
@@ -15,6 +15,7 @@ if (!is_dir($pathToDelete)) {
     echo "Deleted file";
 } else {
     deleteDir($pathToDelete);
+    echo "Deleted folder";
 }
 
 function deleteDir($path_file)

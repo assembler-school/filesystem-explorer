@@ -174,16 +174,6 @@ require_once("./modules/searchFile.php");
             console.log("Changed!");
             $("#uploadButton").prop('disabled', false);
         })
-
-        // Submit search on change
-        // let searchText = "";
-        // $(document).ready(function() {
-        //     $('#searchInput').on('keypress', function() {
-        //         if ($('#searchInput').val() == "") {
-        //             document.forms["searchForm"].submit();
-        //         }
-        //     });
-        // });
     </script>
 </body>
 

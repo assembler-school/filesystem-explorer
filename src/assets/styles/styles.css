@@ -45,7 +45,6 @@ body main .bottom {
   flex-grow: 1;
 }
 body main .bottom .bottom-block {
-  max-height: 525px;
   height: 100%;
 }
 body main .bottom .sidebar-left .dir {

@@ -62,7 +62,7 @@ function createFileRow($fileArray, $filePath)
     echo "<i class='far fa-edit'></i>";
     echo "</button>";
 
-    echo "<a class='col col-6 btn button-file' href=./modules/deleteFiles.php?fileName=" . $fileArray["name"] . "&fileType=" . $fileArray["type"] . "'/>";
+    echo "<a class='col col-6 btn button-file' href=./modules/deleteFiles.php?filePath=" . $fileArray["path"] . "&fileType=" . $fileArray["type"] . ">";
     echo "<i class='far fa-trash-alt'></i>";
     echo "</a>";
     echo "</div>";
