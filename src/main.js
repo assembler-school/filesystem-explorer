@@ -88,7 +88,6 @@ function searchPatternInDir(path, pattern) {
     url: "fileControll/searchPatternInDir.php",
     data: { path: path, valid: "yes", pattern: pattern },
     success: function (response) {
-      // $(".main-content-ul").html(`<li>${response}</li>`);
       $(".main-content-ul").html(response);
     },
   });
