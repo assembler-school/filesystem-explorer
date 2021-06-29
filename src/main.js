@@ -33,6 +33,12 @@ $(document).on("click", (e) => {
   }
 });
 
+$("#search-bar").on("input", (e) => {
+  let path = "/xampp/htdocs/filesystem-explorer/src/UNIT";
+  let pattern = e.target.value;
+  searchPatternInDir(path, pattern);
+});
+
 function selectFolder(path) {
   updatePath(path);
   $.ajax({
@@ -79,6 +85,18 @@ function deleteFile(path) {
       var split = path.split("/");
       path = split.slice(0, split.length - 1).join("/");
       selectFolder(path);
+    },
+  });
+}
+
+function searchPatternInDir(path, pattern) {
+  console.log(path);
+  $.ajax({
+    type: "POST",
+    url: "fileControll/searchPatternInDir.php",
+    data: { path: path, valid: "yes", pattern: pattern },
+    success: function (response) {
+      $(".main-content-ul").html(response);
     },
   });
 }

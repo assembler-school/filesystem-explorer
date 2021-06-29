@@ -16,7 +16,7 @@ session_start()
 
 <body>
   <header>
-    <div class="search-bar"> </div>
+    <div class="search-bar">Search <input id="search-bar" type="text"> </div>
     <div class="header-test"></div>
     <div class="actions">
       <button id="create-folder" class="circle-icon create-folder">+</button>
