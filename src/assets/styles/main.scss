@@ -53,6 +53,8 @@ body {
     }
     .bottom {
       flex-grow: 1;
+      height: 90%;
+
       .bottom-block {
         // max-height: 525px;
         height: 100%;
@@ -84,10 +86,11 @@ body {
 
         .central-columns {
           height: fit-content;
-          max-height: fit-content;
+          // max-height: fit-content;
           padding: 0 66px 0 35px;
           width: 100%;
           border-bottom: 2px black solid;
+          max-height: 100%;
 
           .column-text {
             font-weight: bold;
@@ -104,6 +107,7 @@ body {
           flex-direction: column;
           align-items: center;
           justify-content: central;
+          max-height: 100%;
 
           .file-item {
             transition: 0.2s;
