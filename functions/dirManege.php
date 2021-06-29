@@ -1,16 +1,15 @@
 <?php
   session_start();
-    function makedir(){ 
-      //echo $_SESSION["path"];
+    function makedir($actualPath){ 
+      
       $dirname=$_POST["dirname"];
-      if(isset($_SESSION["path"])){
-        $path=$_SESSION["path"];
-        mkdir(".$path/$dirname");
-        session_unset();
+      mkdir(".$actualPath/$dirname");
+      
+       
            
-      }else{
-        mkdir("../directories/$dirname");
-      }
+      // }else{
+      //   mkdir("../directories/$dirname");
+      //}
       
         //  if(file_exists(".$path/$dirname")){
         //   $_SESSION["existingFolder"]= "this folder already exist";   

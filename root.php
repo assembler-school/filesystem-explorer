@@ -53,7 +53,7 @@
             
       <section class="folders">
           <?php
-          //echo $_SESSION["path"];
+         
               scanDirs();
               if(isset($_SESSION["existingFolder"])){
                 echo $_SESSION["existingFolder"];

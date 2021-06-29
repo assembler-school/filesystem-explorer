@@ -1,3 +1,10 @@
 <?php
 require('../functions/dirManege.php');
-makedir();
+if(!$_GET["path"]){
+makedir("./directories");
+
+}else{
+$path = $_GET["path"];
+
+makedir($path);
+}

@@ -45,6 +45,7 @@ $(".closeDiv").on("click",()=>{
 $(".folder").on("dblclick",(e)=>{
     $(".folder").hide();
     let path="./directories/"+ e.target.id;
+    $(".newFolderForm form").attr("action",`./dirManege/create.php?path=${path}`)
     $.ajax({
                 url: "./dirManege/dirContent.php",
                 type:"post",
@@ -54,7 +55,7 @@ $(".folder").on("dblclick",(e)=>{
             },
              
                 success: function(response)
-                {$(".folders").append(response);}
+                {$(".folders").append(response)}
     })
 })
 
