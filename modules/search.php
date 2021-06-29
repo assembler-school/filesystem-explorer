@@ -1,8 +1,11 @@
 <?php
-session_start();
+// session_start();
 require_once("./modules/file-icon.php");
 require_once("./modules/dropdowns.php");
 
+if (isset($_POST["search"])) {
+    $searchValue = $_POST["search"];
+}
 
 $searchValue = $_POST["search"];
 

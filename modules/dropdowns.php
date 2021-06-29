@@ -29,8 +29,8 @@ function dropdownMenuFile($file)
             <ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
             <form class='' method='POST' action='./modules/file-actions.php'>
                 <li><button type='submit' name='open' value=" . $file . " class='dropdown-item'>" . $openIcon . "Open</button></li>
-                <li><button type='button' name='rename' data-bs-toggle='modal' data-bs-target='#renameModal' value=" . $file . " class='dropdown-item'>" . $renameIcon . " Rename</button></li>
-                <li><button type='button' name='delete'  data-bs-toggle='modal' data-bs-target='#deleteModal' value=" . $file . " class='dropdown-item'>" . $deleteIcon . "Delete</button></li>
+                <li><button type='button' name='rename' data-bs-toggle='modal' data-bs-target='#renameFileModal' value=" . $file . " class='dropdown-item'>" . $renameIcon . " Rename</button></li>
+                <li><button type='button' name='delete'  data-bs-toggle='modal' data-bs-target='#deleteFileModal' value=" . $file . " class='dropdown-item'>" . $deleteIcon . "Delete</button></li>
                 <li><button type='submit' name='download' value=" . $file . " class='dropdown-item'>" . $downloadIcon . "Download</button></li>
             </ul>
         </form></span>";
@@ -54,7 +54,7 @@ function dropdownMenuFolder($folder)
     $threeDotsIcon = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-three-dots' viewBox='0 0 16 16'>";
 
     return
-        "<span class=''>
+        "<span>
             <span class='btn btn-light' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
                 " . $threeDotsIcon . "
             <path d='M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z'/>
@@ -63,8 +63,8 @@ function dropdownMenuFolder($folder)
             <ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
             <form class='' method='POST' action='./modules/file-actions.php'>
                 <li><button type='submit' name='open' value=" . $folder . " class='dropdown-item'>" . $openIcon . "Open</button></li>
-                <li><button type='button' name='rename' data-bs-toggle='modal' data-bs-target='#renameModal' value=" . $folder . " class='dropdown-item'>" . $renameIcon . " Rename</button></li>
-                <li><button type='button' name='delete'  data-bs-toggle='modal' data-bs-target='#deleteModal' value=" . $folder . " class='dropdown-item'>" . $deleteIcon . "Delete</button></li>
+                <li><button type='button' name='rename' data-bs-toggle='modal' data-bs-target='#renameFolderModal' value=" . $folder . " class='dropdown-item'>" . $renameIcon . " Rename</button></li>
+                <li><button type='button' name='delete'  data-bs-toggle='modal' data-bs-target='#deleteFolderModal' value=" . $folder . " class='dropdown-item'>" . $deleteIcon . "Delete</button></li>
                 <li><button type='submit' name='download' value=" . $folder . " class='dropdown-item'>" . $downloadIcon . "Download</button></li>
             </ul>
         </form></span>";
