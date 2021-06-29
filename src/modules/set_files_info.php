@@ -89,7 +89,9 @@ for ($i = $startIndexRootPath; $i < count($expPath); $i++) {
             break;
           case "mp3":
             echo "<i class='fileIcon far fa-file-audio'></i> ";
-            echo $filesDir[$i];
+            ?>
+             <a data-audio="<?php echo ($startRoothPath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#audioModal'><?php echo $filesDir[$i]; ?></a>
+            <?php
             break;
           case "mp4":
             echo "<i class='fileIcon far far fa-file-video'></i> ";
