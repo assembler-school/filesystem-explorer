@@ -47,6 +47,14 @@
               <button type="submit" class="btn btn-outline-success">submit</button>   
             </form>
           </div>
+          <!-- <div class="uploadItemForm">
+            <form action="./fileManage/upload.php" method="post" enctype="multipart/form-data">
+              <div class="form-floating">
+              <input type="file" name="file">
+              </div>
+              <button type="submit" name="submit" class="btn btn-outline-success">Upload</button>
+            </form>
+          </div> -->
         </div>
        
         
