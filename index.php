@@ -11,8 +11,6 @@ if (isset($_GET["path"])) {
   $currentPath = $_GET["path"];
 }
 
-include_once './src/newFolder.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -68,10 +66,10 @@ include_once './src/newFolder.php';
     </div>
     <!-- botones createfolder && upload -->
     <div class="d-flex">
-      <button class="btn btn-dark me-3">CREATE FOLDER</button>
-      <form method="POST" enctype="multipart/form-data" action="uploadFile.php">
+      <button class="btn btn-dark me-3" id="folderBtn">CREATE FOLDER</button>
+      <form method="POST" enctype="multipart/form-data" action="./src/uploadFile.php">
         <label for="uploadFile" class="btn btn-light">UPLOAD FILE</label>
-        <input type="file" name="uploadFile" id="uploadFile" class="modal-hidden" onchange="form.submit()">
+        <input type="file" name="uploadFile" id="uploadFile" class="hidden" onchange="form.submit()">
       </form>
     </div>
   </nav>
@@ -89,28 +87,10 @@ include_once './src/newFolder.php';
     </div>
   </main>
 
-  <!-- Create Folder Modal -->
-  <div class='position-fixed vw-100 vh-100 bg-dark modal-shadow modal-hidden'></div>
-  <div class='modal-form position-fixed p-3 rounded bg-secondary modal-hidden'>
-    <div class="d-flex space-between justify-content-between">
-      <h3 class='text-white'>New folder</h3>
-      <svg class='text-white btn-x' role='img' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-        <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
-      </svg>
-    </div>
-    <hr class='text-white' />
-    <form method='POST' action='<?php newFolder($currentDir); ?>' class="d-flex flex-column text-white">
-      <label for='newFile' class='mb-3'>Name of the new file</label>
-      <input type='text' id='newFile' name='newFile' value='Unnamed folder' class='mb-3' required pattern="^[a-zA-Z0-9 _.-]*$">
-
-      <div>
-        <button type='button' id='modalCancel' class='btn btn-danger'>CANCEL</button>
-        <input type='submit' class='btn btn-dark' value="CREATE">
-      </div>
-    </form>
-  </div>
+  <?php require_once './assets/modules/modules.php'; ?>
 
   <script src="../filesystem-explorer/assets/js/modal.js" type="module"></script>
+  <script src="../filesystem-explorer/assets/js/contextMenu.js" type="module"></script>
 </body>
 
 </html>

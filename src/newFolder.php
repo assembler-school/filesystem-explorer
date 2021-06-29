@@ -1,23 +1,24 @@
 <?php
+session_start();
+$completePath = $_SESSION['currentPath'];
 
-function newFolder($currentDir)
-{
+$currentPath = substr($completePath, strpos($completePath, "root"));
+
 if (isset($_POST['newFile'])) {
-$newFileName = $_POST['newFile'];
-$directoryFolders = scandir($currentDir);
+    $newFileName = $_POST['newFile'];
+    $directoryFolders = scandir("../" . $currentPath);
 
-if (in_array($newFileName, $directoryFolders)) {
-$n = 0;
-$adaptedFileName = $newFileName;
-while (in_array($adaptedFileName, $directoryFolders)) {
-$n++;
-$adaptedFileName = $newFileName . "(" . $n . ")";
-}
-mkdir($currentDir . "/" . $adaptedFileName);
-} else {
-mkdir($currentDir . "/" . $newFileName);
-}
+    if (in_array($newFileName, $directoryFolders)) {
+        $n = 0;
+        $adaptedFileName = $newFileName;
+        while (in_array($adaptedFileName, $directoryFolders)) {
+            $n++;
+            $adaptedFileName = $newFileName . "(" . $n . ")";
+        }
+        mkdir("../" . $currentPath . "/" . $adaptedFileName);
+    } else {
+        mkdir("../" . $currentPath . "/" . $newFileName);
+    }
 
-header("Location: index.php");
-}
+    header("Location: ../index.php");
 }

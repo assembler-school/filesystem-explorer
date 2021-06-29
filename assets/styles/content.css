@@ -32,15 +32,7 @@ body {
   color: black;
 }
 
-.modal-hidden {
-  display: none;
-}
-
 /* New folder Modal */
-
-.modal-hidden {
-  display: none;
-}
 
 .modal-shadow {
   z-index: 1;
@@ -58,4 +50,30 @@ body {
   top: calc(50% - 120px);
   left: calc(50% - 250px);
   z-index: 2;
+}
+
+/* Context Menu */
+
+#customContextMenu {
+  min-width: 150px;
+  box-shadow: 20px 20px 36px -16px rgba(0, 0, 0, 0.59);
+}
+
+#customContextMenu ul {
+  margin: 8px 0;
+  padding: 0;
+}
+
+#customContextMenu li {
+  list-style: none;
+  padding: 5px 5px 5px 20px;
+}
+
+#customContextMenu li:hover {
+  background-color: #6c757d3b;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
