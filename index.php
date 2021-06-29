@@ -1,8 +1,7 @@
 <?php
-// $rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
- $rootPath = "C:/xampp/htdocs/Assembler/filesystem-explorer/root";
-$currentPath = $rootPath;
-
+$rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
+session_start();
+require("./src/modules/upload.php");
 require_once("./src/modules/set_dir.php");
 
 // echo $_SESSION["currentPath"];
@@ -71,7 +70,8 @@ require_once("./src/modules/set_dir.php");
   ?>
   <aside class="aside_left">
     <form action="" method="POST" enctype="multipart/form-data">
-      <input class="text-center new_fileBtn align-items-center" type="file" name="file" onchange="form.submit()">
+      <input class="text-center align-items-center" type="file" name="file" onchange="form.submit()">
+      <!-- <input class="new_fileBtn" type="submit" value="+" style="display: none"> -->
     </form>
   </aside>
 </body>
