@@ -21,55 +21,40 @@ videoModal.addEventListener('show.bs.modal', function (e) {
   videoParent = document.getElementById('colVideo');
 
   // If we have the modal empty, we fill with the video or we replace with the new one
-  if (videoParent.childElementCount === 0) {
-    var video = document.createElement("video");
-    video.src = videoPath;
-    video.setAttribute('controls', 'controls');
-    video.setAttribute('style', 'max-width=300px');
-    document.getElementById('colVideo').appendChild(video);
-  } else {
+  if (videoParent.childElementCount > 0) {
     videoParent.innerHTML = "";
-    var video = document.createElement("video");
-    video.src = videoPath;
-    video.setAttribute('controls', 'controls');
-    video.setAttribute('style', 'max-width=300px');
-    document.getElementById('colVideo').appendChild(video);
   }
+  var video = document.createElement("video");
+  video.src = videoPath;
+  video.setAttribute('controls', 'controls');
+  video.classList.add("width-media");
+  document.getElementById('colVideo').appendChild(video);
 })
 
 imgModal.addEventListener('show.bs.modal', function (e) {
   imgPath = e.relatedTarget.getAttribute('data-img');
   imgParent = document.getElementById('colImg');
-  console.log(imgPath);
 
   // If we have the modal empty, we fill with the picture or we replace with the new one
-  if (imgParent.childElementCount === 0) {
-    var img = document.createElement('img');
-    img.src = imgPath;
-    document.getElementById('colImg').appendChild(img);
-  } else {
+  if (imgParent.childElementCount > 0) {
     imgParent.innerHTML = '';
-    var img = document.createElement('img');
-    img.src = imgPath;
-    document.getElementById('colImg').appendChild(img);
   }
+  var img = document.createElement('img');
+  img.src = imgPath;
+  img.classList.add("width-media");
+  document.getElementById('colImg').appendChild(img);
 })
 
 audioModal.addEventListener("show.bs.modal", function (e) {
   audioPath = e.relatedTarget.getAttribute("data-audio");
   audioParent = document.getElementById("colAudio");
-  console.log(audioPath);
 
-  if (audioParent.childElementCount === 0) {
-    var audio = document.createElement("audio");
-    audio.src = audioPath;
-    audio.setAttribute("controls", "type='audio/mpeg'");
-    document.getElementById("colAudio").appendChild(audio);
-  } else {
+  if (audioParent.childElementCount > 0) {
     audioParent.innerHTML = "";
-    var audio = document.createElement("audio");
-    audio.src = audioPath;
-    audio.setAttribute("controls", "type='audio/mp3'");
-    document.getElementById("colAudio").appendChild(audio);
   }
+  var audio = document.createElement("audio");
+  audio.src = audioPath;
+  audio.setAttribute("controls", "type='audio/mp3'");
+  audio.classList.add("width-media");
+  document.getElementById("colAudio").appendChild(audio);
 });

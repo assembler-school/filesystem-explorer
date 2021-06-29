@@ -97,14 +97,13 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col" id="colImg">
-            <div class="col" id="colAudio">
-            </div>
+          <div class="col" id="colAudio">
           </div>
         </div>
-        <div class="modal-footer">
-        </div>
+      </div>
+      <div class="modal-footer">
       </div>
     </div>
   </div>
+</div>
 </div>

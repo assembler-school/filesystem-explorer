@@ -126,7 +126,7 @@ for ($i = $startIndexRootPath; $i < count($expPath); $i++) {
                           }
                           ?></td>
     <?php if (is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) : ?>
-      <td>
+      <td class="col col-2">
         <button data-delete="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>" type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
           <i class="fas fa-trash-alt"></i>
         </button>
@@ -135,7 +135,7 @@ for ($i = $startIndexRootPath; $i < count($expPath); $i++) {
         </button>
       </td>
     <?php else : ?>
-      <td>
+      <td class="col col-2">
         <button data-delete="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>" type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">
           <i class="fas fa-trash-alt"></i>
         </button>
