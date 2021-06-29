@@ -1,16 +1,36 @@
 <?php
 
-echo "file actions" . "<br>";
-// echo "file name " . $_POST['value'] . "<br>";
+function getAllFiles($dir, &$results = array())
+{
+    $files = scandir($dir);
+    foreach ($files as $key => $value) {
+        $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+        if (!is_dir($path)) {
+            $results[] = ['path' => realpath($path), 'name' => $value, 'size' => filesize($path), "modified" => date("m/d/Y H:i", filemtime($path)), "created" => date("m/d/Y H:i", filectime($path)),];
+        } else if ($value != "." && $value != "..") {
+            getAllFiles($path, $results);
+            $results[] = ['name' => $value, "modified" => date("m/d/Y H:i", filemtime($path)), "created" => date("m/d/Y H:i", filectime($path))];
+        }
+    }
+    return $results;
+}
 
-if (isset($_POST['delete'])) {
-    //action for update her
-    echo "file name " . $_POST['delete'] . "<br>";
-    echo "delete";
-} else if (isset($_POST['open'])) {
-    echo "open";
-    //action for delete
-} else {
-    echo "other";
-    //invalid action!
+$filesList = getAllFiles("../root");
+$fileToDelete = $_POST["delete"];
+// print_r($filesList);
+foreach ($filesList as $file) {
+    // echo $file["name"];
+    if (isset($fileToDelete)) {
+        if ($file["name"] === $fileToDelete) {
+            unlink($file["path"]);
+            header("Location: ../index.php?deleted=true");
+        }
+    } elseif (isset($_POST["rename"]) && isset($_POST["newName"])) {
+        $fileName = explode(".", $file["name"])[0];
+        $rpName = str_replace($fileName, $_POST["newName"], $file["path"]);
+        if ($fileName === $_POST["rename"]) {
+            rename($file["path"], $rpName);
+            header("Location: ../index.php?renamed=true");
+        }
+    }
 }

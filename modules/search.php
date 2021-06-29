@@ -6,21 +6,6 @@ require_once("./modules/dropdowns.php");
 
 $searchValue = $_POST["search"];
 
-// function getDirContents($dir, &$results = array())
-// {
-//     $files = scandir($dir);
-//     foreach ($files as $key => $value) {
-//         $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
-//         if (!is_dir($path)) {
-//             $results[] = ['name' => $value, 'size' => filesize($path), "modified" => date("m/d/Y H:i", filemtime($path)), "created" => date("m/d/Y H:i", filectime($path)),];
-//         } else if ($value != "." && $value != "..") {
-//             getDirContents($path, $results);
-//             $results[] = ['name' => $value, "modified" => date("m/d/Y H:i", filemtime($path)), "created" => date("m/d/Y H:i", filectime($path))];
-//         }
-//     }
-//     return $results;
-// }
-
 function convert_filesize($bytes, $decimals = 2)
 {
     $sz = 'BKMGTP';
