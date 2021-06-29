@@ -49,11 +49,12 @@
       </section>
             
       <section class="folders">
-         
-              <!-- //scanDirs();
-              // if(isset($_SESSION["existingFolder"])){
-              //   echo $_SESSION["existingFolder"];
-              // }     -->
+         <?php
+               scanDirs();
+               if(isset($_SESSION["existingFolder"])){
+                 echo $_SESSION["existingFolder"];
+               }   
+               ?>  
            
       </section>
 

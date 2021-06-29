@@ -23,15 +23,15 @@
 
     function scanDirs(){
       $path="./directories";
-      // if(isset($_SESSION["actualDir"])){
-      //   $selectedFolder=($_SESSION["actualDir"]);
-      //   $path=$path . $selectedFolder;
+      if(isset($_SESSION["actualDir"])){
+        $selectedFolder=($_SESSION["actualDir"]);
+        $path=$path . $selectedFolder;
         
-      // }else{
-      //   $path=$path;
-      // }
+      }else{
+        $path=$path;
+      }
       
-      // echo $path;
+      echo $path;
 
       $scan= scandir($path);    
       $items=array_diff($scan,array('.','..'));
