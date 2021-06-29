@@ -29,7 +29,7 @@
     <main>
       <section class="aside">
         <button  class="newFolderButon">+</button>
-        <div class="optionsMenu">
+        <!-- <div class="optionsMenu">
           <ul class="options">
             <li class="Option"><button id="showNewFolderForm">New folder</button></li>
             <li class="Option"><button>Upload Item</button></li>
@@ -43,18 +43,18 @@
               <button type="submit" class="btn btn-outline-success">submit</button>   
             </form>
           </div>
-        </div>
+        </div> -->
        
         
       </section>
             
       <section class="folders">
-          <?php
+         <?php
               scanDirs();
               if(isset($_SESSION["existingFolder"])){
                 echo $_SESSION["existingFolder"];
               }    
-            ?>
+            ?> 
       </section>
 
       </main>

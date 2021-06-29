@@ -51,7 +51,7 @@ $(".folder").on("dblclick",(e)=>{
     let element=e.target.id;
     
     $.ajax({
-                url: "./dirManege/dirContent.php",
+                url: "./dirContent.php",
                 type:"post",
                 data:{
                     "dirToRender": `/${element}`,
@@ -61,6 +61,7 @@ $(".folder").on("dblclick",(e)=>{
                 {$(".folders").append(response);}
     })
 })
+
 
 // function showResult(str) {
 //     if (str.length==0) {

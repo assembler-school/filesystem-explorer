@@ -1,12 +1,12 @@
 
 <div>
     <?php
-    require('../functions/dirManege.php');
+    require('./functions/dirManege.php');
     //unset($_SESSION["actualDir"]);
     $selected=$_POST["dirToRender"];
-    $_SESSION["actualDir"] = "../directories$selected";   
+    $_SESSION["actualDir"] = "$selected";   
     $_SESSION["inside"]=$_POST["inside"]; 
-    scanDirsContent();
+    scanDirs();
     ?>
 </div>
 
