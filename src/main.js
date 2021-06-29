@@ -24,6 +24,13 @@ $(document).on("click", (e) => {
   }
 });
 
+$("#search-bar").on("input", (e) => {
+  // $("#printer").html(e.target.value);
+  let path = "/xampp/htdocs/filesystem-explorer/src/UNIT";
+  let pattern = e.target.value;
+  searchPatternInDir(path, pattern);
+});
+
 function selectFolder(path) {
   updatePath(path);
   $.ajax({
@@ -45,7 +52,7 @@ function updatePath(path) {
     url: "fileControll/session.php",
     data: { path: path, valid: "yes" },
     success: function (response) {
-      $("header").html(response);
+      $("#printer").html(response);
     },
   });
 }
@@ -71,6 +78,18 @@ function deleteFile(path) {
       var split = path.split("/");
       path = split.slice(0, split.length - 1).join("/");
       selectFolder(path);
+    },
+  });
+}
+
+function searchPatternInDir(path, pattern) {
+  console.log(path);
+  $.ajax({
+    type: "POST",
+    url: "fileControll/searchPatternInDir.php",
+    data: { path: path, valid: "yes", pattern: pattern },
+    success: function (response) {
+      $("#printer").html(response);
     },
   });
 }

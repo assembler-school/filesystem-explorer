@@ -15,7 +15,10 @@ session_start()
 </head>
 
 <body>
-  <header></header>
+  <header>
+    <input id="search-bar" type="text">
+    <div id="printer"></div>
+  </header>
   <main>
     <aside class="folder-tree-container">
       <ul>
@@ -35,7 +38,7 @@ session_start()
     </aside>
 
     <!-- CONTEXT MENU -->
-    <!-- <div class="context-menu">
+    <div class="context-menu">
       <div class="container">
         <div class="rightClick showing">
           <div class="buttons">
@@ -46,10 +49,10 @@ session_start()
           <div class="overlap">&#x2190;</div>
         </div>
       </div>
-    </div> -->
+    </div>
   </main>
 </body>
 
 </html>
 <script src="main.js"></script>
-<!-- <script src="contextMenu/contextMenu.js"></script> -->
+<script src="contextMenu/contextMenu.js"></script>
