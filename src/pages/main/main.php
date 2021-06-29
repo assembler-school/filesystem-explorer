@@ -1,7 +1,6 @@
 <?php
 require_once "../../php/Login/login-control.php";
 revisar_si_existe_sesion();
-
 ?>
 
 
@@ -15,11 +14,7 @@ revisar_si_existe_sesion();
 	<title>File System Explorer</title>
 
 	<!-- Script del CDN de Jquery -->
-	<script
-	src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-	crossorigin="anonymous"
-	></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -50,11 +45,7 @@ revisar_si_existe_sesion();
 		</div>
 		<div class="logout__wrapper d-flex justify-content-center align-item-center h-100 d-inline-block gap-3">
 			<div class="d-flex align-items-center">
-				<h5>Welcome <span class="text-primary"><?= strstr(
-      $_SESSION["email"],
-      "@",
-      true
-    ) ?></span></h5>
+				<h5>Welcome <span class="text-primary"><?= $_SESSION["username"] ?></span></h5>
 			</div>
 			<div class=" d-flex align-items-center justify-content-center h-100">
 				<div class="profile_picture">
@@ -70,128 +61,33 @@ revisar_si_existe_sesion();
 		<aside class="d-flex flex-column justify-content-between">
 			<section id="menu" class="h-100 p-2 overflow-auto">
 				<?php
-				$count = 0;
-				$array_folders = array();
-
-				function listFolders($dir)
-				{
-					$files = array_diff(scandir($dir), array('.', '..'));
-
-					// prevent empty ordered elements
-					if ((count($files) < 1) && ($GLOBALS["count"] == 0)) {
-						// echo 'No folders';
-						return;
-					}
-
-					if ($GLOBALS["count"] != 0) echo '<ul class="interior">';
-					foreach ($files as $file_item) {
-						if (is_dir($dir . '/' . $file_item)) {
-							array_push($GLOBALS["array_folders"], $dir . '/' . $file_item);
-
-							$cnt = $GLOBALS["count"];
-
-							echo '<li>';
-							echo "<input type='checkbox' name='list' id='folder_$cnt'>";
-							echo "<label class='d-flex align-items-center' for='folder_$cnt' onclick='showFiles($cnt)'>";
-							echo "<i class='uil uil-folder me-2'></i>";
-							echo "<div>$file_item</div>";
-							echo "</label>";
-
-							$GLOBALS["count"] += 1;
-							listFolders($dir . '/' . $file_item);
-
-							echo '</li>';
-						}
-					}
-					if ($GLOBALS["count"] != 0) echo '</ul>';
-				}
-
-				$root_dir = 'C:\xampp\htdocs\filesystem-explorer\root\jonathan';
-				listFolders($root_dir, $count);
-
+				require_once "../../php/local_files/read_local_files.php";
+				folders_init();
 				?>
-				<!-- <li>
-					<input type="checkbox" name="list" id="folder_1">
-					<label class="d-flex align-items-center" for="folder_1">
-						<i class="uil uil-folder me-2"></i>
-						<div>folder 1</div>
-					</label>
-					<ul class="interior">
-						<li>
-							<input type="checkbox" name="list" id="folder_1.1">
-							<label class="d-flex align-items-center" for="folder_1.1">
-								<i class="uil uil-folder me-2"></i>
-								<div>folder 1.1</div>
-							</label>
-							<ul class="interior">
-								<li>
-									<input type="checkbox" name="list" id="folder_1.1.1">
-									<label class="d-flex align-items-center" for="folder_1.1.1">
-										<i class="uil uil-folder me-2"></i>
-										<div>folder 1.1.1</div>
-									</label>
-									<ul class="interior">
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<input type="checkbox" name="list" id="folder_2">
-					<label class="d-flex align-items-center" for="folder_2">
-						<i class="uil uil-folder me-2"></i>
-						<div>folder 2</div>
-					</label>
-					<ul class="interior">
-						<li>
-							<input type="checkbox" name="list" id="folder_2.1">
-							<label class="d-flex align-items-center" for="folder_2.1">
-								<i class="uil uil-folder me-2"></i>
-								<div>folder 2.1</div>
-							</label>
-							<ul class="interior">
-								<li>
-									<input type="checkbox" name="list" id="folder_2.1.1">
-									<label class="d-flex align-items-center" for="folder_2.1.1">
-										<i class="uil uil-folder me-2"></i>
-										<div>folder 2.1.1</div>
-									</label>
-									<ul class="interior">
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<input type="checkbox" name="list" id="folder_2.2">
-							<label class="d-flex align-items-center" for="folder_2.2">
-								<i class="uil uil-folder me-2"></i>
-								<div>folder 2.2</div>
-							</label>
-							<ul class="interior">
-							</ul>
-						</li>
-					</ul>
-				</li> -->
 			</section>
 			<div class="d-flex flex-column justify-content-evenly px-2 trash__wrapper">
-				<div class="d-flex align-items-center trash__select">
-					<i class="uil uil-trash-alt me-2"></i>
-					<div>Trash</div>
-				</div>
-				<div class="d-flex justify-content-center">
-					<div>Storage: 12GB of 50GB</div>
-				</div>
+				<?php
+				if (isset($_GET["trash"])) echo "<div id='trash-id' class='d-flex align-items-center trash__select folder-active'>";
+				else echo "<div id='trash-id' class='d-flex align-items-center trash__select'>";
+				?>
+				<i class="uil uil-trash-alt me-2"></i>
+				<div>Trash</div>
+			</div>
+			<div class="d-flex justify-content-center">
+				<?php
+				get_total_size();
+				?>
+			</div>
 			</div>
 		</aside>
 		<section class="main__files--wrapper">
 			<nav class="edit__buttons--wrapper d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom">
 				<div class="d-flex flex-row justify-content-between gap-3">
 					<button class="btn btn-light border border-secondary">
-						Upload File
+						Create folder
 					</button>
 					<button class="btn btn-light border border-secondary">
-						New file
+						Upload file
 					</button>
 				</div>
 				<div class="btn-toolbar mb-2 mb-md-0">
@@ -209,21 +105,20 @@ revisar_si_existe_sesion();
 				<div class="container-fluid folder_container">
 					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
 						<?php
-      require_once "../../php/local_files/read_local_files.php";
-      read_local_folders();
-      ?>
+						// require_once "../../php/local_files/read_local_files.php";
+						read_local_folders();
+						?>
 					</div>
 				</div>
-			<div class="files__wrapper">
 				<div class="container-fluid file_container">
 					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6" id="file_container">
 						<?php
-      read_local_files();
-      require_once "../modal-play/modal-play.php";
-
-      ?>
+						read_local_files();
+						require_once "../modal-play/modal-play.php";
+						?>
 					</div>
 				</div>
+			</div>
 		</section>
 		<section class="section_modal" id="section_modal"></section>
 	</main>
