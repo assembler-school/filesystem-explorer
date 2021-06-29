@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once("./modules/upload.php");
-include_once("./templates/modals.php")
+include_once("./templates/modals.php");
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,8 @@ include_once("./templates/modals.php")
             </form>
         </div>
     </nav>
-
+    <?php include_once("./modules/file-actions.php");
+    ?>
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark aside-bar">

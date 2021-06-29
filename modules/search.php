@@ -27,7 +27,6 @@ foreach ($iterator as $fileInfo) {
             convert_filesize(filesize($fileInfo)),
             date("m/d/Y H:i", $fileInfo->getMTime()),
             date("m/d/Y H:i", $fileInfo->getCtime()),
-
         ];
     }
 }
