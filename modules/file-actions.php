@@ -1,5 +1,5 @@
  <?php
-
+    session_start();
     function getAllFiles($dir, &$results = array())
     {
         $files = scandir($dir);
@@ -16,7 +16,7 @@
     }
 
     $filesList = getAllFiles("../root");
-    $fileToDelete = $_POST["delete"];
+    $fileToDelete = isset($_POST["delete"]) ? $_POST["delete"] : null;
 
     function removeDirectory($path)
     {
@@ -27,6 +27,7 @@
         rmdir($path);
         return;
     }
+
     foreach ($filesList as $file) {
         if (isset($fileToDelete)) {
             if (is_file($file["path"]) && $file["name"] === $fileToDelete && file_exists($file["path"])) {
@@ -45,3 +46,12 @@
             }
         }
     }
+    echo isset($_POST["open"]) ? "is set to open" : "not set";
+    if (isset($_POST["open"])) {
+        $currentPath = isset($_SESSION["currentPath"]) ? substr($_SESSION["currentPath"], 1)  : "./";
+        $_SESSION["openFile"] = $currentPath . "/" . $_POST["open"];
+        echo $_SESSION["openFile"] . "<br>";
+        // var_dump();
+        header("Location: ../index.php");
+    }
+    // echo $currentPath;
