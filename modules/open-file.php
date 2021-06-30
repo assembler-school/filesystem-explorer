@@ -45,17 +45,18 @@ function imageModal($imgRoute)
                         </div>
                         <div class='modal-footer'>
                             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                            <button type='button' class='btn btn-secondary'>Download</button>
                             <button type='button' name='rename' data-bs-dismiss='modal' aria-label='Close' data-bs-toggle='modal' data-bs-target='#renameFileModal' value=" . $imgName . " class='btn btn-primary'> Rename</button>
                             <button type='button' name='delete' data-bs-dismiss='modal' aria-label='Close' data-bs-toggle='modal' data-bs-target='#deleteFileModal' value=" . $imgName . " class='btn btn-danger'>Delete</button>
                             
-                        </div>
-                </div>
-            </div>
-        </div>");
+                            </div>
+                            </div>
+                            </div>
+                            </div>");
     echo "<script type= 'text/JavaScript'>
-            var openFileModal = new bootstrap.Modal(document.getElementById('openFileModal'), {});
-            openFileModal.show();
-        </script>'";
+    var openFileModal = new bootstrap.Modal(document.getElementById('openFileModal'), {});
+    openFileModal.show();
+    </script>'";
 }
 
 function audioModal($route)
@@ -64,31 +65,32 @@ function audioModal($route)
     $fileName = array_slice(explode("/", $route), -1)[0];
     echo ("<div class='modal fade' id='openFileModal' tabindex='-1' aria-labelledby='openFileModalLabel' aria-hidden='true'>
             <div class='modal-dialog modal-xl modal-dialog-centered'>
-                <div class='modal-content'>
-                    <div class='modal-header'>
+            <div class='modal-content'>
+            <div class='modal-header'>
                         <h5 class='modal-title' id='openFileModalLabel'>" . $fileName . "</h5>
                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                    </div>
-                    <form class='' method='POST' action='./modules/file-actions.php'>
+                        </div>
+                        <form class='' method='POST' action='./modules/file-actions.php'>
                         <div class='modal-body'>
                         <div class='row justify-content-md-center'>
-                            
-                            
-                            <audio controls>
-                            <source src='" . $filesRoot . $route . "' type='audio/mp3'>
-                            Your browser does not support the audio element.
-                            </audio>
-                            
-                            </div>
+                        
+                        
+                        <audio controls>
+                        <source src='" . $filesRoot . $route . "' type='audio/mp3'>
+                        Your browser does not support the audio element.
+                        </audio>
+                        
+                        </div>
                         </div>
                         <div class='modal-footer'>
-                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                            Maybe download?
-                            <button type='button' class='btn btn-primary' name='delete' value='' id='openImageButton'>Maybe delete?</button>
-                        </div>
-                    </form>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                        <button type='button' class='btn btn-secondary'>Download</button>
+                            <button type='button' name='rename' data-bs-dismiss='modal' aria-label='Close' data-bs-toggle='modal' data-bs-target='#renameFileModal' value=" . $fileName . " class='btn btn-primary'> Rename</button>
+                            <button type='button' name='delete' data-bs-dismiss='modal' aria-label='Close' data-bs-toggle='modal' data-bs-target='#deleteFileModal' value=" . $fileName . " class='btn btn-danger'>Delete</button>
+                            </div>
+                            </form>
                 </div>
-            </div>
+                </div>
         </div>");
     echo "<script type= 'text/JavaScript'>
             var openFileModal = new bootstrap.Modal(document.getElementById('openFileModal'), {});
