@@ -19,22 +19,27 @@ function rightButton(){
         console.log(event.target.id)
         $("#"+`${event.target.id}`+" "+".deleteEditOp").show();
         $(".sureToRemove a").attr("href",`./dirManege/delete.php?path=.${path}/${event.target.getAttribute("data")}`)
+        
         $(".closeDiv").show();
         }
     )
 }
 rightButton();
-
-$("#edit button").on("click",(event)=>{
-    $("body").prepend("<div class=editFoldername>"+event.target.id+"</div>");
-    $(".editFoldername").append("<form  action='./dirManege/edit.php?oldName="+`${event.target.id}'`+" "+"method='post'></form>");
-    $(".editFoldername form").append("<div class='form-floating'></div>");
-    $(".form-floating").append("<input id='floatingInput' class='form-control' type='text' name='editDirName' id='submitButon'>");
-    $(".form-floating").append("<label for='floatingInput'>New folder name</label>");
-    $(".editFoldername form").append(" <button type='submit' class='btn btn-outline-success'>submit</button>");
-    }
-)
-
+function editModal(){
+    
+    $("#edit button").on("click",(event)=>{
+        console.log(event.target.getAttribute("data"))
+        $("body").prepend("<div class=editFoldername>"+event.target.getAttribute("data")+"</div>");
+        $(".editFoldername").append("<form  action='./dirManege/edit.php?oldName="+path+"/"+`${event.target.getAttribute("data")}&pathNew=${path}'`+" "+"method='post'></form>");
+        $(".editFoldername form").append("<div class='form-floating'></div>");
+        $(".form-floating").append("<input id='floatingInput' class='form-control' type='text' name='editDirName' id='submitButon'>");
+        $(".form-floating").append("<label for='floatingInput'>New folder name</label>");
+        $(".editFoldername form").append(" <button type='submit' class='btn btn-outline-success'>submit</button>");
+        
+        }
+    )
+}
+editModal();
 $(".closeDiv").on("click",()=>{
         $(".editFoldername").remove();
          $(".optionsMenu").hide();

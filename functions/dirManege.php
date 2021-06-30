@@ -23,7 +23,7 @@
         echo "<ul class='deleteEditOp' style='display: none;'>";
         echo "<li id='delete' class=OpEditDel><button id='$id' class='btn btn-outline-secondary'>Delete</button>";
         echo "</li>";
-        echo "<li id='edit' class=OpEditDel><button id='$item' class='btn btn-outline-secondary'>Edit</button>";
+        echo "<li id='edit' class=OpEditDel><button data='$item' class='btn btn-outline-secondary'>Edit</button>";
         echo "</li>";
         echo "</ul>";
         echo "</div>";
@@ -31,7 +31,7 @@
     }
      
     function scanDirsContent($actualPath){ 
-      $allDirs= scandir(".$actualPath");
+      $allDirs=scandir(".$actualPath");
       $dirs=array_diff($allDirs,array('.','..'));
       
       // $_SESSION["dirs"]=$dirs;
@@ -45,7 +45,7 @@
         echo "<ul class='deleteEditOp' style='display: none;'>";
         echo "<li id='delete' class=OpEditDel><button id='$id' class='btn btn-outline-secondary'>Delete</button>";
         echo "</li>";
-        echo "<li id='edit' class=OpEditDel><button id='$item' class='btn btn-outline-secondary'>Edit</button>";
+        echo "<li id='edit' class=OpEditDel><button data='$item' class='btn btn-outline-secondary'>Edit</button>";
         echo "</li>";
         echo "</ul>";
         echo "</div>";
@@ -54,18 +54,24 @@
 
     function editFolderName(){
       $newName=$_POST["editDirName"];
+      $path=$_GET["pathNew"];
       $oldName=$_GET["oldName"];
-      rename("../directories/$oldName","../directories/$newName");
+      echo nl2br("$newName\n$oldName\n$path");
+       rename(".$oldName",".$path/$newName");
       header("Location:../root.php");
 
     }
 
-    function removeDir(){
-      
-      // $deletedDir=$_GET['path'];
-      // echo(".path");
-      // rmdir("../directories/$deletedDir");
-      // header("Location:../root.php");
-      
+    function removeDir($pathDir){  
+       if (is_dir($pathDir)){
+        $dir=array_diff(scandir($pathDir),array('.','..'));
+          foreach($dir as $file){
+              removeDir("$pathDir/$file");
+            }  
+        rmdir($pathDir);
+      }else{
+        unlink($pathDir);
+      }
+       header("Location:../root.php");  
     }
 

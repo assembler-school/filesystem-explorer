@@ -12,6 +12,7 @@
         rightButton();
         dubleClick();
         showSureToRemove();
+        editModal();
     </script>
 
 
