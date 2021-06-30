@@ -1,6 +1,7 @@
 // File preview
 .sidebar-right {
   height: 100%;
+  overflow-y: scroll;
 
   .preview-wrapper {
     .icon-wrapper {
@@ -38,6 +39,8 @@
       }
 
       .preview-text {
+        overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
       }
 

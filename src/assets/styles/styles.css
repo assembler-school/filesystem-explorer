@@ -153,6 +153,7 @@ body main .bottom .bottom-block {
 
 .sidebar-right {
   height: 100%;
+  overflow-y: scroll;
 }
 .sidebar-right .preview-wrapper .icon-wrapper {
   margin-bottom: 40px;
@@ -182,6 +183,8 @@ body main .bottom .bottom-block {
   font-weight: bold;
 }
 .sidebar-right .preview-wrapper .preview-info .preview-text {
+  overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 .sidebar-right .preview-wrapper .preview-info .preview-title,
