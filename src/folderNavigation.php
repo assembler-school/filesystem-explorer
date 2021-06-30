@@ -1,15 +1,22 @@
 <?php
-function getBreadcrumbs() {
+function getBreadcrumbs()
+{
     $currentPath = $_SESSION['currentPath'];
     $cleanPath = substr($currentPath, strpos($currentPath, "root"));
-        $pathArr = explode("/", $cleanPath);
+    $pathArr = explode("/", $cleanPath);
 
-        foreach ($pathArr as $dir) {
-          $originalPath = substr($currentPath, 0, strpos($currentPath, $dir));
-          if ($originalPath . $dir == $currentPath) {
-            echo "<div class='btn bg-primary text-white'>$dir</div>";
-          } else {
-            echo "<a href='?path={$originalPath}{$dir}'><div class='btn btn-primary me-2'>$dir</div></a>";
-          }
+    array_walk($pathArr, function($folderName) use($currentPath) {
+        $originalPath = substr($currentPath, 0, strpos($currentPath, $folderName));
+        $folderPath = $originalPath . $folderName;
+        if ($folderPath === $currentPath) {
+            echo "<div class='btn bg-dark text-white'>$folderName</div>";
+        } else {
+            echo "<a href='index.php?path=$folderPath'><div class='btn btn-primary me-2'>$folderName</div></a>";
         }
+    });
+}
+
+function goBack(){
+    $newPath = $_SESSION['currentPath'] === './root' ? './root': dirname($_SESSION['currentPath']);
+    return "index.php?path=$newPath";
 }

@@ -1,12 +1,16 @@
 <?php
 
 session_start();
+if (isset($_GET['path'])){
+  $_SESSION['currentPath'] = $_GET['path'];
+}
+
 if (!isset($_SESSION['currentPath'])) {
-  $_SESSION['currentPath'] = './root/folder1';
+  $_SESSION['currentPath'] = './root';
 };
 
 include_once './src/newFolder.php';
-
+require_once('./src/folderNavigation.php');
 ?>
 
 <!DOCTYPE html>
@@ -42,11 +46,10 @@ include_once './src/newFolder.php';
     <!-- botones ruta -->
     <div class="d-flex">
       <div>
-        <button class="btn btn-danger me-2">BACK</button>
+        <a href="<?= goBack() ?>" class="btn btn-danger me-2">BACK</a>
       </div>
       <div>
         <?php
-        require_once('./src/folderNavigation.php');
         getBreadcrumbs();
         ?>
       </div>
