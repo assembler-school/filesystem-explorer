@@ -25,11 +25,13 @@ if (isset($_FILES["file"])) {
         $error_msg = $phpFileUploadErrors[$_FILES["file"]["error"]];
     } elseif (!in_array($file_ext, $extensions)) {
         $invalid_msg = "has invalid file extension!";
+    } elseif (is_file("./root" . $_SESSION["currentPath"] . "/" . $valid_filename)) {
+        $error_msg = "File with that name already exists!";
     } else {
-        if (isset($_SESSION["currentPath"]) && $_SESSION["currentPath"] == "") {
-            move_uploaded_file($_FILES["file"]["tmp_name"], "root/" . $valid_filename);
-        } else {
+        if (isset($_SESSION["currentPath"])) {
             move_uploaded_file($_FILES["file"]["tmp_name"], "./root" . $_SESSION["currentPath"] . "/" . $valid_filename);
+        } else {
+            move_uploaded_file($_FILES["file"]["tmp_name"], "./root" . "/" . $valid_filename);
         }
         $success_msg = "has been uploaded";
     }
