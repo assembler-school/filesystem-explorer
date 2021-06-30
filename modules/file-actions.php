@@ -49,8 +49,5 @@
     if (isset($_POST["open"])) {
         $currentPath = isset($_SESSION["currentPath"]) ? substr($_SESSION["currentPath"], 1)  : "./";
         $_SESSION["openFile"] = $currentPath . "/" . $_POST["open"];
-        echo $_SESSION["openFile"] . "<br>";
-        // var_dump();
         header("Location: ../index.php");
     }
-    // echo $currentPath;

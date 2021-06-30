@@ -44,7 +44,7 @@ function imageModal($imgRoute)
                             <img class='img-fluid' src='" . $filesRoot . $imgRoute . "'>
                         </div>
                         <div class='modal-footer'>
-                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
                             <button type='button' class='btn btn-secondary'>Download</button>
                             <button type='button' name='rename' data-bs-dismiss='modal' aria-label='Close' data-bs-toggle='modal' data-bs-target='#renameFileModal' value=" . $imgName . " class='btn btn-primary'> Rename</button>
                             <button type='button' name='delete' data-bs-dismiss='modal' aria-label='Close' data-bs-toggle='modal' data-bs-target='#deleteFileModal' value=" . $imgName . " class='btn btn-danger'>Delete</button>
@@ -79,7 +79,7 @@ function audioModal($route, $extension)
                         </div>
                         </div>
                         <div class='modal-footer'>
-                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
                         <button type='button' class='btn btn-secondary'>Download</button>
                             <button type='button' name='rename' data-bs-dismiss='modal' aria-label='Close' data-bs-toggle='modal' data-bs-target='#renameFileModal' value=" . $fileName . " class='btn btn-primary'> Rename</button>
                             <button type='button' name='delete' data-bs-dismiss='modal' aria-label='Close' data-bs-toggle='modal' data-bs-target='#deleteFileModal' value=" . $fileName . " class='btn btn-danger'>Delete</button>
@@ -91,8 +91,8 @@ function audioModal($route, $extension)
             var openFileModal = new bootstrap.Modal(document.getElementById('openFileModal'), {});
             openFileModal.show();
             const fileModal = document.getElementById('openFileModal');
-            fileModal.addEventListener('hide.bs.modal', function () { //Change #myModal with your modal id
-            document.querySelector('audio').pause(); // Stop playing
+            fileModal.addEventListener('hide.bs.modal', function () {
+            document.querySelector('audio').pause();
         })
         </script>'";
 }
@@ -117,7 +117,7 @@ function videoModal($route, $extension)
                         </div>
                         </div>
                         <div class='modal-footer'>
-                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
                         <button type='button' class='btn btn-secondary'>Download</button>
                             <button type='button' name='rename' data-bs-dismiss='modal' aria-label='Close' data-bs-toggle='modal' data-bs-target='#renameFileModal' value=" . $fileName . " class='btn btn-primary'> Rename</button>
                             <button type='button' name='delete' data-bs-dismiss='modal' aria-label='Close' data-bs-toggle='modal' data-bs-target='#deleteFileModal' value=" . $fileName . " class='btn btn-danger'>Delete</button>
