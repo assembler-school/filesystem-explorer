@@ -13,10 +13,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
+
   <body class="bod">
+  <div class='sureToRemove' style="display:none;">
+    <h2>Are you sure to delete?</h2>
+    <a href="./dirManege/delete.php" class='btn btn-outline-danger'>Delete</a>
+    <button class='btn btn-outline-secondary'>NO</button>
+  </div>
    <div class="closeDiv"></div>   
     <header class="navBarContain">
       <nav class="navbar navbar-light bg-light">
@@ -29,6 +35,7 @@
         </div>
       </nav>
     </header>
+    
     <main>
       <section class="aside">
         <button  class="newFolderButon">+</button>
@@ -46,12 +53,16 @@
               <button type="submit" class="btn btn-outline-success">submit</button>   
             </form>
           </div>
+      
         </div>
+      
        
         
       </section>
+      
             
       <section class="folders">
+      
           <?php
          
               scanDirs();

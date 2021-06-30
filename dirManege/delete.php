@@ -1,3 +1,5 @@
 <?php
 require("../functions/dirManege.php");
-removeDir();
+$deletedDir=$_GET['path'];
+echo $deletedDir;
+//removeDir();

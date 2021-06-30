@@ -145,6 +145,18 @@ main {
   align-content: flex-start;
 }
 
+.sureToRemove {
+  position: absolute;
+  padding: 100px;
+  z-index: 200;
+  border-radius: 20px;
+  min-width: 500px;
+  min-height: 250px;
+  left: 30%;
+  top: 50px;
+  background-color: whitesmoke;
+}
+
 @keyframes displayList {
   0% {
     width: 2%;
@@ -176,4 +188,4 @@ main {
   }
 }
 
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=style.css.map */

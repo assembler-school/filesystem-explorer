@@ -2,7 +2,7 @@ $(".optionsMenu").hide();
 $(".newFolderForm").hide();
 $(".closeDiv").hide();
 $(".folder").css("background-color","red");
-
+let path="./directories";
 $(".newFolderButon").on("click",()=>{
     $(".optionsMenu").show();
     $(".closeDiv").show();  
@@ -14,13 +14,16 @@ $("#showNewFolderForm").on("click",()=>{
     $(".closeDiv").show();  
     }
 )
-
-$(".folder").contextmenu((event)=>{
-    console.log(event.target.id)
-    $("#"+`${event.target.id}`+" "+".deleteEditOp").show();
-    $(".closeDiv").show();
-    }
-)
+function rightButton(){
+    $(".folder").contextmenu((event)=>{
+        console.log(event.target.id)
+        $("#"+`${event.target.id}`+" "+".deleteEditOp").show();
+        $(".sureToRemove a").attr("href",`./dirManege/delete.php?path=.${path}/${event.target.getAttribute("data")}`)
+        $(".closeDiv").show();
+        }
+    )
+}
+rightButton();
 
 $("#edit button").on("click",(event)=>{
     $("body").prepend("<div class=editFoldername>"+event.target.id+"</div>");
@@ -37,24 +40,40 @@ $(".closeDiv").on("click",()=>{
          $(".optionsMenu").hide();
          $(".newFolderForm").hide();
          $(".deleteEditOp").hide();
+         $(".sureToRemove").hide();
          $(".closeDiv").hide();
     }
 )
-
-$(".folder").on("dblclick",(e)=>{
-    $(".folder").hide();
-    let path="./directories/"+ e.target.getAttribute("data");
-    $(".newFolderForm form").attr("action",`./dirManege/create.php?path=${path}`)
-    $.ajax({
-                url: "./dirManege/dirContent.php",
-                type:"post",
-                data:{
-                    
-                    "path":path
-            },
-             
-                success: function(response)
-                {$(".folders").append(response)}
+function showSureToRemove(){
+    $("#delete button").on("click", ()=>{
+    $(".sureToRemove").show();
+    $(".closeDiv").show();
     })
-})
+}
+showSureToRemove();
 
+function dubleClick(){
+    $(".folder").on("dblclick",(e)=>{
+        $(".folder").hide();
+        path = path+"/"+e.target.getAttribute("data");
+
+        $(".newFolderForm form").attr("action",`./dirManege/create.php?path=${path}`)
+        //$(".sureToRemove a").attr("href",`./dirManege/delete.php?path=.${path}`)
+        // $(".newFolderForm form").attr("action",`./dirManege/create.php?path=${path}`)
+
+
+        $.ajax({
+                    url: "./dirManege/dirContent.php",
+                    type:"post",
+                    data:{
+                        
+                        "path":path
+                },
+                
+                    success: function(response)
+                    {$(".folders").append(response)}
+        })
+    })
+}
+
+dubleClick();

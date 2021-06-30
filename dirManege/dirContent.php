@@ -8,6 +8,10 @@
     scanDirsContent($path);  
     
     ?>
-    <script src="./script.js"></script>
+    <script>
+        rightButton();
+        dubleClick();
+        showSureToRemove();
+    </script>
 
 

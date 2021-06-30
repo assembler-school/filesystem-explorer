@@ -4,24 +4,8 @@
       
       $dirname=$_POST["dirname"];
       mkdir(".$actualPath/$dirname");
-      
-       
-           
-      // }else{
-      //   mkdir("../directories/$dirname");
-      //}
-      
-        //  if(file_exists(".$path/$dirname")){
-        //   $_SESSION["existingFolder"]= "this folder already exist";   
-        //  }else{
-        //   mkdir(".$path/$dirname");
-        //   unset($_SESSION["existingFolder"]); 
-        //  } 
-       // $path=$_SESSION["path"];
-        //echo ".$path/$dirname";
-        //mkdir(".$path/$dirname");
         
-        header("Location:../root.php");    
+      header("Location:../root.php");    
     }
 
     function scanDirs(){
@@ -37,7 +21,7 @@
         </svg>";
         echo nl2br("\n $item\n");
         echo "<ul class='deleteEditOp' style='display: none;'>";
-        echo "<li id='delete' class=OpEditDel><a href='./dirManege/delete.php?deletedDir=$item' class='btn btn-outline-secondary'>Delete</a>";
+        echo "<li id='delete' class=OpEditDel><button id='$id' class='btn btn-outline-secondary'>Delete</button>";
         echo "</li>";
         echo "<li id='edit' class=OpEditDel><button id='$item' class='btn btn-outline-secondary'>Edit</button>";
         echo "</li>";
@@ -59,7 +43,7 @@
         </svg>";
         echo nl2br("\n $item\n");
         echo "<ul class='deleteEditOp' style='display: none;'>";
-        echo "<li id='delete' class=OpEditDel><a href='./dirManege/delete.php?deletedDir=$item' class='btn btn-outline-secondary'>Delete</a>";
+        echo "<li id='delete' class=OpEditDel><button id='$id' class='btn btn-outline-secondary'>Delete</button>";
         echo "</li>";
         echo "<li id='edit' class=OpEditDel><button id='$item' class='btn btn-outline-secondary'>Edit</button>";
         echo "</li>";
@@ -78,9 +62,10 @@
 
     function removeDir(){
       
-      $deletedDir=$_GET['deletedDir'];
-      rmdir("../directories/$deletedDir");
-      header("Location:../root.php");
+      // $deletedDir=$_GET['path'];
+      // echo(".path");
+      // rmdir("../directories/$deletedDir");
+      // header("Location:../root.php");
       
     }
 
