@@ -4,6 +4,19 @@ include_once("./modules/upload.php");
 include_once("./templates/modals.php");
 include_once("./modules/directory-tree.php");
 include_once("./modules/open-file.php");
+
+if (isset($_SESSION["successMsg"])) {
+    $success_msg = $_SESSION["successMsg"];
+    unset($_SESSION["successMsg"]);
+}
+if (isset($_SESSION["errorMsg"])) {
+    $error_msg = $_SESSION["errorMsg"];
+    unset($_SESSION["errorMsg"]);
+}
+if (isset($_SESSION["invalidMsg"])) {
+    $invalid_msg = $_SESSION["invalidMsg"];
+    unset($_SESSION["invalidMsg"]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -78,13 +91,14 @@ include_once("./modules/open-file.php");
                 <?php
                 if (isset($success_msg) && $success_msg) {
                     echo "<div class='alert alert-success' role='alert'>";
-                    echo
-                    $_FILES["file"]["name"] . " " . $success_msg;
+                    echo $success_msg;
+                    // $_FILES["file"]["name"] . " " . $success_msg;
                     echo "</div>";
                     $success_msg = false;
                 } elseif (isset($invalid_msg) && $invalid_msg) {
                     echo "<div class='alert alert-warning' role='alert'>";
-                    echo $_FILES["file"]["name"] . " " . $invalid_msg;
+                    echo $invalid_msg;
+                    // echo $_FILES["file"]["name"] . " " . $invalid_msg;
                     echo "</div>";
                     $invalid_msg = false;
                 } elseif (isset($error_msg) && $error_msg) {
