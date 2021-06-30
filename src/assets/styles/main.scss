@@ -1,3 +1,8 @@
+@use "./style-modules/left-sidebar.scss";
+@use "./style-modules/right-sidebar.scss";
+@use "./style-modules/dropzone.scss";
+@use "./style-modules/modals.scss";
+
 * {
   padding: 0;
   margin: 0;
@@ -67,26 +72,6 @@ body {
       .bottom-block {
         // max-height: 525px;
         height: 100%;
-      }
-
-      // Directories
-      .sidebar-left {
-        .dir {
-          margin: 0;
-          color: black;
-          text-decoration: none;
-        }
-        .dir-child {
-          margin-left: 20px;
-        }
-        .dir-link:hover {
-          cursor: pointer;
-          text-decoration: none;
-          color: gray;
-        }
-        .current-dir {
-          font-weight: bold;
-        }
       }
 
       // Files
@@ -179,102 +164,6 @@ body {
           .path-link {
             color: white;
             text-decoration: none;
-          }
-        }
-      }
-
-      // File preview
-      .sidebar-right {
-        height: 100%;
-        .preview-wrapper {
-          .icon-wrapper {
-            margin-bottom: 40px;
-            .preview-icon {
-              font-size: 120px;
-            }
-            .badge-dark {
-              background-color: var(--bs-dark);
-              .preview-link {
-                color: white;
-                text-decoration: none;
-              }
-            }
-          }
-          .preview-info {
-            margin-bottom: 10px;
-            font-size: 10px;
-            height: fit-content;
-            * {
-              padding: 0;
-            }
-            hr {
-              margin-bottom: 5px;
-            }
-            .preview-title {
-              font-weight: bold;
-            }
-            .preview-text {
-              text-overflow: ellipsis;
-            }
-            .preview-title,
-            .preview-text {
-              // max-height: 15px;
-              padding: 0;
-              margin-bottom: 5px;
-            }
-          }
-        }
-      }
-    }
-  }
-  .drop-wrapper {
-    width: 90%;
-    height: 20%;
-    background-color: rgba(255, 255, 255, 0.632);
-    border-radius: 5px;
-    .drop-upload {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      input {
-        opacity: 0%;
-        width: 100%;
-        height: 100%;
-        z-index: 10;
-      }
-      h4 {
-        position: absolute;
-      }
-    }
-  }
-
-  // Modals
-  .modal {
-    .modal-dialog {
-      .modal-content {
-        .modal-body {
-          form {
-            .modal-item {
-              width: 100%;
-            }
-
-            .modal-title {
-              transform: translateX(3px);
-            }
-
-            .modal-input {
-              border: none;
-              background-color: rgb(233, 233, 233);
-              border-radius: 6px;
-              padding: 10px;
-            }
-
-            #oldName,
-            #oldPath {
-              display: none;
-              font-size: 12px;
-              border: none;
-            }
           }
         }
       }

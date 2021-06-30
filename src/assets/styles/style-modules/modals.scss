@@ -1,0 +1,32 @@
+// Modals
+.modal {
+  .modal-dialog {
+    .modal-content {
+      .modal-body {
+        form {
+          .modal-item {
+            width: 100%;
+          }
+
+          .modal-title {
+            transform: translateX(3px);
+          }
+
+          .modal-input {
+            border: none;
+            background-color: rgb(233, 233, 233);
+            border-radius: 6px;
+            padding: 10px;
+          }
+
+          #oldName,
+          #oldPath {
+            display: none;
+            font-size: 12px;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}

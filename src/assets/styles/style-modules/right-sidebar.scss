@@ -1,0 +1,52 @@
+// File preview
+.sidebar-right {
+  height: 100%;
+
+  .preview-wrapper {
+    .icon-wrapper {
+      margin-bottom: 40px;
+
+      .preview-icon {
+        font-size: 120px;
+      }
+
+      .badge-dark {
+        background-color: var(--bs-dark);
+
+        .preview-link {
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .preview-info {
+      margin-bottom: 10px;
+      font-size: 10px;
+      height: fit-content;
+
+      * {
+        padding: 0;
+      }
+
+      hr {
+        margin-bottom: 5px;
+      }
+
+      .preview-title {
+        font-weight: bold;
+      }
+
+      .preview-text {
+        text-overflow: ellipsis;
+      }
+
+      .preview-title,
+      .preview-text {
+        // max-height: 15px;
+        padding: 0;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

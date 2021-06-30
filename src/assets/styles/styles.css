@@ -1,3 +1,99 @@
+.sidebar-left .dir {
+  margin: 0;
+  color: black;
+  text-decoration: none;
+}
+.sidebar-left .dir-child {
+  margin-left: 20px;
+}
+.sidebar-left .dir-link:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: gray;
+}
+.sidebar-left .current-dir {
+  font-weight: bold;
+}
+
+.sidebar-right {
+  height: 100%;
+}
+.sidebar-right .preview-wrapper .icon-wrapper {
+  margin-bottom: 40px;
+}
+.sidebar-right .preview-wrapper .icon-wrapper .preview-icon {
+  font-size: 120px;
+}
+.sidebar-right .preview-wrapper .icon-wrapper .badge-dark {
+  background-color: var(--bs-dark);
+}
+.sidebar-right .preview-wrapper .icon-wrapper .badge-dark .preview-link {
+  color: white;
+  text-decoration: none;
+}
+.sidebar-right .preview-wrapper .preview-info {
+  margin-bottom: 10px;
+  font-size: 10px;
+  height: fit-content;
+}
+.sidebar-right .preview-wrapper .preview-info * {
+  padding: 0;
+}
+.sidebar-right .preview-wrapper .preview-info hr {
+  margin-bottom: 5px;
+}
+.sidebar-right .preview-wrapper .preview-info .preview-title {
+  font-weight: bold;
+}
+.sidebar-right .preview-wrapper .preview-info .preview-text {
+  text-overflow: ellipsis;
+}
+.sidebar-right .preview-wrapper .preview-info .preview-title,
+.sidebar-right .preview-wrapper .preview-info .preview-text {
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+.drop-wrapper {
+  width: 90%;
+  height: 20%;
+  background-color: rgba(255, 255, 255, 0.632);
+  border-radius: 5px;
+}
+.drop-wrapper .drop-upload {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.drop-wrapper .drop-upload input {
+  opacity: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+.drop-wrapper .drop-upload h4 {
+  position: absolute;
+}
+
+.modal .modal-dialog .modal-content .modal-body form .modal-item {
+  width: 100%;
+}
+.modal .modal-dialog .modal-content .modal-body form .modal-title {
+  transform: translateX(3px);
+}
+.modal .modal-dialog .modal-content .modal-body form .modal-input {
+  border: none;
+  background-color: #e9e9e9;
+  border-radius: 6px;
+  padding: 10px;
+}
+.modal .modal-dialog .modal-content .modal-body form #oldName,
+.modal .modal-dialog .modal-content .modal-body form #oldPath {
+  display: none;
+  font-size: 12px;
+  border: none;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -53,22 +149,6 @@ body main .bottom {
 }
 body main .bottom .bottom-block {
   height: 100%;
-}
-body main .bottom .sidebar-left .dir {
-  margin: 0;
-  color: black;
-  text-decoration: none;
-}
-body main .bottom .sidebar-left .dir-child {
-  margin-left: 20px;
-}
-body main .bottom .sidebar-left .dir-link:hover {
-  cursor: pointer;
-  text-decoration: none;
-  color: gray;
-}
-body main .bottom .sidebar-left .current-dir {
-  font-weight: bold;
 }
 body main .bottom .central {
   outline: 2px black solid;
@@ -146,82 +226,6 @@ body main .bottom .central .path-to-file {
 body main .bottom .central .path-to-file .path-link {
   color: white;
   text-decoration: none;
-}
-body main .bottom .sidebar-right {
-  height: 100%;
-}
-body main .bottom .sidebar-right .preview-wrapper .icon-wrapper {
-  margin-bottom: 40px;
-}
-body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .preview-icon {
-  font-size: 120px;
-}
-body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .badge-dark {
-  background-color: var(--bs-dark);
-}
-body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .badge-dark .preview-link {
-  color: white;
-  text-decoration: none;
-}
-body main .bottom .sidebar-right .preview-wrapper .preview-info {
-  margin-bottom: 10px;
-  font-size: 10px;
-  height: fit-content;
-}
-body main .bottom .sidebar-right .preview-wrapper .preview-info * {
-  padding: 0;
-}
-body main .bottom .sidebar-right .preview-wrapper .preview-info hr {
-  margin-bottom: 5px;
-}
-body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-title {
-  font-weight: bold;
-}
-body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-text {
-  text-overflow: ellipsis;
-}
-body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-title,
-body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-text {
-  padding: 0;
-  margin-bottom: 5px;
-}
-body .drop-wrapper {
-  width: 90%;
-  height: 20%;
-  background-color: rgba(255, 255, 255, 0.632);
-  border-radius: 5px;
-}
-body .drop-wrapper .drop-upload {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-body .drop-wrapper .drop-upload input {
-  opacity: 0%;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-}
-body .drop-wrapper .drop-upload h4 {
-  position: absolute;
-}
-body .modal .modal-dialog .modal-content .modal-body form .modal-item {
-  width: 100%;
-}
-body .modal .modal-dialog .modal-content .modal-body form .modal-title {
-  transform: translateX(3px);
-}
-body .modal .modal-dialog .modal-content .modal-body form .modal-input {
-  border: none;
-  background-color: #e9e9e9;
-  border-radius: 6px;
-  padding: 10px;
-}
-body .modal .modal-dialog .modal-content .modal-body form #oldName,
-body .modal .modal-dialog .modal-content .modal-body form #oldPath {
-  display: none;
-  font-size: 12px;
-  border: none;
 }
 
 /*# sourceMappingURL=styles.css.map */
