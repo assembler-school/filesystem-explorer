@@ -46,7 +46,6 @@
             }
         }
     }
-    echo isset($_POST["open"]) ? "is set to open" : "not set";
     if (isset($_POST["open"])) {
         $currentPath = isset($_SESSION["currentPath"]) ? substr($_SESSION["currentPath"], 1)  : "./";
         $_SESSION["openFile"] = $currentPath . "/" . $_POST["open"];
