@@ -192,7 +192,6 @@ require_once("./modules/searchFile.php");
         </div>
     </div>
 
-
     <script>
         // Passing data to the modal
         $('#editFileModal').on('show.bs.modal', function(event) {
