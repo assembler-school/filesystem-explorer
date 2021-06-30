@@ -242,7 +242,9 @@ function create_div_template(
   $complete_name_file
 ) {
   $sesion_name = $_SESSION["username"];
-  $local_dir = "C:/xampp\htdocs/filesystem-explorer/root/$sesion_name";
+
+  $relative_dir = "C:/xampp/htdocs/filesystem-explorer/root/$sesion_name";
+  $local_dir = "http://localhost/filesystem-explorer/root/$sesion_name";
 
   $html = new DOMDocument("1.0", "iso-8859-1");
   $html->formatOutput = true;
@@ -250,11 +252,12 @@ function create_div_template(
   $maindiv = $html->createElement("div");
   $maindiv->setAttribute(
     "class",
-    "col d-flex justify-content-center align-items-center open_modal"
+    "col d-flex justify-content-center align-items-center open_modal get_info_file"
   );
 
   $maindiv->setAttribute("aria-disabled", "true");
   $maindiv->setAttribute("data-source", "$local_dir/$complete_name_file");
+  $maindiv->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
   $maindiv->setAttribute("id", $complete_name_file);
   $html->appendChild($maindiv);
 
@@ -264,41 +267,32 @@ function create_div_template(
     "file__item--wrapper d-flex flex-column align-items-center"
   );
   $mainSection->setAttribute("data-source", "$local_dir/$complete_name_file");
+  $mainSection->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
   $maindiv->appendChild($mainSection);
 
   $first_div = $html->createElement("div");
   $first_div->setAttribute("data-source", "$local_dir/$complete_name_file");
+  $first_div->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
   $mainSection->appendChild($first_div);
 
   $file_img = $html->createElement("img");
   $file_img->setAttribute("src", $new_extension_file);
   $file_img->setAttribute("data-source", "$local_dir/$complete_name_file");
+  $file_img->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
   $file_img->setAttribute("alt", "");
   $first_div->appendChild($file_img);
 
   $second_div = $html->createElement("div");
   $second_div->setAttribute("data-source", "$local_dir/$complete_name_file");
+  $second_div->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
   $mainSection->appendChild($second_div);
 
   $title_folder = $html->createElement("h6");
   $title_folder->setAttribute("data-source", "$local_dir/$complete_name_file");
+  $title_folder->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
   $title_folder->appendChild($html->createTextNode($name_file));
   $second_div->appendChild($title_folder);
 
   echo html_entity_decode($html->saveHTML());
 }
 ?>
-
-<!-- Este seria nuestro Template -->
-<!-- <div class="col d-flex justify-content-center align-items-center">
-	<section class="file__item--wrapper d-flex flex-column align-items-center">
-		<div>
-			<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-		</div>
-		<div>
-			<h6>
-				titulo de la carpeta
-			</h6>
-		</div>
-	</section>
-</div> -->

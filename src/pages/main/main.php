@@ -59,7 +59,7 @@ revisar_si_existe_sesion();
 	</header>
 	<main class="main__container">
 		<aside class="d-flex flex-column justify-content-between">
-			<section id="menu" class="h-100 p-2 overflow-auto">
+			<section id="menu" class="p-2 overflow-auto">
 				<?php
 				require_once "../../php/local_files/read_local_files.php";
 				folders_init();
@@ -91,21 +91,15 @@ revisar_si_existe_sesion();
 					</button>
 				</div>
 				<div class="btn-toolbar mb-2 mb-md-0">
-					<div class="btn-group me-2">
-						<button type="button" class="btn btn-sm btn-outline-secondary">Name</button>
-						<button type="button" class="btn btn-sm btn-outline-secondary">Size</button>
-					</div>
-					<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-						<span data-feather="calendar"></span>
-						Fecha
-					</button>
+					<?php
+					require "../../php/navbar_file_information/navbar_information.php";
+					?>
 				</div>
 			</nav>
 			<div class="files__wrapper">
 				<div class="container-fluid folder_container">
 					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
 						<?php
-						// require_once "../../php/local_files/read_local_files.php";
 						read_local_folders();
 						?>
 					</div>

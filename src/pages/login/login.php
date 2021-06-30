@@ -57,8 +57,8 @@ $alert = revisar_si_existe_sesion();
 				<div class="text__password--forgot d-flex flex-row justify-content-start align-items-center">
 					<p class="text-primary">Forgot your password?</p>
 				</div>
-				<?= $alert ?
-					"<div class='d-flex flex-row justify-content-between align-items-center advise__login'>
+				<?= $alert
+      ? "<div class='d-flex flex-row justify-content-between align-items-center advise__login'>
 						<div class='$alert[bg] p-2 p-2 border border-secondary d-flex flex-row justify-content-between align-items-center w-100 rounded-3'>
 							<div class='$alert[type]'>
 							$alert[texto]
@@ -67,7 +67,8 @@ $alert = revisar_si_existe_sesion();
 							$alert[emoticon]
 							</div>
 						</div>
-					</div>" : "<div class='advise__login'></div>" ?>
+					</div>"
+      : "<div class='advise__login'></div>" ?>
 			</form>
 		</section>
 	</main>
