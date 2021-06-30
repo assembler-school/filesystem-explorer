@@ -1,5 +1,8 @@
 <?php 
-    require("./includes/manageDirItems.php")
+
+    require("./includes/manageDirItems.php");
+    require("./includes/updateDirNavBar.php");
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -155,9 +158,11 @@
         <section class="mainCenter">
             <div class ='fileWrapper'>
                 <?php echo "
-                    <div class='mainCenter__fileName'> 
-                        <a class='renderUpdateLink' href='./index.php'>My Unity</a> 
-                    </div>"; ?>
+                    <div class='mainCenter__fileName'>".
+                        renderDirBrowsingNavBar().
+                    "</div>"; 
+                    // <a class='renderUpdateLink' href='./index.php'>My Unity</a> 
+                ?>
             </div>
 
             <?php 

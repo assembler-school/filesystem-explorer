@@ -149,7 +149,7 @@
 
                 echo "
                 <div class='mainLeft__container'>
-                        <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$dirPath.$fileName."/'>"
+                        <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$dirPath."/".$fileName."'>"
                             .$icon.
                             "<div class='mainLeft__fileName'>".$fileName."</div>
                         </a>
