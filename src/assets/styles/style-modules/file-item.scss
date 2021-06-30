@@ -1,0 +1,47 @@
+// File row
+.file-item {
+  text-decoration: none;
+  transition: 0.2s;
+  cursor: pointer;
+  width: 100%;
+
+  // Wrapping row link
+  a {
+    text-decoration: none;
+
+    .icon-and-name {
+      display: flex;
+      .file-icon {
+        font-size: 18px;
+        color: black;
+      }
+      .file-name {
+        text-overflow: ellipsis;
+        color: rgb(0, 0, 0);
+        max-height: 22px;
+        overflow: hidden;
+      }
+    }
+
+    .file-text {
+      font-size: 15px;
+      margin-bottom: 0;
+      color: lightgray;
+    }
+  }
+
+  // Edit & delete
+  .file-buttons {
+    visibility: hidden;
+    padding: 0;
+  }
+}
+
+// Hover on file row
+.file-item:hover {
+  background-color: rgb(240, 240, 240);
+  // Show edit & delete on hover
+  .file-buttons {
+    visibility: visible;
+  }
+}

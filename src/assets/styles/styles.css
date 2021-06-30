@@ -1,3 +1,61 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+input:focus,
+input:active {
+  outline: none;
+}
+
+body {
+  background-color: #c7fcf7;
+  height: 100vh;
+}
+body main {
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 5px;
+  height: 64%;
+  width: 90%;
+}
+body main .bottom {
+  flex-grow: 1;
+  height: 90%;
+}
+body main .bottom .bottom-block {
+  height: 100%;
+}
+
+.header {
+  height: 10%;
+  border-bottom: 2px black solid;
+  margin-bottom: 25px;
+}
+.header #searchForm {
+  background-color: #e9e9e9;
+  border-radius: 6px;
+  color: darkgray;
+  height: 90%;
+}
+.header #searchForm .search-bar {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.header #searchForm a {
+  color: darkgray;
+  font-size: 24px;
+}
+.header .top-buttons form .custom-upload input {
+  display: none;
+}
+.header .top-buttons .create-folder {
+  margin-left: 5px;
+}
+
 .sidebar-left .dir {
   margin: 0;
   color: black;
@@ -13,6 +71,84 @@
 }
 .sidebar-left .current-dir {
   font-weight: bold;
+}
+
+.central {
+  outline: 2px black solid;
+}
+.central .central-columns {
+  border-bottom: 2px black solid;
+  padding: 0 66px 0 35px;
+  height: fit-content;
+  max-height: 100%;
+  width: 100%;
+}
+.central .central-columns .column-text {
+  font-weight: bold;
+  margin-bottom: 0;
+  font-size: 10px;
+  display: flex;
+}
+.central .central-files {
+  justify-content: central;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  max-height: 100%;
+  flex: 1 1 100%;
+  display: flex;
+  width: 100%;
+}
+
+.path-to-file {
+  background-color: #0e0e0e;
+  font-size: 14px;
+  color: white;
+  height: 35px;
+  width: 100%;
+}
+.path-to-file .path-link {
+  text-decoration: none;
+  color: white;
+}
+
+.file-item {
+  text-decoration: none;
+  transition: 0.2s;
+  cursor: pointer;
+  width: 100%;
+}
+.file-item a {
+  text-decoration: none;
+}
+.file-item a .icon-and-name {
+  display: flex;
+}
+.file-item a .icon-and-name .file-icon {
+  font-size: 18px;
+  color: black;
+}
+.file-item a .icon-and-name .file-name {
+  text-overflow: ellipsis;
+  color: black;
+  max-height: 22px;
+  overflow: hidden;
+}
+.file-item a .file-text {
+  font-size: 15px;
+  margin-bottom: 0;
+  color: lightgray;
+}
+.file-item .file-buttons {
+  visibility: hidden;
+  padding: 0;
+}
+
+.file-item:hover {
+  background-color: #f0f0f0;
+}
+.file-item:hover .file-buttons {
+  visibility: visible;
 }
 
 .sidebar-right {
@@ -55,21 +191,21 @@
 }
 
 .drop-wrapper {
-  width: 90%;
-  height: 20%;
   background-color: rgba(255, 255, 255, 0.632);
   border-radius: 5px;
+  height: 20%;
+  width: 90%;
 }
 .drop-wrapper .drop-upload {
   position: relative;
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 .drop-wrapper .drop-upload input {
-  opacity: 0%;
-  width: 100%;
   height: 100%;
+  width: 100%;
   z-index: 10;
+  opacity: 0%;
 }
 .drop-wrapper .drop-upload h4 {
   position: absolute;
@@ -82,150 +218,16 @@
   transform: translateX(3px);
 }
 .modal .modal-dialog .modal-content .modal-body form .modal-input {
-  border: none;
   background-color: #e9e9e9;
   border-radius: 6px;
   padding: 10px;
+  border: none;
 }
 .modal .modal-dialog .modal-content .modal-body form #oldName,
 .modal .modal-dialog .modal-content .modal-body form #oldPath {
-  display: none;
   font-size: 12px;
-  border: none;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-input:focus,
-input:active {
-  outline: none;
-}
-
-body {
-  height: 100vh;
-  background-color: #c7fcf7;
-}
-body main {
-  border: 3px solid black;
-  border-radius: 5px;
-  height: 64%;
-  width: 90%;
-  background-color: white;
-}
-body main .header {
-  height: 10%;
-  border-bottom: 2px black solid;
-  margin-bottom: 25px;
-}
-body main .header #searchForm {
-  height: 90%;
-  background-color: #e9e9e9;
-  border-radius: 6px;
-  color: darkgray;
-}
-body main .header #searchForm .search-bar {
-  background-color: transparent;
-  height: 100%;
-  width: 100%;
-  border: none;
-}
-body main .header #searchForm a {
-  color: darkgray;
-  font-size: 24px;
-}
-body main .header .top-buttons form .custom-upload input {
   display: none;
-}
-body main .header .top-buttons .create-folder {
-  margin-left: 5px;
-}
-body main .bottom {
-  flex-grow: 1;
-  height: 90%;
-}
-body main .bottom .bottom-block {
-  height: 100%;
-}
-body main .bottom .central {
-  outline: 2px black solid;
-}
-body main .bottom .central .central-columns {
-  height: fit-content;
-  padding: 0 66px 0 35px;
-  width: 100%;
-  border-bottom: 2px black solid;
-  max-height: 100%;
-}
-body main .bottom .central .central-columns .column-text {
-  font-weight: bold;
-  font-size: 10px;
-  display: flex;
-  margin-bottom: 0;
-}
-body main .bottom .central .central-files {
-  flex: 1 1 100%;
-  overflow-y: scroll;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: central;
-  max-height: 100%;
-}
-body main .bottom .central .central-files .file-item {
-  transition: 0.2s;
-  width: 100%;
-  cursor: pointer;
-  text-decoration: none;
-}
-body main .bottom .central .central-files .file-item a {
-  text-decoration: none;
-}
-body main .bottom .central .central-files .file-item .icon-and-name {
-  display: flex;
-}
-body main .bottom .central .central-files .file-item .icon-and-name .file-icon {
-  font-size: 18px;
-  color: black;
-}
-body main .bottom .central .central-files .file-item .icon-and-name .file-name {
-  color: black;
-  max-height: 22px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-body main .bottom .central .central-files .file-item .file-text {
-  font-size: 15px;
-  margin-bottom: 0;
-  color: lightgray;
-}
-body main .bottom .central .central-files .file-item .file-buttons {
-  visibility: hidden;
-  padding: 0;
-}
-body main .bottom .central .central-files .file-item .file-buttons form input {
-  display: none;
-}
-body main .bottom .central .file-item:hover {
-  background-color: #f0f0f0;
-}
-body main .bottom .central .file-item:hover .file-buttons {
-  visibility: visible;
-}
-body main .bottom .central .path-to-file {
-  width: 100%;
-  height: 35px;
-  font-size: 14px;
-  color: white;
-  background-color: #0e0e0e;
-}
-body main .bottom .central .path-to-file .path-link {
-  color: white;
-  text-decoration: none;
+  border: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

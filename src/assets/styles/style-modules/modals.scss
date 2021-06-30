@@ -13,16 +13,17 @@
           }
 
           .modal-input {
-            border: none;
             background-color: rgb(233, 233, 233);
             border-radius: 6px;
             padding: 10px;
+            border: none;
           }
 
+          // Inputs in editing modal
           #oldName,
           #oldPath {
-            display: none;
             font-size: 12px;
+            display: none;
             border: none;
           }
         }
