@@ -12,7 +12,8 @@ input:active {
 
 body {
   height: 100vh;
-  background-color: rgb(199, 252, 247);
+  // background-color: rgb(199, 252, 247);
+  background-color: rgb(255, 205, 78);
 
   main {
     border: 3px solid black;
@@ -213,6 +214,20 @@ body {
     height: 20%;
     background-color: rgba(255, 255, 255, 0.632);
     border-radius: 5px;
+    .drop-upload {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      input {
+        opacity: 0%;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+      }
+      h4 {
+        position: absolute;
+      }
+    }
   }
 
   // Modals
@@ -238,6 +253,7 @@ body {
 
             #oldName,
             #oldPath {
+              display: none;
               font-size: 12px;
               border: none;
             }

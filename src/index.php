@@ -57,6 +57,7 @@ require_once("./modules/searchFile.php");
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/dropzone/dist/dropzone.js"></script>
 
     <!-- Link to icons -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -121,9 +122,14 @@ require_once("./modules/searchFile.php");
         </div>
     </main>
 
-    <div class="drop-wrapper d-flex justify-content-center align-items-center">
-        <h4>Drop me a file</h4>
-    </div>
+    <!-- Dropzone -->
+    <form id="dropFileForm" action="./modules/uploadFileDb.php" method="POST" class="drop-wrapper d-flex justify-content-center align-items-center" enctype="multipart/form-data">
+        <label class="drop-upload d-flex justify-content-center align-items-center">
+            <input id="dropzoneFile" name="uploadedFile" type="file" value="Drop me a file">
+            <h4>Drop me a file</h4>
+        </label>
+    </form>
+
 
     <!-- -------------------- -->
     <!-- MODALS -->
@@ -140,7 +146,7 @@ require_once("./modules/searchFile.php");
                 <div class="modal-body">
                     <form method="POST" action="./modules/createFolder.php" id="newFolderForm">
                         <label for="directoryName" class="mb-2 modal-item modal-title">Folder name</label>
-                        <input type="text" name="directoryName" class="pl-3 modal-item modal-input" placeholder="Insert name" required autofocus>
+                        <input type="text" name="directoryName" class="pl-3 modal-item modal-input" placeholder="Insert name" required>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -162,7 +168,7 @@ require_once("./modules/searchFile.php");
                 <div class="modal-body">
                     <form method="POST" action="./modules/editFiles.php" id="editFileForm">
                         <label for="fileName" class="mb-2 modal-item modal-title">File name</label>
-                        <input type="text" name="fileName" class="pl-3 modal-item modal-input" placeholder="Insert new name" required autofocus>
+                        <input type="text" name="fileName" class="pl-3 modal-item modal-input" placeholder="Insert new name" required>
                         <input name="oldFileName" id="oldName" class="pt-2 pl-3 modal-item" disabled required>
                         <input name="oldPath" id="oldPath" class="pt-2 pl-3 modal-item" disabled required>
                     </form>
@@ -192,6 +198,12 @@ require_once("./modules/searchFile.php");
         $("#uploadedFile").on("change", function() {
             console.log("Changed!");
             $("#uploadButton").prop('disabled', false);
+        })
+
+        // Submit when file has been dropped
+        $("#dropzoneFile").on("change", function() {
+            console.log("Submitted dropped file!");
+            $("#dropFileForm").submit();
         })
 
         // Focus search bar

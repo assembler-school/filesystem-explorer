@@ -86,12 +86,13 @@ header("Location:./index.php");
 · Search bar done
 · Edit & delete searched files/directories
 
+DONE:
+* Dropzone
+
 TODO:
 * Don't navigate before root
 * Input validation in edit
-* Dropzone
 * Path to file
-
 
 
 -
@@ -106,7 +107,7 @@ TODO:
 * Use `embed` tag to preview files.
 * Not upload if there are no files
 * Copy-copy (...) folder name: alert
-* 
+* Color all different type of files
 
 ### Paths
 * Get all files in all directories:

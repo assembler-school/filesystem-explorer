@@ -11,7 +11,7 @@ input:active {
 
 body {
   height: 100vh;
-  background-color: #c7fcf7;
+  background-color: #ffcd4e;
 }
 body main {
   border: 3px solid black;
@@ -180,6 +180,20 @@ body .drop-wrapper {
   background-color: rgba(255, 255, 255, 0.632);
   border-radius: 5px;
 }
+body .drop-wrapper .drop-upload {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+body .drop-wrapper .drop-upload input {
+  opacity: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+body .drop-wrapper .drop-upload h4 {
+  position: absolute;
+}
 body .modal .modal-dialog .modal-content .modal-body form .modal-item {
   width: 100%;
 }
@@ -194,6 +208,7 @@ body .modal .modal-dialog .modal-content .modal-body form .modal-input {
 }
 body .modal .modal-dialog .modal-content .modal-body form #oldName,
 body .modal .modal-dialog .modal-content .modal-body form #oldPath {
+  display: none;
   font-size: 12px;
   border: none;
 }

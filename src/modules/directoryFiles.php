@@ -34,7 +34,6 @@ if ($_SESSION["isSearching"]) {
 function createFileRow($fileArray, $filePath)
 {
     echo "<div class='dir dir-link dir-child row file-item px-3 py-2 d-flex justify-content-center align-items-center'>";
-    // echo "<div class='dir dir-link dir-child row file-item px-3 py-2 d-flex justify-content-center align-items-center'>";
 
     // Creating the file block
     if ($fileArray["type"] == "directory") {
