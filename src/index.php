@@ -163,8 +163,8 @@ require_once("./modules/searchFile.php");
                     <form method="POST" action="./modules/editFiles.php" id="editFileForm">
                         <label for="fileName" class="mb-2 modal-item modal-title">File name</label>
                         <input type="text" name="fileName" class="pl-3 modal-item modal-input" placeholder="Insert new name" required autofocus>
-                        <input name="oldFileName" id="oldName" class="pt-2 pl-3 modal-item" required>
-                        <input name="oldPath" id="oldPath" class="pt-2 pl-3 modal-item" required>
+                        <input name="oldFileName" id="oldName" class="pt-2 pl-3 modal-item" disabled required>
+                        <input name="oldPath" id="oldPath" class="pt-2 pl-3 modal-item" disabled required>
                     </form>
                 </div>
                 <div class="modal-footer">

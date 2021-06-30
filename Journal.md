@@ -81,10 +81,16 @@ header("Location:./index.php");
 · Edit & delete files/directories
 
 
+## Day 5
 
+· Search bar done
+· Edit & delete searched files/directories
 
-
-
+TODO:
+* Don't navigate before root
+* Input validation in edit
+* Dropzone
+* Path to file
 
 
 
@@ -100,6 +106,7 @@ header("Location:./index.php");
 * Use `embed` tag to preview files.
 * Not upload if there are no files
 * Copy-copy (...) folder name: alert
+* 
 
 ### Paths
 * Get all files in all directories:

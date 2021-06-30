@@ -31,8 +31,8 @@ function deleteDir($path_file)
     }
 }
 
-
 $_SESSION["isSearching"] = false;
+$_SESSION["searchText"] = "";
 
 // Redirecting
 header("Location:../index.php");
