@@ -1,5 +1,6 @@
 <?php
   require("./functions/dirManege.php");
+  //require("./dirManege/dirContent.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,24 +56,23 @@
           </div>
       
         </div>
-      
-       
-        
       </section>
-      
-            
       <section class="folders">
-      
-          <?php
+    
+        <?php
+
+          
          
-              scanDirs();
-              if(isset($_SESSION["existingFolder"])){
-                echo $_SESSION["existingFolder"];
-              }    
-            ?>
+            if(!isset($_SESSION["currentPath"])){
+              $_SESSION["currentPath"]="./directories";
+            }
+            scanDirsContent($_SESSION["currentPath"]);   
+             
+          
+        ?>
       </section>
 
-      </main>
+    </main>
       <script src="./script.js"></script>
 
   </body>

@@ -1,7 +1,7 @@
 $(".optionsMenu").hide();
 $(".newFolderForm").hide();
 $(".closeDiv").hide();
-$(".folder").css("background-color","red");
+
 let path="./directories";
 $(".newFolderButon").on("click",()=>{
     $(".optionsMenu").show();
@@ -19,7 +19,6 @@ function rightButton(){
         console.log(event.target.id)
         $("#"+`${event.target.id}`+" "+".deleteEditOp").show();
         $(".sureToRemove a").attr("href",`./dirManege/delete.php?path=.${path}/${event.target.getAttribute("data")}`)
-        
         $(".closeDiv").show();
         }
     )
@@ -63,22 +62,27 @@ function dubleClick(){
         path = path+"/"+e.target.getAttribute("data");
 
         $(".newFolderForm form").attr("action",`./dirManege/create.php?path=${path}`)
-        //$(".sureToRemove a").attr("href",`./dirManege/delete.php?path=.${path}`)
-        // $(".newFolderForm form").attr("action",`./dirManege/create.php?path=${path}`)
-
+       
 
         $.ajax({
-                    url: "./dirManege/dirContent.php",
-                    type:"post",
-                    data:{
-                        
-                        "path":path
-                },
-                
-                    success: function(response)
-                    {$(".folders").append(response)}
+            url: "./dirContent.php",
+            type:"post",
+            data:{"path":path},
+            success: function(response)
+            {$(".folders").append(response)}
         })
     })
 }
 
 dubleClick();
+ 
+// function firstLevel(){
+//     $.ajax({
+//         url: "./dirContent.php",
+//         type:"post",
+//         data:{"path":path},
+//         success: function(response)
+//         {$(".folders").append(response)}
+//     })
+// }
+// firstLevel();
