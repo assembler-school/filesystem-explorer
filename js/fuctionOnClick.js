@@ -9,16 +9,13 @@ function handleEvents() {
           console.log("estoy dentro pero no hago el click");
        if (e.target.matches(".clickMe>*")) {
           var prueba = e.target.dataset.id;
-          console.log( e.target.dataset.id );
-          console.log( prueba );
           var formId = new FormData();
           formId.append("prueba", prueba);
-          console.log( formId );
           $.ajax({
                type: "POST",
                url: "includes/showData.php",
                data: formId,
-               dataType:"html",
+               dataType:"json",
                //asycn:false,
                cache: false,
                contentType: false,
@@ -29,12 +26,29 @@ function handleEvents() {
 
                    }else{
                          //$("#name").remove();
-                         $("#name").text(data);
+                         if(data.size == "null" && data.extension == "null" ){
+                              $("#labelSize").hide();
+                              $("#labelExtension").hide();
+                              $("#size").hide();
+                              $("#extension").hide();
+                              $("#name").text(data.name);
+                              $("#dateCreation").text(data.dataCreation);
+                              $("#modification").text(data.modification);
+                         }
+                         if(data.size !== "null" && data.extension !== "null" ){
+                              $("#labelSize").show();
+                              $("#labelExtension").show();
+                              $("#size").show();
+                              $("#extension").show();
+                              $("#name").text(data.name);
+                              $("#dateCreation").text(data.dataCreation);
+                              $("#modification").text(data.modification);
+                              $("#size").text(data.size);
+                              $("#extension").text(data.extension);
+                         }
                    }
                }
            });
-
-       //console.log(saveme);
        }
      });
 }

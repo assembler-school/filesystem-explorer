@@ -67,7 +67,7 @@
                     <div class ='fileWrapper'>
                         <a class='renderUpdateLink clickMe'  >"
                             .$icon.
-                            "<div class='mainCenter__fileName' data-id='".uniqid()."'>".$fileName."</div>
+                            "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
                         </a>
                         <i class='bi bi-pencil-square space'></i>
                         <i class='bi bi-trash-fill space'></i>
@@ -80,7 +80,7 @@
                     <div class ='fileWrapper'>
                     <a class='renderUpdateLink clickMe' >"
                     .$icon.
-                    "<div class='mainCenter__fileName' data-id='".uniqid()."'>".$fileName."</div>
+                    "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
                     </a>
                     <i class='bi bi-pencil-square space'></i>
                     <i class='bi bi-trash-fill space'></i>

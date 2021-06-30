@@ -123,19 +123,19 @@
                 </div>
                 <div class="fileInfoWrapper">
                     <div class="label"> Creation date: </div>
-                    <div class="labelType"></div>
+                    <div class="labelType" id="dateCreation"></div>
                 </div>
                 <div class="fileInfoWrapper">
                     <div class="label"> Modification date: </div>
-                    <div class="labelType">11/05/2021</div>
+                    <div class="labelType" id="modification"></div>
                 </div>
                 <div class="fileInfoWrapper">
-                    <div class="label"> Size: </div>
-                    <div class="labelType">38 KB</div>
+                    <div class="label" id="labelSize"> Size: </div>
+                    <div class="labelType"  id="size"></div>
                 </div>
                 <div class="fileInfoWrapper">
-                    <div class="label"> Extension: </div>
-                    <div class="labelType">.Doc</div>
+                    <div class="label" id="labelExtension"> Extension: </div>
+                    <div class="labelType"  id="extension"></div>
                 </div>
             </div>
         </section>

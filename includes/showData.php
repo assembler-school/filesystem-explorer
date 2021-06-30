@@ -1,27 +1,53 @@
 <?php
 
-//echo $prueba=$_POST['prueba'];
-
-//echo "Videos";
-
 $ruta = "../root";
 function listar_directorios_ruta($ruta){
-  // abrir un directorio y listarlo recursivo
+     $Name = $_POST['prueba'];
   if (is_dir($ruta)) {
-     if ($dh = opendir($ruta)) {
+     $dh = opendir($ruta);
         while (($file = readdir($dh)) !== false) {
-           //esta línea la utilizaríamos si queremos listar todo lo que hay en el directorio
-           //mostraría tanto archivos como directorios
-           echo "$file " ;
-           if (is_dir($ruta . $file) && $file!="." && $file!=".."){
-              //solo si el archivo es un directorio, distinto que "." y ".."
-              print_r("<br>entro 2");
-              echo "<br>Directorio: $ruta$file";
-              listar_directorios_ruta($ruta . $file . "/");
-           }
+          if ($Name == $file){
+               if(is_file($ruta."/".$file)) {     
+                    function human_filesize($bytes, $decimals = 2){
+                         $sz = "BKMGTP";
+                         $factor = floor((strlen($bytes) - 1) / 3);
+                         return sprintf("%.{$decimals}f", $bytes / pow   (1024, $factor)) . @$sz[$factor];
+                    }
+                    $fileExtension = strstr($file, '.');
+                    $fileName = strstr($file, '.', true);
+                    $nameData = $fileName;
+                    $dateData = date("d/m/Y", filemtime($ruta."/".$Name));
+                    $modificationData = date("d/m/Y", fileatime($ruta."/".$Name));
+                    $sizeData = human_filesize(filesize($ruta."/".$file));
+                    $extensionData = $fileExtension;
+                    $arrayData = [
+                         "name" => $nameData,
+                         "dataCreation" => $dateData,
+                         "modification" => $modificationData,
+                         "size" => $sizeData,
+                         "extension" => $extensionData,
+                    ];
+                    echo json_encode($arrayData);
+               }else{    
+                    $nameData = $file;
+                    $dateData = date("d/m/Y", filemtime($ruta."/".$Name));
+                    $modificationData = date("d/m/Y", fileatime($ruta."/".$Name));
+                    $sizeData = "null";
+                    $extensionData = "null";
+                    $arrayData = [
+                         "name" => $nameData,
+                         "dataCreation" => $dateData,
+                         "modification" => $modificationData,
+                         "size" => $sizeData,
+                         "extension" => $extensionData,
+                    ];
+                    echo json_encode($arrayData);
+               }
+          }
+           
         }
      closedir($dh);
-     }
+
   }else
      echo "<br>No es ruta valida";
 }
