@@ -16,11 +16,14 @@ session_start()
 
 <body>
   <header>
-    <div class="search-bar">Search <input id="search-bar" type="text"> </div>
-    <div class="header-test"></div>
-    <div class="actions">
-      <button id="create-folder" class="circle-icon create-folder">+</button>
+    <div class="main-header">
+      <div class="header-test"></div>
+      <div class="search-bar"><input id="search-bar" type="text" placeholder="Search"> </div>
+      <div class="actions">
+        <button id="create-folder" class="circle-icon create-folder">+</button>
+      </div>
     </div>
+    <div class="subheader"></div>
   </header>
   <main>
     <aside class="folder-tree-container">
@@ -63,13 +66,30 @@ session_start()
 
 <template id="create-folder-modal">
   <div class="modal-background"></div>
-  <div class="create-folder-modal">
+  <div class="modal create-folder-modal">
     <h2>CREATE NEW FOLDER</h2>
-    <h4>LOCATION</h4>
-    <p id="session-path"></p>
+    <div style="display: flex;">
+      <h4>Location: </h4>
+      <p id="session-path"></p>
+    </div>
     <form type="post" action="fileControll/createFolder.php">
-      <input id="create-folder-name" type="text" required />
+      <input id="create-folder-name" type="text" placeholder="New folder name" required />
       <button type="submit" id="create-folder-btn">CREATE NEW FOLDER</button>
+    </form>
+  </div>
+</template>
+
+<template id="edit-folder-modal">
+  <div class="modal-background"></div>
+  <div class="modal edit-folder-modal">
+    <h2>EDIT FOLDER NAME</h2>
+    <div style="display: flex;">
+      <h4>Location: </h4>
+      <p id="session-path"></p>
+    </div>
+    <form type="post" action="fileControll/editFolder.php">
+      <input id="edit-folder-name" type="text" placeholder="" required />
+      <button type="submit" id="edit-folder-btn">EDIT FOLDER NAME</button>
     </form>
   </div>
 </template>

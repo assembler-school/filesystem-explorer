@@ -1,10 +1,13 @@
+var path = "";
+
 document.oncontextmenu = function () {
   return false;
 };
 
 $(document).mousedown(function (e) {
+  path = e.target.dataset.dir;
+  updateTmpPath(path);
   if (e.button === 2) {
-    console.log(e.target);
     $(".rightClick").removeClass("showing");
     var n = $(".rightClick").clone(true);
     $(".rightClick").fadeOut(100);
@@ -28,7 +31,6 @@ $(".rightClick .overlap").click(function () {
   $(".showVal1").text("Back Button Pressed");
 });
 $(".rightClick .new").click(function () {
-  console.log("test new button");
   $(".showVal1").text("New Button Pressed");
 });
 $(".rightClick .edit").click(function () {
@@ -37,3 +39,16 @@ $(".rightClick .edit").click(function () {
 $(".rightClick .help").click(function () {
   $(".showVal1").text("Help Button Pressed");
 });
+
+function updateTmpPath(path) {
+  if (path) {
+    $.ajax({
+      type: "POST",
+      url: "fileControll/session.php",
+      data: { path: path, tmpPath: "yes" },
+      success: function (response) {
+        $(".header-test").html(response);
+      },
+    });
+  }
+}

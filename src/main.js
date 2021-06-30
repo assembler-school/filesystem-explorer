@@ -25,11 +25,22 @@ $(document).on("click", (e) => {
   if (targetIdName === "create-folder") {
     openCreateFolderModal();
   }
+  if (targetIdName === "edit-folder") {
+    openEditFolderModal();
+  }
   if (targetClassName.indexOf("modal-background") !== -1) {
-    closeCreateFolderModal();
+    if ($(".create-folder-modal")) {
+      closeCreateFolderModal();
+    }
+    if ($(".edit-folder-modal")) {
+      closeEditFolderModal();
+    }
   }
   if (targetIdName === "create-folder-btn") {
     createFolder(e);
+  }
+  if (targetIdName === "edit-folder-btn") {
+    editFolder(e);
   }
 });
 
@@ -60,7 +71,11 @@ function updatePath(path) {
     url: "fileControll/session.php",
     data: { path: path, valid: "yes" },
     success: function (response) {
-      $(".header-test").html(response);
+      $(".subheader").html("");
+      let splited = response.split("/");
+      splited.forEach((i) => {
+        $(".subheader").append(" &#11166; " + i);
+      });
     },
   });
 }
@@ -90,7 +105,6 @@ function deleteFile(path) {
 }
 
 function searchPatternInDir(path, pattern) {
-  console.log(path);
   $.ajax({
     type: "POST",
     url: "fileControll/searchPatternInDir.php",
@@ -105,8 +119,6 @@ function openCreateFolderModal() {
   $.ajax({
     url: "fileControll/session.php",
     success: function (response) {
-      $(".file-info-container").html(response);
-
       const templateContent = document.querySelector(
         "#create-folder-modal"
       ).content;
@@ -133,6 +145,42 @@ function createFolder(e) {
     success: function (response) {
       selectFolder(response);
       closeCreateFolderModal();
+    },
+  });
+}
+
+function openEditFolderModal() {
+  $.ajax({
+    url: "fileControll/session.php",
+    data: { tmpPath: "yes" },
+    success: function (response) {
+      const templateContent =
+        document.querySelector("#edit-folder-modal").content;
+      document
+        .querySelector("main")
+        .appendChild(document.importNode(templateContent, true));
+      let split = response.split("/");
+      path = split.slice(split.length - 1, split.length);
+      $("#edit-folder-name").val(path);
+    },
+  });
+}
+
+function closeEditFolderModal() {
+  document.querySelector(".edit-folder-modal")?.remove();
+  document.querySelector(".modal-background")?.remove();
+}
+
+function editFolder(e) {
+  e.preventDefault();
+  let editFolderName = $("#edit-folder-name").val();
+  $.ajax({
+    type: "POST",
+    url: "fileControll/editFolder.php",
+    data: { editFolderName: editFolderName, valid: "yes" },
+    success: function (response) {
+      selectFolder(response);
+      closeEditFolderModal();
     },
   });
 }

@@ -8,7 +8,7 @@
   z-index: 9;
 }
 
-.create-folder-modal {
+.modal {
   position: fixed;
   width: 30%;
   top: 50%;
@@ -23,19 +23,15 @@
 
   h2 {
     text-align: center;
-    padding-bottom: 1rem;
-  }
-
-  h2 {
     margin-bottom: 0.5rem;
   }
 
   input {
     // height: 2rem;
-    margin-top: 1rem;
+    margin: 1rem 0rem;
     border: none;
     border-bottom: 1px solid black;
     outline: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }
