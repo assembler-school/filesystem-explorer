@@ -7,8 +7,6 @@ if (isset($_POST["search"])) {
     $searchValue = $_POST["search"];
 }
 
-$searchValue = $_POST["search"];
-
 function convert_filesize($bytes, $decimals = 2)
 {
     $sz = 'BKMGTP';
