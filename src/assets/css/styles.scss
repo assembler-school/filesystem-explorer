@@ -1,20 +1,20 @@
-$primary-color: #2ED297;
-$secondary-color: #F06543;
-*{
-  font-family: 'IBM Plex Sans', sans-serif;
+$primary-color: #2ed297;
+$secondary-color: #f06543;
+* {
+  font-family: "IBM Plex Sans", sans-serif;
 }
-body{
+body {
   // outline: 1px solid black;
   background-color: $primary-color;
 }
-.title{
+.title {
   margin-top: 30px;
-  img{
+  img {
     max-width: 80px;
     margin-right: 10px;
   }
-  h2{
-    font-family: 'Anton', sans-serif;
+  h2 {
+    font-family: "Anton", sans-serif;
     font-size: 50px;
     color: white;
   }
@@ -42,102 +42,148 @@ body{
   // width: 20%;
   // margin-top: 25px;
 }
-.btn-search{
+.btn-search {
   background-color: $secondary-color;
   color: white;
   margin-left: 10px;
   width: 150px;
 }
-.btn-search:hover{
+.btn-search:hover {
   background-color: #ee866c;
   color: white;
 }
-.btn-new-folder{
+.btn-new-folder {
   background-color: $primary-color;
   color: white;
   margin-left: 10px;
   width: 190px;
 }
-.btn-new-folder:hover{
+.btn-new-folder:hover {
   background-color: #6ecfac;
   color: white;
 }
 
-.new_fileBtn {
+// .custom-file-input {
+//   position: absolute;
+//   top: 20%;
+//   left: 5%;
+//   width: 100px;
+//   height: 100px;
+//   border-radius: 100%;
+//   cursor: pointer;
+// }
+
+.custom-file-input::before {
   position: absolute;
   top: 20%;
   left: 5%;
-  width: 100px;
+  background-color: white;
+  content: "+";
+  display: inline-block;
   height: 100px;
-  border-radius: 100%;
+  width: 100px;
+  border-radius: 50%;
+  border: 2px solid #ee866c;
+  text-align: center;
+  outline: none;
+  color: $secondary-color;
+  font-size: 70px;
+  font-weight: 600;
+  align-content: center;
+  cursor: pointer;
+  // box-sizing: border-box;
+  padding: 0px 3px 50px 3px;
+  // text-shadow: 6px -1px 3px #ee866c;
 }
+.custom-file-input:hover::before {
+  border-color: #ee866c;
+  animation: mymove 3s infinite;
+}
+
+@keyframes mymove {
+  50% {
+    transform: rotate(90deg);
+    color: #2ed297;
+  }
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, $secondary-color, #ee866c);
+}
+
 input[value^="+"] {
   font-size: 80px;
   color: white;
 }
 .current-path {
   text-decoration: none;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   font-weight: 300;
   font-size: 25px;
   color: #6ecfac;
 }
-.current-path:hover{
+.current-path:hover {
   color: $secondary-color;
 }
-.content-container{
+.content-container {
   // height: 300px;
   // overflow: scroll;
   min-height: 300px;
 }
-tbody, td, tfoot, th, thead, tr {
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
 }
-th{
-  color:$secondary-color;
-  font-family: 'Anton', sans-serif;
+th {
+  color: $secondary-color;
+  font-family: "Anton", sans-serif;
   font-weight: 300;
   font-size: 20px;
   border-bottom: 10px solid #6ecfac;
 }
-td{
+td {
   font-size: 12px;
   font-weight: 700;
   color: rgb(151, 151, 151);
-  .btn-delete-file{
-    color:$secondary-color;
+  .btn-delete-file {
+    color: $secondary-color;
     font-size: 16px;
   }
-  .btn-delete-file:hover{
+  .btn-delete-file:hover {
     color: #ee866c;
   }
-  .btn-edit-file{
-    color:$primary-color;
+  .btn-edit-file {
+    color: $primary-color;
     font-size: 16px;
   }
-  .btn-edit-file:hover{
+  .btn-edit-file:hover {
     color: #6ecfac;
   }
-
 }
-.file-name{
+.file-name {
   font-weight: 700;
   color: black;
   font-size: 15px;
 }
-.folder-name, .fileA{
+.folder-name,
+.fileA {
   text-decoration: none;
   color: black;
 }
-.folder-name:hover, .fileA:hover{
+.folder-name:hover,
+.fileA:hover {
   color: $primary-color;
   cursor: pointer;
 }
-.fileIcon{
-  color:$secondary-color;
+.fileIcon {
+  color: $secondary-color;
 }
-.width-media{
+.width-media {
   width: 450px;
 }

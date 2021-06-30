@@ -72,8 +72,9 @@ $rootPath = getRootPath();
   ?>
   <aside class="aside_left">
     <form action="" method="POST" enctype="multipart/form-data">
-      <input class="text-center align-items-center" type="file" name="file" onchange="form.submit()">
-      <!-- <input class="new_fileBtn" type="submit" value="+" style="display: none"> -->
+    <label  class="custom-file-input">
+      <input type="file" name="file" onchange="form.submit()" style="display:none;">
+      </label>
     </form>
   </aside>
 </body>

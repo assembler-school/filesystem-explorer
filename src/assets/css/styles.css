@@ -1,9 +1,9 @@
 * {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
 }
 
 body {
-  background-color: #2ED297;
+  background-color: #2ed297;
 }
 
 .title {
@@ -16,7 +16,7 @@ body {
 }
 
 .title h2 {
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 50px;
   color: white;
 }
@@ -34,7 +34,7 @@ body {
 }
 
 .btn-search {
-  background-color: #F06543;
+  background-color: #f06543;
   color: white;
   margin-left: 10px;
   width: 150px;
@@ -46,7 +46,7 @@ body {
 }
 
 .btn-new-folder {
-  background-color: #2ED297;
+  background-color: #2ed297;
   color: white;
   margin-left: 10px;
   width: 190px;
@@ -57,13 +57,41 @@ body {
   color: white;
 }
 
-.new_fileBtn {
+.custom-file-input::before {
   position: absolute;
   top: 20%;
   left: 5%;
-  width: 100px;
+  background-color: white;
+  content: "+";
+  display: inline-block;
   height: 100px;
-  border-radius: 100%;
+  width: 100px;
+  border-radius: 50%;
+  border: 2px solid #ee866c;
+  text-align: center;
+  outline: none;
+  color: #f06543;
+  font-size: 70px;
+  font-weight: 600;
+  align-content: center;
+  cursor: pointer;
+  padding: 0px 3px 50px 3px;
+}
+
+.custom-file-input:hover::before {
+  border-color: #ee866c;
+  animation: mymove 3s infinite;
+}
+
+@keyframes mymove {
+  50% {
+    transform: rotate(90deg);
+    color: #2ed297;
+  }
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #f06543, #ee866c);
 }
 
 input[value^="+"] {
@@ -73,29 +101,34 @@ input[value^="+"] {
 
 .current-path {
   text-decoration: none;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   font-weight: 300;
   font-size: 25px;
   color: #6ecfac;
 }
 
 .current-path:hover {
-  color: #F06543;
+  color: #f06543;
 }
 
 .content-container {
   min-height: 300px;
 }
 
-tbody, td, tfoot, th, thead, tr {
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
 }
 
 th {
-  color: #F06543;
-  font-family: 'Anton', sans-serif;
+  color: #f06543;
+  font-family: "Anton", sans-serif;
   font-weight: 300;
   font-size: 20px;
   border-bottom: 10px solid #6ecfac;
@@ -108,7 +141,7 @@ td {
 }
 
 td .btn-delete-file {
-  color: #F06543;
+  color: #f06543;
   font-size: 16px;
 }
 
@@ -117,7 +150,7 @@ td .btn-delete-file:hover {
 }
 
 td .btn-edit-file {
-  color: #2ED297;
+  color: #2ed297;
   font-size: 16px;
 }
 
@@ -131,18 +164,20 @@ td .btn-edit-file:hover {
   font-size: 15px;
 }
 
-.folder-name, .fileA {
+.folder-name,
+.fileA {
   text-decoration: none;
   color: black;
 }
 
-.folder-name:hover, .fileA:hover {
-  color: #2ED297;
+.folder-name:hover,
+.fileA:hover {
+  color: #2ed297;
   cursor: pointer;
 }
 
 .fileIcon {
-  color: #F06543;
+  color: #f06543;
 }
 
 .width-media {
