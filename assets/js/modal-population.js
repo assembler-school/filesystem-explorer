@@ -27,7 +27,7 @@ function populateRenameFileModal(event) {
   const renameFileName = document.getElementById("renameFileName");
   let value = event.relatedTarget.value.split(".").slice(0, -1).join(".");
   renameFileName.innerHTML = value;
-  renameFileButton.value = value;
+  renameFileButton.value = event.relatedTarget.value;
 }
 function populateRenameFolderModal(event) {
   const renameFolderButton = document.getElementById("renameFolderButton");
