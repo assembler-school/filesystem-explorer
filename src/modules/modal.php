@@ -57,6 +57,7 @@
       <div class="modal-body">
         <div class="row">
           <div class="col" id="colVideo">
+            <!-- Video resource is gonna be here -->
           </div>
         </div>
       </div>
@@ -77,6 +78,7 @@
       <div class="modal-body">
         <div class="row">
           <div class="col" id="colImg">
+            <!-- Picture resource is gonna be here -->
           </div>
         </div>
       </div>
@@ -98,6 +100,7 @@
       <div class="modal-body">
         <div class="row">
           <div class="col" id="colAudio">
+            <!-- Audio resource is gonna be here -->
           </div>
         </div>
       </div>

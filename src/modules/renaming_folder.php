@@ -1,9 +1,7 @@
 <?php
-$expFolderPath = explode("/", $_POST["folderPath"]);
-$baseFolderPath = "";
-for ($i = 0; $i < count($expFolderPath) - 1; $i++) {
-  $baseFolderPath .=  $expFolderPath[$i] . "/";
-}
+require("./path_manager.php");
+
+$baseFolderPath = removeLastDirectoryPath($_POST["folderPath"]);
 
 rename($_POST["folderPath"], ($baseFolderPath . $_POST["newFolderName"]));
 

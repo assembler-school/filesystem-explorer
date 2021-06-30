@@ -1,12 +1,13 @@
 <?php
 // $rootPathManual = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
 
-$rootPath = getcwd();
-$rootPath .= "/root";
-$rootPath = str_replace("\\", "/", $rootPath);
 session_start();
 require("./src/modules/upload.php");
+require("./src/modules/path_manager.php");
 require_once("./src/modules/set_dir.php");
+
+$rootPath = getRootPath();
+
 
 ?>
 

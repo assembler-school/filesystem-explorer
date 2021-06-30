@@ -1,5 +1,6 @@
 <?php
 session_start();
+require("./path_manager.php");
 checkPath();
 header("Location:./../../index.php");
 
@@ -7,10 +8,8 @@ function checkPath()
 {
   // $rootPath = "C:/xampp/htdocs/Assembler/Projects/02-php-file-manager/filesystem-explorer/root";
 
-  $rootPath = getcwd();
-  $rootPath = dirname($rootPath, 2);
-  $rootPath = str_replace("\\", "/", $rootPath);
-  $rootPath .= "/root";
+  $rootPath = getRoothPathFrModules();
+
 
   if (isset($_GET["updatedPath"])) {
     $_SESSION["currentPath"] = $_GET["updatedPath"];

@@ -5,14 +5,18 @@ const imgModal = document.getElementById('imgModal');
 const audioModal = document.getElementById('audioModal');
 
 deleteModal.addEventListener("show.bs.modal", function (e) {
+  // Getting dinamically the path of the file to remove it
   modalFilePath = e.relatedTarget.getAttribute("data-delete");
   const deleteLink = document.getElementById("deleteLink");
+  // Setting by GET method the deleting function
   deleteLink.href = "./src/modules/deleting_file.php?filePath=" + modalFilePath;
 });
 
 renameModal.addEventListener("show.bs.modal", function (e) {
+  // Getting dinamically the path of the folder to rename
   modalFolderPath = e.relatedTarget.getAttribute("data-edit");
   const renameButton = document.getElementById("btnRenameFolder");
+  // Setting to the button the path value for POST method to rename the folder
   renameButton.value = modalFolderPath;
 });
 

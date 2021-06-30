@@ -1,5 +1,7 @@
 <?php
+
 deleteFile($_GET["filePath"]);
+
 header("Location:./../../index.php");
 
 function deleteFile($path)

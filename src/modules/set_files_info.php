@@ -1,11 +1,6 @@
-<!-- Getting path from root/ -->
 <?php
-$expPath = explode("/", $_SESSION["currentPath"]);
-$startIndexRootPath = array_search("root", $expPath, true);
-$startRoothPath = "./";
-for ($i = $startIndexRootPath; $i < count($expPath); $i++) {
-  $startRoothPath .=  $expPath[$i] . "/";
-}
+// Getting path from root/
+$rootRelativePath = getRootRelativePath($_SESSION["currentPath"]);
 ?>
 
 
@@ -13,6 +8,7 @@ for ($i = $startIndexRootPath; $i < count($expPath); $i++) {
 <?php for ($i = 2; $i < count($filesDir); $i++) : ?>
   <tr>
     <!-- Icon/url depending of the type of file -->
+    <!-- Pictures/videos/audios have link to open media modal -->
     <?php if (is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) : ?>
       <td class="file-name col col-3" scope="row"><a class="folder-name" href="src/modules/updating_path.php?updatedPath=<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>">
           <?php
@@ -40,19 +36,19 @@ for ($i = $startIndexRootPath; $i < count($expPath); $i++) {
           case "jpg":
             echo "<i class='fileIcon far fa-file-image'></i> ";
         ?>
-            <a data-img="<?php echo ($startRoothPath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#imgModal'><?php echo $filesDir[$i]; ?></a>
+            <a data-img="<?php echo ($rootRelativePath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#imgModal'><?php echo $filesDir[$i]; ?></a>
           <?php
             break;
           case "png":
             echo "<i class='fileIcon far fa-file-image'></i> ";
           ?>
-            <a data-img="<?php echo ($startRoothPath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#imgModal'><?php echo $filesDir[$i]; ?></a>
+            <a data-img="<?php echo ($rootRelativePath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#imgModal'><?php echo $filesDir[$i]; ?></a>
           <?php
             break;
           case "svg":
             echo "<i class='fileIcon far fa-file-image'></i> ";
           ?>
-            <a data-img="<?php echo ($startRoothPath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#imgModal'><?php echo $filesDir[$i]; ?></a>
+            <a data-img="<?php echo ($rootRelativePath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#imgModal'><?php echo $filesDir[$i]; ?></a>
           <?php
             break;
           case "ppt":
@@ -89,14 +85,14 @@ for ($i = $startIndexRootPath; $i < count($expPath); $i++) {
             break;
           case "mp3":
             echo "<i class='fileIcon far fa-file-audio'></i> ";
-            ?>
-             <a data-audio="<?php echo ($startRoothPath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#audioModal'><?php echo $filesDir[$i]; ?></a>
-            <?php
+          ?>
+            <a data-audio="<?php echo ($rootRelativePath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#audioModal'><?php echo $filesDir[$i]; ?></a>
+          <?php
             break;
           case "mp4":
             echo "<i class='fileIcon far far fa-file-video'></i> ";
           ?>
-            <a data-video="<?php echo ($startRoothPath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#videoModal'><?php echo $filesDir[$i]; ?></a>
+            <a data-video="<?php echo ($rootRelativePath . $filesDir[$i]) ?>" class='fileA' data-bs-toggle='modal' data-bs-target='#videoModal'><?php echo $filesDir[$i]; ?></a>
         <?php
             break;
         }
@@ -125,6 +121,7 @@ for ($i = $startIndexRootPath; $i < count($expPath); $i++) {
                             }
                           }
                           ?></td>
+    <!-- Setting icons for renaming and deleting -->
     <?php if (is_dir($_SESSION["currentPath"] . "/" . $filesDir[$i])) : ?>
       <td class="col col-2">
         <button data-delete="<?php echo ($_SESSION["currentPath"] . "/" . $filesDir[$i]) ?>" type="button" class="btn btn-delete-file" data-bs-toggle="modal" data-bs-target="#deleteFileModal">

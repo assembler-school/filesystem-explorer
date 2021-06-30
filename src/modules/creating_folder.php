@@ -1,9 +1,14 @@
 <?php
 session_start();
 
-$newFolderName = $_POST["folderName"];
-$pathNewFolder = $_SESSION["currentPath"];
-$pathNewFolder = $pathNewFolder . "/" . $newFolderName;
-mkdir($pathNewFolder, 0700);
+createFolder($_POST["folderName"], $_SESSION["currentPath"]);
 
 header("Location:./../../index.php");
+
+function createFolder($folderName, $currentPath)
+{
+  $newFolderName = $folderName;
+  $pathNewFolder = $currentPath;
+  $pathNewFolder = $pathNewFolder . "/" . $newFolderName;
+  mkdir($pathNewFolder, 0700);
+}

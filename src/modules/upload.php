@@ -27,5 +27,4 @@ if (isset($_FILES['file'])) {
             }
         }
     }
-    // header("Location: ./index.php");
 }
