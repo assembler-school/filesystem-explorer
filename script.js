@@ -50,7 +50,7 @@ $(".folder").on("dblclick",(e)=>{
                 url: "./dirManege/dirContent.php",
                 type:"post",
                 data:{
-                    "dirToRender":e.target.id,
+                    
                     "path":path
             },
              
