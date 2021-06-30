@@ -90,7 +90,7 @@
 			myModalSection.append(templateClone);
 			let btnCloseModal = document.getElementById("btnCloseModal");
 			btnCloseModal.addEventListener("click", closeModal);
-			console.log(mySource);
+			// console.log(mySource);
 
 			let my_source_container = document.getElementById("video_source");
 			my_source_container.setAttribute("src", mySource);
@@ -104,7 +104,7 @@
 			myModalSection.append(templateClone);
 			let btnCloseModal = document.getElementById("btnCloseModal");
 			btnCloseModal.addEventListener("click", closeModal);
-			console.log(mySource);
+			// console.log(mySource);
 
 			let my_source_container = document.getElementById("sound_source");
 			my_source_container.setAttribute("src", mySource);
@@ -118,7 +118,7 @@
 			myModalSection.append(templateClone);
 			let btnCloseModal = document.getElementById("btnCloseModal");
 			btnCloseModal.addEventListener("click", closeModal);
-			console.log(mySource);
+			// console.log(mySource);
 
 			let my_source_container = document.getElementById("img_source");
 			my_source_container.setAttribute("src", mySource);
@@ -132,7 +132,7 @@
 			myModalSection.append(templateClone);
 			let btnCloseModal = document.getElementById("btnCloseModal");
 			btnCloseModal.addEventListener("click", closeModal);
-			console.log(mySource);
+			// console.log(mySource);
 
 		}
 	}
