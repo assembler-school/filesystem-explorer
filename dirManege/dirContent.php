@@ -8,5 +8,6 @@
     scanDirsContent($path);  
     
     ?>
+    <script src="./script.js"></script>
 
 

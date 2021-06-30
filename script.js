@@ -1,7 +1,7 @@
 $(".optionsMenu").hide();
 $(".newFolderForm").hide();
-$(".deleteEditOp").hide();
 $(".closeDiv").hide();
+$(".folder").css("background-color","red");
 
 $(".newFolderButon").on("click",()=>{
     $(".optionsMenu").show();
@@ -16,7 +16,6 @@ $("#showNewFolderForm").on("click",()=>{
 )
 
 $(".folder").contextmenu((event)=>{
-    $(".deleteEditOp").hide();
     console.log(event.target.id)
     $("#"+`${event.target.id}`+" "+".deleteEditOp").show();
     $(".closeDiv").show();
@@ -44,7 +43,7 @@ $(".closeDiv").on("click",()=>{
 
 $(".folder").on("dblclick",(e)=>{
     $(".folder").hide();
-    let path="./directories/"+ e.target.id;
+    let path="./directories/"+ e.target.getAttribute("data");
     $(".newFolderForm form").attr("action",`./dirManege/create.php?path=${path}`)
     $.ajax({
                 url: "./dirManege/dirContent.php",
