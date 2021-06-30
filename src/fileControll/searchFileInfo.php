@@ -12,7 +12,7 @@ if (isset($_REQUEST["valid"])) {
     <div class='file-size file-info'>" . size($path) . "</div>
   </div>
   <div class='file-url file-info'>" . $path . "</div>
-  <button id='delete-file' class='file-info' data-dir=" . $path . ">DELETE FILE</button>
+  <button id='delete-file' class='file-info' data-dir='$path'>DELETE FILE</button>
   ";
 }
 

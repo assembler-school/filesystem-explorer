@@ -97,15 +97,13 @@ function searchFileInfo(path) {
   });
 }
 
-function deleteFile(path) {
+function deleteFile() {
   $.ajax({
     url: "fileControll/deleteFile.php",
     success: function (response) {
-      $(".file-info-container").html(response);
-
-      var split = path.split("/");
-      path = split.slice(0, split.length - 1).join("/");
-      selectFolder(path);
+      var split = response.split("/");
+      response = split.slice(0, split.length - 1).join("/");
+      selectFolder(response);
     },
   });
 }
