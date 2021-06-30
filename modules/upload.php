@@ -24,7 +24,7 @@ if (isset($_FILES["file"])) {
     if ($_FILES["file"]["error"]) {
         $_SESSION["errorMsg"] = $phpFileUploadErrors[$_FILES["file"]["error"]];
     } elseif (!in_array($file_ext, $extensions)) {
-        $_SESSION["invalidMsg"] = "has invalid file extension!";
+        $_SESSION["invalidMsg"] = $_FILES["file"]["name"] . " has invalid file extension!";
     } elseif (is_file("./root" . $_SESSION["currentPath"] . "/" . $valid_filename)) {
         $_SESSION["errorMsg"] = "File with that name already exists!";
     } else {
@@ -33,6 +33,6 @@ if (isset($_FILES["file"])) {
         } else {
             move_uploaded_file($_FILES["file"]["tmp_name"], "./root" . "/" . $valid_filename);
         }
-        $_SESSION["successMsg"] = "has been uploaded";
+        $_SESSION["successMsg"] =  $_FILES["file"]["name"] . " has been uploaded";
     }
 }
