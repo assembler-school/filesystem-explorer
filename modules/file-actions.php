@@ -37,6 +37,7 @@
         } else {
             removeDirectory($fullPath);
         }
+        $_SESSION["successMsg"] = "Successfully deleted!";
         header("Location: ../index.php");
     } elseif (isset($_POST["rename"]) && isset($_POST["newName"])) {
         $fileToRename = $_POST["rename"];
@@ -47,21 +48,20 @@
             $newFileName = "../root/" . $currentPath . "/" . $_POST["newName"] . "." . $fileExtension;
             if (!file_exists($newFileName)) {
                 rename($fullPath, $newFileName);
-                header("Location: ../index.php?renamed=true");
+                $_SESSION["successMsg"] = "Successfully renamed!";
             } else {
-                // TODO some error.
-                echo "error";
+                $_SESSION["errorMsg"] = "Filename already exists!";
             }
         } else {
             $newFileName = "../root/" . $currentPath . "/" . $_POST["newName"];
             if (!file_exists($newFileName)) {
                 rename($fullPath, $newFileName);
-                header("Location: ../index.php?renamed=true");
+                $_SESSION["successMsg"] = "Successfully renamed!";
             } else {
-                // TODO some error.
-                echo "error";
+                $_SESSION["errorMsg"] = "Filename already exists!";
             }
         }
+        header("Location: ../index.php");
     } elseif (isset($fileToDownload)) {
         foreach ($filesList as $file) {
             if ($file["name"] === $fileToDownload && file_exists($file["path"])) {
