@@ -1,3 +1,18 @@
+function ajaxPetition(responseContainer, endpoint, e) {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById(responseContainer).innerHTML = this.responseText;
+    }
+  };
+  xmlhttp.open(
+    "GET",
+    "src/" + endpoint + "?n=" + e.target.getAttribute("data-title"),
+    true
+  );
+  xmlhttp.send();
+}
+
 /* Rename modal */
 const rShadow = document.getElementById("shadowRename");
 const rCancelBtn = document.getElementById("modalRenameCancel");
@@ -68,19 +83,7 @@ document
     dtModal.classList.toggle("hidden");
     dtShadow.classList.toggle("hidden");
 
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("detailsContainer").innerHTML =
-          this.responseText;
-      }
-    };
-    xmlhttp.open(
-      "GET",
-      "src/details.php?n=" + e.target.getAttribute("data-title"),
-      true
-    );
-    xmlhttp.send();
+    ajaxPetition("detailsContainer", "details.php", e);
   });
 
 dtClosing.forEach((element) => {
@@ -88,5 +91,44 @@ dtClosing.forEach((element) => {
     e.preventDefault();
     dtModal.classList.toggle("hidden");
     dtShadow.classList.toggle("hidden");
+  });
+});
+
+/* Preview modal */
+const pShadow = document.getElementById("shadowPreview");
+const pCrossBtn = document.querySelector("#formPreview .btn-x");
+const pClosing = [pShadow, pCrossBtn];
+const pModal = document.getElementById("formPreview");
+
+document
+  .getElementById("previewOption")
+  .addEventListener("click", function (e) {
+    pModal.classList.toggle("hidden");
+    pShadow.classList.toggle("hidden");
+
+    let title = e.target.getAttribute("data-title");
+    if (title.length > 40) {
+      title = title.substr(0, 37) + "...";
+    }
+
+    document.getElementById("mediaTitle").innerHTML = title;
+
+    ajaxPetition("previewContainer", "preview.php", e);
+  });
+
+pClosing.forEach((element) => {
+  element.addEventListener("click", function (e) {
+    e.preventDefault();
+    pModal.classList.toggle("hidden");
+    pShadow.classList.toggle("hidden");
+    try {
+      document.querySelector("#formPreview video").pause();
+    } catch (err0) {
+      try {
+        document.querySelector("#formPreview audio").pause();
+      } catch {
+        return;
+      }
+    }
   });
 });

@@ -1,6 +1,6 @@
 <!-- Delete Modal -->
 <div class='position-fixed vw-100 vh-100 bg-dark modal-shadow hidden' id='shadowDelete'></div>
-<div class='modal-form-delete position-fixed p-3 rounded bg-secondary hidden' id='formDelete'>
+<div class='modal-form modal-form-delete position-fixed p-3 rounded bg-secondary hidden' id='formDelete'>
     <div class="d-flex space-between justify-content-between">
         <h3 class='text-white'>Delete element</h3>
         <svg class='text-white btn-x' role='img' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
