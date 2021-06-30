@@ -17,6 +17,7 @@
 
     $filesList = getAllFiles("../root");
     $fileToDelete = $_POST["delete"];
+    $fileToDownload = $_POST["download"];
 
     function removeDirectory($path)
     {
@@ -27,8 +28,9 @@
         rmdir($path);
         return;
     }
-    foreach ($filesList as $file) {
-        if (isset($fileToDelete)) {
+
+    if (isset($fileToDelete)) {
+        foreach ($filesList as $file) {
             if (is_file($file["path"]) && $file["name"] === $fileToDelete && file_exists($file["path"])) {
                 unlink($file["path"]);
                 header("Location: ../index.php?deleted=true");
@@ -36,12 +38,32 @@
                 removeDirectory($file["path"]);
                 header("Location: ../index.php?deleted=true");
             }
-        } elseif (isset($_POST["rename"]) && isset($_POST["newName"])) {
+        }
+    } elseif (isset($_POST["rename"]) && isset($_POST["newName"])) {
+        foreach ($filesList as $file) {
             $fileName = explode(".", $file["name"])[0];
             $rpName = str_replace($fileName, $_POST["newName"], $file["path"]);
             if ($fileName === $_POST["rename"] && file_exists($file["path"])) {
                 rename($file["path"], $rpName);
                 header("Location: ../index.php?renamed=true");
+            }
+        }
+    } elseif (isset($fileToDownload)) {
+        foreach ($filesList as $file) {
+            if ($file["name"] === $fileToDownload && file_exists($file["path"])) {
+                header('Content-Description: File Transfer');
+                header("Content-Type: application/octet-stream");
+                header("Content-Length: " . filesize($file["path"]));
+                header('Content-Transfer-Encoding: binary');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+                header("Content-Disposition: attachment; filename=" . $file["name"]);
+                ob_clean();
+                flush();
+                readfile($file["path"]);
+                exit;
+            } else {
+                echo "File path does not exist.";
             }
         }
     }
