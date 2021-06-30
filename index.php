@@ -39,7 +39,7 @@ include_once './src/fillContent.php';
           <h3 class="ms-2">FileSystem Explorer</h3>
         </a>
         <form method='GET' class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" name="search" value=<?= getFilter()?> autofocus>
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" name="search" value="<?= getFilter()?>" autofocus>
         </form>
       </div>
     </div>
