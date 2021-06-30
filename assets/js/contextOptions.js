@@ -132,3 +132,10 @@ pClosing.forEach((element) => {
     }
   });
 });
+
+/* Copy option */
+
+document.getElementById("copyOption").addEventListener("click", function (e) {
+  const data = e.target.getAttribute("data-title");
+  window.location.replace("./src/copy.php?n=" + data);
+});
