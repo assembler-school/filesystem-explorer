@@ -4,6 +4,10 @@ session_start();
 /* -------------------------------------------------------------------------- */
 /*                              SESSION VARIABLES                             */
 /* -------------------------------------------------------------------------- */
+if (!isset($_SESSION["basePath"])) {
+    $_SESSION["basePath"] = getcwd();
+}
+
 if (!isset($_SESSION["currentPath"])) {
     $_SESSION["currentPath"] = "root";
 }
@@ -23,13 +27,19 @@ if (!isset($_SESSION["matchedFiles"])) {
 if (!isset($_SESSION["isSearching"])) {
     $_SESSION["isSearching"] = false;
 }
+if (!isset($_SESSION["searchText"])) {
+    $_SESSION["searchText"] = "";
+}
+
+if (isset($_GET["deleteSearch"])) {
+    $_SESSION["isSearching"] = false;
+    $_SESSION["searchText"] = "";
+}
 
 require_once("./modules/searchFile.php");
 
-
 // unset($_SESSION);
 // session_destroy();
-
 ?>
 
 <!DOCTYPE html>
@@ -47,9 +57,10 @@ require_once("./modules/searchFile.php");
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../node_modules/jquery/dist/jquery.js"></script>
+
     <!-- Link to icons -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!-- Styles -->
     <link rel="stylesheet" href="./assets/styles/styles.css">
     <title>File System</title>
@@ -60,8 +71,11 @@ require_once("./modules/searchFile.php");
         <!-- HEADER -->
         <div class="row header m-0 p-2 d-flex justify-content-between align-items-center">
             <h2 class="col col-2 logo p-0 m-0">SpamFile!</h2>
-            <form class="col col-7 p-0" id="searchForm" action="./modules/searchSubmit.php" method="POST" enctype="multipart/form-data">
-                <input type="text" id="searchInput" name="searchValue" class="search-bar px-3" onchange=submit() placeholder="Search files" autofocus></input>
+            <form class="col col-7 p-0 px-3 d-flex justify-content-between align-items-center" id="searchForm" action="./modules/searchSubmit.php" method="POST" enctype="multipart/form-data">
+                <input type="text" id="searchInput" name="searchValue" class="search-bar" placeholder="Search files" value="<?php echo $_SESSION["searchText"] ?>">
+                <a href="./index.php?deleteSearch=true">
+                    <i class="uil uil-backspace"></i>
+                </a>
             </form>
             <div class="col col-3 top-buttons d-flex justify-content-end align-items-center p-0">
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
@@ -69,7 +83,7 @@ require_once("./modules/searchFile.php");
                         <input value="New file" type="file" id="uploadedFile" name="uploadedFile" class="btn btn-light" />
                         <div class="btn btn-outline-dark">Choose file</div>
                     </label>
-                    <input value="Upload" type="submit" class="btn btn-dark" />
+                    <input id="uploadButton" value="Upload" type="submit" class="btn btn-dark" disabled />
                 </form>
                 <button type='button' class="create-folder btn btn-dark" data-bs-toggle="modal" data-bs-target="#newDirectoryModal">
                     <i class="fas fa-folder-plus"></i>
@@ -107,9 +121,9 @@ require_once("./modules/searchFile.php");
         </div>
     </main>
 
-    <!-- <div class="drop-wrapper d-flex justify-content-center align-items-center">
+    <div class="drop-wrapper d-flex justify-content-center align-items-center">
         <h4>Drop me a file</h4>
-    </div> -->
+    </div>
 
     <!-- -------------------- -->
     <!-- MODALS -->
@@ -150,6 +164,7 @@ require_once("./modules/searchFile.php");
                         <label for="fileName" class="mb-2 modal-item modal-title">File name</label>
                         <input type="text" name="fileName" class="pl-3 modal-item modal-input" placeholder="Insert new name" required autofocus>
                         <input name="oldFileName" id="oldName" class="pt-2 pl-3 modal-item" required>
+                        <input name="oldPath" id="oldPath" class="pt-2 pl-3 modal-item" required>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -166,23 +181,21 @@ require_once("./modules/searchFile.php");
         $('#editFileModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var recipient = button.data('old')
+            var oldpath = button.data('path')
             var modal = $(this);
             console.log("This is the recipient ", recipient);
             modal.find('.modal-body form #oldName').val(recipient);
+            modal.find('.modal-body form #oldPath').val(oldpath);
         })
 
         // Disabling upload button
-        // console.log($("#uploadedFile").files.length);
+        $("#uploadedFile").on("change", function() {
+            console.log("Changed!");
+            $("#uploadButton").prop('disabled', false);
+        })
 
-        // Submit search on change
-        // let searchText = "";
-        // $(document).ready(function() {
-        //     $('#searchInput').on('keypress', function() {
-        //         if ($('#searchInput').val() == "") {
-        //             document.forms["searchForm"].submit();
-        //         }
-        //     });
-        // });
+        // Focus search bar
+        $('#searchInput').focus()
     </script>
 </body>
 

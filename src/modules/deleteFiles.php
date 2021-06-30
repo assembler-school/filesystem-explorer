@@ -1,13 +1,14 @@
 <?php
-// session_start();
+session_start();
 
-$nameToDelete = $_GET["fileName"];
+$basePath = $_SESSION["basePath"];
+$nameToDelete = $_GET["filePath"];
 $typeToDelete = $_GET["fileType"];
-$pathToDelete =  dirname(getcwd()) . "/root/" . $nameToDelete;
+$pathToDelete =  $basePath . "/" . $nameToDelete;
 
 echo "Deleted file: " . $nameToDelete . "<br>";
 echo "Deleted type: " . $typeToDelete . "<br>";
-echo $pathToDelete;
+echo "Path to delete " . $pathToDelete . "<br>";
 
 
 if (!is_dir($pathToDelete)) {
@@ -15,6 +16,7 @@ if (!is_dir($pathToDelete)) {
     echo "Deleted file";
 } else {
     deleteDir($pathToDelete);
+    echo "Deleted folder";
 }
 
 function deleteDir($path_file)
@@ -30,4 +32,7 @@ function deleteDir($path_file)
 }
 
 
+$_SESSION["isSearching"] = false;
+
+// Redirecting
 header("Location:../index.php");

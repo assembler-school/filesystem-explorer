@@ -17,6 +17,10 @@ $matchedFiles = array_filter($_SESSION["searchFiles"], function ($file) {
 
 // Reassinging value
 $_SESSION["matchedFiles"] = $matchedFiles;
+$_SESSION["searchText"] = $searchValue;
+
+
+
 
 // Redirecting
 header("Location:../index.php");
