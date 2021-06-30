@@ -11,13 +11,17 @@ body {
   font-weight: 700;
   cursor: pointer !important;
 }
+.closeText {
+  color: #ffff;
+}
 .logoContainer {
   width: 200px;
   margin-left: 15px;
 }
 .sideButtons {
   width: 150px;
-  /* border: 1px solid #048A81; */
+  border: none;
+  background: none;
 }
 
 .side-span {
@@ -36,8 +40,9 @@ body {
   width: 15vw;
 }
 
-.returnForm {
+#returnForm {
   margin-right: 10px;
+  /* display: none; */
 }
 .returnBtn {
   display: none;
