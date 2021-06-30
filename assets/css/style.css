@@ -36,6 +36,17 @@ body {
   width: 15vw;
 }
 
+.returnForm {
+  margin-right: 10px;
+}
+.returnBtn {
+  display: none;
+}
+
+.returnIcon:hover {
+  fill:#048a81;
+}
+
 .main-table {
   width: 85vw;
 }

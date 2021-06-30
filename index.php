@@ -4,6 +4,7 @@ include_once("./modules/upload.php");
 include_once("./templates/modals.php");
 include_once("./modules/directory-tree.php");
 include_once("./modules/open-file.php");
+include_once("./modules/return.php");
 
 if (isset($_SESSION["successMsg"])) {
     $success_msg = $_SESSION["successMsg"];
@@ -57,11 +58,22 @@ if (isset($_SESSION["invalidMsg"])) {
                         </g>
                     </svg></div>
             </a>
+            <div class="d-flex">
+                <form method="POST" class="returnForm">
+                    <label role="button">
+                        <input type="submit" name="returnBtn" class="returnBtn" />
+                        <svg style=" width:40px;height:40px; padding:2px" viewBox="0 0 24 24">
+                            <path class="returnIcon" fill="#ffffff" d="M19.07,4.93C17.22,3 14.66,1.96 12,2C9.34,1.96 6.79,3 4.94,4.93C3,6.78 1.96,9.34 2,12C1.96,14.66 3,17.21 4.93,19.06C6.78,21 9.34,22.04 12,22C14.66,22.04 17.21,21 19.06,19.07C21,17.22 22.04,14.66 22,12C22.04,9.34 21,6.78 19.07,4.93M17,12V18H13.5V13H10.5V18H7V12H5L12,5L19.5,12H17Z" />
+                        </svg>
+                    </label>
 
-            <form class="d-flex" method="POST">
-                <input class="form-control me-2 searchBox" type="search" placeholder="Search" aria-label="Search" name="search">
-                <button class="btn searchButton" type="submit" name="submit">Search</button>
-            </form>
+                </form>
+
+                <form class="d-flex" method="POST">
+                    <input class="form-control me-2 searchBox" type="search" placeholder="Search" aria-label="Search" name="search">
+                    <button class="btn searchButton" type="submit" name="submit">Search</button>
+                </form>
+            </div>
         </div>
     </nav>
     <div class="container-fluid">
@@ -113,7 +125,8 @@ if (isset($_SESSION["invalidMsg"])) {
                 <table class="table table-light table-borderless">
                     <thead class="table tableHead">
                         <tr class="text-center">
-                            <th scope=" col">
+                            <th scope="col">
+
                             </th>
                             <th scope="col">Name</th>
                             <th scope="col">Size</th>
