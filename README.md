@@ -6,7 +6,7 @@
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-![PHP Logo](https://e7.pngegg.com/pngimages/184/491/png-clipart-php-php.png)
+![PHP Logo](https://www.hostname.cl/uploads/2013/07/php-logo.jpeg)
 
 
 >The file explorer is a tool that allows you to directly view and manipulate the files and directories associated with a path, so you must take into account from which path the user starts and which path they can access.
