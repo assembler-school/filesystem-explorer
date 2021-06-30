@@ -13,11 +13,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -69,35 +65,7 @@
         </div>
     </div>
     <div id ="newOptionsPanelBackground"></div>
-
-    <!-- FileDirOptionsPanel  -->
-    <div id="fileDirOptionsPanel" class="fileDirOptions">
-        <div id="rename" class="optionWrapper"> 
-            <button id ="renameBtn" class="panelBtn" type="button">
-                <div class="optionIconWrapper">
-                    <i class="bi bi-pencil-square"></i>
-                </div>
-                <span>Rename</span>
-            </button>
-        </div>
-        <div id="delete" class="optionWrapper"> 
-            <button id ="deleteBtn" class="panelBtn" type="button">
-                <div class="optionIconWrapper">
-                    <i class="bi bi-trash-fill"></i>
-                </div>
-                <span>Delete</span>
-            </button>
-        </div>
-        <div id="open" class="optionWrapper"> 
-            <button id ="openBtn" class="panelBtn" type="button">
-                <div class="optionIconWrapper">
-                    <i class="bi bi-eye-fill"></i>
-                </div>
-                <span>Open</span>
-            </button>
-        </div>
-    </div>
-
+    
     <!-- Rename file or folder form  -->
     <div id="renamerForm" class="createFolderPanel">
         <form name="renameForm" action="./includes/updateName.php" onsubmit="return renameValidation()" method="POST">
@@ -179,23 +147,23 @@
             <div class="fileInfoContainer">
             <div class="fileInfoWrapper">
                     <div class="label"> Name: </div>
-                    <div class="labelType">MasterClass Pc</div>
+                    <div class="labelType" id="name"></div>
                 </div>
                 <div class="fileInfoWrapper">
                     <div class="label"> Creation date: </div>
-                    <div class="labelType">17/03/2021</div>
+                    <div class="labelType" id="dateCreation"></div>
                 </div>
                 <div class="fileInfoWrapper">
                     <div class="label"> Modification date: </div>
-                    <div class="labelType">11/05/2021</div>
+                    <div class="labelType" id="modification"></div>
                 </div>
                 <div class="fileInfoWrapper">
-                    <div class="label"> Size: </div>
-                    <div class="labelType">38 KB</div>
+                    <div class="label" id="labelSize"> Size: </div>
+                    <div class="labelType"  id="size"></div>
                 </div>
                 <div class="fileInfoWrapper">
-                    <div class="label"> Extension: </div>
-                    <div class="labelType">.Doc</div>
+                    <div class="label" id="labelExtension"> Extension: </div>
+                    <div class="labelType"  id="extension"></div>
                 </div>
             </div>
         </section>
@@ -221,5 +189,6 @@
     <!-- <script type="text/javascript" src="/node_modules/jquery/dist/jquery.js"></script> -->
     <script type="text/javascript" src="./js/render.js"></script>
     <script type="text/javascript" src="./js/formValidation.js"></script>
+    <script type="text/javascript" src="./js/fuctionOnClick.js"></script>
 </body>
 </html>

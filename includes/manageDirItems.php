@@ -68,22 +68,26 @@
             if(is_dir($dirPath."/".$fileName)){
 
                 echo "
-                    <div class ='fileWrapper' data-id='".uniqid()."'>
-                        <a class='renderUpdateLink' >"
+                    <div class ='fileWrapper'>
+                        <a class='renderUpdateLink clickMe'  >"
                             .$icon.
-                            "<div class='mainCenter__fileName'>".$fileName."</div>
+                            "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
                         </a>
-                        <i id='".$fileName."' class='renderOptions bi bi-three-dots-vertical'></i>
+                        <i class='bi bi-pencil-square space'></i>
+                        <i class='bi bi-trash-fill space'></i>
                     </div>
                 ";
 
             }else{
 
                 echo "
-                    <div class ='fileWrapper' data-id='".uniqid()."'>"
-                        .$icon.
-                        "<div class='mainCenter__fileName'>".$fileName."</div>
-                        <i id='".$fileName."' class='renderOptions bi bi-three-dots-vertical'></i>
+                    <div class ='fileWrapper'>
+                    <a class='renderUpdateLink clickMe' >"
+                    .$icon.
+                    "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
+                    </a>
+                    <i class='bi bi-pencil-square space'></i>
+                    <i class='bi bi-trash-fill space'></i>
                     </div>
                 ";
 
@@ -169,3 +173,7 @@
         }
     }
 ?>
+
+<!--
+    libxml_disable_entity_loader./includes/manageDirItems.php?updateDir
+-->

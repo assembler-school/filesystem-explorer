@@ -241,7 +241,6 @@ main {
   align-items: left;
   justify-content: center;
   width: 100%;
-  padding: 1rem 1.8rem;
   border-bottom: 0.5px solid;
   border-bottom-color: rgb(197, 197, 197);
 }
@@ -372,4 +371,12 @@ hr {
 .prueba {
   display: flex;
   flex: 10 10 auto;
+}
+
+.space{
+  padding: 0.8rem;
+}
+
+.clickMe{
+  padding: 0.8rem;
 }
