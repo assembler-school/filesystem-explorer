@@ -1,5 +1,5 @@
  <?php
-
+    session_start();
     function getAllFiles($dir, &$results = array())
     {
         $files = scandir($dir);
@@ -16,7 +16,7 @@
     }
 
     $filesList = getAllFiles("../root");
-    $fileToDelete = $_POST["delete"];
+    $fileToDelete = isset($_POST["delete"]) ? $_POST["delete"] : null;
     $fileToDownload = $_POST["download"];
 
     function removeDirectory($path)
@@ -66,4 +66,9 @@
                 echo "File path does not exist.";
             }
         }
+    }
+    if (isset($_POST["open"])) {
+        $currentPath = isset($_SESSION["currentPath"]) ? substr($_SESSION["currentPath"], 1)  : "./";
+        $_SESSION["openFile"] = $currentPath . "/" . $_POST["open"];
+        header("Location: ../index.php");
     }

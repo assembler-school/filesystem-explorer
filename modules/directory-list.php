@@ -4,7 +4,7 @@ require_once("./modules/dropdowns.php");
 
 // Change current directory to root
 $homeDir = "root";
-
+$initialCwd = getcwd();
 if (isset($_SESSION["currentPath"])) {
     // echo ($homeDir . $_SESSION["currentPath"]);
     chdir($homeDir . $_SESSION["currentPath"]);
@@ -82,3 +82,5 @@ if (!isset($searchValue) || !$searchValue) {
         displayFileList($file);
     }
 }
+
+chdir($initialCwd); // go back to original working directory
