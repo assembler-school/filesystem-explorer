@@ -4,7 +4,7 @@ require_once("./modules/fileStats.php");
 
 
 $pathArray = explode("/", $_SESSION["currentPath"]);
-$itemPath = "";
+$totalPath = "";
 $pathCount = 0;
 
 echo "<p class='path-link mb-0'>";
@@ -14,18 +14,30 @@ echo "</p>";
 echo "&nbsp;&nbsp;&#8227;&nbsp;&nbsp;";
 
 
-foreach ($pathArray as $pathItem) {
-    if ($pathCount < count($pathArray) - 1) {
-        $itemPath = $itemPath . $pathItem;
-        echo "<a class='path-link' href=./modules/updatingPath.php?updatedPath=" . $itemPath . ">";
-        echo $pathItem;
+foreach ($pathArray as $itemName) {
+    // First item
+    if ($pathCount == 0) {
+        $totalPath = $itemName;
+        echo "<a class='path-link' href=./modules/updatingPath.php?updatedPath=" . $totalPath . ">";
+        echo $itemName;
         echo "</a>";
         echo "&nbsp;&nbsp;&#8227;&nbsp;&nbsp;";
         $pathCount++;
-    } else {
-        $itemPath = $itemPath . $pathItem;
-        echo "<a class='path-link' href=./modules/updatingPath.php?updatedPath=" . $itemPath . ">";
-        echo $pathItem;
+    }
+    // Between items
+    elseif ($pathCount < count($pathArray) - 1) {
+        $totalPath = $totalPath . "/" . $itemName;
+        echo "<a class='path-link' href=./modules/updatingPath.php?updatedPath=" . $totalPath . ">";
+        echo $itemName;
+        echo "</a>";
+        echo "&nbsp;&nbsp;&#8227;&nbsp;&nbsp;";
+        $pathCount++;
+    }
+    // Last item
+    else {
+        $totalPath = $totalPath . "/" . $itemName;
+        echo "<a class='path-link' href=./modules/updatingPath.php?updatedPath=" . $totalPath . ">";
+        echo $itemName;
         echo "</a>";
     }
 }
