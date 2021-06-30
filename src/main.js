@@ -28,6 +28,9 @@ $(document).on("click", (e) => {
   if (targetIdName === "edit-folder") {
     openEditFolderModal();
   }
+  if (targetIdName === "delete-folder") {
+    openDeleteFolderModal();
+  }
   if (targetClassName.indexOf("modal-background") !== -1) {
     if ($(".create-folder-modal")) {
       closeCreateFolderModal();
@@ -41,6 +44,9 @@ $(document).on("click", (e) => {
   }
   if (targetIdName === "edit-folder-btn") {
     editFolder(e);
+  }
+  if (targetIdName === "delete-folder-btn") {
+    deleteFolder(e);
   }
 });
 
@@ -181,6 +187,39 @@ function editFolder(e) {
     success: function (response) {
       selectFolder(response);
       closeEditFolderModal();
+    },
+  });
+}
+
+function openDeleteFolderModal() {
+  $.ajax({
+    url: "fileControll/session.php",
+    success: function (response) {
+      const templateContent = document.querySelector(
+        "#delete-folder-modal"
+      ).content;
+      document
+        .querySelector("main")
+        .appendChild(document.importNode(templateContent, true));
+      $("#delete-folder-name").val(path);
+    },
+  });
+}
+
+function closeDeleteFolderModal() {
+  document.querySelector(".delete-folder-modal")?.remove();
+  document.querySelector(".modal-background")?.remove();
+}
+
+function deleteFolder(e) {
+  e.preventDefault();
+  $.ajax({
+    type: "POST",
+    url: "fileControll/deleteFileFolder.php",
+    data: { valid: "yes" },
+    success: function (response) {
+      selectFolder(response);
+      closeDeleteFolderModal();
     },
   });
 }
