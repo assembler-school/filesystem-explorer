@@ -50,7 +50,7 @@ session_start()
           <div class="buttons">
             <button class="but new"><img id="create-folder" src="img/addFolder.svg" class="context-menu-icon" /></button>
             <button class="but edit"><img id="edit-folder" src="img/editFolder.svg" class="context-menu-icon" /></button>
-            <button class="but help">&#x2753;</button>
+            <button class="but delete"><img id="delete-folder" src="img/deleteFolder.svg" class="context-menu-icon" /></button>
           </div>
           <div class="overlap">&#x2190;</div>
         </div>
@@ -90,6 +90,17 @@ session_start()
     <form type="post" action="fileControll/editFolder.php">
       <input id="edit-folder-name" type="text" placeholder="" required />
       <button type="submit" id="edit-folder-btn">EDIT FOLDER NAME</button>
+    </form>
+  </div>
+</template>
+
+<template id="delete-folder-modal">
+  <div class="modal-background"></div>
+  <div class="modal delete-folder-modal">
+    <h2>DELETE</h2>
+    <h3>Are you sure you want to delete the directory?</h3>
+    <form type="post" action="fileControll/deleteFileFolder.php">
+      <button type="submit" id="delete-folder-btn">DELETE</button>
     </form>
   </div>
 </template>
