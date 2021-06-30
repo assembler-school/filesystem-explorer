@@ -1,18 +1,15 @@
 <?php
-
+// Required files
 require_once("./modules/fileStats.php");
-
 
 $pathArray = explode("/", $_SESSION["currentPath"]);
 $totalPath = "";
 $pathCount = 0;
 
 echo "<p class='path-link mb-0'>";
-// echo "~";
 echo "<i class='far fa-home'></i>";
 echo "</p>";
 echo "&nbsp;&nbsp;&#8227;&nbsp;&nbsp;";
-
 
 foreach ($pathArray as $itemName) {
     // First item in single item path

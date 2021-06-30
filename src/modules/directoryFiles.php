@@ -2,18 +2,18 @@
 // Required files
 require_once("./modules/fileStats.php");
 
-// Session variables
 $matchedFiles = $_SESSION["matchedFiles"];
 
-// DIRECTORY or SEARCH
+// Search / Directory preview
 if ($_SESSION["isSearching"]) {
+    // Iterating through all found files
     foreach ($matchedFiles as $matchedFile) {
         $fileArray = getFileStats($matchedFile["path"], $matchedFile["name"]);
-        // Second parameter needed to target file
         createFileRow($fileArray, dirname($matchedFile["path"]));
     }
 } else {
     $target_dir = $_SESSION["currentPath"];
+    // Iterating through all files in folder
     foreach (scandir($target_dir) as $i) {
         // Don't show hidden folders
         $firstCharacter = substr($i, 0, 1);
@@ -21,14 +21,11 @@ if ($_SESSION["isSearching"]) {
             if ($firstCharacter != ".") {
                 $target_file = $target_dir . "/" . basename($i);
                 $fileArray = getFileStats($target_file, $i);
-                // Second parameter needed to target file
-                // echo $fileArray["name"] . "<br>";
                 createFileRow($fileArray, $_SESSION["currentPath"]);
             }
         }
     }
 }
-
 
 // Generic function to create file's row
 function createFileRow($fileArray, $filePath)
@@ -36,9 +33,14 @@ function createFileRow($fileArray, $filePath)
     echo "<div class='dir dir-link dir-child row file-item px-3 py-2 d-flex justify-content-center align-items-center'>";
 
     // Creating the file block
+
+    // Link to new path if it is a folder
     if ($fileArray["type"] == "directory") {
         echo "<a class='row col col-11' href=./modules/updatingPath.php?updatedPath=" . $filePath . "/" . $fileArray["name"] . ">";
-    } else {
+    }
+
+    // Link to preview if it is a file
+    else {
         echo "<a class='row col col-11' href=./index.php?filePath=" . $filePath . "/" . $fileArray["name"] . "&fileName=" . $fileArray["name"] . ">";
     }
 

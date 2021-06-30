@@ -1,6 +1,4 @@
 <?php
-// session_start();
-
 // Required files
 require_once("./modules/fileStats.php");
 
@@ -29,9 +27,14 @@ if (isset($_GET["fileName"])) {
 
     echo "<div class='row px-3 preview-info'>";
     echo "<hr>";
+    echo "<p class='col col-12 col-lg-4 preview-title'>Path</p>";
+    echo "<p class='col col-12 col-lg-8 preview-text'>" . $fileArray["path"] . "</p>";
+    echo "</div>";
+
+    echo "<div class='row px-3 preview-info'>";
+    echo "<hr>";
     echo "<p class='col col-12 col-lg-4 preview-title'>Type</p>";
     echo "<p class='col col-12 col-lg-8 preview-text'>" . $fileArray["type"] . "</p>";
-    // echo "<p class='col col-lg-8 preview-text'>" . $fileArray["rawType"] . "</p>";
     echo "</div>";
 
     echo "<div class='row px-3 preview-info'>";
@@ -53,9 +56,3 @@ if (isset($_GET["fileName"])) {
     echo "</div>";
     echo "</div>";
 }
-
-
-/* -------------------------------------------------------------------------- */
-/*                                    TEST                                    */
-/* -------------------------------------------------------------------------- */
-// echo "<p>" . print_r($fileArray, true) . "</p>";

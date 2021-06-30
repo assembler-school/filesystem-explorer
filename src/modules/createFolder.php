@@ -13,6 +13,7 @@ if (file_exists($newDirectoryPath)) {
     mkdir($newDirectoryPath);
 }
 
+// Recursive funcion to create "-copy" folder names
 function makeCopyDirectory($newDirectoryPath)
 {
     if (file_exists($newDirectoryPath)) {

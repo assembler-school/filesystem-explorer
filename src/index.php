@@ -211,7 +211,7 @@ require_once("./modules/searchFile.php");
         })
 
         // Focus search bar
-        $('#searchInput').focus()
+        // $('#searchInput').focus()
     </script>
 </body>
 
