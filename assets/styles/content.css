@@ -32,7 +32,7 @@ body {
   color: black;
 }
 
-/* New folder Modal */
+/* Modals */
 
 .modal-shadow {
   z-index: 1;
@@ -50,6 +50,25 @@ body {
   top: calc(50% - 120px);
   left: calc(50% - 250px);
   z-index: 2;
+  box-shadow: 20px 20px 36px -16px rgba(0, 0, 0, 0.59);
+}
+
+.modal-form-delete {
+  height: 180px;
+  width: 500px;
+  top: calc(50% - 90px);
+  left: calc(50% - 250px);
+  z-index: 2;
+  box-shadow: 20px 20px 36px -16px rgba(0, 0, 0, 0.59);
+}
+
+.modal-form-details {
+  height: 280px;
+  width: 400px;
+  top: calc(50% - 140px);
+  left: calc(50% - 200px);
+  z-index: 2;
+  box-shadow: 20px 20px 36px -16px rgba(0, 0, 0, 0.59);
 }
 
 /* Context Menu */

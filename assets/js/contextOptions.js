@@ -55,3 +55,38 @@ document
     const data = e.target.getAttribute("data-title");
     window.location.replace("./src/download.php?data=" + data);
   });
+
+/* Details modal */
+const dtShadow = document.getElementById("shadowDetails");
+const dtCrossBtn = document.querySelector("#formDetails .btn-x");
+const dtClosing = [dtShadow, dtCrossBtn];
+const dtModal = document.getElementById("formDetails");
+
+document
+  .getElementById("propertiesOption")
+  .addEventListener("click", function (e) {
+    dtModal.classList.toggle("hidden");
+    dtShadow.classList.toggle("hidden");
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("detailsContainer").innerHTML =
+          this.responseText;
+      }
+    };
+    xmlhttp.open(
+      "GET",
+      "src/details.php?n=" + e.target.getAttribute("data-title"),
+      true
+    );
+    xmlhttp.send();
+  });
+
+dtClosing.forEach((element) => {
+  element.addEventListener("click", function (e) {
+    e.preventDefault();
+    dtModal.classList.toggle("hidden");
+    dtShadow.classList.toggle("hidden");
+  });
+});
