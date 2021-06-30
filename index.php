@@ -2,14 +2,8 @@
 
 session_start();
 if (!isset($_SESSION['currentPath'])) {
-  $_SESSION['currentPath'] = './root';
+  $_SESSION['currentPath'] = './root/folder1';
 };
-
-$currentPath = $_SESSION['currentPath'];
-
-if (isset($_GET["path"])) {
-  $currentPath = $_GET["path"];
-}
 
 include_once './src/newFolder.php';
 
@@ -52,17 +46,8 @@ include_once './src/newFolder.php';
       </div>
       <div>
         <?php
-        $cleanPath = substr($currentPath, strpos($currentPath, "root"));
-        $pathArr = explode("/", $cleanPath);
-
-        foreach ($pathArr as $dir) {
-          $originalPath = substr($currentPath, 0, strpos($currentPath, $dir));
-          if ($originalPath . $dir == $currentPath) {
-            echo "<div class='btn bg-primary text-white'>$dir</div>";
-          } else {
-            echo "<a href='?path={$originalPath}{$dir}'><div class='btn btn-primary me-2'>$dir</div></a>";
-          }
-        }
+        require_once('./src/folderNavigation.php');
+        getBreadcrumbs();
         ?>
       </div>
     </div>

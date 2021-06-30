@@ -6,7 +6,7 @@ const modal = document.querySelector(".modal-form");
 
 const modalInput = document.getElementById("newFile");
 
-document.getElementById("folderBtn").addEventListener("click", function () {
+document.getElementById("folderBtn")?.addEventListener("click", function () {
   modal.classList.toggle("modal-hidden");
   shadow.classList.toggle("modal-hidden");
   modalInput.select();
