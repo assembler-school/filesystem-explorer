@@ -68,10 +68,6 @@ function folders_init()
   $sesion_name = $_SESSION["username"];
   $root_dir = "C:/xampp\htdocs/filesystem-explorer/root/$sesion_name";
   list_folders($root_dir);
-
-  // echo "<pre>";
-  // print_r($_SESSION["folders_unfold"]);
-  // echo "</pre>";
 }
 
 function folder_size($dir)

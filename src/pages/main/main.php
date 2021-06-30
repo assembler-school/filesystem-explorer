@@ -61,7 +61,7 @@ revisar_si_existe_sesion();
 		<aside class="d-flex flex-column justify-content-between">
 			<section id="menu" class="h-100 p-2 overflow-auto">
 				<?php
-				require_once "../../php/local_files/read_local_files.php";
+				require_once "../../php/local_files/local_files_control.php";
 				folders_init();
 				?>
 			</section>
@@ -81,25 +81,32 @@ revisar_si_existe_sesion();
 			</div>
 		</aside>
 		<section class="main__files--wrapper">
-			<nav class="edit__buttons--wrapper d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom">
-				<div class="d-flex flex-row justify-content-between gap-3">
-					<button class="btn btn-light border border-secondary">
-						Create folder
-					</button>
-					<button class="btn btn-light border border-secondary">
-						Upload file
-					</button>
-				</div>
-				<div class="btn-toolbar mb-2 mb-md-0">
-					<div class="btn-group me-2">
-						<button type="button" class="btn btn-sm btn-outline-secondary">Name</button>
-						<button type="button" class="btn btn-sm btn-outline-secondary">Size</button>
+			<nav class="border-bottom">
+				<div class="edit__buttons--wrapper d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 mb-2">
+					<div class="d-flex flex-row justify-content-between gap-3">
+						<button class="btn btn-light border border-secondary" onclick="createFolderHandler()">
+							Create folder
+						</button>
+						<button class="btn btn-light border border-secondary" onclick="uploadFileHandler()">
+							Upload file
+						</button>
 					</div>
-					<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-						<span data-feather="calendar"></span>
-						Fecha
-					</button>
+					<div class="btn-toolbar mb-2 mb-md-0">
+						<div class="btn-group me-2">
+							<button type="button" class="btn btn-sm btn-outline-secondary">Name</button>
+							<button type="button" class="btn btn-sm btn-outline-secondary">Size</button>
+						</div>
+						<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+							<span data-feather="calendar"></span>
+							Fecha
+						</button>
+					</div>
 				</div>
+				<form id="form-new-folder" class="ms-3 mb-2" method="post" action="../../php/local_files/new_folder.php" style="display: none;">
+					<input type="text" name="new-folder-name" placeholder="Folder name">
+					<button type="submit" class="btn btn-primary">Confirm</button>
+					<button type="button" class="btn btn-primary" onclick="createFolderHandler()">Cancel</button>
+				</form>
 			</nav>
 			<div class="files__wrapper">
 				<div class="container-fluid folder_container">
@@ -122,6 +129,7 @@ revisar_si_existe_sesion();
 		</section>
 		<section class="section_modal" id="section_modal"></section>
 	</main>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="main.js"></script>
 </body>
