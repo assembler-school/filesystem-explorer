@@ -1,7 +1,11 @@
 <?php 
 
+    // including update mechanism
+    require("updateDir.php");
+
     // Getting dirPath
-    $dirPath = "./root";
+    $dirPath = $_SESSION['currentPath'];
+    // $dirPath = "./root";
 
     // Getting every item in dirPath
     $dirPathItemList = scandir($dirPath);
@@ -65,7 +69,7 @@
 
                 echo "
                     <div class ='fileWrapper' data-id='".uniqid()."'>
-                        <a class='renderUpdateLink' href='./includes/manageDirItems.php?updateDir'>"
+                        <a class='renderUpdateLink' >"
                             .$icon.
                             "<div class='mainCenter__fileName'>".$fileName."</div>
                         </a>
@@ -145,7 +149,7 @@
 
                 echo "
                 <div class='mainLeft__container'>
-                        <a class='renderUpdateLink' href='./includes/manageDirItems.php?updateDir'>"
+                        <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$dirPath.$fileName."/'>"
                             .$icon.
                             "<div class='mainLeft__fileName'>".$fileName."</div>
                         </a>

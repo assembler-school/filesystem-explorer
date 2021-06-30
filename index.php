@@ -153,7 +153,12 @@
             </div>
         </section>
         <section class="mainCenter">
-            
+            <div class ='fileWrapper'>
+                <?php echo "
+                    <div class='mainCenter__fileName'> 
+                        <a class='renderUpdateLink' href='./index.php'>My Unity</a> 
+                    </div>"; ?>
+            </div>
 
             <?php 
                 renderDirItemList($dirPath, $dirPathItemList);
