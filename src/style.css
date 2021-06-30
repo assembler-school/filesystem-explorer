@@ -146,7 +146,7 @@
   z-index: 9;
 }
 
-.create-folder-modal {
+.modal {
   position: fixed;
   width: 30%;
   top: 50%;
@@ -159,19 +159,16 @@
   display: flex;
   flex-direction: column;
 }
-.create-folder-modal h2 {
+.modal h2 {
   text-align: center;
-  padding-bottom: 1rem;
-}
-.create-folder-modal h2 {
   margin-bottom: 0.5rem;
 }
-.create-folder-modal input {
-  margin-top: 1rem;
+.modal input {
+  margin: 1rem 0rem;
   border: none;
   border-bottom: 1px solid black;
   outline: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .rightClick {
@@ -216,12 +213,13 @@
   outline: none;
   width: 50px;
   height: 50px;
-  background: #79b3a6;
+  background: white;
   border-radius: 50%;
   display: block;
   position: absolute;
   color: #fff;
   font-size: 20px;
+  border: 3px solid black;
 }
 
 .rightClick .buttons button.but:nth-child(1) {
@@ -293,7 +291,8 @@ body {
 
 header {
   display: flex;
-  height: 5%;
+  flex-direction: column;
+  height: 8%;
   padding: 0.5rem 1rem;
   background-color: #ffffff;
   border-width: 0px 0px 1px 0px;
@@ -301,18 +300,34 @@ header {
   border-color: #dadada;
   z-index: 1;
 }
-header .search-bar {
-  min-width: 40%;
+header .main-header {
+  display: flex;
+  height: 2rem;
 }
-header .header-test {
-  min-width: 40%;
+header .main-header .header-test {
+  min-width: 20%;
 }
-header .actions {
+header .main-header .search-bar {
+  min-width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .main-header .search-bar #search-bar {
+  width: 30rem;
+  height: 2rem;
+  text-align: center;
+  border: 1px solid #dadada;
+  border-radius: 1rem;
+  color: black;
+  outline: none;
+}
+header .main-header .actions {
   min-width: 20%;
   display: flex;
   justify-content: flex-end;
 }
-header .actions .circle-icon {
+header .main-header .actions .circle-icon {
   width: 2rem;
   display: flex;
   justify-content: center;
@@ -321,7 +336,7 @@ header .actions .circle-icon {
   background-color: white;
   border-radius: 50%;
 }
-header .actions .circle-icon:hover {
+header .main-header .actions .circle-icon:hover {
   background-color: #1b8ddf8a;
 }
 
@@ -332,7 +347,7 @@ main {
 .folder-tree-container {
   position: absolute;
   width: 20%;
-  height: 95%;
+  height: 92%;
   background-color: #ffffff;
   border-width: 0px 1px 1px 0px;
   border-style: solid;
@@ -344,7 +359,7 @@ main {
   position: absolute;
   left: 20%;
   width: 80%;
-  height: 95%;
+  height: 92%;
 }
 
 .file-info-container {
@@ -406,6 +421,11 @@ li {
 
 li:hover {
   background-color: #e4e4e4d5;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=style.css.map */
