@@ -16,7 +16,8 @@ if (count($explodedDirRaw) > 1) {
     echo "</a>";
 } else {
     echo "<p class='dir mb-0'>";
-    echo "~";
+    echo "<i class='far fa-home'></i>";
+    // echo "~";
     echo "</p>";
 }
 

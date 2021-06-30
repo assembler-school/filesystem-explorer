@@ -11,7 +11,7 @@ input:active {
 
 body {
   height: 100vh;
-  background-color: #ffcd4e;
+  background-color: #c7fcf7;
 }
 body main {
   border: 3px solid black;
@@ -87,7 +87,7 @@ body main .bottom .central .central-columns .column-text {
   margin-bottom: 0;
 }
 body main .bottom .central .central-files {
-  flex-grow: 1;
+  flex: 1 1 100%;
   overflow-y: scroll;
   width: 100%;
   display: flex;
@@ -135,6 +135,17 @@ body main .bottom .central .file-item:hover {
 }
 body main .bottom .central .file-item:hover .file-buttons {
   visibility: visible;
+}
+body main .bottom .central .path-to-file {
+  width: 100%;
+  height: 35px;
+  font-size: 14px;
+  color: white;
+  background-color: #0e0e0e;
+}
+body main .bottom .central .path-to-file .path-link {
+  color: white;
+  text-decoration: none;
 }
 body main .bottom .sidebar-right {
   height: 100%;

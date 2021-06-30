@@ -113,6 +113,11 @@ require_once("./modules/searchFile.php");
                     require_once("./modules/directoryFiles.php");
                     ?>
                 </div>
+                <div class="path-to-file d-flex align-items-center px-4">
+                    <?php
+                    require_once("./modules/pathToFile.php");
+                    ?>
+                </div>
             </div>
             <div class="col col-3 bottom-block sidebar-right">
                 <?php
