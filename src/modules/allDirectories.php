@@ -1,8 +1,7 @@
 <?php
-// session_start();
-
+// All directories inside current path
 $dirsInside = array_filter(glob($_SESSION["currentPath"] . "/*"), "is_dir");
-$_SESSION["currentDirectories"] = [];
+$_SESSION["currentDirectories"] = array();
 
 $parentDirRaw = $_SESSION["currentPath"];
 $explodedDirRaw = explode("/", $parentDirRaw);
@@ -17,7 +16,6 @@ if (count($explodedDirRaw) > 1) {
 } else {
     echo "<p class='dir mb-0'>";
     echo "<i class='far fa-home'></i>";
-    // echo "~";
     echo "</p>";
 }
 
