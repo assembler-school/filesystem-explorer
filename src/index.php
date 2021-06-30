@@ -169,8 +169,8 @@ require_once("./modules/searchFile.php");
                     <form method="POST" action="./modules/editFiles.php" id="editFileForm">
                         <label for="fileName" class="mb-2 modal-item modal-title">File name</label>
                         <input type="text" name="fileName" class="pl-3 modal-item modal-input" placeholder="Insert new name" required>
-                        <input name="oldFileName" id="oldName" class="pt-2 pl-3 modal-item" disabled required>
-                        <input name="oldPath" id="oldPath" class="pt-2 pl-3 modal-item" disabled required>
+                        <input name="oldFileName" id="oldName" class="pt-2 pl-3 modal-item" required>
+                        <input name="oldPath" id="oldPath" class="pt-2 pl-3 modal-item" required>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -202,7 +202,7 @@ require_once("./modules/searchFile.php");
 
         // Submit when file has been dropped
         $("#dropzoneFile").on("change", function() {
-            console.log("Submitted dropped file!");
+            console.log("File dropped!");
             $("#dropFileForm").submit();
         })
 
