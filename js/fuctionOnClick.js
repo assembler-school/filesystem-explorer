@@ -31,6 +31,7 @@ function handleEvents() {
                               $("#labelExtension").hide();
                               $("#size").hide();
                               $("#extension").hide();
+                              $("#titleName").text(data.name);
                               $("#name").text(data.name);
                               $("#dateCreation").text(data.dataCreation);
                               $("#modification").text(data.modification);
@@ -40,6 +41,7 @@ function handleEvents() {
                               $("#labelExtension").show();
                               $("#size").show();
                               $("#extension").show();
+                              $("#titleName").text(data.name);
                               $("#name").text(data.name);
                               $("#dateCreation").text(data.dataCreation);
                               $("#modification").text(data.modification);
