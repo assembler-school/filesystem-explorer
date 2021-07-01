@@ -236,7 +236,11 @@ function create_div_template(
   $folder_id
 ) {
   $path_img_folder = "./../../../doc/img/folder-invoices--v1.png";
-  $parent_path = $_SESSION["folders_paths"][$_GET["folder-id"]];
+  if (isset($_GET["folder-id"])) {
+    $parent_path = $_SESSION["folders_paths"][$_GET["folder-id"]];
+  } else {
+    $parent_path = $_SESSION["folders_paths"][0];
+  }
 
   if ($img_type == $path_img_folder) {
     echo '<section ' .

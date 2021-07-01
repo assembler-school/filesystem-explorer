@@ -42,7 +42,7 @@ document.getElementById("back-context").addEventListener("mousedown", function (
   document.getElementById("back-context").style.display = "none";
 });
 
-// Modal of the creation folder context menu.
+// Modal of the creation of folder context menu.
 document.getElementById("new-folder-context").addEventListener("click", function () {
   document.getElementById("context-menu").style.display = "none";
   document.getElementById("back-context").style.display = "none";
@@ -113,5 +113,41 @@ document.getElementById("rename-folder-context").addEventListener("click", funct
     });
 
     location.reload();
+  });
+});
+
+// Modal of the delete folder context menu.
+document.getElementById("delete-folder-context").addEventListener("click", function () {
+  document.getElementById("context-menu").style.display = "none";
+  document.getElementById("back-context").style.display = "none";
+
+  let myModalSection = document.getElementById("section_modal");
+  const templateContent = document.getElementById("modalTemplate-delete-folder").content;
+  let templateClone = document.importNode(templateContent, true);
+  myModalSection.style.display = "block";
+  myModalSection.append(templateClone);
+
+  let btnCloseModal = document.getElementById("btnCloseModal");
+  btnCloseModal.addEventListener("click", function(){
+    let myModalSection = document.getElementById("section_modal");
+    let myChilds = myModalSection.querySelector("div");
+    myModalSection.style.display = "none";
+    myModalSection.removeChild(myChilds);
+  });
+
+  document.getElementById("confirm-delete-btn").addEventListener("click", function(){
+    let folderIdReload;
+
+    $.ajax({
+      url: "../../php/local_files/delete_folder_context.php",
+      type: "post",
+      data: {
+        "folder-id": folderIdSelectedContext
+      },
+      success: function(res){
+        folderIdReload = res;
+        window.location = `${window.location.pathname}?folder-id=${folderIdReload}`;
+      }
+    });
   });
 });

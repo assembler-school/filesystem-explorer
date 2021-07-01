@@ -89,9 +89,10 @@ revisar_si_existe_sesion();
 				$username = $_SESSION["username"];
 				$root_path = $_SESSION["folders_paths"][$folder_id];
 				$root_path = str_replace("C:/xampp\htdocs/filesystem-explorer/root/$username", "My Cloud", $root_path);
-				if (!isset($_GET["trash"])) {
-					echo $root_path;
+				if (isset($_GET["trash"])) {
+					$root_path = "Trash";
 				}
+				echo "$root_path/";
 				?>
 			</div>
 			<?php
@@ -217,11 +218,11 @@ revisar_si_existe_sesion();
 		<div class="modal-dialog modal-xl modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Archivo no soportado</h5>
+					<h5 class="modal-title">File not supported</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseModal"></button>
 				</div>
 				<div class="modal-body" id="modal-body">
-					<p id="mi_source"> Archivo no soportado por nuestro File system lo que sea</p>
+					<p id="mi_source">This file cannot be displayed</p>
 				</div>
 			</div>
 		</div>
@@ -256,6 +257,21 @@ revisar_si_existe_sesion();
 						<input type="text" name="rename-folder-name" placeholder="Folder name">
 						<button type="submit" class="btn btn-primary">Confirm</button>
 					</form>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<template id="modalTemplate-delete-folder">
+		<div class="modal-dialog modal-xl modal-dialog-centered w-50">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Delete folder</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseModal"></button>
+				</div>
+				<div class="modal-body" id="modal-body">
+					<div>Are you sure you want to delete this folder?</div>
+					<button id="confirm-delete-btn" type="button" class="btn btn-primary">Yes</button>
 				</div>
 			</div>
 		</div>

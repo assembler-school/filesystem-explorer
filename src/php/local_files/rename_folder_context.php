@@ -8,6 +8,4 @@ $father_path = substr($path_folder_selected, 0, strrpos($path_folder_selected, '
 
 $new_folder_name = $_POST["new-folder-name"];
 
-echo $father_path;
-
 rename($path_folder_selected, "$father_path/$new_folder_name");
