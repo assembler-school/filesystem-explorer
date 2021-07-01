@@ -56,9 +56,9 @@ function renameFileModal()
                     <form class='' method='POST' action='./modules/file-actions.php'>
                         <div class='modal-body'>
                             <label for='newName' class='form-label'> New name for <b id='renameFileName'></b>:</label>
-                            <input type='text' class='form-control' id='newName' name='newName'>
+                            <input type='text' class='form-control' id='newName' name='newName' >
                             <div id='renameHelpBlock' class='form-text'>
-                                Please don't include the extension for the file
+                                Please don't include the extension for the file. Spaces will be replaced for underscores.
                             </div>
                         </div>
                         <div class='modal-footer'>
@@ -83,6 +83,9 @@ function renameFolderModal()
                         <div class='modal-body'>
                             <label for='newName' class='form-label'> New name for <b id='renameFolderName'></b>:</label>
                             <input type='text' class='form-control' id='newName' name='newName'>
+                            <div id='renameHelpBlock' class='form-text'>
+                                Spaces will be replaced for underscores.
+                            </div>
                         </div>
                         <div class='modal-footer'>
                             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>

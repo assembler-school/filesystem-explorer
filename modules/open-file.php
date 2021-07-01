@@ -9,14 +9,25 @@ function openFileModal()
             case 'PNG':
             case 'jpg':
             case 'JPG':
+            case 'jpeg':
+            case 'JPEG':
             case 'svg':
             case 'SVG':
+            case 'gif':
+            case 'GIF':
                 imageModal($_SESSION["openFile"]);
                 break;
             case 'mp3':
+            case 'MP3':
+            case 'aac':
+            case 'wav':
                 audioModal($_SESSION["openFile"], $extension);
                 break;
             case 'mp4':
+            case 'mpeg':
+            case 'mov':
+            case 'wmv':
+            case 'avi':
                 videoModal($_SESSION["openFile"], $extension);
                 break;
 

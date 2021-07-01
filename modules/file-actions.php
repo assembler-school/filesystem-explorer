@@ -15,8 +15,7 @@
         return $results;
     }
 
-    $filesList = getAllFiles("../root");
-    $fileToDownload = isset($_POST["download"]) ? $_POST["download"] : null;
+
 
     function removeDirectory($path)
     {
@@ -40,12 +39,14 @@
         $_SESSION["successMsg"] = "Successfully deleted!";
         header("Location: ../index.php");
     } elseif (isset($_POST["rename"]) && isset($_POST["newName"])) {
+        $newName = str_replace(" ", "_", $_POST["newName"]);
         $fileToRename = $_POST["rename"];
         $currentPath = isset($_SESSION["currentPath"]) ? substr($_SESSION["currentPath"], 1)  : "./";
         $fullPath = "../root/" . $currentPath . "/" . $fileToRename;
+        echo $newName;
         if (is_file($fullPath)) {
             $fileExtension = explode('.', $fileToRename)[1];
-            $newFileName = "../root/" . $currentPath . "/" . $_POST["newName"] . "." . $fileExtension;
+            $newFileName = "../root/" . $currentPath . "/" . $newName . "." . $fileExtension;
             if (!file_exists($newFileName)) {
                 rename($fullPath, $newFileName);
                 $_SESSION["successMsg"] = "Successfully renamed!";
@@ -53,7 +54,7 @@
                 $_SESSION["errorMsg"] = "Filename already exists!";
             }
         } else {
-            $newFileName = "../root/" . $currentPath . "/" . $_POST["newName"];
+            $newFileName = "../root/" . $currentPath . "/" . $newName;
             if (!file_exists($newFileName)) {
                 rename($fullPath, $newFileName);
                 $_SESSION["successMsg"] = "Successfully renamed!";
@@ -63,6 +64,8 @@
         }
         header("Location: ../index.php");
     } elseif (isset($fileToDownload)) {
+        $fileToDownload = $_POST["download"];
+        $filesList = getAllFiles("../root");
         foreach ($filesList as $file) {
             if ($file["name"] === $fileToDownload && file_exists($file["path"])) {
                 header('Content-Description: File Transfer');
