@@ -1,6 +1,6 @@
 `#html` `#css` `#js` `#php` `#master-in-software-engineering`
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # PHP Local FileSystem explorer <!-- omit in toc -->
@@ -85,6 +85,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/solaz0824"><img src="https://avatars.githubusercontent.com/u/50446830?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eunyoung Kim</b></sub></a><br /><a href="https://github.com/mhfortuna/filesystem-explorer/commits?author=solaz0824" title="Code">💻</a> <a href="#design-solaz0824" title="Design">🎨</a> <a href="#ideas-solaz0824" title="Ideas, Planning, & Feedback">🤔</a> <a href="#projectManagement-solaz0824" title="Project Management">📆</a></td>
+    <td align="center"><a href="https://github.com/mhfortuna"><img src="https://avatars.githubusercontent.com/u/66578026?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mathias Fortuna</b></sub></a><br /><a href="https://github.com/mhfortuna/filesystem-explorer/commits?author=mhfortuna" title="Code">💻</a> <a href="#design-mhfortuna" title="Design">🎨</a> <a href="#ideas-mhfortuna" title="Ideas, Planning, & Feedback">🤔</a> <a href="#projectManagement-mhfortuna" title="Project Management">📆</a></td>
   </tr>
 </table>
 
