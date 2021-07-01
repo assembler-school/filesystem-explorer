@@ -18,8 +18,8 @@ function list_folders($dir)
     echo '<li>';
     if ($_SESSION["folders_unfold"][0] == "false") echo "<input type='checkbox' name='list' id='root_folder'>";
     else echo "<input type='checkbox' name='list' id='root_folder' checked>";
-    if ((isset($_GET["folder-id"])) && ($_GET["folder-id"] == 0)) echo "<label class='d-flex align-items-center folder-active' for='root_folder' onclick='showFiles(0)'>";
-    else echo "<label class='d-flex align-items-center' for='root_folder' onclick='showFiles(0)'>";
+    if ((isset($_GET["folder-id"])) && ($_GET["folder-id"] == 0)) echo "<label class='d-flex align-items-center folder-active item-contextmenu item-showfiles' value='0' for='root_folder'>";
+    else echo "<label class='d-flex align-items-center item-contextmenu item-showfiles' value='0' for='root_folder'>";
     echo "<i class='uil uil-folder me-2'></i>";
     echo "<div class='folder-name' title='My Cloud'>My Cloud ($username)</div>";
     echo "</label>";
@@ -39,8 +39,8 @@ function list_folders($dir)
       echo '<li>';
       if ($_SESSION["folders_unfold"][$cnt] == "false") echo "<input type='checkbox' name='list' id='folder_$cnt'>";
       else echo "<input type='checkbox' name='list' id='folder_$cnt' checked>";
-      if ((isset($_GET["folder-id"])) && ($cnt == $_GET["folder-id"])) echo "<label class='d-flex align-items-center folder-active' for='folder_$cnt' onclick='showFiles($cnt)'>";
-      else echo "<label class='d-flex align-items-center' for='folder_$cnt' onclick='showFiles($cnt)'>";
+      if ((isset($_GET["folder-id"])) && ($cnt == $_GET["folder-id"])) echo "<label class='d-flex align-items-center folder-active item-contextmenu item-showfiles' value='$cnt' for='folder_$cnt'>";
+      else echo "<label class='d-flex align-items-center item-contextmenu item-showfiles' value='$cnt' for='folder_$cnt'>";
       echo "<i class='uil uil-folder me-2'></i>";
       echo "<div class='folder-name' title='$file_item'>$file_item</div>";
       echo "</label>";
@@ -151,7 +151,7 @@ function read_local_folders()
       create_div_template($name_file, $extension_file, $complete_name_file);
     }
   }
-  if ($n_folders == 0) echo "<div>No folders</div>";
+  if ($n_folders == 0) echo "<div>There is any folder</div>";
 }
 
 function read_local_files()
@@ -180,7 +180,7 @@ function read_local_files()
       create_div_template($name_file, $new_extension_file, $complete_name_file);
     }
   }
-  if ($n_files == 0) echo "<div>No files</div>";
+  if ($n_files == 0) echo "<div>There is any file</div>";
 }
 
 function check_extension_file($extension_file)
@@ -250,6 +250,7 @@ function create_div_template(
   );
 
   $maindiv->setAttribute("aria-disabled", "true");
+  $maindiv->setAttribute("class", "p-2 m-2 border rounded item-contextmenu");
   $maindiv->setAttribute("data-source", "$local_dir/$complete_name_file");
   $maindiv->setAttribute("id", $complete_name_file);
   $html->appendChild($maindiv);
@@ -257,12 +258,13 @@ function create_div_template(
   $mainSection = $html->createElement("section");
   $mainSection->setAttribute(
     "class",
-    "file__item--wrapper d-flex flex-column align-items-center"
+    "file__item--wrapper d-flex flex-column m-0"
   );
   $mainSection->setAttribute("data-source", "$local_dir/$complete_name_file");
   $maindiv->appendChild($mainSection);
 
   $first_div = $html->createElement("div");
+  $first_div->setAttribute("class", "d-flex justify-content-center");
   $first_div->setAttribute("data-source", "$local_dir/$complete_name_file");
   $mainSection->appendChild($first_div);
 
@@ -273,11 +275,13 @@ function create_div_template(
   $first_div->appendChild($file_img);
 
   $second_div = $html->createElement("div");
+  $second_div->setAttribute("class", "px-2");
   $second_div->setAttribute("data-source", "$local_dir/$complete_name_file");
   $mainSection->appendChild($second_div);
 
   $title_folder = $html->createElement("h6");
   $title_folder->setAttribute("data-source", "$local_dir/$complete_name_file");
+  $title_folder->setAttribute("title", "$name_file");
   $title_folder->appendChild($html->createTextNode($name_file));
   $second_div->appendChild($title_folder);
 

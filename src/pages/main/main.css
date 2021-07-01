@@ -112,9 +112,16 @@ input:focus {
 .main__files--wrapper {
   border-left: solid 1px rgb(161, 161, 161);
 }
+
 .files__wrapper {
   height: fit-content;
   overflow-y: auto;
+}
+
+.files__wrapper h6{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #menu * {
@@ -129,6 +136,7 @@ input:focus {
 #menu label {
   padding-left: 10px;
   padding-right: 10px;
+  width: fit-content;
   height: 30px;
   cursor: pointer;
 }
@@ -147,7 +155,6 @@ input:focus {
 #menu .folder-name {
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 #menu input:checked ~ label:before {
   content: "\025be";
@@ -174,13 +181,11 @@ input:focus {
 }
 
 .file__item--wrapper {
-  max-width: 200px;
-  width: 70%;
   overflow: hidden;
 }
 
 .file__item--wrapper div img {
-  width: 100%;
+  width: 50%;
   object-fit: cover;
 }
 
@@ -232,6 +237,28 @@ input:focus {
   display: none;
 }
 
-.open_modal{
+.open_modal {
+  cursor: pointer;
+}
+
+#context-menu {
+  background-color: white;
+  position: absolute;
+  border: 1px black solid;
+  border-radius: 3px;
+  z-index: 10;
+}
+#context-menu * {
+  list-style: none;
+}
+#back-context{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+}
+#context-menu li:hover {
+  background-color: rgb(240, 240, 240);
+  border-radius: 5px;
   cursor: pointer;
 }
