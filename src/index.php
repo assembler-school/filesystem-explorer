@@ -18,11 +18,12 @@ session_start();
   <header>
     <div class="main-header">
       <div class="header-test"></div>
-      <div class="search-bar"><input id="search-bar" type="text" placeholder="Search"> </div>
-      <div class="actions">
-        <button id="create-folder" class="circle-icon create-folder">+</button>
+      <div class="search-bar"><input id="search-bar" type="text" onblur="this.placeholder = 'Search'" placeholder="Search" onfocus="this.placeholder = ''" /> </div>
+      <div class="buttons actions">
+        <button class="circle-icon new"><img id="create-folder" src="img/addFolder.svg" class="context-menu-icon" /></button>
+        <button class="circle-icon edit"><img id="edit-folder" src="img/editFolder.svg" class="context-menu-icon" /></button>
+        <button class="circle-icon delete"><img id="delete-folder" src="img/deleteFolder.svg" class="context-menu-icon" /></button>
         <button id="upload-file" class="circle-icon upload-file">UP</button>
-
       </div>
     </div>
     <div class="subheader"></div>
