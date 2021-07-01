@@ -1,15 +1,23 @@
 <?php
-/*$file = $_FILES['file'];
-$files = glob('my_folder/*'); //obtenemos todos los nombres de los ficheros
-foreach($files as $file){
-    if(is_file($file))
-    unlink($file); //elimino el fichero
-}*/
-//session_start();
 
-#imprimimos las variables que estas enviando para saber si estan llegando completas
-
-
+$dir = ;
+function remove($dir){
+    if (is_dir($dir)){
+        $objects = scandir($dir);
+        foreach ($objects as $object){
+            if($object != "." && $object != ".."){
+                if (is_dir($dir . DIRECTORY_SEPARATOR . $object) && !is_link($dir . "/" . $object)){
+                    rrmdir($dir . DIRECTORY_SEPARATOR . $object);
+                }else{
+                    unlink($dir . DIRECTORY_SEPARATOR . $object);
+                }
+            }
+        }
+        rmdir($dir);
+    }else{
+        unlink($dir);
+    }
+}
 
 
 
