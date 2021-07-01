@@ -4,10 +4,8 @@
 session_start();
 require("./src/modules/upload.php");
 require("./src/modules/path_manager.php");
-require_once("./src/modules/set_dir.php");
-
 $rootPath = getRootPath();
-
+require_once("./src/modules/set_dir.php");
 
 ?>
 
@@ -72,8 +70,8 @@ $rootPath = getRootPath();
   ?>
   <aside class="aside_left">
     <form action="" method="POST" enctype="multipart/form-data">
-    <label  class="custom-file-input">
-      <input type="file" name="file" onchange="form.submit()" style="display:none;">
+      <label class="custom-file-input">
+        <input type="file" name="file" onchange="form.submit()" style="display:none;">
       </label>
     </form>
   </aside>
