@@ -1,19 +1,17 @@
 <?php 
+
     require("./updateDir.php");
 
     if(isset($_POST['submitRename'])){
         
         // Getting current dirPath
         $dirRenamePath = $_SESSION['currentPath'];
-        // echo $dirRenamePath."<br>";
 
         // Initializing newName and
         $newName = $_POST['newName'];
-        // echo $newName."<br>";
         
         // Getting all items in this dirPath
         $dirItemList = scandir($dirRenamePath);
-        // print_r($dirItemList);
 
         // Checking if newName is duplicated and setting a new value to newName
         foreach($dirItemList as $dirItem){
@@ -35,10 +33,11 @@
                             $newCopyIndex +=1;
                             $newCopyIndex = (string)($newCopyIndex);
                             $newName = str_replace("Copy".$actualCopyIndexString.".".$fileExt, "Copy".$newCopyIndex.".".$fileExt, $newName);
+
                         }
                     }else{
                         $newName = str_replace(".".$fileExt, "Copy".".".$fileExt, $newName);
-                        echo "\$newName when file --> ".$newName."<br>";
+
                     }
                 }else{
                     if(strrpos($dirItem, "Copy", 0)){
@@ -60,7 +59,7 @@
                 }
             }
         }
-        
+
         // Searching item name to change and changing its name
         $itemToChangeIndex = array_search($_POST['oldName'], $dirItemList);
         rename($dirRenamePath."/".$dirItemList[$itemToChangeIndex],$dirRenamePath."/".$newName);

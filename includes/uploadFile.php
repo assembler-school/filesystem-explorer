@@ -1,8 +1,14 @@
 <?php 
 
+    require("./updateDir.php");
+
     if (isset($_POST['submit'])){
 
         $file = $_FILES['file'];
+        print_r($file);
+
+        // Establish fileUploadDir directory
+        $fileUploadDir = $_SESSION['currentPath'];
 
         // File info
         $fileName = $_FILES['file']['name'];
@@ -28,7 +34,7 @@
                     // and also creating the file upload destination and redirect to
                     // index.php once the process has finished
                     $fileNameNew = uniqid('', true).".".$fileActualExt;
-                    $fileDestination = '../root/'.$fileNameNew;
+                    $fileDestination = $fileUploadDir.'/'.$fileNameNew;
                     move_uploaded_file($fileTmpName, $fileDestination);
                     header("Location: ../index.php?uploadsuccess");
                 }else{
