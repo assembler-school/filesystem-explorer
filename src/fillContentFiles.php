@@ -20,12 +20,12 @@ if ($files) {
     $shortFileName = strlen($fileName) > 22 ? substr($fileName, 0, 18) . '...' : $fileName;
     $fileSize = human_filesize(filesize($filePath));
     echo "<div class='file d-flex flex-column justify-content-end m-2 p-1' title='$fileName'>
-      <div class='file-top'>
-      <i class='d-flex justify-content-center fas fa-$fileIcon fa-5x'></i>
+      <div class='file-top' title='$fileName'>
+      <i class='d-flex justify-content-center fas fa-$fileIcon fa-5x' title='$fileName'></i>
       </div>
-      <div class='file-bottom'>
-        <p class='mx-1 my-0 d-flex justify-content-center'>$shortFileName</p>
-        <p class='mx-1 my-0 d-flex justify-content-end'>$fileSize</p>
+      <div class='file-bottom' title='$fileName'>
+        <p class='mx-1 my-0 d-flex justify-content-center' title='$fileName'>$shortFileName</p>
+        <p class='mx-1 my-0 d-flex justify-content-end' title='$fileName'>$fileSize</p>
       </div>
     </div>";
   });

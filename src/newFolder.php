@@ -4,9 +4,12 @@ $completePath = $_SESSION['currentPath'];
 
 $currentPath = substr($completePath, strpos($completePath, "root"));
 
+echo $completePath;
+echo $currentPath;
+
 if (isset($_POST['newFile'])) {
     $newFileName = $_POST['newFile'];
-    $directoryFolders = scandir("../" . $currentPath);
+    $directoryFolders = scandir("../$currentPath");
 
     if (in_array($newFileName, $directoryFolders)) {
         $n = 0;

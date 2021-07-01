@@ -12,8 +12,9 @@ if (isset($_GET['n'])) {
 
   function video($currentVideo)
   {
-    echo "<video width='854' height='480' controls>
-        <source src='" . $currentVideo . "'>";
+    echo "<video width='854' height='480' controls>";
+    echo $currentVideo;
+    echo "<source src='" . $currentVideo . "'>";
     echo "type='video/mp4'>
       </video>";
   }
@@ -29,9 +30,11 @@ if (isset($_GET['n'])) {
   function object($currentObject)
   {
     echo "<object width='854' height='480' controls data='" . $currentObject . "'>";
+    echo "<script>alert('$currentObject')</script>";
     echo "type='video/mp4'>
       </object>";
   }
+
 
   if (isset(pathinfo($currentElement)['extension'])) {
     $ext = pathinfo($currentElement)['extension'];

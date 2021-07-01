@@ -9,7 +9,6 @@ if (!isset($_SESSION['currentPath'])) {
   $_SESSION['currentPath'] = './root';
 };
 
-include_once './src/newFolder.php';
 require_once('./src/folderNavigation.php');
 include_once './src/fillContent.php';
 ?>
