@@ -1,5 +1,8 @@
 <?php 
-    require("./includes/manageDirItems.php")
+
+    require("./includes/manageDirItems.php");
+    require("./includes/updateDirNavBar.php");
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,6 +65,24 @@
         </div>
     </div>
     <div id ="newOptionsPanelBackground"></div>
+    
+    <!-- Rename file or folder form  -->
+    <div id="renamerForm" class="createFolderPanel">
+        <form name="renameForm" action="./includes/updateName.php" onsubmit="return renameValidation()" method="POST">
+            <div class="createFolderHeader">
+                <h4 class="createFolderFormTitle">Choose new name</h4>
+                <i id="closeRenameFolderBtn" class="bi bi-x-lg"></i>
+            </div>
+            <label for="oldName">Current Name</label>
+            <input id="oldName" class="newFolderInput" type="text" name="oldName" value="" readonly>
+            <label for="newName">New Name</label>
+            <input id="newName" class="newFolderInput" type="text" name="newName" placeholder="Input new name" required>
+            <div class="buttons">
+                <button type="submit" name="submitRename" class="createFolderPanelBtn submit">SUBMIT</button>
+                <button type="button" id="cancelRenameBtnForm" class="createFolderPanelBtn cancel">CANCEL</button>
+            </div>
+        </form>
+    </div>
 
     <!-- Header section -->
     <header>
@@ -103,7 +124,14 @@
             </div>
         </section>
         <section class="mainCenter">
-            
+            <div class ='fileWrapper'>
+                <?php echo "
+                    <div class='mainCenter__fileName'>".
+                        renderDirBrowsingNavBar().
+                    "</div>"; 
+                    // <a class='renderUpdateLink' href='./index.php'>My Unity</a> 
+                ?>
+            </div>
 
             <?php 
                 renderDirItemList($dirPath, $dirPathItemList);
@@ -160,6 +188,7 @@
     </template>
     <!-- <script type="text/javascript" src="/node_modules/jquery/dist/jquery.js"></script> -->
     <script type="text/javascript" src="./js/render.js"></script>
+    <script type="text/javascript" src="./js/formValidation.js"></script>
     <script type="text/javascript" src="./js/fuctionOnClick.js"></script>
 </body>
 </html>

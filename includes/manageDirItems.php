@@ -1,7 +1,11 @@
 <?php 
 
+    // including update mechanism
+    require("updateDir.php");
+
     // Getting dirPath
-    $dirPath = "./root";
+    $dirPath = $_SESSION['currentPath'];
+    // $dirPath = "./root";
 
     // Getting every item in dirPath
     $dirPathItemList = scandir($dirPath);
@@ -69,8 +73,8 @@
                             .$icon.
                             "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
                         </a>
-                        <i class='bi bi-pencil-square space'></i>
-                        <i class='bi bi-trash-fill space'></i>
+                        <i id='".$fileName."Rename' class='bi bi-pencil-square space'></i>
+                        <i id='".$fileName."Delete' class='bi bi-trash-fill space'></i>
                     </div>
                 ";
 
@@ -78,12 +82,12 @@
 
                 echo "
                     <div class ='fileWrapper'>
-                    <a class='renderUpdateLink clickMe' >"
-                    .$icon.
-                    "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
-                    </a>
-                    <i class='bi bi-pencil-square space'></i>
-                    <i class='bi bi-trash-fill space'></i>
+                        <a class='renderUpdateLink clickMe' >"
+                            .$icon.
+                            "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
+                        </a>
+                        <i id='".$fileName."Rename' class='bi bi-pencil-square space'></i>
+                        <i id='".$fileName."Delete' class='bi bi-trash-fill space'></i>
                     </div>
                 ";
 
@@ -149,7 +153,7 @@
 
                 echo "
                 <div class='mainLeft__container'>
-                        <a class='renderUpdateLink' href='./includes/manageDirItems.php?updateDir'>"
+                        <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$dirPath."/".$fileName."'>"
                             .$icon.
                             "<div class='mainLeft__fileName'>".$fileName."</div>
                         </a>
