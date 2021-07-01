@@ -35,6 +35,7 @@ To open the file explorer just open a browser and go to [localhost](localhost)
 
 ## Documentation 📚
 
+In this repo there is a folder called _doc_. There you can find the project's wireframes, daily log, presentation, etc.
 
 ## Tools and tecnologies used 🛠️
 
@@ -44,7 +45,7 @@ To open the file explorer just open a browser and go to [localhost](localhost)
 * JavaScript
 * Bootstrap 
 
-## Project requirements
+## Project requirements 📏
 
 - You cannot use file third-party libraries
 - You will not be able to use global variables in PHP.
@@ -78,5 +79,5 @@ _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4NjE5OTEyOSwxMjgzNDEzMjExXX0=
+eyJoaXN0b3J5IjpbLTg1NTQwODM0NCwxMjgzNDEzMjExXX0=
 -->
