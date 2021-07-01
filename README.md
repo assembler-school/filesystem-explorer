@@ -1,4 +1,7 @@
 `#html` `#css` `#js` `#php` `#master-in-software-engineering`
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # PHP Local FileSystem explorer <!-- omit in toc -->
 _A File Explorer made with PHP, HTML, JS and CSS_
@@ -72,3 +75,22 @@ Delete files that are not used or are not necessary to evaluate the project
 eyJoaXN0b3J5IjpbNjIxNzY3OTI1LC0xMTM4ODIxNDc2LDEyOD
 M0MTMyMTFdfQ==
 -->
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/solaz0824"><img src="https://avatars.githubusercontent.com/u/50446830?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eunyoung Kim</b></sub></a><br /><a href="https://github.com/mhfortuna/filesystem-explorer/commits?author=solaz0824" title="Code">💻</a> <a href="#design-solaz0824" title="Design">🎨</a> <a href="#ideas-solaz0824" title="Ideas, Planning, & Feedback">🤔</a> <a href="#projectManagement-solaz0824" title="Project Management">📆</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
