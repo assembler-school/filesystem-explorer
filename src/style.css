@@ -387,6 +387,20 @@ main {
   font-size: x-large;
 }
 
+.folder-tree-root {
+  padding-left: 9px;
+}
+.folder-tree-group {
+  padding-left: 0.5rem;
+  margin-left: 0.5rem;
+  border-left: solid grey 4px;
+}
+
+.folder-tree-root li {
+  border-bottom: 0px solid red;
+  padding: 0.8rem 0.2rem;
+}
+
 .main-content {
   position: absolute;
   left: 20%;
