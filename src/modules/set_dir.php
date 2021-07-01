@@ -9,4 +9,6 @@ if (!isset($_SESSION["currentPath"])) {
 }
 
 // Getting files and folders from directory
-$filesDir = scandir($_SESSION["currentPath"]);
+// $filesDir = scandir($_SESSION["currentPath"]);
+$filesDir = array_diff(scandir($_SESSION["currentPath"]), ['.', '..']);
+

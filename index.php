@@ -33,8 +33,8 @@ require_once("./src/modules/set_dir.php");
   </div>
   <main class="main_container container">
     <div class="top_container row">
-      <form class="form-inline search_bar col col-12 d-flex">
-        <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
+      <form class="form-inline search_bar col col-12 d-flex" action="./src/modules/search.php" method="POST">
+        <input class="form-control" type="text" name="search" placeholder="Search..." id="search" aria-label="Search">
         <button class="btn btn-search" type="submit">Search</button>
       </form>
       <div class="col-6"></div>
