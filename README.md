@@ -2,6 +2,9 @@
 
 # PHP Local FileSystem explorer <!-- omit in toc -->
 _A File Explorer made with PHP, HTML, JS and CSS_
+>This project you will have to create a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system. 
+
+>The file explorer is a tool that allows you to directly view and manipulate the files and directories associated with a path, so you must take into account from which path the user starts and which path they can access.
 
 ## Index <!-- omit in toc -->
 
@@ -54,9 +57,8 @@ _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios
 <p>
 
 
->In this project you will have to create a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system. 
 
->The file explorer is a tool that allows you to directly view and manipulate the files and directories associated with a path, so you must take into account from which path the user starts and which path they can access.
+
 
 
 
@@ -111,5 +113,5 @@ To deliver this project you must follow the steps indicated in the document:
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA1Nzg0MDg2LDEyODM0MTMyMTFdfQ==
+eyJoaXN0b3J5IjpbLTEyNzg5NzI0ODMsMTI4MzQxMzIxMV19
 -->
