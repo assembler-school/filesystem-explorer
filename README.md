@@ -135,6 +135,7 @@ repo
 - Delete all/some files using checkboxes.
 - Support more file extensions (icons).
 - Label files and filter them.
+- Responsive design.
 
 ## Bugs 🚨
 
