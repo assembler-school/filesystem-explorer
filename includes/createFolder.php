@@ -1,5 +1,5 @@
 <?php 
-
+    
     if(isset($_POST['submitFolder'])){
 
         // Establish root directory

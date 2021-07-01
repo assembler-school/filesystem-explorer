@@ -1,27 +1,72 @@
 <?php 
+    require("./updateDir.php");
+
     if(isset($_POST['submitRename'])){
         
         // Getting current dirPath
-        $dirPath = "../root/";
-        echo $dirPath;
+        $dirRenamePath = $_SESSION['currentPath'];
+        // echo $dirRenamePath."<br>";
 
+        // Initializing newName and
+        $newName = $_POST['newName'];
+        // echo $newName."<br>";
+        
         // Getting all items in this dirPath
-        $dirItemList = scandir($dirPath);
+        $dirItemList = scandir($dirRenamePath);
+        // print_r($dirItemList);
 
+        // Checking if newName is duplicated and setting a new value to newName
+        foreach($dirItemList as $dirItem){
+            if($dirItem === $newName){
+               
+
+                if(strrpos($dirItem, ".", 0)){
+                    $fileExt = end(explode(".", $dirItem));
+
+                    if(strrpos($dirItem, "Copy", 0)){
+                        $copyIndexString = end(explode("Copy", $dirItem));
+                        $actualCopyIndexString = (explode(".", $copyIndexString))[0];
+
+                        if(empty($actualCopyIndexString)){
+                            $newName = str_replace("Copy.".$fileExt, "Copy1.".$fileExt, $newName);
+
+                        }else{
+                            $newCopyIndex = (int)$actualCopyIndexString;
+                            $newCopyIndex +=1;
+                            $newCopyIndex = (string)($newCopyIndex);
+                            $newName = str_replace("Copy".$actualCopyIndexString.".".$fileExt, "Copy".$newCopyIndex.".".$fileExt, $newName);
+                        }
+                    }else{
+                        $newName = str_replace(".".$fileExt, "Copy".".".$fileExt, $newName);
+                        echo "\$newName when file --> ".$newName."<br>";
+                    }
+                }else{
+                    if(strrpos($dirItem, "Copy", 0)){
+                        $copyIndexString = (end(explode("Copy", $dirItem)));
+                        if(empty($copyIndexString)){
+                            $copyIndex = 1;
+                            $newCopyIndex = (string)($copyIndex);
+
+                        }else{
+                            $copyIndex = (int)$copyIndexString;
+                            $copyIndex +=1;
+                            $newCopyIndex = (string)($copyIndex);
+                        }
+                        $newName = str_replace("Copy".$copyIndexString, "Copy".$newCopyIndex, $newName);
+
+                    }else{
+                        $newName.="Copy";
+                    }
+                }
+            }
+        }
+        
         // Searching item name to change and changing its name
         $itemToChangeIndex = array_search($_POST['oldName'], $dirItemList);
-        rename($dirPath.$dirItemList[$itemToChangeIndex],$dirPath.$_POST['newName']);
+        rename($dirRenamePath."/".$dirItemList[$itemToChangeIndex],$dirRenamePath."/".$newName);
        
         // Redirect to index.php
        header("Location: ../index.php?renamesuccess");
     }
 
-    // if (isset($_POST["rename"]) && isset($_POST["newName"])) {
-    //     $fileName = explode(".", $file["name"])[0];
-    //     $rpName = str_replace($fileName, $_POST["newName"], $file["path"]);
-    //     if ($fileName === $_POST["rename"]) {
-    //     rename($file["path"], $rpName);
-    //     header("Location: ../index.php?renamed=true");
-    //     }
-    //     }
 ?>

@@ -73,8 +73,8 @@
                             .$icon.
                             "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
                         </a>
-                        <i class='bi bi-pencil-square space'></i>
-                        <i class='bi bi-trash-fill space'></i>
+                        <i id='".$fileName."Rename' class='bi bi-pencil-square space'></i>
+                        <i id='".$fileName."Delete' class='bi bi-trash-fill space'></i>
                     </div>
                 ";
 
@@ -82,12 +82,12 @@
 
                 echo "
                     <div class ='fileWrapper'>
-                    <a class='renderUpdateLink clickMe' >"
-                    .$icon.
-                    "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
-                    </a>
-                    <i class='bi bi-pencil-square space'></i>
-                    <i class='bi bi-trash-fill space'></i>
+                        <a class='renderUpdateLink clickMe' >"
+                            .$icon.
+                            "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
+                        </a>
+                        <i id='".$fileName."Rename' class='bi bi-pencil-square space'></i>
+                        <i id='".$fileName."Delete' class='bi bi-trash-fill space'></i>
                     </div>
                 ";
 

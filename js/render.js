@@ -15,11 +15,11 @@ $("#cancelBtnForm").on("click", hideCreateFolderForm);
 $("#closeCreateFolderBtn").on("click", hideCreateFolderForm);
 
 // Render fileDir options panel
-$(".renderOptions").on("click", showFileDirOptions);
-$("#newOptionsPanelBackground").on("click", hideFileDirOptions);
+// $(".renderOptions").on("click", showFileDirOptions);
+// $("#newOptionsPanelBackground").on("click", hideFileDirOptions);
 
 // Render Rename form
-$("#renameBtn").on("click", showRenameForm);
+$(".bi-pencil-square").on("click", showRenameForm);
 $("#createFolderBackground").on("click", hideRenameForm);
 $("#closeRenameFolderBtn").on("click", hideRenameForm);
 $("#cancelRenameBtnForm").on("click", hideRenameForm);
@@ -52,24 +52,24 @@ function hideCreateFolderForm() {
   $("#createFolderBackground").hide();
 }
 
-function showFileDirOptions(event) {
+// function showFileDirOptions(event) {
+//   getCurrentName(event);
+//   // getWindowXY(event);
+//   $("#fileDirOptionsPanel").css("top", relativeY);
+//   $("#fileDirOptionsPanel").css("left", relativeX);
+//   $("#fileDirOptionsPanel").show();
+//   $("#newOptionsPanelBackground").show();
+//   // console.log("$('#oldName').value -->", $("#oldName").val());
+// }
+
+// function hideFileDirOptions() {
+//   $("#fileDirOptionsPanel").hide();
+//   $("#newOptionsPanelBackground").hide();
+// }
+
+function showRenameForm(event) {
   getCurrentName(event);
-  getWindowXY(event);
-  $("#fileDirOptionsPanel").css("top", relativeY);
-  $("#fileDirOptionsPanel").css("left", relativeX);
-  $("#fileDirOptionsPanel").show();
-  $("#newOptionsPanelBackground").show();
-  // console.log("$('#oldName').value -->", $("#oldName").val());
-}
-
-function hideFileDirOptions() {
-  $("#fileDirOptionsPanel").hide();
-  $("#newOptionsPanelBackground").hide();
-}
-
-function showRenameForm() {
-  $("#fileDirOptionsPanel").hide();
-  $("#newOptionsPanelBackground").hide();
+  console.log("$('#oldName').value -->", $("#oldName").val());
   $("#renamerForm").show();
   $("#createFolderBackground").show();
 }
@@ -80,14 +80,17 @@ function hideRenameForm() {
 }
 
 // --------- Other functions --------------
-function getWindowXY(event) {
-  relativeX = event.pageX;
-  relativeY = event.pageY;
-}
+// function getWindowXY(event) {
+//   relativeX = event.pageX;
+//   relativeY = event.pageY;
+// }
 
 function getCurrentName(event) {
-  // console.log("event.target -->", event.target);
-  // console.log("event.target.namedata -->", event.target.id);
-  // console.log("$('#oldName') -->", $("#oldName"));
-  $("#oldName").attr("value", event.target.id);
+  console.log("event.target -->", event.target);
+  let notCroppedID = event.target.id;
+  let oldName = "";
+  if (notCroppedID.indexOf("Rename")) {
+    oldName = notCroppedID.replace("Rename", "");
+  }
+  $("#oldName").attr("value", oldName);
 }

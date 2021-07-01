@@ -12,7 +12,7 @@
         header("Location: ../index.php");
     }
 
-    echo $_SESSION['currentPath'];
+    // echo $_SESSION['currentPath'];
     // echo "I am the main root path --> ".$_SESSION['mainRootPath'];
     
 ?>
