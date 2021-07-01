@@ -4,8 +4,8 @@
 
     if (isset($_POST['submit'])){
 
-        $file = $_FILES['file'];
-        print_r($file);
+        // $file = $_FILES['file'];
+        // print_r($file);
 
         // Establish fileUploadDir directory
         $fileUploadDir = $_SESSION['currentPath'];
@@ -21,6 +21,9 @@
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
 
+        // Getting dirItems
+        $dirItemList = scandir($fileUploadDir);
+
         // Allowed file extensions
         $allowed = array('doc', 'csv', 'jpg', 'png', 'txt', 'ppt', 'odt', 'pdf', 'zip', 'rar', 'exe', 'svg', 'mp3', 'mp4');
 
@@ -30,11 +33,36 @@
             if($fileError === 0){
                 // Checking file size (for now file size limit set at 1000000)
                 if($fileSize < 10000000){
-                    // Creating unique id for the file to avoid replacement issues
-                    // and also creating the file upload destination and redirect to
+                    // Checking if fileName already exists and giving it a new value if so
+                    // and also creating the file upload destination and redirecting to
                     // index.php once the process has finished
-                    $fileNameNew = uniqid('', true).".".$fileActualExt;
-                    $fileDestination = $fileUploadDir.'/'.$fileNameNew;
+                    foreach ($dirItemList as $dirItem){
+                        if(!is_dir($dirItem)){
+                            if($fileName === $dirItem){
+
+                                if(strrpos($dirItem, "Copy", 0)){
+                                    $copyIndexString = end(explode("Copy", $dirItem));
+                                    $actualCopyIndexString = (explode(".", $copyIndexString))[0];
+            
+                                    if(empty($actualCopyIndexString)){
+                                        $fileName = str_replace("Copy.".$fileActualExt, "Copy1.".$fileActualExt, $fileName);
+            
+                                    }else{
+                                        $newCopyIndex = (int)$actualCopyIndexString;
+                                        $newCopyIndex +=1;
+                                        $newCopyIndex = (string)($newCopyIndex);
+                                        $fileName = str_replace("Copy".$actualCopyIndexString.".".$fileActualExt, "Copy".$newCopyIndex.".".$fileActualExt, $fileName);
+            
+                                    }
+                                }else{
+                                    $fileName = str_replace(".".$fileActualExt, "Copy".".".$fileActualExt, $fileName);
+            
+                                }
+                            }
+                        }
+                    }
+                    
+                    $fileDestination = $fileUploadDir.'/'.$fileName;
                     move_uploaded_file($fileTmpName, $fileDestination);
                     header("Location: ../index.php?uploadsuccess");
                 }else{
