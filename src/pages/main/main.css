@@ -108,7 +108,7 @@ input:focus {
 
 .edit__buttons--wrapper {
   min-height: 50px;
-  padding: 0px 20px;
+  padding: 0px 16px;
 }
 
 .main__files--wrapper {
@@ -116,8 +116,15 @@ input:focus {
   height: 100%;
   overflow-y: scroll;
 }
+
 .files__wrapper {
   height: 100%;
+}
+
+.files__wrapper h6{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #menu * {
@@ -132,6 +139,7 @@ input:focus {
 #menu label {
   padding-left: 10px;
   padding-right: 10px;
+  width: fit-content;
   height: 30px;
   cursor: pointer;
 }
@@ -150,7 +158,6 @@ input:focus {
 #menu .folder-name {
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 #menu input:checked ~ label:before {
   content: "\025be";
@@ -177,17 +184,11 @@ input:focus {
 }
 
 .file__item--wrapper {
-  max-width: 200px;
-  width: 70%;
   overflow: hidden;
 }
 
-/* .file__item--wrapper:hover {
-  outline: 1px solid red;
-} */
-
-.file__item--wrapper div img {
-  width: 100%;
+.file__item--wrapper img {
+  width: 50%;
   object-fit: cover;
 }
 
@@ -245,9 +246,30 @@ input:focus {
   cursor: pointer;
 }
 
-.open_modal:hover {
-  outline: solid 1px rgb(155, 155, 155);
-  background-color: rgb(236, 236, 236);
+.item-folder {
+  cursor: pointer;
+}
+
+#context-menu {
+  background-color: white;
+  position: absolute;
+  border: 1px black solid;
+  border-radius: 3px;
+  z-index: 10;
+}
+#context-menu * {
+  list-style: none;
+}
+#back-context{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+}
+#context-menu li:hover {
+  background-color: rgb(240, 240, 240);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .btn__close--file--Information {
