@@ -8,7 +8,7 @@
         // $hrefDirPath = $splitMainPath[$startIndexNavbar];
         // $hrefDirPath = $splitMainPath[$startIndexNavbar]."/";
         echo "
-        <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$_SESSION['mainRootPath']."'>
+        <a class='render__route' href='./includes/updateDir.php?updateDir=".$_SESSION['mainRootPath']."'>
             My Unity
         </a>";
         // <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$_SESSION['mainRootPath']."/'>
@@ -22,7 +22,7 @@
             $hrefDirPath = $hrefDirPath.$splitMainPath[$i];
             // $hrefDirPath = $hrefDirPath.$splitMainPath[$i]."/";
             echo "
-                <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$_SESSION['mainRootPath'].$hrefDirPath."'>".
+                <a class='render__route' href='./includes/updateDir.php?updateDir=".$_SESSION['mainRootPath'].$hrefDirPath."'>/".
                     $splitMainPath[$i]."
                 </a>";
 

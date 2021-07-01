@@ -1,6 +1,6 @@
 <?php
-
-$ruta = "../root";
+session_start();
+$ruta = $_SESSION['currentPath'];
 function listar_directorios_ruta($ruta){
      $Name = $_POST['prueba'];
   if (is_dir($ruta)) {

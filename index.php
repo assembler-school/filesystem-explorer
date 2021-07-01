@@ -1,5 +1,8 @@
 <?php 
-
+    //====================================
+    //se carga la cookie de sesion que crea el navegador
+    //setcookie ("PHPSESSID", "", time() - 3600, '/');
+    //====================================
     require("./includes/manageDirItems.php");
     require("./includes/updateDirNavBar.php");
     
@@ -124,9 +127,9 @@
             </div>
         </section>
         <section class="mainCenter">
-            <div class ='fileWrapper'>
+            <div class ='mainCenter__route'>
                 <?php echo "
-                    <div class='mainCenter__fileName'>".
+                    <div>".
                         renderDirBrowsingNavBar().
                     "</div>"; 
                     // <a class='renderUpdateLink' href='./index.php'>My Unity</a> 
@@ -190,5 +193,8 @@
     <script type="text/javascript" src="./js/render.js"></script>
     <script type="text/javascript" src="./js/formValidation.js"></script>
     <script type="text/javascript" src="./js/fuctionOnClick.js"></script>
+    <script type="text/javascript">
+     document.cookie = "PHPSESSID=;Path=/cv;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+</script>
 </body>
 </html>
