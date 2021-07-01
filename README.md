@@ -13,14 +13,9 @@ _A File Explorer made with PHP, HTML, JS and CSS_
 
 ## Where to start?🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+### Requirements📋
 
-Mira **Deployment** para conocer como desplegar el proyecto.
-
-
-### Pre-requisitos 📋
-
-_Que cosas necesitas para instalar el software y como instalarlas_
+To run this project you need yo have XAMPP installed in your PC. For more information about XAMPP visit [The
 
 ```
 Da un ejemplo
@@ -179,5 +174,5 @@ To deliver this project you must follow the steps indicated in the document:
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1NzAxNjE0M119
+eyJoaXN0b3J5IjpbMTIzOTY0NjI4Ml19
 -->
