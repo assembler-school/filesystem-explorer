@@ -112,7 +112,7 @@
         </section>
         <section class="mainRight">
             <div class="mainRight__fileHeader">
-                <div class="mainRight__fileIcon"><i class="bi bi-folder-fill" id="icon"></i></div>
+                <div class="mainRight__fileIcon"><i class="" id="icon"></i></div>
                 <div class="mainRight__fileName" id="titleName"></div>
             </div>
             <hr class="mainRight__hr">
