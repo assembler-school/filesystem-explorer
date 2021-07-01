@@ -32,10 +32,13 @@ _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para 
 
 To open the file explorer just open a browser and go to [localhost](localhost)
 
-## Construido con 🛠️
+## Tools and thechnologies used 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+* HTML
+* CSS
+* JS
 
+* PHP
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 * [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
@@ -102,13 +105,6 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 - You should try as much as possible that the commits and the planned tasks are the same
 Delete files that are not used or are not necessary to evaluate the project
 
-## Repository
-
-First of all you must fork this project into your GitHub account.
-
-To create a fork on GitHub is as easy as clicking the “fork” button on the repository page.
-
-<img src="https://docs.github.com/assets/images/help/repository/fork_button.jpg" alt="Fork on GitHub" width='450'>
 
 ## Technologies used
 
@@ -143,5 +139,5 @@ To deliver this project you must follow the steps indicated in the document:
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTQxNjU4OTQ1LDEyODM0MTMyMTFdfQ==
+eyJoaXN0b3J5IjpbLTQ5MDg4ODc1NiwxMjgzNDEzMjExXX0=
 -->
