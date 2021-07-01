@@ -35,13 +35,13 @@ function directoryTree()
     chdir($homeDir);
 
     // To echo before looping
-    echo "<div class='nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start text-white' id='menu'>";
+    echo "<div class='nav nav-pills flex-column mb-0 mt-2 align-items-center align-items-sm-start text-white' id='menu'>";
     echo "<div class='nav-item'>";
     // echo "<a href='#Home' data-bs-toggle='collapse' class='nav-link align-middle px-0 text-white folder-toggle'>";
     echo $folderIcon;
     // echo "</a>";
     echo "<a href ='./modules/open-directory.php?directory='' class='px-0 text-white' >";
-    echo "<span class='ms-1 d-none d-sm-inline'>Home</span></a>";
+    echo "<span class='ms-1 d-none d-sm-inline hover-green align-middle'>Home</span></a>";
     echo "<ul class='collapse show nav flex-column ms-1' id='Home' data-bs-parent='#menu'>";
 
     function makeRecursiveTree($dir)
@@ -57,7 +57,7 @@ function directoryTree()
                 echo "<li class='w-100 ms-2'>";
                 if (directoryHasDirectories($dir . '/' . $node)) {
                     echo "<a href='#" . $dirToId . '-' . $node . "' data-bs-toggle='collapse'  role='button' aria-expanded='false' aria-controls='Home' class='nav-link px-0 text-white folder-toggle'>" . $folderIcon . "</a>";
-                    echo "<a href ='./modules/open-directory.php?directory=" . $dir . '/' . $node . "' class='px-0 text-white' ><span class='ms-1 d-none d-sm-inline'>";
+                    echo "<a href ='./modules/open-directory.php?directory=" . $dir . '/' . $node . "' class='px-0 text-white' ><span class='ms-1 d-none d-sm-inline hover-green align-middle'>";
                     echo $node;
                     echo "</span></a>";
                     echo "<ul class='collapse nav flex-column ms-1' id='" . $dirToId  . '-' . $node . "' data-bs-parent='#" . $dirToId . "'>";
@@ -65,7 +65,7 @@ function directoryTree()
                     echo "</ul>";
                 } else {
                     echo "<a href='./modules/open-directory.php?directory=" . $dir . '/' . $node . "' class='nav-link px-0 text-white ms-4'>" . $folderIcon;
-                    echo "<span class='ms-1 d-none d-sm-inline'>";
+                    echo "<span class='ms-1 d-none d-sm-inline hover-green align-middle'>";
                     echo $node;
                     echo "</span></a>";
                 }
