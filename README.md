@@ -146,4 +146,5 @@ repo
 ## Contributors ✨ 
 
 👤 [Hugo Duran](https://github.com/Hugo05Duran)
+
 👤 [Ricard Garcia](https://github.com/Ricard-Garcia)
