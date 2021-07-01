@@ -150,15 +150,15 @@ revisar_si_existe_sesion();
 	<div id="back-context" style="display: none;"></div>
 	<nav id="context-menu" class="px-1 py-2" style="display: none;">
 		<ul class="m-0 p-0">
-			<li id="new-folder-context" class="d-flex mb-1 px-2">
+			<li id="new-folder-context" class="d-flex mb-1 ps-2 pe-3">
 				<i class="uil uil-plus me-2"></i>
 				<div>New folder</div>
 			</li>
-			<li id="rename-folder-context" class="d-flex mb-1 px-2">
+			<li id="rename-folder-context" class="d-flex mb-1 ps-2 pe-3">
 				<i class="uil uil-edit me-2"></i>
 				<div>Rename folder</div>
 			</li>
-			<li id="delete-folder-context" class="d-flex px-2">
+			<li id="delete-folder-context" class="d-flex ps-2 pe-3">
 				<i class="uil uil-times me-2"></i>
 				<div>Delete folder</div>
 			</li>
@@ -231,12 +231,29 @@ revisar_si_existe_sesion();
 		<div class="modal-dialog modal-xl modal-dialog-centered w-50">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Nueva carpeta</h5>
+					<h5 class="modal-title">New folder</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseModal"></button>
 				</div>
 				<div class="modal-body" id="modal-body">
 					<form id="new-folder-context-form">
 						<input type="text" name="new-folder-name" placeholder="Folder name">
+						<button type="submit" class="btn btn-primary">Confirm</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<template id="modalTemplate-rename-folder">
+		<div class="modal-dialog modal-xl modal-dialog-centered w-50">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Rename folder</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseModal"></button>
+				</div>
+				<div class="modal-body" id="modal-body">
+					<form id="rename-folder-context-form">
+						<input type="text" name="rename-folder-name" placeholder="Folder name">
 						<button type="submit" class="btn btn-primary">Confirm</button>
 					</form>
 				</div>

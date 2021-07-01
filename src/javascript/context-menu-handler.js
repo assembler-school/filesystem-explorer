@@ -1,11 +1,11 @@
-let folderIdContext;
+let folderIdSelectedContext;
 
 // Show the context menu.
 for (let i = 0; i < document.getElementsByClassName("item-contextmenu").length; i++) {
   document.getElementsByClassName("item-contextmenu")[i].addEventListener("contextmenu", function (event) {
     event.preventDefault();
 
-    folderIdContext = this.getAttribute("value");
+    folderIdSelectedContext = this.getAttribute("value");
 
     let menu = document.getElementById("context-menu");
     let menuState = menu.style.display;
@@ -70,11 +70,48 @@ document.getElementById("new-folder-context").addEventListener("click", function
       url: "../../php/local_files/new_folder_context.php",
       type: "post",
       data: {
-        "folder-id": folderIdContext,
+        "folder-id": folderIdSelectedContext,
         "new-folder-name": newNameInput
       }
     });
 
-    window.location = `${window.location.pathname}?folder-id=${folderIdContext}`;
+    window.location = `${window.location.pathname}?folder-id=${folderIdSelectedContext}`;
+  });
+});
+
+// Modal of the rename folder context menu.
+document.getElementById("rename-folder-context").addEventListener("click", function () {
+  document.getElementById("context-menu").style.display = "none";
+  document.getElementById("back-context").style.display = "none";
+
+  let myModalSection = document.getElementById("section_modal");
+  const templateContent = document.getElementById("modalTemplate-rename-folder").content;
+  let templateClone = document.importNode(templateContent, true);
+  myModalSection.style.display = "block";
+  myModalSection.append(templateClone);
+
+  let btnCloseModal = document.getElementById("btnCloseModal");
+  btnCloseModal.addEventListener("click", function(){
+    let myModalSection = document.getElementById("section_modal");
+    let myChilds = myModalSection.querySelector("div");
+    myModalSection.style.display = "none";
+    myModalSection.removeChild(myChilds);
+  });
+
+  document.getElementById("rename-folder-context-form").addEventListener("submit", function(event){
+    event.preventDefault();
+
+    let newNameInput = document.querySelector("#rename-folder-context-form input").value;
+    
+    $.ajax({
+      url: "../../php/local_files/rename_folder_context.php",
+      type: "post",
+      data: {
+        "folder-id": folderIdSelectedContext,
+        "new-folder-name": newNameInput
+      },
+    });
+
+    location.reload();
   });
 });

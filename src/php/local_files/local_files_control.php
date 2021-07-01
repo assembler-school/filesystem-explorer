@@ -18,8 +18,8 @@ function list_folders($dir)
     echo '<li>';
     if ($_SESSION["folders_unfold"][0] == "false") echo "<input type='checkbox' name='list' id='root_folder'>";
     else echo "<input type='checkbox' name='list' id='root_folder' checked>";
-    if ((isset($_GET["folder-id"])) && ($_GET["folder-id"] == 0)) echo "<label class='d-flex align-items-center folder-active item-contextmenu item-showfiles' value='0' for='root_folder'>";
-    else echo "<label class='d-flex align-items-center item-contextmenu item-showfiles' value='0' for='root_folder'>";
+    if ((isset($_GET["folder-id"])) && ($_GET["folder-id"] == 0)) echo "<label class='d-flex align-items-center folder-active item-showfiles' value='0' for='root_folder'>";
+    else echo "<label class='d-flex align-items-center item-showfiles' value='0' for='root_folder'>";
     echo "<i class='uil uil-folder me-2'></i>";
     echo "<div class='folder-name' title='My Cloud'>My Cloud ($username)</div>";
     echo "</label>";
