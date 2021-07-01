@@ -242,8 +242,6 @@ require_once("./modules/searchFile.php");
             else {
                 $("#editAlert").hide();
                 document.location = `./modules/editFiles.php?fileName=${file_name.val()}&oldFileName=${old_name.val()}&oldPath=${old_path.val()}`;
-                $("#fileName").attr("placeholder", "");
-
             }
         });
     </script>
