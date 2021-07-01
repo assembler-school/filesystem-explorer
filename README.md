@@ -5,11 +5,11 @@ _A File Explorer made with PHP, HTML, JS and CSS_
 >This project is part of the Master in Software Development. The objective was to create a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system. 
 
 ## Index <!-- omit in toc -->
-- [Where to start?](#where-to-start?🚀)
+- [Where to start?](#where-to-start?)
 - [Requirements](#requirements)
 - [Install](#install)
 - [Deployment](#deployment)
-- [Documentation](#documentation📚)
+- [Documentation](#documentation)
 - [Technologies used](#technologies-used)
 - [Project delivery](#project-delivery)
 - [Resources](#resources)
@@ -69,6 +69,6 @@ Delete files that are not used or are not necessary to evaluate the project
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNzQ5MDMzMTEsLTExMzg4MjE0NzYsMT
-I4MzQxMzIxMV19
+eyJoaXN0b3J5IjpbMTc1NzYwMTQ4OSwtMTEzODgyMTQ3NiwxMj
+gzNDEzMjExXX0=
 -->
