@@ -1,10 +1,11 @@
 <?php
 session_start();
-include_once("./modules/upload.php");
-include_once("./templates/modals.php");
-include_once("./modules/directory-tree.php");
-include_once("./modules/open-file.php");
-include_once("./modules/return.php");
+require_once("./modules/upload.php");
+require_once("./templates/modals.php");
+require_once("./modules/directory-tree.php");
+require_once("./modules/open-file.php");
+require_once("./modules/return.php");
+require_once("./modules/breadcrumb.php");
 
 if (isset($_SESSION["successMsg"])) {
     $successMsg = $_SESSION["successMsg"];
@@ -30,13 +31,15 @@ if (isset($_SESSION["invalidMsg"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css?v=<?php echo time(); ?>">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand w-70">
-                <div class="logoContainer"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="70px" height="70px" viewBox="0 0 99.34 99.339" style="enable-background:new 0 0 99.34 99.339;" xml:space="preserve" fill="#048A81">
+    <nav class="navbar navbar-dark background-light-gray shadow-sm">
+        <div class="container-fluid ps-0">
+            <a class="col-md-3 col-xl-2 ps-sm-2 px-0 pt-2 pe-0">
+                <div class="logoContainer row justify-content-center"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="70px" height="70px" viewBox="0 0 99.34 99.339" style="enable-background:new 0 0 99.34 99.339;" xml:space="preserve" fill="#048A81">
                         <g>
                             <g>
                                 <path d="M79.447,30.25c-0.701-0.058-1.346-0.416-1.764-0.982C73.637,23.784,67.135,20.4,60.213,20.4
@@ -56,9 +59,13 @@ if (isset($_SESSION["invalidMsg"])) {
 			H37.097C35.326,44.311,33.89,45.746,33.89,47.518z" />
                             </g>
                         </g>
-                    </svg></div>
+                    </svg>
+                </div>
             </a>
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center ms-4 me-auto">
+                <?php renderBreadcrumb(); ?>
+            </div>
+            <div class="d-flex align-items-center me-4">
                 <?php
                 if (isset($_POST["search"])) {
                     echo "<form method='POST' id='returnForm'>
@@ -85,39 +92,38 @@ if (isset($_SESSION["invalidMsg"])) {
     </nav>
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark aside-bar">
+            <nav class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 pt-2 bg-dark sidebar">
 
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <div class="d-flex flex-column px-3 pt-2 text-white min-mh-100">
                     <form action="" method="POST" enctype="multipart/form-data" class="d-flex">
 
                         <label class="custom-file-upload d-flex align-items-center me-md-auto text-white text-decoration-none p-2 rounded-3 mb-2 sideButtons" role="button">
                             <input type="file" class="form-control file-select bg-dark text-light" name="file" onchange="form.submit()" style="display:none" />
                             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#048A81" class="bi bi-cloud-arrow-up-fill" viewBox="0 0 16 16">
                                 <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2z" />
-                            </svg><span class="fs-5 d-none d-sm-inline m-1 side-span pe-auto">UPLOAD</span>
+                            </svg><span class="fs-5 d-none d-sm-inline m-1 side-span pe-auto text-color-green">UPLOAD</span>
                         </label>
                     </form>
-                    <button class="d-flex align-items-center mb-md-0 me-md-auto text-white text-decoration-none p-2 rounded-3 sideButtons" data-bs-toggle="modal" data-bs-target="#newFolderModal">
+                    <button class="d-flex align-items-center me-md-auto text-white text-decoration-none p-2 rounded-3 sideButtons mb-2" data-bs-toggle="modal" data-bs-target="#newFolderModal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="#048A81" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
                             <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
-                        </svg> <span class="fs-5 d-none d-sm-inline m-1 side-span ml-2">NEW</span>
+                        </svg> <span class="fs-5 d-none d-sm-inline m-1 side-span ml-2 text-color-green">NEW</span>
                     </button>
+                    <hr>
                     <?php directoryTree() ?>
                     <hr>
                 </div>
-            </div>
-            <div class="p-0 main-table">
+            </nav>
+            <div class="p-0 col">
                 <?php
                 if (isset($successMsg) && $successMsg) {
                     echo "<div class='alert alert-success' role='alert'>";
                     echo $successMsg;
-                    // $_FILES["file"]["name"] . " " . $successMsg;
                     echo "</div>";
                     $successMsg = false;
                 } elseif (isset($invalidMsg) && $invalidMsg) {
                     echo "<div class='alert alert-warning' role='alert'>";
                     echo $invalidMsg;
-                    // echo $_FILES["file"]["name"] . " " . $invalidMsg;
                     echo "</div>";
                     $invalidMsg = false;
                 } elseif (isset($errorMsg) && $errorMsg) {
@@ -132,9 +138,6 @@ if (isset($_SESSION["invalidMsg"])) {
                 <table class="table table-light table-borderless">
                     <thead class="table tableHead">
                         <tr class="text-center">
-                            <th scope="col">
-
-                            </th>
                             <th scope="col">Name</th>
                             <th scope="col">Size</th>
                             <th scope="col">Modified</th>
@@ -143,9 +146,9 @@ if (isset($_SESSION["invalidMsg"])) {
                     </thead>
                     <tbody>
                         <?php
-                        include_once "./modules/search.php";
-                        include_once "./modules/up-folder-list.php";
-                        include_once "./modules/directory-list.php"; // Have to be cautious, this file changes current working directory
+                        require_once "./modules/search.php";
+                        require_once "./modules/up-folder-list.php";
+                        require_once "./modules/directory-list.php"; // Have to be cautious, this file changes current working directory
                         ?>
                     </tbody>
                 </table>
