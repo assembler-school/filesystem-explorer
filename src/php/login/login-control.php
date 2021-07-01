@@ -7,7 +7,7 @@ function autentificar_usuario()
   $username = $_POST["username"];
   $pass = $_POST["password"];
 
-  if (check_usuario_on_database($username, $pass) == true) {
+  if (check_usuario_on_database($username, $pass) == true  && !$pass == "") {
     $_SESSION["username"] = $username;
     header("Location:../../pages/main/main.php");
   } else {

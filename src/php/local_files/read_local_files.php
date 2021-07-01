@@ -108,19 +108,28 @@ function get_total_size()
   }
 }
 
-// create directorio or file
-// glob("*.php");
+function directoryIterator($dir)
+{
+      $n_files = 0;
+			foreach (new DirectoryIterator($dir) as $fileInfo) {
+				if ($fileInfo->isDot()) {
+					continue;
+				}
+        if (is_file($dir . "/" . $fileInfo)) {
 
-// create folder y al mismo tiempo hay que mirar si existe esa carpeta con el mismo nombre
-// mkdir("nombre");
-// if (!file_exists("nombre")){
-// 	mkdir("nombre");
-// };
+          $n_files += 1;
+          $name_file = strstr($fileInfo, ".", true);
+          $complete_path = $fileInfo->getPath() . "/" . $fileInfo;
+          $server_path = "http://localhost/filesystem-explorer/" . strstr($complete_path, "root");
 
-// copy files
-// copy("nombre de carpeta", "nombre de  arpeta");
+          $extension_file = strstr($fileInfo, ".");
+          $new_extension_file = check_extension_file($extension_file);
 
-// (1) Manera de hacerlo con Scandir
+          create_div_template($name_file, $new_extension_file, $complete_path , $server_path);
+				}
+			}
+      if ($n_files == 0) echo "<div>No files</div>";
+}
 
 function clean_scandir($dir)
 {
@@ -152,7 +161,8 @@ function read_local_folders()
       $name_file = $dir;
       $complete_name_file = $dir;
       $extension_file = "./../../../doc/img/folder-invoices--v1.png";
-      create_div_template($name_file, $extension_file, $complete_name_file);
+      $server_path = "http://localhost/filesystem-explorer/root";
+      create_div_template($name_file, $extension_file, $complete_name_file, $server_path);
     }
   }
   if ($n_folders == 0) echo "<div>No folders</div>";
@@ -168,23 +178,24 @@ function read_local_files()
 
   if (isset($_GET["trash"])) $local_dir = 'C:/xampp\htdocs/filesystem-explorer/root/' . $sesion_name . '__trash';
 
-  $files = clean_scandir($local_dir);
+  // $files = clean_scandir($local_dir);
+  directoryIterator($local_dir);
   // var_dump ($files);
 
-  $n_files = 0;
-  foreach ($files as $dir) {
-    if (is_file($local_dir . "/" . $dir)) {
-      $n_files += 1;
-      $name_file = strstr($dir, ".", true);
-      // $complete_name_file = strstr($dir, ".", true);
-      $complete_name_file = $dir;
-      $extension_file = strstr($dir, ".");
-      $new_extension_file = check_extension_file($extension_file);
+  // $n_files = 0;
+  // foreach ($files as $dir) {
+  //   if (is_file($local_dir . "/" . $dir)) {
+  //     $n_files += 1;
+  //     $name_file = strstr($dir, ".", true);
+  //     // $complete_name_file = strstr($dir, ".", true);
+  //     $complete_name_file = $dir;
+  //     $extension_file = strstr($dir, ".");
+  //     $new_extension_file = check_extension_file($extension_file);
 
-      create_div_template($name_file, $new_extension_file, $complete_name_file);
-    }
-  }
-  if ($n_files == 0) echo "<div>No files</div>";
+  //     create_div_template($name_file, $new_extension_file, $complete_name_file);
+  //   }
+  // }
+  // if ($n_files == 0) echo "<div>No files</div>";
 }
 
 function check_extension_file($extension_file)
@@ -239,12 +250,13 @@ function check_extension_file($extension_file)
 function create_div_template(
   $name_file,
   $new_extension_file,
-  $complete_name_file
+  $complete_path,
+  $server_path
 ) {
-  $sesion_name = $_SESSION["username"];
+  // $sesion_name = $_SESSION["username"];
 
-  $relative_dir = "C:/xampp/htdocs/filesystem-explorer/root/$sesion_name";
-  $local_dir = "http://localhost/filesystem-explorer/root/$sesion_name";
+  // $relative_dir = "C:/xampp/htdocs/filesystem-explorer/root/$sesion_name";
+  // $local_dir = "http://localhost/filesystem-explorer/root/$sesion_name";
 
   $html = new DOMDocument("1.0", "iso-8859-1");
   $html->formatOutput = true;
@@ -256,9 +268,9 @@ function create_div_template(
   );
 
   $maindiv->setAttribute("aria-disabled", "true");
-  $maindiv->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $maindiv->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
-  $maindiv->setAttribute("id", $complete_name_file);
+  $maindiv->setAttribute("data-source", "$server_path");
+  $maindiv->setAttribute("data-RelativeSource", "$complete_path");
+  $maindiv->setAttribute("id", $complete_path);
   $html->appendChild($maindiv);
 
   $mainSection = $html->createElement("section");
@@ -266,30 +278,30 @@ function create_div_template(
     "class",
     "file__item--wrapper d-flex flex-column align-items-center"
   );
-  $mainSection->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $mainSection->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
+  $mainSection->setAttribute("data-source", "$server_path");
+  $mainSection->setAttribute("data-RelativeSource", "$complete_path");
   $maindiv->appendChild($mainSection);
 
   $first_div = $html->createElement("div");
-  $first_div->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $first_div->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
+  $first_div->setAttribute("data-source", "$server_path");
+  $first_div->setAttribute("data-RelativeSource", "$complete_path");
   $mainSection->appendChild($first_div);
 
   $file_img = $html->createElement("img");
   $file_img->setAttribute("src", $new_extension_file);
-  $file_img->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $file_img->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
+  $file_img->setAttribute("data-source", "$server_path");
+  $file_img->setAttribute("data-RelativeSource", "$complete_path");
   $file_img->setAttribute("alt", "");
   $first_div->appendChild($file_img);
 
   $second_div = $html->createElement("div");
-  $second_div->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $second_div->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
+  $second_div->setAttribute("data-source", "$server_path");
+  $second_div->setAttribute("data-RelativeSource", "$complete_path");
   $mainSection->appendChild($second_div);
 
   $title_folder = $html->createElement("h6");
-  $title_folder->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $title_folder->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
+  $title_folder->setAttribute("data-source", "$server_path");
+  $title_folder->setAttribute("data-RelativeSource", "$complete_path");
   $title_folder->appendChild($html->createTextNode($name_file));
   $second_div->appendChild($title_folder);
 
