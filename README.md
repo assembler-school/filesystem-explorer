@@ -60,18 +60,6 @@ In this repo there is a folder called _doc_. There you can find the project's wi
 - You should try as much as possible that the commits and the planned tasks are the same
 Delete files that are not used or are not necessary to evaluate the project
 
-
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-
-
-
 ## Resources
 
 - [File system](https://es.wikipedia.org/wiki/Administrador_de_archivos)
@@ -79,5 +67,5 @@ _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1NTQwODM0NCwxMjgzNDEzMjExXX0=
+eyJoaXN0b3J5IjpbLTExMzg4MjE0NzYsMTI4MzQxMzIxMV19
 -->
