@@ -34,12 +34,24 @@ $(document).on("click", (e) => {
   if (targetIdName === "delete-folder") {
     openDeleteFolderModal();
   }
+  if (targetIdName === "play-file") {
+    openPlayFileModal();
+  }
   if (targetClassName.indexOf("modal-background") !== -1) {
     if ($(".create-folder-modal")) {
       closeCreateFolderModal();
     }
     if ($(".edit-folder-modal")) {
       closeEditFolderModal();
+    }
+    if ($(".delete-folder-modal")) {
+      closeDeleteFolderModal();
+    }
+    if ($(".upload-file-modal")) {
+      closeUploadFileModal();
+    }
+    if ($(".play-file-modal")) {
+      closePlayFileModal();
     }
   }
   if (targetIdName === "create-folder-btn") {
@@ -202,20 +214,6 @@ function editFolder(e) {
   });
 }
 
-function openUploadFileModal() {
-  $.ajax({
-    url: "fileControll/session.php",
-    success: function (response) {
-      const templateContent =
-        document.querySelector("#upload-file-modal").content;
-      document
-        .querySelector("main")
-        .appendChild(document.importNode(templateContent, true));
-      $("#session-path-upload").html(response);
-    },
-  });
-}
-
 function openDeleteFolderModal() {
   $.ajax({
     url: "fileControll/session.php",
@@ -253,4 +251,64 @@ function deleteFolder(e) {
       closeDeleteFolderModal();
     },
   });
+}
+
+function openUploadFileModal() {
+  $.ajax({
+    url: "fileControll/session.php",
+    success: function (response) {
+      const templateContent =
+        document.querySelector("#upload-file-modal").content;
+      document
+        .querySelector("main")
+        .appendChild(document.importNode(templateContent, true));
+      $("#session-path-upload").html(response);
+    },
+  });
+}
+
+function closeUploadFileModal() {
+  document.querySelector(".upload-file-modal")?.remove();
+  document.querySelector(".modal-background")?.remove();
+}
+
+function openPlayFileModal() {
+  const templateContent = document.querySelector("#play-file-modal").content;
+  document
+    .querySelector("main")
+    .appendChild(document.importNode(templateContent, true));
+
+  $.ajax({
+    url: "fileControll/getGlobalPath.php",
+    data: { valid: "yes" },
+    success: function (response) {
+      let split = path.split(".");
+      let extension = split.slice(split.length - 1, split.length);
+      if (
+        extension.includes("png") ||
+        extension.includes("jpg") ||
+        extension.includes("jpeg") ||
+        extension.includes("svg")
+      ) {
+        $(".play-file-modal").html('<img src="' + response + '">');
+      } else if (extension.includes("mp4")) {
+        $(".play-file-modal").html(
+          '<video controls><source src="' +
+            response +
+            '" type="video/mp4">Your browser does not support the video tag.</video>'
+        );
+      } else if (extension.includes("mp3")) {
+        $(".play-file-modal").html(
+          '<audio controls><source src="' +
+            response +
+            '" type="video/mp4">Your browser does not support the audio tag.</video>'
+        );
+      }
+    },
+  });
+}
+
+function closePlayFileModal() {
+  document.querySelector(".play-file-modal")?.remove();
+  document.querySelector(".modal-background")?.remove();
 }
