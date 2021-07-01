@@ -1,12 +1,27 @@
 <?php
+function getFilter()
+{
+    return isset($_GET['search']) ? $_GET['search'] : '';
+}
+
 function getDirectories(string $dir = './root')
 {
-    return glob($dir . '/*', GLOB_ONLYDIR);
+    $filter = getFilter();
+    return $filter
+        ? array_filter(glob($dir . '/*', GLOB_ONLYDIR), function ($fileName) use ($filter) {
+            return str_contains(basename($fileName), $filter);
+        })
+        : glob($dir . '/*', GLOB_ONLYDIR);
 }
 
 function getFiles(string $dir = './root')
 {
-    return array_filter(glob($dir . '/*'), 'is_file');
+    $filter = getFilter();
+    return $filter
+        ? array_filter(glob($dir . '/*'), function ($fileName) use ($filter) {
+            return is_file($fileName) && str_contains(basename($fileName), $filter);
+        })
+        : array_filter(glob($dir . '/*'), 'is_file');
 }
 
 function human_filesize($bytes, $dec = 2)

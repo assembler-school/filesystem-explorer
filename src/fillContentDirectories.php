@@ -8,6 +8,8 @@ require_once('./src/fillContent.php');
 
 $folders = getDirectories($_SESSION['currentPath']);
 
+
+
 array_walk($folders, function ($path) {
   $folderName = basename($path);
   $shortFolderName = strlen($folderName) > 16 ? substr($folderName, 0, 13) . '...' : $folderName;
