@@ -3,7 +3,7 @@
 # PHP Local FileSystem explorer <!-- omit in toc -->
 
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="preview" src="./documentation/process/Screenshot 2021-06-28 at 11.08.00.png" />
 </p>
 
 > In this project you will have to create a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system.
@@ -20,10 +20,10 @@
 
 ## Requirements
 
-- You cannot use file third-party libraries
+- You cannot use file PHP third-party libraries
 - You will not be able to use global variables in PHP.
 - You must use GIT
-- You must use the PHP > v7
+- You must use the PHP v8
 - Create a clear and orderly directory structure
 - Both the code and the comments must be written in English
 - Use the camelCase code style to define variables and functions
@@ -68,16 +68,49 @@ To deliver this project you must follow the steps indicated in the document:
 
 ## Resources
 
+### FileSystem
+- [PHP FileSystem Docs](https://www.php.net/manual/en/ref.filesystem.php)
 - [File system](https://es.wikipedia.org/wiki/Administrador_de_archivos)
 - [PHP FileSystem W3C](https://www.w3schools.com/php/php_ref_filesystem.asp)
-- [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
-- [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-- [fileSystem PHP](https://www.php.net/manual/en/ref.filesystem.php)
 
-### Dependencies:
+### PHP 
+- [Get current directory / getcwd()](https://www.php.net/manual/en/function.getcwd.php)
+- [Get last item in array / end()](https://www.php.net/manual/es/function.end.php)
+- [Scan current directory / scandir()](https://www.php.net/manual/en/function.scandir.php)
+- [Remove files / unlink()](https://www.php.net/manual/en/function.unlink.php)
+- [Remove directories / rmdir()](https://www.php.net/manual/es/function.rmdir.php)
+- [Remove directories / mkdir()](https://www.php.net/manual/en/function.mkdir.php)
+- [Navigate from current path / dirname()](https://www.php.net/manual/es/function.dirname.php)
+- 
 
--[Dropzone](https://www.dropzonejs.com/#installation)
+### Refs 👀
+- [FileRun](https://filerun.com/)
+- [Monsta FTP](https://alternativeto.net/software/monsta-ftp/about/)
+- [Filestash](https://alternativeto.net/software/nuage-app/about/)
+- [FileRun](https://alternativeto.net/software/filerun--file-manager/)
+- [Angular Filemanager](https://awesomeopensource.com/project/joni2back/angular-filemanager)
+- [JCampbell File Manager](https://github.com/jcampbell1/simple-file-manager) 
 
-## Important
+## Others
+-[Recursive functions](https://www.geeksforgeeks.org/recursive-functions/)
+-[HTML arrows](https://www.w3schools.com/charsets/ref_utf_arrows.asp)
+
+## Libraries
+-[Bootstrap](https://getbootstrap.com/)
+-[jQuery](https://jquery.com/)
+-[Fontawesome](https://fontawesome.com/)
+-[Iconscout](https://iconscout.com/)
+
+## Contributors ✨ <!-- omit in toc -->
+👤 [Hugo Duran](https://github.com/Hugo05Duran)
+👤 [Ricard Garcia](https://github.com/Ricard-Garcia)
+
+
+## TODO & Known bugs
+
+* Solve reading whitespaces.
+
+
+## Important command
 
 - `sass --watch ./src/assets/styles/main.scss ./src/assets/styles/styles.css`
