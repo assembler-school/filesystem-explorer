@@ -31,7 +31,7 @@ revisar_si_existe_sesion();
 	<header class="d-flex flex-row justify-content-between main__header bg-light">
 		<div class="logo__wrapper">
 			<div class="logo__app">
-				<img src="./../../../doc/img/RPC-JP_Logo.png" alt="">
+				<img src="./../../../doc/img/JonathanAndErick_logo.png" alt="">
 			</div>
 		</div>
 		<div class="w-100 d-flex justify-content-center pt-2 pb-2 mb-3 h-100">
@@ -46,27 +46,24 @@ revisar_si_existe_sesion();
 
 				</p>
 			</div>
-			<?php
-					// require_once "../../php/search_bar/search_bar.php";
-				?>
 		</div>
 		<div class="logout__wrapper d-flex justify-content-center align-item-center h-100 d-inline-block gap-3">
 			<div class="d-flex align-items-center">
-				<h5>Welcome <span class="text-primary"><?= $_SESSION["username"] ?></span></h5>
+				<h5 class="text-muted">Welcome <span class="text-dark"><?= $_SESSION["username"] ?></span></h5>
 			</div>
 			<div class=" d-flex align-items-center justify-content-center h-100">
 				<div class="profile_picture">
 					<img src='<?= $_SESSION["user_img"] ?>' alt="no user">
 				</div>
 			</div>
-			<a href="../../php/login/logout.php" class="d-flex align-items-center">
-				<button type="button" class="btn btn-primary">Logout</button>
+			<a href="../../php/login/logout.php" class="d-flex align-items-center text-decoration-none">
+				<button type="button" class="btn btn-dark">Logout</button>
 			</a>
 		</div>
 	</header>
 	<main class="main__container">
 		<aside class="d-flex flex-column justify-content-between">
-			<section id="menu" class="p-2 overflow-auto border-bottom">
+			<section id="menu" class="p-2 overflow-auto border-bottom h-100">
 				<?php
 				require_once "../../php/local_files/local_files_control.php";
 				folders_init();
@@ -103,8 +100,8 @@ revisar_si_existe_sesion();
 				echo "$root_path/";
 				?>
 			</div>
-			<nav class="edit__buttons--wrapper d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom">
-				<div class="d-flex flex-row justify-content-between gap-3">
+			<nav class="edit__buttons--wrapper d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom ">
+				<div class="d-flex flex-row justify-content-start gap-2 btn__toolbar--create--folder">
 					<button id="create-folder-btn" class="btn btn-light border border-secondary">
 						Create folder
 					</button>
@@ -112,27 +109,28 @@ revisar_si_existe_sesion();
 						Upload file
 					</button>
 				</div>
-				<div class="btn-toolbar mb-2 mb-md-0">
-					<?php
-					require "../../php/navbar_file_information/navbar_information.php";
-					?>
+				<div class="d-flex flex-row justify-content-start h-100 btn__toolbar--form">
+					<form id="form-new-folder" class="ms-3 mb-2 justify-content-start align-items-between gap-3 h-100 w-100" method="post" action="../../php/local_files/new_folder.php" style="display: none;">
+						<input type="text" name="new-folder-name" placeholder=" Folder name">
+						<button type="submit" class="btn btn-dark">Confirm</button>
+						<button id="cancel-form-new-folder" type="button" class="btn btn-dark">Cancel</button>
+					</form>
 				</div>
-				<form id="form-new-folder" class="ms-3 mb-2" method="post" action="../../php/local_files/new_folder.php" style="display: none;">
-					<input type="text" name="new-folder-name" placeholder="Folder name">
-					<button type="submit" class="btn btn-primary">Confirm</button>
-					<button id="cancel-form-new-folder" type="button" class="btn btn-primary">Cancel</button>
-				</form>
+				<div class="btn__toolbar mb-md-0 d-flex flex-row justify-content-end align-items-between h-100 gap-3 w-100">
+					<div id="my_info--container" class="d-flex flex-row justify-content-between align-items-center gap-3 my_info--container">
+					</div>
+				</div>
 			</nav>
 			<div class="files__wrapper">
 				<h4 class="px-4 pt-2">Folders</h4>
 				<div class="container-fluid folder_container px-4 py-2">
-					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
+					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6 w-100">
 						<?php read_local_folders(); ?>
 					</div>
 				</div>
 				<h4 class="px-4 pt-2">Files</h4>
 				<div class="container-fluid file_container px-4 py-2">
-					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6" id="file_container">
+					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6 w-100" id="file_container">
 						<?php
 						read_local_files();
 						?>
@@ -279,6 +277,7 @@ revisar_si_existe_sesion();
 	<script src="../../javascript/new-folder-handler.js"></script>
 	<script src="../../javascript/context-menu-handler.js"></script>
 	<script src="../../php/search_bar/search_bar.js"></script>
+	<script src="../../javascript/navbar_information.js"></script>
 </body>
 
 </html>

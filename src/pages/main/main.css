@@ -1,11 +1,12 @@
-@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+/* @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro); */
+@import url(https://fonts.googleapis.com/css2?family=Poppins&display=swap);
 
 * {
   /* outline: 1px solid rgb(168, 168, 168); */
   box-sizing: border-box;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
-  font-family: "Anonymous Pro", monospace;
+  font-family: 'Poppins', sans-serif;
 }
 
 *::-webkit-scrollbar {
@@ -87,7 +88,7 @@ input:focus {
 
 .logout__wrapper {
   width: fit-content;
-  min-width: 250px;
+  min-width: 350px;
   padding-right: 2%;
 }
 
@@ -173,18 +174,33 @@ input:focus {
   height: 100%;
   object-fit: cover;
   padding-left: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 .logo__app img {
   height: 100%;
 }
+.logo__app img:hover {
+  filter: saturate(200%) sepia(100%) drop-shadow(10px 10px 40px rgb(221, 221, 221));
+}
 
 .main__header {
   border: solid 1px rgb(161, 161, 161);
+  z-index: 1000;
 }
 
 .file__item--wrapper {
   overflow: hidden;
+  filter: grayscale(50%) hue-rotate(200deg) contrast(0%) drop-shadow(5px 5px 20px rgb(221, 221, 221));
+
+}
+.file__item--wrapper div h6{
+  padding-top: 10px;
+}
+
+.file__item--wrapper:hover {
+  background-color: rgb(230, 230, 230);
+  filter: grayscale(0%) hue-rotate(0deg) contrast(100%) drop-shadow(5px 5px 0px rgb(221, 221, 221));
 }
 
 .file__item--wrapper img {
@@ -323,4 +339,22 @@ input:focus {
 .input__search--files:hover {
   background-color: rgb(133, 133, 133);
   border-radius: 2px;
+}
+
+.btn__toolbar{
+  min-width: 430px;
+  min-height: 45px;
+}
+
+.btn__toolbar--create--folder{
+  min-width: 280px;
+  min-height: 45px;
+}
+
+.btn__toolbar--form{
+  min-width: 430px;
+  min-height: 45px;
+}
+#form-new-folder {
+  transform: translateY(5px);
 }

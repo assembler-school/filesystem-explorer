@@ -1,11 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+@import url(https://fonts.googleapis.com/css2?family=Poppins&display=swap);
 
 * {
   /* outline: 1px solid rgb(168, 168, 168); */
   box-sizing: border-box;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
-  font-family: "Anonymous Pro", monospace;
+  font-family: 'Poppins', sans-serif;
 }
 
 *::-webkit-scrollbar{
@@ -41,6 +41,9 @@ input:focus {
 .logo__app {
   width: 50%;
   object-fit: cover;
+}
+.logo__app:hover {
+  filter: saturate(200%) sepia(100%) drop-shadow(5px 5px 40px rgb(221, 221, 221));
 }
 .logo__app img {
   width: 100%;
