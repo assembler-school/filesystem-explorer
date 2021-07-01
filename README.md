@@ -17,6 +17,8 @@
 - [Installing](#installing)
 - [Built with](#built-with)
 - [Resources](#resources)
+- [TODO](#todo)
+- [Bugs](#bugs)
 
 ## Requirements
 
@@ -103,7 +105,6 @@ repo
 - [Remove directories / rmdir()](https://www.php.net/manual/es/function.rmdir.php)
 - [Remove directories / mkdir()](https://www.php.net/manual/en/function.mkdir.php)
 - [Navigate from current path / dirname()](https://www.php.net/manual/es/function.dirname.php)
-- 
 
 ### Refs 👀
 - [FileRun](https://filerun.com/)
@@ -113,26 +114,30 @@ repo
 - [Angular Filemanager](https://awesomeopensource.com/project/joni2back/angular-filemanager)
 - [JCampbell File Manager](https://github.com/jcampbell1/simple-file-manager) 
 
-## Others
--[Recursive functions](https://www.geeksforgeeks.org/recursive-functions/)
--[HTML arrows](https://www.w3schools.com/charsets/ref_utf_arrows.asp)
+### Others
+- [Recursive functions](https://www.geeksforgeeks.org/recursive-functions/)
+- [HTML arrows](https://www.w3schools.com/charsets/ref_utf_arrows.asp)
 
-## Libraries
--[Bootstrap](https://getbootstrap.com/)
--[jQuery](https://jquery.com/)
--[Fontawesome](https://fontawesome.com/)
--[Iconscout](https://iconscout.com/)
+### Libraries
+- [Bootstrap](https://getbootstrap.com/)
+- [jQuery](https://jquery.com/)
+- [Fontawesome](https://fontawesome.com/)
+- [Iconscout](https://iconscout.com/)
+
+## TODO 🤝
+
+* Show all navigation tree in left sidebar.
+* Support more file extensions (icons).
+* Create folder / upload file to certain path.
+* Preview file with `<embed>`/`<iframe>`.
+* Label files
+
+## Bugs 🚨
+
+* Reading whitespaces.
+* Small jump when in root folder.
 
 ## Contributors ✨ <!-- omit in toc -->
 👤 [Hugo Duran](https://github.com/Hugo05Duran)
 👤 [Ricard Garcia](https://github.com/Ricard-Garcia)
 
-
-## TODO & Known bugs
-
-* Solve reading whitespaces.
-
-
-## Important command
-
-- `sass --watch ./src/assets/styles/main.scss ./src/assets/styles/styles.css`
