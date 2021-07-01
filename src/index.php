@@ -73,13 +73,16 @@ require_once("./modules/searchFile.php");
         <!-- HEADER -->
         <div class="row header m-0 p-2 d-flex justify-content-between align-items-center">
             <h2 class="col col-2 logo p-0 m-0">SpamFile!</h2>
+            <!-- Search bar -->
             <form class="col col-7 p-0 px-3 d-flex justify-content-between align-items-center" id="searchForm" action="./modules/searchSubmit.php" method="POST" enctype="multipart/form-data">
                 <input type="text" id="searchInput" name="searchValue" class="search-bar" placeholder="Search files" value="<?php echo $_SESSION["searchText"] ?>">
                 <a href="./index.php?deleteSearch=true">
                     <i class="uil uil-backspace"></i>
                 </a>
             </form>
+            <!-- Right buttons -->
             <div class="col col-3 top-buttons d-flex justify-content-end align-items-center p-0">
+                <!-- Upload button -->
                 <form action="./modules/uploadFileDb.php" method="POST" enctype="multipart/form-data">
                     <label class="custom-upload">
                         <input value="New file" type="file" id="uploadedFile" name="uploadedFile" class="btn btn-light" />
@@ -87,6 +90,7 @@ require_once("./modules/searchFile.php");
                     </label>
                     <input id="uploadButton" value="Upload" type="submit" class="btn btn-dark" disabled />
                 </form>
+                <!-- New folder -->
                 <button type='button' class="create-folder btn btn-dark" data-bs-toggle="modal" data-bs-target="#newDirectoryModal">
                     <i class="fas fa-folder-plus"></i>
                 </button>
@@ -94,11 +98,13 @@ require_once("./modules/searchFile.php");
         </div>
         <!-- BOTTOM -->
         <div class="row bottom m-0">
+            <!-- Left sidebar -->
             <div class="col col-2 bottom-block sidebar-left d-flex flex-column pt-2">
                 <?php
                 require_once("./modules/allDirectories.php");
                 ?>
             </div>
+            <!-- Central block -->
             <div class="col col-7 px-0 bottom-block central d-flex flex-column justify-content-center align-items-center">
                 <div class="row central-columns py-2 d-flex justify-content-start align-items-center">
                     <div class="row col col-5 px-0 icon-and-name-col d-flex justify-content-center">
@@ -114,7 +120,13 @@ require_once("./modules/searchFile.php");
                     require_once("./modules/directoryFiles.php");
                     ?>
                 </div>
+                <div class="path-to-file d-flex align-items-center px-4">
+                    <?php
+                    require_once("./modules/pathToFile.php");
+                    ?>
+                </div>
             </div>
+            <!-- Right sidebar -->
             <div class="col col-3 bottom-block sidebar-right">
                 <?php
                 require_once("./modules/filePreview.php");
@@ -123,9 +135,14 @@ require_once("./modules/searchFile.php");
         </div>
     </main>
 
-    <div class="drop-wrapper d-flex justify-content-center align-items-center">
-        <h4>Drop me a file</h4>
-    </div>
+    <!-- Dropzone -->
+    <form id="dropFileForm" action="./modules/uploadFileDb.php" method="POST" class="drop-wrapper d-flex justify-content-center align-items-center" enctype="multipart/form-data">
+        <label class="drop-upload d-flex justify-content-center align-items-center">
+            <input id="dropzoneFile" name="uploadedFile" type="file" value="Drop me a file">
+            <h4>Drop me a file</h4>
+        </label>
+    </form>
+
 
     <!-- -------------------- -->
     <!-- MODALS -->
@@ -142,7 +159,7 @@ require_once("./modules/searchFile.php");
                 <div class="modal-body">
                     <form method="POST" action="./modules/createFolder.php" id="newFolderForm">
                         <label for="directoryName" class="mb-2 modal-item modal-title">Folder name</label>
-                        <input type="text" name="directoryName" class="pl-3 modal-item modal-input" placeholder="Insert name" required autofocus>
+                        <input type="text" name="directoryName" class="pl-3 modal-item modal-input" placeholder="Insert name" required>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -167,8 +184,8 @@ require_once("./modules/searchFile.php");
                         <input type="text" id="fileName" name="fileName" class="pl-3 modal-item modal-input" placeholder="Insert new name" autofocus>
                         <input type="text" name="oldFileName" id="oldName" class="pt-2 pl-3 modal-item" required>
                         <input name="oldPath" id="oldPath" class="pt-2 pl-3 modal-item" required>
-                        <div id="editAlert" class="alert alert-danger">
-                            <strong>Warning!</strong> This field can´t be empty
+                        <div id="editAlert" class="alert alert-danger mt-2">
+                            <strong>Warning!</strong> New name shouldn't match old name
                         </div>
                     </form>
                 </div>
@@ -180,8 +197,6 @@ require_once("./modules/searchFile.php");
         </div>
     </div>
 
-
-
     <script>
         // Passing data to the modal
         $('#editFileModal').on('show.bs.modal', function(event) {
@@ -192,12 +207,18 @@ require_once("./modules/searchFile.php");
             console.log("This is the recipient ", recipient);
             modal.find('.modal-body form #oldName').val(recipient);
             modal.find('.modal-body form #oldPath').val(oldpath);
-        })
+        });
 
         // Disabling upload button
         $("#uploadedFile").on("change", function() {
             console.log("Changed!");
             $("#uploadButton").prop('disabled', false);
+        })
+
+        // Submit when file has been dropped
+        $("#dropzoneFile").on("change", function() {
+            console.log("File dropped!");
+            $("#dropFileForm").submit();
         })
 
         // Focus search bar

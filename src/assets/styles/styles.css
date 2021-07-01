@@ -1,7 +1,7 @@
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
 
 input:focus,
@@ -10,42 +10,15 @@ input:active {
 }
 
 body {
-  height: 100vh;
   background-color: #c7fcf7;
+  height: 100vh;
 }
 body main {
+  background-color: white;
   border: 3px solid black;
   border-radius: 5px;
   height: 64%;
   width: 90%;
-  background-color: white;
-}
-body main .header {
-  height: 10%;
-  border-bottom: 2px black solid;
-  margin-bottom: 25px;
-}
-body main .header #searchForm {
-  height: 90%;
-  background-color: #e9e9e9;
-  border-radius: 6px;
-  color: darkgray;
-}
-body main .header #searchForm .search-bar {
-  background-color: transparent;
-  height: 100%;
-  width: 100%;
-  border: none;
-}
-body main .header #searchForm a {
-  color: darkgray;
-  font-size: 24px;
-}
-body main .header .top-buttons form .custom-upload input {
-  display: none;
-}
-body main .header .top-buttons .create-folder {
-  margin-left: 5px;
 }
 body main .bottom {
   flex-grow: 1;
@@ -54,147 +27,209 @@ body main .bottom {
 body main .bottom .bottom-block {
   height: 100%;
 }
-body main .bottom .sidebar-left .dir {
+
+.header {
+  height: 10%;
+  border-bottom: 2px black solid;
+  margin-bottom: 25px;
+}
+.header #searchForm {
+  background-color: #e9e9e9;
+  border-radius: 6px;
+  color: darkgray;
+  height: 90%;
+}
+.header #searchForm .search-bar {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.header #searchForm a {
+  color: darkgray;
+  font-size: 24px;
+}
+.header .top-buttons form .custom-upload input {
+  display: none;
+}
+.header .top-buttons .create-folder {
+  margin-left: 5px;
+}
+
+.sidebar-left .dir {
   margin: 0;
   color: black;
   text-decoration: none;
 }
-body main .bottom .sidebar-left .dir-child {
+.sidebar-left .dir-child {
   margin-left: 20px;
 }
-body main .bottom .sidebar-left .dir-link:hover {
+.sidebar-left .dir-link:hover {
   cursor: pointer;
   text-decoration: none;
   color: gray;
 }
-body main .bottom .sidebar-left .current-dir {
+.sidebar-left .current-dir {
   font-weight: bold;
 }
-body main .bottom .central {
+
+.central {
   outline: 2px black solid;
 }
-body main .bottom .central .central-columns {
-  height: fit-content;
-  padding: 0 66px 0 35px;
-  width: 100%;
+.central .central-columns {
   border-bottom: 2px black solid;
+  padding: 0 66px 0 35px;
+  height: fit-content;
   max-height: 100%;
+  width: 100%;
 }
-body main .bottom .central .central-columns .column-text {
+.central .central-columns .column-text {
   font-weight: bold;
+  margin-bottom: 0;
   font-size: 10px;
   display: flex;
-  margin-bottom: 0;
 }
-body main .bottom .central .central-files {
-  flex-grow: 1;
-  overflow-y: scroll;
-  width: 100%;
-  display: flex;
+.central .central-files {
+  justify-content: central;
   flex-direction: column;
   align-items: center;
-  justify-content: central;
+  overflow-y: scroll;
   max-height: 100%;
+  flex: 1 1 100%;
+  display: flex;
+  width: 100%;
 }
-body main .bottom .central .central-files .file-item {
+
+.path-to-file {
+  background-color: #0e0e0e;
+  font-size: 14px;
+  color: white;
+  height: 35px;
+  width: 100%;
+}
+.path-to-file .path-link {
+  text-decoration: none;
+  color: white;
+}
+
+.file-item {
+  text-decoration: none;
   transition: 0.2s;
   width: 100%;
+}
+.file-item a {
   cursor: pointer;
   text-decoration: none;
 }
-body main .bottom .central .central-files .file-item a {
-  text-decoration: none;
-}
-body main .bottom .central .central-files .file-item .icon-and-name {
+.file-item a .icon-and-name {
   display: flex;
 }
-body main .bottom .central .central-files .file-item .icon-and-name .file-icon {
+.file-item a .icon-and-name .file-icon {
   font-size: 18px;
   color: black;
 }
-body main .bottom .central .central-files .file-item .icon-and-name .file-name {
+.file-item a .icon-and-name .file-name {
+  text-overflow: ellipsis;
   color: black;
   max-height: 22px;
-  text-overflow: ellipsis;
   overflow: hidden;
 }
-body main .bottom .central .central-files .file-item .file-text {
+.file-item a .file-text {
   font-size: 15px;
   margin-bottom: 0;
   color: lightgray;
 }
-body main .bottom .central .central-files .file-item .file-buttons {
+.file-item .file-buttons {
   visibility: hidden;
   padding: 0;
 }
-body main .bottom .central .central-files .file-item .file-buttons form input {
-  display: none;
-}
-body main .bottom .central .file-item:hover {
+
+.file-item:hover {
   background-color: #f0f0f0;
 }
-body main .bottom .central .file-item:hover .file-buttons {
+.file-item:hover .file-buttons {
   visibility: visible;
 }
-body main .bottom .sidebar-right {
+
+.sidebar-right {
   height: 100%;
+  overflow-y: scroll;
 }
-body main .bottom .sidebar-right .preview-wrapper .icon-wrapper {
+.sidebar-right .preview-wrapper .icon-wrapper {
   margin-bottom: 40px;
 }
-body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .preview-icon {
+.sidebar-right .preview-wrapper .icon-wrapper .preview-icon {
   font-size: 120px;
 }
-body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .badge-dark {
+.sidebar-right .preview-wrapper .icon-wrapper .badge-dark {
   background-color: var(--bs-dark);
 }
-body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .badge-dark .preview-link {
+.sidebar-right .preview-wrapper .icon-wrapper .badge-dark .preview-link {
   color: white;
   text-decoration: none;
 }
-body main .bottom .sidebar-right .preview-wrapper .preview-info {
+.sidebar-right .preview-wrapper .preview-info {
   margin-bottom: 10px;
   font-size: 10px;
   height: fit-content;
 }
-body main .bottom .sidebar-right .preview-wrapper .preview-info * {
+.sidebar-right .preview-wrapper .preview-info * {
   padding: 0;
 }
-body main .bottom .sidebar-right .preview-wrapper .preview-info hr {
+.sidebar-right .preview-wrapper .preview-info hr {
   margin-bottom: 5px;
 }
-body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-title {
+.sidebar-right .preview-wrapper .preview-info .preview-title {
   font-weight: bold;
 }
-body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-text {
+.sidebar-right .preview-wrapper .preview-info .preview-text {
+  overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
-body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-title,
-body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-text {
+.sidebar-right .preview-wrapper .preview-info .preview-title,
+.sidebar-right .preview-wrapper .preview-info .preview-text {
   padding: 0;
   margin-bottom: 5px;
 }
-body .drop-wrapper {
-  width: 90%;
-  height: 20%;
+
+.drop-wrapper {
   background-color: rgba(255, 255, 255, 0.632);
   border-radius: 5px;
+  height: 20%;
+  width: 90%;
 }
-body .modal .modal-dialog .modal-content .modal-body form .modal-item {
+.drop-wrapper .drop-upload {
+  position: relative;
+  height: 100%;
   width: 100%;
 }
-body .modal .modal-dialog .modal-content .modal-body form .modal-title {
+.drop-wrapper .drop-upload input {
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  opacity: 0%;
+}
+.drop-wrapper .drop-upload h4 {
+  position: absolute;
+}
+
+.modal .modal-dialog .modal-content .modal-body form .modal-item {
+  width: 100%;
+}
+.modal .modal-dialog .modal-content .modal-body form .modal-title {
   transform: translateX(3px);
 }
-body .modal .modal-dialog .modal-content .modal-body form .modal-input {
-  border: none;
+.modal .modal-dialog .modal-content .modal-body form .modal-input {
   background-color: #e9e9e9;
   border-radius: 6px;
   padding: 10px;
+  border: none;
 }
-body .modal .modal-dialog .modal-content .modal-body form #oldName,
-body .modal .modal-dialog .modal-content .modal-body form #oldPath {
+.modal .modal-dialog .modal-content .modal-body form #oldName,
+.modal .modal-dialog .modal-content .modal-body form #oldPath {
   font-size: 12px;
+  display: none;
   border: none;
 }
 

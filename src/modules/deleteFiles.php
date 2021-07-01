@@ -6,11 +6,7 @@ $nameToDelete = $_GET["filePath"];
 $typeToDelete = $_GET["fileType"];
 $pathToDelete =  $basePath . "/" . $nameToDelete;
 
-echo "Deleted file: " . $nameToDelete . "<br>";
-echo "Deleted type: " . $typeToDelete . "<br>";
-echo "Path to delete " . $pathToDelete . "<br>";
-
-
+// Deleting folders and files
 if (!is_dir($pathToDelete)) {
     unlink($pathToDelete);
     echo "Deleted file";
@@ -19,6 +15,7 @@ if (!is_dir($pathToDelete)) {
     echo "Deleted folder";
 }
 
+// Recursive function to delete all folders & files inside folder
 function deleteDir($path_file)
 {
     if (is_dir($path_file)) {
@@ -31,8 +28,9 @@ function deleteDir($path_file)
     }
 }
 
-
+// Resetting search to default
 $_SESSION["isSearching"] = false;
+$_SESSION["searchText"] = "";
 
 // Redirecting
 header("Location:../index.php");

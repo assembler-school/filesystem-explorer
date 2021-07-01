@@ -3,7 +3,8 @@ session_start();
 
 // Update path
 $_SESSION["currentPath"] = $_GET["updatedPath"];
-// Reset searching boolean to default
+
+// Resetting search to default
 $_SESSION["isSearching"] = false;
 $_SESSION["searchText"] = "";
 

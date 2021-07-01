@@ -1,0 +1,35 @@
+// General styling
+* {
+  // outline: 1px solid blue;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+input:focus,
+input:active {
+  outline: none;
+}
+
+// Main HTML block
+body {
+  background-color: rgb(199, 252, 247);
+  height: 100vh;
+
+  main {
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 5px;
+    height: 64%;
+    width: 90%;
+
+    .bottom {
+      flex-grow: 1;
+      height: 90%;
+
+      .bottom-block {
+        height: 100%;
+      }
+    }
+  }
+}

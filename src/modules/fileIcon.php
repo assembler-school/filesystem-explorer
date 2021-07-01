@@ -1,5 +1,5 @@
 <?php
-
+// Return icon string on given path
 function getFileIcon($fType)
 {
     // Assign correct icon
@@ -69,5 +69,3 @@ function getFileIcon($fType)
             break;
     endswitch;
 }
-
-getFileIcon("directory");
