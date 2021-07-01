@@ -57,7 +57,7 @@ function directoryTree()
                 echo "<li class='w-100 ms-2'>";
                 if (directoryHasDirectories($dir . '/' . $node)) {
                     echo "<a href='#" . $dirToId . '-' . $node . "' data-bs-toggle='collapse'  role='button' aria-expanded='false' aria-controls='Home' class='nav-link px-0 text-white folder-toggle'>" . $folderIcon . "</a>";
-                    echo "<a href ='./modules/open-directory.php?directory='" . $dir . '/' . $node . "' class='px-0 text-white' ><span class='ms-1 d-none d-sm-inline'>";
+                    echo "<a href ='./modules/open-directory.php?directory=" . $dir . '/' . $node . "' class='px-0 text-white' ><span class='ms-1 d-none d-sm-inline'>";
                     echo $node;
                     echo "</span></a>";
                     echo "<ul class='collapse nav flex-column ms-1' id='" . $dirToId  . '-' . $node . "' data-bs-parent='#" . $dirToId . "'>";
