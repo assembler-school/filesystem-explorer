@@ -56,6 +56,16 @@ $("#search-bar").on("input", (e) => {
   searchPatternInDir(path, pattern);
 });
 
+function test() {
+  $.ajax({
+    type: "POST",
+    url: "fileControll/tests.php",
+    success: function (response) {
+      console.log(response);
+    },
+  });
+}
+
 function selectFolder(path) {
   updatePath(path);
   $.ajax({
@@ -216,7 +226,13 @@ function deleteFolder(e) {
     url: "fileControll/deleteFileFolder.php",
     data: { valid: "yes" },
     success: function (response) {
-      selectFolder(response);
+      if (response !== "/xampp/htdocs/filesystem-explorer/src/UNIT") {
+        var split = response.split("/");
+        response = split.slice(0, split.length - 1).join("/");
+        selectFolder(response);
+      } else {
+        selectFolder(response);
+      }
       closeDeleteFolderModal();
     },
   });

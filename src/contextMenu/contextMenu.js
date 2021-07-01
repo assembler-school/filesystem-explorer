@@ -47,7 +47,7 @@ function updateTmpPath(path) {
       url: "fileControll/session.php",
       data: { path: path, tmpPath: "yes" },
       success: function (response) {
-        $(".header-test").html(response);
+        // $(".header-test").html(response);
       },
     });
   }
