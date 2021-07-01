@@ -1,0 +1,271 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+input:focus,
+input:active {
+  outline: none;
+}
+
+body {
+  height: 100vh;
+  background-color: #c7fcf7;
+}
+
+body main {
+  border: 3px solid black;
+  border-radius: 5px;
+  height: 64%;
+  width: 90%;
+  background-color: white;
+}
+
+body main .header {
+  height: 10%;
+  border-bottom: 2px black solid;
+  margin-bottom: 25px;
+}
+
+body main .header #searchForm {
+  height: 90%;
+  background-color: #e9e9e9;
+  border-radius: 6px;
+  color: darkgray;
+}
+
+body main .header #searchForm .search-bar {
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+
+body main .header #searchForm a {
+  color: darkgray;
+  font-size: 24px;
+}
+
+body main .header .top-buttons form .custom-upload input {
+  display: none;
+}
+
+body main .header .top-buttons .create-folder {
+  margin-left: 5px;
+}
+
+body main .bottom {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  height: 90%;
+}
+
+body main .bottom .bottom-block {
+  height: 100%;
+}
+
+body main .bottom .sidebar-left .dir {
+  margin: 0;
+  color: black;
+  text-decoration: none;
+}
+
+body main .bottom .sidebar-left .dir-child {
+  margin-left: 20px;
+}
+
+body main .bottom .sidebar-left .dir-link:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: gray;
+}
+
+body main .bottom .sidebar-left .current-dir {
+  font-weight: bold;
+}
+
+body main .bottom .central {
+  outline: 2px black solid;
+}
+
+body main .bottom .central .central-columns {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0 66px 0 35px;
+  width: 100%;
+  border-bottom: 2px black solid;
+  max-height: 100%;
+}
+
+body main .bottom .central .central-columns .column-text {
+  font-weight: bold;
+  font-size: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0;
+}
+
+body main .bottom .central .central-files {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  overflow-y: scroll;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: central;
+      -ms-flex-pack: central;
+          justify-content: central;
+  max-height: 100%;
+}
+
+body main .bottom .central .central-files .file-item {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+body main .bottom .central .central-files .file-item a {
+  text-decoration: none;
+}
+
+body main .bottom .central .central-files .file-item .icon-and-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body main .bottom .central .central-files .file-item .icon-and-name .file-icon {
+  font-size: 18px;
+  color: black;
+}
+
+body main .bottom .central .central-files .file-item .icon-and-name .file-name {
+  color: black;
+  max-height: 22px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+body main .bottom .central .central-files .file-item .file-text {
+  font-size: 15px;
+  margin-bottom: 0;
+  color: lightgray;
+}
+
+body main .bottom .central .central-files .file-item .file-buttons {
+  visibility: hidden;
+  padding: 0;
+}
+
+body main .bottom .central .central-files .file-item .file-buttons form input {
+  display: none;
+}
+
+body main .bottom .central .file-item:hover {
+  background-color: #f0f0f0;
+}
+
+body main .bottom .central .file-item:hover .file-buttons {
+  visibility: visible;
+}
+
+body main .bottom .sidebar-right {
+  height: 100%;
+}
+
+body main .bottom .sidebar-right .preview-wrapper .icon-wrapper {
+  margin-bottom: 40px;
+}
+
+body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .preview-icon {
+  font-size: 120px;
+}
+
+body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .badge-dark {
+  background-color: var(--bs-dark);
+}
+
+body main .bottom .sidebar-right .preview-wrapper .icon-wrapper .badge-dark .preview-link {
+  color: white;
+  text-decoration: none;
+}
+
+body main .bottom .sidebar-right .preview-wrapper .preview-info {
+  margin-bottom: 10px;
+  font-size: 10px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+body main .bottom .sidebar-right .preview-wrapper .preview-info * {
+  padding: 0;
+}
+
+body main .bottom .sidebar-right .preview-wrapper .preview-info hr {
+  margin-bottom: 5px;
+}
+
+body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-title {
+  font-weight: bold;
+}
+
+body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-text {
+  text-overflow: ellipsis;
+}
+
+body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-title,
+body main .bottom .sidebar-right .preview-wrapper .preview-info .preview-text {
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+body .drop-wrapper {
+  width: 90%;
+  height: 20%;
+  background-color: rgba(255, 255, 255, 0.632);
+  border-radius: 5px;
+}
+
+body .modal .modal-dialog .modal-content .modal-body form .modal-item {
+  width: 100%;
+}
+
+body .modal .modal-dialog .modal-content .modal-body form .alert {
+  display: none;
+}
+
+body .modal .modal-dialog .modal-content .modal-body form .modal-title {
+  -webkit-transform: translateX(3px);
+          transform: translateX(3px);
+}
+
+body .modal .modal-dialog .modal-content .modal-body form .modal-input {
+  border: none;
+  background-color: #e9e9e9;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+body .modal .modal-dialog .modal-content .modal-body form #oldName,
+body .modal .modal-dialog .modal-content .modal-body form #oldPath {
+  font-size: 12px;
+  border: none;
+}
+/*# sourceMappingURL=main.css.map */

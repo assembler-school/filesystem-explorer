@@ -19,7 +19,9 @@ $pathToEdit =  $basePath . "/" . $parentPath . "/";
 
 rename($pathToEdit . $oldName, $pathToEdit . $newName);
 
+
 $_SESSION["isSearching"] = false;
+
 
 // Redirecting
 header("Location:../index.php");

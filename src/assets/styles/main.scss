@@ -31,12 +31,14 @@ body {
         background-color: rgb(233, 233, 233);
         border-radius: 6px;
         color: darkgray;
+
         .search-bar {
           background-color: transparent;
           height: 100%;
           width: 100%;
           border: none;
         }
+
         a {
           color: darkgray;
           font-size: 24px;
@@ -45,6 +47,7 @@ body {
 
       .top-buttons {
         form {
+
           // margin-right: 10px;
           .custom-upload {
             input {
@@ -52,11 +55,13 @@ body {
             }
           }
         }
+
         .create-folder {
           margin-left: 5px;
         }
       }
     }
+
     .bottom {
       flex-grow: 1;
       height: 90%;
@@ -73,14 +78,17 @@ body {
           color: black;
           text-decoration: none;
         }
+
         .dir-child {
           margin-left: 20px;
         }
+
         .dir-link:hover {
           cursor: pointer;
           text-decoration: none;
           color: gray;
         }
+
         .current-dir {
           font-weight: bold;
         }
@@ -105,6 +113,7 @@ body {
             margin-bottom: 0;
           }
         }
+
         .central-files {
           flex-grow: 1;
           overflow-y: scroll;
@@ -120,16 +129,19 @@ body {
             width: 100%;
             cursor: pointer;
             text-decoration: none;
+
             a {
               text-decoration: none;
             }
 
             .icon-and-name {
               display: flex;
+
               .file-icon {
                 font-size: 18px;
                 color: black;
               }
+
               .file-name {
                 color: rgb(0, 0, 0);
                 max-height: 22px;
@@ -147,6 +159,7 @@ body {
             .file-buttons {
               visibility: hidden;
               padding: 0;
+
               form {
                 input {
                   display: none;
@@ -158,6 +171,7 @@ body {
 
         .file-item:hover {
           background-color: rgb(240, 240, 240);
+
           .file-buttons {
             visibility: visible;
           }
@@ -167,36 +181,46 @@ body {
       // File preview
       .sidebar-right {
         height: 100%;
+
         .preview-wrapper {
           .icon-wrapper {
             margin-bottom: 40px;
+
             .preview-icon {
               font-size: 120px;
             }
+
             .badge-dark {
               background-color: var(--bs-dark);
+
               .preview-link {
                 color: white;
                 text-decoration: none;
               }
             }
           }
+
           .preview-info {
             margin-bottom: 10px;
             font-size: 10px;
             height: fit-content;
+
             * {
               padding: 0;
             }
+
             hr {
               margin-bottom: 5px;
             }
+
             .preview-title {
               font-weight: bold;
             }
+
             .preview-text {
               text-overflow: ellipsis;
             }
+
             .preview-title,
             .preview-text {
               // max-height: 15px;
@@ -208,12 +232,15 @@ body {
       }
     }
   }
+
   .drop-wrapper {
     width: 90%;
     height: 20%;
     background-color: rgba(255, 255, 255, 0.632);
     border-radius: 5px;
   }
+
+
 
   // Modals
   .modal {
@@ -224,6 +251,7 @@ body {
             .modal-item {
               width: 100%;
             }
+
 
             .modal-title {
               transform: translateX(3px);
