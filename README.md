@@ -18,6 +18,7 @@
 - [Resources](#resources)
 - [TODO](#todo)
 - [Bugs](#bugs)
+- [Contributors](#Contributors)
 
 ## Requirements
 
