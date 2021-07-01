@@ -62,13 +62,17 @@
         <?php
 
           
-         
+//unset($_SESSION["currentPath"]);
+            // if(isset($_GET["currentPath"])){
+            //   echo $_GET["currentPath"];
+            // }
+            
             if(!isset($_SESSION["currentPath"])){
               $_SESSION["currentPath"]="./directories";
             }
             scanDirsContent($_SESSION["currentPath"]);   
              
-          
+            
         ?>
       </section>
 

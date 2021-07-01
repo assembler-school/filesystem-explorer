@@ -1,7 +1,7 @@
 <?php
   session_start();
-    function makedir($actualPath){ 
-      
+    function makedir(){ 
+      $actualPath = $_SESSION["currentPath"];
       $dirname=$_POST["dirname"];
       if(file_exists(".$actualPath/$dirname")){
         $_SESSION["existingFolder"]="This folder exists, chosse other name";
@@ -9,7 +9,7 @@
 
       mkdir(".$actualPath/$dirname");
         
-      header("Location:../root.php");    
+      header("Location:../root.php?currentPath=$actualPath");    
     }
 
     function editFolderName(){

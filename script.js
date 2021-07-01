@@ -2,7 +2,21 @@ $(".optionsMenu").hide();
 $(".newFolderForm").hide();
 $(".closeDiv").hide();
 
-let path="./directories";
+function basePath(ajax_response){
+    let path = $.ajax({
+            url:"./basePath.php",
+            type:"post",
+            async:false,
+            success:function(response){
+              console.log(response);
+              ajax_response(response);
+        },
+    })
+    return path.responseText;
+}
+ let path=basePath((path)=>path);
+ console.log(path);
+
 $(".newFolderButon").on("click",()=>{
     $(".optionsMenu").show();
     $(".closeDiv").show();  
@@ -59,15 +73,21 @@ showSureToRemove();
 function dubleClick(){
     $(".folder").on("dblclick",(e)=>{
         $(".folder").hide();
+        let prevPth=path;
+        // localStorage.setItem("path2",path);
+        
         path = path+"/"+e.target.getAttribute("data");
-
+        localStorage.setItem("path",path);
         $(".newFolderForm form").attr("action",`./dirManege/create.php?path=${path}`)
        
 
         $.ajax({
             url: "./dirContent.php",
             type:"post",
-            data:{"path":path},
+            data:{
+                "path":path,
+                "prevPath":prevPth,
+        },
             success: function(response)
             {$(".folders").append(response)}
         })
