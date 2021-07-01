@@ -184,7 +184,7 @@ input:focus {
   overflow: hidden;
 }
 
-.file__item--wrapper div img {
+.file__item--wrapper img {
   width: 50%;
   object-fit: cover;
 }

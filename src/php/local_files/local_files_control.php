@@ -236,30 +236,26 @@ function create_div_template(
   $folder_id
 ) {
   $path_img_folder = "./../../../doc/img/folder-invoices--v1.png";
+  $parent_path = $_SESSION["folders_paths"][$_GET["folder-id"]];
 
   if ($img_type == $path_img_folder) {
-    echo '<div ' .
+    echo '<section ' .
       'value="' . $folder_id . '" ' .
-      'class="col d-flex justify-content-center align-items-center p-2 m-2 border rounded item-contextmenu item-folder" ' .
-      'data-source="' . $text_name . '">';
+      'class="file__item--wrapper d-flex flex-column justify-content-center align-items-center p-2 m-2 border rounded item-contextmenu item-folder">';
   } else {
-    echo '<div ' .
-      'class="col d-flex justify-content-center align-items-center p-2 m-2 border rounded open_modal" ' .
+    echo '<section ' .
+      'class="file__item--wrapper d-flex flex-column justify-content-center align-items-center p-2 m-2 border rounded open_modal" ' .
       'aria-disabled="true" ' .
-      'data-source="' . $text_name . '">';
+      'data-source="' . $parent_path . '/' . $text_name . '">';
   }
-
-  echo "<section class='file__item--wrapper d-flex flex-column m-0'>";
 
   echo "<div class='d-flex justify-content-center'>";
   echo "<img src='$img_type' alt='$img_type'>";
   echo '</div>';
 
-  echo "<div class='px-2'>";
+  echo "<div class=''>";
   echo "<h6 title='$text_name'>$text_name</h6>";
   echo "</div>";
 
   echo "</section>";
-
-  echo "</div>";
 }

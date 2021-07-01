@@ -6,9 +6,8 @@ myFilesListening.forEach((element) => {
   element.addEventListener("dblclick", openModal);
 });
 
-function openModal(event) {
-  let myId = event.target;
-  let mySource = myId.dataset.source;
+function openModal() {
+  let mySource = this.dataset.source;
 
   const file_mp4 = ".mp4";
   const file_mp3 = ".mp3";
