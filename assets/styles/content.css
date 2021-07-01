@@ -9,6 +9,16 @@ body {
   overflow-x: hidden;
 }
 
+#directories,
+#files {
+  cursor: pointer;
+}
+
+.active {
+  transition: all 0.25s ease-out;
+  display: flex;
+}
+
 .folder {
   background-color: grey;
   border-radius: 4px 18px 4px 4px;
@@ -96,6 +106,8 @@ body {
   background-color: #6c757d3b;
   cursor: pointer;
 }
+
+/* Toggle styles */
 
 .hidden {
   display: none;

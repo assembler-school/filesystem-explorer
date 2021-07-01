@@ -67,14 +67,14 @@ include_once './src/fillContent.php';
 
   <main class="mx-4">
     <?php require_once('./src/search.php'); ?>
-    <div id='directories' class="my-2">Directories</div>
+    <div id='directories' class="my-3 fs-4">Directories</div>
     <!-- folder container -->
-    <div class="d-flex flex-wrap">
+    <div class="flex-wrap active" id="directories-collapse">
       <?php require_once('./src/fillContentDirectories.php'); ?>
     </div>
-    <div class="my-2">Files</div>
+    <div id="files" class="my-3 fs-4 minus">Files</div>
     <!-- files container -->
-    <div class="d-flex flex-wrap">
+    <div class="flex-wrap active" id="files-collapse">
       <?php require_once('./src/fillContentFiles.php'); ?>
     </div>
   </main>
@@ -84,6 +84,7 @@ include_once './src/fillContent.php';
   <script src="../filesystem-explorer/assets/js/modal.js" type="module"></script>
   <script src="../filesystem-explorer/assets/js/contextMenu.js" type="module"></script>
   <script src="../filesystem-explorer/assets/js/contextOptions.js" type="module"></script>
+  <script src="../filesystem-explorer/assets/js/collapse.js" type="module"></script>
 </body>
 
 </html>
