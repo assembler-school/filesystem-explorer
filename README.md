@@ -15,27 +15,15 @@ _A File Explorer made with PHP, HTML, JS and CSS_
 
 ### Requirements📋
 
-To run this project you need yo have XAMPP installed in your PC. For more information about XAMPP visit [The
+To run this project you need yo have XAMPP installed in your PC. For more information about XAMPP visit [their website](https://www.apachefriends.org/es/index.html).
+
+### Install🔧
+
+To clone this repository you have make in terminal:
 
 ```
-Da un ejemplo
-```
+git clone https://github.com/mhfortuna/filesystem-explorer.git
 
-### Instalación 🔧
-
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
-
-```
-Da un ejemplo
-```
-
-_Y repite_
-
-```
-hasta finalizar
-```
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
@@ -174,5 +162,5 @@ To deliver this project you must follow the steps indicated in the document:
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzOTY0NjI4Ml19
+eyJoaXN0b3J5IjpbMTIwNTgzNjk5Nl19
 -->
