@@ -18,8 +18,8 @@ function list_folders($dir)
     echo '<li>';
     if ($_SESSION["folders_unfold"][0] == "false") echo "<input type='checkbox' name='list' id='root_folder'>";
     else echo "<input type='checkbox' name='list' id='root_folder' checked>";
-    if ((isset($_GET["folder-id"])) && ($_GET["folder-id"] == 0)) echo "<label class='d-flex align-items-center folder-active' for='root_folder' onclick='showFiles(0)'>";
-    else echo "<label class='d-flex align-items-center' for='root_folder' onclick='showFiles(0)'>";
+    if ((isset($_GET["folder-id"])) && ($_GET["folder-id"] == 0)) echo "<label class='d-flex align-items-center folder-active item-showfiles' value='0' for='root_folder'>";
+    else echo "<label class='d-flex align-items-center item-showfiles' value='0' for='root_folder'>";
     echo "<i class='uil uil-folder me-2'></i>";
     echo "<div class='folder-name' title='My Cloud'>My Cloud ($username)</div>";
     echo "</label>";
@@ -39,8 +39,8 @@ function list_folders($dir)
       echo '<li>';
       if ($_SESSION["folders_unfold"][$cnt] == "false") echo "<input type='checkbox' name='list' id='folder_$cnt'>";
       else echo "<input type='checkbox' name='list' id='folder_$cnt' checked>";
-      if ((isset($_GET["folder-id"])) && ($cnt == $_GET["folder-id"])) echo "<label class='d-flex align-items-center folder-active' for='folder_$cnt' onclick='showFiles($cnt)'>";
-      else echo "<label class='d-flex align-items-center' for='folder_$cnt' onclick='showFiles($cnt)'>";
+      if ((isset($_GET["folder-id"])) && ($cnt == $_GET["folder-id"])) echo "<label class='d-flex align-items-center folder-active item-contextmenu item-showfiles' value='$cnt' for='folder_$cnt'>";
+      else echo "<label class='d-flex align-items-center item-contextmenu item-showfiles' value='$cnt' for='folder_$cnt'>";
       echo "<i class='uil uil-folder me-2'></i>";
       echo "<div class='folder-name' title='$file_item'>$file_item</div>";
       echo "</label>";
@@ -68,10 +68,6 @@ function folders_init()
   $sesion_name = $_SESSION["username"];
   $root_dir = "C:/xampp\htdocs/filesystem-explorer/root/$sesion_name";
   list_folders($root_dir);
-
-  // echo "<pre>";
-  // print_r($_SESSION["folders_unfold"]);
-  // echo "</pre>";
 }
 
 function folder_size($dir)
@@ -149,13 +145,14 @@ function read_local_folders()
   foreach ($files as $dir) {
     if (is_dir($local_dir . "/" . $dir)) {
       $n_folders += 1;
-      $name_file = $dir;
-      $complete_name_file = $dir;
-      $extension_file = "./../../../doc/img/folder-invoices--v1.png";
-      create_div_template($name_file, $extension_file, $complete_name_file);
+      $name_folder = $dir;
+      $img_folder = "./../../../doc/img/folder-invoices--v1.png";
+      $folder_id = array_search("$local_dir/$dir", $_SESSION["folders_paths"]);
+
+      create_div_template($name_folder, $img_folder, $folder_id);
     }
   }
-  if ($n_folders == 0) echo "<div>No folders</div>";
+  if ($n_folders == 0) echo "<div>There is any folder</div>";
 }
 
 function read_local_files()
@@ -169,22 +166,19 @@ function read_local_files()
   if (isset($_GET["trash"])) $local_dir = 'C:/xampp\htdocs/filesystem-explorer/root/' . $sesion_name . '__trash';
 
   $files = clean_scandir($local_dir);
-  // var_dump ($files);
 
   $n_files = 0;
   foreach ($files as $dir) {
     if (is_file($local_dir . "/" . $dir)) {
       $n_files += 1;
-      $name_file = strstr($dir, ".", true);
-      // $complete_name_file = strstr($dir, ".", true);
-      $complete_name_file = $dir;
+      $name_file = $dir;
       $extension_file = strstr($dir, ".");
-      $new_extension_file = check_extension_file($extension_file);
+      $img_extension = check_extension_file($extension_file);
 
-      create_div_template($name_file, $new_extension_file, $complete_name_file);
+      create_div_template($name_file, $img_extension, -1);
     }
   }
-  if ($n_files == 0) echo "<div>No files</div>";
+  if ($n_files == 0) echo "<div>There is any file</div>";
 }
 
 function check_extension_file($extension_file)
@@ -237,62 +231,35 @@ function check_extension_file($extension_file)
 }
 
 function create_div_template(
-  $name_file,
-  $new_extension_file,
-  $complete_name_file
+  $text_name,
+  $img_type,
+  $folder_id
 ) {
-  $sesion_name = $_SESSION["username"];
+  $path_img_folder = "./../../../doc/img/folder-invoices--v1.png";
+  if (isset($_GET["folder-id"])) {
+    $parent_path = $_SESSION["folders_paths"][$_GET["folder-id"]];
+  } else {
+    $parent_path = $_SESSION["folders_paths"][0];
+  }
 
-  $relative_dir = "C:/xampp/htdocs/filesystem-explorer/root/$sesion_name";
-  $local_dir = "http://localhost/filesystem-explorer/root/$sesion_name";
+  if ($img_type == $path_img_folder) {
+    echo '<section ' .
+      'value="' . $folder_id . '" ' .
+      'class="file__item--wrapper d-flex flex-column justify-content-center align-items-center p-2 m-2 border rounded item-contextmenu item-folder">';
+  } else {
+    echo '<section ' .
+      'class="file__item--wrapper d-flex flex-column justify-content-center align-items-center p-2 m-2 border rounded open_modal" ' .
+      'aria-disabled="true" ' .
+      'data-source="' . $parent_path . '/' . $text_name . '">';
+  }
 
-  $html = new DOMDocument("1.0", "iso-8859-1");
-  $html->formatOutput = true;
+  echo "<div class='d-flex justify-content-center'>";
+  echo "<img src='$img_type' alt='$img_type'>";
+  echo '</div>';
 
-  $maindiv = $html->createElement("div");
-  $maindiv->setAttribute(
-    "class",
-    "col d-flex justify-content-center align-items-center open_modal get_info_file"
-  );
+  echo "<div class=''>";
+  echo "<h6 title='$text_name'>$text_name</h6>";
+  echo "</div>";
 
-  $maindiv->setAttribute("aria-disabled", "true");
-  $maindiv->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $maindiv->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
-  $maindiv->setAttribute("id", $complete_name_file);
-  $html->appendChild($maindiv);
-
-  $mainSection = $html->createElement("section");
-  $mainSection->setAttribute(
-    "class",
-    "file__item--wrapper d-flex flex-column align-items-center"
-  );
-  $mainSection->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $mainSection->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
-  $maindiv->appendChild($mainSection);
-
-  $first_div = $html->createElement("div");
-  $first_div->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $first_div->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
-  $mainSection->appendChild($first_div);
-
-  $file_img = $html->createElement("img");
-  $file_img->setAttribute("src", $new_extension_file);
-  $file_img->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $file_img->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
-  $file_img->setAttribute("alt", "");
-  $first_div->appendChild($file_img);
-
-  $second_div = $html->createElement("div");
-  $second_div->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $second_div->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
-  $mainSection->appendChild($second_div);
-
-  $title_folder = $html->createElement("h6");
-  $title_folder->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $title_folder->setAttribute("data-RelativeSource", "$relative_dir/$complete_name_file");
-  $title_folder->appendChild($html->createTextNode($name_file));
-  $second_div->appendChild($title_folder);
-
-  echo html_entity_decode($html->saveHTML());
+  echo "</section>";
 }
-?>

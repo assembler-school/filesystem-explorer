@@ -31,8 +31,7 @@ revisar_si_existe_sesion();
 	<header class="d-flex flex-row justify-content-between main__header bg-light">
 		<div class="logo__wrapper">
 			<div class="logo__app">
-				<img src="./../../../doc/img/RPC-JP_Logo.png
-				" alt="">
+				<img src="./../../../doc/img/RPC-JP_Logo.png" alt="">
 			</div>
 		</div>
 		<div class="w-100 d-flex justify-content-center pt-2 pb-2 mb-3 h-100">
@@ -59,31 +58,46 @@ revisar_si_existe_sesion();
 	</header>
 	<main class="main__container">
 		<aside class="d-flex flex-column justify-content-between">
-			<section id="menu" class="p-2 overflow-auto">
+			<section id="menu" class="p-2 overflow-auto border-bottom">
 				<?php
-				require_once "../../php/local_files/read_local_files.php";
+				require_once "../../php/local_files/local_files_control.php";
 				folders_init();
 				?>
 			</section>
-			<div class="d-flex flex-column justify-content-evenly px-2 trash__wrapper">
-				<?php
-				if (isset($_GET["trash"])) echo "<div id='trash-id' class='d-flex align-items-center trash__select folder-active'>";
-				else echo "<div id='trash-id' class='d-flex align-items-center trash__select'>";
-				?>
+			<div class="d-flex flex-column justify-content-evenly px-2 trash__wrapper mt-1">
+				<?php if (isset($_GET["trash"])) {
+					echo "<div id='trash-id' class='d-flex align-items-center trash__select folder-active'>";
+				} else {
+					echo "<div id='trash-id' class='d-flex align-items-center trash__select'>";
+				} ?>
 				<i class="uil uil-trash-alt me-2"></i>
 				<div>Trash</div>
 			</div>
 			<div class="d-flex justify-content-center">
-				<?php
-				get_total_size();
-				?>
+				<?php get_total_size(); ?>
 			</div>
 			</div>
 		</aside>
 		<section class="main__files--wrapper">
+			<div class="ms-3 mt-1">
+				<?php
+				if (isset($_GET["folder-id"])) {
+					$folder_id = $_GET["folder-id"];
+				} else {
+					$folder_id = 0;
+				}
+				$username = $_SESSION["username"];
+				$root_path = $_SESSION["folders_paths"][$folder_id];
+				$root_path = str_replace("C:/xampp\htdocs/filesystem-explorer/root/$username", "My Cloud", $root_path);
+				if (isset($_GET["trash"])) {
+					$root_path = "Trash";
+				}
+				echo "$root_path/";
+				?>
+			</div>
 			<nav class="edit__buttons--wrapper d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom">
 				<div class="d-flex flex-row justify-content-between gap-3">
-					<button class="btn btn-light border border-secondary">
+					<button id="create-folder-btn" class="btn btn-light border border-secondary">
 						Create folder
 					</button>
 					<button class="btn btn-light border border-secondary">
@@ -95,20 +109,24 @@ revisar_si_existe_sesion();
 					require "../../php/navbar_file_information/navbar_information.php";
 					?>
 				</div>
+				<form id="form-new-folder" class="ms-3 mb-2" method="post" action="../../php/local_files/new_folder.php" style="display: none;">
+					<input type="text" name="new-folder-name" placeholder="Folder name">
+					<button type="submit" class="btn btn-primary">Confirm</button>
+					<button id="cancel-form-new-folder" type="button" class="btn btn-primary">Cancel</button>
+				</form>
 			</nav>
 			<div class="files__wrapper">
-				<div class="container-fluid folder_container">
+				<h4 class="px-4 pt-2">Folders</h4>
+				<div class="container-fluid folder_container px-4 py-2">
 					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
-						<?php
-						read_local_folders();
-						?>
+						<?php read_local_folders(); ?>
 					</div>
 				</div>
-				<div class="container-fluid file_container">
+				<h4 class="px-4 pt-2">Files</h4>
+				<div class="container-fluid file_container px-4 py-2">
 					<div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6" id="file_container">
 						<?php
 						read_local_files();
-						require_once "../modal-play/modal-play.php";
 						?>
 					</div>
 				</div>
@@ -116,8 +134,142 @@ revisar_si_existe_sesion();
 		</section>
 		<section class="section_modal" id="section_modal"></section>
 	</main>
+
+	<div id="back-context" style="display: none;"></div>
+	<nav id="context-menu" class="px-1 py-2" style="display: none;">
+		<ul class="m-0 p-0">
+			<li id="new-folder-context" class="d-flex mb-1 ps-2 pe-3">
+				<i class="uil uil-plus me-2"></i>
+				<div>New folder</div>
+			</li>
+			<li id="rename-folder-context" class="d-flex mb-1 ps-2 pe-3">
+				<i class="uil uil-edit me-2"></i>
+				<div>Rename folder</div>
+			</li>
+			<li id="delete-folder-context" class="d-flex ps-2 pe-3">
+				<i class="uil uil-times me-2"></i>
+				<div>Delete folder</div>
+			</li>
+		</ul>
+	</nav>
+
+	<template id="modalTemplate_img">
+		<div class="modal-dialog modal-xl modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Image</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseModal"></button>
+				</div>
+				<div class="modal-body" id="modal-body">
+					<img width="100%" height="500px" id="img_source" src="" alt="foto">
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<template id="modalTemplate_video">
+		<div class="modal-dialog modal-xl modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Video</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseModal"></button>
+				</div>
+				<div class="modal-body" id="modal-body">
+					<video width="100%" height="500px" controls autoplay>
+						<source id="video_source" src="" type="video/mp4" />
+						Su navegador no soporta contenido multimedia.
+					</video>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<template id="modalTemplate_sound">
+		<div class="modal-dialog modal-xl modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Sound</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseModal"></button>
+				</div>
+				<div class="modal-body" id="modal-body">
+					<audio controls autoplay>
+						<source id="sound_source" src="" type="audio/mpeg">
+						Your browser does not support the audio element.
+					</audio>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<template id="modalTemplate">
+		<div class="modal-dialog modal-xl modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">File not supported</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseModal"></button>
+				</div>
+				<div class="modal-body" id="modal-body">
+					<p id="mi_source">This file cannot be displayed</p>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<template id="modalTemplate-create-folder">
+		<div class="modal-dialog modal-xl modal-dialog-centered w-50">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">New folder</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseModal"></button>
+				</div>
+				<div class="modal-body" id="modal-body">
+					<form id="new-folder-context-form">
+						<input type="text" name="new-folder-name" placeholder="Folder name">
+						<button type="submit" class="btn btn-primary">Confirm</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<template id="modalTemplate-rename-folder">
+		<div class="modal-dialog modal-xl modal-dialog-centered w-50">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Rename folder</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseModal"></button>
+				</div>
+				<div class="modal-body" id="modal-body">
+					<form id="rename-folder-context-form">
+						<input type="text" name="rename-folder-name" placeholder="Folder name">
+						<button type="submit" class="btn btn-primary">Confirm</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<template id="modalTemplate-delete-folder">
+		<div class="modal-dialog modal-xl modal-dialog-centered w-50">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Delete folder</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseModal"></button>
+				</div>
+				<div class="modal-body" id="modal-body">
+					<div>Are you sure you want to delete this folder?</div>
+					<button id="confirm-delete-btn" type="button" class="btn btn-primary">Yes</button>
+				</div>
+			</div>
+		</div>
+	</template>
+
 	<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="main.js"></script>
+
+	<script src="../../javascript/modal-play.js"></script>
+	<script src="../../javascript/show-files.js"></script>
+	<script src="../../javascript/new-folder-handler.js"></script>
+	<script src="../../javascript/context-menu-handler.js"></script>
 </body>
 
 </html>
