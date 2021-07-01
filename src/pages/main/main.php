@@ -39,8 +39,16 @@ revisar_si_existe_sesion();
 				<div class="d-flex justify-content-center align-item-center">
 					<i class="fas fa-search"></i>
 				</div>
-				<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+				<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id="search__bar--input" value="">
 			</div>
+			<div class="search__bar--main--container" id="search__bar--main--container">
+				<p>
+
+				</p>
+			</div>
+			<?php
+					// require_once "../../php/search_bar/search_bar.php";
+				?>
 		</div>
 		<div class="logout__wrapper d-flex justify-content-center align-item-center h-100 d-inline-block gap-3">
 			<div class="d-flex align-items-center">
@@ -266,10 +274,11 @@ revisar_si_existe_sesion();
 
 	<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-	<script src="../../javascript/modal-play.js"></script>
+	<script type="module" src="../../javascript/modal-play.js"></script>
 	<script src="../../javascript/show-files.js"></script>
 	<script src="../../javascript/new-folder-handler.js"></script>
 	<script src="../../javascript/context-menu-handler.js"></script>
+	<script src="../../php/search_bar/search_bar.js"></script>
 </body>
 
 </html>

@@ -226,9 +226,11 @@ input:focus {
   padding-bottom: 20px;
   border-bottom: 3px solid rgb(216, 216, 216);
 }
+
 .file_container {
   padding-top: 20px;
 }
+
 .section_modal {
   background-color: rgba(0, 0, 0, 0.37);
   height: 100vh;
@@ -279,4 +281,46 @@ input:focus {
 
 .my_info--container {
   opacity: 0;
+}
+
+.search__bar--main--container {
+  background-color: rgb(255, 255, 255);
+  transform: translateY(50px);
+  position: absolute;
+  width: 500px;
+  height: fit-content;
+  max-height: 70vh;
+  border-bottom: 1px solid #6c757d;
+  border-left: 1px solid #6c757d;
+  border-right: 1px solid #6c757d;
+  border-radius: 0px 0px 10px 10px;
+  padding: 0px;
+  display: none;
+  overflow: hidden;
+}
+
+.text__inside--input {
+  padding: 30px;
+  overflow-y: scroll;
+  height: fit-content;
+  max-height: 70vh;
+  cursor: pointer;
+}
+
+.input__search--folders {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  cursor: pointer;
+  padding-left: 5px;
+  border-bottom: 3px solid rgb(80, 80, 80);
+}
+.input__search--files {
+  color: rgb(73, 73, 73);
+  cursor: pointer;
+  padding-left: 20px;
+}
+
+.input__search--files:hover {
+  background-color: rgb(133, 133, 133);
+  border-radius: 2px;
 }

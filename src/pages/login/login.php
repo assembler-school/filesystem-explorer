@@ -42,7 +42,7 @@ $alert = revisar_si_existe_sesion();
 						<div class="d-flex justify-content-center align-item-center">
 							<i class="fas fa-users"></i>
 						</div>
-						<input class="form-control form-control-dark w-100" name="username" type="text" placeholder="Your username...">
+						<input class="form-control form-control-dark w-100" name="username" type="text" placeholder="Your username..." id="input__username--login" value="">
 					</div>
 				</div>
 				<div class="w-100 d-flex justify-content-center pt-2 pb-2 h-100">
@@ -50,10 +50,10 @@ $alert = revisar_si_existe_sesion();
 						<div class="d-flex justify-content-center align-item-center">
 							<i class="fas fa-key"></i>
 						</div>
-						<input class="form-control form-control-dark w-100" name="password" type="password" placeholder="Your password...">
+						<input class="form-control form-control-dark w-100" name="password" type="password" placeholder="Your password..." id="input__password--login" value="">
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary border border-secondary pt-3 pb-3">Log in</button>
+				<button type="submit" class="btn btn-primary border border-secondary pt-3 pb-3" id="bt__submit--login">Log in</button>
 				<div class="text__password--forgot d-flex flex-row justify-content-start align-items-center">
 					<p class="text-primary">Forgot your password?</p>
 				</div>

@@ -104,19 +104,35 @@ function get_total_size()
   }
 }
 
-// create directorio or file
-// glob("*.php");
+function directoryIterator($dir)
+{
+      $n_files = 0;
+			foreach (new DirectoryIterator($dir) as $fileInfo) {
+				if ($fileInfo->isDot()) {
+					continue;
+				}
+        if (is_file($dir . "/" . $fileInfo)) {
 
-// create folder y al mismo tiempo hay que mirar si existe esa carpeta con el mismo nombre
-// mkdir("nombre");
-// if (!file_exists("nombre")){
-// 	mkdir("nombre");
-// };
+          // $n_files += 1;
+          // $name_file = strstr($fileInfo, ".", true);
+          // $complete_path = $fileInfo->getPath() . "/" . $fileInfo;
+          // $server_path = "http://localhost/filesystem-explorer/" . strstr($complete_path, "root");
 
-// copy files
-// copy("nombre de carpeta", "nombre de  arpeta");
+          // $extension_file = strstr($fileInfo, ".");
+          // $new_extension_file = check_extension_file($extension_file);
 
-// (1) Manera de hacerlo con Scandir
+          // create_div_template($name_file, $new_extension_file, $complete_path , $server_path);
+          // echo $fileInfo;
+          $n_files += 1;
+          $name_file = $fileInfo;
+          $extension_file = strstr($fileInfo, ".");
+          $img_extension = check_extension_file($extension_file);
+
+          create_div_template($name_file, $img_extension, -1);
+				}
+			}
+      if ($n_files == 0) echo "<div>No files</div>";
+}
 
 function clean_scandir($dir)
 {
@@ -165,20 +181,22 @@ function read_local_files()
 
   if (isset($_GET["trash"])) $local_dir = 'C:/xampp\htdocs/filesystem-explorer/root/' . $sesion_name . '__trash';
 
-  $files = clean_scandir($local_dir);
+  // $files = clean_scandir($local_dir);
 
-  $n_files = 0;
-  foreach ($files as $dir) {
-    if (is_file($local_dir . "/" . $dir)) {
-      $n_files += 1;
-      $name_file = $dir;
-      $extension_file = strstr($dir, ".");
-      $img_extension = check_extension_file($extension_file);
+  // $n_files = 0;
+  // foreach ($files as $dir) {
+  //   if (is_file($local_dir . "/" . $dir)) {
+  //     $n_files += 1;
+  //     $name_file = $dir;
+  //     $extension_file = strstr($dir, ".");
+  //     $img_extension = check_extension_file($extension_file);
 
-      create_div_template($name_file, $img_extension, -1);
-    }
-  }
-  if ($n_files == 0) echo "<div>There is any file</div>";
+  //     create_div_template($name_file, $img_extension, -1);
+  //   }
+  // }
+  // if ($n_files == 0) echo "<div>There is any file</div>";
+
+  directoryIterator($local_dir);
 }
 
 function check_extension_file($extension_file)
@@ -241,6 +259,7 @@ function create_div_template(
   } else {
     $parent_path = $_SESSION["folders_paths"][0];
   }
+  $parent_path = str_replace("C:/xampp\htdocs/", "http://localhost/", $parent_path);
 
   if ($img_type == $path_img_folder) {
     echo '<section ' .
