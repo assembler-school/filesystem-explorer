@@ -1,5 +1,8 @@
 <?php
+// error_reporting(E_ERROR | E_WARNING | E_PARSE);
+// error_reporting(0);
 session_start();
+// echo $_SESSION["tmpPath"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +26,7 @@ session_start();
         <button class="circle-icon new"><img id="create-folder" src="img/addFolder.svg" class="context-menu-icon" /></button>
         <button class="circle-icon edit"><img id="edit-folder" src="img/editFolder.svg" class="context-menu-icon" /></button>
         <button class="circle-icon delete"><img id="delete-folder" src="img/deleteFolder.svg" class="context-menu-icon" /></button>
-        <button id="upload-file" class="circle-icon upload-file">UP</button>
+        <button class="circle-icon upload-file"><img id="upload-file" src="img/upload.svg" class="context-menu-icon" /></button>
       </div>
     </div>
     <div class="subheader"></div>
@@ -128,5 +131,11 @@ if (isset($_SESSION["fileUploaded"])) {
     <form type="post" action="fileControll/deleteFileFolder.php">
       <button type="submit" id="delete-folder-btn">DELETE</button>
     </form>
+  </div>
+</template>
+
+<template id="play-file-modal">
+  <div class="modal-background"></div>
+  <div class="play-modal play-file-modal">
   </div>
 </template>

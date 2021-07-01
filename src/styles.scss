@@ -189,3 +189,13 @@ form {
   display: flex;
   flex-direction: column;
 }
+
+button {
+  background-color: white;
+  border-radius: 2rem;
+  border: 2px solid black;
+}
+
+button:hover {
+  background-color: colors.$blue;
+}

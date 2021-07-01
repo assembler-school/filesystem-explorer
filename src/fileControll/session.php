@@ -4,9 +4,9 @@ session_start();
 if (isset($_REQUEST["tmpPath"])) {
   if (isset($_POST["path"])) {
     $_SESSION["tmpPath"] = $_POST["path"];
-    echo $_SESSION["tmpPath"];
+    $sessionPath = $_SESSION["tmpPath"];
   } else {
-    echo $_SESSION["tmpPath"];
+    $sessionPath = $_SESSION["tmpPath"];
   }
 } else {
   if (isset($_SESSION["path"])) {
@@ -22,5 +22,6 @@ if (isset($_REQUEST["tmpPath"])) {
   }
 
   $sessionPath = $_SESSION["path"];
-  echo $sessionPath;
 }
+
+echo $sessionPath;

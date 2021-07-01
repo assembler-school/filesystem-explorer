@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$playExtensions = array("jpg", "jpeg", "png", "mp3", "mp4");
+
 if (isset($_REQUEST["valid"])) {
   $path = $_POST["path"];
 
@@ -12,7 +14,11 @@ if (isset($_REQUEST["valid"])) {
     <div class='file-size file-info'>" . size($path) . "</div>
   </div>
   <div class='file-url file-info'>" . $path . "</div>
-  <button id='delete-file' class='file-info' data-dir='$path'>DELETE FILE</button>
+  ";
+  if (in_array(extension($path), $playExtensions)) {
+    echo "<button id='play-file' data-dir='$path' style='margin: 1rem 0;'>OPEN</button>";
+  }
+  echo "<button id='delete-file' class='file-info' data-dir='$path'>DELETE FILE</button>
   ";
 }
 
