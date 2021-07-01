@@ -126,6 +126,7 @@ revisar_si_existe_sesion();
 	</main>
 	<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="main.js"></script>
+	<script src="../modal-play/modal_play.js"></script>
 	<script src="../../php/search_bar/search_bar.js"></script>
 </body>
 

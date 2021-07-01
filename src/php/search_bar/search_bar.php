@@ -27,7 +27,9 @@ function directoryIterator($dir, $mySearchedInput)
 					};
 				} elseif (is_file($dir . "/" . $fileInfo)) {
 					if (stristr($fileInfo, $mySearchedInput, 0)) {
-						echo "<p class='input__search--files'>" . $fileInfo . " Is File</p>\n";
+						$complete_path = $fileInfo->getPath() . "/" . $fileInfo;
+						$server_path = "http://localhost/filesystem-explorer/" . strstr($complete_path, "root");
+						echo "<p class='input__search--files' data-source='$server_path'>" . $fileInfo . " Is File</p>\n";
 					}
 				}
 				// echo $fileInfo->getPath() . "<br>\n";
@@ -41,7 +43,7 @@ function directoryIterator($dir, $mySearchedInput)
 // echo searchFolder($relative_dir, $mySearchedInput);
 // echo "<h5>Files</h5> <hr>";
 
-echo "<div class='text__inside--input'>";
+echo "<div class='text__inside--input' id='text__inside--input'>";
 echo directoryIterator($relative_dir, $mySearchedInput);
 echo "</div>";
 
