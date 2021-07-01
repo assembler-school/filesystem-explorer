@@ -27,7 +27,7 @@ body {
   border-radius: 10px;
   margin-top: 10px;
   padding: 25px;
-  min-width: 430px;
+  min-width: 600px;
 }
 
 .top_container {
@@ -65,7 +65,8 @@ span {
 }
 
 span:hover {
-  animation: mymove 3s infinite;
+  -webkit-animation: mymove 3s infinite;
+          animation: mymove 3s infinite;
 }
 
 .custom-file-input {
@@ -84,21 +85,19 @@ span:hover {
   font-size: 70px;
   font-weight: 600;
   -ms-flex-line-pack: center;
-  align-content: center;
+      align-content: center;
   cursor: pointer;
   padding: 0px 3px 50px 3px;
 }
 
 .custom-file-input:hover::before {
   border-color: #ee866c;
-  -webkit-animation: mymove 3s infinite;
-  animation: mymove 3s infinite;
 }
 
 @-webkit-keyframes mymove {
   50% {
     -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
+            transform: rotate(90deg);
     color: #2ed297;
   }
 }
@@ -106,7 +105,7 @@ span:hover {
 @keyframes mymove {
   50% {
     -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
+            transform: rotate(90deg);
     color: #2ed297;
   }
 }
