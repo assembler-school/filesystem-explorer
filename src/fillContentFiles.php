@@ -30,5 +30,5 @@ if ($files) {
     </div>";
   });
 } else {
-  echo "<img src='./assets/img/emptyFolder.png'>";
+  echo "<img src='./assets/img/empty.png'> <h3>Nothing here...</h3>";
 }
