@@ -58,7 +58,7 @@ revisar_si_existe_sesion();
 	</header>
 	<main class="main__container">
 		<aside class="d-flex flex-column justify-content-between">
-			<section id="menu" class="h-100 p-2 overflow-auto border-bottom">
+			<section id="menu" class="p-2 overflow-auto border-bottom">
 				<?php
 				require_once "../../php/local_files/local_files_control.php";
 				folders_init();
@@ -95,39 +95,26 @@ revisar_si_existe_sesion();
 				echo "$root_path/";
 				?>
 			</div>
-			<?php
-			if (!isset($_GET["trash"])) {
-				echo '
-				<nav class="border-bottom">
-					<div class="edit__buttons--wrapper d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 mb-2">
-						<div class="d-flex flex-row justify-content-between gap-3">
-							<button id="create-folder-btn" class="btn btn-light border border-secondary">
-								Create folder
-							</button>
-							<button class="btn btn-light border border-secondary">
-								Upload file
-							</button>
-						</div>
-						<div class="btn-toolbar mb-2 mb-md-0">
-							<div class="btn-group me-2">
-								<button type="button" class="btn btn-sm btn-outline-secondary">Name</button>
-								<button type="button" class="btn btn-sm btn-outline-secondary">Size</button>
-							</div>
-							<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-								<span data-feather="calendar"></span>
-								Fecha
-							</button>
-						</div>
-					</div>
-					<form id="form-new-folder" class="ms-3 mb-2" method="post" action="../../php/local_files/new_folder.php" style="display: none;">
-						<input type="text" name="new-folder-name" placeholder="Folder name">
-						<button type="submit" class="btn btn-primary">Confirm</button>
-						<button id="cancel-form-new-folder" type="button" class="btn btn-primary">Cancel</button>
-					</form>
-				</nav>
-				';
-			}
-			?>
+			<nav class="edit__buttons--wrapper d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom">
+				<div class="d-flex flex-row justify-content-between gap-3">
+					<button id="create-folder-btn" class="btn btn-light border border-secondary">
+						Create folder
+					</button>
+					<button class="btn btn-light border border-secondary">
+						Upload file
+					</button>
+				</div>
+				<div class="btn-toolbar mb-2 mb-md-0">
+					<?php
+					require "../../php/navbar_file_information/navbar_information.php";
+					?>
+				</div>
+				<form id="form-new-folder" class="ms-3 mb-2" method="post" action="../../php/local_files/new_folder.php" style="display: none;">
+					<input type="text" name="new-folder-name" placeholder="Folder name">
+					<button type="submit" class="btn btn-primary">Confirm</button>
+					<button id="cancel-form-new-folder" type="button" class="btn btn-primary">Cancel</button>
+				</form>
+			</nav>
 			<div class="files__wrapper">
 				<h4 class="px-4 pt-2">Folders</h4>
 				<div class="container-fluid folder_container px-4 py-2">
