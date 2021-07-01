@@ -18,7 +18,7 @@
 - [Resources](#resources)
 - [TODO](#todo)
 - [Bugs](#bugs)
-- [Contributors](#Contributors)
+- [Contributors](#contributors)
 
 ## Requirements
 
@@ -143,7 +143,7 @@ repo
 - Reading whitespaces.
 - Small jump when in root folder.
 
-## Contributors ✨ <!-- omit in toc -->
+## Contributors ✨ 
 
 👤 [Hugo Duran](https://github.com/Hugo05Duran)
 👤 [Ricard Garcia](https://github.com/Ricard-Garcia)
