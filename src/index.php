@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +18,12 @@ session_start()
   <header>
     <div class="main-header">
       <div class="header-test"></div>
-      <div class="search-bar"><input id="search-bar" type="text" placeholder="Search"> </div>
-      <div class="actions">
-        <button id="create-folder" class="circle-icon create-folder">+</button>
+      <div class="search-bar"><input id="search-bar" type="text" onblur="this.placeholder = 'Search'" placeholder="Search" onfocus="this.placeholder = ''" /> </div>
+      <div class="buttons actions">
+        <button class="circle-icon new"><img id="create-folder" src="img/addFolder.svg" class="context-menu-icon" /></button>
+        <button class="circle-icon edit"><img id="edit-folder" src="img/editFolder.svg" class="context-menu-icon" /></button>
+        <button class="circle-icon delete"><img id="delete-folder" src="img/deleteFolder.svg" class="context-menu-icon" /></button>
+        <button id="upload-file" class="circle-icon upload-file">UP</button>
       </div>
     </div>
     <div class="subheader"></div>
@@ -63,6 +66,14 @@ session_start()
 <script src="main.js"></script>
 <script src="contextMenu/contextMenu.js"></script>
 
+<?php
+if (isset($_SESSION["fileUploaded"])) {
+  echo "<script type='text/javascript'>
+  selectFolder('" . $_SESSION['prevPath'] . "');
+  </script>";
+}
+?>
+
 
 <template id="create-folder-modal">
   <div class="modal-background"></div>
@@ -75,6 +86,21 @@ session_start()
     <form type="post" action="fileControll/createFolder.php">
       <input id="create-folder-name" type="text" placeholder="New folder name" required />
       <button type="submit" id="create-folder-btn">CREATE NEW FOLDER</button>
+    </form>
+  </div>
+</template>
+
+<template id="upload-file-modal">
+  <div class="modal-background"></div>
+  <div class="modal upload-file-modal">
+    <h2>UPLOAD FILE</h2>
+    <div style="display: flex;">
+      <h4>Location: </h4>
+      <p id="session-path-upload"></p>
+    </div>
+    <form type="post" method="POST" action="fileControll/uploadFile.php" enctype="multipart/form-data">
+      <input id="upload-file-name" type="file" name="file" required />
+      <button id="upload-file-btn" type="submit" name="submit">UPLOAD FILE</button>
     </form>
   </div>
 </template>

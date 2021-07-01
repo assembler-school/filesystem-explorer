@@ -25,6 +25,9 @@ $(document).on("click", (e) => {
   if (targetIdName === "create-folder") {
     openCreateFolderModal();
   }
+  if (targetIdName === "upload-file") {
+    openUploadFileModal();
+  }
   if (targetIdName === "edit-folder") {
     openEditFolderModal();
   }
@@ -55,6 +58,16 @@ $("#search-bar").on("input", (e) => {
   let pattern = e.target.value;
   searchPatternInDir(path, pattern);
 });
+
+function test() {
+  $.ajax({
+    type: "POST",
+    url: "fileControll/tests.php",
+    success: function (response) {
+      console.log(response);
+    },
+  });
+}
 
 function selectFolder(path) {
   updatePath(path);
@@ -189,6 +202,20 @@ function editFolder(e) {
   });
 }
 
+function openUploadFileModal() {
+  $.ajax({
+    url: "fileControll/session.php",
+    success: function (response) {
+      const templateContent =
+        document.querySelector("#upload-file-modal").content;
+      document
+        .querySelector("main")
+        .appendChild(document.importNode(templateContent, true));
+      $("#session-path-upload").html(response);
+    },
+  });
+}
+
 function openDeleteFolderModal() {
   $.ajax({
     url: "fileControll/session.php",
@@ -216,7 +243,13 @@ function deleteFolder(e) {
     url: "fileControll/deleteFileFolder.php",
     data: { valid: "yes" },
     success: function (response) {
-      selectFolder(response);
+      if (response !== "/xampp/htdocs/filesystem-explorer/src/UNIT") {
+        var split = response.split("/");
+        response = split.slice(0, split.length - 1).join("/");
+        selectFolder(response);
+      } else {
+        selectFolder(response);
+      }
       closeDeleteFolderModal();
     },
   });
