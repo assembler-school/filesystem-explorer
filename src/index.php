@@ -233,10 +233,13 @@ require_once("./modules/searchFile.php");
             var file_name = $(this).find('#fileName');
             var old_name = $(this).find('#oldName');
             var old_path = $(this).find('#oldPath');
+            // Old name and new name are equal
             if ($.trim(file_name.val()) == $.trim(old_name.val())) {
                 $("#editAlert").show();
                 console.log("esta haciendo submit?(if)")
-            } else {
+            }
+            // New name is not old name
+            else {
                 $("#editAlert").hide();
                 document.location = `./modules/editFiles.php?fileName=${file_name.val()}&oldFileName=${old_name.val()}&oldPath=${old_path.val()}`;
                 $("#fileName").attr("placeholder", "");
