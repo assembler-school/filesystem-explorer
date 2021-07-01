@@ -3,19 +3,19 @@
 # PHP Local FileSystem explorer <!-- omit in toc -->
 
 <p>
-  <img alt="preview" src="./documentation/process/Screenshot 2021-06-28 at 11.08.00.png" />
+  <img alt="preview" src="./documentation/process/Screenshot 2021-07-01 at 12.14.58.png" />
 </p>
 
-> In this project you will have to create a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system.
+> This current repository is the result of developing a Local FileSystem using PHP. With this application, you'll be able to navigate through all directories, upload files, editing their names, previewing and deleting them. Besides that, this application also offers you the option of editing file/directory names as well.
 
-> The file explorer is a tool that allows you to directly view and manipulate the files and directories associated with a path, so you must take into account from which path the user starts and which path they can access.
+> Even though this is an already-working application, there are still some functionalities that can be implemented so keep an eye to this repo for more news!
+
 
 ## Index <!-- omit in toc -->
 
 - [Requirements](#requirements)
-- [Repository](#repository)
-- [Technologies used](#technologies-used)
-- [Project delivery](#project-delivery)
+- [Installing](#installing)
+- [Built with](#built-with)
 - [Resources](#resources)
 
 ## Requirements
@@ -33,38 +33,60 @@
 - You should try as much as possible that the commits and the planned tasks are the same
   Delete files that are not used or are not necessary to evaluate the project
 
-## Repository
+## Installing
 
-First of all you must fork this project into your GitHub account.
+First, choose the location in your computer and clone this repo like so:
 
-To create a fork on GitHub is as easy as clicking the “fork” button on the repository page.
+*This location must be inside your XAMP or MAMP so that you can open your local server*
 
-<img src="https://docs.github.com/assets/images/help/repository/fork_button.jpg" alt="Fork on GitHub" width='450'>
+```bash
 
-## Technologies used
+git clone https://github.com/Ricard-Garcia/filesystem-explorer.git
+
+```
+
+This application uses some dependencies so, after cloning the repo, run the following instruction:
+
+```bash
+
+npm install
+
+```
+
+
+In case you'll like to change the styles, run the following instruction:
+
+```bash
+
+sass --watch ./src/assets/styles/main.scss ./src/assets/styles/styles.css 
+
+```
+
+### Folders structure
+
+Notice that **the home directory will *root* folder* so you'll need to keep this folder inside *src* to make the application work.
+
+```bash
+
+repo
+ ├── documentation
+ ├── node_modules
+ ├── .gitignore
+ └── src
+      └── root
+           └── (All your files and folders)
+               
+```
+
+## Built with
 
 \* HTML
 
 \* CSS
 
-\* JS
+\* JS (jQuery)
 
 \* PHP
-
-## Project delivery
-
-To deliver this project you must follow the steps indicated in the document:
-
-- [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
-
-- You must include the project documentation in PDF format.
-- You must include a presentation in PDF format explaining:
-  - Comparison of the original design (Wireframe) with the final result of the project
-  - Comparison of the use case diagram with the actions that the user can finally perform
-  - Comparison of the original use case diagram with the final user actions
-  - What lessons you’ve learned during this project
-  - What problems have you encountered when developing this project?
-  - How you have organized and distributed the tasks
 
 ## Resources
 
