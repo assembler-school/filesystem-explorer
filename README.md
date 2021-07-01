@@ -23,29 +23,10 @@ To clone this repository you have make in terminal:
 
 ```
 git clone https://github.com/mhfortuna/filesystem-explorer.git
-
+```
+Then you need to copy this folder to `htdocs` or change the server variable.
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
 
 ## Despliegue 📦
 
@@ -162,5 +143,5 @@ To deliver this project you must follow the steps indicated in the document:
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwNTgzNjk5Nl19
+eyJoaXN0b3J5IjpbMTI4MzQxMzIxMV19
 -->
