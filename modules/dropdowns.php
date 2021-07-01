@@ -3,6 +3,9 @@
 
 function dropdownMenuFile($file)
 {
+    $extension = explode('.', $file)[1];
+    $openableExtensions =
+        array("jpg", "jpeg", "png", "JPG", "JPEG", "PNG", "gif", "GIF", "svg", "SVG", "mp3", "MP3", "aac", "wav", "mpeg", "mp4", "mov", "wmv", "avi");
     $openIcon = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrows-fullscreen me-2' viewBox='0 0 16 16'>
         <path fill-rule='evenodd' d='M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707zm0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707zm-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707z'/>
         </svg>";
@@ -18,7 +21,10 @@ function dropdownMenuFile($file)
         <path d='M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z'/>
         </svg>";
     $threeDotsIcon = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-three-dots' viewBox='0 0 16 16'>";
-
+    $openOption = "";
+    if (in_array($extension, $openableExtensions)) {
+        $openOption = "<li><button type='submit' name='open' value=" . $file . " class='dropdown-item'>" . $openIcon . "Open</button></li>";
+    }
     return
         "<span class=''>
             <span class='btn btn-light' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
@@ -28,7 +34,7 @@ function dropdownMenuFile($file)
             </span>
             <ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
             <form class='' method='POST' action='./modules/file-actions.php'>
-                <li><button type='submit' name='open' value=" . $file . " class='dropdown-item'>" . $openIcon . "Open</button></li>
+                " . $openOption . "
                 <li><button type='button' name='rename' data-bs-toggle='modal' data-bs-target='#renameFileModal' value=" . $file . " class='dropdown-item'>" . $renameIcon . " Rename</button></li>
                 <li><button type='button' name='delete'  data-bs-toggle='modal' data-bs-target='#deleteFileModal' value=" . $file . " class='dropdown-item'>" . $deleteIcon . "Delete</button></li>
                 <li><button type='submit' name='download' value=" . $file . " class='dropdown-item'>" . $downloadIcon . "Download</button></li>
