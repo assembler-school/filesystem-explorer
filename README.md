@@ -33,7 +33,10 @@ _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para 
 
 To open the file explorer just open a browser and go to [localhost](localhost)
 
-## Tools and thechnologies used 🛠️
+## Documentation 📚
+
+
+## Tools and tecnologies used 🛠️
 
 * PHP
 * HTML
@@ -41,28 +44,7 @@ To open the file explorer just open a browser and go to [localhost](localhost)
 * JavaScript
 * Bootstrap 
 
-
-
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-
-<p>
-
-
-
-
-
-
-
-
-
-## Requirements
+## Project requirements
 
 - You cannot use file third-party libraries
 - You will not be able to use global variables in PHP.
@@ -78,30 +60,15 @@ _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios
 Delete files that are not used or are not necessary to evaluate the project
 
 
-## Technologies used
 
-\* HTML
+## Autores ✒️
 
-\* CSS
+_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
-\* JS
+* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
+* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
 
-\* PHP
 
-## Project delivery
-
-To deliver this project you must follow the steps indicated in the document:
-
-- [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
-
-- You must include the project documentation in PDF format.
-- You must include a presentation in PDF format explaining:
-  - Comparison of the original design (Wireframe) with the final result of the project
-  - Comparison of the use case diagram with the actions that the user can finally perform
-  - Comparison of the original use case diagram with the final user actions
-  - What lessons you’ve learned during this project
-  - What problems have you encountered when developing this project?
-  - How you have organized and distributed the tasks
 
 
 ## Resources
@@ -111,5 +78,5 @@ To deliver this project you must follow the steps indicated in the document:
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjIyODg4MjcsMTI4MzQxMzIxMV19
+eyJoaXN0b3J5IjpbLTI4NjE5OTEyOSwxMjgzNDEzMjExXX0=
 -->
