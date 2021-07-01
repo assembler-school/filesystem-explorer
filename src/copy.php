@@ -22,6 +22,20 @@ function nameCheck($name, $currentPath, $file_parts)
     return $name;
 }
 
+function copyAll($copied, $newDir)
+{
+    $files = array_diff(scandir($copied), array('.', '..'));
+
+    foreach ($files as $file) {
+        if (is_dir($copied . "/" . $file)) {
+            mkdir($newDir . "/" . $file);
+            copyAll($copied . "/" . $file, $newDir . "/" . $file);
+        } else {
+            copy($copied . "/" . $file, $newDir . "/" . $file);
+        }
+    }
+}
+
 if (isset($_GET['n'])) {
     $name = $_GET['n'];
     $currentPath = "../" . substr($completePath, strpos($completePath, "root"));
@@ -40,35 +54,3 @@ if (isset($_GET['n'])) {
 }
 
 header("Location: ../index.php");
-
-
-function copyAll($copied, $newDir)
-{
-    $files = array_diff(scandir($copied), array('.', '..'));
-
-    foreach ($files as $file) {
-        if (is_dir($copied . "/" . $file)) {
-            mkdir($newDir . "/" . $file);
-            copyAll($copied . "/" . $file, $newDir . "/" . $file);
-        } else {
-            copy($copied . "/" . $file, $newDir . "/" . $file);
-        }
-        /* (is_dir($copied . "/" . $file) ? copyAll($copied . "/" . $file, $newDir . "/" . $file) : copy($copied . "/" . $file, $newDir . "/" . $file)); */
-    }
-}
-
-
-/* function copyAll($copied, $revisedName, $currentPath)
-{
-
-
-    $files = array_diff(scandir($copied), array('.', '..'));
-    $newPath = $currentPath . $revisedName;
-    mkdir($newPath);
-
-    foreach ($files as $file) {
-        (is_dir($copied . "/" . $file) ? copyAll($copied . "/" . $file, $revisedName, $currentPath) : copy($copied . "/" . $file, $copied . "/" . $revisedName));
-    }
-
-    mkdir($copied);
-} */
