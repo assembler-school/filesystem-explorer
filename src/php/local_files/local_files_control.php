@@ -145,10 +145,11 @@ function read_local_folders()
   foreach ($files as $dir) {
     if (is_dir($local_dir . "/" . $dir)) {
       $n_folders += 1;
-      $name_file = $dir;
-      $complete_name_file = $dir;
-      $extension_file = "./../../../doc/img/folder-invoices--v1.png";
-      create_div_template($name_file, $extension_file, $complete_name_file);
+      $name_folder = $dir;
+      $img_folder = "./../../../doc/img/folder-invoices--v1.png";
+      $folder_id = array_search("$local_dir/$dir", $_SESSION["folders_paths"]);
+
+      create_div_template($name_folder, $img_folder, $folder_id);
     }
   }
   if ($n_folders == 0) echo "<div>There is any folder</div>";
@@ -165,19 +166,16 @@ function read_local_files()
   if (isset($_GET["trash"])) $local_dir = 'C:/xampp\htdocs/filesystem-explorer/root/' . $sesion_name . '__trash';
 
   $files = clean_scandir($local_dir);
-  // var_dump ($files);
 
   $n_files = 0;
   foreach ($files as $dir) {
     if (is_file($local_dir . "/" . $dir)) {
       $n_files += 1;
-      $name_file = strstr($dir, ".", true);
-      // $complete_name_file = strstr($dir, ".", true);
-      $complete_name_file = $dir;
+      $name_file = $dir;
       $extension_file = strstr($dir, ".");
-      $new_extension_file = check_extension_file($extension_file);
+      $img_extension = check_extension_file($extension_file);
 
-      create_div_template($name_file, $new_extension_file, $complete_name_file);
+      create_div_template($name_file, $img_extension, -1);
     }
   }
   if ($n_files == 0) echo "<div>There is any file</div>";
@@ -233,72 +231,35 @@ function check_extension_file($extension_file)
 }
 
 function create_div_template(
-  $name_file,
-  $new_extension_file,
-  $complete_name_file
+  $text_name,
+  $img_type,
+  $folder_id
 ) {
-  $sesion_name = $_SESSION["username"];
-  $local_dir = "C:/xampp\htdocs/filesystem-explorer/root/$sesion_name";
+  $path_img_folder = "./../../../doc/img/folder-invoices--v1.png";
 
-  $html = new DOMDocument("1.0", "iso-8859-1");
-  $html->formatOutput = true;
+  if ($img_type == $path_img_folder) {
+    echo '<div ' .
+      'value="' . $folder_id . '" ' .
+      'class="col d-flex justify-content-center align-items-center p-2 m-2 border rounded item-contextmenu item-folder" ' .
+      'data-source="' . $text_name . '">';
+  } else {
+    echo '<div ' .
+      'class="col d-flex justify-content-center align-items-center p-2 m-2 border rounded open_modal" ' .
+      'aria-disabled="true" ' .
+      'data-source="' . $text_name . '">';
+  }
 
-  $maindiv = $html->createElement("div");
-  $maindiv->setAttribute(
-    "class",
-    "col d-flex justify-content-center align-items-center open_modal"
-  );
+  echo "<section class='file__item--wrapper d-flex flex-column m-0'>";
 
-  $maindiv->setAttribute("aria-disabled", "true");
-  $maindiv->setAttribute("class", "p-2 m-2 border rounded item-contextmenu");
-  $maindiv->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $maindiv->setAttribute("id", $complete_name_file);
-  $html->appendChild($maindiv);
+  echo "<div class='d-flex justify-content-center'>";
+  echo "<img src='$img_type' alt='$img_type'>";
+  echo '</div>';
 
-  $mainSection = $html->createElement("section");
-  $mainSection->setAttribute(
-    "class",
-    "file__item--wrapper d-flex flex-column m-0"
-  );
-  $mainSection->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $maindiv->appendChild($mainSection);
+  echo "<div class='px-2'>";
+  echo "<h6 title='$text_name'>$text_name</h6>";
+  echo "</div>";
 
-  $first_div = $html->createElement("div");
-  $first_div->setAttribute("class", "d-flex justify-content-center");
-  $first_div->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $mainSection->appendChild($first_div);
+  echo "</section>";
 
-  $file_img = $html->createElement("img");
-  $file_img->setAttribute("src", $new_extension_file);
-  $file_img->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $file_img->setAttribute("alt", "");
-  $first_div->appendChild($file_img);
-
-  $second_div = $html->createElement("div");
-  $second_div->setAttribute("class", "px-2");
-  $second_div->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $mainSection->appendChild($second_div);
-
-  $title_folder = $html->createElement("h6");
-  $title_folder->setAttribute("data-source", "$local_dir/$complete_name_file");
-  $title_folder->setAttribute("title", "$name_file");
-  $title_folder->appendChild($html->createTextNode($name_file));
-  $second_div->appendChild($title_folder);
-
-  echo html_entity_decode($html->saveHTML());
+  echo "</div>";
 }
-?>
-
-<!-- Este seria nuestro Template -->
-<!-- <div class="col d-flex justify-content-center align-items-center">
-	<section class="file__item--wrapper d-flex flex-column align-items-center">
-		<div>
-			<img src="./../../../doc/img/folder-invoices--v1.png" alt="">
-		</div>
-		<div>
-			<h6>
-				titulo de la carpeta
-			</h6>
-		</div>
-	</section>
-</div> -->

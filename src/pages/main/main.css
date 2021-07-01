@@ -241,6 +241,10 @@ input:focus {
   cursor: pointer;
 }
 
+.item-folder {
+  cursor: pointer;
+}
+
 #context-menu {
   background-color: white;
   position: absolute;

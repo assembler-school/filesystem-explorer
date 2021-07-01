@@ -79,33 +79,54 @@ revisar_si_existe_sesion();
 			</div>
 		</aside>
 		<section class="main__files--wrapper">
-			<nav class="border-bottom">
-				<div class="edit__buttons--wrapper d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 mb-2">
-					<div class="d-flex flex-row justify-content-between gap-3">
-						<button id="create-folder-btn" class="btn btn-light border border-secondary">
-							Create folder
-						</button>
-						<button class="btn btn-light border border-secondary">
-							Upload file
-						</button>
-					</div>
-					<div class="btn-toolbar mb-2 mb-md-0">
-						<div class="btn-group me-2">
-							<button type="button" class="btn btn-sm btn-outline-secondary">Name</button>
-							<button type="button" class="btn btn-sm btn-outline-secondary">Size</button>
+			<div class="ms-3 mt-1">
+				<?php
+				if (isset($_GET["folder-id"])) {
+					$folder_id = $_GET["folder-id"];
+				} else {
+					$folder_id = 0;
+				}
+				$username = $_SESSION["username"];
+				$root_path = $_SESSION["folders_paths"][$folder_id];
+				$root_path = str_replace("C:/xampp\htdocs/filesystem-explorer/root/$username", "My Cloud", $root_path);
+				if (!isset($_GET["trash"])) {
+					echo $root_path;
+				}
+				?>
+			</div>
+			<?php
+			if (!isset($_GET["trash"])) {
+				echo '
+				<nav class="border-bottom">
+					<div class="edit__buttons--wrapper d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 mb-2">
+						<div class="d-flex flex-row justify-content-between gap-3">
+							<button id="create-folder-btn" class="btn btn-light border border-secondary">
+								Create folder
+							</button>
+							<button class="btn btn-light border border-secondary">
+								Upload file
+							</button>
 						</div>
-						<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-							<span data-feather="calendar"></span>
-							Fecha
-						</button>
+						<div class="btn-toolbar mb-2 mb-md-0">
+							<div class="btn-group me-2">
+								<button type="button" class="btn btn-sm btn-outline-secondary">Name</button>
+								<button type="button" class="btn btn-sm btn-outline-secondary">Size</button>
+							</div>
+							<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+								<span data-feather="calendar"></span>
+								Fecha
+							</button>
+						</div>
 					</div>
-				</div>
-				<form id="form-new-folder" class="ms-3 mb-2" method="post" action="../../php/local_files/new_folder.php" style="display: none;">
-					<input type="text" name="new-folder-name" placeholder="Folder name">
-					<button type="submit" class="btn btn-primary">Confirm</button>
-					<button id="cancel-form-new-folder" type="button" class="btn btn-primary">Cancel</button>
-				</form>
-			</nav>
+					<form id="form-new-folder" class="ms-3 mb-2" method="post" action="../../php/local_files/new_folder.php" style="display: none;">
+						<input type="text" name="new-folder-name" placeholder="Folder name">
+						<button type="submit" class="btn btn-primary">Confirm</button>
+						<button id="cancel-form-new-folder" type="button" class="btn btn-primary">Cancel</button>
+					</form>
+				</nav>
+				';
+			}
+			?>
 			<div class="files__wrapper">
 				<h4 class="px-4 pt-2">Folders</h4>
 				<div class="container-fluid folder_container px-4 py-2">
