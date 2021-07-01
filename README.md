@@ -9,7 +9,7 @@ _A File Explorer made with PHP, HTML, JS and CSS_
 - [Requirements](#requirements)
 - [Install](#install)
 - [Deployment](#deployment)
-- [Documentation](#documentation)
+- [Documentation](#documentation📚)
 - [Technologies used](#technologies-used)
 - [Project delivery](#project-delivery)
 - [Resources](#resources)
@@ -69,6 +69,6 @@ Delete files that are not used or are not necessary to evaluate the project
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk5NTU1NTk4LC0xMTM4ODIxNDc2LDEyOD
-M0MTMyMTFdfQ==
+eyJoaXN0b3J5IjpbLTEzNzQ5MDMzMTEsLTExMzg4MjE0NzYsMT
+I4MzQxMzIxMV19
 -->
