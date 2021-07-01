@@ -63,7 +63,7 @@
             }
         }
         header("Location: ../index.php");
-    } elseif (isset($fileToDownload)) {
+    } elseif (isset($_POST["download"])) {
         $fileToDownload = $_POST["download"];
         $filesList = getAllFiles("../root");
         foreach ($filesList as $file) {
