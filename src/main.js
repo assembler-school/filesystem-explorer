@@ -25,6 +25,9 @@ $(document).on("click", (e) => {
   if (targetIdName === "create-folder") {
     openCreateFolderModal();
   }
+  if (targetIdName === "upload-file") {
+    openUploadFileModal();
+  }
   if (targetIdName === "edit-folder") {
     openEditFolderModal();
   }
@@ -185,6 +188,20 @@ function editFolder(e) {
     success: function (response) {
       selectFolder(response);
       closeEditFolderModal();
+    },
+  });
+}
+
+function openUploadFileModal() {
+  $.ajax({
+    url: "fileControll/session.php",
+    success: function (response) {
+      const templateContent =
+        document.querySelector("#upload-file-modal").content;
+      document
+        .querySelector("main")
+        .appendChild(document.importNode(templateContent, true));
+      $("#session-path-upload").html(response);
     },
   });
 }
