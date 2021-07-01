@@ -204,6 +204,7 @@ require_once("./modules/searchFile.php");
             var recipient = button.data('old')
             var oldpath = button.data('path')
             var modal = $(this);
+            $("#fileName").attr("placeholder", recipient);
             console.log("This is the recipient ", recipient);
             modal.find('.modal-body form #oldName').val(recipient);
             modal.find('.modal-body form #oldPath').val(oldpath);
@@ -238,6 +239,8 @@ require_once("./modules/searchFile.php");
             } else {
                 $("#editAlert").hide();
                 document.location = `./modules/editFiles.php?fileName=${file_name.val()}&oldFileName=${old_name.val()}&oldPath=${old_path.val()}`;
+                $("#fileName").attr("placeholder", "");
+
             }
         });
     </script>
