@@ -10,7 +10,6 @@
 
 > Even though this is an already-working application, there are still some functionalities that can be implemented so keep an eye to this repo for more news!
 
-
 ## Index <!-- omit in toc -->
 
 - [Requirements](#requirements)
@@ -39,7 +38,7 @@
 
 First, choose the location in your computer and clone this repo like so:
 
-*This location must be inside your XAMP or MAMP so that you can open your local server*
+_This location must be inside your XAMP or MAMP so that you can open your local server_
 
 ```bash
 
@@ -55,18 +54,17 @@ npm install
 
 ```
 
-
 In case you'll like to change the styles, run the following instruction:
 
 ```bash
 
-sass --watch ./src/assets/styles/main.scss ./src/assets/styles/styles.css 
+sass --watch ./src/assets/styles/main.scss ./src/assets/styles/styles.css
 
 ```
 
 ### Folders structure
 
-Notice that **the home directory will *root* folder* so you'll need to keep this folder inside *src* to make the application work.
+Notice that \**the home directory will *root* folder* so you'll need to keep this folder inside _src_ to make the application work.
 
 ```bash
 
@@ -77,7 +75,7 @@ repo
  └── src
       └── root
            └── (All your files and folders)
-               
+
 ```
 
 ## Built with
@@ -93,11 +91,13 @@ repo
 ## Resources
 
 ### FileSystem
+
 - [PHP FileSystem Docs](https://www.php.net/manual/en/ref.filesystem.php)
 - [File system](https://es.wikipedia.org/wiki/Administrador_de_archivos)
 - [PHP FileSystem W3C](https://www.w3schools.com/php/php_ref_filesystem.asp)
 
-### PHP 
+### PHP
+
 - [Get current directory / getcwd()](https://www.php.net/manual/en/function.getcwd.php)
 - [Get last item in array / end()](https://www.php.net/manual/es/function.end.php)
 - [Scan current directory / scandir()](https://www.php.net/manual/en/function.scandir.php)
@@ -107,18 +107,21 @@ repo
 - [Navigate from current path / dirname()](https://www.php.net/manual/es/function.dirname.php)
 
 ### Refs 👀
+
 - [FileRun](https://filerun.com/)
 - [Monsta FTP](https://alternativeto.net/software/monsta-ftp/about/)
 - [Filestash](https://alternativeto.net/software/nuage-app/about/)
 - [FileRun](https://alternativeto.net/software/filerun--file-manager/)
 - [Angular Filemanager](https://awesomeopensource.com/project/joni2back/angular-filemanager)
-- [JCampbell File Manager](https://github.com/jcampbell1/simple-file-manager) 
+- [JCampbell File Manager](https://github.com/jcampbell1/simple-file-manager)
 
 ### Others
+
 - [Recursive functions](https://www.geeksforgeeks.org/recursive-functions/)
 - [HTML arrows](https://www.w3schools.com/charsets/ref_utf_arrows.asp)
 
 ### Libraries
+
 - [Bootstrap](https://getbootstrap.com/)
 - [jQuery](https://jquery.com/)
 - [Fontawesome](https://fontawesome.com/)
@@ -126,18 +129,19 @@ repo
 
 ## TODO 🤝
 
-* Show all navigation tree in left sidebar.
-* Support more file extensions (icons).
-* Create folder / upload file to certain path.
-* Preview file with `<embed>`/`<iframe>`.
-* Label files
+- Create folder / upload file to certain path.
+- Show all navigation tree in left sidebar.
+- Preview file with `<embed>`/`<iframe>`.
+- Delete all/some files using checkboxes.
+- Support more file extensions (icons).
+- Label files and filter them.
 
 ## Bugs 🚨
 
-* Reading whitespaces.
-* Small jump when in root folder.
+- Reading whitespaces.
+- Small jump when in root folder.
 
 ## Contributors ✨ <!-- omit in toc -->
+
 👤 [Hugo Duran](https://github.com/Hugo05Duran)
 👤 [Ricard Garcia](https://github.com/Ricard-Garcia)
-
