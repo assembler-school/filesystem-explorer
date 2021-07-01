@@ -3,6 +3,8 @@
     //se carga la cookie de sesion que crea el navegador
     //setcookie ("PHPSESSID", "", time() - 3600, '/');
     //====================================
+    session_start();
+    $_SESSION['base_url'] = getcwd();
     require("./includes/manageDirItems.php");
     require("./includes/updateDirNavBar.php");
     
@@ -193,8 +195,6 @@
     <script type="text/javascript" src="./js/render.js"></script>
     <script type="text/javascript" src="./js/formValidation.js"></script>
     <script type="text/javascript" src="./js/fuctionOnClick.js"></script>
-    <script type="text/javascript">
-     document.cookie = "PHPSESSID=;Path=/cv;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-</script>
+    
 </body>
 </html>

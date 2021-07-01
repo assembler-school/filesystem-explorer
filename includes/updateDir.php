@@ -1,10 +1,13 @@
 <?php 
-    session_start();
+   if(!isset($_SESSION)) 
+   { 
+       session_start(); 
+   } 
 
     if(!isset($_SESSION['currentPath'])){
         // echo "I'm in <br>";
-        $_SESSION['currentPath'] = "C:/xampp/htdocs/Assembler/filesystem-explorer/root";
-        $_SESSION['mainRootPath'] = "C:/xampp/htdocs/Assembler/filesystem-explorer/root";
+        $_SESSION['currentPath'] = $_SESSION['base_url'] . "/root";
+        $_SESSION['mainRootPath'] = $_SESSION['base_url'] . "/root";
         
     }else if(isset($_GET['updateDir'])){
 

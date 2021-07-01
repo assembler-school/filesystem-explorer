@@ -74,7 +74,7 @@
                             "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
                         </a>
                         <i id='".$fileName."Rename' class='bi bi-pencil-square space'></i>
-                        <i id='".$fileName."Delete' class='bi bi-trash-fill space'></i>
+                        <a class='icon__delete space' href='./includes/delete.php?name=".$fileName."' ><i id='".$fileName." Delete' class='bi bi-trash-fill '></i></a>
                     </div>
                 ";
 
@@ -87,7 +87,7 @@
                             "<div class='mainCenter__fileName' data-id='".$fileName."'>".$fileName."</div>
                         </a>
                         <i id='".$fileName."Rename' class='bi bi-pencil-square space'></i>
-                        <i id='".$fileName."Delete' class='bi bi-trash-fill space'></i>
+                        <a class='icon__delete space' href='./includes/delete.php?name=".$fileName."' ><i id='".$fileName."Delete' class='bi bi-trash-fill '></i></a>
                     </div>
                 ";
 
