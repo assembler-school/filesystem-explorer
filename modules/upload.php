@@ -13,25 +13,25 @@ if (isset($_FILES["file"])) {
     );
 
     $extensions = array("jpg", "jpeg", "png", "JPG", "JPEG", "PNG", "gif", "svg", "txt", "xsl", "xslx", "mp3", "MP3", "flac", "aac", "wav", "aiff", "pdf", "mpeg", "mp4", "mov", "wmv", "avi", "avchd", "flv", "ppt", "pptx", "doc", "docx", "zip", "rar", "php", "html", "css", "sass", "scss", "ini", "json");
-    $file_ext = explode(".", $_FILES["file"]["name"]);
-    $file_ext = end($file_ext);
-    $valid_filename = chop($_FILES["file"]["name"], "." . $file_ext);
-    $invalid_characters = array(".", " ", "/", ",");
-    $valid_filename = str_replace($invalid_characters, "_", $valid_filename);
-    $valid_filename = $valid_filename . "." . $file_ext;
+    $fileExt = explode(".", $_FILES["file"]["name"]);
+    $fileExt = end($fileExt);
+    $validFileName = chop($_FILES["file"]["name"], "." . $fileExt);
+    $invalidCharacters = array(".", " ", "/", ",");
+    $validFileName = str_replace($invalidCharacters, "_", $validFileName);
+    $validFileName = $validFileName . "." . $fileExt;
 
 
     if ($_FILES["file"]["error"]) {
         $_SESSION["errorMsg"] = $phpFileUploadErrors[$_FILES["file"]["error"]];
-    } elseif (!in_array($file_ext, $extensions)) {
+    } elseif (!in_array($fileExt, $extensions)) {
         $_SESSION["invalidMsg"] = $_FILES["file"]["name"] . " has invalid file extension!";
-    } elseif (is_file("./root" . $_SESSION["currentPath"] . "/" . $valid_filename)) {
+    } elseif (is_file("./root" . $_SESSION["currentPath"] . "/" . $validFileName)) {
         $_SESSION["errorMsg"] = "File with that name already exists!";
     } else {
         if (isset($_SESSION["currentPath"])) {
-            move_uploaded_file($_FILES["file"]["tmp_name"], "./root" . $_SESSION["currentPath"] . "/" . $valid_filename);
+            move_uploaded_file($_FILES["file"]["tmp_name"], "./root" . $_SESSION["currentPath"] . "/" . $validFileName);
         } else {
-            move_uploaded_file($_FILES["file"]["tmp_name"], "./root" . "/" . $valid_filename);
+            move_uploaded_file($_FILES["file"]["tmp_name"], "./root" . "/" . $validFileName);
         }
         $_SESSION["successMsg"] =  $_FILES["file"]["name"] . " has been uploaded";
     }

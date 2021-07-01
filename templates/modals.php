@@ -96,3 +96,27 @@ function renameFolderModal()
             </div>
         </div>");
 }
+
+function newFolderModal()
+{
+    echo ("<div class='modal fade' id='newFolderModal' tabindex='-1' aria-labelledby='newFolderModalLabel' aria-hidden='true'>
+            <div class='modal-dialog modal-dialog-centered'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h5 class='modal-title' id='newFolderModalLabel'>Create New Folder</h5>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
+                    <form class='' method='POST' action='./modules/new-folder.php'>
+                        <div class='modal-body'>
+                            <label for='newFolderName' class='form-label'> Folder Name</label>
+                            <input type='text' class='form-control' id='newFolderName' name='newFolderName'>
+                        </div>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                            <button type='submit' class='btn btn-primary' name='rename' value='' id='newFolderButton'>Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>");
+}

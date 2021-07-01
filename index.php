@@ -7,15 +7,15 @@ include_once("./modules/open-file.php");
 include_once("./modules/return.php");
 
 if (isset($_SESSION["successMsg"])) {
-    $success_msg = $_SESSION["successMsg"];
+    $successMsg = $_SESSION["successMsg"];
     unset($_SESSION["successMsg"]);
 }
 if (isset($_SESSION["errorMsg"])) {
-    $error_msg = $_SESSION["errorMsg"];
+    $errorMsg = $_SESSION["errorMsg"];
     unset($_SESSION["errorMsg"]);
 }
 if (isset($_SESSION["invalidMsg"])) {
-    $invalid_msg = $_SESSION["invalidMsg"];
+    $invalidMsg = $_SESSION["invalidMsg"];
     unset($_SESSION["invalidMsg"]);
 }
 ?>
@@ -58,13 +58,16 @@ if (isset($_SESSION["invalidMsg"])) {
                         </g>
                     </svg></div>
             </a>
-            <div class="d-flex">
-                <form method="POST" class="returnForm">
+            <div class="d-flex align-items-center">
+                <form method="POST" id="returnForm">
                     <label role="button">
                         <input type="submit" name="returnBtn" class="returnBtn" />
-                        <svg style=" width:40px;height:40px; padding:2px" viewBox="0 0 24 24">
+                        <svg style="width:30px;height:30px" viewBox="0 0 24 24">
+                            <path fill="#ffffff" d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z" />
+                        </svg><span class="closeText">Close Search</span>
+                        <!-- <svg style=" width:40px;height:40px; padding:2px" viewBox="0 0 24 24">
                             <path class="returnIcon" fill="#ffffff" d="M19.07,4.93C17.22,3 14.66,1.96 12,2C9.34,1.96 6.79,3 4.94,4.93C3,6.78 1.96,9.34 2,12C1.96,14.66 3,17.21 4.93,19.06C6.78,21 9.34,22.04 12,22C14.66,22.04 17.21,21 19.06,19.07C21,17.22 22.04,14.66 22,12C22.04,9.34 21,6.78 19.07,4.93M17,12V18H13.5V13H10.5V18H7V12H5L12,5L19.5,12H17Z" />
-                        </svg>
+                        </svg> -->
                     </label>
 
                 </form>
@@ -90,34 +93,34 @@ if (isset($_SESSION["invalidMsg"])) {
                             </svg><span class="fs-5 d-none d-sm-inline m-1 side-span pe-auto">UPLOAD</span>
                         </label>
                     </form>
-                    <a href="./index.php" class="d-flex align-items-center mb-md-0 me-md-auto text-white text-decoration-none p-2 rounded-3 sideButtons">
+                    <button class="d-flex align-items-center mb-md-0 me-md-auto text-white text-decoration-none p-2 rounded-3 sideButtons" data-bs-toggle="modal" data-bs-target="#newFolderModal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="#048A81" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
                             <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
                         </svg> <span class="fs-5 d-none d-sm-inline m-1 side-span ml-2">NEW</span>
-                    </a>
+                    </button>
                     <?php directoryTree() ?>
                     <hr>
                 </div>
             </div>
             <div class="p-0 main-table">
                 <?php
-                if (isset($success_msg) && $success_msg) {
+                if (isset($successMsg) && $successMsg) {
                     echo "<div class='alert alert-success' role='alert'>";
-                    echo $success_msg;
-                    // $_FILES["file"]["name"] . " " . $success_msg;
+                    echo $successMsg;
+                    // $_FILES["file"]["name"] . " " . $successMsg;
                     echo "</div>";
-                    $success_msg = false;
-                } elseif (isset($invalid_msg) && $invalid_msg) {
+                    $successMsg = false;
+                } elseif (isset($invalidMsg) && $invalidMsg) {
                     echo "<div class='alert alert-warning' role='alert'>";
-                    echo $invalid_msg;
-                    // echo $_FILES["file"]["name"] . " " . $invalid_msg;
+                    echo $invalidMsg;
+                    // echo $_FILES["file"]["name"] . " " . $invalidMsg;
                     echo "</div>";
-                    $invalid_msg = false;
-                } elseif (isset($error_msg) && $error_msg) {
+                    $invalidMsg = false;
+                } elseif (isset($errorMsg) && $errorMsg) {
                     echo "<div class='alert alert-danger' role='alert'>";
-                    echo $error_msg;
+                    echo $errorMsg;
                     echo "</div>";
-                    $error_msg = false;
+                    $errorMsg = false;
                 } else {
                     echo NULL;
                 }
@@ -152,6 +155,7 @@ renameFileModal();
 deleteFolderModal();
 renameFolderModal();
 openFileModal();
+newFolderModal();
 
 ?>
 
