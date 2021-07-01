@@ -28,9 +28,9 @@ Then you need to copy this folder to `htdocs` or change the server variable.
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
-## Despliegue 📦
+## Deployment📦
 
-_Agrega notas adicionales sobre como hacer deploy_
+To open the file explorer just open a browser and go to [localhost](localhost)
 
 ## Construido con 🛠️
 
@@ -143,5 +143,5 @@ To deliver this project you must follow the steps indicated in the document:
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4MzQxMzIxMV19
+eyJoaXN0b3J5IjpbNTQxNjU4OTQ1LDEyODM0MTMyMTFdfQ==
 -->
