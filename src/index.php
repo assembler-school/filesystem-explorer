@@ -162,17 +162,12 @@ require_once("./modules/searchFile.php");
                     <button id="btnCloseCross" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="./modules/editFiles.php" id="editFileForm" name="editFileForm">
+                    <form method="POST" id="editFileForm" name="editFileForm">
                         <label for="fileName" class="mb-2 modal-item modal-title">File name</label>
                         <input type="text" id="fileName" name="fileName" class="pl-3 modal-item modal-input" placeholder="Insert new name" autofocus>
                         <input type="text" name="oldFileName" id="oldName" class="pt-2 pl-3 modal-item" required>
                         <input name="oldPath" id="oldPath" class="pt-2 pl-3 modal-item" required>
-                        <!-- <div class="alert alert-danger d-none" id="editAlert" role="alert">
-                            <a class="close">×</a>
-                             <strong>Warning!</strong> Can´t rename a file with the same name
-                        </div> -->
                         <div id="editAlert" class="alert alert-danger">
-                            <a class="close">×</a>
                             <strong>Warning!</strong> This field can´t be empty
                         </div>
                     </form>
@@ -208,55 +203,22 @@ require_once("./modules/searchFile.php");
         // Focus search bar
         $('#searchInput').focus()
 
-
+        // Input validation (edit)
         $("#editAlert").hide();
 
-        // Empty field : new file name
-        var firstSubmit = true;
         $("#editFileForm").on("submit", function(e) {
-
             e.preventDefault();
-            var file_name = $(this).find('input[name="fileName"]');
-            var old_name = $(this).find('input[name="oldFileName"]')
-            if (firstSubmit) {
-                if ($.trim(file_name.val()) == $.trim(old_name.val())) {
-
-                    $("#editAlert").show();
-                    console.log("esta haciendo submit?(if)")
-                } else {
-                    firstSubmit = false;
-                    $("#editAlert").hide();
-                    $("#editFileForm").submit();
-                    console.log("esta haciendo submit?(else)")
-                }
-
+            var file_name = $(this).find('#fileName');
+            var old_name = $(this).find('#oldName');
+            var old_path = $(this).find('#oldPath');
+            if ($.trim(file_name.val()) == $.trim(old_name.val())) {
+                $("#editAlert").show();
+                console.log("esta haciendo submit?(if)")
+            } else {
+                $("#editAlert").hide();
+                document.location = `./modules/editFiles.php?fileName=${file_name.val()}&oldFileName=${old_name.val()}&oldPath=${old_path.val()}`;
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-        // Validate empty input
-        // $("#editFileForm").on("submit", function(event) {
-        //     var $fileName = $("#fileName").val();
-        //     if ($fileName === "") {
-        //         event.preventDefault();
-        //         var error = '<br><span style="color: red;">This field can´t be empty</span>';
-        //         $("#fileName").after(error);
-        //         $("#fileName").css("border", "1px solid red");
-        //     }
-        //     if ($("btnClose").click(function() {
-        //             $("#fileName").css("border", "none");
-        //             $("span").css("display", "none");
-        //         }));
-        // })
     </script>
 </body>
 

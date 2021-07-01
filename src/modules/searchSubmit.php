@@ -20,7 +20,5 @@ $_SESSION["matchedFiles"] = $matchedFiles;
 $_SESSION["searchText"] = $searchValue;
 
 
-
-
 // Redirecting
 header("Location:../index.php");
