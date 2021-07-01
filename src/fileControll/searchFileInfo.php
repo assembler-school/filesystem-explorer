@@ -13,6 +13,7 @@ if (isset($_REQUEST["valid"])) {
     <div class='file-size-separator file-info'>-</div>
     <div class='file-size file-info'>" . size($path) . "</div>
   </div>
+  <div class=''>Last modification: " . date("d F Y H:i:s.", filectime($path)) . "</div>
   <div class='file-url file-info'>" . $path . "</div>
   ";
   if (in_array(extension($path), $playExtensions)) {
