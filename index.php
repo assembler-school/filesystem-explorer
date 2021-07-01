@@ -7,15 +7,15 @@ include_once("./modules/open-file.php");
 include_once("./modules/return.php");
 
 if (isset($_SESSION["successMsg"])) {
-    $success_msg = $_SESSION["successMsg"];
+    $successMsg = $_SESSION["successMsg"];
     unset($_SESSION["successMsg"]);
 }
 if (isset($_SESSION["errorMsg"])) {
-    $error_msg = $_SESSION["errorMsg"];
+    $errorMsg = $_SESSION["errorMsg"];
     unset($_SESSION["errorMsg"]);
 }
 if (isset($_SESSION["invalidMsg"])) {
-    $invalid_msg = $_SESSION["invalidMsg"];
+    $invalidMsg = $_SESSION["invalidMsg"];
     unset($_SESSION["invalidMsg"]);
 }
 ?>
@@ -104,23 +104,23 @@ if (isset($_SESSION["invalidMsg"])) {
             </div>
             <div class="p-0 main-table">
                 <?php
-                if (isset($success_msg) && $success_msg) {
+                if (isset($successMsg) && $successMsg) {
                     echo "<div class='alert alert-success' role='alert'>";
-                    echo $success_msg;
-                    // $_FILES["file"]["name"] . " " . $success_msg;
+                    echo $successMsg;
+                    // $_FILES["file"]["name"] . " " . $successMsg;
                     echo "</div>";
-                    $success_msg = false;
-                } elseif (isset($invalid_msg) && $invalid_msg) {
+                    $successMsg = false;
+                } elseif (isset($invalidMsg) && $invalidMsg) {
                     echo "<div class='alert alert-warning' role='alert'>";
-                    echo $invalid_msg;
-                    // echo $_FILES["file"]["name"] . " " . $invalid_msg;
+                    echo $invalidMsg;
+                    // echo $_FILES["file"]["name"] . " " . $invalidMsg;
                     echo "</div>";
-                    $invalid_msg = false;
-                } elseif (isset($error_msg) && $error_msg) {
+                    $invalidMsg = false;
+                } elseif (isset($errorMsg) && $errorMsg) {
                     echo "<div class='alert alert-danger' role='alert'>";
-                    echo $error_msg;
+                    echo $errorMsg;
                     echo "</div>";
-                    $error_msg = false;
+                    $errorMsg = false;
                 } else {
                     echo NULL;
                 }
