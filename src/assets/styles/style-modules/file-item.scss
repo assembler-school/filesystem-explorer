@@ -2,11 +2,11 @@
 .file-item {
   text-decoration: none;
   transition: 0.2s;
-  cursor: pointer;
   width: 100%;
 
   // Wrapping row link
   a {
+    cursor: pointer;
     text-decoration: none;
 
     .icon-and-name {

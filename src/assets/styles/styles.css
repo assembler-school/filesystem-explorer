@@ -115,10 +115,10 @@ body main .bottom .bottom-block {
 .file-item {
   text-decoration: none;
   transition: 0.2s;
-  cursor: pointer;
   width: 100%;
 }
 .file-item a {
+  cursor: pointer;
   text-decoration: none;
 }
 .file-item a .icon-and-name {
