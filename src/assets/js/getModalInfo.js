@@ -29,11 +29,40 @@ videoModal.addEventListener('show.bs.modal', function (e) {
     videoParent.innerHTML = "";
   }
   var video = document.createElement("video");
+  video.id = "videoPlayer";
   video.src = videoPath;
   video.setAttribute('controls', 'controls');
   video.classList.add("width-media");
   document.getElementById('colVideo').appendChild(video);
 })
+
+// Stopping video when the modal closes
+videoModal.addEventListener('hide.bs.modal', function (e) {
+  videoStop = document.getElementById('videoPlayer');
+  videoStop.pause();
+})
+
+audioModal.addEventListener("show.bs.modal", function (e) {
+  audioPath = e.relatedTarget.getAttribute("data-audio");
+  audioParent = document.getElementById("colAudio");
+
+  if (audioParent.childElementCount > 0) {
+    audioParent.innerHTML = "";
+  }
+  var audio = document.createElement("audio");
+  audio.id = "audioPlayer";
+  audio.src = audioPath;
+  audio.setAttribute("controls", "type='audio/mp3'");
+  audio.classList.add("width-media");
+  document.getElementById("colAudio").appendChild(audio);
+});
+
+// Stopping audio when the modal closes
+audioModal.addEventListener('hide.bs.modal', function (e) {
+  audioStop = document.getElementById('audioPlayer');
+  audioStop.pause();
+})
+
 
 imgModal.addEventListener('show.bs.modal', function (e) {
   imgPath = e.relatedTarget.getAttribute('data-img');
@@ -48,17 +77,3 @@ imgModal.addEventListener('show.bs.modal', function (e) {
   img.classList.add("width-media");
   document.getElementById('colImg').appendChild(img);
 })
-
-audioModal.addEventListener("show.bs.modal", function (e) {
-  audioPath = e.relatedTarget.getAttribute("data-audio");
-  audioParent = document.getElementById("colAudio");
-
-  if (audioParent.childElementCount > 0) {
-    audioParent.innerHTML = "";
-  }
-  var audio = document.createElement("audio");
-  audio.src = audioPath;
-  audio.setAttribute("controls", "type='audio/mp3'");
-  audio.classList.add("width-media");
-  document.getElementById("colAudio").appendChild(audio);
-});

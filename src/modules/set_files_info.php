@@ -3,6 +3,7 @@
 $rootRelativePath = getRootRelativePath($_SESSION["currentPath"]);
 ?>
 
+<!-- Rendering current directory files -->
 <?php if (!isset($_SESSION["searchFiles"])) : ?>
   <!-- For each file or directory on the current folder -->
   <?php foreach ($filesDir as $file) : ?>
@@ -143,7 +144,7 @@ $rootRelativePath = getRootRelativePath($_SESSION["currentPath"]);
 <?php endif ?>
 
 
-
+<!-- Rendering search result files -->
 <?php if (isset($_SESSION["searchFiles"])) : ?>
   <!-- For each file searched -->
   <?php foreach ($_SESSION["searchFiles"] as $fileSearch) : ?>
