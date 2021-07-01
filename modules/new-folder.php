@@ -3,7 +3,9 @@ session_start();
 
 $newFolderName = $_POST["newFolderName"];
 $currentPath = "../root" . $_SESSION["currentPath"];
-$newFolderPath = $currentPath . "/" . $newFolderName;
+$invalidCharacters = array(".", " ", "/", ",");
+$validFolderName = str_replace($invalidCharacters, "_", $newFolderName);
+$newFolderPath = $currentPath . "/" . $validFolderName;
 
 if (!is_dir($newFolderPath)) {
     echo $newFolderPath;
