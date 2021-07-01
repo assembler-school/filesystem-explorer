@@ -37,9 +37,9 @@
                     // and also creating the file upload destination and redirecting to
                     // index.php once the process has finished
                     foreach ($dirItemList as $dirItem){
-                        if(!is_dir($dirItem)){
-                            if($fileName === $dirItem){
+                        if($fileName === $dirItem){
 
+                            if(strrpos($dirItem, ".", 0)){
                                 if(strrpos($dirItem, "Copy", 0)){
                                     $copyIndexString = end(explode("Copy", $dirItem));
                                     $actualCopyIndexString = (explode(".", $copyIndexString))[0];

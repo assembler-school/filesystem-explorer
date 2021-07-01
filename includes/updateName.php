@@ -17,7 +17,6 @@
         foreach($dirItemList as $dirItem){
             if($dirItem === $newName){
                
-
                 if(strrpos($dirItem, ".", 0)){
                     $fileExt = end(explode(".", $dirItem));
 
