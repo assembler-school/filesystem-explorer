@@ -71,6 +71,7 @@ require_once("./src/modules/set_dir.php");
   <aside class="aside_left">
     <form action="" method="POST" enctype="multipart/form-data">
       <label class="custom-file-input">
+        <span>+</span>
         <input type="file" name="file" onchange="form.submit()" style="display:none;">
       </label>
     </form>
