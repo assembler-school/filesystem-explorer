@@ -40,9 +40,6 @@ function human_filesize($bytes, $decimals = 2)
 $foldersArray = array_filter($scannedDirectory, "isDir");
 $filesArray = array_filter($scannedDirectory, "isFile");
 
-if (isset($_POST["search"])) {
-    $searchValue = $_POST["search"];
-}
 
 function displayFileList($fileToDisplay)
 {
@@ -64,6 +61,9 @@ function displayFolderList($folderToDisplay)
         <td class='align-middle text-center'>" . date($dateFormat, filectime($folderToDisplay)) . "</td></tr>");
 }
 
+if (isset($_POST["search"])) {
+    $searchValue = $_POST["search"];
+}
 foreach ($foldersArray as $folder) {
     if (isset($searchValue) && $searchValue) {
         if (stristr($folder, $searchValue)) {
