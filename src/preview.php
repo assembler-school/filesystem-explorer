@@ -27,6 +27,19 @@ if (isset($_GET['n'])) {
       </audio>";
   }
 
+  function csvPre($currentCSV)
+  {
+    echo "<div>";
+    $handle = fopen("../" . $currentCSV, 'r');
+    while (($data = fgetcsv($handle)) !== FALSE) {
+      foreach ($data as $d) {
+        echo "<p>$d</p>";
+      };
+    }
+
+    fclose("../" . $currentCSV);
+  }
+
   function object($currentObject)
   {
     echo "<object width='854' height='480' controls data='" . $currentObject . "'>";
@@ -42,6 +55,8 @@ if (isset($_GET['n'])) {
       video($currentElement);
     } elseif (in_array($ext, $audioExt)) {
       audio($currentElement);
+    } elseif ($ext == "csv") {
+      csvPre($currentElement);
     } else {
       object($currentElement);
     }
