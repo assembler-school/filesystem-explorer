@@ -88,7 +88,7 @@ body {
 }
 
 .modal-form-details {
-  height: 280px;
+  min-height: 320px;
   width: 400px;
   top: calc(50% - 140px);
   left: calc(50% - 200px);
@@ -134,11 +134,12 @@ body {
   font-size: 25px;
   color: black;
   margin-left: 5px;
+  text-align: right;
 }
 
 .minus:after {
   content: "-";
   font-size: 25px;
   color: black;
-  margin-left: 5px;
+  margin-left: 10px;
 }
