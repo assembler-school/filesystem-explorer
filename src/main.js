@@ -94,6 +94,7 @@ function selectFolder(path) {
     },
     success: function (response) {
       $(".main-content-ul").html(response);
+      updateAsideFolderTree(path);
     },
   });
 }
@@ -320,4 +321,18 @@ function openPlayFileModal() {
 function closePlayFileModal() {
   document.querySelector(".play-file-modal")?.remove();
   document.querySelector(".modal-background")?.remove();
+}
+
+function updateAsideFolderTree(currentFolderPath) {
+  $.ajax({
+    type: "POST",
+    url: "fileControll/asideFolderTree.php",
+    data: { currentFolderPath: currentFolderPath, valid: "yes" },
+    beforeSend: function () {
+      $(".folder-tree-container").html("...");
+    },
+    success: function (response) {
+      $(".folder-tree-container").html(response);
+    },
+  });
 }
