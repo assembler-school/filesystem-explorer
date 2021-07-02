@@ -131,6 +131,27 @@ main {
   border-color: rgb(199, 199, 199);
   z-index: 0;
   font-size: large;
+
+  .folder-tree-root {
+    padding-left: 1rem;
+  }
+  .folder-tree-group {
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+    border-left: solid black 2px;
+  }
+
+  .folder-tree-root li {
+    border-bottom: 0px solid red;
+    padding: 0.8rem 0.2rem;
+    display: flex;
+    align-items: center;
+
+    .folder-icon {
+      width: 30px;
+      margin-right: 1rem;
+    }
+  }
 }
 
 .main-content {

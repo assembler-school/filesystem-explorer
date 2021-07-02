@@ -1,12 +1,12 @@
 <?php
 session_start();
 if (isset($_REQUEST["valid"])) {
-  $folder = $_SESSION["path"];
+  $folder = $_POST["path"];
   $directory = $folder;
   $scanned_directory = array_diff(scandir($directory), array('..', '.'));
 
-  if ($_SESSION['path'] !== '/xampp/htdocs/filesystem-explorer/src/UNIT') {
-    echo '<li class="folder-tree-folder back" data-dir="' . dirname($_SESSION['path'], 1) . '">BACK TO ' . basename($_SESSION['path']) . '</li>';
+  if ($_POST["path"] !== '/xampp/htdocs/filesystem-explorer/src/UNIT') {
+    echo '<li class="folder-tree-folder back" data-dir="' . dirname($_SESSION['path'], 1) . '">BACK</li>';
   }
   foreach ($scanned_directory as $dir) {
     if (is_dir("$directory/$dir")) {

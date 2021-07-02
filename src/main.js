@@ -88,7 +88,7 @@ function selectFolder(path) {
   $.ajax({
     type: "POST",
     url: "fileControll/selectDir.php",
-    data: { valid: "yes" },
+    data: { path: path, valid: "yes" },
     beforeSend: function () {
       $(".main-content-ul").html("Procesando, espere por favor...");
     },

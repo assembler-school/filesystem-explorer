@@ -18,7 +18,7 @@ function iterateDirectorySearch($i, $pattern)
     foreach ($i as $path) {
         if ($path->getFilename() != "..") {
             if (is_dir($path)) {
-                foreach (glob(dirname($path) . DIRECTORY_SEPARATOR . "*$pattern*") as $hit) {
+                foreach (glob(dirname($path) . "/" . "*$pattern*") as $hit) {
                     array_push($hits, $hit);
                     if (is_dir("$hit")) {
                         echo "<li class='folder-tree-folder' data-dir='$hit'><img class='folder-icon' src='img/folder.svg' />" . substr($hit, strlen('/xampp/htdocs/filesystem-explorer/src/') - strlen($hit)) . "</li>";

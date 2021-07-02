@@ -2,7 +2,7 @@
 // error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // error_reporting(0);
 session_start();
-// echo $_SESSION["tmpPath"];
+// echo $_SESSION["path"];
 ?>
 <!DOCTYPE html>
 <html lang="en">

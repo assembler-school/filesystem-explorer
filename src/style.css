@@ -405,19 +405,23 @@ main {
   z-index: 0;
   font-size: large;
 }
-
-.folder-tree-root {
+.folder-tree-container .folder-tree-root {
   padding-left: 1rem;
 }
-.folder-tree-group {
+.folder-tree-container .folder-tree-group {
   padding-left: 0.5rem;
   margin-left: 0.5rem;
-  border-left: solid grey 4px;
+  border-left: solid black 2px;
 }
-
-.folder-tree-root li {
+.folder-tree-container .folder-tree-root li {
   border-bottom: 0px solid red;
   padding: 0.8rem 0.2rem;
+  display: flex;
+  align-items: center;
+}
+.folder-tree-container .folder-tree-root li .folder-icon {
+  width: 30px;
+  margin-right: 1rem;
 }
 
 .main-content {

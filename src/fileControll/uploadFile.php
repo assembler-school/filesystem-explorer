@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
 
     if (!$fileError) {
         if ($fileSize < 1000000) {
-            $fileDestination = $sessionPath . DIRECTORY_SEPARATOR . $fileName;
+            $fileDestination = $sessionPath . "/" . $fileName;
             move_uploaded_file($fileTmpName, $fileDestination);
             $_SESSION["prevPath"] = $_SESSION["path"];
             $_SESSION["fileUploaded"] = true;

@@ -9,10 +9,10 @@ function rrmdir($dir)
     $objects = scandir($dir);
     foreach ($objects as $object) {
       if ($object != "." && $object != "..") {
-        if (is_dir($dir . DIRECTORY_SEPARATOR . $object) && !is_link($dir . "/" . $object))
-          rrmdir($dir . DIRECTORY_SEPARATOR . $object);
+        if (is_dir($dir . "/" . $object) && !is_link($dir . "/" . $object))
+          rrmdir($dir . "/" . $object);
         else
-          unlink($dir . DIRECTORY_SEPARATOR . $object);
+          unlink($dir . "/" . $object);
       }
     }
     rmdir($dir);
