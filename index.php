@@ -89,6 +89,11 @@
         </form>
     </div>
 
+    <!-- Open File render div -->
+    <div class="renderFileContainer">
+        <object class='renderFile' data=""></object>
+    </div>
+    
     <!-- Header section -->
     <header>
         <div class="headerLeft">
