@@ -73,14 +73,11 @@ showSureToRemove();
 function dubleClick(){
     $(".folder").on("dblclick",(e)=>{
         $(".folder").hide();
-        let prevPth=path;
-        // localStorage.setItem("path2",path);
-        
+        let prevPth=path;    
         path = path+"/"+e.target.getAttribute("data");
         localStorage.setItem("path",path);
         $(".newFolderForm form").attr("action",`./dirManege/create.php?path=${path}`)
        
-
         $.ajax({
             url: "./dirContent.php",
             type:"post",
@@ -96,13 +93,4 @@ function dubleClick(){
 
 dubleClick();
  
-// function firstLevel(){
-//     $.ajax({
-//         url: "./dirContent.php",
-//         type:"post",
-//         data:{"path":path},
-//         success: function(response)
-//         {$(".folders").append(response)}
-//     })
-// }
-// firstLevel();
+
