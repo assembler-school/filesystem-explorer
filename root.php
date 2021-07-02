@@ -63,11 +63,7 @@
 
           
 unset($_SESSION["currentPath"]);
-//git pull
-            // if(isset($_GET["currentPath"])){
-            //   echo $_GET["currentPath"];
-            // }
-            
+
             if(!isset($_SESSION["currentPath"])){
               $_SESSION["currentPath"]="./directories";
             }
