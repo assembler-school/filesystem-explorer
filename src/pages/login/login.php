@@ -34,7 +34,7 @@ $alert = revisar_si_existe_sesion();
 			<form action="../../php/login/login.php" method="POST" class="d-flex flex-column gap-3">
 				<div class="logo__wrapper d-flex flex-row justify-content-center align-items-center">
 					<div class="logo__app">
-						<img src="../../../doc/img/RPC-JP_Logo.png" alt="logo">
+						<img src="../../../doc/img/JonathanAndErick_logo.png" alt="logo">
 					</div>
 				</div>
 				<div class="w-100 d-flex justify-content-center pt-2 pb-2 h-100">
@@ -53,7 +53,7 @@ $alert = revisar_si_existe_sesion();
 						<input class="form-control form-control-dark w-100" name="password" type="password" placeholder="Your password..." id="input__password--login" value="">
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary border border-secondary pt-3 pb-3" id="bt__submit--login">Log in</button>
+				<button type="submit" class="btn btn-dark border border-secondary pt-3 pb-3" id="bt__submit--login">Log in</button>
 				<div class="text__password--forgot d-flex flex-row justify-content-start align-items-center">
 					<p class="text-primary">Forgot your password?</p>
 				</div>

@@ -2,7 +2,7 @@
 function createFolderHandler() {
   let formNewFolder = document.getElementById("form-new-folder");
   let state = formNewFolder.style.display;
-  if (state == "none") formNewFolder.style.display = "block";
+  if (state == "none") formNewFolder.style.display = "flex";
   else formNewFolder.style.display = "none";
 }
 document.getElementById("create-folder-btn").addEventListener("click", createFolderHandler);
