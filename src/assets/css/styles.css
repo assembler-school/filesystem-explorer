@@ -1,0 +1,206 @@
+* {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+body {
+  background-color: #2ed297;
+}
+
+.title {
+  margin-top: 30px;
+}
+
+.title img {
+  max-width: 80px;
+  margin-right: 10px;
+}
+
+.title h2 {
+  font-family: "Anton", sans-serif;
+  font-size: 50px;
+  color: white;
+}
+
+.main_container {
+  background-color: white;
+  width: 60%;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 25px;
+  min-width: 600px;
+}
+
+.top_container {
+  padding: 25px;
+}
+
+.btn-search {
+  background-color: #f06543;
+  color: white;
+  margin-left: 10px;
+  width: 150px;
+}
+
+.btn-search:hover {
+  background-color: #ee866c;
+  color: white;
+}
+
+.btn-new-folder {
+  background-color: #2ed297;
+  color: white;
+  margin-left: 10px;
+  width: 190px;
+}
+
+.btn-new-folder:hover {
+  background-color: #6ecfac;
+  color: white;
+}
+
+span {
+  position: absolute;
+  left: 28%;
+  bottom: -2%;
+}
+
+span:hover {
+  -webkit-animation: mymove 3s infinite;
+          animation: mymove 3s infinite;
+}
+
+.custom-file-input {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  background-color: white;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 2px solid #ee866c;
+  text-align: center;
+  outline: none;
+  color: #f06543;
+  font-size: 70px;
+  font-weight: 600;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  cursor: pointer;
+  padding: 0px 3px 50px 3px;
+}
+
+.custom-file-input:hover::before {
+  border-color: #ee866c;
+}
+
+@-webkit-keyframes mymove {
+  50% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+    color: #2ed297;
+  }
+}
+
+@keyframes mymove {
+  50% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+    color: #2ed297;
+  }
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #f06543, #ee866c);
+}
+
+input[value^="+"] {
+  font-size: 80px;
+  color: white;
+}
+
+.current-path {
+  text-decoration: none;
+  font-family: "Anton", sans-serif;
+  font-weight: 300;
+  font-size: 25px;
+  color: #6ecfac;
+}
+
+.current-path:hover {
+  color: #f06543;
+}
+
+.content-container {
+  min-height: 300px;
+}
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+th {
+  color: #f06543;
+  font-family: "Anton", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  border-bottom: 10px solid #6ecfac;
+}
+
+td {
+  font-size: 12px;
+  font-weight: 700;
+  color: #979797;
+}
+
+td .btn-delete-file {
+  color: #f06543;
+  font-size: 16px;
+}
+
+td .btn-delete-file:hover {
+  color: #ee866c;
+}
+
+td .btn-edit-file {
+  color: #2ed297;
+  font-size: 16px;
+}
+
+td .btn-edit-file:hover {
+  color: #6ecfac;
+}
+
+.file-name {
+  font-weight: 700;
+  color: black;
+  font-size: 15px;
+}
+
+.folder-name,
+.fileA {
+  text-decoration: none;
+  color: black;
+}
+
+.folder-name:hover,
+.fileA:hover {
+  color: #2ed297;
+  cursor: pointer;
+}
+
+.fileIcon {
+  color: #f06543;
+}
+
+.width-media {
+  width: 450px;
+}
+/*# sourceMappingURL=styles.css.map */
