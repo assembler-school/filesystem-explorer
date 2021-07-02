@@ -1,3 +1,6 @@
+document.oncontextmenu = function () {
+        return false; 
+}
 $(".optionsMenu").hide();
 $(".newFolderForm").hide();
 $(".closeDiv").hide();
