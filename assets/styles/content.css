@@ -143,3 +143,11 @@ body {
   color: black;
   margin-left: 10px;
 }
+a:hover{
+  color: white;
+  font-weight: bold;
+}
+
+.fileName:hover{
+  font-weight: bold;
+}
