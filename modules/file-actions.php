@@ -39,7 +39,9 @@
         $_SESSION["successMsg"] = "Successfully deleted!";
         header("Location: ../index.php");
     } elseif (isset($_POST["rename"]) && isset($_POST["newName"])) {
-        $newName = str_replace(" ", "_", $_POST["newName"]);
+        $newName = $_POST["newName"];
+        $invalidCharacters = array(".", " ", "/", ",");
+        $newName = str_replace($invalidCharacters, "_", $_POST["newName"]);
         $fileToRename = $_POST["rename"];
         $currentPath = isset($_SESSION["currentPath"]) ? substr($_SESSION["currentPath"], 1)  : "./";
         $fullPath = "../root/" . $currentPath . "/" . $fileToRename;
