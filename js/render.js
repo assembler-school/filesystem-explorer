@@ -18,11 +18,14 @@ $("#closeCreateFolderBtn").on("click", hideCreateFolderForm);
 // $(".renderOptions").on("click", showFileDirOptions);
 // $("#newOptionsPanelBackground").on("click", hideFileDirOptions);
 
-// Render Rename form
+// Rename form panel
 $(".bi-pencil-square").on("click", showRenameForm);
 $("#createFolderBackground").on("click", hideRenameForm);
 $("#closeRenameFolderBtn").on("click", hideRenameForm);
 $("#cancelRenameBtnForm").on("click", hideRenameForm);
+
+// OpenFile panel
+$("#createFolderBackground").on("click", hideOpenFile);
 
 // -------- Render Functions -----------
 function showNewOptions(event) {
@@ -79,6 +82,10 @@ function hideRenameForm() {
   $("#createFolderBackground").hide();
 }
 
+function hideOpenFile() {
+  $(".renderFileSection").hide();
+  $("#createFolderBackground").hide();
+}
 // --------- Other functions --------------
 // function getWindowXY(event) {
 //   relativeX = event.pageX;

@@ -153,11 +153,18 @@
 
                 echo "
                 <div class='mainLeft__container'>
-                        <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$dirPath."/".$fileName."'>"
-                            .$icon.
-                            "<div class='mainLeft__fileName'>".$fileName."</div>
-                        </a>
-                    </div>
+                    <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$dirPath."/".$fileName."'>"
+                        .$icon.
+                        "<div class='mainLeft__fileName'>".$fileName."</div>
+                    </a>
+                </div>
+                ";
+                "<div class='mainLeft__container'>
+                    <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$dirPath."/".$fileName."'>
+                        <div class='mainLeft__fileIcon'><i class='bi bi-folder-fill'></i></div>
+                        <div class='mainLeft__fileName'>".$fileName."</div>
+                    </a>
+                </div>
                 ";
 
             }else{

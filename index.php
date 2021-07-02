@@ -90,10 +90,18 @@
     </div>
 
     <!-- Open File render div -->
-    <div class="renderFileContainer">
-        <object class='renderFile' data=""></object>
-    </div>
-    
+    <section class="renderFileSection">
+        <div class="renderFileContainer">
+            <img id="renderImg"class="renderFile" src="">
+            <!-- <audio id="renderAudio"class="renderFile" controls>
+                <source src="" type="audio/mpeg">
+            </audio> -->
+            <video id="renderVideo"class="renderFile" controls>
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
     <!-- Header section -->
     <header>
         <div class="headerLeft">
@@ -200,6 +208,7 @@
     <script type="text/javascript" src="./js/render.js"></script>
     <script type="text/javascript" src="./js/formValidation.js"></script>
     <script type="text/javascript" src="./js/fuctionOnClick.js"></script>
+    <script type="text/javascript" src="./js/functionOnDblCick.js"></script>
     
 </body>
 </html>

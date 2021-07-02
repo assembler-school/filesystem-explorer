@@ -6,7 +6,7 @@ function handleEvents() {
   /* Click event */
 
   document.addEventListener("click", (e) => {
-    console.log("estoy dentro pero no hago el click");
+    //     console.log("estoy dentro pero no hago el click");
     if (e.target.matches(".clickMe>*")) {
       var prueba = e.target.dataset.id;
       var formId = new FormData();
@@ -21,7 +21,7 @@ function handleEvents() {
         contentType: false,
         processData: false,
         success: function (data) {
-          console.log(data);
+          // console.log(data);
           if (data === null) {
           } else {
             //$("#name").remove();

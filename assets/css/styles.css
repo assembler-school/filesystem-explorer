@@ -3,7 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   /*outline: 1px solid;*/
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 14px;
 }
 
@@ -253,7 +253,6 @@ main {
   justify-content: center;
   width: 100%;
   padding: 1rem 1.8rem;
-  
 }
 .icon__delete {
   display: flex;
@@ -345,7 +344,7 @@ main {
   box-shadow: 6px 3px 20px 0px rgb(65, 64, 64);
 }
 
-.invisibleInput{
+.invisibleInput {
   display: none;
 }
 
@@ -422,10 +421,35 @@ hr {
   flex: 10 10 auto;
 }
 
-.space{
+.space {
   padding: 0.8rem;
 }
 
-.clickMe{
+.clickMe {
   padding: 0.8rem;
+}
+
+.renderFileSection {
+  display: none;
+}
+.renderFileContainer {
+  margin: 0 auto 0 0;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  /* top: 50%;
+  left: 50%; */
+  z-index: 1;
+  width: 600px;
+  height: auto;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.renderFile {
+  width: 100%;
+  height: inherit;
+  border-radius: 20px;
 }
