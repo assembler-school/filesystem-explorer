@@ -18,6 +18,7 @@
 - [Resources](#resources)
 - [TODO](#todo)
 - [Bugs](#bugs)
+- [Contributors](#contributors)
 
 ## Requirements
 
@@ -135,13 +136,15 @@ repo
 - Delete all/some files using checkboxes.
 - Support more file extensions (icons).
 - Label files and filter them.
+- Responsive design.
 
 ## Bugs 🚨
 
 - Reading whitespaces.
 - Small jump when in root folder.
 
-## Contributors ✨ <!-- omit in toc -->
+## Contributors ✨ 
 
 👤 [Hugo Duran](https://github.com/Hugo05Duran)
+
 👤 [Ricard Garcia](https://github.com/Ricard-Garcia)
