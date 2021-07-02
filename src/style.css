@@ -295,6 +295,7 @@
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: "IBM Plex Serif", serif;
 }
 
 html {
@@ -312,7 +313,7 @@ header {
   display: flex;
   flex-direction: column;
   height: 10%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem 0 1rem;
   background-color: #ffffff;
   border-width: 0px 0px 2px 0px;
   border-style: solid;
@@ -344,7 +345,7 @@ header .main-header .search-bar #search-bar {
   outline: none;
   margin: 0px;
   padding: 0px;
-  font-size: x-large;
+  font-size: large;
 }
 header .main-header .search-bar #search-bar::placeholder {
   color: black;
@@ -371,6 +372,23 @@ header .main-header .actions .circle-icon:hover {
   background-color: #1b8ddf8a;
 }
 
+.subheader {
+  display: flex;
+  height: 100%;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+.subheader .subheader-path {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  border-style: solid;
+  border-color: black;
+  border-top: 2px;
+  border-bottom: 2px;
+  border-left: 2px;
+}
+
 main {
   display: flex;
 }
@@ -384,7 +402,7 @@ main {
   border-style: solid;
   border-color: #c7c7c7;
   z-index: 0;
-  font-size: x-large;
+  font-size: large;
 }
 
 .folder-tree-root {
@@ -406,7 +424,7 @@ main {
   left: 20%;
   width: 80%;
   height: 90%;
-  font-size: x-large;
+  font-size: large;
 }
 
 .file-info-container {
@@ -479,6 +497,7 @@ button {
   background-color: white;
   border-radius: 2rem;
   border: 2px solid black;
+  font-size: large;
 }
 
 button:hover {

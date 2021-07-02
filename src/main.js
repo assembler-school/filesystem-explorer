@@ -104,9 +104,16 @@ function updatePath(path) {
     data: { path: path, valid: "yes" },
     success: function (response) {
       $(".subheader").html("");
-      let splited = response.split("/");
+      const a = "/xampp/htdocs/filesystem-explorer/src/";
+
+      const b = response;
+
+      const diff = (diffMe, diffBy) => diffMe.split(diffBy).join("");
+
+      const c = diff(b, a);
+      let splited = c.split("/");
       splited.forEach((i) => {
-        $(".subheader").append(" &#11166; " + i);
+        $(".subheader").append('<div class="subheader-path">' + i + "</div>");
       });
     },
   });
