@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_GET['path'])) {
+if (isset($_GET['path']) && str_starts_with($_GET['path'], './root')) {
   $_SESSION['currentPath'] = $_GET['path'];
 }
 
