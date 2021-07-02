@@ -51,21 +51,13 @@
             </button>
         </div>
         <hr>
-        <div id="uploadFolder" class="optionWrapper">
-            <div class="optionIconWrapper">
-                <i class="bi bi-upload"></i>
-            </div>
-                <span>Upload Folder</span>
-        </div>
         <div id="uploadFile" class="optionWrapper"> 
             <form action="./includes/uploadFile.php" method="POST" enctype="multipart/form-data">
-                <input type="file" name="file">
-                <button class="panelBtn" type="submit" name="submit">
+                <input id="idinput" type="file" name="file" onchange="form.submit()" style="display: none">
                     <div class="optionIconWrapper">
                         <i class="bi bi-upload"></i>
                     </div>
-                    <span>Upload File</span>
-                </button>
+                    <label for="idinput" >Upload File</label>
             </form>
         </div>
     </div>
@@ -122,11 +114,6 @@
                 ?>
                                 
             </div>
-            <hr>
-            <div class ='fileWrapperDelete'>
-                <a class='renderUpdateLink' href='./includes/manageDirItems.php?updateDir'>
-                <i class="bi bi-trash2-fill"></i><div class='mainCenter__fileName'>Delete</div></a>
-            </div>
         </section>
         <section class="mainCenter">
             <div class ='mainCenter__route'>
@@ -145,31 +132,37 @@
         </section>
         <section class="mainRight">
             <div class="mainRight__fileHeader">
-                <div class="mainRight__fileIcon"><i class="" id="icon"></i></div>
-                <div class="mainRight__fileName" id="titleName"></div>
+                <div class="mainRight__fileIcon" id="containerTitle"><i id="iconTitle" class="bi bi-server"></i></div>
+                <div class="mainRight__fileName" id="titleName">My Unity</div>
             </div>
             <hr class="mainRight__hr">
-            <div class="fileInfoContainer">
-            <div class="fileInfoWrapper">
-                    <div class="label"> Name: </div>
+            <div class="fileInfoContainer" style="display:none" id="container">
+                <div class="fileInfoWrapper">
+                    <div class="label" id="labelName" style="display:none"> Name: </div>
                     <div class="labelType" id="name"></div>
                 </div>
                 <div class="fileInfoWrapper">
-                    <div class="label"> Creation date: </div>
+                    <div class="label" id="labelCreate" style="display:none"> Creation date: </div>
                     <div class="labelType" id="dateCreation"></div>
                 </div>
                 <div class="fileInfoWrapper">
-                    <div class="label"> Modification date: </div>
-                    <div class="labelType" id="modification"></div>
+                    <div class="label" id="labelModification" style="display:none"> Modification date: </div>
+                    <div class="labelType" id="modification" style="display:none"></div>
                 </div>
                 <div class="fileInfoWrapper">
-                    <div class="label" id="labelSize"> Size: </div>
+                    <div class="label" id="labelSize" style="display:none"> Size: </div>
                     <div class="labelType"  id="size"></div>
                 </div>
                 <div class="fileInfoWrapper">
-                    <div class="label" id="labelExtension"> Extension: </div>
+                    <div class="label" id="labelExtension" style="display:none"> Extension: </div>
                     <div class="labelType"  id="extension"></div>
                 </div>
+            </div>
+            <div class="fileInfoContainer2" id="infoContainer">
+              
+                <i class="bi bi-chat-square-text-fill"></i>
+                <p>Aún no tienes ningún elemento seleccionado, para saber su información, debes seleccionarlo.</p>
+             
             </div>
         </section>
     </main>

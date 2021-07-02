@@ -131,10 +131,10 @@ main {
   display: none;
   padding: 0.2rem 0.8rem;
   position: absolute;
-  top: 6.4%;
-  left: 1%;
+  top: 17%;
+  left: 8%;
   z-index: 1;
-  width: 18%;
+  width: 26%;
   height: auto;
   background-color: white;
   border-radius: 5px;
@@ -384,11 +384,18 @@ hr {
 }
 .fileInfoContainer {
   padding: 1rem;
-
   width: 100%;
   height: calc(100% - 20px);
 }
-
+.fileInfoContainer2 {
+  padding: 1rem;
+  width: 100%;
+  height: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
 .fileInfoWrapper {
   display: flex;
   flex-direction: row;
