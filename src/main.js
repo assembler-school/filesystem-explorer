@@ -1,5 +1,7 @@
 targetClassName = "";
 targetIdName = "";
+basePath = "/xampp/htdocs/filesystem-explorer/src/UNIT";
+selectFolder(basePath);
 
 $(document).on("click", (e) => {
   targetClassName = e.target.className;
@@ -86,7 +88,7 @@ function selectFolder(path) {
   $.ajax({
     type: "POST",
     url: "fileControll/selectDir.php",
-    data: { folder: path, valid: "yes" },
+    data: { valid: "yes" },
     beforeSend: function () {
       $(".main-content-ul").html("Procesando, espere por favor...");
     },

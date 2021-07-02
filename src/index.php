@@ -62,7 +62,7 @@ session_start();
             <button class="but edit"><img id="edit-folder" src="img/editFolder.svg" class="context-menu-icon" /></button>
             <button class="but delete"><img id="delete-folder" src="img/deleteFolder.svg" class="context-menu-icon" /></button>
           </div>
-          <div class="overlap">&#x2190;</div>
+          <div class="overlap"><img src="img/close.svg" class="context-menu-icon" /></div>
         </div>
       </div>
     </div>
@@ -116,10 +116,6 @@ if (isset($_SESSION["fileUploaded"])) {
   <div class="modal-background"></div>
   <div class="modal edit-folder-modal">
     <h2>EDIT FOLDER NAME</h2>
-    <div style="display: flex;">
-      <h4>Location: </h4>
-      <p id="session-path"></p>
-    </div>
     <form type="post" action="fileControll/editFolder.php">
       <input id="edit-folder-name" type="text" placeholder="" required />
       <button type="submit" id="edit-folder-btn">EDIT FOLDER NAME</button>
