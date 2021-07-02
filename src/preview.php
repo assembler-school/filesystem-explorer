@@ -46,10 +46,7 @@ if (isset($_GET['n'])) {
 
   function object($currentObject)
   {
-    echo "<object width='854' height='480' controls data='" . $currentObject . "'>";
-    echo "<script>alert('$currentObject')</script>";
-    echo "type='video/mp4'>
-      </object>";
+    echo "<object width='854' height='480' controls data='" . $currentObject . "'></object>";
   }
 
 
@@ -61,10 +58,12 @@ if (isset($_GET['n'])) {
       audio($currentElement);
     } elseif ($ext == "csv") {
       csvPre($currentElement);
-    } elseif(in_array($ext, $objectExt)) {
+    } elseif (in_array($ext, $objectExt)) {
       object($currentElement);
     } else {
       echo "Cannot preview this extension: $ext";
     }
+  } else {
+    echo "Cannot preview this file, not extension found";
   }
 }
