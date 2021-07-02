@@ -12,6 +12,9 @@ body {
 #directories,
 #files {
   cursor: pointer;
+  padding-left: 10px;
+  width: 200px;
+  border-radius: 5px 25px 25px 5px;
 }
 
 .active {
@@ -20,10 +23,23 @@ body {
 }
 
 .folder {
-  background-color: grey;
   border-radius: 4px 18px 4px 4px;
-  height: 80px;
+  height: 92px;
   width: 140px;
+  background-image: url("../img/folder_grey.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5px;
+}
+
+.folder p {
+  padding: 5px;
+}
+
+.folderLink {
+  padding: 5px;
+  text-decoration: none;
+  color: white;
 }
 
 .file {
@@ -111,4 +127,18 @@ body {
 
 .hidden {
   display: none;
+}
+
+.plus:after {
+  content: "+";
+  font-size: 25px;
+  color: black;
+  margin-left: 5px;
+}
+
+.minus:after {
+  content: "-";
+  font-size: 25px;
+  color: black;
+  margin-left: 5px;
 }

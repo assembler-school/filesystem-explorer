@@ -67,12 +67,12 @@ include_once './src/fillContent.php';
 
   <main class="mx-4">
     <?php require_once('./src/search.php'); ?>
-    <div id='directories' class="my-3 fs-4">Directories</div>
+    <div id='directories' class="my-3 fs-4 bg-light text-dark minus">Directories</div>
     <!-- folder container -->
     <div class="flex-wrap active" id="directories-collapse">
       <?php require_once('./src/fillContentDirectories.php'); ?>
     </div>
-    <div id="files" class="my-3 fs-4 minus">Files</div>
+    <div id="files" class="mb-3 mt-4 fs-4 bg-light text-dark minus">Files</div>
     <!-- files container -->
     <div class="flex-wrap active" id="files-collapse">
       <?php require_once('./src/fillContentFiles.php'); ?>
