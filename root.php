@@ -62,7 +62,7 @@
         <?php
 
           
-//unset($_SESSION["currentPath"]);
+unset($_SESSION["currentPath"]);
 //git pull
             // if(isset($_GET["currentPath"])){
             //   echo $_GET["currentPath"];
