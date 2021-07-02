@@ -29,15 +29,18 @@ if (isset($_GET['n'])) {
 
   function csvPre($currentCSV)
   {
-    echo "<div>";
     $handle = fopen("../" . $currentCSV, 'r');
-    while (($data = fgetcsv($handle)) !== FALSE) {
-      foreach ($data as $d) {
-        echo "<p>$d</p>";
-      };
+    echo '<table class="table table-dark table-bordered">';
+    echo '<tbody>';
+    while ($row = fgetcsv($handle)) {
+      echo '<tr>';
+      foreach ($row as $value) {
+        echo "<td>$value</td>";
+      }
+      echo '</tr>';
     }
-
-    fclose("../" . $currentCSV);
+    echo '</tbody></table>';
+    fclose($handle);
   }
 
   function object($currentObject)

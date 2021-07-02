@@ -23,7 +23,7 @@ if ($files) {
       <div class='file-top' title='$fileName'>
       <i class='d-flex justify-content-center fad fa-$fileIcon fa-5x' title='$fileName'></i>
       </div>
-      <div class='file-bottom' title='$fileName'>
+      <div class='file-bottom rounded' title='$fileName'>
         <p class='mx-1 my-0 d-flex justify-content-center' title='$fileName'>$shortFileName</p>
         <p class='mx-1 my-0 d-flex justify-content-end' title='$fileName'>$fileSize</p>
       </div>

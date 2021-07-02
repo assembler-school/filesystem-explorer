@@ -1,6 +1,6 @@
 <!-- Preview Modal -->
 <div class='position-fixed vw-100 vh-100 bg-dark modal-shadow hidden' id='shadowPreview'></div>
-<div class='modal-form modal-form-preview position-fixed p-3 rounded bg-secondary hidden' id='formPreview'>
+<div class='modal-form modal-form-preview position-fixed p-3 rounded bg-secondary hidden overflow-auto' id='formPreview'>
     <div class="d-flex space-between justify-content-between">
         <h3 class='text-white' id="mediaTitle">Preview</h3>
         <svg class='text-white btn-x' role='img' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
@@ -8,6 +8,6 @@
         </svg>
     </div>
     <hr class='text-white' />
-    <div class="d-flex justify-content-center h-100" id="previewContainer">
+    <div class="d-flex justify-content-center" id="previewContainer">
     </div>
 </div>
