@@ -41,7 +41,7 @@ function putListenersOnseacrhText() {
     element.addEventListener("click", openModal);
   });
 
-  console.log("hola?");
+  // console.log("hola?");
 }
 
 function openModal() {
@@ -107,4 +107,12 @@ function openModal() {
     btnCloseModal.addEventListener("click", closeModal);
     // console.log(mySource);
   }
+
+  function closeModal() {
+    let myModalSection = document.getElementById("section_modal");
+    let myChilds = myModalSection.querySelector("div");
+    myModalSection.style.display = "none";
+    myModalSection.removeChild(myChilds);
+  }
 }
+

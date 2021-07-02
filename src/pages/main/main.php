@@ -120,7 +120,7 @@ revisar_si_existe_sesion();
 					</form>
 				</div>
 				<div class="btn__toolbar mb-md-0 d-flex flex-row justify-content-end align-items-between h-100 gap-3 w-100">
-					<div id="my_info--container" class="d-flex flex-row justify-content-between align-items-center gap-3 my_info--container">
+					<div id="my_info--container" class="d-flex flex-row justify-content-between align-items-start gap-3 my_info--container">
 					</div>
 				</div>
 			</nav>
