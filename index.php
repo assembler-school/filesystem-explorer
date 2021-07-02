@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if (isset($_GET['path'])) {
   $_SESSION['currentPath'] = $_GET['path'];

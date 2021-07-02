@@ -9,6 +9,7 @@ if (isset($_GET['n'])) {
   $currentElement = $currentPath . "/" . $_GET['n'];
   $videoExt = array("mp4", "avi", "mov", "wmv", "flv", "mkv", "webm");
   $audioExt = array("mp3", "aac", "ogg", "wav", "flac", "alac", "aiff");
+  $objectExt = ['pdf', 'jpg', 'jpeg', 'png', 'txt'];
 
   function video($currentVideo)
   {
@@ -60,10 +61,10 @@ if (isset($_GET['n'])) {
       audio($currentElement);
     } elseif ($ext == "csv") {
       csvPre($currentElement);
-    } else {
+    } elseif(in_array($ext, $objectExt)) {
       object($currentElement);
+    } else {
+      echo "Cannot preview this extension: $ext";
     }
-  } else {
-    object($currentElement);
   }
 }
