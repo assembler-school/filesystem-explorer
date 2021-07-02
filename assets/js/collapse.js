@@ -6,12 +6,16 @@ const filesContent = document.getElementById("files-collapse");
 directoriesTitle.addEventListener("click", function () {
   if (directoriesContent.classList.contains("hidden")) {
     directoriesContent.classList.toggle("hidden");
+    directoriesTitle.classList.add("minus");
+    directoriesTitle.classList.remove("plus");
     let opacityTime = setTimeout(function () {
       directoriesContent.style.opacity = "1";
       clearTimeout(opacityTime);
     }, 200);
   } else {
     directoriesContent.style.opacity = "0";
+    directoriesTitle.classList.remove("minus");
+    directoriesTitle.classList.add("plus");
     let opacityTime = setTimeout(function () {
       directoriesContent.classList.toggle("hidden");
       clearTimeout(opacityTime);
@@ -22,16 +26,16 @@ directoriesTitle.addEventListener("click", function () {
 filesTitle.addEventListener("click", function () {
   if (filesContent.classList.contains("hidden")) {
     filesContent.classList.toggle("hidden");
-    filesTitle.classList.remove("minus");
-    filesTitle.classList.add("plus");
+    filesTitle.classList.add("minus");
+    filesTitle.classList.remove("plus");
     let opacityTime = setTimeout(function () {
       filesContent.style.opacity = "1";
       clearTimeout(opacityTime);
     }, 200);
   } else {
     filesContent.style.opacity = "0";
-    filesTitle.classList.add("minus");
-    filesTitle.classList.remove("plus");
+    filesTitle.classList.remove("minus");
+    filesTitle.classList.add("plus");
     let opacityTime = setTimeout(function () {
       filesContent.classList.toggle("hidden");
       clearTimeout(opacityTime);

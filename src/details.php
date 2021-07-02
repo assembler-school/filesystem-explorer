@@ -9,7 +9,7 @@ include_once 'fillContent.php';
 if (isset($_GET['n'])) {
     $currentElement = $currentPath . "/" . $_GET['n'];
 
-    echo "<p><strong>Name: </strong>";
+    echo "<p class='text-break'><strong>Name: </strong>";
     echo basename($currentElement);
     echo "</p>
         <p><strong>Creation date: </strong>";
