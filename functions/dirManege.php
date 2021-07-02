@@ -62,6 +62,7 @@
       
       // $_SESSION["dirs"]=$dirs;
       foreach($dirs as $item){
+        if(is_dir("$actualPath/$item")){
         $id=rand(1,10000);
         echo "<div data='$item' id='$id' class='folder'>";
         echo "<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(238, 211, 163)' class='bi bi-folder' viewBox='0 0 16 16'>
@@ -75,8 +76,23 @@
         echo "</li>";
         echo "</ul>";
         echo "</div>";
+        }else{
+          $id=rand(1,10000);
+          echo "<div data='$item' id='$id' class='folder'>";
+          echo "<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='blue' class='bi bi-file-earmark-fill' viewBox='0 0 16 16'>
+          <path d='M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z'/>
+          </svg>";
+          echo nl2br("\n $item\n");
+          echo "<ul class='deleteEditOp' style='display: none;'>";
+          echo "<li id='delete' class=OpEditDel><button id='$id' class='btn btn-outline-secondary'>Delete</button>";
+          echo "</li>";
+          echo "<li id='edit' class=OpEditDel><button data='$item' class='btn btn-outline-secondary'>Edit</button>";
+          echo "</li>";
+          echo "</ul>";
+          echo "</div>";
+
         }; 
     }
-
+  }
   
 
