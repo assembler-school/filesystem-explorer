@@ -27,7 +27,7 @@ $(document).mousedown(function (e) {
   }
 });
 $(".rightClick .overlap").click(function () {
-  history.back(1); // To go back
+  // history.back(1); // To go back
   $(".showVal1").text("Back Button Pressed");
 });
 $(".rightClick .new").click(function () {
