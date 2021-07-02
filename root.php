@@ -62,7 +62,7 @@
         <?php
 
           
-unset($_SESSION["currentPath"]);
+//unset($_SESSION["currentPath"]);
 
             if(!isset($_SESSION["currentPath"])){
               $_SESSION["currentPath"]="./directories";
