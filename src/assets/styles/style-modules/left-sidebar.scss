@@ -1,0 +1,22 @@
+// Directories' tree
+.sidebar-left {
+  .dir {
+    margin: 0;
+    color: black;
+    text-decoration: none;
+  }
+
+  .dir-child {
+    margin-left: 20px;
+  }
+
+  .dir-link:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: gray;
+  }
+
+  .current-dir {
+    font-weight: bold;
+  }
+}
