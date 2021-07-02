@@ -7,7 +7,7 @@ if (isset($_POST["callFunc1"])) {
 function my_ajax_function_from_js($data_from_function)
 {
   if (isset($_COOKIE["gfg"])) {
-    echo "<div class= 'd-flex flex-column justify-content-between align-items-end h-100'>" .
+    echo "<div class= 'd-flex flex-column justify-content-between align-items-start h-100'>" .
       "<h6> Last modified on " .
       date("Y-m-d", filemtime($_COOKIE["gfg"])) .
       "</h6>" .
