@@ -81,8 +81,9 @@ header {
       justify-content: flex-end;
 
       .circle-icon {
-        width: 3rem;
         display: flex;
+        width: 3rem;
+        height: 3rem;
         justify-content: center;
         align-items: center;
         border: 2px solid black;
@@ -92,7 +93,7 @@ header {
       }
 
       .circle-icon:hover {
-        background-color: colors.$blue;
+        background-color: colors.$gray;
       }
     }
   }
@@ -138,6 +139,21 @@ main {
   width: 80%;
   height: 90%;
   font-size: large;
+
+  .main-content-ul {
+    list-style: none;
+
+    & > li {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid colors.$gray;
+
+      .folder-icon {
+        width: 30px;
+        margin-right: 1rem;
+      }
+    }
+  }
 }
 
 .file-info-container {
@@ -184,14 +200,6 @@ main {
   }
 }
 
-.main-content-ul {
-  list-style: none;
-
-  & > li {
-    border-bottom: 1px solid colors.$gray;
-  }
-}
-
 ul {
   list-style: none;
 }
@@ -219,5 +227,5 @@ button {
 }
 
 button:hover {
-  background-color: colors.$blue;
+  background-color: colors.$gray;
 }

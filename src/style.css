@@ -3,7 +3,7 @@
 }
 
 .back {
-  background-color: #4b9eda8a;
+  background-color: #dadada;
 }
 .back:hover {
   background-color: #1b8ddf8a;
@@ -359,8 +359,9 @@ header .main-header .actions {
   justify-content: flex-end;
 }
 header .main-header .actions .circle-icon {
-  width: 3rem;
   display: flex;
+  width: 3rem;
+  height: 3rem;
   justify-content: center;
   align-items: center;
   border: 2px solid black;
@@ -369,7 +370,7 @@ header .main-header .actions .circle-icon {
   margin-right: 0.5rem;
 }
 header .main-header .actions .circle-icon:hover {
-  background-color: #1b8ddf8a;
+  background-color: #dadada;
 }
 
 .subheader {
@@ -412,6 +413,18 @@ main {
   height: 90%;
   font-size: large;
 }
+.main-content .main-content-ul {
+  list-style: none;
+}
+.main-content .main-content-ul > li {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #dadada;
+}
+.main-content .main-content-ul > li .folder-icon {
+  width: 30px;
+  margin-right: 1rem;
+}
 
 .file-info-container {
   position: absolute;
@@ -453,13 +466,6 @@ main {
   font-family: "Courier New", Courier, monospace;
 }
 
-.main-content-ul {
-  list-style: none;
-}
-.main-content-ul > li {
-  border-bottom: 1px solid #dadada;
-}
-
 ul {
   list-style: none;
 }
@@ -487,7 +493,7 @@ button {
 }
 
 button:hover {
-  background-color: #1b8ddf8a;
+  background-color: #dadada;
 }
 
 /*# sourceMappingURL=style.css.map */
