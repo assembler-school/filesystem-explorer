@@ -1,8 +1,3 @@
-<!-- <div class="folder d-flex flex-column justify-content-end mx-2 p-1" title="Long Folder name 123123 123123 123123 12312.txt">
-        <p class="m-0">Long Folder name 12...</p>
-        <p class="m-0">Items: 0</p>
-      </div> -->
-
 <?php
 require_once('./src/fillContent.php');
 
