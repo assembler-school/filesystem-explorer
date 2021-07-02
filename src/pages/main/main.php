@@ -275,7 +275,7 @@ revisar_si_existe_sesion();
 
 	<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-	<script type="module" src="../../javascript/modal-play.js"></script>
+	<script src="../../javascript/modal-play.js"></script>
 	<script src="../../javascript/show-files.js"></script>
 	<script src="../../javascript/new-folder-handler.js"></script>
 	<script src="../../javascript/context-menu-handler.js"></script>

@@ -16,7 +16,6 @@ function handle_change_input() {
     type: "post",
     data: { inputSearch: searchBarInputValue },
     success: function (response) {
-      // console.log(response);
       searchBarInputContainer.innerHTML = response;
       putListenersOnseacrhText();
     },
@@ -40,8 +39,6 @@ function putListenersOnseacrhText() {
   mySearListening.forEach((element) => {
     element.addEventListener("click", openModal);
   });
-
-  // console.log("hola?");
 }
 
 function openModal() {
@@ -63,7 +60,6 @@ function openModal() {
     myModalSection.append(templateClone);
     let btnCloseModal = document.getElementById("btnCloseModal");
     btnCloseModal.addEventListener("click", closeModal);
-    // console.log(mySource);
 
     let my_source_container = document.getElementById("video_source");
     my_source_container.setAttribute("src", mySource);
@@ -77,7 +73,6 @@ function openModal() {
     myModalSection.append(templateClone);
     let btnCloseModal = document.getElementById("btnCloseModal");
     btnCloseModal.addEventListener("click", closeModal);
-    // console.log(mySource);
 
     let my_source_container = document.getElementById("sound_source");
     my_source_container.setAttribute("src", mySource);
@@ -93,7 +88,6 @@ function openModal() {
     myModalSection.append(templateClone);
     let btnCloseModal = document.getElementById("btnCloseModal");
     btnCloseModal.addEventListener("click", closeModal);
-    // console.log(mySource);
 
     let my_source_container = document.getElementById("img_source");
     my_source_container.setAttribute("src", mySource);
@@ -105,7 +99,6 @@ function openModal() {
     myModalSection.append(templateClone);
     let btnCloseModal = document.getElementById("btnCloseModal");
     btnCloseModal.addEventListener("click", closeModal);
-    // console.log(mySource);
   }
 
   function closeModal() {

@@ -5,7 +5,6 @@ window.onload = function() {
 	let myFilesListening_information =
 		file_information.querySelectorAll(".get_info_file");
 
-		// console.log(myFilesListening_information);
 
 	myFilesListening_information.forEach((element) => {
 		element.addEventListener("click", read_file_information);

@@ -137,16 +137,6 @@ function directoryIterator($dir)
       continue;
     }
     if (is_file($dir . "/" . $fileInfo)) {
-      // $n_files += 1;
-      // $name_file = strstr($fileInfo, ".", true);
-      // $complete_path = $fileInfo->getPath() . "/" . $fileInfo;
-      // $server_path = "http://localhost/filesystem-explorer/" . strstr($complete_path, "root");
-
-      // $extension_file = strstr($fileInfo, ".");
-      // $new_extension_file = check_extension_file($extension_file);
-
-      // create_div_template($name_file, $new_extension_file, $complete_path , $server_path);
-      // echo $fileInfo;
       $n_files += 1;
       $name_file = $fileInfo;
       $extension_file = strstr($fileInfo, ".");
@@ -218,21 +208,6 @@ function read_local_files()
     $local_dir =
       "C:/xampp\htdocs/filesystem-explorer/root/" . $sesion_name . "__trash";
   }
-
-  // $files = clean_scandir($local_dir);
-
-  // $n_files = 0;
-  // foreach ($files as $dir) {
-  //   if (is_file($local_dir . "/" . $dir)) {
-  //     $n_files += 1;
-  //     $name_file = $dir;
-  //     $extension_file = strstr($dir, ".");
-  //     $img_extension = check_extension_file($extension_file);
-
-  //     create_div_template($name_file, $img_extension, -1);
-  //   }
-  // }
-  // if ($n_files == 0) echo "<div>There is any file</div>";
 
   directoryIterator($local_dir);
 }

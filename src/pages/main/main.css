@@ -1,8 +1,6 @@
-/* @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro); */
 @import url(https://fonts.googleapis.com/css2?family=Poppins&display=swap);
 
 * {
-  /* outline: 1px solid rgb(168, 168, 168); */
   box-sizing: border-box;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
@@ -78,7 +76,6 @@ input:focus {
   background-color: rgb(255, 255, 255);
   border-radius: 50px;
   object-fit: cover;
-  /* border: 1px solid rgb(187, 255, 0); */
 }
 
 .profile_picture img {
