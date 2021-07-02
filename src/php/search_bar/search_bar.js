@@ -108,11 +108,3 @@ function openModal() {
     // console.log(mySource);
   }
 }
-
-// Show files according to the folder selected in main.
-for (let i = 0; i < document.getElementsByClassName("item-folder").length; i++) {
-  document.getElementsByClassName("item-folder")[i].addEventListener("click", function () {
-    let folderId = this.getAttribute("value");
-    window.location = `${window.location.pathname}?folder-id=${folderId}`;
-  });
-}

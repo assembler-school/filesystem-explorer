@@ -63,7 +63,7 @@ revisar_si_existe_sesion();
 	</header>
 	<main class="main__container">
 		<aside class="d-flex flex-column justify-content-between">
-			<section id="menu" class="p-2 overflow-auto border-bottom h-100">
+			<section id="menu" class="p-2 overflow-auto border-bottom">
 				<?php
 				require_once "../../php/local_files/local_files_control.php";
 				folders_init();
@@ -105,9 +105,12 @@ revisar_si_existe_sesion();
 					<button id="create-folder-btn" class="btn btn-light border border-secondary">
 						Create folder
 					</button>
-					<button class="btn btn-light border border-secondary">
+					<input id="upload-file-input" type="file" name="upload-file-input" style="display: none;" data-folder="<?php
+																																																									if (isset($_GET["folder-id"])) echo $_GET["folder-id"];
+																																																									else echo "0"; ?>" />
+					<label for="upload-file-input" class="btn btn-light border border-secondary d-flex justify-content-center align-items-center">
 						Upload file
-					</button>
+					</label>
 				</div>
 				<div class="d-flex flex-row justify-content-start h-100 btn__toolbar--form">
 					<form id="form-new-folder" class="ms-3 mb-2 justify-content-start align-items-between gap-3 h-100 w-100" method="post" action="../../php/local_files/new_folder.php" style="display: none;">
@@ -278,6 +281,7 @@ revisar_si_existe_sesion();
 	<script src="../../javascript/context-menu-handler.js"></script>
 	<script src="../../php/search_bar/search_bar.js"></script>
 	<script src="../../javascript/navbar_information.js"></script>
+	<script src="../../javascript/upload-file-handler.js"></script>
 </body>
 
 </html>
