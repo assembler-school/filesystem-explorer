@@ -30,7 +30,7 @@ function handleDblClickEvents() {
               $("#renderAudio").hide();
               $("#renderVideo").hide();
               $("#renderImg").show();
-            } else if (data.extension == "mp3") {
+            } else if (data.extension === "mp3") {
               $(".renderFileSection").show();
               $("#createFolderBackground").show();
               $("#renderAudio").children()[0].attributes[0].value =
@@ -39,7 +39,7 @@ function handleDblClickEvents() {
               $("#renderVideo").hide();
               $("#renderAudio").show();
 
-            } else if (data.extension == "mp4") {
+            } else if (data.extension === "mp4") {
 
               $(".renderFileSection").show();
               $("#createFolderBackground").show();

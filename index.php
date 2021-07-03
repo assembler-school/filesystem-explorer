@@ -93,9 +93,9 @@
     <section class="renderFileSection">
         <div class="renderFileContainer">
             <img id="renderImg"class="renderFile" src="">
-            <!-- <audio id="renderAudio"class="renderFile" controls>
+            <audio id="renderAudio"class="renderFile" controls>
                 <source src="" type="audio/mpeg">
-            </audio> -->
+            </audio>
             <video id="renderVideo"class="renderFile" controls>
                 <source src="" type="video/mp4">
             </video>
