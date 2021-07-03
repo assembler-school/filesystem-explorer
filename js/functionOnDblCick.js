@@ -33,18 +33,14 @@ function handleDblClickEvents() {
             } else if (data.extension === "mp3") {
               $(".renderFileSection").show();
               $("#createFolderBackground").show();
-              $("#renderAudio").children()[0].attributes[0].value =
-                data.objectDirPath;
+              $("#renderAudio").attr("src", data.objectDirPath);
               $("#renderImg").hide();
               $("#renderVideo").hide();
               $("#renderAudio").show();
-
             } else if (data.extension === "mp4") {
-
               $(".renderFileSection").show();
               $("#createFolderBackground").show();
-              $("#renderVideo").children()[0].attributes[0].value =
-                data.objectDirPath;
+              $("#renderVideo").attr("src", data.objectDirPath);
               $("#renderImg").hide();
               $("#renderAudio").hide();
               $("#renderVideo").show();

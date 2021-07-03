@@ -29,7 +29,13 @@ function handleEvents() {
             let iconClass = "";
 
             if (data.size == "null" && data.extension == "null") {
-              $("#labelSize").hide();
+               $("#infoContainer").hide();
+               $("#container").show();
+               $("#labelCreate").show();
+               $("#labelName").show();
+              $("#dateCreation").show();
+              $("#labelModification").show();
+               $("#labelSize").hide();
               $("#labelExtension").hide();
               $("#size").hide();
               $("#extension").hide();
@@ -37,12 +43,17 @@ function handleEvents() {
               $("#name").text(data.name);
               $("#dateCreation").text(data.dataCreation);
               $("#modification").text(data.modification);
-
               iconClass = "bi bi-folder-fill";
-              $("#icon").attr("class", iconClass);
-              $("#icon").show();
+              $("#iconTitle").attr("class", iconClass);
+              $("#iconTitle").show();
             }
             if (data.size !== "null" && data.extension !== "null") {
+              $("#infoContainer").hide();
+               $("#container").show();
+               $("#labelName").show();
+               $("#labelCreate").show();
+              $("#dateCreation").show();
+              $("#labelModification").show();
               $("#labelSize").show();
               $("#labelExtension").show();
               $("#size").show();
@@ -99,8 +110,8 @@ function handleEvents() {
                   break;
               }
 
-              $("#icon").attr("class", iconClass);
-              $("#icon").show();
+              $("#iconTitle").attr("class", iconClass);
+              $("#iconTitle").show();
             }
           }
         },

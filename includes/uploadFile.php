@@ -2,7 +2,7 @@
 
     require("./updateDir.php");
 
-    if (isset($_POST['submit'])){
+    if ((isset($_FILES["file"]))){
 
         // $file = $_FILES['file'];
         // print_r($file);
