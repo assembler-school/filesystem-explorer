@@ -103,11 +103,15 @@
             if(is_dir($dirPath."/".$fileName)){
                 echo "
                 <div class='mainLeft__container'>
-                        <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$dirPath."/".$fileName."'>
-                                <i class='bi bi-folder-fill'></i>   
-                                <div class='mainLeft__fileName'>".$fileName."</div>
-                            
-                        </a>
+
+                    <a class='renderUpdateLink' href='./includes/updateDir.php?updateDir=".$dirPath."/".$fileName."'>
+
+                        <div class='mainLeft__fileIcon'><i class='bi bi-folder-fill'></i></div>
+
+                        <div class='mainLeft__fileName'>".$fileName."</div>
+
+                    </a>
+
                 </div>
                 ";
 
