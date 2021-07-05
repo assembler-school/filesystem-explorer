@@ -1,0 +1,153 @@
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  font-size: 14px;
+  font-family: 'Montserrat';
+  color: white;
+  overflow-x: hidden;
+}
+
+#directories,
+#files {
+  cursor: pointer;
+  padding-left: 10px;
+  width: 200px;
+  border-radius: 5px 25px 25px 5px;
+}
+
+.active {
+  transition: all 0.25s ease-out;
+  display: flex;
+}
+
+.folder {
+  border-radius: 4px 18px 4px 4px;
+  height: 92px;
+  width: 140px;
+  background-image: url("../img/folder_grey.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5px;
+}
+
+.folder p {
+  padding: 5px;
+}
+
+.folderLink {
+  padding: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.file {
+  background-color: grey;
+  border-radius: 8px;
+  height: 160px;
+  width: 200px;
+}
+
+.file-top {
+  height: 65%;
+}
+
+.file-bottom {
+  height: 35%;
+  background-color: white;
+  color: black;
+}
+
+/* Modals */
+
+.modal-shadow {
+  z-index: 1;
+  opacity: 0.7;
+  top: 0;
+}
+
+.btn-x {
+  cursor: pointer;
+}
+
+.modal-form {
+  height: 240px;
+  width: 500px;
+  top: calc(50% - 120px);
+  left: calc(50% - 250px);
+  z-index: 2;
+  box-shadow: 20px 20px 36px -16px rgba(0, 0, 0, 0.59);
+}
+
+.modal-form-delete {
+  height: 180px;
+  width: 500px;
+  top: calc(50% - 90px);
+  left: calc(50% - 250px);
+}
+
+.modal-form-details {
+  min-height: 320px;
+  width: 400px;
+  top: calc(50% - 140px);
+  left: calc(50% - 200px);
+}
+
+.modal-form-preview {
+  height: 600px;
+  width: 900px;
+  top: calc(50% - 300px);
+  left: calc(50% - 450px);
+}
+
+/* Context Menu */
+
+#customContextMenu {
+  min-width: 150px;
+  box-shadow: 20px 20px 36px -16px rgba(0, 0, 0, 0.59);
+}
+
+#customContextMenu ul {
+  margin: 8px 0;
+  padding: 0;
+}
+
+#customContextMenu li {
+  list-style: none;
+  padding: 5px 5px 5px 20px;
+}
+
+#customContextMenu li:hover {
+  background-color: #6c757d3b;
+  cursor: pointer;
+}
+
+/* Toggle styles */
+
+.hidden {
+  display: none;
+}
+
+.plus:after {
+  content: "+";
+  font-size: 25px;
+  color: black;
+  margin-left: 5px;
+  text-align: right;
+}
+
+.minus:after {
+  content: "-";
+  font-size: 25px;
+  color: black;
+  margin-left: 10px;
+}
+a:hover{
+  color: white;
+  font-weight: bold;
+}
+
+.fileName:hover{
+  font-weight: bold;
+}
