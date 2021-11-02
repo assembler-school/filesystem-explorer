@@ -1,4 +1,4 @@
-<div>
+<div class="path__container">
     <div>
         <button><</button>
         <button>></button>
