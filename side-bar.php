@@ -1,4 +1,6 @@
 <section class="side__menu">
-    <button>Create</button>
+    <form action="./createFolderForm.php" method="POST">
+        <input type="submit" value="Create folder">
+    </form>
     <button>Upload</button>
 </section>

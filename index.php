@@ -1,5 +1,10 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +13,7 @@
     <link rel="stylesheet" href="./assets/styles.css?v=<?php echo time(); ?>">
     <script src="/js/functions.js?v=<?php echo time(); ?>"></script>
 </head>
+
 <body>
     <header>
         <?php require_once("./search.php"); ?>
@@ -22,4 +28,5 @@
         </section>
     </main>
 </body>
+
 </html>
