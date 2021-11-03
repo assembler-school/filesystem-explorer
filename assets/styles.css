@@ -35,20 +35,17 @@ main {
 }
 
 .file__container {
-  /* display: flex;
-    flex-direction: column;
-    padding: 10vh; */
   width: 100%;
   display: grid;
   width: 100%;
   grid-template-columns: repeat(4, 1fr);
 }
 
-input.folder {
-  background-image: url("https://inceptum-stor.icons8.com/zgOFQhSZRKWt/folder%202.jpg");
+.folder {
+  background-image: url("./icons/folder.svg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-}
-.grid {
+  max-width: 50px;
+  max-height: 50px;
 }

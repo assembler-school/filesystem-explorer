@@ -23,10 +23,10 @@
 
 
             <?php
-            if (isset($_GET["directory"])) {
+            if (isset($_GET["directory"]) && explode("/", $_GET["directory"])[0] == "root") {
                 $directory =  $_GET["directory"];
             } else {
-                $directory = './root';
+                $directory = 'root';
             }
 
 
@@ -36,7 +36,7 @@
                     while (($file = readdir($dh)) !== false) {
                         if ($file === "." || $file === "..") {
                         } else
-                            echo "<a href=?directory=" . $directory . "/" . $file . ">$file</a>";
+                            echo "<a class='folder' href=?directory=" . $directory . "/" . $file . ">$file</a>";
                     }
                     closedir($dh);
                 }
