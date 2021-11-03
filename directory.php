@@ -1,7 +1,11 @@
 <div class="path__container">
-    <div>
-        <button><</button>
-        <button>></button>
-    </div>
+    <!-- <form method="POST" action="./">
+        
+        
+    </form> -->
+    <a href="./">
+        <button>
+            Back</button> </a>
+    <button>></button>
     <div>path</div>
 </div>

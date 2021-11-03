@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,13 +14,34 @@
     <header>
         <?php require_once("./search.php"); ?>
         <?php require_once("./directory.php"); ?>
+
     </header>
     <main>
-        <?php require_once("./side-bar.php"); ?>
+        <?php require_once("./sideBar.php"); ?>
+        <div></div>
         <section class="file__container">
-            <div>Folder1</div>
-            <div>Folder2</div>
-            <div>File1</div>
+
+
+            <?php
+            if (isset($_GET["directory"])) {
+                $directory =  $_GET["directory"];
+            } else {
+                $directory = './root';
+            }
+
+
+            scandir($directory, SCANDIR_SORT_ASCENDING);
+            if (is_dir($directory)) {
+                if ($dh = opendir($directory)) {
+                    while (($file = readdir($dh)) !== false) {
+                        if ($file === "." || $file === "..") {
+                        } else
+                            echo "<a href=?directory=" . $directory . "/" . $file . ">$file</a>";
+                    }
+                    closedir($dh);
+                }
+            }
+            ?>
         </section>
     </main>
 </body>

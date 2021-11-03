@@ -1,41 +1,54 @@
-body{
-    width: 1080px;
-    text-align: center;
-    margin: auto;
+body {
+  width: 1080px;
+  text-align: center;
+  margin: auto;
 }
 
-header{
-    width: 100%;
-    display: flex;
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+.side__menu {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 5vh;
+}
+
+.search__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.path__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.file__container {
+  /* display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 10vh; */
+  width: 100%;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-main{
-    display: flex;
-    flex-direction: row;
-    margin: auto;
+input.folder {
+  background-image: url("https://inceptum-stor.icons8.com/zgOFQhSZRKWt/folder%202.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-
-.side__menu{
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    padding: 5vh;
-}
-
-.search__container{
-    display: flex;
-    flex-direction: row;
-}
-
-.path__container{
-    display: flex;
-    flex-direction: row;
-}
-
-.file__container{
-    display: flex;
-    flex-direction: column;
-    padding: 10vh;
+.grid {
 }
