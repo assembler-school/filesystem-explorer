@@ -35,17 +35,12 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="./includes/menu.php">
-                <select name="menu" class="form-select" aria-label="Default select example" required>
-                  <option value="1">Add file</option>
-                  <option value="2">Create folder</option>
-                  <option value="3">Create file</option>
-                </select>
-
+              <form method="POST" action="./includes/addfile.php">
+                <input type="file" name="addfile" />
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button name="btn-menu" type="submit" class="btn btn-primary">Save changes</button>
+              <button name="btn-menu" type="submit" class="btn btn-primary">Add file</button>
               </form>
             </div>
           </div>
