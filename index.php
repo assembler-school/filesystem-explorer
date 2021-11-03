@@ -1,10 +1,3 @@
-<?php
-$a = scandir("./root");
-
-implode(" ",$a);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,13 +14,45 @@ implode(" ",$a);
     <header>
         <?php require_once("./search.php"); ?>
         <?php require_once("./directory.php"); ?>
+        <?php require_once("./createFolderForm.php"); ?>
+        <?php
+        if (isset($_POST["folder"])) {
+            if (isset($_GET["directory"]) && $_GET["directory"] !== "" && $_GET["directory"] !== "root") {
+                $mkdirRoute = "./" . $_GET["directory"];
+            } else {
+                $mkdirRoute = "./root/";
+            }
+            mkdir($mkdirRoute . "/" . $_POST["folder"], 0777);
+        }
+        ?>
+
     </header>
     <main>
-        <?php require_once("./side-bar.php"); ?>
+        <?php require_once("./sideBar.php"); ?>
+        <div></div>
         <section class="file__container">
-            <div><?=nl2br(implode(" ",$a));?></div>
-            <div>Folder2</div>
-            <div>File1</div>
+
+
+            <?php
+            if (isset($_GET["directory"]) && explode("/", $_GET["directory"])[0] == "root") {
+                $directory =  $_GET["directory"];
+            } else {
+                $directory = 'root';
+            }
+
+
+            scandir($directory, SCANDIR_SORT_ASCENDING);
+            if (is_dir($directory)) {
+                if ($dh = opendir($directory)) {
+                    while (($file = readdir($dh)) !== false) {
+                        if ($file === "." || $file === "..") {
+                        } else
+                            echo "<a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a>";
+                    }
+                    closedir($dh);
+                }
+            }
+            ?>
         </section>
     </main>
 </body>
