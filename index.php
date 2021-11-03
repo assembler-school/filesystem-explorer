@@ -36,7 +36,7 @@
                     while (($file = readdir($dh)) !== false) {
                         if ($file === "." || $file === "..") {
                         } else
-                            echo "<a class='folder' href=?directory=" . $directory . "/" . $file . ">$file</a>";
+                            echo "<a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a>";
                     }
                     closedir($dh);
                 }

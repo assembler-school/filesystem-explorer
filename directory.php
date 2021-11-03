@@ -1,14 +1,19 @@
 <div class="path__container">
     <?php
-    if (isset($_GET["directory"])) {
-        $test = explode("/", $_GET["directory"]);
-        $test = array_shift($test);
+    if (isset($_GET["directory"]) && $_GET["directory"] !== "" && $_GET["directory"] !== "root") {
+        $path = explode("/", $_GET["directory"]);
+        array_pop($path);
+        $directory = implode("/", $path);
+        print_r($path);
     }
 
-    echo isset($test);
-    echo $test;
+
+
     ?>
-    <?php isset($test) ? "<a href=" . $test . ">" : "<a href='root'>" ?>
+
+
+
+    <?php echo isset($directory) ?  "<a href=index.php?directory=" . $directory . ">" : "<a href='index.php?directory=root'>" ?>
     <button>
         Back</button> </a>
     <button>></button>
