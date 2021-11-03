@@ -14,6 +14,17 @@
     <header>
         <?php require_once("./search.php"); ?>
         <?php require_once("./directory.php"); ?>
+        <?php require_once("./createFolderForm.php"); ?>
+        <?php
+        if (isset($_POST["folder"])) {
+            if (isset($_GET["directory"]) && $_GET["directory"] !== "" && $_GET["directory"] !== "root") {
+                $mkdirRoute = "./" . $_GET["directory"];
+            } else {
+                $mkdirRoute = "./root/";
+            }
+            mkdir($mkdirRoute . "/" . $_POST["folder"], 0777);
+        }
+        ?>
 
     </header>
     <main>
