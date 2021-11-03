@@ -1,4 +1,7 @@
 <?php
+$a = scandir("./root");
+
+implode(" ",$a);
 
 ?>
 
@@ -22,7 +25,7 @@
     <main>
         <?php require_once("./side-bar.php"); ?>
         <section class="file__container">
-            <div>Folder1</div>
+            <div><?=nl2br(implode(" ",$a));?></div>
             <div>Folder2</div>
             <div>File1</div>
         </section>
