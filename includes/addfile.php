@@ -1,4 +1,5 @@
 <?php
-$newFile = $_POST["addfile"];
 
-fwrite($newFile, "w");
+$path ="/root/example.txt";
+
+echo dirname($path);
