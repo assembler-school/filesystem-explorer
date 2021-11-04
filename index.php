@@ -82,7 +82,8 @@
       ?>
         <tr>
           <td>
-            <a href=""><?php echo $file["name"]?></a>
+            <a
+              href="includes/openfile.inc.php?path=<?=$file["path"];?>&ext=<?=$file["extension"];?>"><?php echo $file["name"]?></a>
           </td>
           <td><?php echo $file["size"]?></td>
           <td><?php echo $file["modified"]?></td>
@@ -90,7 +91,8 @@
           <td><?php echo $file["extension"]?></td>
           <td>
             <button class="btn btn-warning"><i class="far fa-edit"></i></button>
-            <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+            <button onClick="document.location.href='includes/delete.inc.php?id=<?= $file['id'];?>'"
+              class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
           </td>
         </tr>
       </tbody>
@@ -99,7 +101,7 @@
       <?php endif;?>
     </table>
   </main>
-  <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+  <footer id=" sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
     <div class="container text-center">
       <small>TOP Team © All Rights Reserved 2021 Your Website</small>
     </div>
