@@ -22,6 +22,12 @@
 <?php
 header('Location: ./resources/views/filemanager.php');
 ?>
+<?php
+/* echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+echo "</br>";
+$documentRoot = getcwd();
+echo $documentRoot; */
+?>
 
 <body>
 
