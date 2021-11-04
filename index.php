@@ -83,13 +83,16 @@
         <tr>
           <td>
             <?php if($file["edit"]) : ?>
-            <form action="./includes/edittitle.inc.php" method="POST">
+            <form
+              action="./includes/edittitle.inc.php?path=<?=$file["path"];?>&id=<?=$file["id"];?>&name=<?=$file["name"];?>"
+              method="POST">
               <input type="text" name="title" value=<?php echo $file["name"]?>>
               <input type="submit" name="change" value="change">
             </form>
-            <?php endif; ?>
+            <?php else: ?>
             <a
               href="includes/openfile.inc.php?path=<?=$file["path"];?>&ext=<?=$file["extension"];?>"><?php echo $file["name"]?></a>
+            <?php endif; ?>
           </td>
           <td><?php echo $file["size"]?></td>
           <td><?php echo $file["modified"]?></td>
