@@ -23,46 +23,11 @@ if (!is_dir("root")) {
         <?php require_once("./search.php"); ?>
         <?php require_once("./directory.php"); ?>
         <?php require_once("./createFolderForm.php"); ?>
-        <?php
-        if (isset($_POST["folder"])) {
-            if (isset($_GET["directory"]) && $_GET["directory"] !== "" && $_GET["directory"] !== "root") {
-                $mkdirRoute = "./" . $_GET["directory"];
-            } else {
-                $mkdirRoute = "./root/";
-            }
-            mkdir($mkdirRoute . "/" . $_POST["folder"], 0777, true);
-        }
-        ?>
     </header>
     <main class="container d-flex align-items-center justify-content-center">
         <?php require_once("./sideBar.php"); ?>
         <section class="file__container">
-            <?php
-            if (!isset($_GET["search"])) {
-                if (isset($_GET["directory"]) && explode("/", $_GET["directory"])[0] == "root" && !str_contains($_GET["directory"], "..")) {
-                    $directory =  $_GET["directory"];
-                } else {
-                    $directory = 'root';
-                }
-
-            scandir($directory, SCANDIR_SORT_ASCENDING);
-                if (is_dir($directory)) {
-                    if ($dh = opendir($directory)) {
-                        while (($file = readdir($dh)) !== false) {
-                            if ($file === "." || $file === "..") {
-                            } else {
-                                if (filetype("$directory/$file") == "dir") {
-                                    echo "<div><a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a><a href=erase.php?erase=$directory/$file><button>x</button></a></div>";
-                                } else {
-                                    echo "<div><a class='file' href=index.php?directory=" . $directory . "/" . $file . ">$file</a><a href=erase.php?erase=$directory/$file><button class='btn btn-info'>x</button></a></div>";
-                                }
-                            }
-                        }
-                        closedir($dh);
-                    }
-                }
-            }
-            ?>
+            <?php require_once("./renderFiles.php") ?>
         </section>
     </main>
 </body>

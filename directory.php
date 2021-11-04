@@ -4,7 +4,7 @@
         print_r($_GET["directory"]);
         $path = explode("/", $_GET["directory"]);
         array_pop($path);
-        $directory = implode("/", $path);    
+        $directory = implode("/", $path);
     }
     ?>
     <?php echo isset($directory) ?  "<a href=index.php?directory=" . $directory . ">" : "<a href='index.php?directory=root'>" ?>
