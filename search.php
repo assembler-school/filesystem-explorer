@@ -17,7 +17,7 @@ function readDirectory($search, $folderPath)
                 } else {
 
                     if ($search == $found) {
-                        echo $folderPath;
+                        echo "<div>$folderPath</div>";
                     }
                     if (filetype($folderPath) == "dir") {
                         // $folderPath = $folderPath . '/' . $folder;
@@ -27,6 +27,10 @@ function readDirectory($search, $folderPath)
             }
         }
         closedir($dh);
+    } else {
+        // if (is_file($folderPath)) {
+        //     echo "<div>$folderPath</div>";
+        // }
     }
 }
 
