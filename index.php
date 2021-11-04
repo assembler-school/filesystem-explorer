@@ -58,10 +58,9 @@ if (!is_dir("root")) {
                             if ($file === "." || $file === "..") {
                             } else {
                                 if (filetype("$directory/$file") == "dir") {
-                                    echo "<div><a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a></div>";
+                                    echo "<div><a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a><a href=erase.php?erase=$directory/$file><button>x</button></a></div>";
                                 } else {
-                                    // echo "<a class='file' href=index.php?directory=" . $directory . "/" . $file . ">$file</a>";
-                                    echo "<div>$file</div>";
+                                    echo "<div><a class='file' href=index.php?directory=" . $directory . "/" . $file . ">$file</a><a href=erase.php?erase=$directory/$file><button>x</button></a></div>";
                                 }
                             }
                         }
