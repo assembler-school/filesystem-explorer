@@ -47,4 +47,4 @@ $uploadQuery->execute([
   "extension"=>$extension,
   "path"=>$pathName . $fileName
 ]);
-var_dump($uploadQuery);
+header("location: ../index.php");
