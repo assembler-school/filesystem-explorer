@@ -13,29 +13,29 @@ $fileSize = $_FILES["addfile"]["size"];
 if(!file_exists("../root")) {
 mkdir($pathName, 0777, true);
 chmod($pathName, 0777);
-
-if(file_exists("../root")) {
-
+}
   if(move_uploaded_file($fileTmp, "../root/" . $fileName)) {
     echo "Uploaded file";
   }else {
     echo "File upload failed";
   }
-}
-}
+
+
 
 $file= $_FILES["addfile"];
-$name = $file["name"];
-$extension = $file["type"];
-$size = $file["size"];
-$ext = pathinfo($name, PATHINFO_EXTENSION);
-$modified = date("Y-m-d", filemtime($target_file));
-$creation = date("Y-m-d", filectime($target_file));
+ $name = $file["name"];
+ $extension = pathinfo($name, PATHINFO_EXTENSION);
+ $size = $file["size"];
+ $modified = date("Y-m-d", filemtime($target_file));
+ $creation = date("Y-m-d", filectime($target_file));
+ 
 // prepare to upload to db 
 
-$uploadQuery =$db-> prepare("
-INSERT INTO `files`(`id`, `name`, `size`, `modified`, `creation`, `extension`) VALUES (':name',':size',':modified',':creation',':extension')
+$uploadQuery =$db->prepare("
+INSERT INTO `files`(`name`, `size`, `modified`, `creation`, `extension`, `path`) 
+VALUES (:name, :size, :modified, :creation, :extension, :path)
 ");
+
 
 //encrypt
 
@@ -44,6 +44,7 @@ $uploadQuery->execute([
   "size"=>$size,
   "modified"=>$modified,
   "creation"=>$creation,
-  "extension"=>$ext,
+  "extension"=>$extension,
   "path"=>$pathName . $fileName
 ]);
+var_dump($uploadQuery);

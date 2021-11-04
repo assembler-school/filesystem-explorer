@@ -2,7 +2,7 @@
 
 // CONNECTION WITH DATA BASE 
 
-$dsn = "mysql:host=" . $_SERVER["SERVER_NAME"]. "; dbname=filesystem-explorer";
+$dsn = "mysql:host=localhost;dbname=files_system";
 $dbusername ="root";
 $dbpassword = "";
 
