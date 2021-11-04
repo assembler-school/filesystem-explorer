@@ -1,0 +1,25 @@
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <div class="alert alert-primary" role="alert">
+                      <form class="mb-0" action="../../app/php/upload.php" method="post" enctype="multipart/form-data">
+                          Select image to upload:
+                          <input type="file" name="fileToUpload" id="fileToUpload">
+                          <input type="submit" value="Upload Image" name="submit">
+                      </form>
+                  </div>
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+          </div>
+      </div>
+  </div>
