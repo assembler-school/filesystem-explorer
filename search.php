@@ -17,7 +17,7 @@ function readDirectory($search, $folderPath)
                 } else {
 
                     if ($search == $found) {
-                        echo "<div>$folderPath</div>";
+                        echo "<div class='container text-center'><p>$folderPath</p></div>";
                     }
                     if (filetype($folderPath) == "dir") {
                         // $folderPath = $folderPath . '/' . $folder;
@@ -36,10 +36,10 @@ function readDirectory($search, $folderPath)
 
 ?>
 
-<div class="search__container">
-    <form method="GET" action="index.php">
-        <input type="text" name="search" placeholder="Search file or folder">
-        <input type="submit" value="Search">
+<div class="container d-flex align-items-center justify-content-center">
+    <form method="GET" action="index.php" class="search__form d-flex align-items-center justify-content-center">
+        <input type="text" name="search" placeholder="Search file or folder" class="form-control">
+        <input class="btn btn-info" type="submit" value="Search">
     </form>
 
 

@@ -1,42 +1,19 @@
-body {
-  width: 1080px;
-  text-align: center;
-  margin: auto;
+button{
+    margin: 1vh !important;
 }
-
-header {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.search__form {
+  width: 40%;
 }
-
-main {
-  display: flex;
-  flex-direction: row;
-  margin: auto;
+section:nth-child(1){
+    width: 30%;
 }
-
-.side__menu {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  padding: 5vh;
+section:nth-child(2){
+    width: 70%;
 }
-
-.search__container {
-  display: flex;
-  flex-direction: row;
-}
-
-.path__container {
-  display: flex;
-  flex-direction: row;
-}
-
 .file__container {
   width: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   grid-template-columns: repeat(4, 1fr);
 }
