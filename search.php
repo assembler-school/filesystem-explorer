@@ -2,67 +2,33 @@
 if (isset($_GET["search"])) {
     $search = $_GET["search"];
     $folderPath = "root";
-    if (filetype($folderPath) == "dir") {
-        $dh = opendir($folderPath);
-        // print_r($dh);
-        while (($folder = readdir($dh)) !== false) {
-            if ($folder === "." || $folder === "..") {
-            } else {
-                $folderPath = $folderPath . "/" . $folder;
-                if ($search == $folder) {
-                    echo $folderPath;
-                }
 
-                if (filetype($folderPath) == "dir") {
-                    $dh = opendir($folderPath);
-                    while (($folder = readdir($dh)) !== false) {
-                        if ($folder === "." || $folder === "..") {
-                        } else {
-                            $folderPath = $folderPath . "/" . $folder;
-                            if ($search == $folder) {
-                                echo $folderPath;
-                            }
-                        }
+    readDirectory($search, $folderPath);
+}
+
+
+
+function readDirectory($search, $folderPath)
+{
+    if (is_dir($folderPath)) {
+        if ($dh = opendir($folderPath)) {
+            while (($found = readdir($dh)) !== false) {
+                if ($found === "." || $found === "..") {
+                } else {
+
+                    if ($search == $found) {
+                        echo $folderPath;
+                    }
+                    if (filetype($folderPath) == "dir") {
+                        // $folderPath = $folderPath . '/' . $folder;
+                        readDirectory($search, $folderPath . '/' . $found);
                     }
                 }
             }
         }
+        closedir($dh);
     }
 }
-
-function readDirectory($search, $folderPath)
-{
-    if (filetype($folderPath) == "dir") {
-        $dh = opendir($folderPath);
-        while (($folder = readdir($dh)) !== false) {
-            if ($folder === "." || $folder === "..") {
-            } else {
-                $folderPath = $folderPath . "/" . $folder;
-                if ($search == $folder) {
-                    echo $folderPath;
-                }
-            }
-        }
-    }
-}
-
-
-// if (is_dir($directory)) {
-//     if ($dh = opendir($directory)) {
-//         while (($file = readdir($dh)) !== false) {
-//             if ($file === "." || $file === "..") {
-//             } else {
-//                 if (filetype("$directory/$file") == "dir") {
-//                     echo "<div><a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a></div>";
-//                 } else {
-//                     // echo "<a class='file' href=index.php?directory=" . $directory . "/" . $file . ">$file</a>";
-//                     echo "<div>$file</div>";
-//                 }
-//             }
-//         }
-//         closedir($dh);
-//     }
-// }
 
 ?>
 
