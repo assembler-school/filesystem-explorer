@@ -91,7 +91,8 @@
           <td><?php echo $file["extension"]?></td>
           <td>
             <button class="btn btn-warning"><i class="far fa-edit"></i></button>
-            <button onClick="document.location.href='includes/delete.inc.php?id=<?= $file['id'];?>'"
+            <button
+              onClick="document.location.href='includes/delete.inc.php?id=<?= $file['id'];?>&name=<?=$file["name"];?>'"
               class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
           </td>
         </tr>
