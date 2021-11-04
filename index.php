@@ -31,7 +31,6 @@
     </header>
     <main>
         <?php require_once("./sideBar.php"); ?>
-        <div></div>
         <section class="file__container">
 
 
