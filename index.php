@@ -51,18 +51,6 @@ if (!is_dir("root")) {
                 }
 
 
-<<<<<<< HEAD
-            scandir($directory, SCANDIR_SORT_ASCENDING);
-            if (is_dir($directory)) {
-                if ($dh = opendir($directory)) {
-                    while (($file = readdir($dh)) !== false) {
-                        if ($file === "." || $file === "..") {
-                        } else {
-                            if (filetype("$directory/$file") == "dir") {
-                                echo "<div><a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a><a href=erase.php?erase=$directory/$file><button>x</button></a></div>";
-                            } else {
-                                echo "<div><a class='file' href=index.php?directory=" . $directory . "/" . $file . ">$file</a><a href=erase.php?erase=$directory/$file><button>x</button></a></div>";
-=======
                 scandir($directory, SCANDIR_SORT_ASCENDING);
                 if (is_dir($directory)) {
                     if ($dh = opendir($directory)) {
@@ -75,7 +63,6 @@ if (!is_dir("root")) {
                                     // echo "<a class='file' href=index.php?directory=" . $directory . "/" . $file . ">$file</a>";
                                     echo "<div>$file</div>";
                                 }
->>>>>>> 51f410cbe532c09c6ac9e9019f3c0130a2cb4ec9
                             }
                         }
                         closedir($dh);
