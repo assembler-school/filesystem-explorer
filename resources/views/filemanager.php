@@ -22,10 +22,7 @@
 
 <body>
   <?php include "./header.php"; ?>
-
-
   <main class="container">
-
     <div>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Add file
@@ -37,8 +34,6 @@
 
   <!-- Modal -->
   <?php include "./modal.php"; ?>
-
-
 </body>
 
 </html>
