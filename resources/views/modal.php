@@ -9,9 +9,9 @@
               <div class="modal-body">
                   <div class="alert alert-primary" role="alert">
                       <form class="mb-0" action="../../app/php/upload.php" method="post" enctype="multipart/form-data">
-                          Select image to upload:
+                          Select a file to upload:
                           <input type="file" name="fileToUpload" id="fileToUpload">
-                          <input type="submit" value="Upload Image" name="submit">
+                          <input type="submit" value="Upload" name="submit">
                       </form>
                   </div>
 
