@@ -1,3 +1,6 @@
+<?php
+ include_once "./includes/fetching.inc.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,35 +73,30 @@
         </tr>
       </thead>
 
+      <?php if(!empty($fileFetched)):?>
+
       <tbody>
+
+        <?php
+      foreach ($fileFetched as $file): 
+      ?>
         <tr>
           <td>
-            <a>Alfred0's sunset</a>
+            <a href=""><?php echo $file["name"]?></a>
           </td>
-          <td>32 bytes</td>
-          <td>10/38/20993</td>
-          <td>Creation </td>
-          <td>Extension</td>
-          <td>
-            <button class="btn btn-warning"><i class="far fa-edit"></i></button>
-            <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-          </td>
-        </tr>
-
-        <tr class=" drive__content flex">
-          <td>
-            <a>Juani's sunrise</a>
-          </td>
-          <td>32 bytes</td>
-          <td>10/38/20993</td>
-          <td>Creation </td>
-          <td>Extension</td>
+          <td><?php echo $file["size"]?></td>
+          <td><?php echo $file["modified"]?></td>
+          <td><?php echo $file["creation"]?></td>
+          <td><?php echo $file["extension"]?></td>
           <td>
             <button class="btn btn-warning"><i class="far fa-edit"></i></button>
             <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
           </td>
         </tr>
       </tbody>
+
+      <?php endforeach;?>
+      <?php endif;?>
     </table>
   </main>
   <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
