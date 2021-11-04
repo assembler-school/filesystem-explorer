@@ -37,7 +37,6 @@ if (!is_dir("root")) {
     </header>
     <main>
         <?php require_once("./sideBar.php"); ?>
-        <div></div>
         <section class="file__container">
 
 

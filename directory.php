@@ -9,8 +9,7 @@
     ?>
     
     <?php echo isset($directory) ?  "<a href=index.php?directory=" . $directory . ">" : "<a href='index.php?directory=root'>" ?>
-    <button>
-        Back</button> </a>
+    <button>Back</button> </a>
     <button>></button>
     <div>path</div>
 
