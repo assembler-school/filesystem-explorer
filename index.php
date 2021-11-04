@@ -1,3 +1,9 @@
+<?php
+if (!is_dir("root")) {
+    mkdir("root", 0777, true);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +30,7 @@
             } else {
                 $mkdirRoute = "./root/";
             }
-            mkdir($mkdirRoute . "/" . $_POST["folder"], 0777);
+            mkdir($mkdirRoute . "/" . $_POST["folder"], 0777, true);
         }
         ?>
 
@@ -36,28 +42,32 @@
 
 
             <?php
-            if (isset($_GET["directory"]) && explode("/", $_GET["directory"])[0] == "root" && !str_contains($_GET["directory"], "..")) {
-                $directory =  $_GET["directory"];
-            } else {
-                $directory = 'root';
-            }
+            if (!isset($_GET["search"])) {
 
 
-            scandir($directory, SCANDIR_SORT_ASCENDING);
-            if (is_dir($directory)) {
-                if ($dh = opendir($directory)) {
-                    while (($file = readdir($dh)) !== false) {
-                        if ($file === "." || $file === "..") {
-                        } else {
-                            if (filetype("$directory/$file") == "dir") {
-                                echo "<div><a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a></div>";
+                if (isset($_GET["directory"]) && explode("/", $_GET["directory"])[0] == "root" && !str_contains($_GET["directory"], "..")) {
+                    $directory =  $_GET["directory"];
+                } else {
+                    $directory = 'root';
+                }
+
+
+                scandir($directory, SCANDIR_SORT_ASCENDING);
+                if (is_dir($directory)) {
+                    if ($dh = opendir($directory)) {
+                        while (($file = readdir($dh)) !== false) {
+                            if ($file === "." || $file === "..") {
                             } else {
-                                // echo "<a class='file' href=index.php?directory=" . $directory . "/" . $file . ">$file</a>";
-                                echo "<div>$file</div>";
+                                if (filetype("$directory/$file") == "dir") {
+                                    echo "<div><a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a></div>";
+                                } else {
+                                    // echo "<a class='file' href=index.php?directory=" . $directory . "/" . $file . ">$file</a>";
+                                    echo "<div>$file</div>";
+                                }
                             }
                         }
+                        closedir($dh);
                     }
-                    closedir($dh);
                 }
             }
             ?>
