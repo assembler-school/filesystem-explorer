@@ -36,7 +36,7 @@
 
 
             <?php
-            if (isset($_GET["directory"]) && explode("/", $_GET["directory"])[0] == "root") {
+            if (isset($_GET["directory"]) && explode("/", $_GET["directory"])[0] == "root" && !str_contains($_GET["directory"], "..")) {
                 $directory =  $_GET["directory"];
             } else {
                 $directory = 'root';
@@ -48,8 +48,14 @@
                 if ($dh = opendir($directory)) {
                     while (($file = readdir($dh)) !== false) {
                         if ($file === "." || $file === "..") {
-                        } else
-                            echo "<a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a>";
+                        } else {
+                            if (filetype("$directory/$file") == "dir") {
+                                echo "<div><a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a></div>";
+                            } else {
+                                // echo "<a class='file' href=index.php?directory=" . $directory . "/" . $file . ">$file</a>";
+                                echo "<div>$file</div>";
+                            }
+                        }
                     }
                     closedir($dh);
                 }

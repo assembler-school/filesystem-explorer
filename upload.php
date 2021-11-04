@@ -1,7 +1,7 @@
 
 <?php
 
-$directory = "index.php";
+// $directory = "index.php";
 
 if (isset($_GET["directory"])) {
   $directory = $_GET["directory"];
