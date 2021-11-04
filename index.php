@@ -82,6 +82,12 @@
       ?>
         <tr>
           <td>
+            <?php if($file["edit"]) : ?>
+            <form action="./includes/edittitle.inc.php" method="POST">
+              <input type="text" name="title" value=<?php echo $file["name"]?>>
+              <input type="submit" name="change" value="change">
+            </form>
+            <?php endif; ?>
             <a
               href="includes/openfile.inc.php?path=<?=$file["path"];?>&ext=<?=$file["extension"];?>"><?php echo $file["name"]?></a>
           </td>
@@ -89,8 +95,10 @@
           <td><?php echo $file["modified"]?></td>
           <td><?php echo $file["creation"]?></td>
           <td><?php echo $file["extension"]?></td>
+
           <td>
-            <button class="btn btn-warning"><i class="far fa-edit"></i></button>
+            <button onClick="document.location.href='includes/edit.inc.php?id=<?= $file['id'];?>'"
+              class="btn btn-warning"><i class="far fa-edit"></i></button>
             <button
               onClick="document.location.href='includes/delete.inc.php?id=<?= $file['id'];?>&name=<?=$file["name"];?>'"
               class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
