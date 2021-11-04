@@ -8,18 +8,39 @@
               </div>
               <div class="modal-body">
                   <div class="alert alert-primary" role="alert">
-                      <form class="mb-0" action="../../app/php/upload.php" method="post" enctype="multipart/form-data">
+                      <form class="mb-0" method="post" id="uploadForm" enctype="multipart/form-data">
                           Select a file to upload:
                           <input type="file" name="fileToUpload" id="fileToUpload">
-                          <input type="submit" value="Upload" name="submit">
+                          <div class="modal-footer">
+                              <input class="btn btn-secondary" value="close" data-bs-dismiss="modal">
+                              <input type="submit" name="upload" value="Upload" class="btn btn-primary">
+                          </div>
                       </form>
                   </div>
-
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
               </div>
           </div>
       </div>
   </div>
+  <script src="../../app/js/loadTable.js"></script>
+  <script>
+      import {
+          loadTable
+      } from "../../app/js/loadTable.js";
+      $(document).ready(function() {
+          // document.getElementById('nombreFormula').add
+          $('#uploadForm').submit(function(e) {
+              e.preventDefault();
+              $.ajax({
+                  type: "POST",
+                  url: "../../app/php/upload.php",
+                  data: $(this).serialize(),
+                  success: function() {
+                      loadTable()
+                  },
+                  error: function() {
+                      alert("error")
+                  }
+              });
+          });
+      });
+  </script>

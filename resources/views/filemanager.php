@@ -42,4 +42,3 @@
 </body>
 
 </html>
-<script src="../../app/js/loadTable.js"></script>
