@@ -4,7 +4,6 @@ if (isset($_GET["erase"])) {
     erase($url);
 }
 
-
 function erase($eraseDir)
 {
     if (is_dir($eraseDir)) {

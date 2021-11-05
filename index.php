@@ -14,7 +14,7 @@ if (!is_dir("root")) {
     <title>FileSystem-Explorer</title>
     <link rel="stylesheet" href="./assets/styles.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css?v=<?php echo time(); ?>" type="text/css" media="all">
-    <script src="/js/functions.js?v=<?php echo time(); ?>"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 </head>
 

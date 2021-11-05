@@ -7,12 +7,12 @@ if (isset($_GET["directory"])) {
 
 <section class="container d-flex flex-column text-center">
   <?php require_once("./components/createFolderForm.php"); ?>
-  <form class="container d-flex flex-column custom-file m-1"<?php echo "action=$directory" ?> method="post" enctype="multipart/form-data">
-    <input class="custom-file-input mt-1 d-none" type="file" name="fileToUpload" id="fileToUpload">
-    <label class="btn btn-outline-secondary m-1" for="fileToUpload">Select a File</label>
-    <input class="btn btn-outline-secondary m-1" type="submit" value="Upload File" name="submit">
+  <form class="d-flex flex-column custom-file"<?php echo "action=$directory" ?> method="post" enctype="multipart/form-data">
+    <input class="custom-file-input d-none" type="file" name="fileToUpload" id="fileToUpload">
+    <label class="btn btn-outline-secondary my-2 mx-4" for="fileToUpload">Select a File</label>
+    <input class="btn btn-outline-secondary my-2 mx-4" type="submit" value="Upload File" name="submit">
   </form>
-  <input type="button" class="btn btn-outline-secondary m-3" value="Trash Bin">
+    <button class="btn btn-outline-secondary my-5 mx-4"><i class='fas fa-trash-alt'></i> Trash Bin</button>
   <hr>
   
 </section>

@@ -1,8 +1,8 @@
 <div class="row border-bottom align-items-center">
-    <div class="col">Title</div>
-    <div class="col">Create Date</div>
-    <div class="col">Last Modified Date</div>
-    <div class="col">Type</div>
-    <div class="col">Size</div>
-    <div class="col">Erase</div>
+    <h4 class="col-3">Title</h4>
+    <h4 class="col">Create Date</h4>
+    <h4 class="col">Last Modified Date</h4>
+    <h4 class="col-1">Type</h4>
+    <h4 class="col">Size</h4>
+    <h4 class="col-1">Erase</h4>
 </div>

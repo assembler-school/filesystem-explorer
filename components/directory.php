@@ -7,9 +7,9 @@
         $directory = implode("/", $path);
     }
     ?>
-    <button class="btn btn-outline-secondary" disabled><</button>
-    <button class="btn btn-outline-secondary" disabled>></button>
+    <button class="btn btn-outline-secondary" disabled><i class="fas fa-arrow-left"></i></button>
+    <button class="btn btn-outline-secondary" disabled><i class="fas fa-arrow-right"></i></button>
     <?php echo isset($directory) ?  "<a href=index.php?directory=" . $directory . ">" : "<a href='index.php?directory=root'>" ?>
-        <button class="btn__previous btn btn-outline-secondary">^</button></a>
+        <button class="btn__previous btn btn-outline-secondary"><i class="fas fa-arrow-up"></i></button></a>
         <?php echo isset($_GET["directory"])? $_GET["directory"] : "" ?>
 </div>
