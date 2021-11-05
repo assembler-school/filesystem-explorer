@@ -12,7 +12,9 @@ $fileSize = $_FILES["addfile"]["size"];
 
 if(!file_exists("../root")) {
 mkdir($pathName, 0777, true);
-chmod($pathName, 0777);
+if (PHP_OS !== "WINNT") {
+  chmod($pathName, 0777);
+}
 }
   if(move_uploaded_file($fileTmp, "../root/" . $fileName)) {
     echo "Uploaded file";
@@ -26,8 +28,8 @@ $file= $_FILES["addfile"];
  $name = $file["name"];
  $extension = pathinfo($name, PATHINFO_EXTENSION);
  $size = $file["size"];
- $modified = date("Y-m-d", filemtime($target_file));
- $creation = date("Y-m-d", filectime($target_file));
+ $modified = date("Y-m-d", filemtime($pathName . $fileName));
+ $creation = date("Y-m-d", filectime($pathName . $fileName));
  
 // prepare to upload to db 
 

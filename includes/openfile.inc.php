@@ -38,6 +38,9 @@ switch ($extension) {
       <source src='$path' type='video/mp4'>
     </video>";
         break;
+    case 'folder':
+        echo "I am a folder";
+        break;
     default:
         echo "File type not supported";
         break;

@@ -1,5 +1,6 @@
 <?php
  include_once "./includes/fetching.inc.php";
+ include_once "./includes/icons.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +25,7 @@
 
   <header class="d-flex justify-content-between align-items-center p-4">
 
-    <div><?php echo dirname($path)?></div>
+    <div>../root/</div>
     <div class="d-flex m-6 align-items-center">
       <form action="" class="me-4">
         <input type="search" placeholder="&#x1F50E;&#xFE0E;">
@@ -34,6 +35,9 @@
       <!-- Button trigger modal -->
       <button name="addNew" class="btn btn-dark rounded-circle" type="button" data-bs-toggle="modal"
         data-bs-target="#exampleModal"><i class="fas fa-plus"></i></button>
+      <!-- Button trigger modal -->
+      <button name="addFolder" class="btn btn-dark rounded-circle" type="button" data-bs-toggle="modal"
+        data-bs-target="#exampleModal2"><i class="fas fa-folder-plus"></i></button>
 
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -46,6 +50,26 @@
             <div class="modal-body">
               <form method="POST" action="./includes/addfile.php" enctype="multipart/form-data">
                 <input type="file" name="addfile" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button name="btn-menu" type="submit" class="btn btn-primary">Add file</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal2 -->
+      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add folder</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="./includes/addfolder.inc.php">
+                <input type="text" name="addfolder" />
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -90,6 +114,7 @@
               <input type="submit" name="change" value="change">
             </form>
             <?php else: ?>
+            <i class="<?=getFileType($file['extension']);?>"></i>
             <a
               href="includes/openfile.inc.php?path=<?=$file["path"];?>&extension=<?=$file["extension"];?>"><?php echo $file["name"]?></a>
             <?php endif; ?>
