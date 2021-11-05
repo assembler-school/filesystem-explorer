@@ -20,16 +20,16 @@ if (!is_dir("root")) {
 
 <body>
     <header>
-        <?php require_once("./search.php"); ?>
-        <?php require_once("./directory.php"); ?>
-        <?php require_once("./createFolderForm.php"); ?>
+        <?php require_once("./components/search.php"); ?>
+        <?php require_once("./components/directory.php"); ?>
+        <?php require_once("./components/createFolderForm.php"); ?>
 
 
     </header>
     <main>
-        <?php require_once("./sideBar.php"); ?>
+        <?php require_once("./components/sideBar.php"); ?>
         <section class="file__container">
-            <?php require_once("./renderFiles.php") ?>
+            <?php require_once("./components/renderFiles.php") ?>
         </section>
     </main>
 </body>
