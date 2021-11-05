@@ -91,7 +91,7 @@
             </form>
             <?php else: ?>
             <a
-              href="includes/openfile.inc.php?path=<?=$file["path"];?>&ext=<?=$file["extension"];?>"><?php echo $file["name"]?></a>
+              href="includes/openfile.inc.php?path=<?=$file["path"];?>&extension=<?=$file["extension"];?>"><?php echo $file["name"]?></a>
             <?php endif; ?>
           </td>
           <td><?php echo $file["size"]?></td>

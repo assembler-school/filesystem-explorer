@@ -4,7 +4,7 @@ echo "<a href='javascript:history.back(1);'>Back</a>'";
 echo "<pre>";
 print_r($_FILES);
 
-$pathName= "../root";
+$pathName= "../root/";
 $fileName = $_FILES["addfile"]["name"];
 $fileType =$_FILES["addfile"]["type"];
 $fileTmp = $_FILES["addfile"]["tmp_name"];
