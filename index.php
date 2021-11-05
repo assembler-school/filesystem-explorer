@@ -20,19 +20,20 @@ if (!is_dir("root")) {
 
 <body class="text-center">
     <header class="container">
-        <div class="container d-flex">
+        <div class="container d-flex  w-75">
             <?php require_once("./components/directory.php"); ?>
             <?php require_once("./components/search.php"); ?>
         </div>
         <hr>
-        <?php require_once("./components/createFolderForm.php"); ?>
-        <hr>
     </header>
     
-    <main class="container d-flex align-items-center justify-content-center">
+    <main class="container d-flex">
         <?php require_once("./components/sideBar.php"); ?>
         <section class="file__container">
-            <?php require_once("./components/renderFiles.php") ?>
+            <div class="container">
+                <?php require_once("./components/titlesFiles.php") ?>
+                <?php require_once("./components/renderFiles.php") ?>
+            </div>
         </section>
     </main>
     <?php require_once("./components/footer.php"); ?>

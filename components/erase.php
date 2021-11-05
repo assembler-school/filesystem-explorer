@@ -7,7 +7,6 @@ if (isset($_GET["erase"])) {
 
 function erase($eraseDir)
 {
-    print_r($eraseDir);
     if (is_dir($eraseDir)) {
         rmdir($eraseDir);
     } else {

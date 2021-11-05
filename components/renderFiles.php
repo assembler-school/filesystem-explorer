@@ -33,51 +33,51 @@ function printDirectory($fullPath)
     if (is_dir($fullPath)) {
         if (PHP_OS == "WINNT") {
             echo "
-                <div class='folder'>
-                    <a class='folder' href=index.php?directory=$fullPath>
+                <div class='row'>
+                    <a class='col text-truncate' class='folder' href=index.php?directory=$fullPath>
                         <p>$fullPath</p>
                     </a>
-                    <p>Created: $creationDate</p>
-                    <p>Modified: $modificationDate</p>
-                    <p>$fileSize</p>
-                    <a href='components/erase.php?erase=$fullPath'><button>x</button></a>
-                </div>";
+                    <p class='col'>$creationDate</p>
+                    <p class='col'>$modificationDate</p>
+                    <p class='col'>Folder</p>
+                    <p class='col'>$fileSize</p>
+                    <a class='col' href='components/erase.php?erase=$fullPath'><button>x</button></a>
+                </div>
+                <hr>";
         } else {
             echo "
-                <div class='folder'>
-                    <a class='folder' href=index.php?directory=$fullPath>
+                <div class='row'>
+                    <a class='col text-truncate' class='folder' href=index.php?directory=$fullPath>
                         <p>$fullPath</p>
                     </a>
-                    <p>Unknown</p>
-                    <p>Modified: $modificationDate</p>
-                    <p>$fileSize</p>
-                    
-                </div>";
+                    <p class='col'>Unknown</p>
+                    <p class='col'>$modificationDate</p>
+                    <p class='col'>$fileSize</p>    
+                </div>
+                <hr>";
         }
     } else {
         if (PHP_OS == "WINNT") {
             echo "
-                <div>
-                    <div class='file'>
-                        <p>$fullPath</p>
-                        <p>Created: $creationDate</p>
-                        <p>Modified: $modificationDate</p>
-                        <p>$ext</p>
-                        <p>$fileSize</p>
-                        <a href='components/erase.php?erase=$fullPath'><button>x</button></a>
+                    <div class='row'>
+                        <p class='col text-truncate'>$fullPath</p>
+                        <p class='col'>$creationDate</p>
+                        <p class='col'>$modificationDate</p>
+                        <p class='col'>$ext</p>
+                        <p class='col'>$fileSize</p>
+                        <a class='col' href='components/erase.php?erase=$fullPath'><button>x</button></a>
                     </div>
-                </div>";
+                <hr>";
         } else {
             echo "
-                <div>
-                    <div class='file'>
-                        <p>$fullPath</p>
-                        <p>Unknown</p>
-                        <p>Modified: $modificationDate</p>
-                        <p>$ext</p>
-                        <p>$fileSize</p>
+                    <div class='row'>
+                        <p class='col text-truncate' >$fullPath</p>
+                        <p class='col' >Unknown</p>
+                        <p class='col' >$modificationDate</p>
+                        <p class='col' >$ext</p>
+                        <p class='col' >$fileSize</p>
                     </div>
-                </div>";
+                <hr>";
         }
     }
 }

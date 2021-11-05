@@ -6,10 +6,13 @@ if (isset($_GET["directory"])) {
 ?>
 
 <section class="container d-flex flex-column text-center">
-  <form class="container d-flex flex-column"<?php echo "action=$directory" ?> method="post" enctype="multipart/form-data">
-    Select file to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload File" name="submit">
+  <?php require_once("./components/createFolderForm.php"); ?>
+  <form class="container d-flex flex-column custom-file m-1"<?php echo "action=$directory" ?> method="post" enctype="multipart/form-data">
+    <input class="custom-file-input mt-1 d-none" type="file" name="fileToUpload" id="fileToUpload">
+    <label class="btn btn-outline-secondary m-1" for="fileToUpload">Select a File</label>
+    <input class="btn btn-outline-secondary m-1" type="submit" value="Upload File" name="submit">
   </form>
+  <input type="button" class="btn btn-outline-secondary m-3" value="Trash Bin">
+  <hr>
   
 </section>

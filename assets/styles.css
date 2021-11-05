@@ -12,7 +12,13 @@ section:nth-child(1){
 section:nth-child(2){
     width: 70%;
 }
-.file__container {
+
+main{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    min-height: 70vh;
+}
+/* .file__container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -27,16 +33,7 @@ section:nth-child(2){
   background-repeat: no-repeat;
   max-width: 50px;
   max-height: 50px;
-}
-
-/* .btn__previous{
-    width: 4vh;
-    height: 4vh;
 } */
-
-.create__form{
-    width: 30%;
-}
 
 .search__form {
     width: 40%;
