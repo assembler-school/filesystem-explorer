@@ -3,23 +3,25 @@
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add file</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <h5 class="modal-title" id="exampleModalLabel">Upload file</h5>
+                  <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                   <div class="alert alert-primary" role="alert">
-                      <form class="mb-0" action="../../app/php/upload.php" method="post" enctype="multipart/form-data">
-                          Select a file to upload:
-                          <input type="file" name="fileToUpload" id="fileToUpload">
-                          <input type="submit" value="Upload" name="submit">
+                      <form id="formFile" class="mb-0" action="" method="post" enctype="multipart/form-data">
+                          Select image to upload:
+                          <input type="file" name="file" id="file">
+                          <!-- <input type="submit" value="Upload Image" name="submit"> -->
+                          <div class="modal-footer">
+                              <input type="submit" class="btn btn-success" value="Upload" name="submit" data-bs-dismiss="modal">
+
+                          </div>
                       </form>
                   </div>
 
               </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
+
           </div>
       </div>
   </div>
+  <script src="../../app/js/sendFile.js"></script>

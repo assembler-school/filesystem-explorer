@@ -36,10 +36,8 @@
   </main>
 
   <!-- Modal -->
+  <script src="../../app/js/loadTable.js"></script>
   <?php include "./modal.php"; ?>
-
-
 </body>
 
 </html>
-<script src="../../app/js/loadTable.js"></script>
