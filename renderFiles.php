@@ -1,4 +1,61 @@
 <?php
+
+function printDirectory($fullPath)
+{
+    $modificationDate = date("d F Y H:i:s.", filemtime($fullPath));
+    $creationDate = date("d F Y H:i:s.", filectime($fullPath));
+    $ext = pathinfo($fullPath, PATHINFO_EXTENSION);
+
+    if (is_dir($fullPath)) {
+
+
+        if (PHP_OS == "WINNT") {
+            echo "
+                <div class='folder'>
+                    <a class='folder' href=index.php?directory=$fullPath>
+                        <p>$fullPath</p>
+                    </a>
+                    <p>$creationDate</p>
+                    <p>$modificationDate</p>
+                    <p>$ext</p>
+                </div>";
+        } else {
+            echo "
+                <div class='folder'>
+                    <a class='folder' href=index.php?directory=$fullPath>
+                        <p>$fullPath</p>
+                    </a>
+                    <p>Unknown</p>
+                    <p>$modificationDate</p>
+                    <p>$ext</p>
+                </div>";
+        }
+    } else {
+
+        if (PHP_OS == "WINNT") {
+            echo "
+                <div>
+                    <div class='file'>
+                        <p>$fullPath</p>
+                        <p>$creationDate</p>
+                        <p>$modificationDate</p>
+                        <p>$ext</p>
+                    </div>
+                </div>";
+        } else {
+            echo "
+                <div>
+                    <div class='file'>
+                        <p>$fullPath</p>
+                        <p>Unknown</p>
+                        <p>$modificationDate</p>
+                        <p>$ext</p>
+                    </div>
+                </div>";
+        }
+    }
+}
+
 if (!isset($_GET["search"])) {
     if (isset($_GET["directory"]) && explode("/", $_GET["directory"])[0] == "root" && !str_contains($_GET["directory"], "..")) {
         $directory =  $_GET["directory"];
@@ -11,13 +68,15 @@ if (!isset($_GET["search"])) {
             while (($file = readdir($dh)) !== false) {
                 if ($file === "." || $file === "..") {
                 } else {
-                    if (filetype("$directory/$file") == "dir") {
-                        echo "<div><a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a>
-                        
-                        <a href=erase.php?erase=$directory/$file><button>x</button></a></div>";
-                    } else {
-                        echo "<div><a class='file' href=index.php?directory=" . $directory . "/" . $file . ">$file</a><a href=erase.php?erase=$directory/$file><button>x</button></a></div>";
-                    }
+                    $fullPath = "$directory/$file";
+                    // if (filetype("$directory/$file") == "dir") {
+                    //     echo "<div><a class='folder' href=index.php?directory=" . $directory . "/" . $file . ">$file</a>
+
+                    //     <a href=erase.php?erase=$directory/$file><button>x</button></a></div>";
+                    // } else {
+                    //     echo "<div><a class='file' href=index.php?directory=" . $directory . "/" . $file . ">$file</a><a href=erase.php?erase=$directory/$file><button>x</button></a></div>";
+                    // }
+                    printDirectory($fullPath);
                 }
             }
             closedir($dh);
@@ -33,44 +92,8 @@ if (!isset($_GET["search"])) {
                     } else {
 
                         if (str_contains($found, $search)) {
-                            $modificationDate = date("d F Y H:i:s.", filemtime($folderPath . '/' . $found));
-                            $creationDate = date("d F Y H:i:s.", filectime($folderPath . '/' . $found));
-                            if (is_dir($folderPath . '/' . $found)) {
-
-
-                                if (PHP_OS == "WINNT") {
-                                    echo "
-                                    <div class='folder'>
-                                        <p>$folderPath</p>
-                                        <p>$creationDate</p>
-                                        <p>$modificationDate</p>
-                                    </div>";
-                                } else {
-                                    echo "
-                                    <div class='folder'>
-                                        <p>$folderPath</p>
-                                        <p>Unknown</p>
-                                        <p>$modificationDate</p>
-                                    </div>";
-                                }
-                            } else {
-
-                                if (PHP_OS == "WINNT") {
-                                    echo "
-                                    <div class='file'>
-                                        <p>$folderPath</p>
-                                        <p>$creationDate</p>
-                                        <p>$modificationDate</p>
-                                    </div>";
-                                } else {
-                                    echo "
-                                    <div class='file'>
-                                        <p>$folderPath</p>
-                                        <p>Unknown</p>
-                                        <p>$modificationDate</p>
-                                    </div>";
-                                }
-                            }
+                            $fullPath = $folderPath . '/' . $found;
+                            printDirectory($fullPath);
                         }
                         if (filetype($folderPath) == "dir") {
                             // $folderPath = $folderPath . '/' . $folder;
