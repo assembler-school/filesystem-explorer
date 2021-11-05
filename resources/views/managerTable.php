@@ -15,9 +15,8 @@
 </table>
 
 
-
 <script type="text/javascript">
-    //! datatable
+    //! charge datatable dont move!!
     $(document).ready(function() {
 
         $('#table_id').DataTable({

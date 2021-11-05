@@ -4,7 +4,6 @@ $(document).ready(function () {
     var fd = new FormData();
     var files = $("#file")[0].files;
 
-    // Check file selected or not
     if (files.length > 0) {
       fd.append("file", files[0]);
 
@@ -16,13 +15,14 @@ $(document).ready(function () {
         processData: false,
         success: function (response) {
           if (response) {
-            loadTable();
             Swal.fire({
               icon: "success",
               title: "File updated",
               showConfirmButton: false,
               timer: 1500,
             });
+            //?recharge table
+            loadTable();
           } else {
             Swal.fire({
               icon: "error",
