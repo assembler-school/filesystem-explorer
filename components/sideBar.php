@@ -5,13 +5,11 @@ if (isset($_GET["directory"])) {
 }
 ?>
 
-<section class="side__menu">
-  <form action="./createFolderForm.php" method="POST">
-    <input type="submit" value="Create folder">
-  </form>
-  <form <?php echo "action=$directory" ?> method="post" enctype="multipart/form-data">
+<section class="container d-flex flex-column text-center">
+  <form class="container d-flex flex-column"<?php echo "action=$directory" ?> method="post" enctype="multipart/form-data">
     Select file to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload File" name="submit">
   </form>
+  
 </section>
