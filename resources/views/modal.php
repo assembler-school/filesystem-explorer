@@ -9,7 +9,7 @@
               <div class="modal-body">
                   <div class="alert alert-primary" role="alert">
                       <form id="formFile" class="mb-0" action="" method="post" enctype="multipart/form-data">
-                          Select image to upload:
+                          Select file to upload:
                           <input type="file" name="file" id="file">
                           <!-- <input type="submit" value="Upload Image" name="submit"> -->
                           <div class="modal-footer">

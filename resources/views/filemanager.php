@@ -38,6 +38,7 @@
   <!-- Modal -->
   <script src="../../app/js/loadTable.js"></script>
   <?php include "./modal.php"; ?>
+  <?php include "./modalRename.php"; ?>
 </body>
 
 </html>

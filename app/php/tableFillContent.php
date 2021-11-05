@@ -4,7 +4,6 @@ include "getFileSize.php";
 
 foreach (fileBrowser() as $file) {
     if (pathinfo($file, PATHINFO_EXTENSION) !== "") {
-        echo $file;
 
         $fileName =  basename($file);
         $fileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
@@ -17,8 +16,19 @@ foreach (fileBrowser() as $file) {
             ' <td> ' . $fileCreate . ' </td>' .
             ' <td> ' . $fileModify . ' </td>' .
             ' <td> ' . getFileSize($file) . ' </td>' .
-            ' <td> ' . '<button id="deleteFile" data-file="'.$file.'">delete</button>' . ' </td>' .
+            ' <td> ' . '<button id="deleteFile" data-file="'.$file.'">delete</button>' .
+                        '<button type="button" class="btn btn-primary" data-bs-toggle="modal" id="'.$file.'" data-bs-target="#renameModal" data-file="'.$file.'">
+                            Rename file
+                        </button>'. 
+            ' </td>' .
             '</tr> ';
+            $newFile = "'#".$file."'";
+            echo $newFile;
+            echo "<script> 
+                $({$newFile}).click(function(e){
+                    alert('helloe');
+                })
+            </script>";
     }
 }
 ?>
@@ -48,6 +58,34 @@ foreach (fileBrowser() as $file) {
                         text: "Something went wrong!",
                         });
                     }
+                }
+            })
+        })
+    })
+    $(document).ready(function(){
+        $("#renameFile").click(function(e){
+            let fileUrl=e.target.dataset.file;
+
+            $.ajax({
+                url:"../../app/php/renameFile.php",
+                type:"post",
+                data: {filePath:fileUrl},
+                success: function(response) {
+                    // if(response) {
+                    //     Swal.fire({
+                    //     icon: "success",
+                    //     title: "File renamed",
+                    //     showConfirmButton: false,
+                    //     timer: 1500,
+                    //     });
+                    //     loadTable();
+                    // } else {
+                    //     Swal.fire({
+                    //     icon: "error",
+                    //     title: "Oops...",
+                    //     text: "Something went wrong!",
+                    //     });
+                    // }
                 }
             })
         })
