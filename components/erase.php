@@ -1,4 +1,9 @@
 <?php
+if (isset($_GET["erase"])) {
+    $url = '../' . $_GET['erase'];
+    erase($url);
+}
+
 
 function erase($eraseDir)
 {
@@ -17,8 +22,4 @@ function erase($eraseDir)
 
 
     header("Location: ../index.php?directory=$directory");
-}
-
-if (isset($_GET["erase"])) {
-    erase('../' . $_GET['erase']);
 }
