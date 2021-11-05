@@ -21,21 +21,21 @@ if (!is_dir("root")) {
 <body class="text-center">
     <header class="container">
         <div class="container d-flex">
-            <?php require_once("./directory.php"); ?>
-            <?php require_once("./search.php"); ?>
+            <?php require_once("./components/directory.php"); ?>
+            <?php require_once("./components/search.php"); ?>
         </div>
         <hr>
-        <?php require_once("./createFolderForm.php"); ?>
+        <?php require_once("./components/createFolderForm.php"); ?>
         <hr>
     </header>
     
     <main class="container d-flex align-items-center justify-content-center">
-        <?php require_once("./sideBar.php"); ?>
+        <?php require_once("./components/sideBar.php"); ?>
         <section class="file__container">
-            <?php require_once("./renderFiles.php") ?>
+            <?php require_once("./components/renderFiles.php") ?>
         </section>
     </main>
-    <?php require_once("./footer.php"); ?>
+    <?php require_once("./components/footer.php"); ?>
 </body>
 
 </html>
