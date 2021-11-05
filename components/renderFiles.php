@@ -40,6 +40,7 @@ function printDirectory($fullPath)
                     <p>Created: $creationDate</p>
                     <p>Modified: $modificationDate</p>
                     <p>$fileSize</p>
+                    <a href='components/erase.php?erase=$fullPath'><button>x</button></a>
                 </div>";
         } else {
             echo "
@@ -50,6 +51,7 @@ function printDirectory($fullPath)
                     <p>Unknown</p>
                     <p>Modified: $modificationDate</p>
                     <p>$fileSize</p>
+                    
                 </div>";
         }
     } else {
@@ -62,6 +64,7 @@ function printDirectory($fullPath)
                         <p>Modified: $modificationDate</p>
                         <p>$ext</p>
                         <p>$fileSize</p>
+                        <a href='components/erase.php?erase=$fullPath'><button>x</button></a>
                     </div>
                 </div>";
         } else {
