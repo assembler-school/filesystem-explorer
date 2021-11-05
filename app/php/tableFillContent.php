@@ -32,7 +32,7 @@ foreach (fileBrowser() as $file) {
             echo "<script>
                 document.getElementById('button-" . $fileName . "')
                 .addEventListener('click', ()=>{
-                    handleEdit('".$id."');
+                    handleEdit('".$id."','".$file."');
                 })
             </script>";
     }
@@ -40,7 +40,7 @@ foreach (fileBrowser() as $file) {
 ?>
 
 <script>
-    function handleEdit (cellId) {
+    function handleEdit (cellId, file) {
        let $target = $('#' + cellId);
        $target.attr("contentEditable", true);
         $target.focus();
@@ -54,7 +54,7 @@ foreach (fileBrowser() as $file) {
         $target.blur(()=>{
             $newName = $target.text();
             $target.removeAttr('contentEditable');
-            newName($oldName, $newName);
+            newName($oldName, $newName, file);
         })
     }
 
@@ -87,12 +87,15 @@ foreach (fileBrowser() as $file) {
         })
     })
 
-    function newName(oldName, newName) {
+    function newName(oldName, newName, file) {
     $.ajax({
         url:"../../app/php/renameFile.php",
         type:"post",
-        data: {oldName: oldName, newName: newName},
+        data: {oldName: oldName, newName: newName,file: file },
         success: function(response) {
+            if(response) {
+                console.log(response)
+            }
             // if(response) {
  
             //     Swal.fire({
