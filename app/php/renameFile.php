@@ -1,13 +1,12 @@
 <?php
- $fileType = strtolower(pathinfo(($_POST['filePath']), PATHINFO_EXTENSION));
-$fileName = basename($_POST['filePath']);
-
-if(file_exists($_POST['filePath'])){
-	rename();
+	$file = $_POST['file'];
 	echo $response;
-} else {
-	$response = false;
-}
+	if($_POST['oldName'] !== $_POST['newName']){
+		rename($file, $newName);
+		echo $response;
+	} else {
+		$response = false;
+	}
 
 // /! Extraer el nombre de archivo completo de una ruta
 
