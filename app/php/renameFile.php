@@ -1,31 +1,37 @@
 <?php
-	$rootDir = realpath($_SERVER["DOCUMENT_ROOT"]);
-	$file = '/'.$_POST['file'];
-	$path = dirname($file);
+$file = '/' . $_POST['file'];
+$newName = $_POST['newName'];
 
-	$newName = $_POST['newName'];
-	$newPath = $path.'/'. $newName;
+//!path
+$explodePath = explode('/', $file);
+$rootPath = '';
+for ($i = 1; $i <= count($explodePath) - 1; $i++) {
 
-	if($_POST['oldName'] !== $_POST['newName']){
-		rename('/Applications/XAMPP/xamppfiles/htdocs/dashboard/ASSEMBLER/filesystem-explorer/storage/descarga.jpeg', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/ASSEMBLER/filesystem-explorer/storage/descarga2.jpeg');
-		echo $response;
-	} else {
-		$response = false;
+	if ($explodePath[$i] !== '..') {
+		$rootPath = $rootPath .  '/' . $explodePath[$i];
 	}
+}
 
+//!uri
+$uri = $_SERVER['REQUEST_URI'];
 
-	$uri = $_SERVER['REQUEST_URI'];
+if (isset($uri) && $uri !== null) {
+	$uri = substr($uri, 1);
 	$uri = explode('/', $uri);
-// echo $uri;
-// if (isset($uri) && $uri !== null) {
-// 	$uri = substr($uri, 1);
-// 	$uri = "http://$_SERVER[HTTP_HOST]" . "/" . $uri[0];
-// } else {
-// 	$uri = null;
-// }
+	$uri = "$_SERVER[DOCUMENT_ROOT]" . "/" . $uri[0];
+} else {
+	$uri = null;
+}
+$oldFilePath = $uri . $rootPath;
+$newFilePath = dirname($oldFilePath) . '/' .  $newName;
+$oldFileName = str_replace(' ', '', str_replace('/', '\ ', $oldFilePath));
+$newFileName = str_replace(' ', '', str_replace('/', '\ ', $newFilePath));
 
-define("BASE_URL", $uri);
-print_r($uri);
-echo $rootDir ;
 
-echo $file;
+
+if ($_POST['oldName'] !== $_POST['newName']) {
+	rename($oldFileName,  $newFileName);
+	echo $response = true;
+} else {
+	$response = false;
+}
