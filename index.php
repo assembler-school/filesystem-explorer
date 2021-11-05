@@ -60,7 +60,7 @@
   </header>
 
 
-  <main id="page-content">
+  <main id="page-content ">
     <table class="table">
       <thead>
         <tr class="table-info">
@@ -82,9 +82,9 @@
       ?>
         <tr>
           <td>
-            <?php if($file["edit"]) : ?>
+            <?php if($file["edit"]): ?>
             <form
-              action="./includes/edittitle.inc.php?path=<?=$file["path"];?>&id=<?=$file["id"];?>&name=<?=$file["name"];?>"
+              action="./includes/edittitle.inc.php?path=<?=$file["path"];?>&id=<?=$file["id"];?>&name=<?=$file["name"];?>&extension<?=$file["extension"];?>"
               method="POST">
               <input type="text" name="title" value=<?php echo $file["name"]?>>
               <input type="submit" name="change" value="change">
@@ -113,7 +113,7 @@
       <?php endif;?>
     </table>
   </main>
-  <footer id=" sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+  <footer id=" sticky-footer" class="footer mt-auto py-3 bg-light fixed-bottom">
     <div class="container text-center">
       <small>TOP Team © All Rights Reserved 2021 Your Website</small>
     </div>
