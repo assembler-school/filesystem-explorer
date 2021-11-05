@@ -30,6 +30,7 @@
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Add file
       </button>
+      <button type="button">add folder</button>
       <div id="fileDataTable"></div>
     </div>
   </main>
