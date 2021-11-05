@@ -18,18 +18,24 @@ if (!is_dir("root")) {
 
 </head>
 
-<body class="container">
+<body class="text-center">
     <header class="container">
-        <?php require_once("./search.php"); ?>
-        <?php require_once("./directory.php"); ?>
+        <div class="container d-flex">
+            <?php require_once("./directory.php"); ?>
+            <?php require_once("./search.php"); ?>
+        </div>
+        <hr>
         <?php require_once("./createFolderForm.php"); ?>
+        <hr>
     </header>
+    
     <main class="container d-flex align-items-center justify-content-center">
         <?php require_once("./sideBar.php"); ?>
         <section class="file__container">
             <?php require_once("./renderFiles.php") ?>
         </section>
     </main>
+    <?php require_once("./footer.php"); ?>
 </body>
 
 </html>

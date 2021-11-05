@@ -1,9 +1,11 @@
 button{
     margin: 1vh !important;
 }
-.search__form {
-  width: 40%;
+
+hr{
+    margin: 0 !important;
 }
+
 section:nth-child(1){
     width: 30%;
 }
@@ -26,3 +28,16 @@ section:nth-child(2){
   max-width: 50px;
   max-height: 50px;
 }
+
+/* .btn__previous{
+    width: 4vh;
+    height: 4vh;
+} */
+
+.create__form{
+    width: 30%;
+}
+
+.search__form {
+    width: 40%;
+  }
