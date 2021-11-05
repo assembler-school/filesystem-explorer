@@ -16,8 +16,13 @@
     "name"=> $newName,
     "id"=> $id,
     "edit"=> 0,
-    "path"=> $path . $newName . $extension
-  ]);
+    //cambiar despues del peer
+    //cambiar el nombre en el directorio además de en la Db
+    "path"=> "../root/" . $newName 
+    ]);
+
+    rename($path, "../root/" . $newName );
+    
 
   header("location: ../index.php");
 
