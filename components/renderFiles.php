@@ -40,7 +40,7 @@ function printDirectory($fullPath)
                     <p class='col'>$creationDate</p>
                     <p class='col'>$modificationDate</p>
                     <p class='col-1'>Folder</p>
-                    <p class='col'>$fileSize</p>
+                    <p class='col-2'>$fileSize</p>
                     <a class='col-1' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
                 </div>
                 <hr>";
@@ -52,7 +52,7 @@ function printDirectory($fullPath)
                     </a>
                     <p class='col'>Unknown</p>
                     <p class='col'>$modificationDate</p>
-                    <p class='col'>$fileSize</p>    
+                    <p class='col-2'>$fileSize</p>    
                 </div>
                 <hr>";
         }
@@ -64,7 +64,7 @@ function printDirectory($fullPath)
                         <p class='col'>$creationDate</p>
                         <p class='col'>$modificationDate</p>
                         <p class='col-1'>$ext</p>
-                        <p class='col'>$fileSize</p>
+                        <p class='col-2'>$fileSize</p>
                         <a class='col-1' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
                     </div>
                 <hr>";
@@ -75,7 +75,7 @@ function printDirectory($fullPath)
                         <p class='col' >Unknown</p>
                         <p class='col' >$modificationDate</p>
                         <p class='col-1' >$ext</p>
-                        <p class='col' >$fileSize</p>
+                        <p class='col-2' >$fileSize</p>
                     </div>
                 <hr>";
         }

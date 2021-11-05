@@ -20,7 +20,7 @@ if (!is_dir("root")) {
 
 <body class="text-center">
     <header class="container">
-        <div class="container d-flex  w-75">
+        <div class="container d-flex w-75 my-1">
             <?php require_once("./components/directory.php"); ?>
             <?php require_once("./components/search.php"); ?>
         </div>
