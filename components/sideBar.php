@@ -1,7 +1,7 @@
 <?php
-$directory = 'upload.php';
+$directory = './components/upload.php';
 if (isset($_GET["directory"])) {
-  $directory = "upload.php?directory=" . $_GET['directory'];
+  $directory = "./components/upload.php?directory=" . $_GET['directory'];
 }
 ?>
 

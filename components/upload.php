@@ -4,10 +4,10 @@
 // $directory = "index.php";
 
 if (isset($_GET["directory"])) {
-  $directory = $_GET["directory"];
+  $directory = '../' . $_GET["directory"];
 }
 
-$target_dir = $_GET["directory"] ? $directory : "./root/";
+$target_dir = $_GET["directory"] ? $directory : "../root/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -56,5 +56,9 @@ if ($uploadOk == 0) {
     echo "Sorry, there was an error uploading your file.";
   }
 }
+    $path = explode("/", $directory);
 
-header("Location:  index.php?directory=$directory");
+    array_shift($path);
+    $path = implode("/", $path);
+
+header("Location:  ../index.php?directory=$path");
