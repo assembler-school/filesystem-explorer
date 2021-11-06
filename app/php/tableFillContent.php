@@ -12,57 +12,42 @@ foreach (fileBrowser() as $file) {
         $fileModify =  date("Y-m-d H:m:s", filemtime($file));
         $id++;
 
-        echo ' <tr id="try-' . $id . '" data-file="' . $file . '">' .
-            ' <td> <span id="' . $id . '">' . $fileName . ' </span></td> ' .
+        echo ' <tr id="' . $id . '" data-file="' . $file . '">' .
+            ' <td> <span id="name-' . $id . '">' . $fileName . ' </span></td> ' .
             ' <td> ' . $fileType . ' </td>' .
             ' <td> ' . $fileCreate . ' </td>' .
             ' <td> ' . $fileModify . ' </td>' .
             ' <td> ' . getFileSize($file) . ' </td>' .
-            ' <td> ' . '<button id="deleteFile" data-file="' . $file . '">delete</button>' .
-            '<button id="try" >try</button>' .
-            '<button 
-                            type="button"
-                            class="btn btn-primary"
-                            id="button-' . $fileName . '"
-                            data-file="' . $fileName . '"
-                        >
-                            Rename file
-                        </button>' .
+            ' <td> ' .
+            '<button id="deleteFile">delete</button>' .
+            '<button id="renameFile"> Rename </button>' .
             ' </td>' .
             '</tr> ';
-        echo "<script>
-                document.getElementById('button-" . $fileName . "')
-                .addEventListener('click', ()=>{
-                    handleEdit('" . $id . "','" . $file . "');
-                })
-            </script>";
     }
 }
 ?>
 
 <script>
-    function handleEdit(cellId, file) {
-        let $target = $('#' + cellId);
-        $target.attr("contentEditable", true);
-        $target.focus();
-        $oldName = $target.text();
-        $target.keyup((e) => {
-            e.preventDefault()
-            if (e.keyCode === 13) {
-                $target.blur();
-            }
-        })
-        $target.blur(() => {
-            $newName = $target.text();
-            $target.removeAttr('contentEditable');
-            newName($oldName, $newName, file);
-        })
-    }
-
     $(document).ready(function() {
-        $("#try").click(function(e) {
-            console.log(e.target.parentElement.parentElement.id)
-            console.log(e.target.parentElement.parentElement.dataset.file)
+        $("#renameFile").click(function(e) {
+            $id = e.target.parentElement.parentElement.id;
+            $file = e.target.parentElement.parentElement.dataset.file
+            console.log('#name-' + $id)
+            let $target = $('#name-' + $id);
+            $target.attr("contentEditable", true);
+            $target.focus();
+            $oldName = $target.text();
+            $target.keyup((e) => {
+                e.preventDefault()
+                if (e.keyCode === 13) {
+                    $target.blur();
+                }
+            })
+            $target.blur(() => {
+                $newName = $target.text();
+                $target.removeAttr('contentEditable');
+                ajaxRename($oldName, $newName, $file);
+            })
         });
 
 
@@ -96,7 +81,7 @@ foreach (fileBrowser() as $file) {
         })
     })
 
-    function newName(oldName, newName, file) {
+    function ajaxRename(oldName, newName, file) {
         $.ajax({
             url: "../../app/php/renameFile.php",
             type: "post",
