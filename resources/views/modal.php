@@ -24,3 +24,12 @@
           </div>
       </div>
   </div>
+
+  <script>
+      $(document).ready(function() {
+          //?eventListener Upload
+          $("#formFile").submit(function() {
+              ajaxUpload();
+          })
+      })
+  </script>

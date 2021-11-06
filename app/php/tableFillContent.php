@@ -1,6 +1,6 @@
 <?php
-include "fileBrowser.php";
-include "getFileSize.php";
+include "utils/fileBrowser.php";
+include "utils/getFileSize.php";
 
 $id = 0;
 foreach (fileBrowser() as $file) {
@@ -13,7 +13,7 @@ foreach (fileBrowser() as $file) {
         $id++;
 
         echo ' <tr id="' . $id . '" data-file="' . $file . '">' .
-            ' <td> <span id="name-' . $id . '">' . $fileName . ' </span></td> ' .
+            ' <td> <p id="name-' . $id . '" >' . $fileName . ' </p></td> ' .
             ' <td> ' . $fileType . ' </td>' .
             ' <td> ' . $fileCreate . ' </td>' .
             ' <td> ' . $fileModify . ' </td>' .
@@ -37,7 +37,7 @@ foreach (fileBrowser() as $file) {
             $target.attr("contentEditable", true);
             $target.focus();
             $oldName = $target.text();
-            //!pte bloquear salto de linea
+
             $target.keyup((e) => {
                 e.preventDefault()
                 if (e.keyCode === 13) {

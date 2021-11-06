@@ -1,5 +1,5 @@
 <?php
-include "getFilePath.php";
+include "./utils/getFilePath.php";
 
 $file = '/' . $_POST['file'];
 $newName = $_POST['newName'];
