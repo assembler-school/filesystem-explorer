@@ -9,10 +9,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"><span class="fas fa-home"></span> Home</a>
+                    <a class="nav-link active" aria-current="page" href="#"><span class="fas fa-archive"></span> Manager</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><span class="fas fa-archive"></span> Manager</a>
+                    <a class="nav-link" href="#"><span class="fas fa-dumpster"></span> Dumpster</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><span class="fas fa-sign-out-alt"></span> Log out</a>

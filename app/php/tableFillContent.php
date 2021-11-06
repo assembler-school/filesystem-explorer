@@ -19,8 +19,9 @@ foreach (fileBrowser() as $file) {
             ' <td> ' . $fileModify . ' </td>' .
             ' <td> ' . getFileSize($file) . ' </td>' .
             ' <td> ' .
-            '<button id="deleteFile">delete</button>' .
-            '<button id="renameFile"> Rename </button>' .
+            '<button id="showFile"class="btn btn-light  m-1">▶️ </button>' .
+            '<button id="renameFile"class="btn btn-light  m-1">✏️ </button>' .
+            '<button id="deleteFile" class="btn btn-light m-1">❌</button>' .
             ' </td>' .
             '</tr> ';
     }
