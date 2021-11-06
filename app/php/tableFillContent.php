@@ -12,27 +12,28 @@ foreach (fileBrowser() as $file) {
         $fileModify =  date("Y-m-d H:m:s", filemtime($file));
         $id++;
 
-        echo ' <tr>' .
-            ' <td> <span id="'.$id.'">' . $fileName . ' </span></td> ' .
+        echo ' <tr id="try-' . $id . '" data-file="' . $file . '">' .
+            ' <td> <span id="' . $id . '">' . $fileName . ' </span></td> ' .
             ' <td> ' . $fileType . ' </td>' .
             ' <td> ' . $fileCreate . ' </td>' .
             ' <td> ' . $fileModify . ' </td>' .
             ' <td> ' . getFileSize($file) . ' </td>' .
-            ' <td> ' . '<button id="deleteFile" data-file="'.$file.'">delete</button>' .
-                        '<button 
+            ' <td> ' . '<button id="deleteFile" data-file="' . $file . '">delete</button>' .
+            '<button id="try" >try</button>' .
+            '<button 
                             type="button"
                             class="btn btn-primary"
-                            id="button-'.$fileName.'"
-                            data-file="'.$fileName.'"
+                            id="button-' . $fileName . '"
+                            data-file="' . $fileName . '"
                         >
                             Rename file
-                        </button>'. 
+                        </button>' .
             ' </td>' .
             '</tr> ';
-            echo "<script>
+        echo "<script>
                 document.getElementById('button-" . $fileName . "')
                 .addEventListener('click', ()=>{
-                    handleEdit('".$id."','".$file."');
+                    handleEdit('" . $id . "','" . $file . "');
                 })
             </script>";
     }
@@ -40,18 +41,18 @@ foreach (fileBrowser() as $file) {
 ?>
 
 <script>
-    function handleEdit (cellId, file) {
-       let $target = $('#' + cellId);
-       $target.attr("contentEditable", true);
+    function handleEdit(cellId, file) {
+        let $target = $('#' + cellId);
+        $target.attr("contentEditable", true);
         $target.focus();
         $oldName = $target.text();
-        $target.keyup((e)=> {
+        $target.keyup((e) => {
             e.preventDefault()
-            if(e.keyCode === 13) {
+            if (e.keyCode === 13) {
                 $target.blur();
             }
         })
-        $target.blur(()=>{
+        $target.blur(() => {
             $newName = $target.text();
             $target.removeAttr('contentEditable');
             newName($oldName, $newName, file);
@@ -59,27 +60,35 @@ foreach (fileBrowser() as $file) {
     }
 
     $(document).ready(function() {
-        $("#deleteFile").click(function(e){
-            let fileUrl= e.target.dataset.file;
+        $("#try").click(function(e) {
+            console.log(e.target.parentElement.parentElement.id)
+            console.log(e.target.parentElement.parentElement.dataset.file)
+        });
+
+
+        $("#deleteFile").click(function(e) {
+            let fileUrl = e.target.parentElement.parentElement.dataset.file;
 
             $.ajax({
                 url: "../../app/php/deleteFile.php",
-                type:"post",
-                data: {filePath: fileUrl},
+                type: "post",
+                data: {
+                    filePath: fileUrl
+                },
                 success: function(response) {
-                    if(response) {
+                    if (response) {
                         Swal.fire({
-                        icon: "success",
-                        title: "File deleted",
-                        showConfirmButton: false,
-                        timer: 1500,
+                            icon: "success",
+                            title: "File deleted",
+                            showConfirmButton: false,
+                            timer: 1500,
                         });
                         loadTable();
                     } else {
                         Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Something went wrong!",
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Something went wrong!",
                         });
                     }
                 }
@@ -88,32 +97,35 @@ foreach (fileBrowser() as $file) {
     })
 
     function newName(oldName, newName, file) {
-    $.ajax({
-        url:"../../app/php/renameFile.php",
-        type:"post",
-        data: {oldName: oldName, newName: newName,file: file },
-        success: function(response) {
-            if(response) {
-                console.log(response)
-            }
-            // if(response) {
- 
-            //     Swal.fire({
-            //     icon: "success",
-            //     title: "File renamed",
-            //     showConfirmButton: false,
-            //     timer: 1500,
-            //     });
-            //     loadTable();
-            // } else {
-            //     Swal.fire({
-            //     icon: "error",
-            //     title: "Oops...",
-            //     text: "Something went wrong!",
-            //     });
-            // }
-        }
-    })
-}
+        $.ajax({
+            url: "../../app/php/renameFile.php",
+            type: "post",
+            data: {
+                oldName: oldName,
+                newName: newName,
+                file: file
+            },
+            success: function(response) {
+                if (response) {
+                    console.log(response)
+                }
+                // if(response) {
 
+                //     Swal.fire({
+                //     icon: "success",
+                //     title: "File renamed",
+                //     showConfirmButton: false,
+                //     timer: 1500,
+                //     });
+                //     loadTable();
+                // } else {
+                //     Swal.fire({
+                //     icon: "error",
+                //     title: "Oops...",
+                //     text: "Something went wrong!",
+                //     });
+                // }
+            }
+        })
+    }
 </script>
