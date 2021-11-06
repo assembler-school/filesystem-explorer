@@ -6,7 +6,7 @@ $id = 0;
 foreach (fileBrowser() as $file) {
     if (pathinfo($file, PATHINFO_EXTENSION) !== "") {
 
-        $fileName =  basename($file);
+        $fileName =  explode('.', basename($file))[0];
         $fileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
         $fileCreate =  date("Y-m-d H:m:s", filectime($file));
         $fileModify =  date("Y-m-d H:m:s", filemtime($file));
@@ -29,14 +29,15 @@ foreach (fileBrowser() as $file) {
 
 <script>
     $(document).ready(function() {
+        //?eventListener Rename
         $("#renameFile").click(function(e) {
             $id = e.target.parentElement.parentElement.id;
             $file = e.target.parentElement.parentElement.dataset.file
-            console.log('#name-' + $id)
             let $target = $('#name-' + $id);
             $target.attr("contentEditable", true);
             $target.focus();
             $oldName = $target.text();
+            //!pte bloquear salto de linea
             $target.keyup((e) => {
                 e.preventDefault()
                 if (e.keyCode === 13) {
@@ -50,67 +51,10 @@ foreach (fileBrowser() as $file) {
             })
         });
 
-
+        //?eventListener Delete
         $("#deleteFile").click(function(e) {
-            let fileUrl = e.target.parentElement.parentElement.dataset.file;
-
-            $.ajax({
-                url: "../../app/php/deleteFile.php",
-                type: "post",
-                data: {
-                    filePath: fileUrl
-                },
-                success: function(response) {
-                    if (response) {
-                        Swal.fire({
-                            icon: "success",
-                            title: "File deleted",
-                            showConfirmButton: false,
-                            timer: 1500,
-                        });
-                        loadTable();
-                    } else {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: "Something went wrong!",
-                        });
-                    }
-                }
-            })
+            $fileUrl = e.target.parentElement.parentElement.dataset.file;
+            ajaxDelete($fileUrl);
         })
     })
-
-    function ajaxRename(oldName, newName, file) {
-        $.ajax({
-            url: "../../app/php/renameFile.php",
-            type: "post",
-            data: {
-                oldName: oldName,
-                newName: newName,
-                file: file
-            },
-            success: function(response) {
-                if (response) {
-                    console.log(response)
-                }
-                // if(response) {
-
-                //     Swal.fire({
-                //     icon: "success",
-                //     title: "File renamed",
-                //     showConfirmButton: false,
-                //     timer: 1500,
-                //     });
-                //     loadTable();
-                // } else {
-                //     Swal.fire({
-                //     icon: "error",
-                //     title: "Oops...",
-                //     text: "Something went wrong!",
-                //     });
-                // }
-            }
-        })
-    }
 </script>

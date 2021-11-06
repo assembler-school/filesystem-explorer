@@ -36,9 +36,15 @@
   </main>
 
   <!-- Modal -->
-  <script src="../../app/js/loadTable.js"></script>
   <?php include "./modal.php"; ?>
-  <?php include "./modalRename.php"; ?>
+
+  <!-- JavaScript -->
+  <script src="../../app/js/loadTable.js"></script>
+  <script src="../../app/js/ajaxRename.js"></script>
+  <script src="../../app/js/ajaxDelete.js"></script>
+  <script src="../../app/js/ajaxUpload.js"></script>
+
+
 </body>
 
 </html>

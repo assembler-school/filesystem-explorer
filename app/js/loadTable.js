@@ -3,4 +3,5 @@ function loadTable() {
     $("#fileDataTable").load("managerTable.php");
   });
 }
+
 loadTable();

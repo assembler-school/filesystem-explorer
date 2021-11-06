@@ -24,4 +24,3 @@
           </div>
       </div>
   </div>
-  <script src="../../app/js/sendFile.js"></script>
