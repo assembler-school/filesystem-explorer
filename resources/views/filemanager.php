@@ -42,7 +42,7 @@
       </div>
     </div>
   </main>
-
+  <?php include "./footer.php"; ?>
   <!-- Modal -->
   <?php include "./modal.php"; ?>
 
