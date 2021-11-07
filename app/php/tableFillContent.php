@@ -3,7 +3,7 @@ include "utils/fileBrowser.php";
 include "utils/getFileSize.php";
 
 $id = 0;
-foreach (fileBrowser() as $file) {
+foreach (fileBrowser("") as $file) {
     if (pathinfo($file, PATHINFO_EXTENSION) !== "") {
 
         $fileName =  explode('.', basename($file))[0];

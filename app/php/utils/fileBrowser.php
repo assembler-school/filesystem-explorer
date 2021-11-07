@@ -1,6 +1,6 @@
 <?php
-function fileBrowser($folder = "*")
+function fileBrowser($folder)
 {
-    $arrayFile = glob('../../storage/' . $folder, GLOB_BRACE);
+    $arrayFile = glob($folder !== "" ? $folder : '../../storage/*', GLOB_BRACE);
     return $arrayFile;
 }
