@@ -1,16 +1,18 @@
 <?php
 
-require_once("./utils/joinPath.php");
+require_once(ROOT . "/utils/joinPath.php");
 
 function validateUrlFolderPath()
 {
 	if (!isset($_GET["path"]) || !$_GET["path"]) return true;
 
 	$urlFolderPath = htmlentities(trim($_GET["path"]));
-	$fullpath = joinPath([ROOT_DIRECTORY, $urlFolderPath]);
 
-	if (!validatePath($fullpath)) return false;
-	if (!is_dir($fullpath)) 		 	return false;
+	if (!validatePath($urlFolderPath)) return false;
+
+	$folderPath =	joinPath([ROOT_DIRECTORY, $urlFolderPath]);
+
+	if (!is_dir($folderPath)) return false;
 
 	return true;
 }
@@ -18,7 +20,7 @@ function validateUrlFolderPath()
 function validatePath($path)
 {
 	if (!preg_match("/^\.?\/?([^\/:*?\"<>|]+\/?)*$/", $path)) 	return false;
-	if (preg_match("/\.{2}\//", $path)) 											return false;
+	if (preg_match("/\.{2}\//", $path)) 												return false;
 
 	return true;
 }

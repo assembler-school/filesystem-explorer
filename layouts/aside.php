@@ -2,7 +2,7 @@
 
 function renderAside()
 {
-	require_once("./layouts/notifications.php");
+	require_once(ROOT . "/layouts/notifications.php");
 ?>
 	<aside class="aside-nav">
 		<div class="accordion accordion-flush">

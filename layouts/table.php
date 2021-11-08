@@ -2,8 +2,8 @@
 
 function renderTable()
 {
-	require_once("./utils/url.php");
-	require_once("./utils/getFolderContent.php");
+	require_once(ROOT . "/utils/url.php");
+	require_once(ROOT . "/utils/getFolderContent.php");
 
 	if ($folderPath = getUrlFolderPath())	$contents = getFolderContent($folderPath);
 ?>
@@ -31,17 +31,31 @@ function renderTable()
 							<td><?= $file["modtime"] ?></td>
 							<td><?= $file["acctime"] ?></td>
 							<td>
-								<div class="d-flex justify-content-center align-items center gap-2">
-									<button data-bs-toggle="modal" data-bs-target="#modalDelete" data-action="delete" data-payload="<?= $file["path"] ?>">
+								<div class="d-flex align-items center gap-2">
+									<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalDelete" data-action="delete" data-payload="<?= $file["path"] ?>">
 										<span class="material-icons" style="pointer-events: none">
 											delete
 										</span>
 									</button>
-									<button data-bs-toggle="modal" data-bs-target="#modalRename" data-action="rename" data-payload="<?= $file["path"] ?>">
+									<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalRename" data-action="rename" data-payload="<?= $file["path"] ?>">
 										<span class="material-icons" style="pointer-events: none">
 											drive_file_rename_outline
 										</span>
 									</button>
+									<?php if (in_array($file["type"], ["svg", "jpg", "jpeg", "png"])) : ?>
+										<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalView" data-action="view-image" data-payload="<?= $file["path"] ?>">
+											<span class="material-icons" style="pointer-events: none">
+												image
+											</span>
+										</button>
+									<?php endif ?>
+									<?php if (in_array($file["type"], ["mp4"])) : ?>
+										<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalView" data-action="view-video" data-payload="<?= $file["path"] ?>">
+											<span class="material-icons" style="pointer-events: none">
+												smart_display
+											</span>
+										</button>
+									<?php endif ?>
 								</div>
 							</td>
 						</tr>
@@ -55,11 +69,25 @@ function renderTable()
 							<td><?= $folder["modtime"] ?></td>
 							<td><?= $folder["acctime"] ?></td>
 							<td>
-								<a href="index.php?path=<?= $folder["path"] ?>">
-									<span class="material-icons">
-										north_east
-									</span>
-								</a>
+								<div class="d-flex align-items center gap-2">
+									<?php if (!in_array($folder["name"], [".", ".."])) : ?>
+										<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalDelete" data-action="delete" data-payload="<?= $folder["path"] ?>">
+											<span class="material-icons" style="pointer-events: none">
+												delete
+											</span>
+										</button>
+										<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalRename" data-action="rename" data-payload="<?= $folder["path"] ?>">
+											<span class="material-icons" style="pointer-events: none">
+												drive_file_rename_outline
+											</span>
+										</button>
+									<?php endif ?>
+									<a href="index.php?path=<?= $folder["path"] ?>">
+										<span class="material-icons">
+											north_east
+										</span>
+									</a>
+								</div>
 							</td>
 						</tr>
 					<?php endforeach ?>
