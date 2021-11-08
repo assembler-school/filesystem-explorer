@@ -26,13 +26,14 @@ function printDirectory($fullPath)
     $creationDate = date("d/m/Y H:i", filectime($fullPath));
     $fileSize = filesize($fullPath) < 1000000 ? filesize($fullPath) /  1000 . " KB" : filesize($fullPath) /  1000000000 . " MB";
     $ext = pathinfo($fullPath, PATHINFO_EXTENSION);
+    $fileName = explode("/", $fullPath)[count(explode("/", $fullPath)) - 1];
 
     if (is_dir($fullPath)) {
         if (PHP_OS == "WINNT") {
             echo "
                 <div class='row align-items-center'>
                     <a class='col-3 text-truncate' class='folder' href=index.php?directory=$fullPath>
-                        <p>$fullPath</p>
+                        <p>$fileName</p>
                     </a>
                     <p class='col'>$creationDate</p>
                     <p class='col'>$modificationDate</p>
@@ -45,7 +46,7 @@ function printDirectory($fullPath)
             echo "
                 <div class='row align-items-center'>
                     <a class='col-3 text-truncate' class='folder' href=index.php?directory=$fullPath>
-                        <p>$fullPath</p>
+                        <p>$fileName</p>
                     </a>
                     <p class='col'>Unknown</p>
                     <p class='col'>$modificationDate</p>
@@ -57,7 +58,7 @@ function printDirectory($fullPath)
         if (PHP_OS == "WINNT") {
             echo "
                     <div class='row align-items-center'>
-                        <p class='col-3 text-truncate'>$fullPath</p>
+                        <p class='col-3 text-truncate'>$fileName</p>
                         <p class='col'>$creationDate</p>
                         <p class='col'>$modificationDate</p>
                         <p class='col-1'>$ext</p>
@@ -68,7 +69,7 @@ function printDirectory($fullPath)
         } else {
             echo "
                     <div class='row align-items-center'>
-                        <p class='col-3 text-truncate' >$fullPath</p>
+                        <p class='col-3 text-truncate'>$fileName</p>
                         <p class='col' >Unknown</p>
                         <p class='col' >$modificationDate</p>
                         <p class='col-1' >$ext</p>
