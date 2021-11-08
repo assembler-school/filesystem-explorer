@@ -20,10 +20,10 @@ function getFilePath($file)
         $newUri = "";
 
         for ($i = 0; $i < count($uri) - 3; $i++) {
-            $newUri = $newUri  . $uri[$i];
+            $newUri = $newUri . "/".$uri[$i];
         }
 
-        $uri = "$_SERVER[DOCUMENT_ROOT]" . "/" .  $newUri;
+        $uri = "$_SERVER[DOCUMENT_ROOT]" .  $newUri;
     } else {
         $uri = null;
     }

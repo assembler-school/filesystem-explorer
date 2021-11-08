@@ -15,15 +15,12 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 	$oldFilePath = str_replace(' ', '', str_replace('/', '\ ', $oldFilePath));
 	$newFilePath = str_replace(' ', '', str_replace('/', '\ ', $newFilePath));
 } else {
-	$oldFilePath = str_replace(' ', '', $oldFilePath);
 	$newFilePath = str_replace(' ', '',  $newFilePath);
 }
 
-
-
 //? Change Name
 if ($_POST['oldName'] !== $_POST['newName']) {
-	rename($oldFileName,  $newFileName);
+	rename($oldFilePath,  $newFilePath);
 	echo $response = true;
 } else {
 	$response = false;
