@@ -20,7 +20,7 @@ function readDirectory($search, $folderPath)
     }
 }
 
-function printDirectory($fullPath, $file)
+function printDirectory($fullPath)
 {
     $modificationDate = date("d F Y H:i:s.", filemtime($fullPath));
     $creationDate = date("d F Y H:i:s.", filectime($fullPath));
@@ -32,7 +32,7 @@ function printDirectory($fullPath, $file)
             echo "
                 <div class='folder'>
                     <a class='folder' href=index.php?directory=$fullPath>
-                        <p>$file</p>
+                        <p>$fullPath</p>
                     </a>
                     <p>Created: $creationDate</p>
                     <p>Modified: $modificationDate</p>
@@ -43,7 +43,7 @@ function printDirectory($fullPath, $file)
             echo "
                 <div class='folder'>
                     <a class='folder' href=index.php?directory=$fullPath>
-                        <p>$file</p>
+                        <p>$fullPath</p>
                     </a>
                     <p>Unknown</p>
                     <p>Modified: $modificationDate</p>
@@ -56,7 +56,7 @@ function printDirectory($fullPath, $file)
             echo "
                 <div>
                     <div class='file'>
-                        <p>$file</p>
+                        <p>$fullPath</p>
                         <p>Created: $creationDate</p>
                         <p>Modified: $modificationDate</p>
                         <p>$ext</p>
@@ -68,7 +68,7 @@ function printDirectory($fullPath, $file)
             echo "
                 <div>
                     <div class='file'>
-                        <p>$file</p>
+                        <p>$fullPath</p>
                         <p>Unknown</p>
                         <p>Modified: $modificationDate</p>
                         <p>$ext</p>
@@ -92,7 +92,7 @@ if (!isset($_GET["search"])) {
                 if ($file === "." || $file === "..") {
                 } else {
                     $fullPath = "$directory/$file";
-                    printDirectory($fullPath, $file);
+                    printDirectory($fullPath);
                 }
             }
             closedir($dh);
