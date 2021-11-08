@@ -59,7 +59,7 @@ function printDirectory($fullPath)
         if (PHP_OS == "WINNT") {
             echo "
                     <div class='row align-items-center'>
-                        <a class='col-3 text-truncate' href='http://localhost/PhpBasicsWorkShop/filesystem-explorer/$fullPath'><p>$fileName</p></a>
+                        <a class='col-3 text-truncate' href='$fullPath'><p>$fileName</p></a>
                         <p class='col'>$creationDate</p>
                         <p class='col'>$modificationDate</p>
                         <p class='col-1'>$ext</p>
