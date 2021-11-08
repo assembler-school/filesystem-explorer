@@ -1,6 +1,6 @@
 <?php
 
-function getFolderContent($urlFolderPath)
+function getFolderContent($urlFolderPath = '')
 {
 	require_once(ROOT . "/utils/joinPath.php");
 	require_once(ROOT . "/utils/getFileInfo.php");
