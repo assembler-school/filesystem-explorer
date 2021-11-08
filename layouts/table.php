@@ -1,11 +1,16 @@
 <?php
 
+session_start();
+
 function renderTable()
 {
 	require_once(ROOT . "/utils/url.php");
 	require_once(ROOT . "/utils/getFolderContent.php");
+	require_once(ROOT . "/utils/searchInDrive.php");
 
-	if ($folderPath = getUrlFolderPath())	$contents = getFolderContent($folderPath);
+
+	if ($folderPath = getUrlFolderPath())
+		$contents =	isset( $_SESSION['QUERY'] ) ? ($_SESSION["QUERY"]) : getFolderContent($folderPath);
 
 	// contents tmb puede ser del search
 	// usar session, query
@@ -121,4 +126,6 @@ function renderTable()
 		});
 	</script>
 <?php
+		unset($_SESSION['QUERY']);
+		unset($_SESSION['search']);
 }

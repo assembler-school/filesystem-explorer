@@ -6,7 +6,10 @@ function getFolderContent($urlFolderPath)
 	require_once(ROOT . "/utils/getFileInfo.php");
 
 	$content = ["files" => [], "folders" => []];
-	$folderPathFull = joinPath([ROOT_DIRECTORY, $urlFolderPath]);
+
+	//para que pueda obtener todo de la raiz
+
+	$folderPathFull = $urlFolderPath === "ROOT" ? ROOT_DIRECTORY : joinPath([ROOT_DIRECTORY, $urlFolderPath]);
 
 	try {
 		$fileNames = scandir($folderPathFull, SCANDIR_SORT_ASCENDING);
