@@ -25,7 +25,7 @@ function printDirectory($fullPath)
     $modificationDate = date("d/m/Y H:i", filemtime($fullPath));
     $creationDate = date("d/m/Y H:i", filectime($fullPath));
     $fileSize = filesize($fullPath) < 1000000 ? filesize($fullPath) /  1000 . " KB" : filesize($fullPath) /  1000000000 . " MB";
-    $ext = pathinfo($fullPath, PATHINFO_EXTENSION);
+    $ext = strtoupper(pathinfo($fullPath, PATHINFO_EXTENSION));
     $fileName = explode("/", $fullPath)[count(explode("/", $fullPath)) - 1];
     // $test = printFileType($ext);
 
@@ -33,9 +33,14 @@ function printDirectory($fullPath)
         if (PHP_OS == "WINNT") {
             echo "
                 <div class='row align-items-center'>
+<<<<<<< HEAD
                     <a class='col-3 text-truncate' class='folder' href=index.php?directory=$fullPath>
                     <img src=./assets/icons/folder.svg>
                     <p>$fileName</p>
+=======
+                    <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
+                    <p>$test</p><p>$fileName </p>
+>>>>>>> master
                     </a>
                     <p class='col'>$creationDate</p>
                     <p class='col'>$modificationDate</p>
@@ -47,7 +52,7 @@ function printDirectory($fullPath)
         } else {
             echo "
                 <div class='row align-items-center'>
-                <a class='col-3 text-truncate' class='folder' href=index.php?directory=$fullPath>
+                <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
                     <img src=./assets/icons/folder.svg>
                     <p>$fileName</p>
                     </a>
