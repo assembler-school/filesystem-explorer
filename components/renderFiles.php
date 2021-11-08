@@ -27,13 +27,14 @@ function printDirectory($fullPath)
     $fileSize = filesize($fullPath) < 1000000 ? filesize($fullPath) /  1000 . " KB" : filesize($fullPath) /  1000000000 . " MB";
     $ext = pathinfo($fullPath, PATHINFO_EXTENSION);
     $fileName = explode("/", $fullPath)[count(explode("/", $fullPath)) - 1];
+    $test = printFileType($ext);
 
     if (is_dir($fullPath)) {
         if (PHP_OS == "WINNT") {
             echo "
                 <div class='row align-items-center'>
                     <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
-                        <p>$fullPath</p>
+                    <p>$test</p><p>$fileName </p>
                     </a>
                     <p class='col'>$creationDate</p>
                     <p class='col'>$modificationDate</p>
@@ -103,4 +104,16 @@ if (!isset($_GET["search"])) {
     $search = $_GET["search"];
     $folderPath = "root";
     readDirectory($search, $folderPath);
+}
+
+function printFileType($ext)
+{
+    switch ($ext) {
+        case "jpg":
+            return "<p>JPG FILE</p>";
+            break;
+        default:
+            return "DEFAULT";
+            break;
+    }
 }
