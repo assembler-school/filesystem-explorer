@@ -33,14 +33,9 @@ function printDirectory($fullPath)
         if (PHP_OS == "WINNT") {
             echo "
                 <div class='row align-items-center'>
-<<<<<<< HEAD
-                    <a class='col-3 text-truncate' class='folder' href=index.php?directory=$fullPath>
+                    <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
                     <img src=./assets/icons/folder.svg>
                     <p>$fileName</p>
-=======
-                    <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
-                    <p>$test</p><p>$fileName </p>
->>>>>>> master
                     </a>
                     <p class='col'>$creationDate</p>
                     <p class='col'>$modificationDate</p>
