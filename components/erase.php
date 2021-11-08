@@ -7,25 +7,12 @@ if (isset($_GET["erase"])) {
 function erase($eraseDir)
 {
     if (is_dir($eraseDir)) {
-        foreach (glob("$eraseDir/*") as $files){
-            if(is_dir($files)){
-                foreach (glob("$files/*") as $carpeta){
-                    if(is_dir($carpeta)){
-                        rmdir($carpeta);
-                    }
-                    else{
-                        unlink($carpeta);
-                    }
-                    
-                }
-            rmdir($files);     
+        foreach (glob("$eraseDir./*") as $file){
+            erase($file);    
             }
-            else{
-                unlink($files);
-            }
+        rmdir($eraseDir); 
         }
-        rmdir($eraseDir);
-    } else {
+     else {
         unlink($eraseDir);
     }
 
