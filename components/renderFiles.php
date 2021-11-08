@@ -22,14 +22,19 @@ function readDirectory($search, $folderPath)
 
 function printDirectory($fullPath)
 {
+    $directory =  explode("/", $fullPath);
+    array_pop($directory);
+    $directory = implode("/", $directory);
+
     $modificationDate = date("d/m/Y H:i", filemtime($fullPath));
     $creationDate = date("d/m/Y H:i", filectime($fullPath));
-    $fileSize = round(filesize($fullPath), 2) < 1000000 ? round(filesize($fullPath) /  1000, 2) . " KB" : round(filesize($fullPath) /  1000000, 2). " MB";
+    $fileSize = round(filesize($fullPath), 2) < 1000000 ? round(filesize($fullPath) /  1000, 2) . " KB" : round(filesize($fullPath) /  1000000, 2) . " MB";
     $ext = strtoupper(pathinfo($fullPath, PATHINFO_EXTENSION));
     $fileName = explode("/", $fullPath)[count(explode("/", $fullPath)) - 1];
     // $test = printFileType($ext);
 
     if (is_dir($fullPath)) {
+
         if (PHP_OS == "WINNT") {
             echo "
                 <div class='row align-items-center'>
@@ -41,7 +46,15 @@ function printDirectory($fullPath)
                     <p class='col'>$modificationDate</p>
                     <p class='col-1'>Folder</p>
                     <p class='col-2'></p>
-                    <a class='col-1' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
+                    <div class='col-1'>
+                        <a href='components/erase.php?erase=$fullPath'>
+                            <button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button>
+                        </a>
+                        <a href='index.php?directory=$directory&edit=$fullPath'>
+                            <button class='btn btn-edit btn-warning p-0'><i class='fas fa-edit'></i></button>
+                        </a>
+                    </div>
+                    
                 </div>
                 <hr>";
         } else {
@@ -53,7 +66,9 @@ function printDirectory($fullPath)
                     </a>
                     <p class='col'>Unknown</p>
                     <p class='col'>$modificationDate</p>
-                    <p class='col-2'></p>    
+                    <p class='col-2'></p>
+                    <a class='col-1' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
+                    <a class='col-1' href='index.php?directory=$directory&edit=$fullPath'><button class='btn btn-edit btn-warning p-0'><i class='fas fa-edit'></i></button></a>    
                 </div>
                 <hr>";
         }
@@ -67,16 +82,19 @@ function printDirectory($fullPath)
                         <p class='col-1'>$ext</p>
                         <p class='col-2'>$fileSize</p>
                         <a class='col-1' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
+                        
                     </div>
                 <hr>";
         } else {
             echo "
                     <div class='row align-items-center'>
                         <a class='col-3 d-flex align-items-center text-truncate' href=$fullPath><img src=./assets/icons/$ext-icon.svg>$fileName</a>
-                        <p class='col' >Unknown</p>
-                        <p class='col' >$modificationDate</p>
-                        <p class='col-1' >$ext</p>
-                        <p class='col-2' >$fileSize</p>
+                        <p class='col'>Unknown</p>
+                        <p class='col'>$modificationDate</p>
+                        <p class='col-1'>$ext</p>
+                        <p class='col-2'>$fileSize</p>
+                        <a class='col-1' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
+                        
                     </div>
                 <hr>";
         }
