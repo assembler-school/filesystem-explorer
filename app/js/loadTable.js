@@ -1,6 +1,7 @@
   function loadTable() {
   $(document).ready(function () {
-    $("#fileDataTable").load("managerTable.php");
+    $("#fileDataTable").load("table.php");
   });
 }
+
 loadTable();

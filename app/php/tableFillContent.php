@@ -1,88 +1,65 @@
 <?php
-include "fileBrowser.php";
-include "getFileSize.php";
+include "utils/fileBrowser.php";
+include "utils/getFileSize.php";
 
-foreach (fileBrowser() as $file) {
+$id = 0;
+foreach (fileBrowser("") as $file) {
     if (pathinfo($file, PATHINFO_EXTENSION) !== "") {
 
-        $fileName =  basename($file);
+        $fileName =  explode('.', basename($file))[0];
         $fileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
         $fileCreate =  date("Y-m-d H:m:s", filectime($file));
         $fileModify =  date("Y-m-d H:m:s", filemtime($file));
+        $id++;
+?>
 
-        echo ' <tr>' .
-            ' <td> ' . $fileName . ' </td> ' .
-            ' <td> ' . $fileType . ' </td>' .
-            ' <td> ' . $fileCreate . ' </td>' .
-            ' <td> ' . $fileModify . ' </td>' .
-            ' <td> ' . getFileSize($file) . ' </td>' .
-            ' <td> ' .
-            '<button id="deleteFile" data-file="' . $file . '">delete</button>' .
-            '<button id="openFile"  data-bs-toggle="modal" data-bs-target="#openFileModal" data-file="' . $file . '">open</button>' .
-            ' </td>' .
-            '</tr> ';
+        <tr id="<?php echo  $id ?> " data-file="<?php echo  $file ?>">
+            <td>
+                <p id="name-<?php echo $id ?>"> <?php echo $fileName ?></p>
+            </td>
+            <td><?php echo $fileType ?></td>
+            <td><?php echo $fileCreate ?></td>
+            <td><?php echo $fileModify ?></td>
+            <td><?php echo getFileSize($file) ?></td>
+            <td>
+                <button id="showFile" class="btn btn-light  m-1">▶️ </button>
+                <button id="renameFile" class="btn btn-light  m-1">✏️ </button>
+                <button id="deleteFile" class="btn btn-light m-1">❌</button>
+            </td>
+        </tr>
+<?php
     }
 }
 ?>
-
 <script>
-    $(document).ready(function() {
-        $("#deleteFile").click(function(e) {
-            let fileUrl = e.target.dataset.file;
+    //?eventListener Rename
+    $(document).on('click', '#renameFile', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $id = e.target.parentElement.parentElement.id;
+        $file = e.target.parentElement.parentElement.dataset.file
+        let $target = $('#name-' + $id);
+        $target.attr("contentEditable", true);
+        $('#name-' + $id + ' p').select();
+        $target.focus();
+        $oldName = $target.text();
 
-            $.ajax({
-                url: "../../app/php/deleteFile.php",
-                type: "post",
-                data: {
-                    filePath: fileUrl
-                },
-                success: function(response) {
-                    if (response) {
-                        Swal.fire({
-                            icon: "success",
-                            title: "File deleted",
-                            showConfirmButton: false,
-                            timer: 1500,
-                        });
-                        loadTable();
-                    } else {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: "Something went wrong!",
-                        });
-                    }
-                }
-            })
+        $target.keyup((e) => {
+            e.preventDefault()
+            if (e.keyCode === 13) {
+                $target.blur();
+            }
         })
-    })
-</script>
-
-
-<!-- open file -->
-<script>
-    $(document).ready(function() {
-        $("#openFile").click(function(e){
-            let fileUrl = e.target.dataset.file;
-            $.ajax({
-                url: "../../app/php/openFile.php",
-                type: "post",
-                data:{
-                    filePath: fileUrl
-                },
-                success: function(response) {
-                    if (response) {
-                        console.log("dani")
-
-                    } else {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: "Something went wrong!",
-                        });
-                    }
-                }
-            })
+        $target.blur(() => {
+            $newName = $target.text();
+            $target.removeAttr('contentEditable');
+            ajaxRename($oldName, $newName, $file);
         })
+    });
+
+    //?eventListener Delete
+    $(document).on('click', '#deleteFile', function(e) {
+        $fileUrl = e.target.parentElement.parentElement.dataset.file;
+        ajaxDelete($fileUrl);
     })
 </script>

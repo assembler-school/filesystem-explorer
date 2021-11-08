@@ -9,9 +9,10 @@
               <div class="modal-body">
                   <div class="alert alert-primary" role="alert">
                       <form id="formFile" class="mb-0" action="" method="post" enctype="multipart/form-data">
-                          Select image to upload:
+                          <h3>Select file to upload:</h3>
+                          <span>Max file size 100 Mb</span>
                           <input type="file" name="file" id="file">
-                          <!-- <input type="submit" value="Upload Image" name="submit"> -->
+
                           <div class="modal-footer">
                               <input type="submit" class="btn btn-success" value="Upload" name="submit" data-bs-dismiss="modal">
 
@@ -24,4 +25,12 @@
           </div>
       </div>
   </div>
-  <script src="../../app/js/sendFile.js"></script>
+
+  <script>
+      $(document).ready(function() {
+          //?eventListener Upload
+          $("#formFile").submit(function() {
+              ajaxUpload();
+          })
+      })
+  </script>

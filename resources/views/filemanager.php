@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
@@ -22,19 +23,36 @@
 
 <body>
   <?php include "./header.php"; ?>
-  <main class="container">
-    <div>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Add file
-      </button>
-      <button type="button">add folder</button>
-      <div id="fileDataTable"></div>
+
+
+  <main>
+    <div class="container .bg-transparent m-5">
+      <div class="row">
+        <div class="col-sm-2 box rounded p-2 m-2 .bg-transparent">
+          <?php include "./sidebar.php"; ?>
+        </div>
+        <div class="col-sm box rounded p-3 m-2 .bg-transparent">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add file
+          </button>
+
+          <div id="fileDataTable"></div>
+        </div>
+
+      </div>
     </div>
   </main>
-
+  <?php include "./footer.php"; ?>
   <!-- Modal -->
-  <script src="../../app/js/loadTable.js"></script>
   <?php include "./modal.php"; ?>
+
+  <!-- JavaScript -->
+  <script src="../../app/js/loadTable.js"></script>
+  <script src="../../app/js/ajaxRename.js"></script>
+  <script src="../../app/js/ajaxDelete.js"></script>
+  <script src="../../app/js/ajaxUpload.js"></script>
+
+
 </body>
 
 </html>
