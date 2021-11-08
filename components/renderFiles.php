@@ -25,7 +25,7 @@ function printDirectory($fullPath)
     $modificationDate = date("d/m/Y H:i", filemtime($fullPath));
     $creationDate = date("d/m/Y H:i", filectime($fullPath));
     $fileSize = filesize($fullPath) < 1000000 ? filesize($fullPath) /  1000 . " KB" : filesize($fullPath) /  1000000000 . " MB";
-    $ext = pathinfo($fullPath, PATHINFO_EXTENSION);
+    $ext = strtoupper(pathinfo($fullPath, PATHINFO_EXTENSION));
     $fileName = explode("/", $fullPath)[count(explode("/", $fullPath)) - 1];
     $test = printFileType($ext);
 
