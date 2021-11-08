@@ -29,7 +29,9 @@
             }, {
                 targets: [4],
                 orderData: [4, 0]
-            }]
+            }],
+            "destroy": true
         });
+
     });
 </script>

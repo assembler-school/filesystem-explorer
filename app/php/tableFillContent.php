@@ -34,12 +34,14 @@ foreach (fileBrowser("") as $file) {
 <script>
     $(document).ready(function() {
         //?eventListener Rename
-        $("#renameFile").click(function(e) {
+        $(document).on('click', '#renameFile', function(e) {
+
 
             $id = e.target.parentElement.parentElement.id;
             $file = e.target.parentElement.parentElement.dataset.file
             let $target = $('#name-' + $id);
             $target.attr("contentEditable", true);
+            $('#name-' + $id + ' p').select();
             $target.focus();
             $oldName = $target.text();
 
@@ -57,8 +59,7 @@ foreach (fileBrowser("") as $file) {
         });
 
         //?eventListener Delete
-        $("#deleteFile").click(function(e) {
-
+        $(document).on('click', '#deleteFile', function(e) {
             $fileUrl = e.target.parentElement.parentElement.dataset.file;
             ajaxDelete($fileUrl);
         })

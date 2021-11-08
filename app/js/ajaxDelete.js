@@ -15,12 +15,6 @@ function ajaxDelete(fileUrl) {
         });
         //?recharge table
         loadTable();
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-        });
       }
     },
   });

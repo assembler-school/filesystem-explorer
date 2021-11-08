@@ -9,8 +9,8 @@
               <div class="modal-body">
                   <div class="alert alert-primary" role="alert">
                       <form id="formFile" class="mb-0" action="" method="post" enctype="multipart/form-data">
-                          Select file to upload:
-                          <span>Max file size</span>
+                          <h3>Select file to upload:</h3>
+                          <span>Max file size 100 Mb</span>
                           <input type="file" name="file" id="file">
 
                           <div class="modal-footer">
