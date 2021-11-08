@@ -3,12 +3,10 @@
     if (isset($_GET["directory"])) {
         if (str_contains($_GET["directory"], ".") || str_contains($_GET["directory"], "..")) {
             header("Location: index.php?directory=root");
-            if (is_dir($_GET["directory"])) {
-                $path = explode("/", $_GET["directory"]);
-                array_pop($path);
-                $directory = implode("/", $path);
-                closedir($dh);
-            }
+        } else if (is_dir($_GET["directory"])) {
+            $path = explode("/", $_GET["directory"]);
+            array_pop($path);
+            $directory = implode("/", $path);
         }
     }
     ?>
