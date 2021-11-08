@@ -6,10 +6,11 @@ if (isset($_POST["addfolder"])) {
   
   if (isset($_GET["directory"]) && $_GET["directory"] !== "" && $_GET["directory"] !== "root") {
     $mkdirRoute = "../" . $_GET["directory"];
+    //"../root/a/b/c"
   } else {
-    $mkdirRoute = "../root/";
+    $mkdirRoute = "../root";
   }
-  mkdir($mkdirRoute . $_POST["addfolder"], 0777, true);
+  mkdir($mkdirRoute ."/". $_POST["addfolder"], 0777, true);
 }
 
 echo "<br/>";
@@ -46,8 +47,8 @@ $uploadQuery->execute([
   "modified"=>$modified,
   "creation"=>$creation,
   "extension"=>"folder",
-  "path"=>$mkdirRoute . $fileName,
-  "daddyPath"=>$mkdirRoute,
+  "path"=>$mkdirRoute . $_POST["addfolder"],
+  "daddyPath"=>$mkdirRoute . $_POST["addfolder"]
 ]);
 
 $_SESSION["directory"]= $mkdirRoute;

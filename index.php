@@ -68,7 +68,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="./includes/addfolder.inc.php?directory=../root/">
+              <form method="POST" action="./includes/addfolder.inc.php?directory=root">
                 <input type=" text" name="addfolder" />
             </div>
             <div class="modal-footer">
