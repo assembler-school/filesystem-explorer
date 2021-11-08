@@ -7,13 +7,10 @@ function readDirectory($search, $folderPath)
             while (($found = readdir($dh)) !== false) {
                 if ($found === "." || $found === "..") {
                 } else {
-
                     if (str_contains($found, $search)) {
-                        $fullPath = $folderPath . '/' . $found;
-                        printDirectory($fullPath);
+                        printDirectory($folderPath . '/' . $found);
                     }
                     if (filetype($folderPath) == "dir") {
-                        // $folderPath = $folderPath . '/' . $folder;
                         readDirectory($search, $folderPath . '/' . $found);
                     }
                 }
@@ -27,7 +24,7 @@ function printDirectory($fullPath)
 {
     $modificationDate = date("d/m/Y H:i", filemtime($fullPath));
     $creationDate = date("d/m/Y H:i", filectime($fullPath));
-    $fileSize = filesize($fullPath) / 100 . " KB";
+    $fileSize = filesize($fullPath) < 1000000 ? filesize($fullPath) /  1000 . " KB" : filesize($fullPath) /  1000000000 . " MB";
     $ext = pathinfo($fullPath, PATHINFO_EXTENSION);
 
     if (is_dir($fullPath)) {

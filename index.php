@@ -26,12 +26,17 @@ if (!is_dir("root")) {
         </div>
         <hr>
     </header>
-    
+
     <main class="container d-flex">
         <?php require_once("./components/sideBar.php"); ?>
         <section class="file__container">
+            <div>
+                <?php require_once("./components/navBar.php"); ?>
+            </div>
             <div class="container">
+
                 <?php require_once("./components/titlesFiles.php") ?>
+
                 <?php require_once("./components/renderFiles.php") ?>
             </div>
         </section>
