@@ -1,0 +1,11 @@
+.list-group {
+	&-item {
+		background: none;
+		color: white;
+
+		&.disabled {
+			background: none;
+			color: rgb(192,192,192);
+		}
+	}
+}
