@@ -32,36 +32,34 @@ foreach (fileBrowser("") as $file) {
 }
 ?>
 <script>
-    $(document).ready(function() {
-        //?eventListener Rename
-        $(document).on('click', '#renameFile', function(e) {
+    //?eventListener Rename
+    $(document).on('click', '#renameFile', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $id = e.target.parentElement.parentElement.id;
+        $file = e.target.parentElement.parentElement.dataset.file
+        let $target = $('#name-' + $id);
+        $target.attr("contentEditable", true);
+        $('#name-' + $id + ' p').select();
+        $target.focus();
+        $oldName = $target.text();
 
-
-            $id = e.target.parentElement.parentElement.id;
-            $file = e.target.parentElement.parentElement.dataset.file
-            let $target = $('#name-' + $id);
-            $target.attr("contentEditable", true);
-            $('#name-' + $id + ' p').select();
-            $target.focus();
-            $oldName = $target.text();
-
-            $target.keyup((e) => {
-                e.preventDefault()
-                if (e.keyCode === 13) {
-                    $target.blur();
-                }
-            })
-            $target.blur(() => {
-                $newName = $target.text();
-                $target.removeAttr('contentEditable');
-                ajaxRename($oldName, $newName, $file);
-            })
-        });
-
-        //?eventListener Delete
-        $(document).on('click', '#deleteFile', function(e) {
-            $fileUrl = e.target.parentElement.parentElement.dataset.file;
-            ajaxDelete($fileUrl);
+        $target.keyup((e) => {
+            e.preventDefault()
+            if (e.keyCode === 13) {
+                $target.blur();
+            }
         })
+        $target.blur(() => {
+            $newName = $target.text();
+            $target.removeAttr('contentEditable');
+            ajaxRename($oldName, $newName, $file);
+        })
+    });
+
+    //?eventListener Delete
+    $(document).on('click', '#deleteFile', function(e) {
+        $fileUrl = e.target.parentElement.parentElement.dataset.file;
+        ajaxDelete($fileUrl);
     })
 </script>

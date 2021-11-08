@@ -9,7 +9,6 @@ function ajaxRename(oldName, newName, file) {
     },
     success: function (response) {
       if (response) {
-        console.log(response);
         Swal.fire({
           icon: "success",
           title: "File renamed",
