@@ -42,6 +42,7 @@ if (!count($errorList)) {
 		}
 
 		$file = fopen($fullpath, "w");
+		chmod($file, 0777);
 		fclose($file);
 
 		array_push($successList, "File has been created.");
