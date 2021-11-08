@@ -56,7 +56,7 @@ foreach (fileBrowser("") as $file) {
         });
 
         //?eventListener Delete
-        $(document).on("click", "#deleteFile", function(e) {
+        $(document).on("click","#deleteFile", function(e) {
 
             $fileUrl = e.target.parentElement.parentElement.dataset.file;
             ajaxDelete($fileUrl);
