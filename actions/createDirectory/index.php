@@ -2,10 +2,10 @@
 
 session_start();
 
-require_once("./config.php");
-require_once("./modules/validation.php");
-require_once("./modules/session.php");
-require_once("./utils/joinPath.php");
+require_once("../../config.php");
+require_once(ROOT . "/modules/validation.php");
+require_once(ROOT . "/modules/session.php");
+require_once(ROOT . "/utils/joinPath.php");
 
 $errorList = [];
 $successList = [];
@@ -53,4 +53,4 @@ if (!count($errorList)) {
 setSessionValue("errorList", $errorList);
 setSessionValue("successList", $successList);
 
-header("Location: ./index.php");
+header("Location: ../../index.php");

@@ -2,7 +2,7 @@
 
 function renderNotifications()
 {
-	require_once("./modules/session.php");
+	require_once(ROOT . "/modules/session.php");
 
 	$errorList = 		popSessionValue("errorList");
 	$successList = 	popSessionValue("successList");

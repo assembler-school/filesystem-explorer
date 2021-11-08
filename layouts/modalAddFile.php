@@ -13,11 +13,11 @@ function renderModalAddFile()
 				</div>
 				<div class="modal-body">
 					<div class="d-flex flex-column justify-content-center align-items-center">
-						<form class="p-2 m-2 d-flex flex-column align-items-center" style="width: 20rem" action="createFile.action.php" method="POST">
+						<form class="p-2 m-2 d-flex flex-column align-items-center" style="width: 20rem" action="/actions/createFile/index.php" method="POST">
 							<label class="form-label w-100" for="input_filename">File name</label>
 							<input class="form-control mb-3" type="text" name="filename" id="input_filename" required placeholder="File name" />
 							<label class="form-label w-100" for="input_destpath">Destination path</label>
-							<input class="form-control mb-3" type="text" name="destpath" id="input_destpath" placeholder="/" />
+							<input class="form-control mb-3" type="text" name="destpath" id="input_destpath" placeholder="/" value="<?= isset($_GET["path"]) ? $_GET["path"] : "" ?>" />
 							<button class="btn btn-primary" type="submit">Create File</button>
 						</form>
 					</div>

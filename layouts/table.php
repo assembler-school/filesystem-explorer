@@ -2,8 +2,8 @@
 
 function renderTable()
 {
-	require_once("./utils/url.php");
-	require_once("./utils/getFolderContent.php");
+	require_once(ROOT . "/utils/url.php");
+	require_once(ROOT . "/utils/getFolderContent.php");
 
 	if ($folderPath = getUrlFolderPath())	$contents = getFolderContent($folderPath);
 ?>

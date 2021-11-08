@@ -2,8 +2,8 @@
 
 function getFolderContent($urlFolderPath)
 {
-	require_once("./utils/joinPath.php");
-	require_once("./utils/getFileInfo.php");
+	require_once(ROOT . "/utils/joinPath.php");
+	require_once(ROOT . "/utils/getFileInfo.php");
 
 	$content = ["files" => [], "folders" => []];
 	$folderPathFull = joinPath([ROOT_DIRECTORY, $urlFolderPath]);
