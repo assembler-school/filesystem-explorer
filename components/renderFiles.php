@@ -33,9 +33,9 @@ function printDirectory($fullPath)
         if (PHP_OS == "WINNT") {
             echo "
                 <div class='row align-items-center'>
-                    <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
+                    <a class='col-3 d-flex align-items-center text-truncate' href=index.php?directory=$fullPath>
                     <img src=./assets/icons/folder.svg>
-                    <p>$fileName</p>
+                    <p class='ml-2'>$fileName</p>
                     </a>
                     <p class='col'>$creationDate</p>
                     <p class='col'>$modificationDate</p>
@@ -47,9 +47,9 @@ function printDirectory($fullPath)
         } else {
             echo "
                 <div class='row align-items-center'>
-                <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
+                <a class='col-3 d-flex align-items-center text-truncate' href=index.php?directory=$fullPath>
                     <img src=./assets/icons/folder.svg>
-                    <p>$fileName</p>
+                    <p class='ml-2'>$fileName</p>
                     </a>
                     <p class='col'>Unknown</p>
                     <p class='col'>$modificationDate</p>
@@ -61,8 +61,7 @@ function printDirectory($fullPath)
         if (PHP_OS == "WINNT") {
             echo "
                     <div class='row align-items-center'>
-                    <div class='col-3 text-truncate'>
-                    <a class='col-3 text-truncate' href=$fullPath><img src=./assets/icons/$ext-icon.svg></p>$fileName</p></a></div>
+                        <a class='col-3 d-flex align-items-center text-truncate' href=$fullPath><img src=./assets/icons/$ext-icon.svg><p>$fileName</p></a>
                         <p class='col'>$creationDate</p>
                         <p class='col'>$modificationDate</p>
                         <p class='col-1'>$ext</p>
@@ -73,8 +72,7 @@ function printDirectory($fullPath)
         } else {
             echo "
                     <div class='row align-items-center'>
-                    <div class='col-3 text-truncate'>
-                    <a class='col-3 text-truncate' href=$fullPath><img src=./assets/icons/$ext-icon.svg></p>$fileName</p></a></div>
+                        <a class='col-3 d-flex align-items-center text-truncate' href=$fullPath><img src=./assets/icons/$ext-icon.svg>$fileName</a>
                         <p class='col' >Unknown</p>
                         <p class='col' >$modificationDate</p>
                         <p class='col-1' >$ext</p>
