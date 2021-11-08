@@ -3,7 +3,7 @@ session_start();
 include_once "./includes/icons.inc.php";
 
 $fileFetched = $_SESSION["fileFetched"];
- $lower = $_GET["directory"];;
+$lower = $_GET["directory"];;
 
  echo $lower;
 

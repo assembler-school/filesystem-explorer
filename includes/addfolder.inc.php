@@ -52,6 +52,8 @@ $uploadQuery->execute([
   "daddyPath"=>$mkdirRoute,
 ]);
 
+$_SESSION["directory"]= $mkdirRoute;
+
 
 // if(!file_exists("../root/$fileName")) {
 // mkdir($pathName . $fileName, 0777, true);
@@ -60,4 +62,4 @@ $uploadQuery->execute([
 // }
 // }
 
-//header("location: ../index.php");
+header("location: ../index.php?directory=$mkdirRoute");
