@@ -92,6 +92,16 @@ a {
   color: silver;
 }
 
+.icon-btn {
+  border: none;
+  outline: none;
+  background: none;
+  color: white;
+}
+.icon-btn:hover {
+  color: #0d6efd;
+}
+
 /* ===== Breakpoints ===== */
 /* ===== Colors ===== */
 /* ===== Color Classes ===== */

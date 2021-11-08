@@ -31,28 +31,28 @@ function renderTable()
 							<td><?= $file["modtime"] ?></td>
 							<td><?= $file["acctime"] ?></td>
 							<td>
-								<div class="d-flex justify-content-center align-items center gap-2">
-									<button data-bs-toggle="modal" data-bs-target="#modalDelete" data-action="delete" data-payload="<?= $file["path"] ?>">
+								<div class="d-flex align-items center gap-2">
+									<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalDelete" data-action="delete" data-payload="<?= $file["path"] ?>">
 										<span class="material-icons" style="pointer-events: none">
 											delete
 										</span>
 									</button>
-									<button data-bs-toggle="modal" data-bs-target="#modalRename" data-action="rename" data-payload="<?= $file["path"] ?>">
+									<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalRename" data-action="rename" data-payload="<?= $file["path"] ?>">
 										<span class="material-icons" style="pointer-events: none">
 											drive_file_rename_outline
 										</span>
 									</button>
 									<?php if (in_array($file["type"], ["svg", "jpg", "jpeg", "png"])) : ?>
-										<button data-bs-toggle="modal" data-bs-target="#modalView" data-action="view-image" data-payload="<?= $file["path"] ?>">
+										<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalView" data-action="view-image" data-payload="<?= $file["path"] ?>">
 											<span class="material-icons" style="pointer-events: none">
 												image
 											</span>
 										</button>
 									<?php endif ?>
 									<?php if (in_array($file["type"], ["mp4"])) : ?>
-										<button data-bs-toggle="modal" data-bs-target="#modalView" data-action="view-video" data-payload="<?= $file["path"] ?>">
+										<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalView" data-action="view-video" data-payload="<?= $file["path"] ?>">
 											<span class="material-icons" style="pointer-events: none">
-												video
+												smart_display
 											</span>
 										</button>
 									<?php endif ?>

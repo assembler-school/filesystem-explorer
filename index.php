@@ -19,8 +19,8 @@ if (!validateUrlFolderPath()) {
 	exit();
 }
 
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -11,7 +11,7 @@ function renderNotifications()
 		<?php foreach ($errorList as $error) : ?>
 			<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
 				<span><?= $error ?></span>
-				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		<?php endforeach ?>
 	<?php endif ?>
@@ -20,7 +20,7 @@ function renderNotifications()
 		<?php foreach ($successList as $success) : ?>
 			<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
 				<span><?= $success ?></span>
-				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		<?php endforeach ?>
 	<?php endif ?>

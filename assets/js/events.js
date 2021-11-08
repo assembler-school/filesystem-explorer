@@ -1,3 +1,5 @@
+import { ROOT_DIRECTORY } from "./config.js";
+
 function setInputValueEvent(inputTargetSelector, eventTargetAction) {
 	const input = document.querySelector(inputTargetSelector);
 
@@ -17,26 +19,26 @@ function setImageEvent() {
 
 		const container = document.querySelector("#view-file");
 		const image = document.createElement("img");
-		image.classList.add("img-styles");
-		image.src = event.target.dataset.payload;
+		image.classList.add("w-100");
+		image.src = `${ROOT_DIRECTORY}/${event.target.dataset.payload}`;
 
 		container.innerHTML = null;
-		container.container.insertAdjacentElement("afterbegin", image);
+		container.insertAdjacentElement("afterbegin", image);
 	});
 }
 
 function setVideoEvent() {
 	document.addEventListener("click", function (event) {
-		if (event.target.dataset?.action !== "view-image") return;
+		if (event.target.dataset?.action !== "view-video") return;
 
 		const container = document.querySelector("#view-file");
 		const video = document.createElement("video");
-		video.classList.add("video-styles");
-		video.src = event.target.dataset.payload;
+		video.classList.add("w-100");
+		video.src = `${ROOT_DIRECTORY}/${event.target.dataset.payload}`;
 		video.controls = true;
 
 		container.innerHTML = null;
-		container.container.insertAdjacentElement("afterbegin", video);
+		container.insertAdjacentElement("afterbegin", video);
 	});
 }
 
