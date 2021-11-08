@@ -32,8 +32,8 @@ function printDirectory($fullPath)
         if (PHP_OS == "WINNT") {
             echo "
                 <div class='row align-items-center'>
-                    <a class='col-3 text-truncate' class='folder' href=index.php?directory=$fullPath>
-                        <p>$fileName</p>
+                    <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
+                        <p>$fullPath</p>
                     </a>
                     <p class='col'>$creationDate</p>
                     <p class='col'>$modificationDate</p>
@@ -45,7 +45,7 @@ function printDirectory($fullPath)
         } else {
             echo "
                 <div class='row align-items-center'>
-                    <a class='col-3 text-truncate' class='folder' href=index.php?directory=$fullPath>
+                    <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
                         <p>$fileName</p>
                     </a>
                     <p class='col'>Unknown</p>
@@ -58,7 +58,7 @@ function printDirectory($fullPath)
         if (PHP_OS == "WINNT") {
             echo "
                     <div class='row align-items-center'>
-                        <p class='col-3 text-truncate'>$fileName</p>
+                        <a class='col-3 text-truncate' href='http://localhost/PhpBasicsWorkShop/filesystem-explorer/$fullPath'><p>$fileName</p></a>
                         <p class='col'>$creationDate</p>
                         <p class='col'>$modificationDate</p>
                         <p class='col-1'>$ext</p>
