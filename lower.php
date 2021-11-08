@@ -1,5 +1,7 @@
 <?php
- include_once "./includes/fetchFiles.inc.php";
+session_start();
+
+$fileFetched = $_SESSION["lower"];
  include_once "./includes/icons.inc.php";
 ?>
 <!DOCTYPE html>
@@ -25,7 +27,7 @@
 
   <header class="d-flex justify-content-between align-items-center p-4">
 
-    <div>../root/</div>
+    <div>../root/some</div>
     <div class="d-flex m-6 align-items-center">
       <form action="" class="me-4">
         <input type="search" placeholder="&#x1F50E;&#xFE0E;">

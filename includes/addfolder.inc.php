@@ -1,22 +1,42 @@
 <?php
-
+session_start();
 require_once('dbh.inc.php');
 
+if (isset($_POST["addfolder"])) {
+  
+  if (isset($_GET["directory"]) && $_GET["directory"] !== "" && $_GET["directory"] !== "root") {
+    $mkdirRoute = "../" . $_GET["directory"];
+  } else {
+    $mkdirRoute = "../root/";
+  }
+  mkdir($mkdirRoute . $_POST["addfolder"], 0777, true);
+}
 
-$modified = date("Y-m-d", filemtime($pathName . $fileName));
-$creation = date("Y-m-d", filectime($pathName . $fileName));
+echo "<br/>";
+echo $mkdirRoute . $_POST["addfolder"];
+echo "<br/>";
+echo $mkdirRoute;
+echo "<br/>";
+
+$_SESSION["rootpath"]=$mkdirRoute;
+
+$modified = date("Y-m-d", filemtime($mkdirRoute . $_POST["addfolder"]));
+$creation = date("Y-m-d", filectime($mkdirRoute . $_POST["addfolder"]));
 $fileName = $_POST["addfolder"];
-$pathName= "../root/";
+
 
 // prepare to upload to db 
 
 $uploadQuery =$db->prepare("
-INSERT INTO `files`(`name`, `size`, `modified`, `creation`, `extension`, `path`) 
-VALUES (:name, :size, :modified, :creation, :extension, :path)
+BEGIN;
+INSERT INTO `files`(`name`, `size`, `modified`, `creation`, `extension`, `path`, `daddyPath`) 
+  VALUES (:name, :size, :modified, :creation, :extension, :path, :daddyPath);
+INSERT INTO `folder`(`folderName`, `path`) 
+  VALUES (:name,:path);
+COMMIT;
 ");
 
-
-//encrypt
+//encryptfunction 
 
 $uploadQuery->execute([
   "name"=>$fileName,
@@ -24,14 +44,16 @@ $uploadQuery->execute([
   "modified"=>$modified,
   "creation"=>$creation,
   "extension"=>"folder",
-  "path"=>$pathName . $fileName
+  "path"=>$mkdirRoute . $fileName,
+  "daddyPath"=>$mkdirRoute,
 ]);
 
-if(!file_exists("../root/$fileName")) {
-mkdir($pathName . $fileName, 0777, true);
-if (PHP_OS !== "WINNT") {
-  chmod($pathName . $fileName, 0777);
-}
-}
+
+// if(!file_exists("../root/$fileName")) {
+// mkdir($pathName . $fileName, 0777, true);
+// if (PHP_OS !== "WINNT") {
+//   chmod($pathName . $fileName, 0777);
+// }
+// }
 
 header("location: ../index.php");

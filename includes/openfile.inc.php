@@ -39,7 +39,7 @@ switch ($extension) {
     </video>";
         break;
     case 'folder':
-        echo "I am a folder";
+        header("Location: fetchLower.inc.php?pathLower=$path");
         break;
     default:
         echo "File type not supported";

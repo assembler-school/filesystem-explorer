@@ -5,13 +5,17 @@ $name = $_GET["name"];
 $path = "../root/" . $name;
 
 $deleteQuery = $db-> prepare("
-DELETE FROM `files` WHERE `id` = :id
+BEGIN;
+DELETE FROM `files` WHERE `id` = :id;
+DELETE FROM `folder` WHERE `folderName` = :name
+COMMIT;
 ");
 
 $deleteQuery->execute([
-"id"=> $id
+"id"=> $id,
+"name"=>$name
 ]);
 
 
 unlink($path);
-header("location: ../index.php");
+//header("location: ../index.php");
