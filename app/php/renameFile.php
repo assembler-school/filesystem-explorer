@@ -22,8 +22,6 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 	$newFilePath = dirname($oldFilePath) . '/' .  $newName . '.' . $fileType;
 }
 
-
-
 //? Change Name
 if ($_POST['oldName'] !== $_POST['newName']) {
 	rename($oldFilePath,  $newFilePath);
