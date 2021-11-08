@@ -1,6 +1,8 @@
 <?php
  include_once "./includes/fetchFiles.inc.php";
  include_once "./includes/icons.inc.php";
+
+ echo $_SESSION["directory"]."<br/>"."---directory";
 ?>
 <!DOCTYPE html>
 <html lang="en">

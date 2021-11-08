@@ -3,7 +3,7 @@ session_start();
 
 require_once("dbh.inc.php");
 $pathLower = $_GET["pathLower"];
-echo $pathLower;
+
 
 
 $fetchQuery = $db -> prepare("

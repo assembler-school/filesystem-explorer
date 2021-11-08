@@ -3,11 +3,12 @@ session_start();
 include_once "./includes/icons.inc.php";
 
 $fileFetched = $_SESSION["fileFetched"];
-$lower = $_GET["directory"];;
+$lower = $_GET["directory"];
 
  echo $lower;
+ echo "<br/>";
+ echo $pathLower."<br/>"."---pathlower";
 
- //var_dump($lower);
 ?>
 <!DOCTYPE html>
 <html lang="en">

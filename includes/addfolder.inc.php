@@ -5,7 +5,7 @@ require_once('dbh.inc.php');
 if (isset($_POST["addfolder"])) {
   
   if (isset($_GET["directory"]) && $_GET["directory"] !== "" && $_GET["directory"] !== "root") {
-    $mkdirRoute = "../" . $_GET["directory"];
+    $mkdirRoute = $_GET["directory"];
     //"../root/a/b/c"
   } else {
     $mkdirRoute = "../root";
