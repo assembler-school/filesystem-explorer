@@ -60,6 +60,18 @@ function renderTable()
 										north_east
 									</span>
 								</a>
+								<div class="d-flex justify-content-center align-items center gap-2">
+									<button data-bs-toggle="modal" data-bs-target="#modalDelete" data-action="delete" data-payload="<?= $file["path"] ?>">
+										<span class="material-icons" style="pointer-events: none">
+											delete
+										</span>
+									</button>
+									<button data-bs-toggle="modal" data-bs-target="#modalRename" data-action="rename" data-payload="<?= $file["path"] ?>">
+										<span class="material-icons" style="pointer-events: none">
+											drive_file_rename_outline
+										</span>
+									</button>
+								</div>
 							</td>
 						</tr>
 					<?php endforeach ?>
