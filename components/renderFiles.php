@@ -24,7 +24,7 @@ function printDirectory($fullPath)
 {
     $modificationDate = date("d/m/Y H:i", filemtime($fullPath));
     $creationDate = date("d/m/Y H:i", filectime($fullPath));
-    $fileSize = filesize($fullPath) < 1000000 ? filesize($fullPath) /  1000 . " KB" : filesize($fullPath) /  1000000000 . " MB";
+    $fileSize = round(filesize($fullPath), 2) < 1000000 ? round(filesize($fullPath) /  1000, 2) . " KB" : round(filesize($fullPath) /  1000000, 2). " MB";
     $ext = strtoupper(pathinfo($fullPath, PATHINFO_EXTENSION));
     $fileName = explode("/", $fullPath)[count(explode("/", $fullPath)) - 1];
     // $test = printFileType($ext);
@@ -40,7 +40,7 @@ function printDirectory($fullPath)
                     <p class='col'>$creationDate</p>
                     <p class='col'>$modificationDate</p>
                     <p class='col-1'>Folder</p>
-                    <p class='col-2'>$fileSize</p>
+                    <p class='col-2'></p>
                     <a class='col-1' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
                 </div>
                 <hr>";
@@ -53,7 +53,7 @@ function printDirectory($fullPath)
                     </a>
                     <p class='col'>Unknown</p>
                     <p class='col'>$modificationDate</p>
-                    <p class='col-2'>$fileSize</p>    
+                    <p class='col-2'></p>    
                 </div>
                 <hr>";
         }
