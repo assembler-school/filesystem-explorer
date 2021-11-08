@@ -69,22 +69,24 @@ function renderTable()
 							<td><?= $folder["modtime"] ?></td>
 							<td><?= $folder["acctime"] ?></td>
 							<td>
-								<a href="index.php?path=<?= $folder["path"] ?>">
-									<span class="material-icons">
-										north_east
-									</span>
-								</a>
-								<div class="d-flex justify-content-center align-items center gap-2">
-									<button data-bs-toggle="modal" data-bs-target="#modalDelete" data-action="delete" data-payload="<?= $folder["path"] ?>">
-										<span class="material-icons" style="pointer-events: none">
-											delete
+								<div class="d-flex align-items center gap-2">
+									<?php if (!in_array($folder["name"], [".", ".."])) : ?>
+										<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalDelete" data-action="delete" data-payload="<?= $folder["path"] ?>">
+											<span class="material-icons" style="pointer-events: none">
+												delete
+											</span>
+										</button>
+										<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalRename" data-action="rename" data-payload="<?= $folder["path"] ?>">
+											<span class="material-icons" style="pointer-events: none">
+												drive_file_rename_outline
+											</span>
+										</button>
+									<?php endif ?>
+									<a href="index.php?path=<?= $folder["path"] ?>">
+										<span class="material-icons">
+											north_east
 										</span>
-									</button>
-									<button data-bs-toggle="modal" data-bs-target="#modalRename" data-action="rename" data-payload="<?= $folder["path"] ?>">
-										<span class="material-icons" style="pointer-events: none">
-											drive_file_rename_outline
-										</span>
-									</button>
+									</a>
 								</div>
 							</td>
 						</tr>
