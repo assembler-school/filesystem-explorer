@@ -39,6 +39,7 @@ switch ($extension) {
     </video>";
         break;
     case 'folder':
+        echo $path;
         header("Location: fetchLower.inc.php?pathLower=$path");
         break;
     default:

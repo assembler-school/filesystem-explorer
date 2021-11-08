@@ -17,6 +17,10 @@ echo $mkdirRoute . $_POST["addfolder"];
 echo "<br/>";
 echo $mkdirRoute;
 echo "<br/>";
+if ($_GET["directory"]) {
+  echo $_GET["directory"];
+  echo "<br/>";
+}
 
 $_SESSION["rootpath"]=$mkdirRoute;
 
@@ -44,7 +48,7 @@ $uploadQuery->execute([
   "modified"=>$modified,
   "creation"=>$creation,
   "extension"=>"folder",
-  "path"=>$mkdirRoute . $fileName,
+  "path"=>$mkdirRoute ."/". $fileName,
   "daddyPath"=>$mkdirRoute,
 ]);
 
@@ -56,4 +60,4 @@ $uploadQuery->execute([
 // }
 // }
 
-header("location: ../index.php");
+//header("location: ../index.php");

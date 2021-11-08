@@ -107,7 +107,8 @@
           <td>
             <?php if($file["edit"]): ?>
             <form
-              action="./includes/edittitle.inc.php?directory=<?=$file["path"];?>&id=<?=$file["id"];?>&name=<?=$file["name"];?>&extension<?=$file["extension"];?>"
+              action="
+                ./includes/edittitle.inc.php?directory=<?=$file["path"];?>&id=<?=$file["id"];?>&name=<?=$file["name"];?>&extension<?=$file["extension"];?>"
               method="POST">
               <input type="text" name="title" value=<?php echo $file["name"]?>>
               <input type="submit" name="change" value="change">

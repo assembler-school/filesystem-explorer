@@ -1,8 +1,13 @@
 <?php
 session_start();
+include_once "./includes/icons.inc.php";
 
-$fileFetched = $_SESSION["lower"];
- include_once "./includes/icons.inc.php";
+$fileFetched = $_SESSION["fileFetched"];
+ $lower = $_GET["directory"];;
+
+ echo $lower;
+
+ //var_dump($lower);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +75,7 @@ $fileFetched = $_SESSION["lower"];
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="./includes/addfolder.inc.php">
+              <form method="POST" action="./includes/addfolder.inc.php?directory=<?=$lower;?>">
                 <input type="text" name="addfolder" />
             </div>
             <div class="modal-footer">

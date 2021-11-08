@@ -3,6 +3,8 @@ session_start();
 
 require_once("dbh.inc.php");
 $pathLower = $_GET["pathLower"];
+echo $pathLower;
+
 
 $fetchQuery = $db -> prepare("
 SELECT * FROM `files` WHERE daddyPath=:path
@@ -13,6 +15,8 @@ $fetchQuery -> execute([
 ]);
 
 $fileFetched = $fetchQuery -> rowCount()? $fetchQuery : [] ;
-$_SESSION["lower"] = $fileFetched;
+$_SESSION["fileFetched"] = $fileFetched;
+
+
 header("Location: ../lower.php?directory=$pathLower");
 ?>
