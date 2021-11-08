@@ -75,12 +75,12 @@ function renderTable()
 									</span>
 								</a>
 								<div class="d-flex justify-content-center align-items center gap-2">
-									<button data-bs-toggle="modal" data-bs-target="#modalDelete" data-action="delete" data-payload="<?= $file["path"] ?>">
+									<button data-bs-toggle="modal" data-bs-target="#modalDelete" data-action="delete" data-payload="<?= $folder["path"] ?>">
 										<span class="material-icons" style="pointer-events: none">
 											delete
 										</span>
 									</button>
-									<button data-bs-toggle="modal" data-bs-target="#modalRename" data-action="rename" data-payload="<?= $file["path"] ?>">
+									<button data-bs-toggle="modal" data-bs-target="#modalRename" data-action="rename" data-payload="<?= $folder["path"] ?>">
 										<span class="material-icons" style="pointer-events: none">
 											drive_file_rename_outline
 										</span>

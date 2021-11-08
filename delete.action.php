@@ -21,28 +21,31 @@ try {
     {
         $fullpath = joinPath([ROOT_DIRECTORY, $node]);
 
-        var_dump(($fullpath));
-        var_dump(file_exists($fullpath));
-        if (!file_exists($fullpath)) return true;
-        if (!is_dir($fullpath) || is_link($fullpath)) return unlink($fullpath);
+        if (!file_exists($fullpath)) return;
 
-        foreach (scandir($fullpath) as $item) {
-            echo "<pre>";
-            echo $item;
-            echo "</pre>";
-            // if ($item == '.' || $item == '..') continue;
-            // if (!deleteNode($node . "/" . $item)) {
-            //     chmod($node . "/" . $item, 0777);
-            //     if (!deleteNode($node . "/" . $item)) return false;
-            // };
+        if (!is_dir($fullpath)) {
+            chmod($fullpath, 0777);
+            unlink($fullpath);
+        } else {
+            $children = scandir($fullpath);
+
+            foreach ($children as $child) {
+                if ($child === '.' || $child === '..') continue;
+
+                $childpath = joinPath([$node, $child]);
+
+                deleteNode($childpath);
+            }
+
+            chmod($fullpath, 0777);
+            rmdir($fullpath);
         }
-        return rmdir($node);
     }
+
     deleteNode($node);
     array_push($successList, "File has been deleted");
 } catch (Throwable $e) {
     array_push($successList, $e->getMessage());
 }
 
-// header function will redirect again to the filesystem panel once data has been processed.
-// header("Location: ./index.php");
+header("Location: ./index.php");
