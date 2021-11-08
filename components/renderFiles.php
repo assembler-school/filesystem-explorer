@@ -27,14 +27,15 @@ function printDirectory($fullPath)
     $fileSize = filesize($fullPath) < 1000000 ? filesize($fullPath) /  1000 . " KB" : filesize($fullPath) /  1000000000 . " MB";
     $ext = strtoupper(pathinfo($fullPath, PATHINFO_EXTENSION));
     $fileName = explode("/", $fullPath)[count(explode("/", $fullPath)) - 1];
-    $test = printFileType($ext);
+    // $test = printFileType($ext);
 
     if (is_dir($fullPath)) {
         if (PHP_OS == "WINNT") {
             echo "
                 <div class='row align-items-center'>
                     <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
-                    <p>$test</p><p>$fileName </p>
+                    <img src=./assets/icons/folder.svg>
+                    <p>$fileName</p>
                     </a>
                     <p class='col'>$creationDate</p>
                     <p class='col'>$modificationDate</p>
@@ -46,8 +47,9 @@ function printDirectory($fullPath)
         } else {
             echo "
                 <div class='row align-items-center'>
-                    <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
-                        <p>$fileName</p>
+                <a class='col-3 text-truncate' href=index.php?directory=$fullPath>
+                    <img src=./assets/icons/folder.svg>
+                    <p>$fileName</p>
                     </a>
                     <p class='col'>Unknown</p>
                     <p class='col'>$modificationDate</p>
@@ -59,7 +61,8 @@ function printDirectory($fullPath)
         if (PHP_OS == "WINNT") {
             echo "
                     <div class='row align-items-center'>
-                        <a class='col-3 text-truncate' href='$fullPath'><p>$fileName</p></a>
+                    <div class='col-3 text-truncate'>
+                    <a class='col-3 text-truncate' href=$fullPath><img src=./assets/icons/$ext-icon.svg></p>$fileName</p></a></div>
                         <p class='col'>$creationDate</p>
                         <p class='col'>$modificationDate</p>
                         <p class='col-1'>$ext</p>
@@ -70,7 +73,8 @@ function printDirectory($fullPath)
         } else {
             echo "
                     <div class='row align-items-center'>
-                        <p class='col-3 text-truncate'>$fileName</p>
+                    <div class='col-3 text-truncate'>
+                    <a class='col-3 text-truncate' href=$fullPath><img src=./assets/icons/$ext-icon.svg></p>$fileName</p></a></div>
                         <p class='col' >Unknown</p>
                         <p class='col' >$modificationDate</p>
                         <p class='col-1' >$ext</p>
@@ -106,14 +110,53 @@ if (!isset($_GET["search"])) {
     readDirectory($search, $folderPath);
 }
 
-function printFileType($ext)
-{
-    switch ($ext) {
-        case "jpg":
-            return "<p>JPG FILE</p>";
-            break;
-        default:
-            return "DEFAULT";
-            break;
-    }
-}
+// function printFileType($ext)
+// {
+//     switch ($ext) {
+//         case "doc":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "csv":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "jpg":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "png":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "txt":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "ppt":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "odt":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "pdf":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "zip":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "rar":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "exe":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "svg":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "mp3":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         case "mp4":
+//             return "<img src='$ext-icon'>";
+//             break;
+//         default:
+//             return "";
+//             break;
+//     }
+// }
