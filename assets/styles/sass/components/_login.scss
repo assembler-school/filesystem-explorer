@@ -1,0 +1,31 @@
+$size-sm: 480px;
+$size-md: 560px;
+
+.login {
+	width: 320px;
+	
+	@media screen and (min-width: $size-sm) {
+		width: $size-sm;
+	}
+
+	@media screen and (min-width: $size-md) {
+		width: $size-md;
+	}
+
+	padding: 1.25rem;
+
+	background: rgba(255,255,255, 0.125);
+	backdrop-filter: blur(4px);
+	border-radius: 0.25rem;
+	box-shadow: 0 0 1rem rgba(0,0,0,0.25);
+	color: white;
+
+	&__form {
+		padding: 0;
+		margin: 0;
+	}
+
+	&__label {
+		font-weight: 300;
+	}
+}
