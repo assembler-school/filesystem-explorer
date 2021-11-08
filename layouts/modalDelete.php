@@ -16,9 +16,8 @@ function renderModalDelete()
 					<div class="d-flex flex-column justify-content-center align-items-center">
 						<form action="actions/delete/index.php" method="POST" enctype="multipart/form-data">
 							<div class="form-group">
-								<input name="path" type="text" id="input_delete_path" readonly />
-								<!-- TODO: Add confirmation question about to delete the file or folder -->
-								<!-- TODO: Add input type="hidden" with the value of the "path" of the file or folder to remove -->
+								<p class="display-6 text-align-center">Are you sure to delete the next file?</p>
+								<input name="path" type="hidden" id="input_delete_path" />
 								<button class="btn btn-primary" type="submit">Delete</button>
 							</div>
 						</form>

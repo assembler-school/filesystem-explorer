@@ -12,6 +12,7 @@ require_once("./layouts/modalDelete.php");
 require_once("./layouts/modalRename.php");
 require_once("./layouts/modalUploadFiles.php");
 require_once("./layouts/modalView.php");
+require_once("./layouts/breadcrumbs.php");
 require_once("./modules/validation.php");
 
 if (!validateUrlFolderPath()) {
@@ -53,6 +54,7 @@ if (!validateUrlFolderPath()) {
 			<?php renderAside(); ?>
 		</div>
 		<div class="col-12 col-md-8 col-lg-9 col-xl-10 p-3 d-flex flex-column">
+			<?php renderBreadcrumbs(); ?>
 			<?php renderTable(); ?>
 		</div>
 	</div>
