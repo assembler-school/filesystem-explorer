@@ -28,10 +28,13 @@ if (!is_dir("root")) {
         <?php require_once("./components/createFolderForm.php"); ?>
         <hr>
     </header>
-    
+
     <main class="container d-flex align-items-center justify-content-center">
         <?php require_once("./components/sideBar.php"); ?>
         <section class="file__container">
+            <div>
+                <?php require_once("./components/navBar.php"); ?>
+            </div>
             <?php require_once("./components/renderFiles.php") ?>
         </section>
     </main>
