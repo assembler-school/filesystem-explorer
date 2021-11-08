@@ -11,27 +11,31 @@ foreach (fileBrowser("") as $file) {
         $fileCreate =  date("Y-m-d H:m:s", filectime($file));
         $fileModify =  date("Y-m-d H:m:s", filemtime($file));
         $id++;
+?>
 
-        echo ' <tr id="' . $id . '" data-file="' . $file . '">' .
-            ' <td> <p id="name-' . $id . '" >' . $fileName . ' </p></td> ' .
-            ' <td> ' . $fileType . ' </td>' .
-            ' <td> ' . $fileCreate . ' </td>' .
-            ' <td> ' . $fileModify . ' </td>' .
-            ' <td> ' . getFileSize($file) . ' </td>' .
-            ' <td> ' .
-            '<button id="showFile"class="btn btn-light  m-1">▶️ </button>' .
-            '<button id="renameFile"class="btn btn-light  m-1">✏️ </button>' .
-            '<button id="deleteFile" class="btn btn-light m-1">❌</button>' .
-            ' </td>' .
-            '</tr> ';
+        <tr id="<?php echo  $id ?> " data-file="<?php echo  $file ?>">
+            <td>
+                <p id="name-<?php echo $id ?>"> <?php echo $fileName ?></p>
+            </td>
+            <td><?php echo $fileType ?></td>
+            <td><?php echo $fileCreate ?></td>
+            <td><?php echo $fileModify ?></td>
+            <td><?php echo getFileSize($file) ?></td>
+            <td>
+                <button id="showFile" class="btn btn-light  m-1">▶️ </button>
+                <button id="renameFile" class="btn btn-light  m-1">✏️ </button>
+                <button id="deleteFile" class="btn btn-light m-1">❌</button>
+            </td>
+        </tr>
+<?php
     }
 }
 ?>
-
 <script>
     $(document).ready(function() {
         //?eventListener Rename
         $("#renameFile").click(function(e) {
+
             $id = e.target.parentElement.parentElement.id;
             $file = e.target.parentElement.parentElement.dataset.file
             let $target = $('#name-' + $id);
@@ -54,6 +58,7 @@ foreach (fileBrowser("") as $file) {
 
         //?eventListener Delete
         $("#deleteFile").click(function(e) {
+
             $fileUrl = e.target.parentElement.parentElement.dataset.file;
             ajaxDelete($fileUrl);
         })

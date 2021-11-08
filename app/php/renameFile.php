@@ -1,18 +1,26 @@
 <?php
 include "./utils/getFilePath.php";
 
+//? incoming file
 $file = '/' . $_POST['file'];
 $newName = $_POST['newName'];
 $fileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+
+//? File path
 $oldFilePath = getFilePath($file);
 $newFilePath = dirname($oldFilePath) . '/' .  $newName . '.' . $fileType;
-$oldFileName = str_replace(' ', '', str_replace('/', '\ ', $oldFilePath));
-$newFileName = str_replace(' ', '', str_replace('/', '\ ', $newFilePath));
+
+//? New file path
+if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+	$oldFilePath = str_replace(' ', '', str_replace('/', '\ ', $oldFilePath));
+	$newFilePath = str_replace(' ', '', str_replace('/', '\ ', $newFilePath));
+}
 
 
 
+//? Change Name
 if ($_POST['oldName'] !== $_POST['newName']) {
-	rename($oldFileName,  $newFileName);
+	rename($oldFilePath,  $newFilePath);
 	echo $response = true;
 } else {
 	$response = false;

@@ -17,7 +17,13 @@ function getFilePath($file)
     if (isset($uri) && $uri !== null) {
         $uri = substr($uri, 1);
         $uri = explode('/', $uri);
-        $uri = "$_SERVER[DOCUMENT_ROOT]" . "/" . $uri[0];
+        $newUri = "";
+
+        for ($i = 0; $i < count($uri) - 3; $i++) {
+            $newUri = "/" . $uri[$i];
+        }
+
+        $uri = "$_SERVER[DOCUMENT_ROOT]" . "/" .  $newUri;
     } else {
         $uri = null;
     }
