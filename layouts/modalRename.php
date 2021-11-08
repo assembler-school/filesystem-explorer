@@ -13,7 +13,7 @@ function renderModalRename()
 				</div>
 				<div class="modal-body">
 					<div class="d-flex flex-column justify-content-center align-items-center">
-						<form action="rename.action.php" method="POST" enctype="multipart/form-data">
+						<form action="./actions/rename/index.php" method="POST" enctype="multipart/form-data">
 							<div class="form-group">
 								<input type="text" id="input_rename_path" />
 								<!-- TODO: Add input text for the new name of the file or folder -->
