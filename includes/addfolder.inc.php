@@ -14,7 +14,7 @@ if (isset($_POST["addfolder"])) {
 }
 
 echo "<br/>";
-echo $mkdirRoute . $_POST["addfolder"];
+echo $mkdirRoute ."/". $_POST["addfolder"];
 echo "<br/>";
 echo $mkdirRoute;
 echo "<br/>";
@@ -23,8 +23,8 @@ if ($_GET["directory"]) {
   echo "<br/>";
 }
 
-$modified = date("Y-m-d", filemtime($mkdirRoute . $_POST["addfolder"]));
-$creation = date("Y-m-d", filectime($mkdirRoute . $_POST["addfolder"]));
+$modified = date("Y-m-d", filemtime($mkdirRoute ."/". $_POST["addfolder"]));
+$creation = date("Y-m-d", filectime($mkdirRoute ."/". $_POST["addfolder"]));
 $fileName = $_POST["addfolder"];
 
 
@@ -42,13 +42,13 @@ COMMIT;
 //encryptfunction 
 
 $uploadQuery->execute([
-  "name"=>$fileName,
+  "name"=>$_POST["addfolder"],
   "size"=>0,
   "modified"=>$modified,
   "creation"=>$creation,
   "extension"=>"folder",
-  "path"=>$mkdirRoute . $_POST["addfolder"],
-  "daddyPath"=>$mkdirRoute . $_POST["addfolder"]
+  "path"=>$mkdirRoute ."/". $_POST["addfolder"],
+  "daddyPath"=>$mkdirRoute
 ]);
 
 $_SESSION["directory"]= $mkdirRoute;
@@ -61,4 +61,4 @@ $_SESSION["directory"]= $mkdirRoute;
 // }
 // }
 
-header("location: ../index.php");
+//header("location: ../index.php");
