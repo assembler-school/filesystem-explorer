@@ -11,4 +11,33 @@ function setInputValueEvent(inputTargetSelector, eventTargetAction) {
 	});
 }
 
-export { setInputValueEvent };
+function setImageEvent() {
+	document.addEventListener("click", function (event) {
+		if (event.target.dataset?.action !== "view-image") return;
+
+		const container = document.querySelector("#view-file");
+		const image = document.createElement("img");
+		image.classList.add("img-styles");
+		image.src = event.target.dataset.payload;
+
+		container.innerHTML = null;
+		container.container.insertAdjacentElement("afterbegin", image);
+	});
+}
+
+function setVideoEvent() {
+	document.addEventListener("click", function (event) {
+		if (event.target.dataset?.action !== "view-image") return;
+
+		const container = document.querySelector("#view-file");
+		const video = document.createElement("video");
+		video.classList.add("video-styles");
+		video.src = event.target.dataset.payload;
+		video.controls = true;
+
+		container.innerHTML = null;
+		container.container.insertAdjacentElement("afterbegin", video);
+	});
+}
+
+export { setInputValueEvent, setImageEvent, setVideoEvent };

@@ -42,6 +42,20 @@ function renderTable()
 											drive_file_rename_outline
 										</span>
 									</button>
+									<?php if (in_array($file["type"], ["svg", "jpg", "jpeg", "png"])) : ?>
+										<button data-bs-toggle="modal" data-bs-target="#modalView" data-action="view-image" data-payload="<?= $file["path"] ?>">
+											<span class="material-icons" style="pointer-events: none">
+												image
+											</span>
+										</button>
+									<?php endif ?>
+									<?php if (in_array($file["type"], ["mp4"])) : ?>
+										<button data-bs-toggle="modal" data-bs-target="#modalView" data-action="view-video" data-payload="<?= $file["path"] ?>">
+											<span class="material-icons" style="pointer-events: none">
+												video
+											</span>
+										</button>
+									<?php endif ?>
 								</div>
 							</td>
 						</tr>

@@ -42,6 +42,7 @@ if (!count($errorList)) {
 		}
 
 		mkdir($fullpath);
+		chmod($fullpath, 0777);
 
 		array_push($successList, "Directory has been created.");
 	} catch (Throwable $e) {

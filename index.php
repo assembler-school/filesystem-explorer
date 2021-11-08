@@ -11,6 +11,7 @@ require_once("./layouts/modalAddFolder.php");
 require_once("./layouts/modalDelete.php");
 require_once("./layouts/modalRename.php");
 require_once("./layouts/modalUploadFiles.php");
+require_once("./layouts/modalView.php");
 require_once("./modules/validation.php");
 
 if (!validateUrlFolderPath()) {
@@ -45,6 +46,8 @@ if (!validateUrlFolderPath()) {
 	<?php renderModalAddFile(); ?>
 	<?php renderModalAddFolder(); ?>
 	<?php renderModalUploadFiles(); ?>
+	<?php renderModalView(); ?>
+
 	<?php renderHeader(); ?>
 	<div class="row m-0">
 		<div class=" col-12 col-md-4 col-lg-3 col-xl-2 p-0 overflow-hidden">
