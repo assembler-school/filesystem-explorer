@@ -1,0 +1,47 @@
+$size-threeshold: 768px;
+
+.aside-nav {
+	min-height: 0;
+
+	@media screen and (min-width: $size-threeshold) {
+		
+		min-height: calc(100vh - 5rem);
+	}
+
+	background: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(4px);
+
+	&__button {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		width: 100%;
+		padding: 1rem 1.25rem;
+
+		outline: none;
+		border: none;
+
+		background: rgba(75, 69, 69, 0.25);
+		box-shadow: 0 0 2px rgba(0,0,0,0.25);
+		color: white;
+		
+		&--accordion {
+			&:not(.collapsed) {
+				background: rgba(255,255,255,0.25);
+	
+				&::after {
+					background: none;
+					font-family: 'Material Icons';
+					content: '\e5cf';
+				}
+			}
+	
+			&::after {
+				background: none;
+				font-family: 'Material Icons';
+				content: '\e5cf';
+			}
+		}
+	}
+}
