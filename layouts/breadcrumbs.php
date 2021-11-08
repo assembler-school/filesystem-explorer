@@ -3,21 +3,7 @@
 function renderBreadcrumbs()
 {
 	require_once(ROOT . "/utils/url.php");
-	require_once(ROOT . "/utils/getFolderContent.php");
-
-	function getNavLinks($urlFolderContent)
-	{
-		$nodes = explode("/", trim($urlFolderContent, "\/\\"));
-		$links = [];
-		$acc = "";
-
-		foreach ($nodes as $node) {
-			$acc = implode("/", [$acc, $node]);
-			array_push($links, ["name" => $node, "href" => $acc]);
-		}
-
-		return $links;
-	}
+	require_once(ROOT . "/utils/getNAvLinks.php");
 
 	if ($folderPath = getUrlFolderPath())	$links = getNavLinks($folderPath);
 ?>
