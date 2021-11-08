@@ -7,13 +7,13 @@ if (isset($_GET["directory"])) {
     for ($i =  0; $i < count($arrDirectory); $i++) {
         if (count($arrDirectory) - 1 != $i) {
             if ($i === 0) {
-                echo  "<div><a href=index.php?directory=$value>$arrDirectory[$i]</a></div>";
+                echo  "<div class='mx-2'><a href=index.php?directory=$value>$arrDirectory[$i]</a></div>";
             } else {
                 $value = $value . "/" . $arrDirectory[$i];
-                echo "<div><a href=index.php?directory=$value>$arrDirectory[$i]</a></div>";
+                echo "<i class='fas fa-angle-right mt-1'></i><div class='mx-2'><a href=index.php?directory=$value>$arrDirectory[$i]</a></div>";
             }
         } else {
-            echo "<div>$arrDirectory[$i]</div>";
+            echo "<i class='fas fa-angle-right mt-1'></i><div class='mx-2 breadcrumb-item active'>$arrDirectory[$i]</div>";
         }
     }
 }
