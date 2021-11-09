@@ -1,4 +1,4 @@
-<table id="table_id" class="table table-responsive table-striped table-bordered">
+<table id="table_id" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Name</th>
