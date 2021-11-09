@@ -64,6 +64,13 @@ function renderTable()
 											</span>
 										</button>
 									<?php endif ?>
+                  <?php if (in_array($file["type"], ["txt"])) : ?>
+										<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalEditFile" data-action="edit-file" data-payload="<?= $file["path"] ?>">
+											<span class="material-icons" style="pointer-events: none">
+                        description
+											</span>
+										</button>
+									<?php endif ?>
 								</div>
 							</td>
 						</tr>
@@ -117,7 +124,7 @@ function renderTable()
 			$('#contents').DataTable({
 				columnDefs: [{
 					targets: [0, -1],
-					orderable: false,
+					orderable: false
 				}]
 			});
 		});

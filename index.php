@@ -14,6 +14,7 @@ require_once("./layouts/modalRename.php");
 require_once("./layouts/modalUploadFiles.php");
 require_once("./layouts/modalView.php");
 require_once("./layouts/breadcrumbs.php");
+require_once("./layouts/modalEditFile.php");
 require_once("./modules/validation.php");
 require_once("./modules/session.php");
 require_once("./utils/url.php");
@@ -52,6 +53,7 @@ setSessionValue("path", getUrlFolderPath());
 	<?php renderModalAddFolder(); ?>
 	<?php renderModalUploadFiles(); ?>
 	<?php renderModalView(); ?>
+	<?php renderModalEditFile(); ?>
 
 	<?php renderHeader(); ?>
 	<div class="row m-0">
