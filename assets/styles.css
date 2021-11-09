@@ -38,6 +38,10 @@ main {
   min-height: 70vh;
 }
 
+.row:hover{
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
 .search__form {
   width: 40%;
 }

@@ -37,7 +37,7 @@ function printDirectory($fullPath)
 
         if (PHP_OS == "WINNT") {
             echo "
-                <div class='row align-items-center'>
+                <div class='row align-items-center '>
                     <a class='col-3 d-flex align-items-center text-truncate' href=index.php?directory=$fullPath>
                     <img src=./assets/icons/folder.svg>
                     <p class='ml-2'>$fileName</p>
