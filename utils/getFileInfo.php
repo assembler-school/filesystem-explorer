@@ -2,7 +2,7 @@
 
 function getFileInfo($filepath)
 {
-	require_once(ROOT . "/utils/getFormattedSize.php");
+	require_once(ROOT."/utils/getFormattedSize.php");
 
 	$name = 		basename($filepath);
 	$size = 		getFormattedSize(filesize($filepath));

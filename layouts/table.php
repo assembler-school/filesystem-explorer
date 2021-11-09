@@ -4,9 +4,9 @@ session_start();
 
 function renderTable()
 {
-	require_once(ROOT . "/utils/url.php");
-	require_once(ROOT . "/utils/getFolderContent.php");
-	require_once(ROOT . "/utils/searchInDrive.php");
+	require_once(ROOT."/utils/url.php");
+	require_once(ROOT."/utils/getFolderContent.php");
+	require_once(ROOT."/utils/searchInDrive.php");
 
 
 	if ($folderPath = getUrlFolderPath())
