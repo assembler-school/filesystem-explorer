@@ -1,18 +1,17 @@
 <?php
 require_once("./dbh.inc.php");
 $id = $_GET["id"];
-$name = $_GET["name"];
-$path = "../root/" . $name;
+$path = $_GET["path"];
 
 $deleteQuery = $db->prepare("
 DELETE FROM `files` WHERE `id` = :id;
 ");
 
 $deleteQuery->execute([
-    "id" => $id,
-    "name" => $name
+    "id" => $id
 ]);
 
 
 unlink($path);
-//header("location: ../index.php");
+echo $path;
+// header("location: ../index.php");

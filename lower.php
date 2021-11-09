@@ -124,7 +124,7 @@ echo "<br/>";
 
               <td>
                 <button onClick="document.location.href='includes/edit.inc.php?id=<?= $file['id']; ?>'" class="btn btn-warning"><i class="far fa-edit"></i></button>
-                <button onClick="document.location.href='includes/delete.inc.php?id=<?= $file['id']; ?>&name=<?= $file["name"]; ?>'" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                <button onClick="document.location.href='includes/delete.inc.php?id=<?= $file['id']; ?>&path=<?= $file["path"]; ?>'" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
               </td>
             </tr>
           <?php endforeach; ?>
