@@ -46,7 +46,7 @@ main {
 .btn-edit {
   height: 6vh;
   width: 6vh;
-  margin: 0.2rem;
+  margin: 0.2rem 0 0.2rem 0;
 }
 
 .web__icon {

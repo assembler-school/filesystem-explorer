@@ -42,16 +42,14 @@ function printDirectory($fullPath)
                     <img src=./assets/icons/folder.svg>
                     <p class='ml-2'>$fileName</p>
                     </a>
-                    <p class='col'>$creationDate</p>
-                    <p class='col'>$modificationDate</p>
+                    <p class='col-2'>$creationDate</p>
+                    <p class='col-2'>$modificationDate</p>
                     <p class='col-1'>Folder</p>
                     <p class='col-2'></p>
-                    <a class='col-1' href='components/erase.php?erase=$fullPath'>
-                    <button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button>
-                    </a>
-                    <a class='col-1' href='index.php?directory=$directory&edit=$fullPath'>
-                    <button class='btn btn-edit btn-warning p-0'><i class='fas fa-edit'></i></button>
-                    </a>
+                    <div class='col-2 d-flex justify-content-start'>
+                        <a href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0 me-2'><i class='fas fa-trash-alt'></i></button></a>
+                        <a href='index.php?directory=$directory&edit=$fullPath'><button class='btn btn-edit btn-warning p-0'><i class='fas fa-edit'></i></button></a>
+                    </div>
                 </div>
                 <hr>";
         } else {
@@ -64,8 +62,10 @@ function printDirectory($fullPath)
                     <p class='col'>Unknown</p>
                     <p class='col'>$modificationDate</p>
                     <p class='col-2'></p>
-                    <a class='col-1' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
-                    <a class='col-1' href='index.php?directory=$directory&edit=$fullPath'><button class='btn btn-edit btn-warning p-0'><i class='fas fa-edit'></i></button></a>    
+                    <div class='col-2 d-flex justify-content-start'>
+                        <a class='mr-2' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
+                        <a href='index.php?directory=$directory&edit=$fullPath'><button class='btn btn-edit btn-warning p-0'><i class='fas fa-edit'></i></button></a>
+                    </div>    
                 </div>
                 <hr>";
         }
@@ -78,8 +78,10 @@ function printDirectory($fullPath)
                         <p class='col'>$modificationDate</p>
                         <p class='col-1'>$ext</p>
                         <p class='col-2'>$fileSize</p>
-                        <a class='col-1' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
-                        
+                        <div class='col-2 d-flex justify-content-start'>
+                            <a class='mr-2' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
+                            <p></p>
+                        </div>
                     </div>
                 <hr>";
         } else {
@@ -90,8 +92,10 @@ function printDirectory($fullPath)
                         <p class='col'>$modificationDate</p>
                         <p class='col-1'>$ext</p>
                         <p class='col-2'>$fileSize</p>
-                        <a class='col-1' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
-                        
+                        <div class='col-2 d-flex justify-content-start'>
+                            <a class='mr-2' href='components/erase.php?erase=$fullPath'><button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button></a>
+                            <p></p>
+                        </div>
                     </div>
                 <hr>";
         }
