@@ -29,7 +29,6 @@ if (!is_dir("root")) {
         <?php require_once("./components/sideBar.php"); ?>
         <section class="file__container">
             <div class="container">
-                
                 <?php require_once("./components/titlesFiles.php") ?>
                 <?php require_once("./components/renderFiles.php") ?>
             </div>
