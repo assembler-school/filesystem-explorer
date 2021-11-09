@@ -7,7 +7,7 @@ function renderTable()
 
 	if ($folderPath = getUrlFolderPath())	$contents = getFolderContent($folderPath);
 ?>
-	<div class="table text-light">
+	<div class="main-child text-light">
 		<?php if ($contents) : ?>
 			<table id="contents" class="table text-light w-100">
 				<thead>

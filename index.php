@@ -14,11 +14,15 @@ require_once("./layouts/modalUploadFiles.php");
 require_once("./layouts/modalView.php");
 require_once("./layouts/breadcrumbs.php");
 require_once("./modules/validation.php");
+require_once("./modules/session.php");
+require_once("./utils/url.php");
 
 if (!validateUrlFolderPath()) {
 	header("Location: ./index.php?path=/");
 	exit();
 }
+
+setSessionValue("path", getUrlFolderPath());
 
 ?>
 <!DOCTYPE html>
@@ -53,7 +57,7 @@ if (!validateUrlFolderPath()) {
 		<div class=" col-12 col-md-4 col-lg-3 col-xl-2 p-0 overflow-hidden">
 			<?php renderAside(); ?>
 		</div>
-		<div class="col-12 col-md-8 col-lg-9 col-xl-10 p-3 d-flex flex-column">
+		<div class="col-12 col-md-8 col-lg-9 col-xl-10 p-3 d-flex flex-column gap-3">
 			<?php renderBreadcrumbs(); ?>
 			<?php renderTable(); ?>
 		</div>

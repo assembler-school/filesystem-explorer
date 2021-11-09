@@ -25,7 +25,7 @@ try {
 
 	deleteNode($path);
 
-	array_push($successList, "The resource has been deleted");
+	array_push($successList, "The resource has been deleted.");
 } catch (Throwable $e) {
 	array_push($successList, $e->getMessage());
 }
@@ -33,4 +33,5 @@ try {
 setSessionValue("errorList", $errorList);
 setSessionValue("successList", $successList);
 
-header("Location: ../../index.php");
+$url = getSessionValue("path");
+header("Location: ../../index.php?path=$url");

@@ -1751,7 +1751,7 @@ template {
   content: "\e5cf";
 }
 
-.table {
+.main-child {
   width: 100%;
   padding: 1rem;
   background: rgba(0, 0, 0, 0.5);

@@ -13,15 +13,11 @@ function renderModalDelete()
 					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<div class="d-flex flex-column justify-content-center align-items-center">
-						<form action="actions/delete/index.php" method="POST" enctype="multipart/form-data">
-							<div class="form-group">
-								<p class="display-6 text-align-center">Are you sure to delete the next file?</p>
-								<input name="path" type="hidden" id="input_delete_path" />
-								<button class="btn btn-primary" type="submit">Delete</button>
-							</div>
-						</form>
-					</div>
+					<form class="d-flex flex-column justify-content-center align-items-center" action="actions/delete/index.php" method="POST" enctype="multipart/form-data">
+						<p class="fw-light fs-3 text-align-center">Are you sure to delete the next file?</p>
+						<input name="path" type="hidden" id="input_delete_path" />
+						<button class="btn btn-warning m-auto" type="submit">Delete</button>
+					</form>
 				</div>
 			</div>
 		</div>

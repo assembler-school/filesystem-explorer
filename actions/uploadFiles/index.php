@@ -64,4 +64,5 @@ if (!count($errorList)) {
 setSessionValue("errorList", $errorList);
 setSessionValue("successList", $successList);
 
-header("Location: ../../index.php");
+$url = getSessionValue("path");
+header("Location: ../../index.php?path=$url");
