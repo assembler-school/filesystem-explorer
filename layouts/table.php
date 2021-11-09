@@ -57,7 +57,7 @@ function renderTable()
 										</button>
 									<?php endif ?>
                   <?php if (in_array($file["type"], ["txt"])) : ?>
-										<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalEdit" data-action="edit-file" data-payload="<?= $file["path"] ?>">
+										<button class="icon-btn" data-bs-toggle="modal" data-bs-target="#modalEditFile" data-action="edit-file" data-payload="<?= $file["path"] ?>">
 											<span class="material-icons" style="pointer-events: none">
                         description
 											</span>

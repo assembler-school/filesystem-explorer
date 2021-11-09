@@ -45,19 +45,12 @@ function setVideoEvent() {
 	});
 }
 
-function editFile() {
+function setEditFile() {
   document.addEventListener("click", function (event) {
 		if (event.target.dataset?.action !== "edit-file") return;
 
-		const container = document.querySelector("#view-file");
-		const video = document.createElement("video");
-		video.classList.add("w-100");
-		video.src = `${ROOT_DIRECTORY}/${event.target.dataset.payload}`;
-		video.controls = true;
-
-		container.innerHTML = null;
-		container.insertAdjacentElement("afterbegin", video);
+    console.log(event);
 	});
 }
 
-export { setInputValueEvent, setImageEvent, setVideoEvent };
+export { setInputValueEvent, setImageEvent, setVideoEvent, setEditFile };
