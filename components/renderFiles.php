@@ -37,7 +37,7 @@ function printDirectory($fullPath)
 
         if (PHP_OS == "WINNT") {
             echo "
-                <div class='row align-items-center '>
+                <div class='row align-items-center hov'>
                     <a class='col-3 d-flex align-items-center text-truncate' href=index.php?directory=$fullPath>
                     <img src=./assets/icons/folder.svg>
                     <p class='ml-2'>$fileName</p>
@@ -54,7 +54,7 @@ function printDirectory($fullPath)
                 <hr>";
         } else {
             echo "
-                <div class='row align-items-center'>
+                <div class='row align-items-center hov'>
                 <a class='col-3 d-flex align-items-center text-truncate' href=index.php?directory=$fullPath>
                     <img src=./assets/icons/folder.svg>
                     <p class='ml-2'>$fileName</p>
@@ -72,7 +72,7 @@ function printDirectory($fullPath)
     } else {
         if (PHP_OS == "WINNT") {
             echo "
-                    <div class='row align-items-center'>
+                    <div class='row align-items-center hov'>
                         <a class='col-3 d-flex align-items-center text-truncate' href=$fullPath><img src=./assets/icons/$ext-icon.svg><p>$fileName</p></a>
                         <p class='col'>$creationDate</p>
                         <p class='col'>$modificationDate</p>
@@ -86,7 +86,7 @@ function printDirectory($fullPath)
                 <hr>";
         } else {
             echo "
-                    <div class='row align-items-center'>
+                    <div class='row align-items-center hov'>
                         <a class='col-3 d-flex align-items-center text-truncate' href=$fullPath><img src=./assets/icons/$ext-icon.svg>$fileName</a>
                         <p class='col'>Unknown</p>
                         <p class='col'>$modificationDate</p>
