@@ -46,15 +46,12 @@ function printDirectory($fullPath)
                     <p class='col'>$modificationDate</p>
                     <p class='col-1'>Folder</p>
                     <p class='col-2'></p>
-                    <div class='col-1'>
-                        <a href='components/erase.php?erase=$fullPath'>
-                            <button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button>
-                        </a>
-                        <a href='index.php?directory=$directory&edit=$fullPath'>
-                            <button class='btn btn-edit btn-warning p-0'><i class='fas fa-edit'></i></button>
-                        </a>
-                    </div>
-                    
+                    <a class='col-1' href='components/erase.php?erase=$fullPath'>
+                    <button class='btn btn-danger p-0'><i class='fas fa-trash-alt'></i></button>
+                    </a>
+                    <a class='col-1' href='index.php?directory=$directory&edit=$fullPath'>
+                    <button class='btn btn-edit btn-warning p-0'><i class='fas fa-edit'></i></button>
+                    </a>
                 </div>
                 <hr>";
         } else {

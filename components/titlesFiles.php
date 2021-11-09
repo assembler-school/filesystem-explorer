@@ -5,4 +5,5 @@
     <h4 class="col-1">Type</h4>
     <h4 class="col-2">Size</h4>
     <h4 class="col-1"></h4>
+    <h4 class="col-1"></h4>
 </div>
