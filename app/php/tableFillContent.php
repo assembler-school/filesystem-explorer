@@ -40,17 +40,21 @@ foreach (fileBrowser("") as $file) {
         $file = e.target.parentElement.parentElement.dataset.file
         let $target = $('#name-' + $id);
         $target.attr("contentEditable", true);
-        $('#name-' + $id + ' p').select();
         $target.focus();
         $oldName = $target.text();
 
         $target.keyup((e) => {
-            e.preventDefault()
+            e.stopPropagation();
+            e.preventDefault();
+
             if (e.keyCode === 13) {
-                $target.blur();
+                document.execCommand('delete', false, '<br/>');
+                return e.target.blur();
             }
         })
         $target.blur(() => {
+            e.stopPropagation();
+            e.preventDefault();
             $newName = $target.text();
             $target.removeAttr('contentEditable');
             ajaxRename($oldName, $newName, $file);

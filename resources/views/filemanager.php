@@ -38,7 +38,9 @@
 
           <div id="fileDataTable"></div>
         </div>
-
+        <?php
+        echo getcwd();
+        ?>
       </div>
     </div>
   </main>
