@@ -2,7 +2,6 @@
 session_start();
 require_once("dbh.inc.php");
 
-$directory = $_SESSION["directory"];
 
 
 
@@ -15,4 +14,3 @@ $fetchQuery -> execute([
 ]);
 
 $fileFetched = $fetchQuery -> rowCount()? $fetchQuery : [] ;
-?>
