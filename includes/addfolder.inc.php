@@ -5,22 +5,15 @@ require_once('dbh.inc.php');
 if (isset($_POST["addfolder"])) {
   if (isset($_GET["directory"]) && $_GET["directory"] !== "" && $_GET["directory"] !== "root") {
     $mkdirRoute = $_GET["directory"];
-    //"../root/a/b/c"
   } else {
     $mkdirRoute = "../root";
   }
   mkdir($mkdirRoute . "/" . $_POST["addfolder"], 0777, true);
+  if (PHP_OS !== "WINNT") {
+    chmod($mkdirRoute . "/" . $_POST["addfolder"], 0777);
+  }
 }
 
-echo "<br/>";
-echo $mkdirRoute . "/" . $_POST["addfolder"];
-echo "<br/>";
-echo $mkdirRoute;
-echo "<br/>";
-if ($_GET["directory"]) {
-  echo $_GET["directory"];
-  echo "<br/>";
-}
 
 $modified = date("Y-m-d", filemtime($mkdirRoute . "/" . $_POST["addfolder"]));
 $creation = date("Y-m-d", filectime($mkdirRoute . "/" . $_POST["addfolder"]));
@@ -48,11 +41,8 @@ $uploadQuery->execute([
 $_SESSION["directory"] = $mkdirRoute;
 
 
-// if(!file_exists("../root/$fileName")) {
-// mkdir($pathName . $fileName, 0777, true);
-// if (PHP_OS !== "WINNT") {
-//   chmod($pathName . $fileName, 0777);
-// }
-// }
-
-header("location: ../index.php");
+if ($_GET["directory"] == "root") {
+  header("location: ../index.php");
+} else {
+  header("location: ../lower.php?pathLower=$mkdirRoute");
+}

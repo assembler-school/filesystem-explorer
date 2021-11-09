@@ -21,7 +21,7 @@ if (!file_exists("../root")) {
     chmod($pathName, 0777);
   }
 }
-if (move_uploaded_file($fileTmp, $pathName . $fileName)) {
+if (move_uploaded_file($fileTmp, $pathName . "/" . $fileName)) {
   echo "Uploaded file";
 } else {
   echo "File upload failed";
@@ -52,7 +52,13 @@ $uploadQuery->execute([
   "modified" => $modified,
   "creation" => $creation,
   "extension" => $extension,
-  "path" => $pathName . $fileName,
+  "path" => $pathName . "/" . $fileName,
   "daddyPath" => $pathName
 ]);
-header("location: ../index.php");
+
+
+if ($_GET["directory"] == "root") {
+  header("location: ../index.php");
+} else {
+  header("location: ../lower.php?pathLower=$pathName");
+}

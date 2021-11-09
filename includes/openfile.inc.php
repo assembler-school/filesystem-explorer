@@ -39,7 +39,6 @@ switch ($extension) {
     </video>";
         break;
     case 'folder':
-        echo $path;
         header("Location: ../lower.php?pathLower=$path");
         break;
     default:

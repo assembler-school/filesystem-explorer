@@ -109,7 +109,7 @@ echo $_SESSION["directory"] . "<br/>" . "---directory";
                   </form>
                 <?php else : ?>
                   <i class="<?= getFileType($file['extension']); ?>"></i>
-                  <a href="includes/openfile.inc.php?path=<?= $file["path"]; ?>&extension=<?= $file["extension"]; ?>&daddyPath=<?= $file["daddyPath"]; ?>"><?php echo $file["name"] ?></a>
+                  <a href="includes/openfile.inc.php?path=<?= $file["path"]; ?>&extension=<?= $file["extension"]; ?>"><?php echo $file["name"] ?></a>
                 <?php endif; ?>
               </td>
               <td><?php echo $file["size"] ?></td>

@@ -11,7 +11,23 @@ $deleteQuery->execute([
     "id" => $id
 ]);
 
+function rmDir_rf($path)
+{
+    foreach (glob($path . "/*") as $archivos_carpeta) {
+        if (is_dir($archivos_carpeta)) {
+            rmDir_rf($archivos_carpeta);
+        } else {
+            unlink($archivos_carpeta);
+        }
+    }
+    rmdir($path);
+};
 
-unlink($path);
+if (is_dir($path)) {
+    rmDir_rf($path);
+} else {
+    unlink($path);
+}
+
 echo $path;
-// header("location: ../index.php");
+header("location: ../index.php");
