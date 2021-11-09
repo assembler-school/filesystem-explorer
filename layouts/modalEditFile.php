@@ -9,11 +9,14 @@ function renderModalEditFile()
 			<div class="modal-content">
 				<div class="modal-header bg-dark text-light">
 					<h5 class="modal-title">Edit file</h5>
-					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+					<button id="clodeEditModal" type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<div class="d-flex flex-column justify-content-center align-items-center">
-					helo
+					<form id="formEditFile">
+            <textarea id="dataFile"></textarea>
+            <input type="submit" value="Save">
+          </form>
 					</div>
 				</div>
 			</div>

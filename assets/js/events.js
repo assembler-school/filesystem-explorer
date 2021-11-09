@@ -48,8 +48,44 @@ function setVideoEvent() {
 function setEditFile() {
   document.addEventListener("click", function (event) {
 		if (event.target.dataset?.action !== "edit-file") return;
+    
+    // Get txt content
+    const filePath = event.target.dataset.payload
+    fetch('../../actions/editFile/get.php', {
+      method: 'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "filePath": filePath
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      document.querySelector("#dataFile").value = data
+    })
 
-    console.log(event);
+    document.querySelector("#formEditFile").addEventListener('submit', e => {
+      e.preventDefault();
+
+      fetch('../../actions/editFile/put.php', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "filePath": filePath,
+          "data": document.querySelector("#dataFile").value
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data !== false || data !== 'false') {
+          return document.querySelector("#clodeEditModal").click();
+        }
+      })
+    })
+
 	});
 }
 
