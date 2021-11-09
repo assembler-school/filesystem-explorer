@@ -2,7 +2,8 @@
 
 function renderAside()
 {
-	require_once(ROOT . "/layouts/notifications.php");
+	require_once(ROOT."/layouts/notifications.php");
+	require_once(ROOT."/layouts/navigationTree.php");
 ?>
 	<aside class="aside-nav">
 		<div class="accordion accordion-flush">
@@ -43,6 +44,7 @@ function renderAside()
 					</div>
 				</div>
 			</div>
+			<?php renderNavTree(); ?>
 		</div>
 	</aside>
 <?php

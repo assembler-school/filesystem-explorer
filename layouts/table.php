@@ -4,8 +4,16 @@ function renderTable()
 {
 	require_once(ROOT . "/utils/url.php");
 	require_once(ROOT . "/utils/getFolderContent.php");
+	require_once(ROOT . "/utils/searchInDrive.php");
 
-	if ($folderPath = getUrlFolderPath())	$contents = getFolderContent($folderPath);
+
+	if ($folderPath = getUrlFolderPath())
+		$contents =	isset($_SESSION['QUERY']) ? ($_SESSION["QUERY"]) : getFolderContent($folderPath);
+
+	// contents tmb puede ser del search
+	// usar session, query
+	// que cuando se haga el submit redirija al index de nuevo
+	//y una vez se replique la tabla que haga unset de $_SESSION['search']
 ?>
 	<div class="main-child text-light">
 		<?php if ($contents) : ?>
@@ -100,6 +108,11 @@ function renderTable()
 		<?php endif ?>
 	</div>
 	<script>
+		$.extend(true, $.fn.dataTable.defaults, {
+			"searching": false,
+
+		});
+
 		$(document).ready(function() {
 			$('#contents').DataTable({
 				columnDefs: [{
@@ -110,4 +123,6 @@ function renderTable()
 		});
 	</script>
 <?php
+	unset($_SESSION['QUERY']);
+	unset($_SESSION['search']);
 }
