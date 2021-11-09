@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,9 +41,7 @@
 
           <div id="fileDataTable"></div>
         </div>
-        <?php
-        echo getcwd();
-        ?>
+
       </div>
     </div>
   </main>
@@ -50,6 +51,8 @@
 
   <!-- JavaScript -->
   <script src="../../app/js/loadTable.js"></script>
+  <script src="../../app/js/ajaxSetCurrentFolder.js"></script>
+  <script src="../../app/js/ajaxGetCurrentFolder.js"></script>
   <script src="../../app/js/ajaxRename.js"></script>
   <script src="../../app/js/ajaxDelete.js"></script>
   <script src="../../app/js/ajaxUpload.js"></script>
@@ -59,4 +62,3 @@
 </body>
 
 </html>
-

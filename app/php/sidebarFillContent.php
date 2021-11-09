@@ -11,8 +11,8 @@ function sidebarFillContent($initFolder = "", $id = -1)
             $id++;
             $secondFolderName = basename($secondFolder);
             echo
-            "<li class='mb-1 p-2' id='folder-$id'>" .
-                "<button class='btn btn-toggle align-items-center rounded collapsed' data-bs-toggle='collapse' data-bs-target='#folder-$id-collapse' aria-expanded='false'>" .
+            "<li class='mb-1 p-2' id='folder-$id' data-file='$secondFolder'>" .
+                "<button id='folderButton' class='btn btn-toggle align-items-center rounded collapsed' data-bs-toggle='collapse' data-bs-target='#folder-$id-collapse' aria-expanded='false'>" .
                 "<h5>$secondFolderName - $id</h5>" .
                 '</button>' .
                 "<div class='collapse' id='folder-$id-collapse'>";
@@ -24,8 +24,8 @@ function sidebarFillContent($initFolder = "", $id = -1)
                     if (pathinfo($thirdFolder, PATHINFO_EXTENSION) === "") {
                         $thirdFolderName = basename($thirdFolder);
                         $id++;
-                        echo "<li class='mb-1 p-2' id='folder-$id'>" .
-                            "<button class='btn btn-toggle align-items-center rounded collapsed' data-bs-toggle='collapse' data-bs-target='#folder-$id-collapse' aria-expanded='false'>" .
+                        echo "<li class='mb-1 p-2' id='folder-$id' data-file='$thirdFolder'>" .
+                            "<button id='folderButton' class='btn btn-toggle align-items-center rounded collapsed' data-bs-toggle='collapse' data-bs-target='#folder-$id-collapse' aria-expanded='false'>" .
                             "<h5>$thirdFolderName - $id</h5>" .
                             '</button>' .
                             "<div class='collapse' id='folder-$id-collapse'>" .
@@ -46,3 +46,11 @@ function sidebarFillContent($initFolder = "", $id = -1)
         }
     }
 }
+?>
+<script>
+    $(document).on('click', '#folderButton', function(e) {
+
+        $file = e.target.parentElement.parentElement.dataset.file ? e.target.parentElement.parentElement.dataset.file : e.target.parentElement.dataset.file;
+        ajaxGetCurrentFolder($file)
+    })
+</script>

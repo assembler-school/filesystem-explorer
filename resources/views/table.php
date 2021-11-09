@@ -1,3 +1,10 @@
+<?php
+include "../../app/php/tableFillContent.php";
+include "../../app/php/utils/getCurrentFolder.php";
+
+
+?>
+
 <table id="table_id" class="table table-responsive table-striped table-bordered">
     <thead>
         <tr>
@@ -10,7 +17,10 @@
         </tr>
     </thead>
     <tbody>
-        <?php include "../../app/php/tableFillContent.php"; ?>
+        <?php
+        $path = $_SESSION['folderPath'] . '/*';
+        tableFillContent($path);
+        ?>
     </tbody>
 </table>
 

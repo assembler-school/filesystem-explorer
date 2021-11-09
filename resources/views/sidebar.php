@@ -6,8 +6,8 @@ include "../../app/php/sidebarFillContent.php";
 <ul class="list-unstyled ps-0">
     <li class="border-top my-3"></li>
     <!-- From here -->
-    <li class="mb-1" id="folder-0">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#folder-0-collapse" aria-expanded="true">
+    <li class="mb-1" id="folder-0" data-file="../../storage">
+        <button id="folderButton" class="btn btn-toggle  align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#folder-0-collapse" aria-expanded="true">
             <h1> Root </h1>
         </button>
         <div class="collapse show" id="folder-0-collapse">

@@ -13,9 +13,13 @@ body {
 }
 
 footer {
-  position:fixed;
-  left:0;
-  bottom:0;
-  width:100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   z-index: 10;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  background-color: white !important;
 }
