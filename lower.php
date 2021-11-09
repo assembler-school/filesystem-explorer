@@ -1,17 +1,13 @@
 <?php
-session_start();
+include_once "./includes/fetchLower.inc.php";
 include_once "./includes/icons.inc.php";
 
-$fileFetched = $_SESSION["fileFetched"];
-$lower = $_GET["directory"];
+//$fileFetched = $_SESSION["fileFetched"];
+//$lower = $_GET["path"];
 
  print_r($fileFetched);
  echo "<br/>";
- echo $lower."<br/>"."---lower";
-
-foreach ($fileFetched as $value) {
-  echo $value["name"]."<br/>";
-}
+ //echo $lower."<br/>"."---lower";
 
 ?>
 <!DOCTYPE html>

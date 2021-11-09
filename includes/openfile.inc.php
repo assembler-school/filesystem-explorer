@@ -40,7 +40,7 @@ switch ($extension) {
         break;
     case 'folder':
         echo $path;
-        header("Location: fetchLower.inc.php?pathLower=$path");
+        header("Location: ../lower.php?pathLower=$path");
         break;
     default:
         echo "File type not supported";
