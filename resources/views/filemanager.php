@@ -37,9 +37,7 @@
 
         <div id="fileDataTable" class="table-responsive"></div>
       </div>
-      <!-- <?php
-            echo getcwd();
-            ?> -->
+
     </div>
   </main>
   <?php include "./footer.php"; ?>
@@ -48,7 +46,8 @@
 
   <!-- JavaScript -->
   <script src="../../app/js/loadTable.js"></script>
-  <script src="../../app/js/ajaxSetCurrentFolder.js"></script>
+  <script src="../../app/js/loadSidebar.js"></script>
+  <script src="../../app/js/ajaxCreateFolder.js"></script>
   <script src="../../app/js/ajaxGetCurrentFolder.js"></script>
   <script src="../../app/js/ajaxRename.js"></script>
   <script src="../../app/js/ajaxDelete.js"></script>
