@@ -76,7 +76,7 @@ include_once "./includes/icons.inc.php";
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="./includes/addfolder.inc.php?directory=<?=$lower;?>">
+              <form method="POST" action="./includes/addfolder.inc.php?directory=<?=$pathLower;?>">
                 <input type="text" name="addfolder" />
             </div>
             <div class="modal-footer">
