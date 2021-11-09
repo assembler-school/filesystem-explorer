@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,21 +25,21 @@
   <?php include "./header.php"; ?>
 
 
-  <main>
-    <div class="container .bg-transparent m-5">
-      <div class="row">
-        <div class="col-sm-2 box rounded p-2 m-2 .bg-transparent">
-          <?php include "./sidebar.php"; ?>
-        </div>
-        <div class="col-sm box rounded p-3 m-2 .bg-transparent">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Add file
-          </button>
-
-          <div id="fileDataTable"></div>
-        </div>
-
+  <main class="m-5">
+    <div class="row">
+      <div class="col-sm-2 box rounded p-2">
+        <?php include "./sidebar.php"; ?>
       </div>
+      <div class="col-sm-10 box rounded p-3">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Add file
+        </button>
+
+        <div id="fileDataTable" class="table-responsive"></div>
+      </div>
+      <!-- <?php
+            echo getcwd();
+            ?> -->
     </div>
   </main>
   <?php include "./footer.php"; ?>
