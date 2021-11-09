@@ -26,9 +26,8 @@ $path = $_GET["pathLower"];
     <div><?php echo "<h5>" . $path . "</h5>" . "<a href='javascript:history.back(1);'>Back</a>"; ?></div>
 
     <div class="d-flex m-6 align-items-center">
-      <form action="" class="me-4">
-        <input type="search" placeholder="&#x1F50E;&#xFE0E;">
-        <!-- <button name="search" class="btn btn-dark" type="submit">Search</button> -->
+      <form action="./search.php" class="me-4">
+        <input type="search" name="search" placeholder="&#x1F50E;&#xFE0E;">
       </form>
 
       <!-- Button trigger modal -->
