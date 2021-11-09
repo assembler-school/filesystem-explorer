@@ -29,7 +29,7 @@ function tableFillContent($path = "")
                     <button id="showFile" class="btn btn-light  m-1">▶️ </button>
                     <button id="renameFile" class="btn btn-light  m-1">✏️ </button>
                     <button id="deleteFile" class="btn btn-light m-1">❌</button>
-                    <p><?php echo $path ?></p>
+
                 </td>
             </tr>
 <?php
