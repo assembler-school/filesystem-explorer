@@ -6,6 +6,7 @@ $file = '/' . $_POST['file'];
 $newName = $_POST['newName'];
 
 $fileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+$newName = substr($newName, 1);
 
 
 //? File path
