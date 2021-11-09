@@ -32,5 +32,5 @@ if (is_dir($path)) {
     unlink($path);
 }
 
-echo $path;
+
 header("location: ../index.php");

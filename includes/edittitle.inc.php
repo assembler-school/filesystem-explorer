@@ -1,29 +1,24 @@
 <?php
 
-  require_once("./dbh.inc.php");
+require_once("./dbh.inc.php");
+$oldPath = $_GET["directory"];
+$newPath = dirname($oldPath);
+$newName = $_POST["title"];
+$id = $_GET["id"];
+$extension = $_GET["extension"];
 
-  $oldName = $_GET["name"];
-  $newName = $_POST["title"];
-  $path = $_GET["path"];
-  $id = $_GET["id"];
-  $extension = $_GET["extension"];
-
-  $edittitleQuery = $db -> prepare("
+$edittitleQuery = $db->prepare("
   UPDATE `files` SET `name`=:name,`path`=:path, `edit`=:edit WHERE `id`=:id
   ");
 
-  $edittitleQuery ->execute([
-    "name"=> $newName,
-    "id"=> $id,
-    "edit"=> 0,
-    //cambiar despues del peer
-    //cambiar el nombre en el directorio además de en la Db
-    "path"=> "../root/" . $newName 
-    ]);
+$edittitleQuery->execute([
+  "name" => $newName,
+  "id" => $id,
+  "edit" => 0,
+  "path" => $newPath . "/" . $newName . "." . $extension
+]);
 
-    rename($path, $daddyPath . $newName );
-    
+rename($oldPath, $newPath . "/" . $newName . "." . $extension);
 
-  header("location: ../index.php");
-
-?>
+$url = $_SERVER['HTTP_REFERER'];
+header("Location: $url");

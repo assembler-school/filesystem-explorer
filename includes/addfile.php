@@ -1,8 +1,5 @@
 <?php
 require_once("./dbh.inc.php");
-echo "<a href='javascript:history.back(1);'>Back</a>'";
-echo "<pre>";
-print_r($_FILES);
 
 
 if (isset($_GET["directory"]) && $_GET["directory"] !== "" && $_GET["directory"] !== "root") {
@@ -22,10 +19,9 @@ if (!file_exists("../root")) {
     echo "otra cosa";
     chmod("../root/", 0777);
   }
-
 }
 
-if (file_exists("../root") && move_uploaded_file($fileTmp, $pathName ."/". $fileName)) {
+if (file_exists("../root") && move_uploaded_file($fileTmp, $pathName . "/" . $fileName)) {
   echo "Uploaded file";
 } else {
   echo "File upload failed";
@@ -56,7 +52,13 @@ $uploadQuery->execute([
   "modified" => $modified,
   "creation" => $creation,
   "extension" => $extension,
-  "path" => $pathName . $fileName,
+  "path" => $pathName . "/" . $fileName,
   "daddyPath" => $pathName
 ]);
+
+
+if ($_GET["directory"] == "root") {
   header("location: ../index.php");
+} else {
+  header("location: ../lower.php?pathLower=$pathName");
+}

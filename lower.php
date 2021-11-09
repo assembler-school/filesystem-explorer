@@ -1,13 +1,7 @@
 <?php
 include_once "./includes/fetchLower.inc.php";
 include_once "./includes/icons.inc.php";
-
-//$fileFetched = $_SESSION["fileFetched"];
-//$lower = $_GET["path"];
-
-print_r($fileFetched);
-echo "<br/>";
-//echo $lower."<br/>"."---lower";
+$path = $_GET["pathLower"];
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +23,8 @@ echo "<br/>";
 
   <header class="d-flex justify-content-between align-items-center p-4">
 
-    <div><?php echo "<a href='javascript:history.back(1);'>Back</a>"; ?></div>
+    <div><?php echo "<h5>" . $path . "</h5>" . "<a href='javascript:history.back(1);'>Back</a>"; ?></div>
+
     <div class="d-flex m-6 align-items-center">
       <form action="" class="me-4">
         <input type="search" placeholder="&#x1F50E;&#xFE0E;">
@@ -108,7 +103,7 @@ echo "<br/>";
             <tr>
               <td>
                 <?php if ($file["edit"]) : ?>
-                  <form action="./includes/edittitle.inc.php?directory=<?= $file["path"]; ?>&id=<?= $file["id"]; ?>&name=<?= $file["name"]; ?>&extension<?= $file["extension"]; ?>" method="POST">
+                  <form action="./includes/edittitle.inc.php?directory=<?= $file["path"]; ?>&id=<?= $file["id"]; ?>&name=<?= $file["name"]; ?>&extension=<?= $file["extension"]; ?>" method="POST">
                     <input type="text" name="title" value=<?php echo $file["name"] ?>>
                     <input type="submit" name="change" value="change">
                   </form>
