@@ -62,4 +62,9 @@ foreach (fileBrowser("") as $file) {
         $fileUrl = e.target.parentElement.parentElement.dataset.file;
         ajaxDelete($fileUrl);
     })
+
+    $(document).on('click', '#showFile', function(e) {
+        $fileUrl = e.target.parentElement.parentElement.dataset.file;
+        ajaxOpenFile($fileUrl);
+    })
 </script>

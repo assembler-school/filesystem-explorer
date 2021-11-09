@@ -51,6 +51,7 @@
   <script src="../../app/js/ajaxRename.js"></script>
   <script src="../../app/js/ajaxDelete.js"></script>
   <script src="../../app/js/ajaxUpload.js"></script>
+  <script src="../../app/js/ajaxOpenFile.js"></script>
 
 
 </body>
