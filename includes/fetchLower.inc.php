@@ -11,12 +11,13 @@ SELECT * FROM `files` WHERE daddyPath=:path
 ");
 
 $fetchQuery -> execute([
-  "path"=>$pathLower
+  "path"=>"../root/aa"
 ]);
 
-$fileFetched = $fetchQuery -> rowCount()? $fetchQuery : [] ;
+$fileFetched = $fetchQuery -> rowCount()? $fetchQuery : [];
 $_SESSION["fileFetched"] = $fileFetched;
 
-
+echo $pathLower."<br/>";
+print_r($fileFetched);
 header("Location: ../lower.php?directory=$pathLower");
 ?>

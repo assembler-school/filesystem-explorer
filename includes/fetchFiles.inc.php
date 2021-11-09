@@ -11,7 +11,7 @@ SELECT * FROM `files` WHERE daddyPath=:path
 ");
 
 $fetchQuery -> execute([
-  "path"=>$directory
+  "path"=>"../root"
 ]);
 
 $fileFetched = $fetchQuery -> rowCount()? $fetchQuery : [] ;

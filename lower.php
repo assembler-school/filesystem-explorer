@@ -5,9 +5,13 @@ include_once "./includes/icons.inc.php";
 $fileFetched = $_SESSION["fileFetched"];
 $lower = $_GET["directory"];
 
- echo $lower;
+ print_r($fileFetched);
  echo "<br/>";
- echo $pathLower."<br/>"."---pathlower";
+ echo $lower."<br/>"."---lower";
+
+foreach ($fileFetched as $value) {
+  echo $value["name"]."<br/>";
+}
 
 ?>
 <!DOCTYPE html>
