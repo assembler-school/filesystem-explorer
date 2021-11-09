@@ -1,8 +1,15 @@
 <?php
 include_once "./includes/fetchFiles.inc.php";
 include_once "./includes/icons.inc.php";
+$superPath = getcwd();
 
-echo $_SESSION["directory"] . "<br/>" . "---directory";
+$exploited = explode("/", $superPath);
+$currentDir = var_dump($exploited[count($exploited)-1]);
+
+chmod(dirname(__FILE__), 0777);
+echo "<br>";
+echo dirname(__FILE__);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +18,14 @@ echo $_SESSION["directory"] . "<br/>" . "---directory";
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="index.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
   <title>File System Project </title>
 </head>
@@ -31,9 +42,11 @@ echo $_SESSION["directory"] . "<br/>" . "---directory";
       </form>
 
       <!-- Button trigger modal -->
-      <button name="addNew" class="btn btn-dark rounded-circle" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus"></i></button>
+      <button name="addNew" class="btn btn-dark rounded-circle" type="button" data-bs-toggle="modal"
+        data-bs-target="#exampleModal"><i class="fas fa-plus"></i></button>
       <!-- Button trigger modal -->
-      <button name="addFolder" class="btn btn-dark rounded-circle" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fas fa-folder-plus"></i></button>
+      <button name="addFolder" class="btn btn-dark rounded-circle" type="button" data-bs-toggle="modal"
+        data-bs-target="#exampleModal2"><i class="fas fa-folder-plus"></i></button>
 
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -96,33 +109,39 @@ echo $_SESSION["directory"] . "<br/>" . "---directory";
 
       <tbody>
         <?php if (!empty($fileFetched)) : ?>
-          <?php
+        <?php
           foreach ($fileFetched as $file) :
           ?>
-            <tr>
-              <td>
-                <?php if ($file["edit"]) : ?>
-                  <form action="
-                ./includes/edittitle.inc.php?directory=<?= $file["path"]; ?>&id=<?= $file["id"]; ?>&name=<?= $file["name"]; ?>&extension<?= $file["extension"]; ?>" method="POST">
-                    <input type="text" name="title" value=<?php echo $file["name"] ?>>
-                    <input type="submit" name="change" value="change">
-                  </form>
-                <?php else : ?>
-                  <i class="<?= getFileType($file['extension']); ?>"></i>
-                  <a href="includes/openfile.inc.php?path=<?= $file["path"]; ?>&extension=<?= $file["extension"]; ?>"><?php echo $file["name"] ?></a>
-                <?php endif; ?>
-              </td>
-              <td><?php echo $file["size"] ?></td>
-              <td><?php echo $file["modified"] ?></td>
-              <td><?php echo $file["creation"] ?></td>
-              <td><?php echo $file["extension"] ?></td>
+        <tr>
+          <td>
+            <?php if ($file["edit"]) : ?>
+            <form
+              action="
+                ./includes/edittitle.inc.php?directory=<?= $file["path"]; ?>&id=<?= $file["id"]; ?>&name=<?= $file["name"]; ?>&extension<?= $file["extension"]; ?>"
+              method="POST">
+              <input type="text" name="title" value=<?php echo $file["name"] ?>>
+              <input type="submit" name="change" value="change">
+            </form>
+            <?php else : ?>
+            <i class="<?= getFileType($file['extension']); ?>"></i>
+            <a
+              href="includes/openfile.inc.php?path=<?= $file["path"]; ?>&extension=<?= $file["extension"]; ?>"><?php echo $file["name"] ?></a>
+            <?php endif; ?>
+          </td>
+          <td><?php echo $file["size"] ?></td>
+          <td><?php echo $file["modified"] ?></td>
+          <td><?php echo $file["creation"] ?></td>
+          <td><?php echo $file["extension"] ?></td>
 
-              <td>
-                <button onClick="document.location.href='includes/edit.inc.php?id=<?= $file['id']; ?>'" class="btn btn-warning"><i class="far fa-edit"></i></button>
-                <button onClick="document.location.href='includes/delete.inc.php?id=<?= $file['id']; ?>&path=<?= $file["path"]; ?>'" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-              </td>
-            </tr>
-          <?php endforeach; ?>
+          <td>
+            <button onClick="document.location.href='includes/edit.inc.php?id=<?= $file['id']; ?>&daddyPath=<?= $file['daddyPath'];?>'"
+              class="btn btn-warning"><i class="far fa-edit"></i></button>
+            <button
+              onClick="document.location.href='includes/delete.inc.php?id=<?= $file['id']; ?>&path=<?= $file["path"]; ?>'"
+              class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+          </td>
+        </tr>
+        <?php endforeach; ?>
         <?php endif; ?>
       </tbody>
 

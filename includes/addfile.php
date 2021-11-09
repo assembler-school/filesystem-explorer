@@ -16,12 +16,16 @@ $fileTmp = $_FILES["addfile"]["tmp_name"];
 $fileSize = $_FILES["addfile"]["size"];
 
 if (!file_exists("../root")) {
+  echo "hola";
   mkdir($pathName, 0777, true);
   if (PHP_OS !== "WINNT") {
-    chmod($pathName, 0777);
+    echo "otra cosa";
+    chmod("../root/", 0777);
   }
+
 }
-if (move_uploaded_file($fileTmp, $pathName . "/" . $fileName)) {
+
+if (file_exists("../root") && move_uploaded_file($fileTmp, $pathName ."/". $fileName)) {
   echo "Uploaded file";
 } else {
   echo "File upload failed";
@@ -52,13 +56,7 @@ $uploadQuery->execute([
   "modified" => $modified,
   "creation" => $creation,
   "extension" => $extension,
-  "path" => $pathName . "/" . $fileName,
+  "path" => $pathName . $fileName,
   "daddyPath" => $pathName
 ]);
-
-
-if ($_GET["directory"] == "root") {
   header("location: ../index.php");
-} else {
-  header("location: ../lower.php?pathLower=$pathName");
-}

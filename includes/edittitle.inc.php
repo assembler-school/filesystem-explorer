@@ -21,7 +21,7 @@
     "path"=> "../root/" . $newName 
     ]);
 
-    rename($path, "../root/" . $newName );
+    rename($path, $daddyPath . $newName );
     
 
   header("location: ../index.php");

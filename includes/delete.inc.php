@@ -3,6 +3,7 @@ require_once("./dbh.inc.php");
 $id = $_GET["id"];
 $path = $_GET["path"];
 
+
 $deleteQuery = $db->prepare("
 DELETE FROM `files` WHERE `id` = :id;
 ");
@@ -10,6 +11,8 @@ DELETE FROM `files` WHERE `id` = :id;
 $deleteQuery->execute([
     "id" => $id
 ]);
+
+
 
 function rmDir_rf($path)
 {
