@@ -1,0 +1,24 @@
+@import url("../../assets/css/modal-content.css");
+@import url("../assets/css/login.css");
+@import url("../../assets/css/editing-modal.css");
+@import url("../../assets/css/header.css");
+@import url("../../assets/css/right-bar.css");
+@import url("../../assets/css/others.css");
+@import url("../../assets/css/middle.css");
+@import url("../../assets/css/main.css");
+@import url("../../assets/css/modal-upload.css");
+
+@import url("https://fonts.googleapis.com/css2?family=Mukta&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: scroll;
+  font-family: "Mukta", sans-serif;
+}
