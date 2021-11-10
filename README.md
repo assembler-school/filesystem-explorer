@@ -1,4 +1,27 @@
-<<<<<<< HEAD
+# File System explorer  📁
+
+In this project we made a file system manager where you can create, modify and delete files and folders.
+
+## Documentation 📋
+
+Here we allocate all our documentes related to the project. Also there are files related to MVC pattern.
+
+- [Google Slide](https://docs.google.com/presentation/d/1n7jquvSCbY8NQCoDNMlEhuPCda0rXvcUKNP8slYYhBY/edit?usp=sharing)
+- [useCase.drawio](https://drive.google.com/file/d/1h6NfXHpgnrK7r7wzWNbd0U-mS1tFE_ET/view?usp=sharing)
+- [MVC documentaion](https://docs.google.com/document/d/1idHQrTkUZaREq1hbpX1Y0NTLs2Bc-GRdyV388erAAy0/edit?usp=sharing)
+- [Github project with MVC](https://github.com/Cherrerotinoco/filesystem-explorer)
+## Authors 🧑‍💻
+
+Developed by:
+
+- [@Cherrerotinoco](https://github.com/Cherrerotinoco)
+- [@Paola3stefania](https://github.com/Paola3stefania)
+- [@andarbech](https://github.com/andarbech)
+- [@sanadriu](https://github.com/sanadriu)
+
+
+  
+
 # C H A N G E S
 ### code in script in layout/table.php
   --- Code change in layouts/table.php
