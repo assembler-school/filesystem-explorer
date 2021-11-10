@@ -3,11 +3,11 @@ include "../../app/php/sidebarFillContent.php";
 ?>
 
 <h1>Folders</h1>
-<ul class="list-unstyled ps-0">
+<ul class="list-unstyled ps-0" id="folderSidebar">
     <li class="border-top my-3"></li>
     <!-- From here -->
-    <li class="mb-1" id="folder-0">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#folder-0-collapse" aria-expanded="true">
+    <li class="mb-1" id="folder-0" data-file="../../storage">
+        <button id="folderButton" class="btn btn-toggle  align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#folder-0-collapse" aria-expanded="true">
             <h1> Root </h1>
         </button>
         <div class="collapse show" id="folder-0-collapse">
@@ -22,20 +22,19 @@ include "../../app/php/sidebarFillContent.php";
     </li>
     <!-- To here -->
     <li class="border-top my-3"></li>
-    <button type="button" class="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Add folder
-    </button>
-    <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-            Account
-        </button>
-        <div class="collapse" id="account-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark rounded">New...</a></li>
-                <li><a href="#" class="link-dark rounded">Profile</a></li>
-                <li><a href="#" class="link-dark rounded">Settings</a></li>
-                <li><a href="#" class="link-dark rounded">Sign out</a></li>
-            </ul>
-        </div>
-    </li>
+    <form id="addFolder">
+        <input type="text" id="folderName" class="form-control" />
+        <input type="submit" class="btn btn-primary m-4" value="Add folder" />
+
+    </form>
+
+
 </ul>
+<script>
+    $('#addFolder').submit((e) => {
+        e.preventDefault();
+        $folderName = $('#addFolder input').val()
+        ajaxCreateFolder($folderName);
+
+    })
+</script>

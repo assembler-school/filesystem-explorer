@@ -7,12 +7,13 @@ function ajaxUpload() {
     fd.append("file", files[0]);
 
     $.ajax({
-      url: "../../app/php/upload.php",
+      url: "../../app/php/uploadFile.php",
       type: "post",
       data: fd,
       contentType: false,
       processData: false,
       success: function (response) {
+        console.log(response);
         if (response) {
           Swal.fire({
             icon: "success",

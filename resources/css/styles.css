@@ -9,13 +9,21 @@ body {
 
 .box {
   border: solid white 2px;
-  background-color: rgba(240, 248, 255, 0.486);
+  background-color: rgba(240, 248, 255, 0.5);
 }
 
 footer {
-  position:fixed;
-  left:0;
-  bottom:0;
-  width:100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   z-index: 10;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  background-color: white !important;
+}
+.btn-check:focus + .btn,
+.btn:focus {
+  box-shadow: 0 0 0 0.25rem #0d6efd !important;
 }

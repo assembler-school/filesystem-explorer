@@ -2,34 +2,41 @@
 include "utils/fileBrowser.php";
 include "utils/getFileSize.php";
 
-$id = 0;
-foreach (fileBrowser("") as $file) {
-    if (pathinfo($file, PATHINFO_EXTENSION) !== "") {
 
-        $fileName =  explode('.', basename($file))[0];
-        $fileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-        $fileCreate =  date("Y-m-d H:m:s", filectime($file));
-        $fileModify =  date("Y-m-d H:m:s", filemtime($file));
-        $id++;
+
+function tableFillContent($path = "")
+{
+    $id = 0;
+    foreach (fileBrowser($path) as $file) {
+        if (pathinfo($file, PATHINFO_EXTENSION) !== "") {
+
+            $fileName =  explode('.', basename($file))[0];
+            $fileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+            $fileCreate =  date("Y-m-d H:m:s", filectime($file));
+            $fileModify =  date("Y-m-d H:m:s", filemtime($file));
+            $id++;
 ?>
 
-        <tr id="<?php echo  $id ?> " data-file="<?php echo  $file ?>">
-            <td>
-                <p id="name-<?php echo $id ?>"> <?php echo $fileName ?></p>
-            </td>
-            <td><?php echo $fileType ?></td>
-            <td><?php echo $fileCreate ?></td>
-            <td><?php echo $fileModify ?></td>
-            <td><?php echo getFileSize($file) ?></td>
-            <td>
-                <button id="showFile" class="btn btn-light  m-1">▶️ </button>
-                <button id="renameFile" class="btn btn-light  m-1">✏️ </button>
-                <button id="deleteFile" class="btn btn-light m-1">❌</button>
-            </td>
-        </tr>
+            <tr id="<?php echo  $id ?> " data-file="<?php echo  $file ?>">
+                <td>
+                    <p id="name-<?php echo $id ?>"> <?php echo $fileName ?></p>
+                </td>
+                <td><?php echo $fileType ?></td>
+                <td><?php echo $fileCreate ?></td>
+                <td><?php echo $fileModify ?></td>
+                <td><?php echo getFileSize($file) ?></td>
+                <td>
+                    <button id="showFile" class="btn btn-light  m-1">▶️ </button>
+                    <button id="renameFile" class="btn btn-light  m-1">✏️ </button>
+                    <button id="deleteFile" class="btn btn-light m-1">❌</button>
+
+                </td>
+            </tr>
 <?php
+        }
     }
 }
+
 ?>
 <script>
     //?eventListener Rename
