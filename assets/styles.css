@@ -1,0 +1,59 @@
+h4 {
+  font-size: 1rem !important;
+}
+
+p {
+  margin: 0 !important;
+  font-size: 0.8rem !important;
+}
+
+a {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+img {
+  width: 5vh;
+  height: 5vh;
+  margin-right: 3vh;
+}
+
+hr {
+  margin: 0 !important;
+}
+form {
+  padding: 0;
+}
+section:nth-child(1) {
+  padding: 0;
+  width: 30%;
+}
+section:nth-child(2) {
+  width: 70%;
+}
+
+main {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  min-height: 70vh;
+}
+
+.hov:hover{
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.search__form {
+  width: 40%;
+}
+
+.btn-danger,
+.btn-edit {
+  height: 6vh;
+  width: 6vh;
+  margin: 0.2rem 0 0.2rem 0;
+}
+
+.web__icon {
+  width: 10vh;
+  height: 10vh;
+}
