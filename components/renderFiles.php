@@ -31,7 +31,6 @@ function printDirectory($fullPath)
     $fileSize = round(filesize($fullPath), 2) < 1000000 ? round(filesize($fullPath) /  1000, 2) . " KB" : round(filesize($fullPath) /  1000000, 2) . " MB";
     $ext = strtoupper(pathinfo($fullPath, PATHINFO_EXTENSION));
     $fileName = explode("/", $fullPath)[count(explode("/", $fullPath)) - 1];
-    // $test = printFileType($ext);
 
     if (is_dir($fullPath)) {
 
@@ -126,54 +125,3 @@ if (!isset($_GET["search"])) {
     $folderPath = "root";
     readDirectory($search, $folderPath);
 }
-
-// function printFileType($ext)
-// {
-//     switch ($ext) {
-//         case "doc":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "csv":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "jpg":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "png":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "txt":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "ppt":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "odt":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "pdf":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "zip":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "rar":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "exe":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "svg":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "mp3":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         case "mp4":
-//             return "<img src='$ext-icon'>";
-//             break;
-//         default:
-//             return "";
-//             break;
-//     }
-// }
