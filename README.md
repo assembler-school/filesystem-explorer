@@ -59,4 +59,3 @@ Files affected by Christian
 - layouts/table.php
 - assets/js/init.js
 - assets/js/events.js
->>>>>>> 41ed40bfbfdfd7f642f4edfb74982b3561e15ea7
