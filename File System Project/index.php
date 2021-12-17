@@ -3,24 +3,23 @@
 ?>
 
 <body>
-    <nav>
+    <!-- <nav> -->
     <?php
-// include 'modules/navBar.php';
-// include 'modules/createModal.php';
+    include 'modules/navBar.php';
+    include 'modules/createModal.php';
 
-?>
-    </nav>
-    <form action="./modules/createfolder.php" method="post">
+    ?>
+    <!-- </nav>
+    <form action="./createfolder.php" method="post">
     <input name="folderName" type="text"  id="nameFolder">
     <button name="createfolder">Create a folder</button>
     <label class="form-label" for="CreateFile"><?= isset($_GET["error"]) ? "The name already exist" : ""?></label>
     </form>
-    <form action="./modules/createfolder.php" method="post">
+    <form action="./createfolder.php" method="post">
     <input type="text" name="prueba" id="">
     <button type="submit">Create a file</button>
     <!-- <button onclick="createfile()"> </button> -->
-    </form>
-
+    <!-- </form> -->
 
 
 </body>

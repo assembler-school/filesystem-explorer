@@ -7,16 +7,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="./createfolder.php" method="post">
                     <div class="row align-items-center mx-auto">
                         <div class="form-check col  mx-auto">
-                            <input class="form-check-input" type="radio" value="" id="flexCheckDefault" name="createType">
+                            <input class="form-check-input" type="radio" value="createFolder" id="flexCheckDefault" name="create">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Create Folder
                             </label>
                         </div>
                         <div class="form-chec col mx-auto">
-                            <input class="form-check-input" type="radio" value="" id="flexCheckChecked" checked name="createType">
+                            <input class="form-check-input" type="radio" value="createFile" id="flexCheckChecked" checked name="create">
                             <label class="form-check-label" for="flexCheckChecked">
                                 Create File
                             </label>
@@ -28,13 +28,12 @@
                             <input type="text" class="form-control" id="username" name="username" placeholder="myFolder / myFile" />
                         </div>
                         <div class="btn-group">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value=".doc">One</option>
+                            <select class="form-select" name="type" aria-label="Default select example">
+                                <option value=".doc">.doc</option>
                                 <option value=".">.csv</option>
                                 <option value="3">.jpg</option>
                                 <option value="1">.png</option>
-                                <option value="2">.txt</option>
+                                <option selected value="2">.txt</option>
                                 <option value="3">.ppt</option>
                                 <option value="1">.odt</option>
                                 <option value="2">.pdf</option>
@@ -48,7 +47,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary col-6 mx-auto ">Create</button>
+                        <button type="submit" name="createForF" class="btn btn-secondary col-6 mx-auto ">Create</button>
                     </div>
                 </form>
             </div>
