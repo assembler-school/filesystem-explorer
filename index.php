@@ -22,6 +22,7 @@
     <nav class="url">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
+      <img class="LogoNav" src="./assets/img/logo.png" alt="">
     <a class="navbar-brand" href="#">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -37,6 +38,7 @@
       <button class="btn btn-outline-success" type="submit">Search</button>
       <button class="btnLogin">Login</button>
       <button type="button" class="btn btn-warning">Sign-up</button>
+      <img class="UserIcon" src="./assets/img/usuario.png" alt="">
     </form>
       </div>
     </div>

@@ -6,18 +6,24 @@
 }
 .container-fluid {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 150px;
   margin-right: auto;
   margin-left: auto;
+}
+.LogoNav{
+  height: 60px;
+  width: 120px;
+  margin: 5px 0px 5px 20px;
 }
 .bg-light {
   background-color: #212529!important;
   color:var(--white);
 }
+/*CSS HOME*/
 .navbar-light .navbar-brand {
   color:var(--white);
+  padding-left: 30px;
 }
+/*CSS NAV LINK*/
 .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
   color: var(--white);
 }
@@ -26,13 +32,15 @@
 }
 .nav-link {
   display: block;
-  padding: 1rem 10rem;
+  padding: 1.5rem 10rem;
 }
+/*CSS FORM SEARCH*/
 .form-control{
   display: block;
-  width: 130%;
-  height: calc(3em + .75rem + 2px);
-  padding: .375rem .75rem;
+  width: 100% !important;
+  height: 100%;
+  margin-left: 10px;
+  padding: .375rem 2rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -42,4 +50,44 @@
   border: 1px solid #ced4da;
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+/*BUTTONS*/
+/*BUTTON SEARCH*/
+.btn-outline-success{
+  color: var(--white);
+  border-color: var(--white);
+}
+.btn-warning{
+  color: #212529;
+  background-color: #ffc107 !important;
+  border-color: #ffc107 !important;
+}
+.btnLogin{
+  color: var(--white);
+  border-color: var(--white);
+  background-color: transparent;
+  border: 2px solid;
+padding: 10px 30px 5px 30px;
+margin-left: 55px;
+}
+.btn{
+display: inline-block;
+font-weight: 400;
+text-align: center;
+vertical-align: middle;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+border: 2px solid;
+padding: 5px 30px 5px 30px;
+margin-left: 10px;
+font-size: 1rem;
+line-height: 1.5;
+border-radius: .25rem;
+transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+.UserIcon{
+  height: 60px;
+  width: 70px;
+  margin: 5px 0px 5px 20px;
 }
