@@ -23,13 +23,24 @@
         </nav>
 
         <nav class="navbar navbar-light bg-light">
-            <form class="container-fluid justify-content-start">
-                <button class="btn btn-sm btn-outline-secondary me-2" type="button">New</button>
-                <button class="btn btn-sm btn-outline-secondary me-2" type="button">Unload</button>
-                <button class="btn btn-sm btn-outline-secondary me-2" type="button">Download</button>
-                <button class="btn btn-sm btn-outline-secondary me-2" type="button">Move to</button>
-                <button class="btn btn-sm btn-outline-secondary me-2" type="button">Copy to</button>
-                <button class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
+            <form class="container-fluid justify-content-start" action="./modules/createFile.php" method="POST">
+
+                <button type="submit" formaction="./modules/createFolder.php" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">New Folder</button>
+
+                <button type="submit" formaction="./modules/createFile.php" method="POST"name="btnNewFile"class="btn btn-sm btn-outline-secondary me-2" type="button">New File</button>
+
+                <button name="btnUnload"class="btn btn-sm btn-outline-secondary me-2" type="button">Unload</button>
+
+                <button name="btnDownload"class="btn btn-sm btn-outline-secondary me-2" type="button">Download</button>
+
+                <button name="btnMove"class="btn btn-sm btn-outline-secondary me-2" type="button">Move to</button>
+
+                <button name="btnCopy"class="btn btn-sm btn-outline-secondary me-2" type="button">Copy to</button>
+
+                <button name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
+
+                <button name="btnDelete"class="btn btn-sm btn-outline-secondary me-2" type="button">Delete</button>
+
             </form>
         </nav>
     </div>
