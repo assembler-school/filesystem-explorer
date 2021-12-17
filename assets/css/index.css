@@ -4,3 +4,39 @@
     --white:#ffffff;
     --yellow-btn:#3D4143;
 }
+/* nav url */
+.url .breadcrumb{
+    background-color: var(--header-color);
+    
+}
+.breadcrumb .active{
+    color:var(--white);
+}
+#infoCircle{
+   color: var(--white);
+   position:absolute;
+   right:15px;
+}
+
+/* Main section */
+main{
+    background-color: var(--main-color);
+}
+section {
+    margin-bottom:60px;
+    
+}
+section img {
+    max-width: 100%;
+}
+.infoCard{
+    background-color: var(--white);
+    max-width: 100%;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+.fileName{
+    margin-bottom:0;
+    font-size: 1.5vh;
+}
