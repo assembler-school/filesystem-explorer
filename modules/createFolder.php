@@ -1,7 +1,7 @@
 <?php
-echo "-he creado un nuevo archivo";
+echo "-he creado una nueva carpeta";
 try{
-    $actualROOT = 
+    $actualROOT = "hola";
     $newFolderName = "../root";
     $dirName = "../root/"+$actualROOT+"new_folder";
     $dirName2 = "./new_folder";
