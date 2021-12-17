@@ -30,19 +30,19 @@
                         <div class="btn-group">
                             <select class="form-select" name="type" aria-label="Default select example">
                                 <option value=".doc">.doc</option>
-                                <option value=".">.csv</option>
-                                <option value="3">.jpg</option>
-                                <option value="1">.png</option>
-                                <option selected value="2">.txt</option>
-                                <option value="3">.ppt</option>
-                                <option value="1">.odt</option>
-                                <option value="2">.pdf</option>
-                                <option value="3">.zip</option>
-                                <option value="1">.rar</option>
-                                <option value="2">.exe</option>
-                                <option value="3">.svg</option>
-                                <option value="1">.mp3</option>
-                                <option value="2">.mp4</option>
+                                <option value=".csv">.csv</option>
+                                <option value=".jpg">.jpg</option>
+                                <option value=".png">.png</option>
+                                <option selected value=".txt">.txt</option>
+                                <option value=".ppt">.ppt</option>
+                                <option value=".odt">.odt</option>
+                                <option value=".pdf">.pdf</option>
+                                <option value=".zip">.zip</option>
+                                <option value=".rar">.rar</option>
+                                <option value=".exe">.exe</option>
+                                <option value=".svg">.svg</option>
+                                <option value=".mp3">.mp3</option>
+                                <option value=".mp4">.mp4</option>
                             </select>
                         </div>
                     </div>
