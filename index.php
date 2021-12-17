@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./assets/css/index.css">
     <!-- font-awesome -->
     <script src="https://kit.fontawesome.com/63f29c9463.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/nav-sidebar.css">
 </head>
 
 <body>
@@ -22,12 +23,38 @@
 
         </figure>
     </header>
+    <nav class="url">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <img class="LogoNav" src="./assets/img/logo.png" alt="">
+                <a class="navbar-brand" href="#">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                        <a class="nav-link" href="#">Orders</a>
+                        <a class="nav-link" href="#">Products</a>
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Customers</a>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                            <button class="btnLogin">Login</button>
+                            <button type="button" class="btn btn-warning">Sign-up</button>
+                            <img class="UserIcon" src="./assets/img/usuario.png" alt="">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </nav>
     <!-- Here commes the directories -->
     <aside>
 
     </aside>
     <!-- navigation url -->
-    <nav class="url">
+    <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Library</li>
