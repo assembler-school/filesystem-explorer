@@ -45,8 +45,18 @@
         </nav>
     </div>
 <div class="row">
-    <div class="col-4 primary" >Hola</div>
-    <div class="col-4 secondary">Adios</div>
+    <div id="foldersContainer" class="col-4 primary foldersContainer" >
+    <?php
+    require_once("./modules/generateFoldersTree.php");
+    generateFoldersTreeFun("./root");
+    ?>
+    </div>
+    <div class="col-4 secondary">
+    <?php
+    require_once("./modules/generateFiles.php");
+    generateFilesFun("./root");
+    ?>
+    </div>
     <div class="col-4 primary">Hola</div>
 </div>
 

@@ -14,4 +14,4 @@ try{
 }catch(Throwable $t){
     echo $t->getMessage();
 }
-//header("Location:../index.php");
+header("Location:../index.php");
