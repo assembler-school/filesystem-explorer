@@ -1,14 +1,14 @@
 <?php
-    include 'modules/htmlHeader.php'
+include 'modules/htmlHeader.php';
 ?>
 
 <body>
-    <nav>
-        
-        <?php include 'modules/createButton.php' ?>
+<?php
+include 'modules/navBar.php';
+include 'modules/createModal.php';
 
-    </nav>
-    
-    
+
+?>
 </body>
+
 </html>
