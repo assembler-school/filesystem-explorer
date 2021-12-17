@@ -21,15 +21,17 @@ if(isset($_POST["prueba"])){
 }
 function fopean(){
     global $namefile;
+
     try{
-        // $newFileName = "";
-        $content= "..root/prueba";
-        $file= fopen($namefile, "w");
+        $newFileName = "../root/$namefile";
+        // print $newFileName;
+        $content="";
+        $file= fopen($newFileName, "w+");
         fwrite($file, $content);
-        fclose($file);
+
     }catch(Throwable $t){
         echo $t -> getMessage();
     }
-
+    
 }
 ?>
