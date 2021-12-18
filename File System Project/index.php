@@ -7,22 +7,14 @@
     <?php
     include 'modules/navBar.php';
     include 'modules/createModal.php';
-      
-      $path="./root";
-      $dir = new DirectoryIterator($path);
-      foreach ($dir as $fileinfo) {
-          if ($fileinfo->isDir() && !$fileinfo->isDot()) {
-            // echo $fileinfo."<br>";
-            $credentials = dirname($fileinfo);
-            $pathofFile=  $fileinfo->getFileInfo();
-            echo "<a href='$pathofFile'> <i class='fas fa-folder fa-10x'></i></a>";
-              // print_r($credentials);
-              echo $fileinfo->getFileInfo().'<br>';
-              echo $fileinfo->getFilename().'<br>';
-          }
-      }
-      
-?>
+
+    ?>
+
+    <div class="container-fluid fb-seccionplus fb-bgoscuro">
+    <?php
+    include './showDir.php';
+    ?>
+    </div>
     <!-- </nav>
     <form action="./createfolder.php" method="post">
     <input name="folderName" type="text"  id="nameFolder">
