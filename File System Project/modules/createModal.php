@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="mb-3">
                             <label class="form-label d-flex justify-content-center">File Name </label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="myFolder / myFile" />
+                            <input type="text" class="form-control" id="filename" name="filename" placeholder="myFolder / myFile" />
                         </div>
                         <div class="btn-group">
                             <select class="form-select" name="type" aria-label="Default select example">
@@ -46,6 +46,10 @@
                             </select>
                         </div>
                     </div>
+                    <div class="mb-3">
+                            <label class="form-label d-flex justify-content-center">File Root</label>
+                            <input type="text" class="form-control" id="fileroot" name="fileroot" placeholder="File Name " />
+                        </div>
                     <div class="modal-footer">
                         <button type="submit" name="createForF" class="btn btn-secondary col-6 mx-auto ">Create</button>
                     </div>
