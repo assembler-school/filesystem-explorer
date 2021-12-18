@@ -6,7 +6,7 @@ function createNewFolder()
     global $fileroot;
 
     if (!file_exists("./root/$fileroot/$namefolder")) {
-        mkdir("./root/$namefolder", 0777, true);
+        mkdir("./root/$fileroot/$namefolder", 0777, true);
         header("location: ./index.php");
     } else {
         header("location: ./index.php?error");
@@ -33,7 +33,6 @@ function fopean()
     global $namefile;
     global $typefile;
     global $fileroot;
-
     try {
         $newFileName = "./root/$fileroot/$namefile$typefile";
         $content = "";

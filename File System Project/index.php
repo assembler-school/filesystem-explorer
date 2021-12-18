@@ -7,10 +7,6 @@
     <?php
     include 'modules/navBar.php';
     include 'modules/createModal.php';
-
-    ?>
-
-<?php
       
       $path="./root";
       $dir = new DirectoryIterator($path);

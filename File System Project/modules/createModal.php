@@ -10,13 +10,13 @@
                 <form action="./createfolder.php" method="post">
                     <div class="row align-items-center mx-auto">
                         <div class="form-check col  mx-auto">
-                            <input class="form-check-input" type="radio" value="createFolder" id="flexCheckDefault" name="create">
+                            <input class="form-check-input" type="radio" value="createFolder" id="flexCheckDefault" name="create" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Create Folder
                             </label>
                         </div>
                         <div class="form-chec col mx-auto">
-                            <input class="form-check-input" type="radio" value="createFile" id="flexCheckChecked" checked name="create">
+                            <input class="form-check-input" type="radio" value="createFile" id="flexCheckChecked" checked name="create" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                             <label class="form-check-label" for="flexCheckChecked">
                                 Create File
                             </label>
@@ -27,7 +27,7 @@
                             <label class="form-label d-flex justify-content-center">File Name </label>
                             <input type="text" class="form-control" id="filename" name="filename" placeholder="myFolder / myFile" />
                         </div>
-                        <div class="btn-group">
+                        <div class="btn-group collapse show" id="collapseExample" >
                             <select class="form-select" name="type" aria-label="Default select example">
                                 <option value=".doc">.doc</option>
                                 <option value=".csv">.csv</option>
