@@ -1,13 +1,15 @@
 <?php
     include 'modules/htmlHeader.php';
 ?>
-
+<?php
+ include 'modules/navBar.php';
+ include 'modules/createModal.php';
+?>
 <body>
     <!-- <nav> -->
-    <?php
-    include 'modules/navBar.php';
-    include 'modules/createModal.php';
-      
+        <?php
+        // include 'modules/navBar.php';
+
       $path="./root";
       $dir = new DirectoryIterator($path);
       foreach ($dir as $fileinfo) {
