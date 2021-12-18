@@ -1,4 +1,4 @@
-<nav class="navbar fixed navbar-dark navbar-expand-sm  justify-content-between" style="background-color: #1c2331;">
+<nav class="navbar navbar-dark navbar-expand-sm  justify-content-between" style="background-color: #1c2331;">
 
     <div class="col-offset-1 col-2">
         <a href="#" class="navbar-brand font-weight-bold"> <i class="fas fa-fighter-jet"></i> <i class="bi bi-alarm-fill"></i>
