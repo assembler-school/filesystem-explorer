@@ -21,7 +21,8 @@ if (isset($_POST['createForF'])) {
     } elseif ($_POST['create'] == 'createFile') {
         $namefile = $_POST['filename'];
         $typefile = $_POST['type'];
-        $fileroot = $_POST['fileroot'];
+        // $fileroot = $_POST['fileroot'];
+        $fileroot= $_POST['fileroot'];
         fopean();
     }
 }

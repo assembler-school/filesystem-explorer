@@ -48,7 +48,22 @@
                     </div>
                     <div class="mb-3">
                             <label class="form-label d-flex justify-content-center">File Root</label>
-                            <input type="text" class="form-control" id="fileroot" name="fileroot" placeholder="File Name " />
+                            <select class="form-select" id="fileroot" name="fileroot" aria-label="Default select example">
+                            <option value=''></option>
+                            <?php 
+                        $path="./root";
+                        $dir = new DirectoryIterator($path);
+                        foreach ($dir as $fileinfo) {
+                            if ($fileinfo->isDir() && !$fileinfo->isDot()) {
+                                $credentials = dirname($fileinfo);
+                                $pathofFile=  $fileinfo->getFileInfo();
+                                $Namesofolders= $fileinfo->getFilename();
+                                echo "<option value='$Namesofolders'>$Namesofolders</option>";
+                            }
+                        }
+                            ?>
+                            </select>
+                            <!-- <input type="text" class="form-control" id="fileroot" name="fileroot" placeholder="File Name " /> -->
                         </div>
                     <div class="modal-footer">
                         <button type="submit" name="createForF" class="btn btn-secondary col-6 mx-auto ">Create</button>
