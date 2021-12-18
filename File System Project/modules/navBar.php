@@ -1,7 +1,8 @@
-<nav class="navbar fixed-top navbar-dark navbar-expand-sm  justify-content-between" style="background-color: #1c2331;">
+<nav class="navbar fixed navbar-dark navbar-expand-sm  justify-content-between" style="background-color: #1c2331;">
 
     <div class="col-offset-1 col-2">
-        <a href="#" class="navbar-brand font-weight-bold"> <i class="fas fa-fighter-jet"></i> Jet File System </a>
+        <a href="#" class="navbar-brand font-weight-bold"> <i class="fas fa-fighter-jet"></i> <i class="bi bi-alarm-fill"></i>
+Jet File System </a>
     </div>
     <div class="col-5">
         <div class="input-group">
