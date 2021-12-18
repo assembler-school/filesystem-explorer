@@ -1,9 +1,4 @@
 <?php
-// if(isset($_POST)){
-//     $namefolder= $_POST["folderName"];
-//     createNewFolder();
-// }
-
 
 function createNewFolder()
 {
@@ -29,18 +24,9 @@ if (isset($_POST['createForF'])) {
         $fileroot = $_POST['fileroot'];
         fopean();
     }
-
-    //print_r($_POST);
-    // echo $_POST['create'];
-    // echo $_POST['type'];
-
 }
 
 
-// if(isset($_POST["prueba"])){
-//     $namefile= $_POST["prueba"];
-//     fopean();
-// }
 function fopean()
 {
     global $namefile;
@@ -49,7 +35,6 @@ function fopean()
 
     try {
         $newFileName = "./root/$fileroot/$namefile$typefile";
-        // print $newFileName;
         $content = "";
         $file = fopen($newFileName, "w+");
         fwrite($file, $content);
