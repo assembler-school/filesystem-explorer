@@ -63,7 +63,13 @@ require("./modules/functions.php");
         <div class="sibeBar">
             <div class="side-bar">
                 <div class="menu">
-                    <button id="btnCreate" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">NEW FILE</button>
+                    <div class="options">
+                        <button id="btnCreate" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">NEW FILE</button>
+                        <label for="upload">
+                            <i class="fas fa-file-upload"></i>
+                            <input type="file" name="upload" id="upload" style="display:none;">
+                        </label>
+                    </div>
                     <div class="item"><a class="sub-btn"><i class="fa fa-file-code-o"></i>My file</a>
                         <div class="sub-menu">
                             <!-- <a href="index.php?infolder=2" class="sub-item"><i class="fas fa-music"></i>My music</a>
