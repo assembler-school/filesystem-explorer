@@ -11,16 +11,16 @@ function loadFiles()
                 throw new Exception("FOLDER NOT FOUND");
             } else {
                 $folder = $root[$_GET["infolder"]];
-                $dirSelected = "./root/" . $folder;
+                $path = "./root/" . $folder;
             }
             //IF WE ARE IN INDEX.PHP
             echo empty($_GET);
         } else if (empty($_GET)) {
-            $dirSelected = "./root";
+            $path = "./root";
         }
-        $myFiles = getarrayDiff($dirSelected);
+        $myFiles = getarrayDiff($path);
         foreach ($myFiles as $key => $element) {
-            if (is_file("$dirSelected/$element")) {
+            if (is_file("$path/$element")) {
                 echo '<div class="col d-flex flex-column">
                         <img src="./assets/img/test.jpg" alt="photo" width="100%">
                         <div class="infoCard">
@@ -28,7 +28,7 @@ function loadFiles()
                             <p class=" fileName">' . $element . '</p>
                         </div>
                     </div>';
-            } else if (is_dir("$dirSelected/$element")) {
+            } else if (is_dir("$path/$element")) {
                 echo '<div class="col d-flex flex-column">
                     <a href="./index.php?infolder=' . $key . '"><i class="fas fa-folder fa-5x"></i></a>
                                 <div class="infoCard">
@@ -43,6 +43,15 @@ function loadFiles()
     }
 }
 
+
+function folderSideBar()
+{
+    $my_dir = "./root";
+    $folders = getarrayDiff($my_dir);
+    foreach ($folders as $element) {
+        echo '<a href="index.php?infolder=3" class="sub-item"><i class="fas fa-folder"></i>' . $element . '</a>';
+    }
+}
 function getarrayDiff($dir)
 {
     return array_diff(scandir($dir), array(".", ".."));
