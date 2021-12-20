@@ -12,9 +12,11 @@ include 'modules/createModal.php';
             <?php require 'showDir.php'  ?>
         </aside>
         <section class="col-6">
-       
-        <?php 
-        require './sectionFiles.php'
+
+        <?php
+        sectionFiles();
+        
+
         ?>
 
             <!-- <img src="./Root/assembler.jpg" alt="" width="100%"> -->
