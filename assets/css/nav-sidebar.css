@@ -4,6 +4,33 @@
   --white:#ffffff;
   --yellow-btn:#3D4143;
 }
+
+.container{
+  display: flex;
+  width: auto;
+}
+.sibeBar{
+  margin: 0;
+  flex: 20%;
+}
+.mainC{
+  margin: 0%;
+  flex:80%;
+  background-color: var(--main-color);
+}
+
+.navbar {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
 .container-fluid {
   width: 100%;
   margin-right: auto;
@@ -12,7 +39,7 @@
 .LogoNav{
   height: 60px;
   width: 120px;
-  margin: 5px 0px 5px 20px;
+  margin: 5px 0px 5px 95px;
 }
 .bg-light {
   background-color: #212529!important;
@@ -34,7 +61,7 @@
   display: block;
   padding: 1.5rem 10rem;
 }
-/*CSS FORM SEARCH*/
+/*CSS FORM ARCH*/
 .form-control{
   display: block;
   width: 100% !important;
@@ -90,4 +117,67 @@ transition: color .15s ease-in-out,background-color .15s ease-in-out,border-colo
   height: 60px;
   width: 70px;
   margin: 5px 0px 5px 20px;
+}
+/*BTN NEW FILE*/
+#btnCreate{
+  display: flex;
+  flex-direction: center;
+  text-align: center;
+  margin-left: 10px;
+}
+/*SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR*/
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.side-bar{
+  display: flex;
+  flex-direction: center;
+  flex: 30%;
+  background: var(--header-color);
+  backdrop-filter: blur(15px);
+  height: 100vh;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+.side-bar .menu{
+  width: 100%;
+  margin-top: 80px;
+}
+.side-bar .menu .item{
+  position: relative;
+  cursor: pointer;
+}
+.side-bar .menu .item a{
+  color: var(--white);
+  font-size: 16px;
+  text-decoration: none;
+  display: block;
+  padding: 5px 30px;
+  line-height: 60px;
+}
+.side-bar .menu .item a:hover{
+  background: #8621f8;
+  transition: 0.3s ease;
+}
+.side-bar .menu .item i{
+  margin-right: 15px;
+}
+.side-bar .menu .item a .dropdown{
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  transition: 0.3s ease;
+}
+.side-bar .menu .item .sub-menu{
+  background:rgba(255, 255, 255, 0.1);
+  display: none;
+}
+.side-bar .menu .item .sub-menu a{
+  padding-left: 80px;
 }

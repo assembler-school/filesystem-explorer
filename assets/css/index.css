@@ -5,6 +5,19 @@
     --yellow-btn:#3D4143;
 }
 /* nav url */
+body{
+    margin: 0%;
+    padding: 0%;
+    
+}
+section {
+    margin-bottom: 0px !important;
+}
+section .container{
+    margin: 0%;
+    padding: 0%;
+    width: 100vh;
+}
 .url .breadcrumb{
     background-color: var(--header-color);
     
@@ -19,16 +32,6 @@
 }
 
 /* Main section */
-main{
-    background-color: var(--main-color);
-}
-section {
-    margin-bottom:60px;
-    
-}
-section img {
-    max-width: 100%;
-}
 .infoCard{
     background-color: var(--white);
     max-width: 100%;
