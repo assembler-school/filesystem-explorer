@@ -12,7 +12,12 @@ include 'modules/createModal.php';
             <?php require 'showDir.php'  ?>
         </aside>
         <section class="col-6">
-            <img src="./Root/assembler.jpg" alt="" width="100%">
+       
+        <?php 
+        require './sectionFiles.php'
+        ?>
+
+            <!-- <img src="./Root/assembler.jpg" alt="" width="100%"> -->
         </section>
         <aside class="col-3">
         <img src="./Root/1630658839121.gif" alt="" width="100%">

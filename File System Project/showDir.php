@@ -5,17 +5,17 @@
         if ($fileinfo->isDir() && !$fileinfo->isDot()) {
             $credentials = dirname($fileinfo);
             $pathofFile =  $fileinfo->getFileInfo();
-            echo "<a href='$pathofFile'> <i class='fas fa-folder fa-10x'></i></a>";
+            echo "<a href='./index.php?$fileinfo'> <i class='fas fa-folder fa-10x'></i></a>";
             echo $fileinfo->getFilename() . '<br>';
             echo date('F d Y H:i:s', filemtime($pathofFile)) . '<br>';
-            echo bytesToHuman(folderSize($pathofFile));
+            echo bytesToHuman(folderSize($pathofFile)). "<br>"; 
         }
     };
 
     foreach ($dir as $fileF) {
         if ($fileF->isfile()) {
-            echo $fileF . "<br>";
-            print $fileF;
+            
+            echo $fileF -> getExtension()."<br>";
         }
     };
 

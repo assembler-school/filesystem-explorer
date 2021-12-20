@@ -26,6 +26,7 @@
                         <div class="mb-3">
                             <label class="form-label d-flex justify-content-center">File Name </label>
                             <input type="text" class="form-control" id="filename" name="filename" placeholder="myFolder / myFile" />
+                           
                         </div>
                         <div class="btn-group collapse show" id="collapseExample" >
                             <select class="form-select" name="type" aria-label="Default select example">
