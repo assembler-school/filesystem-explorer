@@ -21,34 +21,26 @@
                 </form>
             </div>
         </nav>
-
         <nav class="navbar navbar-light bg-light">
             <form class="container-fluid justify-content-start" action="./modules/createFile.php" method="POST">
-
-                <button type="submit" formaction="./modules/createFolder.php" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">New Folder</button>
-
+                <?php 
+                if (isset($_GET["root"])){
+                    $root = $_GET["root"];
+                ?>
+                    <button type="submit" formaction="./modules/createFolder.php?root=<?=$root?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">New Folder</button>
+                <?php
+                }
+                ?>
                 <button type="button" formaction="./modules/createFile.php" method="POST" name="btnNewFile"class="btn btn-sm btn-outline-secondary me-2" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">New File</button>
-
                 <button name="btnUnload"class="btn btn-sm btn-outline-secondary me-2" type="button">Unload</button>
-
                 <button name="btnDownload"class="btn btn-sm btn-outline-secondary me-2" type="button">Download</button>
-
                 <button name="btnMove"class="btn btn-sm btn-outline-secondary me-2" type="button">Move to</button>
-
                 <button name="btnCopy"class="btn btn-sm btn-outline-secondary me-2" type="button">Copy to</button>
-
                 <button name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
-
-                
-               
                 <button type="button" class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-                  Delete
+                Delete
                 </button>
-                 
-
-                 
             </form>
-            
     </div>
 <div class="row">
 <!-- Folders Container 1-->
@@ -61,9 +53,7 @@
     ?>
         </div>
     </div>
-
 <!-- Files container 2-->
-
     <div class="col-4 secondary">
     <?php
     require_once("./modules/generateFiles.php");
@@ -76,16 +66,13 @@
       }
     }
     else {
-      echo"click a folder";
+    echo"click a folder";
     }
     ?>
     </div>
-
 <!-- Details and visualizer container 3-->
-
     <div class="col-4 primary">
     <?php
-
     if(isset($_GET["fileName"])){
         $fileName = $_GET["fileName"];
         require_once("./modules/readFile.php");
@@ -93,20 +80,9 @@
     }else{
         echo "click a file";
     }
-
     ?>
-
-
-
-
     </div>
 </div>
-
-
-
-
-
-
 <!-- MODAL -->
 <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -127,19 +103,12 @@
               <input type="text" name="fileName">
               <label for="name">Extension del archivo</label>
               <input type="text" name="fileExtension">
-        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <!-- <button type="button" class="btn btn-primary">Understood</button> -->
-        
         <button type="submit" name="btnNewFile"  class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">New File</button>
         </form>
-        
-
-
-
-
       </div>
     </div>
   </div>
@@ -147,9 +116,9 @@
 
 <!-- MODAL 2 -->
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
   Launch static backdrop modal
-</button>
+</button> -->
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
@@ -169,7 +138,10 @@
                 if (isset($_GET["fileName"])){
                   $newRoot2=$_GET["root"];
                   $fileName2=$_GET["fileName"];
-                  ?><button type="submit" action="./modules/deleteFile.php?root=<?=$newRoot2?>&fileName=<?=$fileName2?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">Delete1</button>
+                  ?>
+                  <form action="" method="post">
+                  <button type="submit" formaction="./modules/deleteFile.php?root=<?=$newRoot2?>&fileName=<?=$fileName2?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">Delete1</button>
+                  </form>
                   <?php
                 }
                 else if(isset($_GET["root"])) {
@@ -182,7 +154,8 @@
                 }
 
                 else {
-                  ?><button type="submit" action="./modules/deleteFile.php" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button" disabled="true">Delete3</button>
+                  ?>
+                  <button type="submit" action="./modules/deleteFile.php" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button" disabled="true">Delete3</button>
                   <?php
                 }
                 ?>
