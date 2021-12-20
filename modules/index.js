@@ -5,3 +5,7 @@ $(document).ready(function(){
     console.log('hola');
 });
 });
+
+$("#btnCreate").on("click", function(){
+console.log("funciona");
+})

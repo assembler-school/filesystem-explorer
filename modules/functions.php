@@ -30,3 +30,4 @@ function loadFiles()
         $t->getMessage();
     }
 }
+

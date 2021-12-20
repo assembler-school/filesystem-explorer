@@ -18,6 +18,7 @@ require("./modules/functions.php");
     <link rel="stylesheet" href="./assets/css/nav-sidebar.css">
     <!-- font-awesome -->
     <script src="https://kit.fontawesome.com/63f29c9463.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous" defer></script>
     <script src="modules\index.js" defer></script>
 </head>
 
@@ -61,16 +62,7 @@ require("./modules/functions.php");
         <div class="sibeBar">
             <div class="side-bar">
                 <div class="menu">
-                <?php 
-		if(isset($_POST["Create_File"])){
-			mkdir($_POST["file_name"],);
-		}
-	?>
-    <form method="post" action="./modules/create.php" id="create_form">
- <input type="text" name="file_name">
- <input type="submit" value="Create_File" name="create_file">
-</form>
-                    <!-- <button id="btnCreate" class="btn btn-warning" method="POST" action="./root" value="Create_File" name="create_file"><a href="">NEW FILE</a></button> -->
+                    <button id="btnCreate" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">NEW FILE</button>
                     <div class="item"><a class="sub-btn"><i class="fa fa-file-code-o"></i>My file</a>
                         <div class="sub-menu">
                             <a href="index.php?infolder=2" class="sub-item"><i class="fas fa-music"></i>My music</a>
@@ -84,7 +76,31 @@ require("./modules/functions.php");
                 </div>
             </div>
         </div>
-
+        <!--MODAL FOR CREAR FOLDERS-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <?php
+if (isset($_POST["Create_File"])) {
+    mkdir($_POST["file_name"],);
+}
+?>
+<form method="post" action="./modules/create.php" id="create_form">
+    <input type="text" name="file_name">
+    <input type="submit" value="Create_File" name="create_file">
+</form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Main has to be a grid or flexbox responsive with cols and rows of bootstrap -->
         <main class="container">
             <!-- Cada section sera un fichero diferente que carga -->
