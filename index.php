@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="item"><a href="#"><i class="fa fa-cog"></i>Settings</a></div>
-                    <div class="item"><a href="#"><i class="fas fa-trash"></i>Trash</a></div>
+                    <div class="item"><a href="./modules/trash.php"><i class="fas fa-trash"></i>Trash</a></div>
                 </div>
             </div>
         </div>
