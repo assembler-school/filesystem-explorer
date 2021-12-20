@@ -32,6 +32,9 @@ section .container{
 }
 
 /* Main section */
+main{
+    background-color:var(--main-color);
+}
 .infoCard{
     background-color: var(--white);
     max-width: 100%;
