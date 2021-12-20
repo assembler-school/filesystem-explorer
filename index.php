@@ -61,15 +61,15 @@ require("./modules/functions.php");
         <div class="sibeBar">
             <div class="side-bar">
                 <div class="menu">
-                <?php 
-		if(isset($_POST["Create_File"])){
-			mkdir($_POST["file_name"],);
-		}
-	?>
-    <form method="post" action="./modules/create.php" id="create_form">
- <input type="text" name="file_name">
- <input type="submit" value="Create_File" name="create_file">
-</form>
+                    <?php
+                    if (isset($_POST["Create_File"])) {
+                        mkdir($_POST["file_name"],);
+                    }
+                    ?>
+                    <form method="post" action="./modules/create.php" id="create_form">
+                        <input type="text" name="file_name">
+                        <input type="submit" value="Create_File" name="create_file">
+                    </form>
                     <!-- <button id="btnCreate" class="btn btn-warning" method="POST" action="./root" value="Create_File" name="create_file"><a href="">NEW FILE</a></button> -->
                     <div class="item"><a class="sub-btn"><i class="fa fa-file-code-o"></i>My file</a>
                         <div class="sub-menu">
