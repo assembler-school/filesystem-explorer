@@ -39,10 +39,31 @@
 
                 <button name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
 
-                <button name="btnDelete"class="btn btn-sm btn-outline-secondary me-2" type="button">Delete</button>
+                
+                <?php
+                if (isset($_GET["fileName"])){
+                  $newRoot2=$_GET["root"];
+                  $fileName2=$_GET["fileName"];
+                  ?><button type="submit" formaction="./modules/deleteFile.php?root=<?=$newRoot2?>&fileName=<?=$fileName2?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">Delete</button>
+                  <?php
+                }
+                else if(isset($_GET["root"])) {
+                  $newRoot2=$_GET["root"];
+                  ?><button type="submit" formaction="./modules/deleteFile.php?root=<?=$newRoot2?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">Delete</button>
+                  <?php
+                }
 
+                else {
+                  ?><button type="submit" formaction="./modules/deleteFile.php" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button" disabled="true">Delete</button>
+                  <?php
+                }
+                ?>
+
+                 
+
+                 
             </form>
-        </nav>
+            
     </div>
 <div class="row">
 <!-- Folders Container 1-->
@@ -61,14 +82,17 @@
     <div class="col-4 secondary">
     <?php
     require_once("./modules/generateFiles.php");
-    
-    $newRoot = $_GET["root"];
-    if(is_dir($newRoot)){
-        generateFilesFun($newRoot);
-    }else{
+    if (isset( $_GET["root"])){
+      $newRoot = $_GET["root"];
+      if(is_dir($newRoot)){
+          generateFilesFun($newRoot);
+      }else{
 
+      }
     }
-    
+    else {
+      echo"click a folder";
+    }
     ?>
     </div>
 

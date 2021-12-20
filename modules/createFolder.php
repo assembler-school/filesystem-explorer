@@ -1,5 +1,5 @@
 <?php
-echo "-he creado un nuevo archivo";
+echo "-he entrado en folder";
 try{
     $actualROOT = 
     $newFolderName = "../root";
