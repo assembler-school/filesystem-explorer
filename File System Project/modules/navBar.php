@@ -1,10 +1,10 @@
-<nav class="navbar navbar-dark fixed-top navbar-expand-sm  justify-content-between" style="background-color: #1c2331;">
+<nav class="navbar navbar-dark navbar-expand-sm  justify-content-between" style="background-color: #1c2331;">
 
-    <div class="col-offset-1 col-2">
+    <div class="col-2 logo">
         <a href="#" class="navbar-brand font-weight-bold"> <i class="fas fa-fighter-jet"></i> <i class="bi bi-alarm-fill"></i>
 Jet File System </a>
     </div>
-    <div class="col-5">
+    <div class="col-5 ">
         <div class="input-group">
             <input type="search" id="buscar" class="form-control border-right-0 border" placeholder="Buscar...">
             <div class="input-group-append">
