@@ -76,7 +76,14 @@
 
     <div class="col-4 primary">
     <?php
-    if(isset($_GET["fileName"]))
+
+    if(isset($_GET["fileName"])){
+        $fileName = $_GET["fileName"];
+        require_once("./modules/readFile.php");
+        readFileFun($newRoot,$fileName);
+    }else{
+        echo "click a file";
+    }
 
     ?>
 
@@ -106,11 +113,24 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Adios
+          <form action="./modules/createFile.php?root=<?=$newRoot?>" method="POST">
+              <label for="name">Nombre del archivo</label>
+              <input type="text" name="fileName">
+              <label for="name">Extension del archivo</label>
+              <input type="text" name="fileExtension">
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+        
+        <button type="submit" name="btnNewFile"  class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">New File</button>
+        </form>
+        
+
+
+
+
       </div>
     </div>
   </div>

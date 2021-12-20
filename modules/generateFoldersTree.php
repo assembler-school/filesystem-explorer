@@ -5,12 +5,9 @@ function generateFoldersTreeFun($ruta){
         // Abre un gestor de directorios para la ruta indicada
         $gestor = opendir($ruta);
         echo "<ul>";
-
         // Recorre todos los elementos del directorio
         while (($archivo = readdir($gestor)) !== false)  {
-
             $ruta_completa = $ruta . "/" . $archivo;
-
             // Se muestran todos los archivos y carpetas excepto "." y ".."
             if ($archivo != "." && $archivo != "..") {
                 // Si es un directorio se recorre recursivamente
@@ -29,4 +26,3 @@ function generateFoldersTreeFun($ruta){
         echo "No es una ruta de directorio valida<br/>";
     }
 }
-

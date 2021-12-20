@@ -1,17 +1,28 @@
 <?php
 
-echo "-he creado un nuevo archivo";
-try{
-    $newFileName = "../root/NewFile.txt";
-    $fileContent = "Hola soy el contenido";
+$root = $_GET["root"];
 
-    $file= fopen($newFileName,"w");
+$fileNameS = $_POST["fileName"];
 
-    fwrite($file,$fileContent);
+createFileFun($root, $fileNameS);
 
-    fclose($file);
+function createFileFun($root, $fileNameS){
 
-}catch(Throwable $t){
-    echo $t->getMessage();
+    echo "-he creado un nuevo archivo";
+    try{
+
+        $newFileName = ".".$root."/".$fileNameS;
+        echo $newFileName;
+        $fileContent = "Hola soy el contenido";
+
+        $file= fopen($newFileName,"w");
+
+        fwrite($file,$fileContent);
+
+        fclose($file);
+
+    }catch(Throwable $t){
+        echo $t->getMessage();
+    }
+    header("Location:../index.php?root=$root");
 }
-header("Location:../index.php");
