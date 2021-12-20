@@ -25,17 +25,23 @@ include 'modules/createModal.php';
       }
       foreach ($dir as $fileF){
           if ($fileF -> isfile() ){
-              echo $fileF."<br>";
+              $route =$fileF -> getFileInfo();
+                echo "<a href='$route'> <i class='fas fa-images fa-10x'></i></a>";
+                echo $fileF."<br>";
             print $fileF;
           }
       }
      
 ?>
 <form action="./createfolder.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="Fileimage" id="fileofimage">
+    <input type="file" name="Fileimage" id="fileofimage"  webkitdirectory multiple>
     <input type="submit" value="Upload a file" name="buttclick">
 </form>
-          
+<form action="./createfolder.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="folderUpdate" id="folderUpdate" >
+    <input type="submit" value="Upload a folder" name="upFolder">
+</form>
+
     <?= isset($_GET["error"]) ? "The name already exist" : "";
 
     function bytesToHuman($bytes){
