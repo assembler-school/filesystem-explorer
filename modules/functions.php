@@ -48,9 +48,11 @@ function folderSideBar()
 {
     $my_dir = "./root";
     $folders = getarrayDiff($my_dir);
-    foreach ($folders as $element) {
-        echo '<a href="index.php?infolder=3" class="sub-item"><i class="fas fa-folder"></i>' . $element . '</a>';
-    }
+    foreach ($folders as $key => $element){
+        if(is_dir("$my_dir/$element")){
+    echo '<a href="index.php?infolder= '. $key .'" class="sub-item"><i class="fas fa-folder"></i>' . $element . '</a>';
+    echo $key;
+}}
 }
 function getarrayDiff($dir)
 {
