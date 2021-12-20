@@ -55,8 +55,6 @@
                         $dir = new DirectoryIterator($path);
                         foreach ($dir as $fileinfo) {
                             if ($fileinfo->isDir() && !$fileinfo->isDot()) {
-                                $credentials = dirname($fileinfo);
-                                $pathofFile=  $fileinfo->getFileInfo();
                                 $Namesofolders= $fileinfo->getFilename();
                                 echo "<option value='$Namesofolders'>$Namesofolders</option>";
                             }
