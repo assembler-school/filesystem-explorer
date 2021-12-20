@@ -66,10 +66,13 @@ require("./modules/functions.php");
                     <button id="btnCreate" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">NEW FILE</button>
                     <div class="item"><a class="sub-btn"><i class="fa fa-file-code-o"></i>My file</a>
                         <div class="sub-menu">
-                            <a href="index.php?infolder=2" class="sub-item"><i class="fas fa-music"></i>My music</a>
+                            <!-- <a href="index.php?infolder=2" class="sub-item"><i class="fas fa-music"></i>My music</a>
                             <a href="index.php?infolder=3" class="sub-item"><i class="fa fa-video-camera"></i>My videos</a>
                             <a href="index.php?infolder=4" class="sub-item"><i class="fa fa-book"></i>My books</a>
-                            <a href="index.php?infolder=5" class="sub-item"><i class="fa fa-picture-o"></i>Photos</a>
+                            <a href="index.php?infolder=5" class="sub-item"><i class="fa fa-picture-o"></i>Photos</a> -->
+                            <?php
+                            folderSideBar();
+                            ?>
                         </div>
                     </div>
                     <div class="item"><a href="#"><i class="fa fa-cog"></i>Settings</a></div>
@@ -86,18 +89,18 @@ require("./modules/functions.php");
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <?php
-if (isset($_POST["Create_File"])) {
-    mkdir($_POST["file_name"],);
-}
-?>
-<form method="post" action="./modules/create.php" id="create_form">
-    <input type="text" name="file_name">
-    <input type="submit" value="Create_File" name="create_file">
-</form>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <?php
+                        if (isset($_POST["Create_File"])) {
+                            mkdir($_POST["file_name"],);
+                        }
+                        ?>
+                        <form method="post" action="./modules/create.php" id="create_form">
+                            <input type="text" name="file_name">
+                            <input type="submit" value="Create_File" name="create_file">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
