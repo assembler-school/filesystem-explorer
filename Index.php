@@ -27,7 +27,7 @@
 
                 <button type="submit" formaction="./modules/createFolder.php" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">New Folder</button>
 
-                <button type="submit" formaction="./modules/createFile.php" method="POST"name="btnNewFile"class="btn btn-sm btn-outline-secondary me-2" type="button">New File</button>
+                <button type="button" formaction="./modules/createFile.php" method="POST" name="btnNewFile"class="btn btn-sm btn-outline-secondary me-2" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">New File</button>
 
                 <button name="btnUnload"class="btn btn-sm btn-outline-secondary me-2" type="button">Unload</button>
 
@@ -45,22 +45,105 @@
         </nav>
     </div>
 <div class="row">
+<!-- Folders Container 1-->
     <div id="foldersContainer" class="col-4 primary foldersContainer" >
+<!-- Accordion -->
+        <div class="accordion" id="accordionPanelsStayOpenExample">
     <?php
     require_once("./modules/generateFoldersTree.php");
     generateFoldersTreeFun("./root");
     ?>
+        </div>
     </div>
+
+<!-- Files container 2-->
+
     <div class="col-4 secondary">
     <?php
     require_once("./modules/generateFiles.php");
     
     $newRoot = $_GET["root"];
-    generateFilesFun($newRoot);
+    if(is_dir($newRoot)){
+        generateFilesFun($newRoot);
+    }else{
+
+    }
+    
     ?>
     </div>
-    <div class="col-4 primary">Hola</div>
+
+<!-- Details and visualizer container 3-->
+
+    <div class="col-4 primary">
+    <?php
+    if(isset($_GET["fileName"]))
+
+    ?>
+
+
+
+
+    </div>
 </div>
+
+
+
+
+
+
+<!-- MODAL -->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Adios
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2 -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel2">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Hola
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 </body>
 </html>
