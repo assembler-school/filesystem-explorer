@@ -40,25 +40,10 @@
                 <button name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
 
                 
-                <?php
-                if (isset($_GET["fileName"])){
-                  $newRoot2=$_GET["root"];
-                  $fileName2=$_GET["fileName"];
-                  ?><button type="submit" formaction="./modules/deleteFile.php?root=<?=$newRoot2?>&fileName=<?=$fileName2?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">Delete</button>
-                  <?php
-                }
-                else if(isset($_GET["root"])) {
-                  $newRoot2=$_GET["root"];
-                  ?><button type="submit" formaction="./modules/deleteFile.php?root=<?=$newRoot2?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">Delete</button>
-                  <?php
-                }
-
-                else {
-                  ?><button type="submit" formaction="./modules/deleteFile.php" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button" disabled="true">Delete</button>
-                  <?php
-                }
-                ?>
-
+               
+                <button type="button" class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                  Delete
+                </button>
                  
 
                  
@@ -171,15 +156,36 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel2">Modal title</h5>
+        <h5 class="modal-title" id="staticBackdropLabel2">Warning</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Hola
+        Are you sure?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+  
+        <?php
+                if (isset($_GET["fileName"])){
+                  $newRoot2=$_GET["root"];
+                  $fileName2=$_GET["fileName"];
+                  ?><button type="submit" action="./modules/deleteFile.php?root=<?=$newRoot2?>&fileName=<?=$fileName2?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">Delete1</button>
+                  <?php
+                }
+                else if(isset($_GET["root"])) {
+                  $newRoot2=$_GET["root"];
+                  ?>
+                  <form  action="./modules/deleteFile.php?root=<?=$newRoot2?>" method="post">
+                  <button type="submit" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">Delete2</button>
+                  </form>
+                  <?php
+                }
+
+                else {
+                  ?><button type="submit" action="./modules/deleteFile.php" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button" disabled="true">Delete3</button>
+                  <?php
+                }
+                ?>
       </div>
     </div>
   </div>
