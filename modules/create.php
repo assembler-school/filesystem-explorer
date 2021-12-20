@@ -1,13 +1,11 @@
 <?php
 
-if(isset($_POST['create_file']))
-{
-  $file_name=$_POST['file_name'];
-  $newFile =fopen("root/file_name", "w") or die("File not found");
-  $txt = "New file";
-  fwrite($newFile, $txt);
- fclose($newFile);
+$my_dir = "./../root/". $_POST["file_name"];
+if(!is_dir($my_dir)){
+  mkdir($my_dir);
+  echo "Se ha creado el directorio $my_dir";
+} else{
+  echo "el directorio $my_dir ya existe! No lo vamos a crear de nuevo";
 }
-
 
 ?>
