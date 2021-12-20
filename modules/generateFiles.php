@@ -15,7 +15,15 @@ function generateFilesFun($ruta){
             if ($archivo != "." && $archivo != "..") {
                 // Si es un directorio se recorre recursivamente
                 if (is_dir($ruta_completa)) {
-                    echo "<li><a href="."./index.php?root=$ruta_completa&fileName=$archivo".">$archivo</a></li>";
+                    if (isset($_GET["rename"])){
+                        if($archivo == "new_folder"){
+                            echo "<li><a href="."./index.php?root=$ruta_completa&fileName=$archivo".">$archivo"."nuevo</a></li>","nuevo";
+                        }else{
+                            echo "<li><a href="."./index.php?root=$ruta_completa&fileName=$archivo".">$archivo</a></li>","algo nuevo";
+                        }
+                    }else{
+                        echo "<li><a href="."./index.php?root=$ruta_completa&fileName=$archivo".">$archivo</a></li>";
+                    }
                     // generateFilesFun($ruta_completa);
                 } else {
                     require_once("./modules/whatEsxtension.php");

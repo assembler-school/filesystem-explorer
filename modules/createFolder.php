@@ -13,5 +13,5 @@ try{
 }catch(Throwable $t){
     echo $t->getMessage();
 }
-header("Location:../index.php?root=$root");
+header("Location:../index.php?root=$dirPath&rename=new_folder");
 ?>

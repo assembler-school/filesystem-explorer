@@ -12,6 +12,7 @@ function generateFoldersTreeFun($ruta){
             if ($archivo != "." && $archivo != "..") {
                 // Si es un directorio se recorre recursivamente
                 if (is_dir($ruta_completa)) {
+                echo "<span class='material-icons-outlined'>folder</span>";
                 echo "<li><a href="."./index.php?root=$ruta_completa".">$archivo</a></li>";
                 generateFoldersTreeFun($ruta_completa);
                 } else {
