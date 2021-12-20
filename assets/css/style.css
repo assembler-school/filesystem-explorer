@@ -1,0 +1,11 @@
+.foldersTitle{
+    color:bisque;
+    background-color: black;
+    z-index: 3;
+}
+body{
+    background-color: gray;
+}
+.accordion-heading a.accordion-toggle { 
+    display: inline-block !important;
+ }

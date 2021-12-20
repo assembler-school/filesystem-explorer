@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet">
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
@@ -23,6 +23,11 @@
                 </form>
             </div>
         </nav>
+
+
+
+
+
         <nav class="navbar navbar-light bg-light">
             <form class="container-fluid justify-content-start" action="./modules/createFile.php" method="POST">
                 <?php 
@@ -45,16 +50,35 @@
             </form>
     </div>
 <div class="row">
+
+
+
+
+
+
 <!-- Folders Container 1-->
     <div id="foldersContainer" class="col-4 primary foldersContainer" >
 <!-- Accordion -->
         <div class="accordion" id="accordionPanelsStayOpenExample">
+
     <?php
     require_once("./modules/generateFoldersTree.php");
-    generateFoldersTreeFun("./root");
+    $count = 0;
+    generateFoldersTreeFun("./root", $count);
     ?>
         </div>
+<!-- Accordion -->
     </div>
+
+
+
+
+
+
+
+
+
+
 <!-- Files container 2-->
     <div class="col-4 secondary">
     <?php
@@ -172,3 +196,6 @@
 
 </body>
 </html>
+
+
+
