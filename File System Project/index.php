@@ -23,20 +23,17 @@
               echo $fileinfo->getFilename().'<br>';
           }
       }
-      
+      foreach ($dir as $fileF){
+          if ($fileF -> isfile() ){
+              echo $fileF."<br>";
+            print $fileF;
+          }
+      }
 ?>
-    <!-- </nav>
-    <form action="./createfolder.php" method="post">
-    <input name="folderName" type="text"  id="nameFolder">
-    <button name="createfolder">Create a folder</button>
-    <label class="form-label" for="CreateFile"><?= isset($_GET["error"]) ? "The name already exist" : ""?></label>
-    </form>
-    <form action="./createfolder.php" method="post">
-    <input type="text" name="prueba" id="">
-    <button type="submit">Create a file</button>
-    <!-- <button onclick="createfile()"> </button> -->
-    <!-- </form> -->
-
+<form action="./createfolder.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="Fileimage" id="fileofimage">
+    <input type="submit" value="Upload a file" name="buttclick">
+</form>
 
 </body>
 </html>
