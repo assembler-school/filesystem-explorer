@@ -51,3 +51,19 @@ if (isset($_POST['buttclick'])) {
     $target_file = $target_dir . basename($_FILES["Fileimage"]["name"]);
     move_uploaded_file($_FILES['Fileimage']['tmp_name'], $target_file);
 }
+
+if (isset($_POST['upload'])) {
+    if ($_POST['foldername'] != "") {
+        $target_dir = "./root/";
+       $foldername = $_POST['foldername'];
+       if (!is_dir($target_dir.$foldername)) mkdir($target_dir.$foldername);
+       foreach($_FILES['files']['name'] as $i => $name) {
+          if (strlen($_FILES['files']['name'][$i]) > 1) {
+             move_uploaded_file($_FILES['files']['tmp_name'][$i], $target_dir.$foldername.
+                "/".$name);
+          }
+       }
+       echo "Folder is successfully uploaded";
+    } else
+       echo "Upload folder name is empty";
+ } 

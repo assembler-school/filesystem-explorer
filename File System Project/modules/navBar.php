@@ -16,5 +16,8 @@ Jet File System </a>
         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalForm">
             Create File/ Folder
         </button>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalFormNew">
+            Upload File/ Folder
+        </button>
     </div>
 </nav>

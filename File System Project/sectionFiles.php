@@ -20,7 +20,7 @@ foreach ($newDir as $fileinfo) {
 function filesIcon($extension){
 switch($extension){
     case "doc":
-        
+            
         break;
 }
 }
