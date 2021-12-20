@@ -59,7 +59,7 @@
         <div class="sibeBar">
             <div class="side-bar">
                 <div class="menu">
-                    <button id="btnCreate" class="btn btn-warning"><a href="./modules/create.php">NEW FILE</button>
+                    <button id="btnCreate" class="btn btn-warning"><a href="./modules/create.php">NEW FILE</a></button>
                     <div class="item"><a class="sub-btn"><i class="fa fa-file-code-o"></i>My file</a>
                         <div class="sub-menu">
                             <a href="#" class="sub-item"><i class="fas fa-music"></i>My music</a>
@@ -80,10 +80,24 @@
                 <article class="row">
                     <section class="col-4">
                         <div class="col d-flex flex-column">
-                            <img src="./assets/img/test.jpg" alt="photo">
+                            <img src="./assets/img/test.jpg" alt="photo" width="100%">
                             <div class="infoCard">
-                                <img src="./assets/img/img-icon.png" alt="img-icon" width="50">
+                                <img src="./assets/img/img-icon.png" alt="img-icon" width="50px">
                                 <p class=" fileName">File.png</p>
+                            </div>
+                        </div>
+                        <div class="col d-flex flex-column">
+                            <img src="./assets/img/test.jpg" alt="photo" width="100%">
+                            <div class="infoCard">
+                                <img src="./assets/img/img-icon.png" alt="img-icon" width="50px">
+                                <p class=" fileName">File.png</p>
+                            </div>
+                        </div>
+                        <div class="col d-flex flex-column">
+                            <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" controls width="100%"></video>
+                            <div class="infoCard">
+                                <i class="fa fa-video-camera" width="50px"></i>
+                                <p class=" fileName">Video</p>
                             </div>
                         </div>
                     </section>
