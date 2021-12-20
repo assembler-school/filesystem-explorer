@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+require("./modules/functions.php");
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -23,7 +26,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <img class="LogoNav" src="./assets/img/logo.png" alt="">
-                <a class="navbar-brand" href="#">Home</a>
+                <a class="navbar-brand" href="index.php">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -47,7 +50,7 @@
         <!-- navigation url -->
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Library</li>
                 <i class="fas fa-info-circle fa-2x" id="infoCircle"></i>
             </ol>
@@ -59,12 +62,17 @@
             <div class="side-bar">
                 <div class="menu">
                     <button id="btnCreate" class="btn btn-warning"><a href="./modules/create.php">NEW FILE</a></button>
+                    <label for="upload" class="btn btn-warning">
+                        <i class="fas fa-file-upload fa-lg" style="color:white;"></i>
+                        <input type="file" id="upload" style="display:none;">
+                    </label>
+
                     <div class="item"><a class="sub-btn"><i class="fa fa-file-code-o"></i>My file</a>
                         <div class="sub-menu">
-                            <a href="#" class="sub-item"><i class="fas fa-music"></i>My music</a>
-                            <a href="#" class="sub-item"><i class="fa fa-video-camera"></i>My videos</a>
-                            <a href="#" class="sub-item"><i class="fa fa-book"></i>My books</a>
-                            <a href="#" class="sub-item"><i class="fa fa-picture-o"></i>Photos</a>
+                            <a href="index.php?infolder=2" class="sub-item"><i class="fas fa-music"></i>My music</a>
+                            <a href="index.php?infolder=3" class="sub-item"><i class="fa fa-video-camera"></i>My videos</a>
+                            <a href="index.php?infolder=4" class="sub-item"><i class="fa fa-book"></i>My books</a>
+                            <a href="index.php?infolder=5" class="sub-item"><i class="fa fa-picture-o"></i>Photos</a>
                         </div>
                     </div>
                     <div class="item"><a href="#"><i class="fa fa-cog"></i>Settings</a></div>
@@ -78,26 +86,9 @@
             <!-- Cada section sera un fichero diferente que carga -->
             <article class="row">
                 <section class="col-4">
-                    <div class="col d-flex flex-column">
-                        <img src="./assets/img/test.jpg" alt="photo" width="100%">
-                        <div class="infoCard">
-                            <img src="./assets/img/img-icon.png" alt="img-icon" width="50px">
-                            <p class=" fileName">File.png</p>
-                        </div>
-                    </div>
-                    <div class="col d-flex flex-column">
-                        <img src="./assets/img/test.jpg" alt="photo" width="100%">
-                        <div class="infoCard">
-                            <img src="./assets/img/img-icon.png" alt="img-icon" width="50px">
-                            <p class=" fileName">File.png</p>
-                        </div>
-                    </div>
-                    <div class="col d-flex flex-column">
-                        <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" controls width="100%"></video>
-                        <div class="infoCard">
-                            <i class="fa fa-video-camera" width="50px"></i>
-                            <p class=" fileName">Video</p>
-                        </div>
+                    <?php
+                    loadFiles();
+                    ?>
                     </div>
                 </section>
             </article>
