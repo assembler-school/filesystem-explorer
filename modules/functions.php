@@ -24,8 +24,7 @@ function loadFiles()
                 echo '<div class="col d-flex flex-column">
                         <a href="./index.php?path=' . $path . '/' . $element . '"><i class="fas fa-folder fa-5x"></i></a>
                                     <div class="infoCard">
-                                    <button type="button" class="btn btn-primary renameBtn" data-bs-toggle="modal" data-bs-target="#modalEdit" id="'.$element.'">
-                                    Edit</button>
+                                    <button type="button" class="fas fa-edit btn btn-primary renameBtn" data-bs-toggle="modal" data-bs-target="#modalEdit" id="'.$element.'"></button>
                                         <p class=" fileName">' . $element . '</p>
                                     </div>
                                 </div>';
@@ -86,8 +85,8 @@ function breadcrumb($path)
 /*RENAME FILE*/
 
 // Old Name Of The file
-$old_name = "root/holaTU";
-$new_name = "root/HELP";
-$rootPatch = "./root";
+// $old_name = "root/holaTU";
+// $new_name = "root/HELP";
+// $rootPatch = "./root";
 
-$name = rename($old_name, $new_name);
+// $name = rename($old_name, $new_name);

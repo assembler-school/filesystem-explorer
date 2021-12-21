@@ -40,4 +40,8 @@ for (let i = 0; i < files.length; i++) {
   }
 }
 
+$('#infoCircle').on('click', function(){
+  
+})
+
 
