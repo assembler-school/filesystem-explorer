@@ -17,5 +17,5 @@
 
 
     <!--Todo Scripts JavaScript -->
-    <script src="assets/scripts/mainScript.js"></script>
+    <script src="./assets/scripts/mainScript.js"></script>
 </head>
