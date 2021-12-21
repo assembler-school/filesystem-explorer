@@ -31,6 +31,12 @@ section .container{
    right:15px;
 }
 
+/* ASIDE */
+.options{
+    display:flex;
+    flex-direction: row;
+    gap:5px;
+}
 /* Main section */
 main{
     background-color:var(--main-color);
