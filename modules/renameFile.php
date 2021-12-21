@@ -1,7 +1,12 @@
 <?php
-echo "Hola";
 $root = $_GET["root"];
 $fileName = $_GET["fileName"];
-$oldName = $root."/".$fileName;
-$newName = $root."/renamed";
+$inputNewName= $_POST["inputNewName"];
+$oldName = ".".$root."/".$fileName;
+$extension = pathinfo($oldName, PATHINFO_EXTENSION);
+echo $extension;
+$newName = ".".$root."/".$inputNewName.".".$extension;
 rename($oldName,$newName);
+
+header("Location:../index.php?root=$root&fileName=$newName");
+

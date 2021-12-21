@@ -8,7 +8,6 @@ function generateFoldersTreeFun($ruta,$count){
         // Recorre todos los elementos del directorio
 
         while (($archivo = readdir($gestor)) !== false)  {
-            $count = $count + 1 ;
             $ruta_completa = $ruta . "/" . $archivo;
             // Se muestran todos los archivos y carpetas excepto "." y ".."
             if ($archivo != "." && $archivo != "..") {

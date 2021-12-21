@@ -50,24 +50,10 @@
                 <button name="btnDownload"class="btn btn-sm btn-outline-secondary me-2" type="button">Download</button>
                 <button name="btnMove"class="btn btn-sm btn-outline-secondary me-2" type="button">Move to</button>
                 <button name="btnCopy"class="btn btn-sm btn-outline-secondary me-2" type="button">Copy to</button>
-                <?php
-                if(isset($_GET["fileName"])){
-                  $fileName = $_GET["fileName"];
-                  ?>
-                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fileName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
-                  <?php
-                  }else if (isset($_GET["root"])){
-                    $root = $_GET["root"];
-                  ?>
-                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
-                <?php
-                }else {
-                  ?>
-                  <button disabled="true" type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fioleName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
-                <?php
-                }
-                ?>
-                <button type="button" class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Delete</button>
+                
+                <button type="button" class="btn btn-sm btn-outline-secondary me-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Rename
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary me-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Delete</button>
             </form>
     </div>
 <div class="row">
@@ -221,6 +207,47 @@
 </div>
 
 
+<!-- Modal REname -->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel1">El de Rename</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form action="./modules/createFile.php?root=<?=$newRoot?>" method="POST">
+              <label for="name">Nombre del archivo</label>
+              <input type="text" name="inputNewName">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+        <!-- <button type="submit" name="btnNewFile"  class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Rename</button> -->
+        
+
+<?php
+                if(isset($_GET["fileName"])){
+                  $fileName = $_GET["fileName"];
+                  ?>
+                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fileName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
+                  <?php
+                  }else if (isset($_GET["root"])){
+                    $root = $_GET["root"];
+                  ?>
+                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button" >Rename</button>
+                <?php
+                }else {
+                  ?>
+                  <button disabled="true" type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fioleName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
+                <?php
+                }
+                ?>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -229,3 +256,20 @@
 
 
 
+<?php
+                if(isset($_GET["fileName"])){
+                  $fileName = $_GET["fileName"];
+                  ?>
+                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fileName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
+                  <?php
+                  }else if (isset($_GET["root"])){
+                    $root = $_GET["root"];
+                  ?>
+                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button" >Rename</button>
+                <?php
+                }else {
+                  ?>
+                  <button disabled="true" type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fioleName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
+                <?php
+                }
+                ?>
