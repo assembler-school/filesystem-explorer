@@ -45,11 +45,11 @@ function fopean()
 }
 
 if (isset($_POST['buttclick'])) {
-    echo "kjasdnkjasdn";
     $target_dir = "./root/";
     // $jj=$_FILES['Fileimage'];
     $target_file = $target_dir . basename($_FILES["Fileimage"]["name"]);
     move_uploaded_file($_FILES['Fileimage']['tmp_name'], $target_file);
+    header('location: ./index.php');
 }
 
 if (isset($_POST['upload'])) {
@@ -64,6 +64,8 @@ if (isset($_POST['upload'])) {
           }
        }
        echo "Folder is successfully uploaded";
+       header('location: ./index.php');
     } else
-       echo "Upload folder name is empty";
+    //    echo "Upload folder name is empty";
+       header('location: ./index.php');
  } 
