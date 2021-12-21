@@ -17,14 +17,13 @@ include 'modules/createModal.php';
 
         <?php
         sectionFiles();
-        
-
         ?>
-
-            <!-- <img src="./Root/assembler.jpg" alt="" width="100%"> -->
         </section>
+
         <aside class="col-3">
-        <img src="./Root/1630658839121.gif" alt="" width="100%">
+        <?php
+        asideFiles();
+        ?>
         </aside>
     </div>
     <form action="./createfolder.php" method="post" enctype="multipart/form-data">

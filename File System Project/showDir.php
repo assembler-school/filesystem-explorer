@@ -48,9 +48,13 @@ function sectionFiles()
             foreach ($probandol as $pr) {
                 if (!$pr->isDot()) {
                     $extension = $pr->getExtension();
+                    $nme= $pr->getFilename();
+                    $infofile = $pr->getFileInfo();
+                    $newfilepath= "?$fileinfo?$nme";
                     //echo bytesToHuman(folderSize($pr)) . "<br>";
-                    filesIcon($extension);
+                    filesIcon($extension, $newfilepath);
                     echo $pr->getFilename() . "<br>";
+
                     // echo $pr->getFileInfo();
                 }
             }
@@ -58,53 +62,58 @@ function sectionFiles()
     };
 }
 
-function filesIcon($extension)
+function filesIcon($extension,$rootf)
 {
     switch ($extension) {
         case 'doc':
-            echo '<a href="ppee"><img  class="sectionImg" src="./assets/icons/doc.png" alt="doc img"></a> ';
+            echo "<a href='$rootf'> img  class='sectionImg' src='./assets/icons/doc.png' alt='doc img'>  </a>";
             break;
         case 'jpg':
-            echo ' <img class="sectionImg"  src="./assets/icons/jpg.png" alt="icon img">';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/jpg.png' alt='icon img'> </a>";
             break;
         case 'pdf':
-            echo ' <img class="sectionImg"  src="./assets/icons/pdf.png" alt="icon img">';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/pdf.png' alt='icon img'> </a>";
             break;
         case 'csv':
-            echo ' <img class="sectionImg"  src="./assets/icons/csv.png" alt="icon img">';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/csv.png' alt='icon img'> </a>";
             break;
         case 'exe':
-            echo ' <img class="sectionImg"  src="./assets/icons/exe.png" alt="icon img">';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/exe.png' alt='icon img'> </a>";
             break;
         case 'mp3':
-            echo ' <img class="sectionImg"  src="./assets/icons/mp3.png" alt="icon img">';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/mp3.png' alt='icon img'> </a>";
             break;
         case 'mp4':
-            echo ' <img class="sectionImg"  src="./assets/icons/mp4.png" alt="icon img">';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/mp4.png' alt='icon img'> </a>";
             break;
         case 'odt':
-            echo ' <img class="sectionImg"  src="./assets/icons/odt.png" alt="icon img">';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/odt.png' alt='icon img'> </a>";
             break;
         case 'png':
-            echo ' <img class="sectionImg"  src="./assets/icons/png.png" alt="icon img" >';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/png.png' alt='icon img'  </a>>";
             break;
         case 'ppt':
-            echo ' <img class="sectionImg"  src="./assets/icons/ppt.png" alt="icon img">';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/ppt.png' alt='icon img'> </a>";
             break;
         case 'rar':
-            echo ' <img class="sectionImg"  src="./assets/icons/rar.png" alt="icon img">';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/rar.png' alt='icon img'> </a>";
             break;
         case 'svg':
-            echo ' <img class="sectionImg"  src="./assets/icons/svg.png" alt="icon img">';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/svg.png' alt='icon img'> </a>";
             break;
         case 'txt':
-            echo ' <img class="sectionImg"  src="./assets/icons/txt.png" alt="icon img">';
+            echo "<a href='$rootf'> <img class='sectionImg'  src='./assets/icons/txt.png' alt='icon img'> </a>";
             break;
         case 'zip':
-            echo ' <img class="sectionImg"   src="./assets/icons/zip.png" alt="icon img" >';
+            echo "<a href='$rootf'> <img class='sectionImg'   src='./assets/icons/zip.png' alt='icon img' </a> >";
             break;
         default:
-            echo ' <img class="sectionImg"   src="./assets/icons/folder.png" alt="icon img" >';
+            echo "<a href='$rootf'> <img class='sectionImg'   src='./assets/icons/folder.png' alt='icon i </a>mg' >";
             break;
     };
+}
+
+function asideFiles()
+{
+
 }
