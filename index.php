@@ -107,6 +107,7 @@ require("./modules/functions.php");
                         ?>
                         <form method="post" action="./modules/create.php" id="create_form">
                             <input type="text" name="file_name">
+                            <input type="text" name="path" value='<?php echo $path ?>' style="display:none;">
                             <input type="submit" value="Create_File" name="create_file">
                         </form>
                     </div>
