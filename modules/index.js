@@ -25,4 +25,23 @@ for (let i = 0; i < files.length; i++) {
   }
 }
 
+$(".folder").on("click", oneclick)
+$(".folder").on("dblclick", doubleclick)
+$(".folder").focusin(function (e) {
+  console.log("hi");
+  $(e.target).css("background-color", "blue");
+})
 
+
+
+function oneclick(e) {
+  e.preventDefault();
+
+}
+function doubleclick(e) {
+  e.preventDefault();
+  href = $(e.target).parent().attr("href")
+  console.log($(e.target).parent().attr("href"));
+  window.location.href = href;
+
+}

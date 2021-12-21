@@ -21,8 +21,8 @@ function loadFiles()
                             </div>
                         </div>';
             } else if (is_dir("$path/$element")) {
-                echo '<div class="col d-flex flex-column">
-                        <a href="./index.php?path=' . $path . '/' . $element . '"><i class="fas fa-folder fa-5x"></i></a>
+                echo '<div class="col d-flex flex-column folder">
+                <a href="./index.php?path=' . $path . '/' . $element . '"><i class="fas fa-folder fa-5x"></i></a>
                                     <div class="infoCard">
                                         <p class=" fileName">' . $element . '</p>
                                     </div>
