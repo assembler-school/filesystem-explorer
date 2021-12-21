@@ -91,10 +91,9 @@ require("./modules/functions.php");
                 </div>
             </div>
         </div>
-        <<<<<<< HEAD <!--MODAL FOR CREAR FOLDERS-->
-            =======
+<!--MODAL FOR CREAR FOLDERS-->
+
             <!--MODAL FOR CREATE FOLDERS-->
-            >>>>>>> d69fa79926b406714669e74c9631852a4799f982
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -150,28 +149,26 @@ require("./modules/functions.php");
                     </section>
                 </article>
             </main>
-    </section>
-    <section class="col-left">
-        <div>
-            <TABLE BORDER>
-                <TR>
-                    <TH>Creation date</TH>
-                    <TH>Last Modified date</TH>
-                    <TH>Size</TH>
-                </TR>
-                <TR>
-                    <TD>A</TD>
-                    <TD>B</TD>
-                    <TD>C</TD>
-                </TR>
-                <TR>
-                    <TD>D</TD>
-                    <TD>E</TD>
-                    <TD>F</TD>
-                </TR>
-            </TABLE>
-        </div>
-    </section>
+<!--RIGTH SIDE-->
+    <section class="navbar navbar-expand-sm navbar-dark bg-primary flex-nowrap">
+    <TABLE BORDER>
+	<TR>
+		<TH>Head1</TH> <TH>Head2</TH> <TH>Head3</TH>
+	</TR>
+	<TR>
+		<TD>A</TD> <TD>B</TD> <TD>C</TD>
+	</TR>
+	<TR>
+		<TD>D</TD> <TD>E</TD> <TD>F</TD>
+	</TR>
+</TABLE>	
+
+    <div class="navbar-collapse collapse w-100 justify-content-flex-start" id="navbar5">
+        
+    </div>
+    <div class="w-100"><!--spacer--></div>
+</section>
+
 
     <!-- Modal Delete -->
     <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

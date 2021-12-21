@@ -41,6 +41,17 @@
   display: flex;
   flex-direction:row-reverse;
 }
+@media (min-width: 768px) {
+  .navbar-brand.abs
+      {
+          position: absolute;
+          width: auto;
+          left: 50%;
+          transform: translateX(-50%);
+          text-align: center;
+      }
+  }
+  
 .container-fluid {
   width: 100%;
   margin-right: auto;
