@@ -181,3 +181,6 @@ transition: color .15s ease-in-out,background-color .15s ease-in-out,border-colo
 .side-bar .menu .item .sub-menu a{
   padding-left: 80px;
 }
+svg {
+  display: none;
+}
