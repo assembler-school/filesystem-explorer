@@ -3,17 +3,14 @@ function loadFiles()
 {
     try {
         //IF WE ARE IN OTHER FOLDER
-        echo print_r($_GET);
         if (isset($_GET["path"])) {
             $path = $_GET["path"];
-            echo $path;
             //IF WE ARE IN INDEX.PHP
 
         } else if (empty($_GET)) {
             $path = "./root";
         }
         $myFiles = getarrayDiff($path);
-        echo print_r($myFiles);
         foreach ($myFiles as $key => $element) {
             if (is_file("$path/$element")) {
                 echo '<div class="col d-flex flex-column">
@@ -32,7 +29,7 @@ function loadFiles()
                                 </div>';
             }
         }
-    } catch (Exception $t) {
+    } catch (Throwable $t) {
         echo "FOLDER NOT FOUND";
         $t->getMessage();
     }
@@ -41,10 +38,11 @@ function loadFiles()
 function folderSideBar()
 {
     $my_dir = "./root";
+
     $folders = getarrayDiff($my_dir);
     foreach ($folders as $key => $element) {
         if (is_dir("$my_dir/$element")) {
-            echo '<a href="index.php?infolder=' . $key . '" class="sub-item"><i class="fas fa-folder"></i>' . $element . '</a>';
+            echo '<a href="index.php?path=' . $my_dir . '/' . $element . '" class="sub-item"><i class="fas fa-folder"></i>' . $element . '</a>';
         }
     }
 }
@@ -54,13 +52,28 @@ function getarrayDiff($dir)
 }
 function breadcrumb($path)
 {
-    $arrParameters = explode("/", $path);
-    foreach ($arrParameters as $key => $element) {
-        if ($key == 1) {
-            echo '<li class="breadcrumb-item" aria-current="page"><a href="index.php">' . $element . '</a></li>';
+    if (!empty($path)) {
+        $arrParameters = explode("/", $path);
+        $numParameters = count($arrParameters);
+        $getUrl = array();
+        foreach ($arrParameters as $key => $element) {
+            if ($key == 1) {
+                echo '<li class="breadcrumb-item" aria-current="page"><a href="index.php">' . $element . '</a></li>';
+            } else if ($key > 1 && $key != $numParameters - 1) {
+                //GET HREF CORRECTLY IN ORDER
+                if ($key === 2) {
+                    //FIRST ITERATION
+                    $getUrl[$key] = "./root/$element";
+                } else {
+                    //NEXTS ITERATIONS
+                    $getUrl[$key] = $getUrl[$key - 1] . '/' . $element;
+                }
+                echo '<li class="breadcrumb-item" aria-current="page"><a href="index.php?path=' . $getUrl[$key] . '">' . $element . '</a></li>';
+            } else if ($key === $numParameters - 1) {
+                echo '<li class="breadcrumb-item active" aria-current="page">' . $element . '</li>';
+            }
         }
-        if ($key > 1) {
-            echo '<li class="breadcrumb-item active" aria-current="page">' . $element . '</li>';
-        }
+    } else {
+        echo '<li class="breadcrumb-item" aria-current="page"><a href="index.php">' . "root" . '</a></li>';
     }
 }
