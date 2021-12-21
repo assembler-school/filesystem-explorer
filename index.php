@@ -53,7 +53,7 @@ require("./modules/functions.php");
         <nav>
             <ol class="breadcrumb">
                 <?php
-                breadcrumb($actualPath);
+                @breadcrumb($_GET["path"]);
                 ?>
                 <i class="fas fa-info-circle fa-lg" style="color:black;" id="infoCircle"></i>
             </ol>
@@ -125,7 +125,6 @@ require("./modules/functions.php");
             </article>
         </main>
     </section>
-
 </body>
 
 </html>
