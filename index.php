@@ -43,7 +43,7 @@ require("./modules/functions.php");
                             <button class="btn btn-outline-success" type="submit">Search</button>
                             <button class="btnLogin">Login</button>
                             <button type="button" class="btn btn-warning">Sign-up</button>
-                            <img class="UserIcon" src="./assets/img/usuario.png" alt="">
+                            <img class="UserIcon" src="./assets/img/dsBuffer.jpg" alt="">
                         </form>
                     </div>
                 </div>
@@ -91,10 +91,10 @@ require("./modules/functions.php");
                 </div>
             </div>
         </div>
-        <<<<<<< HEAD <!--MODAL FOR CREAR FOLDERS-->
-            =======
-            <!--MODAL FOR CREATE FOLDERS-->
-            >>>>>>> d69fa79926b406714669e74c9631852a4799f982
+<!--MODAL FOR CREAR FOLDERS-->
+
+<!--MODAL FOR CREATE FOLDERS-->
+
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
