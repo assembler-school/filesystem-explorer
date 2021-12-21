@@ -52,7 +52,7 @@ function getarrayDiff($dir)
 }
 function breadcrumb($path)
 {
-    if (!empty($path)) {
+    if ($path) {
         $arrParameters = explode("/", $path);
         $numParameters = count($arrParameters);
         $getUrl = array();
