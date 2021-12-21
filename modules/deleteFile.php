@@ -8,10 +8,10 @@ if (isset($_GET["fileName"])){
   }
   else if(isset($_GET["root"])) {
     $root=$_GET["root"];
-        // try{
+        //try{
         rmdir(".".$root);
             if(is_dir(".".$root)){
-                // throw new Exception("dont delete");
+                //throw new Exception("dont delete");
                 header("Location:../index.php?error='FolderNotDeleted'");
             }
             else {
