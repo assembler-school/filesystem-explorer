@@ -1,13 +1,11 @@
 body{
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
-
 }
+.content{
+    margin-top: 15em;
+}
+
 .logo{
-    margin-left: 3em;
-}
-
-.sectionImg{
-    margin: .5em;
-    width: 15%;
+    margin-left: 1em;
 }
