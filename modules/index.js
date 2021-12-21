@@ -1,14 +1,15 @@
 /*toggle sub menus*/
-$(document).ready(function(){
-  $('.sub-btn').on("click", function(){
+$(document).ready(function () {
+  $('.sub-btn').on("click", function () {
     $(this).next('.sub-menu').slideToggle();
     console.log('hola');
-});
+  });
 });
 
-$("#btnCreate").on("click", function(){
-console.log("funciona");
+$("#btnCreate").on("click", function () {
+  console.log("funciona");
 })
+
 
 //show trash icon
 var files = document.getElementsByClassName("sub-item")
@@ -23,3 +24,5 @@ function notShowTrash(){
   svgTrash[i].style.display = 'none'
 }
 }
+
+
