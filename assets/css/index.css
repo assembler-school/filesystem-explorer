@@ -20,7 +20,7 @@ section .container{
 }
 .url .breadcrumb{
     background-color: var(--header-color);
-    
+    color: black;
 }
 .breadcrumb .active{
     color:var(--white);

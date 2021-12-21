@@ -91,85 +91,124 @@ require("./modules/functions.php");
                 </div>
             </div>
         </div>
-
-        <!--MODAL FOR CREAR FOLDERS-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <<<<<<< HEAD <!--MODAL FOR CREAR FOLDERS-->
+            =======
+            <!--MODAL FOR CREATE FOLDERS-->
+            >>>>>>> d69fa79926b406714669e74c9631852a4799f982
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <?php
+                            if (isset($_POST["Create_File"])) {
+                                mkdir($_POST["file_name"],);
+                            }
+                            ?>
+                            <form method="post" action="./modules/create.php" id="create_form">
+                                <input type="text" name="file_name">
+                                <input type="text" name="path" value='<?php echo $path ?>' style="display:none;">
+                                <input type="submit" value="Create_File" name="create_file">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <?php
-                        if (isset($_POST["Create_File"])) {
-                            mkdir($_POST["file_name"],);
-                        }
-                        ?>
-                        <form method="post" action="./modules/create.php" id="create_form">
+                </div>
+            </div>
+            <!--MODAL EDIT-->
+            <div class="modal" tabindex="-1" id="modalEdit">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit File</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
                             <input type="text" name="file_name">
-                            <input type="text" name="path" value='<?php echo $path ?>' style="display:none;">
-                            <input type="submit" value="Create_File" name="create_file">
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--MODAL EDIT-->
-        <div class="modal" tabindex="-1" id="modalEdit">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Edit File</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="text" name="file_name">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Main has to be a grid or flexbox responsive with cols and rows of bootstrap -->
-        <main class="container">
-            <!-- Cada section sera un fichero diferente que carga -->
-            <article class="row">
-                <section class="col-4">
-                    <?php
-                    loadFiles();
-                    ?>
-                    </div>
-                </section>
-            </article>
-        </main>
+            <!-- Main has to be a grid or flexbox responsive with cols and rows of bootstrap -->
+            <main class="container">
+                <!-- Cada section sera un fichero diferente que carga -->
+                <article class="row">
+                    <section class="col-4">
+                        <?php
+                        loadFiles();
+                        ?>
+                        </div>
+                    </section>
+                </article>
+            </main>
     </section>
-    <section  class="col-left">
-            <div>
-                <TABLE BORDER>
-                    <TR>
-                        <TH>Creation date</TH>
-                        <TH>Last Modified date</TH>
-                        <TH>Size</TH>
-                    </TR>
-                    <TR>
-                        <TD>A</TD>
-                        <TD>B</TD>
-                        <TD>C</TD>
-                    </TR>
-                    <TR>
-                        <TD>D</TD>
-                        <TD>E</TD>
-                        <TD>F</TD>
-                    </TR>
-                </TABLE>
+    <section class="col-left">
+        <div>
+            <TABLE BORDER>
+                <TR>
+                    <TH>Creation date</TH>
+                    <TH>Last Modified date</TH>
+                    <TH>Size</TH>
+                </TR>
+                <TR>
+                    <TD>A</TD>
+                    <TD>B</TD>
+                    <TD>C</TD>
+                </TR>
+                <TR>
+                    <TD>D</TD>
+                    <TD>E</TD>
+                    <TD>F</TD>
+                </TR>
+            </TABLE>
+        </div>
+    </section>
+
+    <!-- Modal Delete -->
+    <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Deleting</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary">Yes</button>
+                </div>
             </div>
-        </section>
+        </div>
+    </div>
+
+    <!-- Modal Show Files -->
+    <div class="modal fade" id="modalFiles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
