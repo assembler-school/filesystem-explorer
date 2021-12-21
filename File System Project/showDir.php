@@ -42,18 +42,13 @@ function sectionFiles()
     $path = "./root";
     $newDir = new DirectoryIterator($path);
     foreach ($newDir as $fileinfo) {
-        if (isset($_GET["$newDir"])) {
-            $newPath = "./root/$newDir";
-            // // echo $newPath;
+        if (isset($_GET["$fileinfo"])) {
+            $newPath = "./root/$fileinfo";
             $probandol = new DirectoryIterator($newPath);
-            //print_r($probandol) ;
             foreach ($probandol as $pr) {
-                echo $pr;
                 if (!$pr->isDot()) {
-                    echo $pr;
-                    echo date('F d Y H:i:s', filemtime($pr)) . '<br>';
-                    echo bytesToHuman(folderSize($pr)) . "<br>";
                     $extension = $pr->getExtension();
+                    //echo bytesToHuman(folderSize($pr)) . "<br>";
                     filesIcon($extension);
                     echo $pr->getFilename() . "<br>";
                     // echo $pr->getFileInfo();
@@ -67,7 +62,7 @@ function filesIcon($extension)
 {
     switch ($extension) {
         case 'doc':
-            echo ' <img  class="sectionImg"  src="./assets/icons/doc.png" alt="doc img">';
+            echo '<a href="ppee"><img  class="sectionImg" src="./assets/icons/doc.png" alt="doc img"></a> ';
             break;
         case 'jpg':
             echo ' <img class="sectionImg"  src="./assets/icons/jpg.png" alt="icon img">';
@@ -107,6 +102,9 @@ function filesIcon($extension)
             break;
         case 'zip':
             echo ' <img class="sectionImg"   src="./assets/icons/zip.png" alt="icon img" >';
+            break;
+        default:
+            echo ' <img class="sectionImg"   src="./assets/icons/folder.png" alt="icon img" >';
             break;
     };
 }
