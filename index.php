@@ -53,7 +53,11 @@ require("./modules/functions.php");
         <nav>
             <ol class="breadcrumb">
                 <?php
-                @breadcrumb($_GET["path"]);
+                $path = false;
+                if (isset($_GET["path"])) {
+                    $path = $_GET["path"];
+                }
+                breadcrumb($path);
                 ?>
                 <i class="fas fa-info-circle fa-lg" style="color:black;" id="infoCircle"></i>
             </ol>
@@ -66,17 +70,17 @@ require("./modules/functions.php");
                 <div class="menu">
                     <div class="options">
                         <button id="btnCreate" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">NEW FILE</button>
-                        <label for="upload" class="btn btn-warning">
-                            <i class="fas fa-file-upload fa-2x"></i>
-                            <input type="file" name="upload" id="upload" style="display:none;">
-                        </label>
+                        <!-- FORM TO UPLOAD FILES -->
+                        <form method="post" action="./modules/uploadFile.php" enctype="multipart/form-data">
+                            <label for="upload" class="btn btn-warning">
+                                <i class="fas fa-file-upload fa-2x"></i>
+                                <input type="text" name="path" value='<?php echo $path ?>' style="display:none;">
+                                <input type="file" name="uploadedFile" style="display:none;" id="upload" onchange="this.form.submit();" accept=".doc,.csv,.jpg,.png,.txt,.ppt,.odt,.pdf,.zip,.rar,.exe,.svg,.mp3,.mp4">
+                            </label>
+                        </form>
                     </div>
                     <div class="item"><a class="sub-btn"><i class="fa fa-file-code-o"></i>My files</a>
                         <div class="sub-menu">
-                            <!-- <a href="index.php?infolder=2" class="sub-item"><i class="fas fa-music"></i>My music</a>
-                            <a href="index.php?infolder=3" class="sub-item"><i class="fa fa-video-camera"></i>My videos</a>
-                            <a href="index.php?infolder=4" class="sub-item"><i class="fa fa-book"></i>My books</a>
-                            <a href="index.php?infolder=5" class="sub-item"><i class="fa fa-picture-o"></i>Photos</a> -->
                             <?php
                             folderSideBar();
                             ?>
@@ -103,6 +107,7 @@ require("./modules/functions.php");
                         ?>
                         <form method="post" action="./modules/create.php" id="create_form">
                             <input type="text" name="file_name">
+                            <input type="text" name="path" value='<?php echo $path ?>' style="display:none;">
                             <input type="submit" value="Create_File" name="create_file">
                         </form>
                     </div>
