@@ -42,6 +42,9 @@ body{
 .fa-file-excel{
     color: green;
 }
+.fa-file-image{
+    color: rgb(141, 73, 84) !important;
+}
 
  .selected-a{
     background-color: rgba(166, 166, 218, 0.3) !important;

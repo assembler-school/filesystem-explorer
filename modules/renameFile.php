@@ -12,13 +12,11 @@ else if(isset($_GET["root"])){
 $root = $_GET["root"];
 $positionBar= strrpos($root,"/")+1;
 $stringFolderName = substr($root,0, $positionBar);
-
 $oldNameFolder = ".".$root;
 $inputNewFolderName= $_POST["inputNewName"];
 $newFolderName =".".$stringFolderName."/".$inputNewFolderName;
 rename($oldNameFolder,$newFolderName);
 }
 
-
-// header("Location:../index.php?root=$root&fileName=$newName");
+header("Location:../index.php?root=$root&fileName=$newName");
 

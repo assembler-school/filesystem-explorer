@@ -18,8 +18,8 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" contenteditable="true">Our Cloud</a>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" action="./modules/searchFiles.php">
+                    <input class="form-control me-2" type="search" name="searchWords" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -45,7 +45,8 @@
                 ?>
                 <button type="button" formaction="./modules/createFile.php" method="POST" name="btnNewFile"class="btn btn-sm btn-outline-secondary me-2" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">New File</button>
 
-                <button name="btnUnload"class="btn btn-sm btn-outline-secondary me-2" type="button">Upload</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary me-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop3">Upload
+                </button>
 
                 <button name="btnDownload"class="btn btn-sm btn-outline-secondary me-2" type="button">Download</button>
                 <button name="btnMove"class="btn btn-sm btn-outline-secondary me-2" type="button">Move to</button>
@@ -89,6 +90,14 @@
 <!-- Files container 2-->
     <div class="col-4 secondary">
     <?php
+
+require_once("./modules/searchFiles.php");
+
+  searchFilesFun($searchWord);
+
+
+
+
     require_once("./modules/generateFiles.php");
     if (isset( $_GET["root"])){
       $newRoot = $_GET["root"];
@@ -224,8 +233,6 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <!-- <button type="button" class="btn btn-primary">Understood</button> -->
         <!-- <button type="submit" name="btnNewFile"  class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Rename</button> -->
-        
-
 <?php
                 if(isset($_GET["fileName"])){
                   $fileName = $_GET["fileName"];
@@ -242,7 +249,32 @@
                   <button disabled="true" type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fioleName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
                 <?php
                 }
-                ?>
+?>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Upload -->
+<div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-3" aria-labelledby="staticBackdropLabel3" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel3">Upload</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+                <form class="mb-0" action="./modules/uploadFile.php?root=<?=$root?>" method="post" enctype="multipart/form-data">
+                Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" value="Upload Image" name="submit">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+        <button name="btnUnload"class="btn btn-sm btn-outline-secondary me-2" type="submit" action="./modules/uploadFile.php" method="POST" value="Upload Image" name="submit">Upload the image</button>
+
         </form>
       </div>
     </div>
@@ -253,23 +285,3 @@
 
 </body>
 </html>
-
-
-
-<?php
-                if(isset($_GET["fileName"])){
-                  $fileName = $_GET["fileName"];
-                  ?>
-                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fileName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
-                  <?php
-                  }else if (isset($_GET["root"])){
-                    $root = $_GET["root"];
-                  ?>
-                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button" >Rename</button>
-                <?php
-                }else {
-                  ?>
-                  <button disabled="true" type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fioleName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
-                <?php
-                }
-                ?>
