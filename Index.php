@@ -10,6 +10,7 @@
       rel="stylesheet">
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="./assets/js/script.js" defer></script>
+    <script src="https://kit.fontawesome.com/157b40bd37.js" crossorigin="anonymous"></script>
     <title>Files System Explorer</title>
 </head>
 <body>
@@ -36,17 +37,37 @@
                 ?>
                     <button type="submit" formaction="./modules/createFolder.php?root=<?=$root?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">New Folder</button>
                 <?php
+                }else {
+                  ?>
+                  <button disabled="true" type="submit" formaction="./modules/createFolder.php?root=<?=$root?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">New Folder</button>
+              <?php
                 }
                 ?>
                 <button type="button" formaction="./modules/createFile.php" method="POST" name="btnNewFile"class="btn btn-sm btn-outline-secondary me-2" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">New File</button>
-                <button name="btnUnload"class="btn btn-sm btn-outline-secondary me-2" type="button">Unload</button>
+
+                <button name="btnUnload"class="btn btn-sm btn-outline-secondary me-2" type="button">Upload</button>
+
                 <button name="btnDownload"class="btn btn-sm btn-outline-secondary me-2" type="button">Download</button>
                 <button name="btnMove"class="btn btn-sm btn-outline-secondary me-2" type="button">Move to</button>
                 <button name="btnCopy"class="btn btn-sm btn-outline-secondary me-2" type="button">Copy to</button>
-                <button name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-                Delete
-                </button>
+                <?php
+                if(isset($_GET["fileName"])){
+                  $fileName = $_GET["fileName"];
+                  ?>
+                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fileName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
+                  <?php
+                  }else if (isset($_GET["root"])){
+                    $root = $_GET["root"];
+                  ?>
+                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
+                <?php
+                }else {
+                  ?>
+                  <button disabled="true" type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fioleName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
+                <?php
+                }
+                ?>
+                <button type="button" class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Delete</button>
             </form>
     </div>
 <div class="row">
@@ -85,8 +106,12 @@
     require_once("./modules/generateFiles.php");
     if (isset( $_GET["root"])){
       $newRoot = $_GET["root"];
+
       if(is_dir($newRoot)){
+  
           generateFilesFun($newRoot);
+
+
       }else{
 
       }
@@ -128,7 +153,12 @@
               <label for="name">Nombre del archivo</label>
               <input type="text" name="fileName">
               <label for="name">Extension del archivo</label>
-              <input type="text" name="fileExtension">
+              <select type="text" name="fileExtension">
+                <option value=".txt">Hoja de texto</option>
+                <option value=".pptx">Power point</option>
+                <option value=".pdf">PDF</option>
+                <option value=".xlsx">Excel</option>
+              </select>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

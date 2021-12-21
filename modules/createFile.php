@@ -1,11 +1,12 @@
 <?php
 $root = $_GET["root"];
 $fileNameS = $_POST["fileName"];
-createFileFun($root, $fileNameS);
-function createFileFun($root, $fileNameS){
+$fileExtension = $_POST["fileExtension"];
+createFileFun($root, $fileNameS, $fileExtension);
+function createFileFun($root, $fileNameS,$fileExtension){
     echo "-he creado un nuevo archivo";
     try{
-        $newFileName = ".".$root."/".$fileNameS;
+        $newFileName = ".".$root."/".$fileNameS.$fileExtension;
         echo $newFileName;
         $fileContent = "Hola soy el contenido";
         $file= fopen($newFileName,"w");

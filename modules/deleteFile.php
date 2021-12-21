@@ -4,7 +4,7 @@ if (isset($_GET["fileName"])){
     $fileName=$_GET["fileName"];
     $fileUnlink= ".".$root."/".$fileName;
     unlink($fileUnlink);
-    header("Location:../index.php?root='$root'");
+    header("Location:../index.php?root=$root");
   }
   else if(isset($_GET["root"])) {
     $root=$_GET["root"];

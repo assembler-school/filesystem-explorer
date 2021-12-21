@@ -4,9 +4,9 @@ function generateFoldersTreeFun($ruta,$count){
     if (is_dir($ruta)){
         // Abre un gestor de directorios para la ruta indicada
         $gestor = opendir($ruta);
-        //echo "<ul>";
+        echo "<ul class='fa-ul'>";
         // Recorre todos los elementos del directorio
-        
+
         while (($archivo = readdir($gestor)) !== false)  {
             $count = $count + 1 ;
             $ruta_completa = $ruta . "/" . $archivo;
@@ -14,29 +14,29 @@ function generateFoldersTreeFun($ruta,$count){
             if ($archivo != "." && $archivo != "..") {
                 // Si es un directorio se recorre recursivamente
                 if (is_dir($ruta_completa)) {
-                //echo "<span class='material-icons-outlined'>folder</span>";
-                //$count = $count + 1 ;
-                ?>
+                    //<span class='material-icons-outlined'>folder</span> google icons
+                    if (isset($_GET["root"])){
+                        if($_GET["root"] == $ruta_completa){
+                            echo "<li class='foldersTitle'>
+                                    <i class='fa-li fas fa-folder'></i>
+                                    <a class='linkStyles selected-a' href='./index.php?root=$ruta_completa'>$archivo</a>
+                                </li>";
+                        }else{
+                            echo "<li class='foldersTitle'>
+                        <i class='fa-li fas fa-folder'></i>
+                        <a class='linkStyles' href='./index.php?root=$ruta_completa'>$archivo</a>
+                    </li>";
 
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-heading<?=$count?>">
-                        <div class="foldersTitle">
-                            <span class='material-icons-outlined'>folder</span>
-                            <a href="./index.php?root=<?=$ruta_completa?>"><?=$archivo?></a>
-                        </div>
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<?=$count?>" aria-expanded="false" aria-controls="panelsStayOpen-collapse<?=$count?>">
-                        </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapse<?=$count?>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<?=$count?>">
-                        <div class="accordion-body">
-                       <?= generateFoldersTreeFun($ruta_completa,$count); ?>
-                        </div>
-                    </div>
-                </div>
+                        }
+                    }else{
+                        echo "<li class='foldersTitle'>
+                        <i class='fa-li fas fa-folder'></i>
+                        <a class='linkStyles' href='./index.php?root=$ruta_completa'>$archivo</a>
+                    </li>";
 
-                <?php
-                //echo "<li><a href="."./index.php?root=<?=$ruta_completa? >"."><?=$archivo? > </a></li>";
-                //generateFoldersTreeFun($ruta_completa);
+                    }
+                
+                generateFoldersTreeFun($ruta_completa,$count);
                 } else {
                     //echo "<li>" . $archivo . "</li>";
                 }
