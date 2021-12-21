@@ -26,16 +26,16 @@ include 'modules/createModal.php';
         ?>
         </aside>
     </div>
-    <form action="./createfolder.php" method="post" enctype="multipart/form-data">
+    <!-- <form action="./createfolder.php" method="post" enctype="multipart/form-data">
         <input type="file" name="Fileimage" id="fileofimage">
         <input type="submit" value="Upload a file" name="buttclick">
-    </form>
+    </form> -->
 
-    <form action="./createfolder.php" method="post" enctype="multipart/form-data">
+    <!-- <form action="./createfolder.php" method="post" enctype="multipart/form-data">
         Type Folder Name:<input type="text" name="foldername" /><br /><br />
         Select Folder to Upload: <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" moxdirectory="" /><br /><br />
         <input type="Submit" value="Upload" name="upload" />
-     </form>
+     </form> -->
     <?= isset($_GET["error"]) ? "The name already exist" : ""; ?>
 
 </body>

@@ -26,7 +26,6 @@
                         <div class="mb-3">
                             <label class="form-label d-flex justify-content-center">File Name </label>
                             <input type="text" class="form-control" id="filename" name="filename" placeholder="myFolder / myFile" />
-                           
                         </div>
                         <div class="btn-group collapse show" id="collapseExample" >
                             <select class="form-select" name="type" aria-label="Default select example">
@@ -82,45 +81,27 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="./createfolder.php" method="post">
+                <form action="./createfolder.php" method="post" enctype="multipart/form-data"> 
                     <div class="row align-items-center mx-auto">
                         <div class="form-check col  mx-auto">
-                            <input class="form-check-input" type="radio" value="createFolder" id="flexCheckDefault" name="create" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <input class="form-check-input" type="radio" value="createFolder" id="flexCheckDefaultn" name="create" data-bs-toggle="collapse" href="#collapsefile" role="button" aria-expanded="false" aria-controls="collapsefile">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Upload Folder
                             </label>
                         </div>
                         <div class="form-chec col mx-auto">
-                            <input class="form-check-input" type="radio" value="createFile" id="flexCheckChecked" checked name="create" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <input class="form-check-input" type="radio" value="createFile" id="flexCheckChecked" checked name="create" data-bs-toggle="collapse" href="#collapsefile" role="button" aria-expanded="false" aria-controls="collapsefile">
                             <label class="form-check-label" for="flexCheckChecked">
+
                                 Upload File
                             </label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="mb-3">
+                    <div class="row" >
+                        <div class="mb-3 btn-group collapse" id="collapsefile" >
                             <label class="form-label d-flex justify-content-center">Folder Name </label>
-                            <input type="text" class="form-control" id="filename" name="filename" placeholder="myFolder / myFile" />
-                           
+                            <input type="text" class="form-control" id="filename" name="foldername" placeholder="Put name" />
                         </div>
-                        <!-- <div class="btn-group collapse show" id="collapseExample" >
-                            <select class="form-select" name="type" aria-label="Default select example">
-                                <option value=".doc">.doc</option>
-                                <option value=".csv">.csv</option>
-                                <option value=".jpg">.jpg</option>
-                                <option value=".png">.png</option>
-                                <option selected value=".txt">.txt</option>
-                                <option value=".ppt">.ppt</option>
-                                <option value=".odt">.odt</option>
-                                <option value=".pdf">.pdf</option>
-                                <option value=".zip">.zip</option>
-                                <option value=".rar">.rar</option>
-                                <option value=".exe">.exe</option>
-                                <option value=".svg">.svg</option>
-                                <option value=".mp3">.mp3</option>
-                                <option value=".mp4">.mp4</option>
-                            </select>
-                        </div> -->
                     </div>
                     <div class="mb-3">
                             <label class="form-label d-flex justify-content-center">File Root</label>
@@ -140,7 +121,22 @@
                             <!-- <input type="text" class="form-control" id="fileroot" name="fileroot" placeholder="File Name " /> -->
                         </div>
                     <div class="modal-footer">
-                        <button type="submit" name="createForF" class="btn btn-secondary col-6 mx-auto ">Upload</button>
+                    <!-- <form action="./createfolder.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="Fileimage" id="fileofimage">
+        <input type="submit" value="Upload a file" name="buttclick">
+    </form> -->
+                
+    <input type="file" name="Fileimage" id="collapsefile" class="btn-group collapse show" >
+    <br>
+    <div class="mb-3 collapse" id="collapsefile">
+    <!-- <h5>Choose name for the folder</h5> -->
+    <!-- <input type="text" name="foldername" class="justify-content-center">  -->
+        <!-- <h5>Select Folder to Upload: </h5> -->
+        <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" moxdirectory="" >
+        <!-- <input type="Submit" value="Upload" name="upload"> -->
+        <button type="submit" value="Upload a folder" name="upload" class="btn btn-secondary">Upload</button>
+    </div>
+                        <button type="submit" value="Upload a file" name="buttclick" id="collapsefile" class="btn btn-secondary collapse show">Upload</button>
                     </div>
                 </form>
             </div>
