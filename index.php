@@ -52,9 +52,10 @@ require("./modules/functions.php");
         <!-- navigation url -->
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Library</li>
-                <i class="fas fa-info-circle fa-2x" id="infoCircle"></i>
+                <?php
+                breadcrumb($actualPath);
+                ?>
+                <i class="fas fa-info-circle fa-lg" style="color:black;" id="infoCircle"></i>
             </ol>
         </nav>
     </section>
@@ -63,8 +64,14 @@ require("./modules/functions.php");
         <div class="sibeBar">
             <div class="side-bar">
                 <div class="menu">
-                    <button id="btnCreate" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">NEW FILE</button>
-                    <div class="item"><a class="sub-btn"><i class="fa fa-file-code-o"></i>My file</a>
+                    <div class="options">
+                        <button id="btnCreate" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">NEW FILE</button>
+                        <label for="upload" class="btn btn-warning">
+                            <i class="fas fa-file-upload fa-2x"></i>
+                            <input type="file" name="upload" id="upload" style="display:none;">
+                        </label>
+                    </div>
+                    <div class="item"><a class="sub-btn"><i class="fa fa-file-code-o"></i>My files</a>
                         <div class="sub-menu">
                             <!-- <a href="index.php?infolder=2" class="sub-item"><i class="fas fa-music"></i>My music</a>
                             <a href="index.php?infolder=3" class="sub-item"><i class="fa fa-video-camera"></i>My videos</a>
