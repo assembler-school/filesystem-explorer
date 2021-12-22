@@ -49,3 +49,8 @@ function doubleclick(e) {
   window.location.href = href;
 
 }
+
+$("input[name='attachment[]']").each(function() {
+  var fileName = $(this).val();
+  console.log(fileName);
+});

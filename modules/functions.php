@@ -104,6 +104,16 @@ function deleteAll($dir1)
     rmdir($dir1);
 }
 
+if(isset($_POST['Edit-Form'])){
+    $old_name = "./../root/nueva";
+    $new_name = "./../root/".$_POST['edit-name'];
+    $name = rename($old_name, $new_name);
+    print_r($element);
+    header('Location: ./../index.php');
+    };
+
+
+    
 // $nombre_archivo = 'archivo.txt';
 // if (file_exists($nombre_archivo)) {
 //     echo "La última modificación de $nombre_archivo fue: " . date("F d Y H:i:s.", filectime($nombre_archivo));
