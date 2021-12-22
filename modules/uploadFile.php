@@ -19,7 +19,7 @@ if (file_exists('./../root/' . $name)) {
     $name .= "(1)";
 }
 // Check file size
-if ($_FILES["uploadedFile"]["size"] > 50000000000000000000000) {
+if ($_FILES["uploadedFile"]["size"] > 5000000000000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }

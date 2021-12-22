@@ -88,11 +88,24 @@ require("./modules/functions.php");
                         </div>
                     </div>
                     <div class="item"><a href="#"><i class="fa fa-cog"></i>Settings</a></div>
-                    <div class="item"><a href="./modules/trash.php"><i class="fas fa-trash"></i>Trash</a></div>
+                    <div class="item"><i class="fas fa-trash"></i>Trash</div>
                 </div>
             </div>
         </div>
 
+        <!-- Main has to be a grid or flexbox responsive with cols and rows of bootstrap -->
+        <main class="container">
+            <!-- This function laods every single file and folder -->
+            <article class="row">
+
+                <?php
+                loadFiles();
+                ?>
+
+            </article>
+        </main>
+
+        <!-- MODALS -->
         <!--MODAL FOR CREATE FOLDERS-->
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -142,18 +155,6 @@ require("./modules/functions.php");
                 </div>
             </div>
         </div>
-        <!-- Main has to be a grid or flexbox responsive with cols and rows of bootstrap -->
-        <main class="container">
-            <!-- This function laods every single file and folder -->
-            <article class="row">
-                <section class="col-4">
-                    <?php
-                    loadFiles();
-                    ?>
-                    </div>
-                </section>
-            </article>
-        </main>
 
         <!-- Modal Delete -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
