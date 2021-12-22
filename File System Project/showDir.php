@@ -47,68 +47,79 @@ function sectionFiles()
             $probandol = new DirectoryIterator($newPath);
             foreach ($probandol as $pr) {
                 if (!$pr->isDot()) {
-                    $extension = $pr->getExtension();
-                    // $nme= $pr->getFilename();
                     $infofile = $pr->getFileInfo();
+                    $extension = $pr->getExtension();
+                    $fileName = $pr->getFilename();
+                    $fileSize = folderSize($pr);
+                    $lastUpdate= date('F d Y H:i:s', filemtime($infofile));
+                    $fileIcons = filesIcon($extension);
                     //$newfilepath= "?$fileinfo?$nme";
-                    //echo bytesToHuman(folderSize($pr)) . "<br>";
-                    filesIcon($extension, $infofile);
-                    echo $pr->getFilename() . "<br>";
-
+                    //echo $pr->getFilename() . "<br>";
                     // echo $pr->getFileInfo();
+                    fillTable($fileIcons, $fileName, $fileSize, $lastUpdate);
                 }
             }
         }
     };
 }
 
-function filesIcon($extension,$rootf)
+function fillTable($icon,  $fileName, $fileSize, $lastUpdate){
+
+    echo "<tr>";
+    echo "<th scope='row'> $icon </th>";
+    echo "<td>$fileName</td>";
+    echo "<td>$fileSize</td>";
+    echo "<td>$lastUpdate</td>";
+    echo "</tr>";
+};
+
+function filesIcon($extension)
 {
     switch ($extension) {
         case 'doc':
-            echo "<a onclick = obtenerdatos('$rootf')> img  class='sectionImg' src='./assets/icons/doc.png' alt='doc img'>  </a>";
+            "<a> <img  class='sectionImg' src='./assets/icons/doc.png' alt='doc img'>  </a>";
             break;
         case 'jpg':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/jpg.png' alt='icon img'> </a>";
+            "<a> <img class='sectionImg'  src='./assets/icons/jpg.png' alt='icon img'> </a>";
             break;
         case 'pdf':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/pdf.png' alt='icon img'> </a>";
+            "<a> <img class='sectionImg'  src='./assets/icons/pdf.png' alt='icon img'> </a>";
             break;
         case 'csv':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/csv.png' alt='icon img'> </a>";
+            "<a> <img class='sectionImg'  src='./assets/icons/csv.png' alt='icon img'> </a>";
             break;
         case 'exe':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/exe.png' alt='icon img'> </a>";
+            "<a> <img class='sectionImg'  src='./assets/icons/exe.png' alt='icon img'> </a>";
             break;
         case 'mp3':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/mp3.png' alt='icon img'> </a>";
+            "<a> <img class='sectionImg'  src='./assets/icons/mp3.png' alt='icon img'> </a>";
             break;
         case 'mp4':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/mp4.png' alt='icon img'> </a>";
+            "<a> <img class='sectionImg'  src='./assets/icons/mp4.png' alt='icon img'> </a>";
             break;
         case 'odt':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/odt.png' alt='icon img'> </a>";
+            "<a> <img class='sectionImg'  src='./assets/icons/odt.png' alt='icon img'> </a>";
             break;
         case 'png':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/png.png' alt='icon img'  </a>>";
+            "<a> <img class='sectionImg'  src='./assets/icons/png.png' alt='icon img'  </a>>";
             break;
         case 'ppt':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/ppt.png' alt='icon img'> </a>";
+            "<a> <img class='sectionImg'  src='./assets/icons/ppt.png' alt='icon img'> </a>";
             break;
         case 'rar':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/rar.png' alt='icon img'> </a>";
+            "<a> <img class='sectionImg'  src='./assets/icons/rar.png' alt='icon img'> </a>";
             break;
         case 'svg':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/svg.png' alt='icon img'> </a>";
+            "<a> <img class='sectionImg'  src='./assets/icons/svg.png' alt='icon img'> </a>";
             break;
         case 'txt':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/txt.png' alt='icon img'> </a>";
+            "<a> <img class='sectionImg'  src='./assets/icons/txt.png' alt='icon img'> </a>";
             break;
         case 'zip':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'   src='./assets/icons/zip.png' alt='icon img' </a> >";
+            "<a> <img class='sectionImg'   src='./assets/icons/zip.png' alt='icon img' </a> >";
             break;
         default:
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'   src='./assets/icons/folder.png' alt='icon i </a>mg' >";
+            "<a> <img class='sectionImg'   src='./assets/icons/folder.png' alt='icon i </a>mg' >";
             break;
     };
 }

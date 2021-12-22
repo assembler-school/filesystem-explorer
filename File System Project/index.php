@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +9,9 @@
     <!--Todo  Links CDN-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    
+
     <!--Todo Links CSS -->
     <link rel="stylesheet" href="././assets/css/normalize.css">
     <link rel="stylesheet" href="././assets/css/stylefile.css">
@@ -25,25 +26,32 @@ include 'modules/createModal.php';
 ?>
 
 <body>
-<h1>pruebaaa</h1>
+    <h1>pruebaaa</h1>
     <div class="row">
         <aside class="col-3">
             <?php require 'showDir.php'  ?>
         </aside>
-        <section class="col-6">
-
-        <?php
-        sectionFiles();
-        ?>
+        <section class="col-9">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"> Icon</th>
+                        <th scope="col">File Name </th>
+                        <th scope="col">File Size</th>
+                        <th scope="col">Last Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <?php sectionFiles()  ?>
+                </tbody>
+            </table>
         </section>
-
-        <aside class="col-3" id='asidefile'>
-            <!-- <script>
-                function printhere(elem){                }
-            </script> -->
-        <button class="btn btn-primary" onclick=" obtenerdatos(' ./root/abcde/fotonumero2.jpg ')"></button>
-        
-        </aside>
     </div>
     <!-- <form action="./createfolder.php" method="post" enctype="multipart/form-data">
         <input type="file" name="Fileimage" id="fileofimage">
