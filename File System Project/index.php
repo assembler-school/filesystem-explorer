@@ -39,7 +39,6 @@ include 'modules/createModal.php';
 
         <aside class="col-3" id='asidefile'>
             <h1>kjasdnakjsnjkasnk</h1>
-            w
         </aside>
     </div>
     <!-- <form action="./createfolder.php" method="post" enctype="multipart/form-data">
