@@ -47,8 +47,8 @@
   margin-left: auto;
 }
 .LogoNav{
-  height: 60px;
-  width: 120px;
+  height: 80px;
+  width: 140px;
   margin: 5px 0px 5px 95px;
 }
 .bg-light {
@@ -70,6 +70,8 @@
 .nav-link {
   display: block;
   padding: 1.5rem 10rem;
+  margin: 0px 25px;
+  font-size: 20px;
 }
 /*CSS FORM ARCH*/
 .form-control{
@@ -95,6 +97,7 @@
   color: var(--white);
   border-color: var(--white);
   margin: 20px !important;
+  margin-right: 130px !important;
 }
 .btn-warning{
   color: #212529;
@@ -106,7 +109,7 @@
   border-color: var(--white);
   background-color: transparent;
   border: 2px solid;
-padding: 10px 30px 5px 30px ;
+padding: 10px 30px 5px 30px;
 margin: 10px 0px 10px 55px;
 }
 .btn{
@@ -127,8 +130,8 @@ border-radius: .25rem;
 transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .UserIcon{
-  height: 60px;
-  width: 70px;
+  height: 70px;
+  width: 80px;
   margin: 5px 0px 5px 20px;
 }
 /*BTN NEW FILE*/
@@ -196,4 +199,8 @@ transition: color .15s ease-in-out,background-color .15s ease-in-out,border-colo
 }
 .sub-menu svg {
   display: none;
+}
+li a {
+  color: black;
+  font-size: 20px;
 }

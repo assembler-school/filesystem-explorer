@@ -13,6 +13,9 @@ body{
 section {
     margin-bottom: 0px !important;
 }
+.container {
+    margin: 0%;
+}
 section .container{
     margin: 0%;
     padding: 0%;
@@ -23,7 +26,8 @@ section .container{
     color: black;
 }
 .breadcrumb .active{
-    color:var(--white);
+    color: black;
+    font-size: 22px;
 }
 #infoCircle{
    color: var(--white);

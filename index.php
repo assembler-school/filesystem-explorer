@@ -27,21 +27,21 @@ require("./modules/functions.php");
     <section class="navbarUrl">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <img class="LogoNav" src="./assets/img/logo.png" alt="">
-                <a class="navbar-brand" href="index.php">Home</a>
+                <a class="navbar-brand" href="index.php">
+                    <img class="LogoNav" src="./assets/img/logo.png" alt="">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                        <a class="nav-link" href="#">Home</a>
                         <a class="nav-link" href="#">Orders</a>
                         <a class="nav-link" href="#">Products</a>
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Customers</a>
                         <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
-                            <button class="btnLogin">Login</button>
+                            <button type="button" class="btn btn-warning">Login</button>
                             <button type="button" class="btn btn-warning">Sign-up</button>
                             <img class="UserIcon" src="./assets/img/dsBuffer.jpg" alt="">
                         </form>
@@ -198,7 +198,7 @@ require("./modules/functions.php");
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                 </div>
                 <div class="modal-body">
                     ...
