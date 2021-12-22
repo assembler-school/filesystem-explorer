@@ -62,7 +62,11 @@
                 }
                 ?>
 
-                <button name="btnMove"class="btn btn-sm btn-outline-secondary me-2" type="button">Move to</button>
+                <!-- <button name="btnMove"class="btn btn-sm btn-outline-secondary me-2" type="button">Move to</button> -->
+
+                <button type="button" class="btn btn-sm btn-outline-secondary me-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop4">Move to</button>
+
+
                 <!-- <button type="submit" formaction="./modules/copy.php?root=<?=$Root?>&fileName=<?=$fileName?>" method="GET" name="btnCopy"class="btn btn-sm btn-outline-secondary me-2" >Copy</button> -->
                 
                 <?php
@@ -296,7 +300,49 @@ if(isset($_GET["search"]) && !isset($_GET["stop"]) ){
   </div>
 </div>
 
-
+<!-- Modal MoveTO 4 -->
+<div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-4" aria-labelledby="staticBackdropLabel4" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel4">Move To:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form action="./modules/createFile.php?root=<?=$newRoot?>" method="POST">
+          <?php
+          require_once("./modules/locateFolder.php");
+          locateFoldersTreeFun("./root",$count);
+          ?>
+              <label for="name">Nombre del archivo</label>
+              <input type="text" name="inputNewName">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+        <!-- <button type="submit" name="btnNewFile"  class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Rename</button> -->
+<?php
+                if(isset($_GET["fileName"])){
+                  $fileName = $_GET["fileName"];
+                  ?>
+                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fileName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
+                  <?php
+                  }else if (isset($_GET["root"])){
+                    $root = $_GET["root"];
+                  ?>
+                  <button type="submit" formaction="./modules/renameFile.php?root=<?=$root?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button" >Rename</button>
+                <?php
+                }else {
+                  ?>
+                  <button disabled="true" type="submit" formaction="./modules/renameFile.php?root=<?=$root?>&fileName=<?=$fioleName?>" method="POST" name="btnRename"class="btn btn-sm btn-outline-secondary me-2" type="button">Rename</button>
+                <?php
+                }
+?>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
