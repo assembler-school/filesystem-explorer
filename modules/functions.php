@@ -88,16 +88,20 @@ function breadcrumb($path)
     }
 }
 
-/*RENAME FILE*/
+/*EDIT RENAME FILE*/
 
-// Old Name Of The file
-// $old_name = "root/holaTU";
-// $new_name = "root/HELP";
-// $rootPatch = "./root";
 
-// $name = rename($old_name, $new_name);
+
+if(isset($_POST['Edit-Form'])){
+$old_name = "./../root/prueba";
+$new_name = "./../root/".$_POST['edit-name'];
+$name = rename($old_name, $new_name);
+print_r($element);
+// header($Location: './index.php');
+};
+
+
 // delete all files and sub-folders from a folder
-
 
 function deleteAll($dir1) {
 foreach(glob($dir1 . '/*') as $file1) {
