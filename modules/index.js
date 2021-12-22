@@ -65,3 +65,16 @@ function edit() {
   }
 };
 edit();
+
+var closing = document.getElementsByClassName("closing")
+var modalFiles1 = document.getElementById("modalFiles")
+var btnClose = document.getElementsByClassName("btn-close")
+console.log(btnClose)
+closing[0].addEventListener("click", closeclose)
+for (let i = 0; i < btnClose.length; i++) {
+  btnClose[i].addEventListener("click", closeclose)
+}
+
+function closeclose() {
+  modalFiles1.style.display= "none"
+}

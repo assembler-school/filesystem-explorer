@@ -228,7 +228,7 @@ require("./modules/functions.php");
                             <img src="'. visualazing(). $_GET["visualize"] .'"
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="closing" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
