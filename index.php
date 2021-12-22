@@ -209,12 +209,17 @@ require("./modules/functions.php");
         ?>
         <!-- OFF CANVAS INFORMATION -->
         <?php
-
-        ?>
-        <div class="offcanvas offcanvas-end" data-bs-backdrop="false" tabindex="-1" id="offcanvasRight">
+        if (isset($_GET["information"])) {
+            $info = displayInfo($_GET["information"]);
+            echo '<div class="offcanvas offcanvas-end" data-bs-backdrop="false" tabindex="-1" id="offcanvasRight">
             <div class="offcanvas-header">
+<<<<<<< HEAD
                 <h5 id="offcanvasRightLabel">Information</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+=======
+                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <button type="button" class="closing btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+>>>>>>> a02e7667ad24eed1e606ab538ce4dca8d40b9657
             </div>
             <div class="offcanvas-body">
                 <section id="i" class="navbar navbar-dark bg-primary flex-nowrap">
@@ -224,34 +229,56 @@ require("./modules/functions.php");
 
                         </div>
                         <div class="w-100">
-                            <div class="row p-3 border bg-light">Information</div>
-                            <div class="row p-3 border bg-light">DETAILS</div>
-                            <div class="row p-3 border bg-light">TYPE ONF FILE</div>
+                            <div class="row p-3 border bg-light">
+                                <div class="d-flex justify-content-between">
+                                    <h5>Name:</h5>
+                                    <p>' . $info["name"] . '</p>
+                                </div>
+                            </div>
+                            <div class="row p-3 border bg-light">DETAILS
+                            </div>
+                            <div class="row p-3 border bg-light">
+                                <div class="d-flex justify-content-between">
+                                <p>TYPE</p>
+                                <p>' . $info["extension"] . '</p>
+                                </div>
+                            </div>
+
                             <div class="row p-3 border bg-light">
                                 <div class="col">
                                     Creation date
                                 </div>
-                                <div class="col">
-                                    21/12/2021
+                                <div class="col">'
+                . $info["created"] . '
                                 </div>
                                 <div class="row p-3 border bg-light">
                                     <div class="col">
                                         Last Modified Date
                                     </div>
-                                    <div class="col">
-                                        21/12/2021
-                                    </div>
+                                    <div class="col">'
+                . $info["created"] . '
+                                </div>
                                 </div>
                                 <div class="row p-3 border bg-light">
                                     <div class="col">
                                         Size
                                     </div>
+<<<<<<< HEAD
                                     </div>
+=======
+                                    <div class="col">'
+                . $info["size"] . '
+                                </div>
+                                </div>
+>>>>>>> a02e7667ad24eed1e606ab538ce4dca8d40b9657
                             </div>
                         </div>
                 </section>
             </div>
-        </div>
+        </div>';
+        }
+        ?>
+
 </body>
 
 </html>

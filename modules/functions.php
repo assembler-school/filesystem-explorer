@@ -28,20 +28,23 @@ function loadFiles()
                     echo '<img src="' . $icon . '" alt="photo" width="100%" style="cursor:pointer;">';
                 }
 
-                echo '<div class="infoCard">
+                echo '      <div class="infoCard"> 
                                 <p class=" fileName">' . $element . '</p>
-                            </div>
+                            </div> 
                             <div id="nextTo">
                                         <svg class="trash-icon2" class="btn btn-primary" data-bs-toggle="modal" data-url="' . $path . "/" . $element . '" data-bs-target="#deleteModal" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="cursor:pointer;">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                             </svg>
+                                            <a href="./index.php?path=' . $path . '&information=' . $path . '/' . $element . '"><i class="fas fa-info-circle fa-2x"></i></a>
                                     </div>
                         </div>';
             } else if (is_dir("$path/$element")) {
                 //call info function to display it
                 echo '<div class="col d-flex flex-column folder">
-                        <a  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" data-url="' . $path . "/" . $element . '" href="./index.php?path=' . $path . '/' . $element . '"><i class="fas fa-folder fa-5x"></i></a>
+                        <a href="./index.php?path=' . $path . '/' . $element . '">
+                            <i class="fas fa-folder fa-5x"></i>
+                        </a>
                                     <div class="infoCard">
                                         <p class=" fileName">' . $element . '</p>
                                     </div>
@@ -53,6 +56,7 @@ function loadFiles()
                                         <svg xmlns="http://www.w3.org/2000/svg" data-bs-target="#modalEdit" class="renameBtn" data-bs-toggle="modal" data-url="' . $path . "/" . $element . '" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" style="cursor:pointer;"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                         </svg>
+                                        <a href="./index.php?path=' . $path . '&information=' . $path . '/' . $element . '"><i class="fas fa-info-circle"></i></a>
                                     </div>
                                 </div>';
             }
@@ -154,5 +158,12 @@ function displayInfo($path)
     $power = $size > 0 ? floor(log($size, 1024)) : 0;
     $size = number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
     $edited =  date("d/m/Y", filemtime($path));
-    echo "$size, $edited";
+    $name = pathinfo("$path", PATHINFO_BASENAME);
+    $extension = pathinfo("$path", PATHINFO_EXTENSION);
+    return array(
+        "size" => $size,
+        "created" => $edited,
+        "name" => $name,
+        "extension" => $extension,
+    );
 }
