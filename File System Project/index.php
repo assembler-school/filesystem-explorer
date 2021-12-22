@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
     <!--Todo Links CSS -->
-    <link rel="stylesheet" href="././assets/css/normalize.css">
-    <link rel="stylesheet" href="././assets/css/stylefile.css">
+    <link rel="stylesheet" href="./assets/normalize.css">
+    <link rel="stylesheet" href="./assets/stylefile.css">
 
 
     <!--Todo Scripts JavaScript -->
@@ -26,7 +26,6 @@ include 'modules/createModal.php';
 ?>
 
 <body>
-    <h1>pruebaaa</h1>
     <div class="row">
         <aside class="col-3">
             <?php require 'showDir.php'  ?>
@@ -42,27 +41,12 @@ include 'modules/createModal.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <?php sectionFiles()  ?>
+                    <?php sectionFilesTable()  ?>
                 </tbody>
             </table>
         </section>
-    </div>
-    <!-- <form action="./createfolder.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="Fileimage" id="fileofimage">
-        <input type="submit" value="Upload a file" name="buttclick">
-    </form> -->
 
-    <!-- <form action="./createfolder.php" method="post" enctype="multipart/form-data">
-        Type Folder Name:<input type="text" name="foldername" /><br /><br />
-        Select Folder to Upload: <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" moxdirectory="" /><br /><br />
-        <input type="Submit" value="Upload" name="upload" />
-     </form> -->
+    </div>
     <?= isset($_GET["error"]) ? "The name already exist" : ""; ?>
 
 </body>

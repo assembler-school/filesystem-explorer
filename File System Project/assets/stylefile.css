@@ -9,7 +9,13 @@ body{
 .logo{
     margin-left: 1em;
 }
+
 /* .loco{
    display: flex;
    flex-wrap: wrap;
 } */
+
+.sectionImg{
+    max-width: fit-content;
+    width: 25%;
+}
