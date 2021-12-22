@@ -58,8 +58,11 @@
   width: 140px;
   margin: 5px 0px 5px 95px;
 }
+.LogoNav:hover{
+  opacity: 0.8;
+}
 .bg-light {
-  background-color: #212529e3!important;
+  background-color: #212529 !important;
   color:var(--white);
 }
 /*CSS HOME*/
@@ -140,6 +143,9 @@ transition: color .15s ease-in-out,background-color .15s ease-in-out,border-colo
   height: 70px;
   width: 80px;
   margin: 5px 0px 5px 20px;
+}
+.UserIcon:hover{
+  opacity: 0.8;
 }
 /*BTN NEW FILE*/
 #btnCreate{
