@@ -1,5 +1,5 @@
 <?php
-require("extensions.php");
+require_once("extensions.php");
 function loadFiles()
 {
     try {
@@ -91,16 +91,7 @@ function breadcrumb($path)
     }
 }
 
-/*RENAME FILE*/
-
-// Old Name Of The file
-// $old_name = "root/holaTU";
-// $new_name = "root/HELP";
-// $rootPatch = "./root";
-
-// $name = rename($old_name, $new_name);
 // delete all files and sub-folders from a folder
-
 
 function deleteAll($dir1)
 {
@@ -112,3 +103,9 @@ function deleteAll($dir1)
     }
     rmdir($dir1);
 }
+
+// $nombre_archivo = 'archivo.txt';
+// if (file_exists($nombre_archivo)) {
+//     echo "La última modificación de $nombre_archivo fue: " . date("F d Y H:i:s.", filectime($nombre_archivo));
+// }
+// echo "La fecha de modificación del fichero 001-ejemplo-php-filemtime.php es '" . date ("F d Y H:i:s.", filemtime("001-ejemplo-php-filemtime.php")) . "'";

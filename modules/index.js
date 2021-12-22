@@ -38,12 +38,10 @@ $(".folder").focusout(function (e) {
   $(e.target).parent().css("background-color", "inherit");
 })
 
-
-
 function oneclick(e) {
   e.preventDefault();
-
 }
+
 function doubleclick(e) {
   e.preventDefault();
   href = $(e.target).parent().attr("href")
