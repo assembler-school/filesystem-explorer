@@ -23,7 +23,11 @@
   flex:80%;
   background-color: var(--main-color);
 }
-
+#modalFiles {
+  position: fixed;
+  bottom: 10%;
+  left: 40%;
+}
 .navbar {
   position: relative;
   display: -ms-flexbox;

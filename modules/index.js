@@ -19,13 +19,6 @@ function pathToggleActive() {
 }
 pathToggleActive();
 
-function edit() {
-  $(".renameBtn").on("click", function (e) {
-
-    console.log(e.target)
-  })
-};
-edit();
 
 
 
@@ -62,3 +55,26 @@ function showDeleteModal(e) {
   `)
 }
 
+$("#modalEdit").on("show.bs.modal", showEditModal)
+
+function showEditModal(e) {
+  const url = $(e.relatedTarget).data("url");
+  console.log(url);
+  $("#edit_form").append(`
+      <input type="hidden" name="oldName" value="${url}">
+  `)
+}
+
+
+
+if ($(".closing").length) {
+  $(".closing").each(function (idx, element) {
+    $(element).on("click", closeclose)
+  })
+
+
+}
+
+function closeclose() {
+  window.location.replace("./index.php");
+}

@@ -61,7 +61,6 @@ require("./modules/functions.php");
                 }
                 breadcrumb($path);
                 ?>
-                <i class="fas fa-info-circle fa-lg" style="color:black;" id="infoCircle"></i>
             </ol>
         </nav>
     </section>
@@ -130,7 +129,7 @@ require("./modules/functions.php");
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="./modules/functions.php" id="edit_form">
+                        <form method="post" action="./modules/EditFolders.php" id="edit_form">
                             <input type="text" name="edit-name">
                             <input type="submit" value="Edit-Form" name="Edit-Form">
                         </form>
@@ -177,25 +176,40 @@ require("./modules/functions.php");
         </div>
 
         <!-- Modal Show Files -->
-        <div class="modal fade" id="modalFiles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php
+        if (isset($_GET["visualize"])) {
+            echo '<div id="modalFiles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Preview</h5>
+                            <button type="button" class="closing btn-close" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">';
+            if ($_GET["format"] === "jpg" || $_GET["format"] === "png") {
+                echo '<img src="' . $_GET["visualize"] . '">';
+            } else if ($_GET["format"] === "mp4") {
+                echo '<div>
+                <iframe class="embed-responsive-item" src="' . $_GET["visualize"] . '" allowfullscreen></iframe>
+              </div>';
+            } else if ($_GET["format"] === "mp3") {
+                echo '<div>
+                <iframe class="embed-responsive-item" src="' . $_GET["visualize"] . '" allowfullscreen></iframe>
+              </div>';
+            }
 
+            echo '</div>
+                        <div class="modal-footer">
+                            <button class="closing" type="button" class="btn btn-secondary">Close</button>
+                        </div>
+                    </div>
+                </div>';
+        };
+        ?>
         <!-- OFF CANVAS INFORMATION -->
+        <?php
 
+        ?>
         <div class="offcanvas offcanvas-end" data-bs-backdrop="false" tabindex="-1" id="offcanvasRight">
             <div class="offcanvas-header">
                 <h5 id="offcanvasRightLabel">Offcanvas right</h5>
