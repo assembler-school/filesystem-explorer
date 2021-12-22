@@ -113,30 +113,22 @@
 <!-- Files container 2-->
 <div class="col-4 secondary">
     <?php
-
-require_once("./modules/searchFiles.php");
-
-  // searchFilesFun($searchWord);
-
-
-
-
-    require_once("./modules/generateFiles.php");
-    if (isset( $_GET["root"])){
-      $newRoot = $_GET["root"];
-
-      if(is_dir($newRoot)){
-  
-          generateFilesFun($newRoot);
-
-
-      }else{
-
-      }
+if(isset($_GET["search"]) && !isset($_GET["stop"]) ){
+  $searchWord = $_GET["search"];
+  require_once("./modules/searchFiles.php");
+  searchFilesFun( "./root" , $searchWord);
+}else{
+  require_once("./modules/generateFiles.php");
+  if (isset( $_GET["root"])){
+    $newRoot = $_GET["root"];
+    if(is_dir($newRoot)){
+        generateFilesFun($newRoot);
     }
-    else {
-    echo"click a folder";
-    }
+  }
+  else {
+  echo"click a folder";
+  }
+  }
     ?>
     </div>
 <!-- Details and visualizer container 3-->
