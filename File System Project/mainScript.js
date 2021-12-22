@@ -1,22 +1,25 @@
 function obtenerdatos(elem){
-    const url= elem;
-    fetch( url )
+    console.log("kjaskjdna")
+    console.log(elem)
+    // const url= elem;
+    // console.log(elem)
+    fetch(elem)
     .then(respuesta => {
-        linkfile = respuesta.url;
-        return linkfile
+        return respuesta
+    }).then(datos => {
+        console.log(datos.url)
+        appendfile(datos.url)
     })
-    console.log(linkfile);
-    appendfile(linkfile)
+    // console.log(linkfile);
 
 }
 
 
 function appendfile(elem){
-    var asidefile= document.getElementById('asidefile');
+    asidefile= document.getElementById('asidefile');
     console.log(asidefile);
-    
-    var content = `<img src="${elem}" alt="no detecta">`;
-    // content+= `<h4>${elem}</h4>`
+    // asidefile.innerHTML=""
+    content=`<iframe src="${elem}" title="W3Schools Free Online Web Tutorials" width="640" height="480"></iframe>`
     asidefile.innerHTML = content;
 };
 

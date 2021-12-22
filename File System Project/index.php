@@ -38,11 +38,8 @@ include 'modules/createModal.php';
         </section>
 
         <aside class="col-3" id='asidefile'>
-            <!-- <script>
-                function printhere(elem){                }
-            </script> -->
-        <button class="btn btn-primary" onclick=" obtenerdatos(' ./root/abcde/fotonumero2.jpg ')"></button>
-        
+            <h1>kjasdnakjsnjkasnk</h1>
+            w
         </aside>
     </div>
     <!-- <form action="./createfolder.php" method="post" enctype="multipart/form-data">

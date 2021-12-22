@@ -48,12 +48,19 @@ function sectionFiles()
             foreach ($probandol as $pr) {
                 if (!$pr->isDot()) {
                     $extension = $pr->getExtension();
-                    // $nme= $pr->getFilename();
+                    echo $extension;
+                    $nme= $pr->getFilename();
                     $infofile = $pr->getFileInfo();
+                    // $infofile = $pr->getPathInfo();
+                    // $infofile= $pr->getPathname();
+                    // echo $infofile."<br>";
+                    // $infofile = $pr->getPath();
+                    // echo $nme;
+                    // echo $nme;
                     //$newfilepath= "?$fileinfo?$nme";
                     //echo bytesToHuman(folderSize($pr)) . "<br>";
                     filesIcon($extension, $infofile);
-                    echo $pr->getFilename() . "<br>";
+                    // echo $pr->getFilename() . "<br>";
 
                     // echo $pr->getFileInfo();
                 }
@@ -64,12 +71,19 @@ function sectionFiles()
 
 function filesIcon($extension,$rootf)
 {
+    // echo $rootf;´
+    $l= str_replace("\\", "/", $rootf);
+
+    // echo $l;
+    // echo $l;
+    $aa= str_replace(" ","%20", $l);
+    // echo $aa;
     switch ($extension) {
         case 'doc':
-            echo "<a onclick = obtenerdatos('$rootf')> img  class='sectionImg' src='./assets/icons/doc.png' alt='doc img'>  </a>";
+            echo "<a onclick = obtenerdatos('$rootf')> <img  class='sectionImg' src='./assets/icons/doc.png' alt='doc img'>  </a>";
             break;
         case 'jpg':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/jpg.png' alt='icon img'> </a>";
+            echo "<a onclick = obtenerdatos('$aa')> <img class='sectionImg'  src='./assets/icons/jpg.png' alt='icon img'> </a>";
             break;
         case 'pdf':
             echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/pdf.png' alt='icon img'> </a>";
@@ -84,13 +98,13 @@ function filesIcon($extension,$rootf)
             echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/mp3.png' alt='icon img'> </a>";
             break;
         case 'mp4':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/mp4.png' alt='icon img'> </a>";
+            echo "<a onclick = obtenerdatos('$aa')> <img class='sectionImg'  src='./assets/icons/mp4.png' alt='icon img'> </a>";
             break;
         case 'odt':
             echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/odt.png' alt='icon img'> </a>";
             break;
         case 'png':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/png.png' alt='icon img'  </a>>";
+            echo "<a onclick = obtenerdatos('$l)> <img class='sectionImg'  src='./assets/icons/png.png' alt='icon img'  </a>>";
             break;
         case 'ppt':
             echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/ppt.png' alt='icon img'> </a>";
@@ -105,15 +119,12 @@ function filesIcon($extension,$rootf)
             echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'  src='./assets/icons/txt.png' alt='icon img'> </a>";
             break;
         case 'zip':
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'   src='./assets/icons/zip.png' alt='icon img' </a> >";
+            echo "<a onclick = obtenerdatos('$l')> <img class='sectionImg'   src='./assets/icons/zip.png' alt='icon img' </a> >";
             break;
         default:
-            echo "<a onclick = obtenerdatos('$rootf')> <img class='sectionImg'   src='./assets/icons/folder.png' alt='icon i </a>mg' >";
+            echo "<a onclick = obtenerdatos('$l')> <img class='sectionImg'   src='./assets/icons/folder.png' alt='icon i </a>mg' >";
             break;
     };
 }
 
-function asideFiles()
-{
 
-}
