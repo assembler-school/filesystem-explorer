@@ -50,7 +50,7 @@ function doubleclick(e) {
 
 }
 
-$("#deleteItem").on("show.bs.modal", showDeleteModal)
+$("#deleteModal").on("show.bs.modal", showDeleteModal)
 
 function showDeleteModal(e) {
   const url = $(e.relatedTarget).data("url");
