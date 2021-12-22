@@ -17,8 +17,10 @@ function loadFiles()
             if (is_file("$path/$element")) {
                 $format = pathinfo("$path/$element");
                 $icon = $extensions[$format["extension"]];
-                echo '<div class="col d-flex flex-column">
+                echo '<div class="gridMain">
+                            <form action="visualize.php">
                             <img src="' . $icon . '" data-bs-toggle="modal" data-bs-target="#modalFiles" alt="photo" width="100%" style="cursor:pointer;">
+                            </button>
                             <div class="infoCard">
                                 <p class=" fileName">' . $element . '</p>
                             </div>
