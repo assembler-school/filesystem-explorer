@@ -25,6 +25,7 @@ section .container{
 .breadcrumb .active{
     color:var(--white);
 }
+
 #infoCircle{
    color: var(--white);
    position:absolute;

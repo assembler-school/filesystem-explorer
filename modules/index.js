@@ -49,3 +49,13 @@ function doubleclick(e) {
   window.location.href = href;
 
 }
+
+$("#deleteItem").on("show.bs.modal", showDeleteModal)
+
+function showDeleteModal(e) {
+  const url = $(e.relatedTarget).data("url");
+  console.log(url);
+  $("#deleteForm").append(`
+      <input type="hidden" name="url" value="${url}">
+  `)
+}
