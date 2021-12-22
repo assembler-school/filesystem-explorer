@@ -65,3 +65,7 @@ function edit() {
   }
 };
 edit();
+
+$("#searchBtn").on("clik", function(){
+  console.log("hola");
+})

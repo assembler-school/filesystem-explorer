@@ -38,9 +38,9 @@ require("./modules/functions.php");
                         <a class="nav-link" href="index.php">Home</a>
                         <a class="nav-link" href="#">Orders</a>
                         <a class="nav-link" href="#">Products</a>
-                        <form class="d-flex">
+                        <form class="d-flex" action="actions/search/index.php" method="GET">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                            <button class="btn btn-outline-success" id="searchBtn" type="submit">Search</button>
                             <button type="button" class="btn btn-warning" style="padding: 0px 30px; margin:17px 0px;">Login</button>
                             <button type="button" class="btn btn-warning" style="padding: 0px 30px; margin:17px 0px; ">Sign Up</button>
                             <a href="#">

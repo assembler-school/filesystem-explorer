@@ -104,12 +104,21 @@ function breadcrumb($path)
     }
 }
 
-// delete all files and sub-folders from a folder
+// require_once("root" . "./index.php");
 
-
-
-// $nombre_archivo = 'archivo.txt';
-// if (file_exists($nombre_archivo)) {
-//     echo "La última modificación de $nombre_archivo fue: " . date("F d Y H:i:s.", filectime($nombre_archivo));
-// }
-// echo "La fecha de modificación del fichero 001-ejemplo-php-filemtime.php es '" . date ("F d Y H:i:s.", filemtime("001-ejemplo-php-filemtime.php")) . "'";
+function search_file($dir, $file_to_search){
+    $files = glob("/path/to/directory/*.{jpg,gif,png}", GLOB_BRACE);
+    $files = scandir($dir);
+    foreach ($files as $key => $value) {
+        $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+        if (!is_dir($path)) {
+            if ($file_to_search == $value) {
+                echo "file found<br>";
+                echo $path;
+                break;
+            }
+        } else if ($value != "." && $value != "..") {
+            search_file($path, $file_to_search);
+        }
+    }
+}
