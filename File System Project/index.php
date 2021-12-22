@@ -31,9 +31,6 @@ include 'modules/createModal.php';
             <?php require 'showDir.php'  ?>
         </aside>
         <section class="col-lg-6 col-sm-6 m-1" >
-        <?php
-            include "search.php";
-        ?>
             <table class="table">
                 <thead>
                     <tr>
@@ -45,7 +42,8 @@ include 'modules/createModal.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php sectionFilesTable()  ?>
+                    <?php sectionFilesTable();
+                     ?>
                 </tbody>
             </table>
         </section>

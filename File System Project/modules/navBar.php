@@ -5,7 +5,7 @@
             <a href="#" class="navbar-brand font-weight-bold"> <i class="fas fa-fighter-jet"></i> <i class="bi bi-alarm-fill"></i>Jet File System</a>
         </div>
         <div class="col-lg-5 col-xs-12 m-1">
-            <form action="" method="GET">
+            <form action="./showDir.php" method="POST">
             <div class="input-group">
                     <input type="search" name="buscar" id="buscar" class="form-control border-right-0 border" placeholder="Buscar...">
                     <div class="input-group-append">
