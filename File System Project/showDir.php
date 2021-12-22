@@ -70,9 +70,26 @@ function fillTable($icon,$rootA, $fileName, $fileSize, $lastUpdate){
     echo "<td>$fileName</td>";
     echo "<td>$fileSize</td>";
     echo "<td>$lastUpdate</td>";
+    // echo str_replace("root", "Deletedtem", $rootA);
+    // $pepe= rename($rootA,"./Deletedtem/$fileName" );
+    echo "<td><form action='./showDir.php' method='POST'>
+    <input type='hidden' name='param1' value='$rootA' />
+    <input type='hidden' name='param2' value='$fileName' />
+    <button type='submit'><i class='fas fa-trash-alt'></i></button>
+    </form></td>";
     echo "</tr>";
 };
 
+$it = new RecursiveTreeIterator(new RecursiveDirectoryIterator("./root", RecursiveDirectoryIterator::SKIP_DOTS));
+foreach($it as $path) {
+  echo $path."<br>";
+}
+if (isset($_POST['param1'])){
+    $cambiarderuta= $_POST['param1'];
+    $Nombre=$_POST['param2'];
+    rename($cambiarderuta,"./Deletedtem/$Nombre" );
+    header("location: ./index.php");
+}
 function filesIcon($extension, $rootf)
 {
     // echo $rootf;´

@@ -38,16 +38,16 @@ include 'modules/createModal.php';
                         <th scope="col">File Name </th>
                         <th scope="col">File Size</th>
                         <th scope="col">Last Update</th>
+                        <th scope="col">delete/edit</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php sectionFilesTable()  ?>
                 </tbody>
             </table>
+            <aside class="col-md-3 col-sm-12 m-1" id='asidefile'>
+            </aside>
         </section>
-
-        <aside class="col-md-3 col-sm-12 m-1" id='asidefile'>
-        </aside>
     </div>
     <?= isset($_GET["error"]) ? "The name already exist" : ""; ?>
 
