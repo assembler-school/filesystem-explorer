@@ -18,7 +18,6 @@ if (isset($_POST["searchWords"])){
                         <a class='linkStyles' href='./index.php?root=$ruta_completa'>$archivo</a>
                     </li>";}
                             searchFilesFun($ruta_completa,$searchWord);
-                
                 } else {
                     if(preg_match($pattern, $archivo) == 1){
                         require_once("./modules/whatEsxtension.php");

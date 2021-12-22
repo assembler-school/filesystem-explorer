@@ -48,7 +48,20 @@
                 <button type="button" class="btn btn-sm btn-outline-secondary me-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop3">Upload
                 </button>
 
-                <button name="btnDownload"class="btn btn-sm btn-outline-secondary me-2" type="button">Download</button>
+                <?php 
+                if (isset($_GET["fileName"])){
+                    $root = $_GET["root"];
+                    $fileName = $_GET["fileName"];
+                ?>
+                    <button type="submit" formaction="./modules/downloadFile.php?root=<?=$root?>&fileName=<?=$fileName?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">Download</button>
+                <?php
+                }else {
+                  ?>
+                  <button disabled="true" type="submit" formaction="./modules/downloadFile.php?root=<?=$root?>&fileName=<?=$fileName?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button" disabled="true">Download</button>
+              <?php
+                }
+                ?>
+
                 <button name="btnMove"class="btn btn-sm btn-outline-secondary me-2" type="button">Move to</button>
                 <button name="btnCopy"class="btn btn-sm btn-outline-secondary me-2" type="button">Copy to</button>
                 
