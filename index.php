@@ -41,8 +41,8 @@ require("./modules/functions.php");
                         <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
-                            <button type="button" class="btn btn-warning">Login</button>
-                            <button type="button" class="btn btn-warning">Sign-up</button>
+                            <button type="button" class="btn btn-warning" style="padding: 0px 30px; margin:17px 0px;">Login</button>
+                            <button type="button" class="btn btn-warning" style="padding: 0px 30px; margin:17px 0px; ">Sign Up</button>
                             <a href="#">
                                 <img class="UserIcon" src="./assets/img/dsBuffer.jpg" alt="">
                             </a>
@@ -71,10 +71,10 @@ require("./modules/functions.php");
             <div class="side-bar">
                 <div class="menu">
                     <div class="options">
-                        <button id="btnCreate" style="background-color: white; color: black;" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">NEW FILE</button>
+                        <button id="btnCreate" style="background-color: white; color: black;" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">NEW FOLDER</button>
                         <!-- FORM TO UPLOAD FILES -->
                         <form method="post" action="./modules/uploadFile.php" enctype="multipart/form-data">
-                            <label for="upload" style="background-color: white; color: black; margin: 17px 5px 0px 0px;" class="btn btn-sm btn-outline-secondary">
+                            <label for="upload" style="background-color: white; color: black; margin: 10px 5px 0px 0px; padding: 11.5px 30px" class="btn btn-sm btn-outline-secondary">
                                 <i class="fas fa-file-upload fa-2x"></i>
                                 <input type="hidden" name="path" value='<?php echo $path ?>'>
                                 <input type="file" name="uploadedFile" style="display:none;" id="upload" onchange="this.form.submit();" accept=".doc,.csv,.jpg,.png,.txt,.ppt,.odt,.pdf,.zip,.rar,.exe,.svg,.mp3,.mp4">
