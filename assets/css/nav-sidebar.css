@@ -59,7 +59,7 @@
   margin: 5px 0px 5px 95px;
 }
 .bg-light {
-  background-color: #212529!important;
+  background-color: #212529e3!important;
   color:var(--white);
 }
 /*CSS HOME*/
@@ -157,6 +157,7 @@ transition: color .15s ease-in-out,background-color .15s ease-in-out,border-colo
   font-family: "Poppins", sans-serif;
 }
 .side-bar{
+  width: 240px;
   display: flex;
   flex-direction: center;
   flex: 30%;
@@ -170,7 +171,7 @@ transition: color .15s ease-in-out,background-color .15s ease-in-out,border-colo
 }
 .side-bar .menu{
   width: 100%;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 .side-bar .menu .item{
   position: relative;
@@ -202,7 +203,7 @@ transition: color .15s ease-in-out,background-color .15s ease-in-out,border-colo
   display: none;
 }
 .side-bar .menu .item .sub-menu a{
-  padding-left: 80px;
+  padding-left: 40px;
 }
 .sub-menu svg {
   display: none;

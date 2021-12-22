@@ -34,7 +34,9 @@ section .container{
    position:absolute;
    right:15px;
 }
-
+.breadcrumb {
+    justify-content: center !important;
+}
 /* ASIDE */
 .options{
     display:flex;
@@ -54,5 +56,9 @@ main{
 }
 .fileName{
     margin-bottom:0;
-    font-size: 1.5vh;
+    font-size: 2vh;
+    color: white;
+}
+#nextTo {
+    width: 70px;
 }
