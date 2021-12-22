@@ -35,12 +35,10 @@ $(".folder").focusin(function (e) {
   $(e.target).css("background-color", "blue");
 })
 
-
-
 function oneclick(e) {
   e.preventDefault();
-
 }
+
 function doubleclick(e) {
   e.preventDefault();
   href = $(e.target).parent().attr("href")

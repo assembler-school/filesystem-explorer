@@ -88,19 +88,6 @@ function breadcrumb($path)
     }
 }
 
-/*EDIT RENAME FILE*/
-
-
-
-if(isset($_POST['Edit-Form'])){
-$old_name = "./../root/prueba";
-$new_name = "./../root/".$_POST['edit-name'];
-$name = rename($old_name, $new_name);
-print_r($element);
-// header($Location: './index.php');
-};
-
-
 // delete all files and sub-folders from a folder
 
 function deleteAll($dir1) {
@@ -112,3 +99,9 @@ unlink($file1);
 }
 rmdir($dir1);
 }
+
+// $nombre_archivo = 'archivo.txt';
+// if (file_exists($nombre_archivo)) {
+//     echo "La última modificación de $nombre_archivo fue: " . date("F d Y H:i:s.", filectime($nombre_archivo));
+// }
+// echo "La fecha de modificación del fichero 001-ejemplo-php-filemtime.php es '" . date ("F d Y H:i:s.", filemtime("001-ejemplo-php-filemtime.php")) . "'";
