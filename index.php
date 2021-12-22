@@ -99,7 +99,7 @@ require("./modules/functions.php");
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">New folder</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -109,13 +109,14 @@ require("./modules/functions.php");
                         }
                         ?>
                         <form method="post" action="./modules/create.php" id="create_form">
-                            <input type="text" name="file_name">
-                            <input type="hidden" name="path" value='<?php echo $path ?>'>
-                            <input type="submit" value="Create_File" name="create_file">
-                        </form>
+                            <label for="filename">Write the name of your new folder</label>
+                            <input type="text" name="file_name" id="filename">
                     </div>
                     <div class="modal-footer">
+                        <input type="hidden" name="path" value='<?php echo $path ?>'>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" name="create_file">Create File</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -130,20 +131,20 @@ require("./modules/functions.php");
                     </div>
                     <div class="modal-body">
                         <form method="post" action="./modules/EditFolders.php" id="edit_form">
-                            <input type="text" name="edit-name">
-                            <input type="submit" value="Edit-Form" name="Edit-Form">
-                        </form>
+                            <label for="editedName">Change the name of your folder</label>
+                            <input type="text" name="edit-name" id="editedName">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" name="Edit-Form" class="btn btn-primary">Save changes</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Main has to be a grid or flexbox responsive with cols and rows of bootstrap -->
         <main class="container">
-            <!-- Cada section sera un fichero diferente que carga -->
+            <!-- This function laods every single file and folder -->
             <article class="row">
                 <section class="col-4">
                     <?php
