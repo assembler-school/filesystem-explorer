@@ -13,6 +13,9 @@ body{
 section {
     margin-bottom: 0px !important;
 }
+.container {
+    margin: 0%;
+}
 section .container{
     margin: 0%;
     padding: 0%;
@@ -23,7 +26,8 @@ section .container{
     color: black;
 }
 .breadcrumb .active{
-    color:var(--white);
+    color: black;
+    font-size: 22px;
 }
 
 #infoCircle{
@@ -31,7 +35,9 @@ section .container{
    position:absolute;
    right:15px;
 }
-
+.breadcrumb {
+    justify-content: center !important;
+}
 /* ASIDE */
 .options{
     display:flex;
@@ -51,5 +57,9 @@ main{
 }
 .fileName{
     margin-bottom:0;
-    font-size: 1.5vh;
+    font-size: 2vh;
+    color: white;
+}
+#nextTo {
+    width: 70px;
 }
