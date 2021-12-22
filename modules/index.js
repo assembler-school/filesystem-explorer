@@ -59,3 +59,4 @@ function showDeleteModal(e) {
       <input type="hidden" name="url" value="${url}">
   `)
 }
+

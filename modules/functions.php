@@ -18,9 +18,9 @@ function loadFiles()
                 $format = pathinfo("$path/$element");
                 $icon = $extensions[$format["extension"]];
                 echo '<div class="gridMain">
-                            <form action="visualize.php">
-                            <img src="' . $icon . '" data-bs-toggle="modal" data-bs-target="#modalFiles" alt="photo" width="100%" style="cursor:pointer;">
-                            </button>
+                            <a href="index.php?path=' . $path .'&visualize=' . $element . '">
+                            <img src="' . $icon . '" alt="photo" width="100%" style="cursor:pointer;">
+                            </a>
                             <div class="infoCard">
                                 <p class=" fileName">' . $element . '</p>
                             </div>
@@ -103,6 +103,15 @@ function breadcrumb($path)
         echo '<li class="breadcrumb-item" aria-current="page"><a href="index.php">' . "Main" . '</a></li>';
     }
 }
+
+function visualazing() {
+    if (!isset($_GET["path"])) {
+        return "./root/";
+    } else {
+        return $_GET["path"] .'/';
+    }
+}
+
 
 // delete all files and sub-folders from a folder
 
