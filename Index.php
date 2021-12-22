@@ -18,7 +18,7 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" contenteditable="true">Our Cloud</a>
-                <form class="d-flex" action="./modules/searchFiles.php">
+                <form class="d-flex" action="./modules/searchFiles.php" method="POST">
                     <input class="form-control me-2" type="search" name="searchWords" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
@@ -48,7 +48,20 @@
                 <button type="button" class="btn btn-sm btn-outline-secondary me-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop3">Upload
                 </button>
 
-                <button name="btnDownload"class="btn btn-sm btn-outline-secondary me-2" type="button">Download</button>
+                <?php 
+                if (isset($_GET["fileName"])){
+                    $root = $_GET["root"];
+                    $fileName = $_GET["fileName"];
+                ?>
+                    <button type="submit" formaction="./modules/downloadFile.php?root=<?=$root?>&fileName=<?=$fileName?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">Download</button>
+                <?php
+                }else {
+                  ?>
+                  <button disabled="true" type="submit" formaction="./modules/downloadFile.php?root=<?=$root?>&fileName=<?=$fileName?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button" disabled="true">Download</button>
+              <?php
+                }
+                ?>
+
                 <button name="btnMove"class="btn btn-sm btn-outline-secondary me-2" type="button">Move to</button>
                 <!-- <button type="submit" formaction="./modules/copy.php?root=<?=$Root?>&fileName=<?=$fileName?>" method="GET" name="btnCopy"class="btn btn-sm btn-outline-secondary me-2" >Copy</button> -->
                 
@@ -82,10 +95,6 @@
 
 <!--  -->
 
-
-
-
-
 <!-- Folders Container 1-->
     <div id="foldersContainer" class="col-4 primary foldersContainer" >
 <!-- Accordion -->
@@ -101,18 +110,26 @@
     </div>
 
 
-
-
-
-
-
-
-
-
 <!-- Files container 2-->
     <div class="col-4 secondary">
     <?php
+if(isset($_GET["search"]) && !isset($_GET["stop"]) ){
+  $searchWord = $_GET["search"];
+  require_once("./modules/searchFiles.php");
+  searchFilesFun( "./root" , $searchWord);
+}else{
+  require_once("./modules/generateFiles.php");
+  if (isset( $_GET["root"])){
+    $newRoot = $_GET["root"];
+    if(is_dir($newRoot)){
+        generateFilesFun($newRoot);
+    }
+  }
+  else {
+  echo"click a folder";
+  }
 
+<<<<<<< HEAD
 require_once("./modules/searchFiles.php");
 
   // searchFilesFun($searchWord);
@@ -128,14 +145,11 @@ require_once("./modules/searchFiles.php");
   
           generateFilesFun($newRoot);
 
+=======
+}
+>>>>>>> c6626b0516d5b8d80cc72bd60ae1b126270c6a25
 
-      }else{
 
-      }
-    }
-    else {
-    echo"click a folder";
-    }
     ?>
     </div>
 <!-- Details and visualizer container 3-->
