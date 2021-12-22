@@ -15,15 +15,16 @@ function pathToggleActive() {
   const breadcrumb = $(".breadcrumb");
   $(breadcrumb).children().last().addClass("active");
   console.log($(breadcrumb).children().last());
-  
+
 }
 pathToggleActive();
 
-function edit(){
-  $(".renameBtn").on("click", function(e) {
+function edit() {
+  $(".renameBtn").on("click", function (e) {
 
     console.log(e.target)
-  })};
+  })
+};
 edit();
 
 
@@ -31,16 +32,16 @@ edit();
 $(".folder").on("click", oneclick)
 $(".folder").on("dblclick", doubleclick)
 $(".folder").focusin(function (e) {
-  console.log("hi");
-  $(e.target).css("background-color", "blue");
+  $(e.target).parent().css("background-color", "lightblue");
 })
-
-
+$(".folder").focusout(function (e) {
+  $(e.target).parent().css("background-color", "inherit");
+})
 
 function oneclick(e) {
   e.preventDefault();
-
 }
+
 function doubleclick(e) {
   e.preventDefault();
   href = $(e.target).parent().attr("href")
