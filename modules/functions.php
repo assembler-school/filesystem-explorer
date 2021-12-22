@@ -17,10 +17,11 @@ function loadFiles()
             if (is_file("$path/$element")) {
                 $format = pathinfo("$path/$element");
                 $icon = $extensions[$format["extension"]];
+                //call info function to display it
                 echo '<div class="gridMain">
-                            <form action="visualize.php">
+                            
                             <img src="' . $icon . '" data-bs-toggle="modal" data-bs-target="#modalFiles" alt="photo" width="100%" style="cursor:pointer;">
-                            </button>
+                            
                             <div class="infoCard">
                                 <p class=" fileName">' . $element . '</p>
                             </div>
@@ -35,6 +36,7 @@ function loadFiles()
                                     </div>
                         </div>';
             } else if (is_dir("$path/$element")) {
+                //call info function to display it
                 echo '<div class="col d-flex flex-column folder">
                         <a  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" data-url="' . $path . "/" . $element . '" href="./index.php?path=' . $path . '/' . $element . '"><i class="fas fa-folder fa-5x"></i></a>
                                     <div class="infoCard">
@@ -113,12 +115,13 @@ function breadcrumb($path)
 //     echo "La última modificación de $nombre_archivo fue: " . date("F d Y H:i:s.", filectime($nombre_archivo));
 // }
 // echo "La fecha de modificación del fichero 001-ejemplo-php-filemtime.php es '" . date ("F d Y H:i:s.", filemtime("001-ejemplo-php-filemtime.php")) . "'";
-
-
-function displayInfo($path,$arr)
+function displayInfo($path)
 {
-    $size= filesize($path);
-    return $arr=array(
-        "filesize"=>$size,
-    )
+    //size
+    $size = filesize($path);
+    $units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+    $power = $size > 0 ? floor(log($size, 1024)) : 0;
+    $size = number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
+    $edited =  date("d/m/Y", filemtime($path));
+    echo "$size, $edited";
 }

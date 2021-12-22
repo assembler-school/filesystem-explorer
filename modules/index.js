@@ -31,10 +31,11 @@ edit();
 
 $(".folder").on("click", oneclick)
 $(".folder").on("dblclick", doubleclick)
+
 $(".folder").focusin(function (e) {
   $(e.target).parent().css("background-color", "lightblue");
   const url = $(e.target).data("url");
-})
+});
 $(".folder").focusout(function (e) {
   $(e.target).parent().css("background-color", "inherit");
 })
