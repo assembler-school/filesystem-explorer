@@ -129,7 +129,6 @@ if(isset($_GET["search"]) && !isset($_GET["stop"]) ){
   echo"click a folder";
   }
 
-<<<<<<< HEAD
 require_once("./modules/searchFiles.php");
 
   // searchFilesFun($searchWord);
@@ -145,9 +144,6 @@ require_once("./modules/searchFiles.php");
   
           generateFilesFun($newRoot);
 
-=======
-}
->>>>>>> c6626b0516d5b8d80cc72bd60ae1b126270c6a25
 
 
     ?>
