@@ -18,7 +18,7 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" contenteditable="true">Our Cloud</a>
-                <form class="d-flex" action="./modules/searchFiles.php">
+                <form class="d-flex" action="./modules/searchFiles.php" method="POST">
                     <input class="form-control me-2" type="search" name="searchWords" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
@@ -60,10 +60,6 @@
 <div class="row">
 
 
-
-
-
-
 <!-- Folders Container 1-->
     <div id="foldersContainer" class="col-4 primary foldersContainer" >
 <!-- Accordion -->
@@ -79,41 +75,28 @@
     </div>
 
 
-
-
-
-
-
-
-
-
 <!-- Files container 2-->
     <div class="col-4 secondary">
     <?php
-
-require_once("./modules/searchFiles.php");
-
-  searchFilesFun($searchWord);
-
-
-
-
-    require_once("./modules/generateFiles.php");
-    if (isset( $_GET["root"])){
-      $newRoot = $_GET["root"];
-
-      if(is_dir($newRoot)){
-  
-          generateFilesFun($newRoot);
-
-
-      }else{
-
-      }
+if(isset($_GET["search"]) && !isset($_GET["stop"]) ){
+  $searchWord = $_GET["search"];
+  require_once("./modules/searchFiles.php");
+  searchFilesFun( "./root" , $searchWord);
+}else{
+  require_once("./modules/generateFiles.php");
+  if (isset( $_GET["root"])){
+    $newRoot = $_GET["root"];
+    if(is_dir($newRoot)){
+        generateFilesFun($newRoot);
     }
-    else {
-    echo"click a folder";
-    }
+  }
+  else {
+  echo"click a folder";
+  }
+
+}
+
+
     ?>
     </div>
 <!-- Details and visualizer container 3-->
