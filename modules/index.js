@@ -19,13 +19,6 @@ function pathToggleActive() {
 }
 pathToggleActive();
 
-function edit() {
-  $(".renameBtn").on("click", function (e) {
-
-    console.log(e.target)
-  })
-};
-edit();
 
 
 
@@ -60,3 +53,15 @@ function showDeleteModal(e) {
   `)
 }
 
+function edit() {
+  $("#modalEdit").on("show.bs.modal", showEditModal)
+
+  function showEditModal(e) {
+  const url = $(e.relatedTarget).data("url");
+    console.log(url);
+    $("#edit_form").append(`
+      <input type="hidden" name="oldName" value="${url}">
+  `)
+  }
+};
+edit();
