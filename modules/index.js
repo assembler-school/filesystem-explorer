@@ -5,9 +5,6 @@ $(document).ready(function () {
   });
 });
 
-$("#btnCreate").on("click", function () {
-  console.log("funciona");
-})
 
 
 function pathToggleActive() {
@@ -37,6 +34,10 @@ function showEditModal(e) {
       <input type="hidden" name="oldName" value="${url}">
   `)
 }
+
+$("#searchBtn").on("click", function () {
+  console.log("hola");
+})
 
 
 

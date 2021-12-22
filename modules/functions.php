@@ -38,7 +38,7 @@ function loadFiles()
                                             </svg>
                                             <a href="./index.php?path=' . $path . '&information=' . $path . '/' . $element . '"><i class="fas fa-info-circle fa-lg"></i></a>
                                 </div>
-                        </div>
+                        
                     </section>';
             } else if (is_dir("$path/$element")) {
                 //call info function to display it
@@ -115,6 +115,25 @@ function breadcrumb($path)
     }
 }
 
+// require_once("root" . "./index.php");
+
+function search_file($dir, $file_to_search)
+{
+    $files = glob("/path/to/directory/*.{jpg,gif,png}", GLOB_BRACE);
+    $files = scandir($dir);
+    foreach ($files as $key => $value) {
+        $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+        if (!is_dir($path)) {
+            if ($file_to_search == $value) {
+                echo "file found<br>";
+                echo $path;
+                break;
+            }
+        } else if ($value != "." && $value != "..") {
+            search_file($path, $file_to_search);
+        }
+    }
+}
 function visualazing()
 {
     if (!isset($_GET["path"])) {
