@@ -27,10 +27,13 @@ include 'modules/createModal.php';
 
 <body>
     <div class="row">
-        <aside class="col-md-3 col-sm-6 m-1">
+        <aside class="col-lg-2 col-sm-6 m-1">
             <?php require 'showDir.php'  ?>
         </aside>
-        <section class="col-md-6 col-sm-6 m-1" >
+        <section class="col-lg-6 col-sm-6 m-1" >
+        <?php
+            include "search.php";
+        ?>
             <table class="table">
                 <thead>
                     <tr>
@@ -45,8 +48,7 @@ include 'modules/createModal.php';
                 </tbody>
             </table>
         </section>
-
-        <aside class="col-md-3 col-sm-12 m-1" id='asidefile'>
+        <aside class="col-lg-3 col-sm-12 m-1" id='asidefile'>
         </aside>
     </div>
     <?= isset($_GET["error"]) ? "The name already exist" : ""; ?>
