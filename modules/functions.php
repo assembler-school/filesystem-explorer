@@ -126,6 +126,7 @@ function search_file($dir, $file_to_search){
             search_file($path, $file_to_search);
         }
     }
+}
 function visualazing()
 {
     if (!isset($_GET["path"])) {
