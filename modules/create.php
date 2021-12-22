@@ -14,4 +14,5 @@ if (!is_dir($my_dir)) {
   header('location:./../index.php' . $url);
 } else {
   echo "el directorio $my_dir ya existe! No lo vamos a crear de nuevo";
+  header('location:./../index.php' . $url);
 }

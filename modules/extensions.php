@@ -15,3 +15,11 @@ $extensions = array(
     "mp3" => "./assets/img/formats/mp3.png",
     "mp4" => "./assets/img/formats/mp4.png"
 );
+
+$formatsToVisualize = array(
+    "mp4",
+    "png",
+    "mp3",
+    "jpg",
+    "svg"
+);

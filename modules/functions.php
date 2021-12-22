@@ -3,6 +3,7 @@ require_once("extensions.php");
 function loadFiles()
 {
     try {
+        global $formatsToVisualize;
         global $extensions;
         //IF WE ARE IN OTHER FOLDER
         if (isset($_GET["path"])) {
@@ -17,11 +18,17 @@ function loadFiles()
             if (is_file("$path/$element")) {
                 $format = pathinfo("$path/$element");
                 $icon = $extensions[$format["extension"]];
-                echo '<div class="gridMain">
-                            <form action="visualize.php">
-                            <img src="' . $icon . '" data-bs-toggle="modal" data-bs-target="#modalFiles" alt="photo" width="100%" style="cursor:pointer;">
-                            </button>
-                            <div class="infoCard">
+                //call info function to display it
+                echo '<div class="gridMain">';
+                if (in_array($format["extension"], $formatsToVisualize)) {
+                    echo '<a href="index.php?path=' . $path . '&visualize=' . $path . '/' . $element . '&format=' . $format["extension"] . '">
+                            <img src="' . $icon . '" alt="photo" width="100%" style="cursor:pointer;">
+                            </a>';
+                } else {
+                    echo '<img src="' . $icon . '" alt="photo" width="100%" style="cursor:pointer;">';
+                }
+
+                echo '<div class="infoCard">
                                 <p class=" fileName">' . $element . '</p>
                             </div>
                             <div id="nextTo">
@@ -29,14 +36,12 @@ function loadFiles()
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                             </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" data-bs-target="#modalEdit" id="' . $element . '" class="renameBtn" data-bs-toggle="modal" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" style="cursor:pointer;"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                        </svg>
                                     </div>
                         </div>';
             } else if (is_dir("$path/$element")) {
+                //call info function to display it
                 echo '<div class="col d-flex flex-column folder">
-                        <a href="./index.php?path=' . $path . '/' . $element . '"><i class="fas fa-folder fa-5x"></i></a>
+                        <a  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" data-url="' . $path . "/" . $element . '" href="./index.php?path=' . $path . '/' . $element . '"><i class="fas fa-folder fa-5x"></i></a>
                                     <div class="infoCard">
                                         <p class=" fileName">' . $element . '</p>
                                     </div>
@@ -121,4 +126,32 @@ function search_file($dir, $file_to_search){
             search_file($path, $file_to_search);
         }
     }
+function visualazing()
+{
+    if (!isset($_GET["path"])) {
+        return "./root/";
+    } else {
+        return $_GET["path"] . '/';
+    }
+}
+
+
+// delete all files and sub-folders from a folder
+
+
+
+// $nombre_archivo = 'archivo.txt';
+// if (file_exists($nombre_archivo)) {
+//     echo "La última modificación de $nombre_archivo fue: " . date("F d Y H:i:s.", filectime($nombre_archivo));
+// }
+// echo "La fecha de modificación del fichero 001-ejemplo-php-filemtime.php es '" . date ("F d Y H:i:s.", filemtime("001-ejemplo-php-filemtime.php")) . "'";
+function displayInfo($path)
+{
+    //size
+    $size = filesize($path);
+    $units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+    $power = $size > 0 ? floor(log($size, 1024)) : 0;
+    $size = number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
+    $edited =  date("d/m/Y", filemtime($path));
+    echo "$size, $edited";
 }

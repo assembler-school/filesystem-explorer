@@ -61,7 +61,6 @@ require("./modules/functions.php");
                 }
                 breadcrumb($path);
                 ?>
-                <i class="fas fa-info-circle fa-lg" style="color:black;" id="infoCircle"></i>
             </ol>
         </nav>
     </section>
@@ -100,7 +99,7 @@ require("./modules/functions.php");
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">New folder</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -110,13 +109,14 @@ require("./modules/functions.php");
                         }
                         ?>
                         <form method="post" action="./modules/create.php" id="create_form">
-                            <input type="text" name="file_name">
-                            <input type="hidden" name="path" value='<?php echo $path ?>'>
-                            <input type="submit" value="Create_File" name="create_file">
-                        </form>
+                            <label for="filename">Write the name of your new folder</label>
+                            <input type="text" name="file_name" id="filename">
                     </div>
                     <div class="modal-footer">
+                        <input type="hidden" name="path" value='<?php echo $path ?>'>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" name="create_file">Create File</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -131,20 +131,20 @@ require("./modules/functions.php");
                     </div>
                     <div class="modal-body">
                         <form method="post" action="./modules/EditFolders.php" id="edit_form">
-                            <input type="text" name="edit-name">
-                            <input type="submit" value="Edit-Form" name="Edit-Form">
-                        </form>
+                            <label for="editedName">Change the name of your folder</label>
+                            <input type="text" name="edit-name" id="editedName">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" name="Edit-Form" class="btn btn-primary">Save changes</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Main has to be a grid or flexbox responsive with cols and rows of bootstrap -->
         <main class="container">
-            <!-- Cada section sera un fichero diferente que carga -->
+            <!-- This function laods every single file and folder -->
             <article class="row">
                 <section class="col-4">
                     <?php
@@ -154,44 +154,6 @@ require("./modules/functions.php");
                 </section>
             </article>
         </main>
-        <!--RIGTH SIDE-->
-        <section class="navbar navbar-dark bg-primary flex-nowrap">
-            <table class="default">
-
-                <div class="navbar-collapse collapse w-100 justify-content-flex-start" id="navbar5">
-
-                </div>
-                <div class="w-100">
-                    <div class="row p-3 border bg-light">Information</div>
-                    <div class="row p-3 border bg-light">DETAILS</div>
-                    <div class="row p-3 border bg-light">TYPE ONF FILE</div>
-                    <div class="row p-3 border bg-light">
-                        <div class="col">
-                            Creation date
-                        </div>
-                        <div class="col">
-                            21/12/2021
-                        </div>
-                        <div class="row p-3 border bg-light">
-                            <div class="col">
-                                Last Modified Date
-                            </div>
-                            <div class="col">
-                                21/12/2021
-                            </div>
-                        </div>
-                        <div class="row p-3 border bg-light">
-                            <div class="col">
-                                Size
-                            </div>
-                            <div class="col">
-                                ADIVINa
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </section>
-
 
         <!-- Modal Delete -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -215,20 +177,81 @@ require("./modules/functions.php");
         </div>
 
         <!-- Modal Show Files -->
-        <div class="modal fade" id="modalFiles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <?php
+        if (isset($_GET["visualize"])) {
+            echo '<div id="modalFiles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Preview</h5>
+                            <button type="button" class="closing btn-close" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">';
+            if ($_GET["format"] === "jpg" || $_GET["format"] === "png") {
+                echo '<img src="' . $_GET["visualize"] . '">';
+            } else if ($_GET["format"] === "mp4") {
+                echo '<div>
+                <iframe class="embed-responsive-item" src="' . $_GET["visualize"] . '" allowfullscreen></iframe>
+              </div>';
+            } else if ($_GET["format"] === "mp3") {
+                echo '<div>
+                <iframe class="embed-responsive-item" src="' . $_GET["visualize"] . '" allowfullscreen></iframe>
+              </div>';
+            }
+
+            echo '</div>
+                        <div class="modal-footer">
+                            <button class="closing" type="button" class="btn btn-secondary">Close</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
+                </div>';
+        };
+        ?>
+        <!-- OFF CANVAS INFORMATION -->
+        <?php
+
+        ?>
+        <div class="offcanvas offcanvas-end" data-bs-backdrop="false" tabindex="-1" id="offcanvasRight">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <section id="i" class="navbar navbar-dark bg-primary flex-nowrap">
+                    <table class="default">
+
+                        <div class="navbar-collapse collapse w-100 justify-content-flex-start" id="navbar5">
+
+                        </div>
+                        <div class="w-100">
+                            <div class="row p-3 border bg-light">Information</div>
+                            <div class="row p-3 border bg-light">DETAILS</div>
+                            <div class="row p-3 border bg-light">TYPE ONF FILE</div>
+                            <div class="row p-3 border bg-light">
+                                <div class="col">
+                                    Creation date
+                                </div>
+                                <div class="col">
+                                    21/12/2021
+                                </div>
+                                <div class="row p-3 border bg-light">
+                                    <div class="col">
+                                        Last Modified Date
+                                    </div>
+                                    <div class="col">
+                                        21/12/2021
+                                    </div>
+                                </div>
+                                <div class="row p-3 border bg-light">
+                                    <div class="col">
+                                        Size
+                                    </div>
+                                    <div class="col">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </section>
             </div>
         </div>
 </body>

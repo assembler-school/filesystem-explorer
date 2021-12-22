@@ -24,9 +24,11 @@ pathToggleActive();
 
 $(".folder").on("click", oneclick)
 $(".folder").on("dblclick", doubleclick)
+
 $(".folder").focusin(function (e) {
   $(e.target).parent().css("background-color", "lightblue");
-})
+  const url = $(e.target).data("url");
+});
 $(".folder").focusout(function (e) {
   $(e.target).parent().css("background-color", "inherit");
 })
@@ -53,13 +55,12 @@ function showDeleteModal(e) {
   `)
 }
 
-function edit() {
-  $("#modalEdit").on("show.bs.modal", showEditModal)
+$("#modalEdit").on("show.bs.modal", showEditModal)
 
-  function showEditModal(e) {
+function showEditModal(e) {
   const url = $(e.relatedTarget).data("url");
-    console.log(url);
-    $("#edit_form").append(`
+  console.log(url);
+  $("#edit_form").append(`
       <input type="hidden" name="oldName" value="${url}">
   `)
   }
@@ -69,3 +70,18 @@ edit();
 $("#searchBtn").on("clik", function(){
   console.log("hola");
 })
+}
+
+
+
+if ($(".closing").length) {
+  $(".closing").each(function (idx, element) {
+    $(element).on("click", closeclose)
+  })
+
+
+}
+
+function closeclose() {
+  window.location.replace("./index.php");
+}
