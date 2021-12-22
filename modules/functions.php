@@ -34,7 +34,7 @@ function loadFiles()
                         </div>';
             } else if (is_dir("$path/$element")) {
                 echo '<div class="col d-flex flex-column folder">
-                        <a href="./index.php?path=' . $path . '/' . $element . '"><i class="fas fa-folder fa-5x"></i></a>
+                        <a  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" data-url="' . $path . "/" . $element . '" href="./index.php?path=' . $path . '/' . $element . '"><i class="fas fa-folder fa-5x"></i></a>
                                     <div class="infoCard">
                                         <p class=" fileName">' . $element . '</p>
                                     </div>
@@ -111,3 +111,12 @@ function breadcrumb($path)
 //     echo "La última modificación de $nombre_archivo fue: " . date("F d Y H:i:s.", filectime($nombre_archivo));
 // }
 // echo "La fecha de modificación del fichero 001-ejemplo-php-filemtime.php es '" . date ("F d Y H:i:s.", filemtime("001-ejemplo-php-filemtime.php")) . "'";
+
+
+function displayInfo($path,$arr)
+{
+    $size= filesize($path);
+    return $arr=array(
+        "filesize"=>$size,
+    )
+}

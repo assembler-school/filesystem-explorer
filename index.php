@@ -154,44 +154,6 @@ require("./modules/functions.php");
                 </section>
             </article>
         </main>
-        <!--RIGTH SIDE-->
-        <section class="navbar navbar-dark bg-primary flex-nowrap">
-            <table class="default">
-
-                <div class="navbar-collapse collapse w-100 justify-content-flex-start" id="navbar5">
-
-                </div>
-                <div class="w-100">
-                    <div class="row p-3 border bg-light">Information</div>
-                    <div class="row p-3 border bg-light">DETAILS</div>
-                    <div class="row p-3 border bg-light">TYPE ONF FILE</div>
-                    <div class="row p-3 border bg-light">
-                        <div class="col">
-                            Creation date
-                        </div>
-                        <div class="col">
-                            21/12/2021
-                        </div>
-                        <div class="row p-3 border bg-light">
-                            <div class="col">
-                                Last Modified Date
-                            </div>
-                            <div class="col">
-                                21/12/2021
-                            </div>
-                        </div>
-                        <div class="row p-3 border bg-light">
-                            <div class="col">
-                                Size
-                            </div>
-                            <div class="col">
-                                ADIVINa
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </section>
-
 
         <!-- Modal Delete -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -229,6 +191,52 @@ require("./modules/functions.php");
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- OFF CANVAS INFORMATION -->
+
+        <div class="offcanvas offcanvas-end" data-bs-backdrop="false" tabindex="-1" id="offcanvasRight">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <section id="i" class="navbar navbar-dark bg-primary flex-nowrap">
+                    <table class="default">
+
+                        <div class="navbar-collapse collapse w-100 justify-content-flex-start" id="navbar5">
+
+                        </div>
+                        <div class="w-100">
+                            <div class="row p-3 border bg-light">Information</div>
+                            <div class="row p-3 border bg-light">DETAILS</div>
+                            <div class="row p-3 border bg-light">TYPE ONF FILE</div>
+                            <div class="row p-3 border bg-light">
+                                <div class="col">
+                                    Creation date
+                                </div>
+                                <div class="col">
+                                    21/12/2021
+                                </div>
+                                <div class="row p-3 border bg-light">
+                                    <div class="col">
+                                        Last Modified Date
+                                    </div>
+                                    <div class="col">
+                                        21/12/2021
+                                    </div>
+                                </div>
+                                <div class="row p-3 border bg-light">
+                                    <div class="col">
+                                        Size
+                                    </div>
+                                    <div class="col">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </section>
             </div>
         </div>
 </body>
