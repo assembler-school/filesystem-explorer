@@ -130,7 +130,7 @@ require("./modules/functions.php");
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="./modules/functions.php" id="edit_form">
+                        <form method="post" action="./modules/EditFolders.php" id="edit_form">
                             <input type="text" name="edit-name">
                             <input type="submit" value="Edit-Form" name="Edit-Form">
                         </form>

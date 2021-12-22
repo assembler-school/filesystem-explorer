@@ -1,12 +1,27 @@
 <?php
 /*EDIT RENAME FILE*/
 
-$action = (isset($_POST['']))
-if(isset($_POST['Edit-Form'])){
-  $old_name = "./../root/nueva";
-  $new_name = "./../root/".$_POST['edit-name'];
-  $name = rename($old_name, $new_name);
-  print_r($element);
-  header('Location: ./../index.php');
-  };
+if(isset($_POST['edit-name'])){
+  $editPost = $_POST['edit-name'];
+  print_r($editPost);
 
+  $old_name = $_POST['oldName'];
+
+  $arrayEdit = explode("/", $old_name);
+  //remove the last position
+  array_pop($arrayEdit);
+  //convert to string again
+  $path = implode("/", $arrayEdit);
+  
+  // echo($editPost);
+
+  
+  $new_name = "$path/".$_POST['edit-name'];
+  // echo($new_name);
+  $name = rename("./../$old_name", "./../$new_name");
+  if($path === "./root"){
+    header('Location: ./../index.php');
+  }else {
+    header('location:./../index.php?path='.$path);
+  };
+  };
