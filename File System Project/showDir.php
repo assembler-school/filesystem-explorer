@@ -14,7 +14,6 @@ foreach ($dir as $fileinfo) {
 
 foreach ($dir as $fileF) {
     if ($fileF->isfile()) {
-
         echo $fileF->getExtension() . "<br>";
     }
 };
@@ -24,7 +23,7 @@ function bytesToHuman($bytes)
 {
     $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
     for ($i = 0; $bytes > 1024; $i++) $bytes /= 1024;
-    return round($bytes, 3) . ' ' . $units[$i];
+    return round($bytes, 2) . ' ' . $units[$i];
 };
 
 //todo return the size of folder or file
@@ -92,13 +91,8 @@ if (isset($_POST['param1'])){
 }
 function filesIcon($extension, $rootf)
 {
-    // echo $rootf;´
     $l= str_replace("\\", "/", $rootf);
-
-    // echo $l;
-    // echo $l;
     $aa= str_replace(" ","%20", $l);
-    // echo $aa;
     switch ($extension) {
         case 'doc':
             return "<a onclick = obtenerdatos('$aa')> <img  class='sectionImg' src='./assets/icons/doc.png' alt='doc img'>  </a>";

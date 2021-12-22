@@ -61,7 +61,6 @@
                         }
                             ?>
                             </select>
-                            <!-- <input type="text" class="form-control" id="fileroot" name="fileroot" placeholder="File Name " /> -->
                         </div>
                     <div class="modal-footer">
                         <button type="submit" name="createForF" class="btn btn-secondary col-6 mx-auto ">Create</button>
@@ -72,7 +71,7 @@
     </div>
 </div>
 
-//! FOr upload 
+<!-- todo For upload  -->
 <div class="modal fade" id="modalFormNew" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
