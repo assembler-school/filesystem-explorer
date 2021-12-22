@@ -143,7 +143,7 @@ require("./modules/functions.php");
             </div>
         </div>
         <!-- Main has to be a grid or flexbox responsive with cols and rows of bootstrap -->
-        <main class="container">
+        <main class="container-fluid">
             <!-- This function laods every single file and folder -->
             <article class="row">
                 <section class="col-4">
@@ -213,7 +213,7 @@ require("./modules/functions.php");
         ?>
         <div class="offcanvas offcanvas-end" data-bs-backdrop="false" tabindex="-1" id="offcanvasRight">
             <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <h5 id="offcanvasRightLabel">Information</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -246,9 +246,7 @@ require("./modules/functions.php");
                                     <div class="col">
                                         Size
                                     </div>
-                                    <div class="col">
                                     </div>
-                                </div>
                             </div>
                         </div>
                 </section>
