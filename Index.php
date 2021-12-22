@@ -50,8 +50,29 @@
 
                 <button name="btnDownload"class="btn btn-sm btn-outline-secondary me-2" type="button">Download</button>
                 <button name="btnMove"class="btn btn-sm btn-outline-secondary me-2" type="button">Move to</button>
-                <button name="btnCopy"class="btn btn-sm btn-outline-secondary me-2" type="button">Copy to</button>
+                <!-- <button type="submit" formaction="./modules/copy.php?root=<?=$Root?>&fileName=<?=$fileName?>" method="GET" name="btnCopy"class="btn btn-sm btn-outline-secondary me-2" >Copy</button> -->
                 
+                <?php
+                if (isset($_GET["fileName"]) ){
+                  $root3=$_GET["root"];
+                  $fileName3=$_GET["fileName"];
+                  ?>
+                  <button type="submit" formaction="./modules/copy.php?root=<?=$root3?>&fileName=<?=$fileName3?>" method="POST"name="btnNewFolder"class="btn btn-sm btn-outline-secondary me-2" type="button">Copy</button>
+                  <?php
+                  }
+                  elseif (isset($_GET["root"]) ){
+                  $root3=$_GET["root"];
+                  ?>
+                  <button type="submit" formaction="./modules/copy.php?root=<?=$root3?>" method="POST"name="btnNewFolder" class="btn btn-sm btn-outline-secondary me-2">Copy</button>
+                  <?php
+                  }
+                  else {
+                  ?>
+                  <button disabled="true"  class="btn btn-sm btn-outline-secondary me-2">Copy</button>
+                <?php
+                }
+                ?>
+
                 <button type="button" class="btn btn-sm btn-outline-secondary me-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Rename
                 </button>
                 <button type="button" class="btn btn-sm btn-outline-secondary me-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Delete</button>
@@ -59,6 +80,7 @@
     </div>
 <div class="row">
 
+<!--  -->
 
 
 
@@ -93,7 +115,7 @@
 
 require_once("./modules/searchFiles.php");
 
-  searchFilesFun($searchWord);
+  // searchFilesFun($searchWord);
 
 
 
