@@ -29,6 +29,7 @@ section .container{
     color: black;
     font-size: 22px;
 }
+
 #infoCircle{
    color: var(--white);
    position:absolute;

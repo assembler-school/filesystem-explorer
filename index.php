@@ -20,7 +20,7 @@ require("./modules/functions.php");
     <!-- font-awesome -->
     <script src="https://kit.fontawesome.com/63f29c9463.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous" defer></script>
-    <script src="modules\index.js" defer></script>
+    <script src="modules/index.js" defer></script>
 </head>
 
 <body>
@@ -76,7 +76,7 @@ require("./modules/functions.php");
                         <form method="post" action="./modules/uploadFile.php" enctype="multipart/form-data">
                             <label for="upload" style="background-color: white; color: black; margin: 10px 5px 0px 0px; padding: 11.5px 30px" class="btn btn-sm btn-outline-secondary">
                                 <i class="fas fa-file-upload fa-2x"></i>
-                                <input type="text" name="path" value='<?php echo $path ?>' style="display:none;">
+                                <input type="hidden" name="path" value='<?php echo $path ?>'>
                                 <input type="file" name="uploadedFile" style="display:none;" id="upload" onchange="this.form.submit();" accept=".doc,.csv,.jpg,.png,.txt,.ppt,.odt,.pdf,.zip,.rar,.exe,.svg,.mp3,.mp4">
                             </label>
                         </form>
@@ -111,8 +111,9 @@ require("./modules/functions.php");
                         ?>
                         <form method="post" action="./modules/create.php" id="create_form">
                             <input type="text" name="file_name">
-                            <input type="text" name="path" value='<?php echo $path ?>' style="display:none;">
-                            <input type="submit" value="Create folder" name="create_file">
+                            <input type="hidden" name="path" value='<?php echo $path ?>'>
+                            <input type="submit" value="Create_File" name="create_file">
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -193,7 +194,7 @@ require("./modules/functions.php");
 
 
         <!-- Modal Delete -->
-        <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -205,7 +206,9 @@ require("./modules/functions.php");
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                        <button type="button" class="btn btn-primary">Yes</button>
+                        <form id="deleteForm" method="post" action="./modules/deleteFiles.php">
+                            <button type="submit" class="btn btn-primary">Yes</button>
+                        </form>
                     </div>
                 </div>
             </div>

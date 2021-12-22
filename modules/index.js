@@ -28,7 +28,6 @@ function edit() {
 edit();
 
 
-
 $(".folder").on("click", oneclick)
 $(".folder").on("dblclick", doubleclick)
 $(".folder").focusin(function (e) {
@@ -50,7 +49,12 @@ function doubleclick(e) {
 
 }
 
-$("input[name='attachment[]']").each(function() {
-  var fileName = $(this).val();
-  console.log(fileName);
-});
+$("#deleteModal").on("show.bs.modal", showDeleteModal)
+
+function showDeleteModal(e) {
+  const url = $(e.relatedTarget).data("url");
+  console.log(url);
+  $("#deleteForm").append(`
+      <input type="hidden" name="url" value="${url}">
+  `)
+}
