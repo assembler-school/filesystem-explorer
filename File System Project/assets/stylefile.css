@@ -7,13 +7,8 @@ body{
 }
 
 .logo{
-    margin-left: 1em;
+    margin-left: 0.5em;
 }
-
-/* .loco{
-   display: flex;
-   flex-wrap: wrap;
-} */
 
 .sectionImg{
     max-width: fit-content;
