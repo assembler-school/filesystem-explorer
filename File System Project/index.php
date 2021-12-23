@@ -30,7 +30,7 @@ include 'modules/createModal.php';
         <aside class="col-lg-2 col-sm-6 m-1">
             <?php require 'showDir.php'  ?>
         </aside>
-        <section class="col-lg-6 col-sm-6 m-1" >
+        <section class="col-lg-6 col-sm-6 m-1">
             <table class="table">
                 <thead>
                     <tr>
@@ -42,34 +42,32 @@ include 'modules/createModal.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php sectionFilesTable();
-                    ?>
-                    <?php 
-if (isset($_POST['submitBuscar'])) {
-    $searchbar= $_POST['buscar'];
-    $path = "./root";
-    $newDir = new DirectoryIterator($path);
-    foreach ($newDir as $fileinfo) {
-        foreach ($fileinfo as $newroute) {
-            $newPatha = "./root/$newroute";
-            $pathtolook = new DirectoryIterator($newPatha);
-            foreach ($pathtolook as $rightPath) {
-                // $extension = $rightPath->getExtension();
-                // $infofile = $rightPath->getFileInfo();
-                $fileName = $rightPath->getFilename();
-                if($fileName ==$searchbar){
-                    $extensiona = $rightPath->getExtension();
-                    $infofilea = $rightPath->getFileInfo();
-                $fileNamea = $rightPath->getFilename();
-                $rutanueva= folderSize($infofilea);
-                $fileSizea = bytesToHuman($rutanueva);
-                $lastUpdatea= date('F d Y H:i:s', filemtime($infofilea));
-                 fillTable($extensiona, $infofilea, $fileNamea, $fileSizea, $lastUpdatea);
-            }
-        }
-    }
-}
-}       ?>
+                <?php
+                    sectionFilesTable();
+                    if (isset($_POST['submitBuscar'])) {
+                        $searchbar = $_POST['buscar'];
+                        $path = "./root";
+                        $newDir = new DirectoryIterator($path);
+                        foreach ($newDir as $fileinfo) {
+                            foreach ($fileinfo as $newroute) {
+                                $newPatha = "./root/$newroute";
+                                $pathtolook = new DirectoryIterator($newPatha);
+                                foreach ($pathtolook as $rightPath) {
+                                    $fileName = $rightPath->getFilename();
+                                    if ($fileName == $searchbar) {
+                                        $extensiona = $rightPath->getExtension();
+                                        $infofilea = $rightPath->getFileInfo();
+                                        $fileNamea = $rightPath->getFilename();
+                                        $rutanueva = folderSize($infofilea);
+                                        $fileSizea = bytesToHuman($rutanueva);
+                                        $lastUpdatea = date('F d Y H:i:s', filemtime($infofilea));
+                                        fillTable($extensiona, $infofilea, $fileNamea, $fileSizea, $lastUpdatea);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ?>
                 </tbody>
             </table>
         </section>

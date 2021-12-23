@@ -123,11 +123,7 @@
                         <input type="file" name="Fileimage" id="collapsefile" class="btn-group collapse show">
                         <br>
                         <div class="mb-3 collapse" id="collapsefile">
-                            <!-- <h5>Choose name for the folder</h5> -->
-                            <!-- <input type="text" name="foldername" class="justify-content-center">  -->
-                            <!-- <h5>Select Folder to Upload: </h5> -->
                             <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" moxdirectory="">
-                            <!-- <input type="Submit" value="Upload" name="upload"> -->
                             <button type="submit" value="Upload a folder" name="upload" class="btn btn-secondary">Upload</button>
                         </div>
                         <button class="btn btn-secondary" type="submit" value="Upload a file" name="buttclick" id="collapsefile" class="btn btn-secondary collapse show">Upload</button>
