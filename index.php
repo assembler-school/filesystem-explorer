@@ -215,7 +215,7 @@ require("./modules/functions.php");
         $info = displayInfo($_GET["information"]);
         echo '<div class="offcanvas offcanvas-end" data-bs-backdrop="false" tabindex="-1" id="offcanvasRight">
             <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <h5 id="offcanvasRightLabel">Information</h5>
                 <button type="button" class="closing btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
