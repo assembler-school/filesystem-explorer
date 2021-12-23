@@ -5,18 +5,22 @@ foreach ($dir as $fileinfo) {
     if ($fileinfo->isDir() && !$fileinfo->isDot()) {
         $credentials = dirname($fileinfo);
         $pathofFile =  $fileinfo->getFileInfo();
-        echo "<a href='./index.php?$fileinfo'> <i class='fas fa-folder fa-10x'></i></a>";
+        if($fileinfo-> getFilename() == 'Trash'){
+            echo "<a href='./index.php?$fileinfo'> <i class='fas fa-trash-alt fa-10x'></i></a> <br>";
+        }else{
+            echo "<a href='./index.php?$fileinfo'> <i class='fas fa-folder fa-10x'></i></a> <br> ";
+        }
         echo $fileinfo->getFilename() . '<br>';
         echo date('F d Y H:i:s', filemtime($pathofFile)) . '<br>';
         echo bytesToHuman(folderSize($pathofFile)) . "<br>";
     }
 };
 
-foreach ($dir as $fileF) {
-    if ($fileF->isfile()) {
-        echo $fileF->getExtension() . "<br>";
-    }
-};
+// foreach ($dir as $fileF) {
+//     if ($fileF->isfile()) {
+//         echo $fileF->getExtension() . "<br>";
+//     }
+// };
 
 //todo Convert bites to readable size
 function bytesToHuman($bytes)
@@ -40,8 +44,7 @@ function folderSize($dir){
     }
 };
 
-function sectionFilesTable()
-{
+function sectionFilesTable(){
     $path = "./root";
     $newDir = new DirectoryIterator($path);
     foreach ($newDir as $fileinfo) {
@@ -86,8 +89,8 @@ if (isset($_POST['param1'])){
     rename($cambiarderuta,"./Deletedtem/$Nombre" );
     header("location: ./index.php");
 }
-function filesIcon($extension, $rootf)
-{
+
+function filesIcon($extension, $rootf){
     $l= str_replace("\\", "/", $rootf);
     $aa= str_replace(" ","%20", $l);
     switch ($extension) {

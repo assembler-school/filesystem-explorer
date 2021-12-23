@@ -27,7 +27,7 @@
                             <label class="form-label d-flex justify-content-center">File Name </label>
                             <input type="text" class="form-control" id="filename" name="filename" placeholder="myFolder / myFile" />
                         </div>
-                        <div class="btn-group collapse show" id="collapseExample" >
+                        <div class="btn-group collapse show" id="collapseExample">
                             <select class="form-select" name="type" aria-label="Default select example">
                                 <option value=".doc">.doc</option>
                                 <option value=".csv">.csv</option>
@@ -47,21 +47,21 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                            <label class="form-label d-flex justify-content-center">File Root</label>
-                            <select class="form-select" id="fileroot" name="fileroot" aria-label="Default select example">
+                        <label class="form-label d-flex justify-content-center">File Root</label>
+                        <select class="form-select" id="fileroot" name="fileroot" aria-label="Default select example">
                             <option value=''></option>
-                            <?php 
-                        $path="./root";
-                        $dir = new DirectoryIterator($path);
-                        foreach ($dir as $fileinfo) {
-                            if ($fileinfo->isDir() && !$fileinfo->isDot()) {
-                                $Namesofolders= $fileinfo->getFilename();
-                                echo "<option value='$Namesofolders'>$Namesofolders</option>";
+                            <?php
+                            $path = "./root";
+                            $dir = new DirectoryIterator($path);
+                            foreach ($dir as $fileinfo) {
+                                if ($fileinfo->isDir() && !$fileinfo->isDot()) {
+                                    $Namesofolders = $fileinfo->getFilename();
+                                    echo "<option value='$Namesofolders'>$Namesofolders</option>";
+                                }
                             }
-                        }
                             ?>
-                            </select>
-                        </div>
+                        </select>
+                    </div>
                     <div class="modal-footer">
                         <button type="submit" name="createForF" class="btn btn-secondary col-6 mx-auto ">Create</button>
                     </div>
@@ -80,7 +80,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="./createfolder.php" method="post" enctype="multipart/form-data"> 
+                <form action="./createfolder.php" method="post" enctype="multipart/form-data">
                     <div class="row align-items-center mx-auto">
                         <div class="form-check col  mx-auto">
                             <input class="form-check-input" type="radio" value="createFolder" id="flexCheckDefaultn" name="create" data-bs-toggle="collapse" href="#collapsefile" role="button" aria-expanded="false" aria-controls="collapsefile">
@@ -96,46 +96,41 @@
                             </label>
                         </div>
                     </div>
-                    <div class="row" >
-                        <div class="mb-3 btn-group collapse" id="collapsefile" >
+                    <div class="row">
+                        <div class="mb-3 btn-group collapse" id="collapsefile">
                             <label class="form-label d-flex justify-content-center">Folder Name </label>
                             <input type="text" class="form-control" id="filename" name="foldername" placeholder="Put name" />
                         </div>
                     </div>
                     <div class="mb-3">
-                            <label class="form-label d-flex justify-content-center">File Root</label>
-                            <select class="form-select" id="fileroot" name="fileroot" aria-label="Default select example">
+                        <label class="form-label d-flex justify-content-center">File Root</label>
+                        <select class="form-select" id="fileroot" name="fileroot" aria-label="Default select example">
                             <option value=''></option>
-                            <?php 
-                        $path="./root";
-                        $dir = new DirectoryIterator($path);
-                        foreach ($dir as $fileinfo) {
-                            if ($fileinfo->isDir() && !$fileinfo->isDot()) {
-                                $Namesofolders= $fileinfo->getFilename();
-                                echo "<option value='$Namesofolders'>$Namesofolders</option>";
+                            <?php
+                            $path = "./root";
+                            $dir = new DirectoryIterator($path);
+                            foreach ($dir as $fileinfo) {
+                                if ($fileinfo->isDir() && !$fileinfo->isDot()) {
+                                    $Namesofolders = $fileinfo->getFilename();
+                                    echo "<option value='$Namesofolders'>$Namesofolders</option>";
+                                }
                             }
-                        }
                             ?>
-                            </select>
-                            <!-- <input type="text" class="form-control" id="fileroot" name="fileroot" placeholder="File Name " /> -->
-                        </div>
+                        </select>
+                    </div>
                     <div class="modal-footer">
-                    <!-- <form action="./createfolder.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="Fileimage" id="fileofimage">
-        <input type="submit" value="Upload a file" name="buttclick">
-    </form> -->
-                
-    <input type="file" name="Fileimage" id="collapsefile" class="btn-group collapse show" >
-    <br>
-    <div class="mb-3 collapse" id="collapsefile">
-    <!-- <h5>Choose name for the folder</h5> -->
-    <!-- <input type="text" name="foldername" class="justify-content-center">  -->
-        <!-- <h5>Select Folder to Upload: </h5> -->
-        <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" moxdirectory="" >
-        <!-- <input type="Submit" value="Upload" name="upload"> -->
-        <button type="submit" value="Upload a folder" name="upload" class="btn btn-secondary">Upload</button>
-    </div>
-                        <button type="submit" value="Upload a file" name="buttclick" id="collapsefile" class="btn btn-secondary collapse show">Upload</button>
+
+                        <input type="file" name="Fileimage" id="collapsefile" class="btn-group collapse show">
+                        <br>
+                        <div class="mb-3 collapse" id="collapsefile">
+                            <!-- <h5>Choose name for the folder</h5> -->
+                            <!-- <input type="text" name="foldername" class="justify-content-center">  -->
+                            <!-- <h5>Select Folder to Upload: </h5> -->
+                            <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" moxdirectory="">
+                            <!-- <input type="Submit" value="Upload" name="upload"> -->
+                            <button type="submit" value="Upload a folder" name="upload" class="btn btn-secondary">Upload</button>
+                        </div>
+                        <button class="btn btn-secondary" type="submit" value="Upload a file" name="buttclick" id="collapsefile" class="btn btn-secondary collapse show">Upload</button>
                     </div>
                 </form>
             </div>
