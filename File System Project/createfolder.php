@@ -21,8 +21,7 @@ if (isset($_POST['createForF'])) {
     } elseif ($_POST['create'] == 'createFile') {
         $namefile = $_POST['filename'];
         $typefile = $_POST['type'];
-        // $fileroot = $_POST['fileroot'];
-        $fileroot= $_POST['fileroot'];
+        $fileroot = $_POST['fileroot'];
         fopean();
     }
 }
@@ -57,17 +56,16 @@ if (isset($_POST['buttclick'])) {
 if (isset($_POST['upload'])) {
     if ($_POST['foldername'] != "") {
         $target_dir = "./root/";
-       $foldername = $_POST['foldername'];
-       if (!is_dir($target_dir.$foldername)) mkdir($target_dir.$foldername);
-       foreach($_FILES['files']['name'] as $i => $name) {
-          if (strlen($_FILES['files']['name'][$i]) > 1) {
-             move_uploaded_file($_FILES['files']['tmp_name'][$i], $target_dir.$foldername.
-                "/".$name);
-          }
-       }
-       echo "Folder is successfully uploaded";
-       header('location: ./index.php');
+        $foldername = $_POST['foldername'];
+        if (!is_dir($target_dir . $foldername)) mkdir($target_dir . $foldername);
+        foreach ($_FILES['files']['name'] as $i => $name) {
+            if (strlen($_FILES['files']['name'][$i]) > 1) {
+                move_uploaded_file($_FILES['files']['tmp_name'][$i], $target_dir . $foldername .
+                    "/" . $name);
+            }
+        }
+        //echo "Folder is successfully uploaded";
+        //header('location: ./index.php');
     } else
-    //    echo "Upload folder name is empty";
-       header('location: ./index.php');
- } 
+        header('location: ./index.php');
+}
