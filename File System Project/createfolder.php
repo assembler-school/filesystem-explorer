@@ -43,9 +43,11 @@ function fopean()
         echo $t->getMessage();
     }
 }
+// echo "jaksj";
 
 if (isset($_POST['buttclick'])) {
-    $target_dir = "./root/";
+    $dirinside=$_POST["fileroot"];
+    $target_dir = "./root/$dirinside/";
     // $jj=$_FILES['Fileimage'];
     $target_file = $target_dir . basename($_FILES["Fileimage"]["name"]);
     move_uploaded_file($_FILES['Fileimage']['tmp_name'], $target_file);
