@@ -45,7 +45,6 @@ function sectionFilesTable()
     $path = "./root";
     $newDir = new DirectoryIterator($path);
     foreach ($newDir as $fileinfo) {
-        // echo "jsjs";
         if (isset($_GET["$fileinfo"])) {
             $newPath = "./root/$fileinfo";
             $probandol = new DirectoryIterator($newPath);
@@ -80,10 +79,7 @@ function fillTable($icon,$rootA, $fileName, $fileSize, $lastUpdate){
     echo "</tr>";
 };
 
-// $it = new RecursiveTreeIterator(new RecursiveDirectoryIterator("./root", RecursiveDirectoryIterator::SKIP_DOTS));
-// foreach($it as $path) {
-//   echo $path."<br>";
-// }
+
 if (isset($_POST['param1'])){
     $cambiarderuta= $_POST['param1'];
     $Nombre=$_POST['param2'];
