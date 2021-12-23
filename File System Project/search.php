@@ -32,7 +32,7 @@ if (isset($_POST['submitBuscar'])) {
     }
 }
 }
-echo "akjsd";
+// echo "akjsd";
 
 // global $prt;
 // echo $prt;

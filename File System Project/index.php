@@ -58,8 +58,6 @@ if (isset($_POST['submitBuscar'])) {
                 // $infofile = $rightPath->getFileInfo();
                 $fileName = $rightPath->getFilename();
                 if($fileName ==$searchbar){
-                    // echo "entra aqui?";
-                    // fillTable("","","","", "");
                     $extensiona = $rightPath->getExtension();
                     $infofilea = $rightPath->getFileInfo();
                 $fileNamea = $rightPath->getFilename();
@@ -67,8 +65,6 @@ if (isset($_POST['submitBuscar'])) {
                 $fileSizea = bytesToHuman($rutanueva);
                 $lastUpdatea= date('F d Y H:i:s', filemtime($infofilea));
                  fillTable($extensiona, $infofilea, $fileNamea, $fileSizea, $lastUpdatea);
-            }else{
-                echo "ruta mala";
             }
         }
     }
