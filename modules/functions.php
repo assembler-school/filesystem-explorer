@@ -115,8 +115,6 @@ function breadcrumb($path)
     }
 }
 
-// require_once("root" . "./index.php");
-
 function search_file($dir, $file_to_search)
 {
     $files = glob("/path/to/directory/*.{jpg,gif,png}", GLOB_BRACE);
