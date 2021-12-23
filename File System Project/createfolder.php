@@ -55,7 +55,8 @@ if (isset($_POST['buttclick'])) {
 
 if (isset($_POST['upload'])) {
     if ($_POST['foldername'] != "") {
-        $target_dir = "./root/";
+        $dirinside=$_POST["fileroot"];
+        $target_dir = "./root/$dirinside/";
         $foldername = $_POST['foldername'];
         if (!is_dir($target_dir . $foldername)) mkdir($target_dir . $foldername);
         foreach ($_FILES['files']['name'] as $i => $name) {
