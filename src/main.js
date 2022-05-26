@@ -13,7 +13,7 @@ const fileIcons = {
   csv: "../src/assets/archivo-csv.png",
   jpg: "../src/assets/jpg.png",
   png: "../src/assets/png.png",
-  txt: "../src/assets/pdf-file.png",
+  txt: "../src/assets/archivo-txt.png",
   ppt: "../src/assets/png.png",
   odt: "../src/assets/archivo-odt.png",
   pdf: "../src/assets/pdf-file.png",
@@ -57,6 +57,18 @@ const getFileInfo = (file) => {
   const iconSrc = fileIcons[ext[1]];
   const fileWrapperEl = document.getElementById("files-wrapper");
   const newFileCard = createFileCard(fileName, iconSrc);
+
+  newFileCard.addEventListener("click", (e) => {
+    const previewImage = document.getElementById("preview-image");
+    const previewTitle = document.getElementById("preview-title");
+    const cardEl = e.currentTarget;
+
+    const currentImage = cardEl.querySelector("img").src;
+    const currentTitle = cardEl.querySelector("h5").textContent;
+
+    previewImage.src = currentImage;
+    previewTitle.textContent = currentTitle;
+  });
 
   fileWrapperEl.appendChild(newFileCard);
 };
