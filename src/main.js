@@ -51,7 +51,7 @@ const createFileCard = (fileName, imageSrc) => {
   return colEl;
 };
 
-const getFileInfo = (file) => {
+const getFileInfo = (file, size, modifiedDate) => {
   const ext = file.split(".");
   const fileName = ext[0];
   const iconSrc = fileIcons[ext[1]];
@@ -61,6 +61,10 @@ const getFileInfo = (file) => {
   newFileCard.addEventListener("click", (e) => {
     const previewImage = document.getElementById("preview-image");
     const previewTitle = document.getElementById("preview-title");
+    const fileSize = document.getElementById("fileSizePreview");
+    const fileLastModified = document.getElementById("fileLastModified");
+    const fileExtPreview = document.getElementById("fileExtensionPreview");
+
     const cardEl = e.currentTarget;
 
     const currentImage = cardEl.querySelector("img").src;
@@ -68,6 +72,9 @@ const getFileInfo = (file) => {
 
     previewImage.src = currentImage;
     previewTitle.textContent = currentTitle;
+    fileSize.textContent = `Size: ${size} bytes`;
+    fileLastModified.textContent = `Exstention: ${modifiedDate}`;
+    fileExtPreview.textContent = `Last Modfied: ${ext[1]}`;
   });
 
   fileWrapperEl.appendChild(newFileCard);
@@ -75,8 +82,10 @@ const getFileInfo = (file) => {
 
 const showFiles = async () => {
   const allFiles = await getFiles();
-  allFiles.map((file) => {
-    getFileInfo(file);
+  allFiles.map((fileArray) => {
+    // console.log(Object.values(fileArray));
+    console.log(fileArray[0]);
+    getFileInfo(fileArray[0], fileArray[1], fileArray[2]);
   });
 };
 
