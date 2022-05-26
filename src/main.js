@@ -10,18 +10,18 @@ const getFiles = async () => {
 
 const fileIcons = {
   doc: "../src/assets/doc.png",
-  csv: null,
-  jpg: null,
-  png: null,
+  csv: "../src/assets/archivo-csv.png",
+  jpg: "../src/assets/jpg.png",
+  png: "../src/assets/png.png",
   txt: "../src/assets/pdf-file.png",
-  ppt: null,
-  odt: null,
+  ppt: "../src/assets/png.png",
+  odt: "../src/assets/archivo-odt.png",
   pdf: "../src/assets/pdf-file.png",
-  zip: null,
-  rar: null,
-  exe: null,
-  svg: null,
-  mp3: null,
+  zip: "../src/assets/archivo-zip.png",
+  rar: "../src/assets/archivo-rar.png",
+  exe: "../src/assets/exe.png",
+  svg: "../src/assets/archivo-csv.png",
+  mp3: "../src/assets/archivo-mp3.png",
   mp4: "../src/assets/mp4.png",
 };
 
