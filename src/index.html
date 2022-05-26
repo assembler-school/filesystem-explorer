@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,10 @@
   <title>Managizer - Manage your Files</title>
   <link rel="stylesheet" href="style.css">
   <script src="main.js" defer></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
+
 <body>
   <main class="p-5">
     <div class="container rounded">
@@ -66,15 +69,19 @@
                   </a>
                 </div>
                 <!-- Modal for uploading files -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Upload/Create File</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        ...
+                        <form action="./modules/uploadFile.php" method="post" enctype="multipart/form-data">
+                          <input type="file" name="file" id="file">
+                          <button type="submit" name="submit">Upload</button>
+                        </form>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -83,50 +90,50 @@
                     </div>
                   </div>
                 </div>
-                <form class="d-flex mt-2 col-11"  role="search">
+                <form class="d-flex mt-2 col-11" role="search">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
               </div>
             </div>
             <!-- All files preview -->
-              <div class="manager-preview border-top mt-4">
-                <div class="row row-cols-1 row-cols-md-6 g-4 p-4" id="files-wrapper">
-                  <div class="col">
-                    <div class="card">
-                      <img src="assets/pdf-file.png" class="card-img-top" alt="pdf-file">
-                      <div class="card-body">
-                        <h5 class="card-title">contarto_calle_toledo_madrid.pdf</h5>
-                      </div>
+            <div class="manager-preview border-top mt-4">
+              <div class="row row-cols-1 row-cols-md-6 g-4 p-4" id="files-wrapper">
+                <div class="col">
+                  <div class="card">
+                    <img src="assets/pdf-file.png" class="card-img-top" alt="pdf-file">
+                    <div class="card-body">
+                      <h5 class="card-title">contarto_calle_toledo_madrid.pdf</h5>
                     </div>
                   </div>
-                  <div class="col">
-                    <div class="card">
-                      <img src="./assets/doc.png" class="card-img-top" alt="doc-file">
-                      <div class="card-body">
-                        <h5 class="card-title">summery_php.doc</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="card">
-                      <img src="./assets/mp4.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">trip_malaga_2022.mp4</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="card">
-                      <img src="./assets/folder.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">new folder</h5>
-                      </div>
-                    </div>
-                  </div>
-                  
                 </div>
+                <div class="col">
+                  <div class="card">
+                    <img src="./assets/doc.png" class="card-img-top" alt="doc-file">
+                    <div class="card-body">
+                      <h5 class="card-title">summery_php.doc</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img src="./assets/mp4.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">trip_malaga_2022.mp4</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img src="./assets/folder.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">new folder</h5>
+                    </div>
+                  </div>
+                </div>
+
               </div>
+            </div>
           </div>
         </div>
         <!-- End of main view  -->
@@ -138,7 +145,7 @@
             <h3 class="p-2">File Preview</h3>
           </div>
           <div class="file-preview-content d-grid gap-4 p-2">
-            <div class="card" >
+            <div class="card">
               <img src="./assets/pdf-file.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <p class="card-text fw-bold">contrato_calle_toledo_madrid.pdf</p>
@@ -179,7 +186,12 @@
       </div>
     </div>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
