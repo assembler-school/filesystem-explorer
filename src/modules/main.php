@@ -6,9 +6,13 @@ function getFiles($dir)
     unset($listOfFiles[array_search('.', $listOfFiles)]);
     unset($listOfFiles[array_search('..', $listOfFiles)]);
 
+    // foreach($listOfFiles as $key => $value) {
+       
+    //     echo json_encode([$value]);
+    // }
 
     echo json_encode($listOfFiles);
-    // print_r($listOfFiles);
+
 
     // print_r($ffs);
     // prevent empty ordered elements
