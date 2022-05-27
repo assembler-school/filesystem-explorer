@@ -1,12 +1,12 @@
-const getFiles = async () => {
-  const response = await fetch(
-    "http://192.168.64.2/Managizer-filesystem-explorer/src/modules/main.php",
-    { mode: "no-cors" }
-  );
-  const files = await response.json();
+// const getFiles = async () => {
+//   const response = await fetch(
+//     "http://192.168.64.2/Managizer-filesystem-explorer/src/modules/main.php",
+//     { mode: "no-cors" }
+//   );
+//   const files = await response.json();
 
-  return Object.values(files);
-};
+//   return Object.values(files);
+// };
 
 const fileIcons = {
   doc: "../src/assets/doc.png",
@@ -23,71 +23,98 @@ const fileIcons = {
   svg: "../src/assets/archivo-csv.png",
   mp3: "../src/assets/archivo-mp3.png",
   mp4: "../src/assets/mp4.png",
+  folder: "../src/assets/folder.png"
 };
 
-const createFileCard = (fileName, imageSrc) => {
-  const colEl = document.createElement("div");
-  colEl.className = "col";
+const showIcons = () => {
+  const h5El = document.querySelectorAll('[data-type]');
+  h5El.forEach(element => {
+    const arrayH5 = element.textContent.split('.');
+    const ext = arrayH5[arrayH5.length - 1];
+    const img = element.parentElement.previousElementSibling
+    if (ext.length == 3) {
+      img.src = fileIcons[ext];
+    } else {
+      img.src = fileIcons.folder;
+     
+    }
+   
+  
+  })
+}
 
-  const cardEl = document.createElement("div");
-  cardEl.className = "card";
+showIcons()
+// const createFileCard = (fileName, imageSrc) => {
+//   const colEl = document.createElement("div");
+//   colEl.className = "col";
 
-  const cardImageEl = document.createElement("img");
-  cardImageEl.src = imageSrc;
-  cardImageEl.className = "card-img-top";
+//   const cardEl = document.createElement("div");
+//   cardEl.className = "card";
 
-  const cardBodyEl = document.createElement("div");
-  cardBodyEl.className = "card-body";
+//   const cardImageEl = document.createElement("img");
+//   cardImageEl.src = imageSrc;
+//   cardImageEl.className = "card-img-top";
 
-  const cardTitleEl = document.createElement("h5");
-  cardTitleEl.textContent = fileName;
-  cardTitleEl.className = "card-title";
+//   const cardBodyEl = document.createElement("div");
+//   cardBodyEl.className = "card-body";
 
-  colEl.appendChild(cardEl);
-  cardEl.appendChild(cardImageEl);
-  cardEl.appendChild(cardBodyEl);
-  cardBodyEl.appendChild(cardTitleEl);
+//   const cardTitleEl = document.createElement("h5");
+//   cardTitleEl.textContent = fileName;
+//   cardTitleEl.className = "card-title";
 
-  return colEl;
-};
+//   const openFileBtnEl = document.createElement('input');
+//   openFileBtnEl.setAttribute('type', 'submit')
+//   openFileBtnEl.setAttribute('name', 'open')
+//   openFileBtnEl.textContent = "open file";
+  
 
-const getFileInfo = (file, size, modifiedDate) => {
-  const fileSlpit = file.split(".");
-  const ext = fileSlpit[fileSlpit.length - 1];
-  const fileName = fileSlpit.shift();
-  const iconSrc = fileIcons[ext];
-  const fileWrapperEl = document.getElementById("files-wrapper");
-  const newFileCard = createFileCard(fileName, iconSrc);
+//   colEl.appendChild(cardEl);
+//   cardEl.appendChild(cardImageEl);
+//   cardEl.appendChild(cardBodyEl);
+//   cardBodyEl.appendChild(cardTitleEl);
+//   cardBodyEl.appendChild(openFileBtnEl);
 
-  newFileCard.addEventListener("click", (e) => {
-    const previewImage = document.getElementById("preview-image");
-    const previewTitle = document.getElementById("preview-title");
-    const fileSize = document.getElementById("fileSizePreview");
-    const fileLastModified = document.getElementById("fileLastModified");
-    const fileExtPreview = document.getElementById("fileExtensionPreview");
+//   return colEl;
+// };
 
-    const cardEl = e.currentTarget;
+// const getFileInfo = (file, size, modifiedDate) => {
+//   const fileSlpit = file.split(".");
+//   const ext = fileSlpit[fileSlpit.length - 1];
+//   const fileName = fileSlpit.shift();
+//   const iconSrc = fileIcons[ext];
+//   const fileWrapperEl = document.getElementById("files-wrapper");
+//   const newFileCard = createFileCard(fileName, iconSrc);
 
-    const currentImage = cardEl.querySelector("img").src;
-    const currentTitle = cardEl.querySelector("h5").textContent;
+//   newFileCard.addEventListener("click", (e) => {
+//     const previewImage = document.getElementById("preview-image");
+//     const previewTitle = document.getElementById("preview-title");
+//     const fileSize = document.getElementById("fileSizePreview");
+//     const fileLastModified = document.getElementById("fileLastModified");
+//     const fileExtPreview = document.getElementById("fileExtensionPreview");
 
-    previewImage.src = currentImage;
-    previewTitle.textContent = currentTitle;
-    fileSize.textContent = `Size: ${size} bytes`;
-    fileLastModified.textContent = ` Last modified: ${modifiedDate}`;
-    fileExtPreview.textContent = `Extension: ${ext}`;
-  });
+//     const cardEl = e.currentTarget;
 
-  fileWrapperEl.appendChild(newFileCard);
-};
+//     const currentImage = cardEl.querySelector("img").src;
+//     const currentTitle = cardEl.querySelector("h5").textContent;
 
-const showFiles = async () => {
-  const allFiles = await getFiles();
-  allFiles.map((fileArray) => {
-    // console.log(Object.values(fileArray));
-    console.log(fileArray[0]);
-    getFileInfo(fileArray[0], fileArray[1], fileArray[2]);
-  });
-};
+//     previewImage.src = currentImage;
+//     previewTitle.textContent = currentTitle;
+//     fileSize.textContent = `Size: ${size} bytes`;
+//     fileLastModified.textContent = ` Last modified: ${modifiedDate}`;
+//     fileExtPreview.textContent = `Extension: ${ext}`;
+//   });
 
-showFiles();
+//   fileWrapperEl.appendChild(newFileCard);
+// };
+
+// const showFiles = async () => {
+//   const allFiles = await getFiles();
+//   allFiles.map((fileArray) => {
+//     // console.log(Object.values(fileArray));
+//     console.log(fileArray[0]);
+//     getFileInfo(fileArray[0], fileArray[1], fileArray[2]);
+//   });
+// };
+
+// showFiles();
+
