@@ -1,6 +1,6 @@
 const getFiles = async () => {
   const response = await fetch(
-    "http://localhost:8080//Managizer-filesystem-explorer/src/modules/main.php",
+    "http://192.168.64.2/Managizer-filesystem-explorer/src/modules/main.php",
     { mode: "no-cors" }
   );
   const files = await response.json();
@@ -52,9 +52,10 @@ const createFileCard = (fileName, imageSrc) => {
 };
 
 const getFileInfo = (file, size, modifiedDate) => {
-  const ext = file.split(".");
-  const fileName = ext[0];
-  const iconSrc = fileIcons[ext[1]];
+  const fileSlpit = file.split(".");
+  const ext = fileSlpit[fileSlpit.length - 1];
+  const fileName = fileSlpit.shift();
+  const iconSrc = fileIcons[ext];
   const fileWrapperEl = document.getElementById("files-wrapper");
   const newFileCard = createFileCard(fileName, iconSrc);
 
@@ -73,8 +74,8 @@ const getFileInfo = (file, size, modifiedDate) => {
     previewImage.src = currentImage;
     previewTitle.textContent = currentTitle;
     fileSize.textContent = `Size: ${size} bytes`;
-    fileLastModified.textContent = `Exstention: ${modifiedDate}`;
-    fileExtPreview.textContent = `Last Modfied: ${ext[1]}`;
+    fileLastModified.textContent = ` Last modified: ${modifiedDate}`;
+    fileExtPreview.textContent = `Extension: ${ext}`;
   });
 
   fileWrapperEl.appendChild(newFileCard);
