@@ -1,3 +1,7 @@
+<?php 
+require "../src/modules/showFiles.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,6 +86,10 @@
                           <input type="file" name="file" id="file">
                           <button type="submit" name="submit">Upload</button>
                         </form>
+                        <form action="./modules/createFolder.php" method="post" enctype="multipart/form-data">
+                          <input type="text" name="folder" id="folder">
+                          <button type="submit" name="submit">Create</button>
+                        </form>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -99,39 +107,16 @@
             <!-- All files preview -->
             <div class="manager-preview border-top mt-4">
               <div class="row row-cols-1 row-cols-md-6 g-4 p-4" id="files-wrapper">
+              <?php foreach($dirFiles as $key => $value): ?>
                 <div class="col">
                   <div class="card">
-                    <img src="assets/pdf-file.png" class="card-img-top" alt="pdf-file">
+                    <img src="assets/pdf-file.png" id="file-image" class="card-img-top" alt="pdf-file">
                     <div class="card-body">
-                      <h5 class="card-title">contarto_calle_toledo_madrid.pdf</h5>
+                      <h5 class="card-title" data-type><?= $value; ?></h5>
                     </div>
                   </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <img src="./assets/doc.png" class="card-img-top" alt="doc-file">
-                    <div class="card-body">
-                      <h5 class="card-title">summery_php.doc</h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <img src="./assets/mp4.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">trip_malaga_2022.mp4</h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <img src="./assets/folder.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">new folder</h5>
-                    </div>
-                  </div>
-                </div>
-
+                </div> 
+                <?php endforeach; ?>
               </div>
             </div>
           </div>
