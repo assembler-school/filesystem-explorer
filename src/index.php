@@ -113,6 +113,10 @@ require "../src/modules/showFiles.php"
                     <img src="assets/pdf-file.png" id="file-image" class="card-img-top" alt="pdf-file">
                     <div class="card-body">
                       <h5 class="card-title" data-type><?= $value; ?></h5>
+                      <form action="./modules/openFile.php" method="post" enctype="multipart/form-data">
+                        <input type="text" value="<?= $value; ?>" name="file" hidden>
+                        <input type="submit" name="submit" id="open" value="open" >
+                      </form>
                     </div>
                   </div>
                 </div> 
