@@ -1,5 +1,6 @@
 <?php 
-require "../src/modules/showFiles.php"
+require "../src/modules/showFiles.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@ require "../src/modules/showFiles.php"
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Managizer - Manage your Files</title>
   <link rel="stylesheet" href="style.css">
-  <script src="main.js" defer></script>
+  <script src="main.js" type="module" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
@@ -108,11 +109,11 @@ require "../src/modules/showFiles.php"
             <div class="manager-preview border-top mt-4">
               <div class="row row-cols-1 row-cols-md-6 g-4 p-4" id="files-wrapper">
               <?php foreach($dirFiles as $key => $value): ?>
-                <div class="col">
+                <div class="col" file-cards>
                   <div class="card">
-                    <img src="assets/pdf-file.png" id="file-image" class="card-img-top" alt="pdf-file">
+                    <img src="assets/pdf-file.png" file-icon id="file-image" class="card-img-top" alt="pdf-file">
                     <div class="card-body">
-                      <h5 class="card-title" data-type><?= $value; ?></h5>
+                      <h5 class="card-title" file-title><?= $value; ?></h5>
                       <form action="./modules/openFile.php" method="post" enctype="multipart/form-data">
                         <input type="text" value="<?= $value; ?>" name="file" hidden>
                         <input type="submit" name="submit" id="open" value="open" >
