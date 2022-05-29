@@ -114,9 +114,10 @@ require "../src/modules/showFiles.php";
                     <img src="assets/pdf-file.png" file-icon id="file-image" class="card-img-top" alt="pdf-file">
                     <div class="card-body">
                       <h5 class="card-title" file-title><?= $value; ?></h5>
-                      <form action="./modules/openFile.php" method="post" enctype="multipart/form-data">
+                      <form action="./modules/delete.php" method="post" enctype="multipart/form-data">
                         <input type="text" value="<?= $value; ?>" name="file" hidden>
-                        <input type="submit" name="submit" id="open" value="open" >
+                        <button type="submit" name="submit" id="delete">
+                          <img src="./assets//delete.png" class="card-btns" alt="delete file"></button>
                       </form>
                     </div>
                   </div>

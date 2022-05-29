@@ -4,7 +4,9 @@ main {
 .container {
   background-color: white;
 }
-
+button {
+  all: unset;
+}
 /* .manager-wrapper {
    border: 1px solid black;
 }
@@ -48,3 +50,10 @@ main {
   height: 80px;
 }
 
+
+
+.card-btns {
+
+  width: 20px;
+  height: 20px;
+}
