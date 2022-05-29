@@ -1,6 +1,6 @@
 <?php 
 require "../src/modules/showFiles.php";
-
+$target_dir = __DIR__ ."/modules/root/";
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +94,6 @@ require "../src/modules/showFiles.php";
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Understood</button>
                       </div>
                     </div>
                   </div>
@@ -114,15 +113,37 @@ require "../src/modules/showFiles.php";
                     <img src="assets/pdf-file.png" file-icon id="file-image" class="card-img-top" alt="pdf-file">
                     <div class="card-body">
                       <h5 class="card-title" file-title><?= $value; ?></h5>
-                      <form action="./modules/delete.php" method="post" enctype="multipart/form-data">
-                        <input type="text" value="<?= $value; ?>" name="file" hidden>
-                        <button type="submit" name="submit" id="delete">
-                          <img src="./assets//delete.png" class="card-btns" alt="delete file"></button>
-                      </form>
+                      <div class="card-btns d-flex justify-content-around">
+                        <form action="./modules/delete.php" method="post" enctype="multipart/form-data">
+                          <input type="text" value="<?= $value; ?>" name="file" hidden>
+                          <button type="submit" name="submit" id="delete">
+                            <img src="./assets//delete.png" class="card-btns" alt="delete file"></button>
+                        </form>
+                        <?php  renderEditBtn($target_dir.$value) ?>
+                      </div>
                     </div>
                   </div>
                 </div> 
                 <?php endforeach; ?>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal for Editing folders -->
+        <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit folder name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="./modules/edit.php">
+
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
