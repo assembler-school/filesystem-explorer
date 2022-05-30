@@ -125,13 +125,15 @@ function getFiles($dir, $search)
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        <form action="./modules/uploadFile.php" method="post" enctype="multipart/form-data">
+                        <form action="./modules/uploadFile.php"  method="post" enctype="multipart/form-data">
                           <input type="file" name="file" id="file">
-                          <button type="submit" name="submit">Upload</button>
+                          <button type="submit"  class="btn btn-primary" name="submit">Upload</button>
                         </form>
-                        <form action="./modules/createFolder.php" method="post" enctype="multipart/form-data">
+                        
+                        <form action="./modules/createFolder.php" class="mt-2" method="post" enctype="multipart/form-data">
+                          <label for="folder">Create a folder</label>
                           <input type="text" name="folder" id="folder">
-                          <button type="submit" name="submit">Create</button>
+                          <button type="submit" class="btn btn-primary"y name="submit">Create</button>
                         </form>
                       </div>
                       <div class="modal-footer">
@@ -170,7 +172,6 @@ function getFiles($dir, $search)
                           <button type='submit' name='submit' id='open'>
                             <img src='./assets/play-button (1).png' class='card-btns' alt='delete file'></button>
                         </form>
-
 
                          <?php renderEditBtn($target_dir . $value) ?>
                       </div>
