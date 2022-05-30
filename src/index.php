@@ -67,7 +67,7 @@ function getFiles($dir, $search)
         <!-- sidebar manu stars here -->
         <div class="manager-sidebar d-flex flex-column border-end  col-1">
           <div class="row">
-            <img src="" class="logo mt-2 mb-4" alt="logo">
+            <img src="./assets/php.png" class="logo mt-2 mb-4" alt="logo">
           </div>
           <!-- sidebar options -->
           <div class="sidebar-options d-grid gap-5">
