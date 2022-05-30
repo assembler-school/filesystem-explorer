@@ -1,6 +1,23 @@
-<?php 
+<?php
 require "../src/modules/showFiles.php";
-$target_dir = __DIR__ ."/modules/root/";
+require "../src/modules/browseFile.php";
+$target_dir = __DIR__ . "/modules/root/";
+
+if (isset($_GET)) {
+  $data = $_GET;
+
+  if (count($data, COUNT_RECURSIVE) > 0) {
+
+    $dir =  key($data);
+    echo $dir;
+    $listOfElement = openFolder($dir);
+    // echo $listOfElement;
+  }
+}
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +30,7 @@ $target_dir = __DIR__ ."/modules/root/";
   <title>Managizer - Manage your Files</title>
   <link rel="stylesheet" href="style.css">
   <script src="main.js" type="module" defer></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 
 <body>
@@ -74,8 +90,7 @@ $target_dir = __DIR__ ."/modules/root/";
                   </a>
                 </div>
                 <!-- Modal for uploading files -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -107,24 +122,65 @@ $target_dir = __DIR__ ."/modules/root/";
             <!-- All files preview -->
             <div class="manager-preview border-top mt-4">
               <div class="row row-cols-1 row-cols-md-6 g-4 p-4" id="files-wrapper">
-              <?php foreach($dirFiles as $key => $value): ?>
-                <div class="col" file-cards>
-                  <div class="card">
-                    <img src="assets/pdf-file.png" file-icon id="file-image" class="card-img-top" alt="pdf-file">
-                    <div class="card-body">
-                      <h5 class="card-title" file-title><?= $value; ?></h5>
-                      <div class="card-btns d-flex justify-content-around">
-                        <form action="./modules/delete.php" method="post" enctype="multipart/form-data">
-                          <input type="text" value="<?= $value; ?>" name="file" hidden>
-                          <button type="submit" name="submit" id="delete">
-                            <img src="./assets//delete.png" class="card-btns" alt="delete file"></button>
+
+                <?php
+                if (count($data, COUNT_RECURSIVE) > 0) {
+                  foreach ($listOfElement as $key => $value) {
+                    echo " <div class='col' file-cards>
+                  <div class='card'>
+                    <img src='assets/pdf-file.png' file-icon id='file-image' class='card-img-top' alt='pdf-file'>
+                    <div class='card-body'>
+                      <h5 class='card-title' file-title>{$value}</h5>
+                      <div class='card-btns d-flex justify-content-around'>
+                        <form action='./modules/delete.php' method='post' enctype='multipart/form-data'>
+                          <input type='text' value={$value} name='file' hidden>
+                          <button type='submit' name='submit' id='delete'>
+                            <img src='./assets//delete.png' class='card-btns' alt='delete file'></button>
                         </form>
-                        <?php  renderEditBtn($target_dir.$value) ?>
+
+                        <form action='./modules/browseFile.php' method='post' enctype='multipart/form-data'>
+                          <input type='text' value={$value} name='folder' hidden>
+                          <button type='submit' name='submit' id='open'>
+                            <img src='./assets/play-button (1).png' class='card-btns' alt='delete file'></button>
+                        </form>
+
+
+                        <!-- <?php renderEditBtn($target_dir . $value) ?> -->
                       </div>
                     </div>
                   </div>
-                </div> 
-                <?php endforeach; ?>
+                </div>";
+                  }
+                } else {
+                  foreach ($dirFiles as $key => $value) {
+                    echo "<div class='col' file-cards>
+                    <div class='card'>
+                      <img src='assets/pdf-file.png' file-icon id='file-image' class='card-img-top' alt='pdf-file'>
+                      <div class='card-body'>
+                        <h5 class='card-title' file-title>{$value}</h5>
+                        <div class='card-btns d-flex justify-content-around'>
+                          <form action='./modules/delete.php' method='post' enctype='multipart/form-data'>
+                            <input type='text' value={$value} name='file' hidden>
+                            <button type='submit' name='submit' id='delete'>
+                              <img src='./assets//delete.png' class='card-btns' alt='delete file'></button>
+                          </form>
+
+                          <form action='./modules/browseFile.php' method='post' enctype='multipart/form-data'>
+                            <input type='text' value={$value} name='folder' hidden>
+                            <button type='submit' name='submit' id='open'>
+                              <img src='./assets/play-button (1).png' class='card-btns' alt='delete file'></button>
+                          </form>
+
+
+                          <!-- <?php renderEditBtn($target_dir . $value) ?> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>";
+                  }
+                }
+                ?>
+
               </div>
             </div>
           </div>
@@ -197,12 +253,8 @@ $target_dir = __DIR__ ."/modules/root/";
       </div>
     </div>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 </body>
 
 </html>
