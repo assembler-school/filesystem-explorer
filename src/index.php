@@ -3,20 +3,47 @@ require "../src/modules/showFiles.php";
 require "../src/modules/browseFile.php";
 $target_dir = __DIR__ . "/modules/root/";
 
+$results = array();
+
 if (isset($_GET)) {
   $data = $_GET;
-
   if (count($data, COUNT_RECURSIVE) > 0) {
-
     $dir =  key($data);
-    echo $dir;
     $listOfElement = openFolder($dir);
-    // echo $listOfElement;
   }
 }
+if (isset($_POST['search'])) {
+  $target_dir = __DIR__;
+  $newR =  $target_dir . "/modules/root/";
+  $searchValue = $_POST['search'];
 
 
+  getFiles($newR, $searchValue);
+}
 
+function getFiles($dir, $search)
+{
+
+  $ffs = scandir($dir);
+
+
+  unset($ffs[array_search('.', $ffs)]);
+  unset($ffs[array_search('..', $ffs)]);
+
+  if (count($ffs) < 1) {
+    return;
+  }
+
+  foreach ($ffs as $ff) {
+
+    if (str_contains($ff, $search)) {
+      array_push($GLOBALS['results'], $ff);
+    }
+    if (is_dir($dir . '/' . $ff)) {
+      getFiles($dir . '/' . $ff, $search);
+    }
+  }
+}
 
 ?>
 
@@ -45,7 +72,7 @@ if (isset($_GET)) {
           <!-- sidebar options -->
           <div class="sidebar-options d-grid gap-5">
             <div class="sidebar-option">
-              <a href="#" class="d-flex justify-content-center">
+              <a href="?=home" class="d-flex justify-content-center">
                 <img src="./assets/home (1).png" class="action-icon" alt="">
               </a>
               <p class="fw-bold text-center">Home</p>
@@ -113,8 +140,8 @@ if (isset($_GET)) {
                     </div>
                   </div>
                 </div>
-                <form class="d-flex mt-2 col-11" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex mt-2 col-11" role="search" action="./index.php" method="post">
+                  <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
               </div>
@@ -145,7 +172,34 @@ if (isset($_GET)) {
                         </form>
 
 
-                        <!-- <?php renderEditBtn($target_dir . $value) ?> -->
+                         <?php renderEditBtn($target_dir . $value) ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>";
+                  }
+                } elseif (count($results) > 0) {
+                  foreach ($results as $key => $value) {
+                    echo " <div class='col' file-cards>
+                  <div class='card'>
+                    <img src='assets/pdf-file.png' file-icon id='file-image' class='card-img-top' alt='pdf-file'>
+                    <div class='card-body'>
+                      <h5 class='card-title' file-title>{$value}</h5>
+                      <div class='card-btns d-flex justify-content-around'>
+                        <form action='./modules/delete.php' method='post' enctype='multipart/form-data'>
+                          <input type='text' value={$value} name='file' hidden>
+                          <button type='submit' name='submit' id='delete'>
+                            <img src='./assets//delete.png' class='card-btns' alt='delete file'></button>
+                        </form>
+
+                        <form action='./modules/browseFile.php' method='post' enctype='multipart/form-data'>
+                          <input type='text' value={$value} name='folder' hidden>
+                          <button type='submit' name='submit' id='open'>
+                            <img src='./assets/play-button (1).png' class='card-btns' alt='delete file'></button>
+                        </form>
+
+
+                         <?php renderEditBtn($target_dir . $value) ?>
                       </div>
                     </div>
                   </div>
