@@ -7,22 +7,6 @@ main {
 button {
   all: unset;
 }
-/* .manager-wrapper {
-   border: 1px solid black;
-}
-.manager-sidebar {
-  border: 1px solid blue;
-}
-.manager-main {
-  border: 1px solid red;
-}
-.manager-search {
-  border: 1px solid green;
-  height: 10vh;
-}
-.manager-preview {
-  border: 1px solid yellow;
-} */
 
 .add-file-icon {
   width: 20px;
@@ -37,9 +21,7 @@ button {
   width: 20px;
   height: 20px;
 }
-.file-preview-header {
 
-}
 .action-icon {
   width: 45px;
   height: 45px;
