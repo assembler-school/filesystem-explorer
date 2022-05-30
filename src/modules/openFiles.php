@@ -13,7 +13,10 @@ if (isset($_GET)) {
     if ($fileActExt === 'png' || $fileActExt === 'jpg' || $fileActExt === 'svg') {
         openImage($path);
     } elseif ($fileActExt === 'mp4') {
-        echo "is a video";
+        $filename = basename($path, "mp4");
+        echo "<video id='audio' autoplay controls>
+        <source src='./root/{$filename}{$fileActExt}' type='audio/mp3'>
+    </video>";
     } elseif ($fileActExt === 'mp3') {
         $filename = basename($path, "mp3");
         echo "<audio id='audio' autoplay controls>
