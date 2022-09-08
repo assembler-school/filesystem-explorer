@@ -59,6 +59,10 @@ nav {
 }
 
 .btns-file-action div:hover {
-    background-color: darkgrey;
+    background-color: rgb(235, 235, 235);
     font-size: 1.35em;
+}
+.found-files {
+    display: flex;
+    flex-direction: column;
 }
