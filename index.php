@@ -12,7 +12,6 @@
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/54141fca8b.js" crossorigin="anonymous"></script>
   <link href="./assets/css/index.css" rel="stylesheet">
-  <script src="./assets/js/aside_folder_manager.js" defer></script>
   <title>File System</title>
 
 </head>
@@ -51,13 +50,15 @@
   </header>
 
   <aside>
+    <h3 class="title-folders">Your folders</h3>
     <ul id="folderManager">
-        <li id="rootFolder">My Files</li>
-        <?php getFolders('./root'); ?>
+      <li id="rootFolder">My Files</li>
+      <?php getFolders('./root'); ?>
     </ul>
-</aside>
-
+  </aside>
+  
   <main>
+    <h3 class="title-files">Your files</h3>
     <?php getFiles('./root'); ?>
   </main>
 

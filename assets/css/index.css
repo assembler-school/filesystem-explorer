@@ -10,6 +10,7 @@ body, html {
 }
 
 body {
+    color: #00000fbb;
     display: grid;
     grid-template: 80px 1fr / 1fr 5fr;
 }
@@ -19,6 +20,18 @@ header {
     grid-template-columns: 1fr 5fr;
     grid-column: span 2;
     box-shadow: 0 5px 5px #000000aa;
+}
+
+aside {
+    padding: 15px;
+}
+
+aside > ul li {
+    margin-top: 10px;
+}
+
+main {
+    padding: 15px;
 }
 
 .logo {
@@ -32,7 +45,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #000000cc;
+    color: #00000fbb;
 }
 
 .btns-file-action {
@@ -55,14 +68,65 @@ nav {
     align-items: center;
     gap: 15px;
     transition: 250ms;
-    font-size: 1.2em;
+    font-size: 1.1vw;
 }
 
 .btns-file-action div:hover {
     background-color: rgb(235, 235, 235);
-    font-size: 1.35em;
+    font-size: 1.2vw ;
 }
-.found-files {
+
+@media screen and (max-width: 1300px) {
+    .btns-file-action div {
+        font-size: 1.4vw;
+    }
+
+    .btns-file-action div:hover {
+        font-size: 1.5vw ;
+    }
+} 
+@media screen and (max-width: 800px) {
+    .btns-file-action div {
+        font-size: 1.7vw;
+    }
+
+    .btns-file-action div:hover {
+        font-size: 1.8vw ;
+    }
+} 
+
+.title-folders, .title-files {
+    width: 100%;
+    background-color: #00000fbb;
+    color: white;
+    padding: 3px 10px 5px;
+    margin-top: 20px;
+}
+
+.files-path {
+    width: 100%;
+    background-color: rgb(235, 235, 235);
+    padding: 3px 10px 5px;
+    margin-top: 20px;
+}
+
+.files-container {
+    margin-top: 20px;
+    padding-left: 20px;
+    display: flex;
+    gap: 20px; 
+}
+.file-link {
+    color: #00000fbb;
+    text-decoration: none;
+    transition: 250ms;
+}
+.file-link:hover {
+    transform: scale(1.1);
+    color: #00000fbb;
+}
+.found-file {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
