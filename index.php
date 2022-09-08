@@ -1,7 +1,3 @@
-<?php
-require_once('./assets/php/get_files.php');
-require_once('./assets/php/upload_file_form.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +5,10 @@ require_once('./assets/php/upload_file_form.php');
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <?php
+  require_once('./assets/php/get_files.php');
+  require_once('./assets/php/upload_file_form.php');
+  ?>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/54141fca8b.js" crossorigin="anonymous"></script>
@@ -76,9 +76,10 @@ require_once('./assets/php/upload_file_form.php');
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="uploadFileForm">
-          <form class ="upload-form" method="post" action="./assets/php/upload_file.php">
-            <label for="send-file">Select file:</label>
-            <input type="file" name="send-file">
+          <form class ="upload-form" enctype="multipart/form-data" method="post" action="./assets/php/upload_file.php">
+            <label for="userfile">Select file:</label>
+            <input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- Limit file size to a value in bytes  -->
+            <input name="userfile" type="file" required>
             <label for="directory">Select target folder:</label>
             <select name="directory" id="selectDirectory">
               <option value="./root" selected>My Files/</option>
