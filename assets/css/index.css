@@ -72,7 +72,7 @@ nav {
 }
 
 .btns-file-action div:hover {
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(235, 235, 242);
     font-size: 1.2vw ;
 }
 
@@ -105,7 +105,7 @@ nav {
 
 .files-path {
     width: 100%;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(235, 235, 242);
     padding: 3px 10px 5px;
     margin-top: 20px;
 }
@@ -116,17 +116,37 @@ nav {
     display: flex;
     gap: 20px; 
 }
+
 .file-link {
     color: #00000fbb;
     text-decoration: none;
     transition: 250ms;
 }
+
 .file-link:hover {
     transform: scale(1.1);
     color: #00000fbb;
 }
+
 .found-file {
     display: flex;
     flex-direction: column;
     cursor: pointer;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding: 0 30px;
+}
+.upload-form input {
+    margin-bottom: 20px;
+}
+.upload-form label {
+    margin-bottom: 5px;
+}
+.upload-form .btn {
+    margin: 20px 0 0;
 }

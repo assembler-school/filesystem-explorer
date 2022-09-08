@@ -1,6 +1,6 @@
 <?php
 require_once('./assets/php/get_files.php');
-
+require_once('./assets/php/upload_file_form.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,6 @@ require_once('./assets/php/get_files.php');
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
     crossorigin="anonymous"></script>
-  <script src="./assets/js/upload_file_form.js" defer></script>
   <link href="./assets/css/index.css" rel="stylesheet">
   <title>File System</title>
 
@@ -77,15 +76,15 @@ require_once('./assets/php/get_files.php');
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="uploadFileForm">
-          <form method="post" action="./assets/php/upload_file.php">
-            <label for="send-file">Upload File:</label>
+          <form class ="upload-form" method="post" action="./assets/php/upload_file.php">
+            <label for="send-file">Select file:</label>
             <input type="file" name="send-file">
-            <label for="directory">Select Folder:</label>
+            <label for="directory">Select target folder:</label>
             <select name="directory" id="selectDirectory">
               <option value="./root" selected>My Files/</option>
+              <?php createOptions('./root') ?>
             </select>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <input type="submit" class="btn btn-primary" value="Upload">
             </div>
           </form>
