@@ -11,7 +11,7 @@
                 }
                 for ($i = 0; $i < count($files); $i++) {
                     if(is_dir($path.'/'.$files[$i])) {
-                        echo '<li>'. $files[$i] . '</li>';
+                        echo '<li id="'.$path.'/'.$files[$i].'">'. $files[$i] . '</li>';
                         getFolders($path.'/'.$files[$i]);
                     }
                 }
