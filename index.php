@@ -8,6 +8,7 @@
   <?php
   require_once('./assets/php/get_files.php');
   require_once('./assets/php/upload_file_form.php');
+  require_once('./assets/php/delete_file_form.php');
   ?>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -32,7 +33,7 @@
       </form>
 
       <div class="btns-file-action">
-        <div class="upload-file" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div class="upload-file" data-bs-toggle="modal" data-bs-target="#uploadModal">
           <span>Upload</span>
           <i class="fa-solid fa-arrow-up-from-bracket"></i>
         </div>
@@ -46,7 +47,7 @@
           <span>Move File</span>
           <i class="fa-solid fa-file-export"></i>
         </div>
-        <div class="delete-file">
+        <div class="delete-file" data-bs-toggle="modal" data-bs-target="#deleteModal">
           <span>Delete</span>
           <i class="fa-solid fa-trash"></i>
         </div>
@@ -68,7 +69,7 @@
   </main>
 
   <!-- Modal SECTION -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -84,7 +85,7 @@
             <label for="directory">Select target folder:</label>
             <select name="directory" id="selectDirectory">
               <option value="../../root/" selected>My Files/</option>
-              <?php createOptions('./root') ?>
+              <?php uploadOptions('./root') ?>
             </select>
             <div class="modal-footer">
               <input type="submit" class="btn btn-primary" value="Upload" name="submit">
@@ -112,7 +113,7 @@
             <label for="directoryFolder">Select target folder:</label>
             <select name="directoryFolder" id="selectDirectoryFolder">
               <option value="../../root/" selected>My Files/</option>
-              <?php createOptions('./root') ?>
+              <?php uploadOptions('./root') ?>
             </select>
             <div class="modal-footer">
               <input type="submit" class="btn btn-primary" value="Create" name="submit">
@@ -122,7 +123,28 @@
       </div>
     </div>
   </div>
-
+  
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete File</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="uploadFileForm">
+          <form class ="upload-form" enctype="multipart/form-data" method="post" action="./assets/php/delete_file.php">
+            <label for="file">Select the file you want to delete:</label>
+            <select name="file" id="selectDirectory">
+              <?php deleteOptions('./root') ?>
+            </select>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-primary" value="Delete" name="submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 </body>
