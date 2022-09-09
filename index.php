@@ -37,7 +37,7 @@
           <i class="fa-solid fa-arrow-up-from-bracket"></i>
         </div>
 
-        <div class="new-folder">
+        <div class="new-folder" data-bs-toggle="modal" data-bs-target="#newFolderModal">
           <span>New Folder</span>
           <i class="fa-solid fa-folder-plus"></i>
         </div>
@@ -94,6 +94,35 @@
       </div>
     </div>
   </div>
+
+  
+  <!-- Modal New Folder SECTION -->
+
+  <div class="modal fade" id="newFolderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create New Folder</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="uploadFileForm">
+          <form class ="upload-form" enctype="multipart/form-data" method="post" action="./assets/php/new_folder.php">
+            <label for="foldername">Name folder:</label>
+            <input id ="foldername" name="foldername" type="text" required>
+            <label for="directoryFolder">Select target folder:</label>
+            <select name="directoryFolder" id="selectDirectoryFolder">
+              <option value="../../root/" selected>My Files/</option>
+              <?php createOptions('./root') ?>
+            </select>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-primary" value="Create" name="submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
 </body>
