@@ -43,7 +43,7 @@
           <i class="fa-solid fa-folder-plus"></i>
         </div>
 
-        <div class="move-file">
+        <div class="move-file" data-bs-toggle="modal" data-bs-target="#moveModal">
           <span>Move File</span>
           <i class="fa-solid fa-file-export"></i>
         </div>
@@ -68,7 +68,7 @@
     <?php getFiles('./root'); ?>
   </main>
 
-  <!-- Modal SECTION -->
+  <!-- MODAL FILE -->
   <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -84,7 +84,7 @@
             <input id ="filename" name="filename" pattern="^([a-zA-Z0-9\s\._-]+)$" type="text" required>
             <label for="directory">Select target folder:</label>
             <select name="directory" id="selectDirectory">
-              <option value="../../root/" selected>My Files/</option>
+              <option value="../../root/" selected>Folder: My Files</option>
               <?php uploadOptions('./root') ?>
             </select>
             <div class="modal-footer">
@@ -96,9 +96,7 @@
     </div>
   </div>
 
-  
-  <!-- Modal New Folder SECTION -->
-
+  <!-- MODAL FOLDER SECTION -->
   <div class="modal fade" id="newFolderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -112,7 +110,7 @@
             <input id ="foldername" name="foldername" type="text" required>
             <label for="directoryFolder">Select target folder:</label>
             <select name="directoryFolder" id="selectDirectoryFolder">
-              <option value="../../root/" selected>My Files/</option>
+              <option value="../../root/" selected>Folder: My Files</option>
               <?php uploadOptions('./root') ?>
             </select>
             <div class="modal-footer">
@@ -124,6 +122,35 @@
     </div>
   </div>
   
+  <!-- MODAL MOVE -->
+  <div class="modal fade" id="moveModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Move File</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="uploadFileForm">
+          <form class ="upload-form" enctype="multipart/form-data" method="post" action="./assets/php/move_file.php">
+            <label for="file">Select the file you want to move:</label>
+            <select name="file" id="selectDirectory">
+              <?php deleteOptions('./root') ?>
+            </select>
+            <label class="location-move" for="destination">Select the location where you want to move it:</label>
+            <select name="destination" id="selectDirectory">
+              <option value="../../root/" selected>Folder: My Files</option>
+              <?php uploadOptions('./root') ?>
+            </select>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-primary" value="Move" name="submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DELETE -->
   <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

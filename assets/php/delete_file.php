@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
     crossorigin="anonymous"></script>
-  <link href="./assets/css/index.css" rel="stylesheet">
+  <link href="../css/index.css" rel="stylesheet">
   <title>Confirm</title>
 </head>
 <body>
@@ -28,14 +28,19 @@
         $filePath = $_POST['file'];
 
         if (substr($filePath, 0, 3) == '(F)') {
+            echo "<main class='alert-delete'>";
+            echo "<img src='../img/alert.png' alt='alert sign' width='300px'>";
             echo "<h1>You're about to delete a folder, this may delete all files inside.</h1>";
             echo "<h2>Confirm request: <a href='../../index.php'>NO</a> / <a href='./delete_folder.php'>YES</a>";
+            echo "</main>";
         } else {
             if (unlink($filePath)) {
                 header ('Location: ../../index.php');
             } else {
+                echo "<main>";
                 echo "Sorry, there was a problem deleting the file.";
                 echo '<p><a href="../../index.php">Back</a></p>';
+                echo "</main>";
             }
         }
     }

@@ -27,7 +27,6 @@ header {
 aside {
     padding: 15px;
     min-width: 250px;
-    max-width: 300px;
     overflow-x: auto;
 }
 
@@ -38,7 +37,27 @@ aside > ul li {
 main {
     padding: 15px;
 }
+.alert-delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    grid-column: 2;
+    grid-row: 2;
+    padding-right: 20vw;
+}
+.alert-delete h1 {
+    text-align: center;
+}
 
+.alert-delete h2 a { 
+    text-decoration: none;
+    color: #000000aa;
+}
+.alert-delete h2 a:hover { 
+    color: #002fff;
+}
 .logo {
     display: flex;
     justify-content: center;
@@ -152,7 +171,7 @@ nav {
 .upload-form label {
     margin-bottom: 5px;
 }
-.upload-form .btn {
+.upload-form .btn, .location-move {
     margin: 20px 0 0;
 }
 .folder-option {
