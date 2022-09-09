@@ -1,5 +1,5 @@
-<?php 
-    function uploadOptions($path) {
+<?php
+    function deleteOptions($path) {
         if(is_dir($path)) {
             if ($handle = opendir($path)) {
                 $files = [];
@@ -9,12 +9,12 @@
                     }
                 }
                 for ($i = 0; $i < count($files); $i++) {
-                    if(is_dir($path.'/'.$files[$i])) {
-                        echo '<option value="../.'.$path.'/'.$files[$i].'/">'.$files[$i].'</option>';
-                        uploadOptions($path.'/'.$files[$i]);
+                    if(!is_dir($path.'/'.$files[$i])) {
+                        echo '<option value="../.'.$path.'/'.$files[$i].'">'.$files[$i].'</option>';
+                    } else {
+                        deleteOptions($path.'/'.$files[$i]);
                     }
                 }
             }
         }        
     }
-
