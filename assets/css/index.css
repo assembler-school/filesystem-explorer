@@ -174,11 +174,10 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    font-size: .5vw;
+    font-size: .75vw;
     position: relative;
-    height: 5vw;
-    width: 11vw;
+    height: 7vw;
+    width: 14vw;
     display: none;
     transition: 500ms;
 }

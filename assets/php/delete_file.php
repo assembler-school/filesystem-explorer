@@ -29,7 +29,7 @@
 
         if (substr($filePath, 0, 3) == '(F)') {
             echo "<main class='alert-delete'>";
-            echo "<img src='../img/alert.png' alt='alert sign' width='300px'>";
+            echo "<img src='../img/alert.png' alt='alert sign' width='250px'>";
             echo "<h1>You're about to delete a folder, this may delete all files inside.</h1>";
             echo "<h2>Confirm request: <a href='../../index.php'>NO</a> / <a href='./delete_folder.php'>YES</a>";
             echo "</main>";
