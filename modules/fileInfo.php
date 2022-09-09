@@ -3,7 +3,7 @@
 //Obtain the data sended by the JavaScript via query params (GET)
 $filePath = $_GET["path"];
 
-$filename = $_SERVER['DOCUMENT_ROOT'] . "/files/" . $filePath;
+$filename = str_replace('\\', '/', dirname(__DIR__)) . "/files/" . $filePath;
 
 $file = fopen($filename, "r");
 
