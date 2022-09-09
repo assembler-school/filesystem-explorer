@@ -14,7 +14,7 @@ body {
     font-family: 'Roboto', sans-serif;
     color: #00000fbb;
     display: grid;
-    grid-template: 80px 1fr / 1fr 5fr;
+    grid-template: 80px 1fr / 1fr 4fr;
 }
 
 header {
@@ -26,6 +26,9 @@ header {
 
 aside {
     padding: 15px;
+    min-width: 250px;
+    max-width: 300px;
+    overflow-x: auto;
 }
 
 aside > ul li {
@@ -151,4 +154,7 @@ nav {
 }
 .upload-form .btn {
     margin: 20px 0 0;
+}
+.folder-option {
+    background-color: rgb(235, 235, 242);
 }

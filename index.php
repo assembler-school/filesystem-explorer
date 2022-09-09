@@ -81,7 +81,7 @@
             <label for="userfile">Select file:</label>
             <input id ="userfile" name="userfile" type="file" required>
             <label for="filename">Name file:</label>
-            <input id ="filename" name="filename" type="text" required>
+            <input id ="filename" name="filename" pattern="^([a-zA-Z0-9\s\._-]+)$" type="text" required>
             <label for="directory">Select target folder:</label>
             <select name="directory" id="selectDirectory">
               <option value="../../root/" selected>My Files/</option>
