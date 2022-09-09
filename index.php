@@ -56,11 +56,13 @@
   </header>
 
   <aside>
-    <h3 class="title-folders">Your folders</h3>
-    <ul id="folderManager">
-      <li id="rootFolder">My Files</li>
-      <?php getFolders('./root'); ?>
-    </ul>
+    <section>
+      <h3 class="title-folders">Your folders</h3>
+      <ul id="folderManager">
+        <li id="rootFolder">My Files</li>
+        <?php getFolders('./root'); ?>
+      </ul>
+    </section>
   </aside>
 
   <main>

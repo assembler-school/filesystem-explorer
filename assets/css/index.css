@@ -25,12 +25,15 @@ header {
 }
 
 aside {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
     padding: 15px;
     min-width: 250px;
     overflow-x: auto;
 }
 
 aside > ul li {
+    grid-row: 1;
     margin-top: 10px;
 }
 
@@ -138,6 +141,7 @@ nav {
     margin-top: 20px;
     padding-left: 20px;
     display: flex;
+    transition: 250ms;
     gap: 20px; 
 }
 
@@ -154,10 +158,59 @@ nav {
 
 .found-file {
     display: flex;
-    flex-direction: column;
+    gap: 40px;
     cursor: pointer;
+    transition: 500ms;
+}
+.icon-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 250ms;
+}
+.info-file {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: .5vw;
+    position: relative;
+    height: 5vw;
+    width: 11vw;
+    display: none;
+    transition: 500ms;
 }
 
+@media screen and (max-width: 1400px) {
+    .info-file {
+        font-size: 1vw;
+        height: 9vw;
+        width: 17vw;
+    }
+}
+@media screen and (max-width: 850px) {
+    .info-file {
+        font-size: 1.4vw;
+        height: 18vw;
+        width: 17vw;
+    }
+    .found-file {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+.found-file:hover .info-file {
+    display: block;
+}
+.found-file:hover {
+    padding: 30px;
+    border: 2px solid #00000fbb;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: -5px 0 5px #00000f88 ;
+}
 .upload-form {
     display: flex;
     flex-direction: column;

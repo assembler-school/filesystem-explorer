@@ -41,8 +41,16 @@
                             if(!is_dir($path.'/'.$files[$i])) {
                                 $ext = substr($files[$i], -3);
                                 echo '<a class="file-link" target="_blank" href="'.$path.'/'.$files[$i].'"><div class="found-file">';
+                                echo '<div class="icon-text">';
                                 echo '<img src="./assets/img/'.$ext.'.png" alt="'.$ext.' logo" width="60px">';
-                                echo '<span>'.$files[$i].'</span>'; 
+                                echo '<span>'.substr($files[$i], 0, -4).'</span>';
+                                echo '</div>';
+                                    echo '<div class="info-file">'; 
+                                    echo '<p>Extension: '.substr($files[$i], -4).'</p>';
+                                    echo '<p>Size: '. round(((filesize($path.'/'.$files[$i]))/1000000), 3) .' Mb</p>';
+                                    echo '<p>Created: '.date("D d M Y g:i a", filectime($path.'/'.$files[$i])).'</p>';
+                                    echo '<p>Modified: '.date("D d M Y g:i a", filemtime($path.'/'.$files[$i])).'</p>';
+                                    echo '</div>'; 
                                 echo '</div></a>';
                             } 
                         }
