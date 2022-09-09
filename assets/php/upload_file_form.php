@@ -10,10 +10,11 @@
                 }
                 for ($i = 0; $i < count($files); $i++) {
                     if(is_dir($path.'/'.$files[$i])) {
-                        echo '<option value="'.$path.'/'.$files[$i].'">'.$files[$i].'</option>';
+                        echo '<option value="../.'.$path.'/'.$files[$i].'/">'.$files[$i].'</option>';
                         createOptions($path.'/'.$files[$i]);
                     }
                 }
             }
         }        
     }
+

@@ -78,15 +78,16 @@
         <div class="modal-body" id="uploadFileForm">
           <form class ="upload-form" enctype="multipart/form-data" method="post" action="./assets/php/upload_file.php">
             <label for="userfile">Select file:</label>
-            <input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- Limit file size to a value in bytes  -->
-            <input name="userfile" type="file" required>
+            <input id ="userfile" name="userfile" type="file" required>
+            <label for="filename">Name file:</label>
+            <input id ="filename" name="filename" type="text" required>
             <label for="directory">Select target folder:</label>
             <select name="directory" id="selectDirectory">
-              <option value="./root" selected>My Files/</option>
+              <option value="../../root/" selected>My Files/</option>
               <?php createOptions('./root') ?>
             </select>
             <div class="modal-footer">
-              <input type="submit" class="btn btn-primary" value="Upload">
+              <input type="submit" class="btn btn-primary" value="Upload" name="submit">
             </div>
           </form>
         </div>
