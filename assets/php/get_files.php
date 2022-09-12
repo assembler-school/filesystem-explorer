@@ -42,10 +42,15 @@
                                 $infoFile = pathinfo($path.'/'.$files[$i]);
                                 echo '<a class="file-link" target="_blank" href="'.$path.'/'.$files[$i].'"><div class="found-file">';
                                 echo '<div class="icon-text">';
-                                echo '<img src="./assets/img/'.$infoFile['extension'].'.png" alt="'.$infoFile['extension'].' logo" width="60px">';
-                                echo '<span>'.$infoFile['filename'].'</span>';
+                                echo '<img class="file-icon" src="./assets/img/'.$infoFile['extension'].'.png" alt="'.$infoFile['extension'].' logo" width="30px">';
+                                if (strlen($infoFile['filename']) > 13) {
+                                    echo '<span>'.substr($infoFile['filename'], 0, 10).'...</span>';
+                                } else {
+                                    echo '<span>'.$infoFile['filename'].'</span>';
+                                }
                                 echo '</div>';
                                     echo '<div class="info-file">'; 
+                                    echo '<p>File name: '.$infoFile['filename'].'</p>';
                                     echo '<p>Extension: '.$infoFile['extension'].'</p>';
                                     if (filesize($path.'/'.$files[$i]) < 1000000) {
                                         echo '<p>Size: '. round(((filesize($path.'/'.$files[$i]))/1000), 2) .' Kb</p>';

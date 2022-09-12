@@ -23,7 +23,6 @@ header {
     grid-column: span 2;
     box-shadow: 0 5px 5px #00000faa;
 }
-
 aside {
     display: grid;
     grid-template-rows: 2fr 1fr;
@@ -40,6 +39,78 @@ aside > ul li {
 main {
     padding: 15px;
 }
+
+/* Header
+.................................................................... */
+.logo {
+    display: flex;
+    justify-content: left;
+    padding-left: 1vw;
+    align-items: center;
+}
+/* Navbar
+................................................... */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #00000faa;
+}
+
+.btns-file-action {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50vw;
+}
+
+.search-bar {
+    width: 20vw;
+}
+
+/* Search page
+.................. */
+.go-back-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.go-back {
+    width: 50vw;
+    background-color:#00000faa;
+    border: none;
+    transition: 250ms;
+}
+.go-back a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: rgb(235, 235, 242);
+}
+.go-back:hover {
+    transform: scale(1.2);
+}
+/* Search page END */
+
+.btns-file-action div {
+    cursor: pointer;
+    height: 80px;
+    width: 11vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: 250ms;
+    font-size: 1.1vw;
+}
+
+.btns-file-action div:hover {
+    background-color: rgb(235, 235, 242);
+    font-size: 1.2vw ;
+} 
+
+/* Delete page
+.................. */
 .alert-delete {
     display: flex;
     flex-direction: column;
@@ -61,87 +132,10 @@ main {
 .alert-delete h2 a:hover { 
     color: #002fff;
 }
-.logo {
-    display: flex;
-    justify-content: left;
-    padding-left: 1vw;
-    align-items: center;
-}
-.go-back-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-}
-.go-back {
-    width: 50vw;
-    background-color:#00000faa;
-    border: none;
-    transition: 250ms;
-}
-.go-back a {
-    text-decoration: none;
-    font-size: 1.2em;
-    color: rgb(235, 235, 242);
-}
-.go-back:hover {
-    transform: scale(1.2);
-}
+/* Delete page END */
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #00000faa;
-}
-
-.btns-file-action {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 50vw;
-}
-
-.search-bar {
-    width: 20vw;
-}
-
-.btns-file-action div {
-    cursor: pointer;
-    height: 80px;
-    width: 11vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    transition: 250ms;
-    font-size: 1.1vw;
-}
-
-.btns-file-action div:hover {
-    background-color: rgb(235, 235, 242);
-    font-size: 1.2vw ;
-}
-
-@media screen and (max-width: 1300px) {
-    .btns-file-action div {
-        font-size: 1.4vw;
-    }
-
-    .btns-file-action div:hover {
-        font-size: 1.5vw ;
-    }
-} 
-@media screen and (max-width: 800px) {
-    .btns-file-action div {
-        font-size: 1.7vw;
-    }
-
-    .btns-file-action div:hover {
-        font-size: 1.8vw ;
-    }
-} 
-
+/* Aside and Main titles
+...................................................................... */
 .title-folders, .title-files {
     width: 100%;
     background-color: #00000faa;
@@ -150,6 +144,8 @@ nav {
     margin-top: 20px;
 }
 
+/* Inner Main section
+..................................................................... */
 .files-path {
     width: 100%;
     background-color: rgb(235, 235, 242);
@@ -161,6 +157,7 @@ nav {
     margin-top: 20px;
     padding-left: 20px;
     display: flex;
+    flex-direction: column;
     transition: 250ms;
     gap: 20px; 
 }
@@ -178,58 +175,48 @@ nav {
 
 .found-file {
     display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
     gap: 40px;
+    padding-left: 30px;
     cursor: pointer;
     transition: 500ms;
 }
 .icon-text {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 30px;
     transition: 250ms;
 }
 .info-file {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 18px;
     font-size: .75vw;
-    position: relative;
-    height: 7vw;
-    width: 14vw;
     display: none;
-    transition: 500ms;
-}
-
-@media screen and (max-width: 1400px) {
-    .info-file {
-        font-size: 1vw;
-        height: 9vw;
-        width: 17vw;
-    }
-}
-@media screen and (max-width: 850px) {
-    .info-file {
-        font-size: 1.4vw;
-        height: 18vw;
-        width: 17vw;
-    }
-    .found-file {
-        flex-direction: column;
-        gap: 10px;
-    }
+    transition: 250ms;
 }
 .found-file:hover .info-file {
-    display: block;
+    display: flex;
+}
+.found-file:hover .file-icon {
+    width: 60px;
+}
+.found-file:hover .icon-text span {
+    font-size: 1.3em;
 }
 .found-file:hover {
-    padding: 30px;
-    border: 2px solid #00000faa;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: -5px 0 5px #00000f88 ;
+    margin-left: 1.8vw;
+    height: 11vw;
+    background-color: #00000f19;
 }
+
+/* Modals section
+.................................................................... */
 .upload-form {
     display: flex;
     flex-direction: column;
@@ -248,4 +235,44 @@ nav {
 }
 .folder-option {
     background-color: rgb(235, 235, 242);
+}
+
+/* Responsiveness
+....................................................................... */
+@media screen and (max-width: 1300px) {
+    .btns-file-action div {
+        font-size: 1.4vw;
+    }
+
+    .btns-file-action div:hover {
+        font-size: 1.5vw ;
+    }
+} 
+
+@media screen and (max-width: 800px) {
+    .btns-file-action div {
+        font-size: 1.7vw;
+    }
+
+    .btns-file-action div:hover {
+        font-size: 1.8vw ;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .info-file {
+        font-size: 1vw;
+    }
+    .found-file:hover {
+        height: 15vw;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .info-file {
+        font-size: 1.4vw;
+    }
+    .found-file {
+        flex-direction: column;
+    }
 }
