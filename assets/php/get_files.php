@@ -47,7 +47,11 @@
                                 echo '</div>';
                                     echo '<div class="info-file">'; 
                                     echo '<p>Extension: '.$infoFile['extension'].'</p>';
-                                    echo '<p>Size: '. round(((filesize($path.'/'.$files[$i]))/1000000), 3) .' Mb</p>';
+                                    if (filesize($path.'/'.$files[$i]) < 1000000) {
+                                        echo '<p>Size: '. round(((filesize($path.'/'.$files[$i]))/1000), 2) .' Kb</p>';
+                                    } else {
+                                        echo '<p>Size: '. round(((filesize($path.'/'.$files[$i]))/1000000), 2) .' Mb</p>';
+                                    }
                                     echo '<p>Created: '.date("D d M Y g:i a", filectime($path.'/'.$files[$i])).'</p>';
                                     echo '<p>Modified: '.date("D d M Y g:i a", filemtime($path.'/'.$files[$i])).'</p>';
                                     echo '</div>'; 
