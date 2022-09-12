@@ -40,10 +40,9 @@
                         for ($i = 0; $i < count($files); $i++) {
                             if(!is_dir($path.'/'.$files[$i])) {
                                 $infoFile = pathinfo($path.'/'.$files[$i]);
-                                $ext = substr($files[$i], -3);
                                 echo '<a class="file-link" target="_blank" href="'.$path.'/'.$files[$i].'"><div class="found-file">';
                                 echo '<div class="icon-text">';
-                                echo '<img src="./assets/img/'.$ext.'.png" alt="'.$ext.' logo" width="60px">';
+                                echo '<img src="./assets/img/'.$infoFile['extension'].'.png" alt="'.$infoFile['extension'].' logo" width="60px">';
                                 echo '<span>'.$infoFile['filename'].'</span>';
                                 echo '</div>';
                                     echo '<div class="info-file">'; 
@@ -57,7 +56,6 @@
                         }
                         echo '</div>';
                     }
-                   
                 }
 
                 for ($i = 0; $i < count($files); $i++) {

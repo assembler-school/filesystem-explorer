@@ -12,7 +12,7 @@ body, html {
 
 body {
     font-family: 'Roboto', sans-serif;
-    color: #00000fbb;
+    color: #00000faa;
     display: grid;
     grid-template: 80px 1fr / 1fr 4fr;
 }
@@ -21,7 +21,7 @@ header {
     display: grid;
     grid-template-columns: 1fr 5fr;
     grid-column: span 2;
-    box-shadow: 0 5px 5px #000000aa;
+    box-shadow: 0 5px 5px #00000faa;
 }
 
 aside {
@@ -56,7 +56,7 @@ main {
 
 .alert-delete h2 a { 
     text-decoration: none;
-    color: #000000aa;
+    color: #00000faa;
 }
 .alert-delete h2 a:hover { 
     color: #002fff;
@@ -65,14 +65,33 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+}
+.go-back-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.go-back {
+    width: 50vw;
+    background-color:#00000faa;
+    border: none;
+    transition: 250ms;
+}
+.go-back a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: rgb(235, 235, 242);
+}
+.go-back:hover {
+    transform: scale(1.2);
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #00000fbb;
+    color: #00000faa;
 }
 
 .btns-file-action {
@@ -124,7 +143,7 @@ nav {
 
 .title-folders, .title-files {
     width: 100%;
-    background-color: #00000fbb;
+    background-color: #00000faa;
     color: white;
     padding: 3px 10px;
     margin-top: 20px;
@@ -146,14 +165,14 @@ nav {
 }
 
 .file-link {
-    color: #00000fbb;
+    color: #00000faa;
     text-decoration: none;
     transition: 250ms;
 }
 
 .file-link:hover {
     transform: scale(1.1);
-    color: #00000fbb;
+    color: #00000faa;
 }
 
 .found-file {
@@ -205,7 +224,7 @@ nav {
 }
 .found-file:hover {
     padding: 30px;
-    border: 2px solid #00000fbb;
+    border: 2px solid #00000faa;
     background-color: white;
     border-radius: 20px;
     box-shadow: -5px 0 5px #00000f88 ;
