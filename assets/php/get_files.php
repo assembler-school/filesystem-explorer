@@ -1,4 +1,5 @@
 <?php
+    include_once ("new_file_index.php");
     function getFolders($path) {
         if(is_dir($path)) {
             if ($handle = opendir($path)) {
@@ -11,8 +12,9 @@
                 }
                 for ($i = 0; $i < count($files); $i++) {
                     if(is_dir($path.'/'.$files[$i])) {
-                        echo '<li id="'.$path.'/'.$files[$i].'">'. $files[$i] . '</li>';
+                        echo '<a href="./'.$files[$i].'.php"><li>'. $files[$i] . '</li></a>';
                         getFolders($path.'/'.$files[$i]);
+                        newIndex($files[$i], $path.'/'.$files[$i]);
                     }
                 }
                 echo '</ul>';

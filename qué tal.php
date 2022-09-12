@@ -60,14 +60,14 @@
       <h3 class="title-folders">Your folders</h3>
       <ul id="folderManager">
         <a href="./index.php"><li id="rootFolder">My Files</li></a>
-        <?php getFolders('./root'); ?>
+        <?php getFolders("./root"); ?>
       </ul>
     </section>
   </aside>
 
   <main>
     <h3 class="title-files">Your files</h3>
-    <?php getFiles('./root'); ?>
+    <?php getFiles("./root/qué tal"); ?>
   </main>
 
   <!-- MODAL FILE -->
@@ -86,7 +86,7 @@
             <input id ="filename" name="filename" pattern="^([a-zA-Z0-9\s\._-]+)$" type="text" required>
             <label for="directory">Select target folder:</label>
             <select name="directory" id="selectDirectory">
-              <option value="../../root/" selected>Folder: My Files</option>
+              <option value="./root/" selected>Folder: My Files</option>
               <?php uploadOptions('./root') ?>
             </select>
             <div class="modal-footer">
@@ -112,7 +112,7 @@
             <input id ="foldername" name="foldername" type="text" required>
             <label for="directoryFolder">Select target folder:</label>
             <select name="directoryFolder" id="selectDirectoryFolder">
-              <option value="../../root/" selected>Folder: My Files</option>
+              <option value="./root/" selected>Folder: My Files</option>
               <?php uploadOptions('./root') ?>
             </select>
             <div class="modal-footer">
@@ -140,7 +140,7 @@
             </select>
             <label class="location-move" for="destination">Select the location where you want to move it:</label>
             <select name="destination" id="selectDirectory">
-              <option value="../../root/" selected>Folder: My Files</option>
+              <option value="./root/" selected>Folder: My Files</option>
               <?php uploadOptions('./root') ?>
             </select>
             <div class="modal-footer">
