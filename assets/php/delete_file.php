@@ -21,7 +21,9 @@
     
     if(isset($_POST['file'])) {
         $myPath = $_POST['file'];
+        $infoFile = pathinfo($myPath);
         $_SESSION['path'] = $myPath;
+        $_SESSION['filename'] = $infoFile['filename'];
     }
 
     function deleteFile(){
