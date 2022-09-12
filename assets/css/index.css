@@ -6,8 +6,8 @@
 }
 
 body, html {
-    height: 99vh;
-    width: 99vw;
+    width: 100%;
+    height: 100%;
 }
 
 body {
@@ -37,8 +37,6 @@ aside > ul li {
 }
 
 main {
-    display: grid;
-    grid-template-rows: auto;
     padding: 15px;
 }
 
@@ -186,10 +184,11 @@ aside ul a {
     display: flex;
     align-items: center;
     justify-content: left;
-    width: 80vw;
+    width: 100%;
     gap: 40px;
+    height: 40px;
     cursor: pointer;
-    transition: 500ms;
+    transition: 500ms ease-in-out;
     padding: 20px;
     padding-left: 30px;
 }
@@ -197,8 +196,8 @@ aside ul a {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    transition: 250ms;
+    gap: 15px;
+    transition: 500ms ease-in-out;
 }
 .info-file {
     display: flex;
@@ -207,25 +206,29 @@ aside ul a {
     align-items: flex-start;
     padding-top: 18px;
     font-size: .75vw;
-    display: none;
-    transition: 250ms;
+    transition: 500ms ease-in-out;
+    transform: scale(0);
 }
 .found-file:hover .info-file {
+    transform: scale(1);
     display: flex;
 }
+.file-icon, .found-file:hover .icon-text span {
+    transition: 500ms ease-in-out;
+}
+.found-file:hover .icon-text {
+    gap: 0;
+    margin-right: 20px;
+}
 .found-file:hover .file-icon {
-    width: 60px;
+    width: 80px;
 }
 .found-file:hover .icon-text span {
     font-size: 1.3em;
 }
 .found-file:hover {
-    padding: 20px;
-    padding-left: 30px;
-    height: 11vw;
-    width: 80vw;
-    background-color: #00000f19;
-    overflow: visible;
+    height: 9.1vw;
+    background-color: rgba(235, 235, 242, .3);
 }
 
 /* Modals section

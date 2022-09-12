@@ -193,12 +193,11 @@
                             if (!is_dir($path.'/'.$files[$i])) {
                                 $infoFile = pathinfo($path.'/'.$files[$i]);
                                 if (stripos($infoFile['filename'], $key) !== false) {
-                                    $match = true;
                                     echo '<h4 class="files-path">My Files'. substr($path, 10). '</h4>';
                                     echo '<div class="files-container">';
                                     echo '<a class="file-link" target="_blank" href="'.$path.'/'.$files[$i].'"><div class="found-file">';
                                     echo '<div class="icon-text">';
-                                    echo '<img src="../../assets/img/'.$infoFile['extension'].'.png" alt="'.$infoFile['extension'].' logo" width="60px">';
+                                    echo '<img class="file-icon" src="../../assets/img/'.$infoFile['extension'].'.png" alt="'.$infoFile['extension'].' logo" width="30px">';
                                     echo '<span>'.$infoFile['filename'].'</span>';
                                     echo '</div>';
                                     echo '<div class="info-file">'; 
