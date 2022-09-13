@@ -12,9 +12,9 @@
                 }
                 for ($i = 0; $i < count($files); $i++) {
                     if(is_dir($path.'/'.$files[$i])) {
-                        echo '<a href="./'.$files[$i].'.php"><li>'. $files[$i] . '</li></a>';
+                        echo '<a href="./'.$files[$i].'.php"><li>'. $files[$i] . ' <i class="fa-solid fa-caret-right"></i></li></a>';
                         getFolders($path.'/'.$files[$i]);
-                        newIndex($files[$i], $path.'/'.$files[$i]);
+                        newIndex($files[$i], $path.'/'.$files[$i], $_SESSION['page']);
                     }
                 }
                 echo '</ul>';

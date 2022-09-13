@@ -59,14 +59,14 @@
     <section>
       <h3 class="title-folders">Your folders</h3>
       <ul id="folderManager">
-        <a href="./index.php"><li id="rootFolder">My Files</li></a>
+        <a href="./index.php"><li id="rootFolder">My Files <i class="fa-solid fa-caret-right"></i></li></a>
         <?php getFolders("./root"); ?>
       </ul>
     </section>
   </aside>
 
   <main>
-    <h3 class="title-files">Your files</h3>
+    <h3 class="title-files">qué tal <a href="/assembler_projects/php_module/filesystem-explorer/index.php"><i class="fa-solid fa-rotate-left"></i></a></h3>
     <?php getFiles("./root/qué tal"); ?>
   </main>
 

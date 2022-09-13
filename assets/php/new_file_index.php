@@ -1,5 +1,8 @@
 <?php
-    function newIndex($name, $path) {
+    $page = $_SERVER["REQUEST_URI"];
+    $_SESSION['page'] = $page;
+
+    function newIndex($name, $path, $prePage) {
         $newIndex = fopen($name.'.php', 'w') or die ("Unable to open file!");
         $htmlPage = <<<htmlPage
         <!DOCTYPE html>
@@ -63,14 +66,14 @@
             <section>
               <h3 class="title-folders">Your folders</h3>
               <ul id="folderManager">
-                <a href="./index.php"><li id="rootFolder">My Files</li></a>
+                <a href="./index.php"><li id="rootFolder">My Files <i class="fa-solid fa-caret-right"></i></li></a>
                 <?php getFolders("./root"); ?>
               </ul>
             </section>
           </aside>
 
           <main>
-            <h3 class="title-files">Your files</h3>
+            <h3 class="title-files">$name <a href="$prePage"><i class="fa-solid fa-rotate-left"></i></a></h3>
             <?php getFiles("$path"); ?>
           </main>
         
