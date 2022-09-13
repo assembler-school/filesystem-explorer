@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <?php
+    session_start();
+    $page = $_SERVER["REQUEST_URI"];
+    $_SESSION['page'] = $page;
     require_once('./assets/php/get_files.php');
     require_once('./assets/php/upload_file_form.php');
     require_once('./assets/php/delete_file_form.php');
@@ -59,14 +62,14 @@
     <section>
       <h3 class="title-folders">Your folders</h3>
       <ul id="folderManager">
-        <a href="./index.php"><li id="rootFolder">My Files</li></a>
+        <a href="./index.php"><li id="rootFolder">My Files <i class="fa-solid fa-caret-right"></i></li></a>
         <?php getFolders("./root"); ?>
       </ul>
     </section>
   </aside>
 
   <main>
-    <h3 class="title-files">Your files</h3>
+    <h3 class="title-files">My files</h3>
     <?php getFiles("./root"); ?>
   </main>
 

@@ -142,15 +142,49 @@ nav {
     color: white;
     padding: 3px 10px;
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
 }
 
-/* Inner Aside section
+.title-files {
+    justify-content: space-between;
+}
+
+.title-files a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: transform .7s ease-in-out;
+}
+
+.title-files a:hover {
+    transform: rotate(-360deg);
+}
+
+    /* Inner Aside section
 ...................................................................... */
 aside ul a {
     text-decoration: none;
     font-size: 1.3em;
     color: #00000faa;
     cursor: pointer;
+}
+
+aside ul a:hover {
+    color: rgb(49, 76, 148);
+}
+
+aside ul li {
+    list-style: none;
+}
+
+aside ul li i {
+    transition: transform .7s ease-in-out;
+}
+
+aside ul li:hover i {
+    transform: translateX(1vw);
 }
 
 /* Inner Main section
