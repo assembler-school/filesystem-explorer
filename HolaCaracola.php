@@ -67,7 +67,7 @@
 
   <main>
     <h3 class="title-files">Your files</h3>
-    <?php getFiles("./root/qué tal"); ?>
+    <?php getFiles("./root/qué tal/HolaCaracola"); ?>
   </main>
 
   <!-- MODAL FILE -->

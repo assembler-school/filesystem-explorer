@@ -87,7 +87,7 @@
                     <label for="userfile">Select file:</label>
                     <input id ="userfile" name="userfile" type="file" required>
                     <label for="filename">Name file:</label>
-                    <input id ="filename" name="filename" pattern="^([a-zA-Z0-9\s\._-]+)$" type="text" required>
+                    <input id ="filename" name="filename" maxlength="15" pattern="^([a-zA-Z0-9\s\._-]+)$" type="text" required>
                     <label for="directory">Select target folder:</label>
                     <select name="directory" id="selectDirectory">
                       <option value="./root/" selected>Folder: My Files</option>
@@ -113,7 +113,7 @@
                 <div class="modal-body" id="uploadFileForm">
                   <form class ="upload-form" enctype="multipart/form-data" method="post" action="./assets/php/new_folder.php">
                     <label for="foldername">Name folder:</label>
-                    <input id ="foldername" name="foldername" type="text" required>
+                    <input id ="foldername" name="foldername" type="text" maxlength="15" required>
                     <label for="directoryFolder">Select target folder:</label>
                     <select name="directoryFolder" id="selectDirectoryFolder">
                       <option value="./root/" selected>Folder: My Files</option>
