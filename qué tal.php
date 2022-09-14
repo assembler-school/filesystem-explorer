@@ -66,8 +66,8 @@
   </aside>
 
   <main>
-    <h3 class="title-files">Imágenes <a href="/assembler_projects/php_module/filesystem-explorer/index.php"><i class="fa-solid fa-rotate-left"></i></a></h3>
-    <?php getFiles("./root/Imágenes"); ?>
+    <h3 class="title-files">qué tal <a href="/assembler_projects/php_module/filesystem-explorer/index.php"><i class="fa-solid fa-rotate-left"></i></a></h3>
+    <?php getFiles("./root/qué tal"); ?>
   </main>
 
   <!-- MODAL FILE -->

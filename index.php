@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <?php
+    session_start();
+    $page = $_SERVER["REQUEST_URI"];
+    $_SESSION['page'] = $page;
     require_once('./assets/php/get_files.php');
     require_once('./assets/php/upload_file_form.php');
     require_once('./assets/php/delete_file_form.php');
@@ -59,15 +62,15 @@
     <section>
       <h3 class="title-folders">Your folders</h3>
       <ul id="folderManager">
-        <a href="./index.php"><li id="rootFolder">My Files</li></a>
+        <a href="./index.php"><li id="rootFolder">My Files <i class="fa-solid fa-caret-right"></i></li></a>
         <?php getFolders("./root"); ?>
       </ul>
     </section>
   </aside>
 
   <main>
-    <h3 class="title-files">Your files</h3>
-    <?php getFiles("./root/index"); ?>
+    <h3 class="title-files">My files</h3>
+    <?php getFiles("./root"); ?>
   </main>
 
   <!-- MODAL FILE -->
@@ -83,7 +86,7 @@
             <label for="userfile">Select file:</label>
             <input id ="userfile" name="userfile" type="file" required>
             <label for="filename">Name file:</label>
-            <input id ="filename" name="filename" pattern="^([a-zA-Z0-9\s\._-]+)$" type="text" required>
+            <input id ="filename" name="filename" maxlength="15" pattern="^([a-zA-Z0-9\s\._-]+)$" type="text" required>
             <label for="directory">Select target folder:</label>
             <select name="directory" id="selectDirectory">
               <option value="./root/" selected>Folder: My Files</option>
@@ -109,7 +112,7 @@
         <div class="modal-body" id="uploadFileForm">
           <form class ="upload-form" enctype="multipart/form-data" method="post" action="./assets/php/new_folder.php">
             <label for="foldername">Name folder:</label>
-            <input id ="foldername" name="foldername" type="text" required>
+            <input id ="foldername" name="foldername" type="text" maxlength="15" required>
             <label for="directoryFolder">Select target folder:</label>
             <select name="directoryFolder" id="selectDirectoryFolder">
               <option value="./root/" selected>Folder: My Files</option>

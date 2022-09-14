@@ -1,5 +1,8 @@
 <?php
-    function newIndex($name, $path) {
+    $page = $_SERVER["REQUEST_URI"];
+    $_SESSION['page'] = $page;
+
+    function newIndex($name, $path, $prePage) {
         $newIndex = fopen($name.'.php', 'w') or die ("Unable to open file!");
         $htmlPage = <<<htmlPage
         <!DOCTYPE html>
@@ -63,14 +66,14 @@
             <section>
               <h3 class="title-folders">Your folders</h3>
               <ul id="folderManager">
-                <a href="./index.php"><li id="rootFolder">My Files</li></a>
+                <a href="./index.php"><li id="rootFolder">My Files <i class="fa-solid fa-caret-right"></i></li></a>
                 <?php getFolders("./root"); ?>
               </ul>
             </section>
           </aside>
 
           <main>
-            <h3 class="title-files">Your files</h3>
+            <h3 class="title-files">$name <a href="$prePage"><i class="fa-solid fa-rotate-left"></i></a></h3>
             <?php getFiles("$path"); ?>
           </main>
         
@@ -87,7 +90,7 @@
                     <label for="userfile">Select file:</label>
                     <input id ="userfile" name="userfile" type="file" required>
                     <label for="filename">Name file:</label>
-                    <input id ="filename" name="filename" pattern="^([a-zA-Z0-9\s\._-]+)$" type="text" required>
+                    <input id ="filename" name="filename" maxlength="15" pattern="^([a-zA-Z0-9\s\._-]+)$" type="text" required>
                     <label for="directory">Select target folder:</label>
                     <select name="directory" id="selectDirectory">
                       <option value="./root/" selected>Folder: My Files</option>
@@ -113,7 +116,7 @@
                 <div class="modal-body" id="uploadFileForm">
                   <form class ="upload-form" enctype="multipart/form-data" method="post" action="./assets/php/new_folder.php">
                     <label for="foldername">Name folder:</label>
-                    <input id ="foldername" name="foldername" type="text" required>
+                    <input id ="foldername" name="foldername" type="text" maxlength="15" required>
                     <label for="directoryFolder">Select target folder:</label>
                     <select name="directoryFolder" id="selectDirectoryFolder">
                       <option value="./root/" selected>Folder: My Files</option>
