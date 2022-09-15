@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #00000faa;
+    display: grid;
+    grid-template: 80px 1fr / 1fr 4fr;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-column: span 2;
+    box-shadow: 0 5px 5px #00000faa;
+}
+aside {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    padding: 15px;
+    min-width: 20vw;
+    overflow-x: auto;
+}
+
+aside > ul li {
+    grid-row: 1;
+    margin-top: 10px;
+}
+
+main {
+    padding: 15px;
+}
+
+/* Header
+.................................................................... */
+.logo {
+    display: flex;
+    justify-content: left;
+    padding-left: 1vw;
+    align-items: center;
+}
+/* Navbar
+................................................... */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #00000faa;
+}
+
+.btns-file-action {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50vw;
+}
+
+.search-bar {
+    width: 20vw;
+}
+
+/* Search page
+.................. */
+.go-back-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.go-back {
+    width: 50vw;
+    background-color:#00000faa;
+    border: none;
+    transition: 250ms;
+}
+.go-back a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: rgb(235, 235, 242);
+}
+.go-back:hover {
+    transform: scale(1.2);
+}
+/* Search page END */
+
+.btns-file-action div {
+    cursor: pointer;
+    height: 80px;
+    width: 11vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: 250ms;
+    font-size: 1.1vw;
+}
+
+.btns-file-action div:hover {
+    background-color: rgb(235, 235, 242);
+    font-size: 1.2vw ;
+} 
+
+/* Delete page
+.................. */
+.alert-delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    grid-column: 2;
+    grid-row: 2;
+    padding-right: 20vw;
+}
+.alert-delete h1 {
+    text-align: center;
+}
+
+.alert-delete h2 a { 
+    text-decoration: none;
+    color: #00000faa;
+}
+.alert-delete h2 a:hover { 
+    color: #002fff;
+}
+/* Delete page END */
+
+/* Aside and Main titles
+...................................................................... */
+.title-folders, .title-files {
+    width: 100%;
+    background-color: #00000faa;
+    color: white;
+    padding: 3px 10px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.title-files {
+    justify-content: space-between;
+}
+
+.title-files a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: transform .7s ease-in-out;
+}
+
+.title-files a:hover {
+    transform: rotate(-360deg);
+}
+
+    /* Inner Aside section
+...................................................................... */
+aside ul a {
+    text-decoration: none;
+    font-size: 1.3em;
+    color: #00000faa;
+    cursor: pointer;
+}
+
+aside ul a:hover {
+    color: rgb(49, 76, 148);
+}
+
+aside ul li {
+    list-style: none;
+}
+
+aside ul li i {
+    transition: transform .7s ease-in-out;
+}
+
+aside ul li:hover i {
+    transform: translateX(1vw);
+}
+
+/* Inner Main section
+..................................................................... */
+.files-path {
+    width: 100%;
+    background-color: rgb(235, 235, 242);
+    padding: 3px 10px 5px;
+    margin-top: 20px;
+}
+
+.files-container {
+    display: flex;
+    flex-direction: column;
+    transition: 250ms;
+    gap: 20px; 
+}
+
+.file-link {
+    color: #00000faa;
+    text-decoration: none;
+    transition: 250ms;
+}
+
+.file-link:hover {
+    transform: scale3d(1.1);
+    color: #00000faa;
+}
+
+.found-file {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    gap: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: 500ms ease-in-out;
+    padding: 20px;
+    padding-left: 30px;
+}
+.icon-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: 500ms ease-in-out;
+}
+.info-file {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 18px;
+    font-size: .75vw;
+    transition: 500ms ease-in-out;
+    transform: scale(0);
+}
+.found-file:hover .info-file {
+    transform: scale(1);
+    display: flex;
+}
+.file-icon, .found-file:hover .icon-text span {
+    transition: 500ms ease-in-out;
+}
+.found-file:hover .icon-text {
+    gap: 0;
+    margin-right: 20px;
+}
+.found-file:hover .file-icon {
+    width: 80px;
+}
+.found-file:hover .icon-text span {
+    font-size: 1.3em;
+}
+.found-file:hover {
+    height: 9.1vw;
+    background-color: rgba(235, 235, 242, .3);
+}
+
+/* Modals section
+.................................................................... */
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding: 0 30px;
+}
+.upload-form input {
+    margin-bottom: 20px;
+}
+.upload-form label {
+    margin-bottom: 5px;
+}
+.upload-form .btn, .location-move {
+    margin: 20px 0 0;
+}
+.folder-option {
+    background-color: rgb(235, 235, 242);
+}
+
+/* Responsiveness
+....................................................................... */
+@media screen and (max-width: 1300px) {
+    .btns-file-action div {
+        font-size: 1.4vw;
+    }
+
+    .btns-file-action div:hover {
+        font-size: 1.5vw ;
+    }
+
+    .found-file:hover { 
+        height: 11vw;
+    }
+} 
+
+@media screen and (max-width: 800px) {
+    .btns-file-action div {
+        font-size: 1.7vw;
+    }
+
+    .btns-file-action div:hover {
+        font-size: 1.8vw ;
+    }
+
+    .found-file:hover {
+        height: 11vw;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .info-file {
+        font-size: 1vw;
+    }
+    .found-file:hover {
+        height: 15vw;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .info-file {
+        font-size: 1.4vw;
+    }
+    .found-file {
+        flex-direction: column;
+    }
+}
