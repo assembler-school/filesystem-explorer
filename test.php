@@ -66,7 +66,7 @@
   </aside>
 
   <main>
-    <h3 class="title-files">test <a href="/assembler_projects/php_module/filesystem-explorer/index.php"><i class="fa-solid fa-rotate-left"></i></a></h3>
+    <h3 class="title-files">test <a href="/assembler_projects/php_module/filesystem-explorer/ale.php?name="><i class="fa-solid fa-rotate-left"></i></a></h3>
     <?php getFiles("./root/Imágenes/test"); ?>
   </main>
 

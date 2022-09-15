@@ -89,7 +89,7 @@
             <input id ="filename" name="filename" maxlength="15" pattern="^([a-zA-Z0-9\s\._-]+)$" type="text" required>
             <label for="directory">Select target folder:</label>
             <select name="directory" id="selectDirectory">
-              <option value="./root/" selected>Folder: My Files</option>
+              <option value="../../root/" selected>Folder: My Files</option>
               <?php uploadOptions('./root') ?>
             </select>
             <div class="modal-footer">
@@ -115,8 +115,8 @@
             <input id ="foldername" name="foldername" type="text" maxlength="15" required>
             <label for="directoryFolder">Select target folder:</label>
             <select name="directoryFolder" id="selectDirectoryFolder">
-              <option value="./root/" selected>Folder: My Files</option>
-              <?php uploadOptions('./root') ?>
+              <option value="../../root/" selected>My Files</option>
+              <?php uploadOptionsFolder('./root') ?>
             </select>
             <div class="modal-footer">
               <input type="submit" class="btn btn-primary" value="Create" name="submit">
@@ -143,7 +143,7 @@
             </select>
             <label class="location-move" for="destination">Select the location where you want to move it:</label>
             <select name="destination" id="selectDirectory">
-              <option value="./root/" selected>Folder: My Files</option>
+              <option value="../../root/" selected>Folder: My Files</option>
               <?php uploadOptions('./root') ?>
             </select>
             <div class="modal-footer">
