@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header {
+  height: 10%;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  width: 100%;
+  min-height: 60%;
+  position: relative;
+}
+
+nav {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+aside {
+  height: 30%;
+  width: 100%;
+  border-top: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-details-container {
+  width: 80%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-details-container-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.file-details-item {
+  width: 50%;
+}
+
+.file-content-container{
+    height:65%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.file-content-container div{
+    width: 100%;
+    height: 90%;
+    border: 1px solid grey;
+}
+
+.empty-root-folder-alert {
+  width: 80%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(219, 194, 243);
+  padding: 15px;
+}
+
+.empty-root-btns-container {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* .folder-container,
+.file-container {
+  height: 100px;
+  width: 100px;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.folder,
+.file {
+  height: 80%;
+  width: 80%;
+}
+
+.folder {
+  background-color: aquamarine;
+}
+
+.file {
+  background-color: yellow;
+} */
