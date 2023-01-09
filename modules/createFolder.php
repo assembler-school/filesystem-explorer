@@ -1,4 +1,4 @@
 <?php
 require_once('./getFilesAndFolders.php');
 
-$newDir = mkdir("./root/newFolder", 0700, true);
+$newDir = mkdir("../root/newFolder", 0700, true);

@@ -22,7 +22,7 @@
     <main>
         <?php
         require_once('./modules/getFilesAndFolders.php');
-        getFilesAndFolders('root');
+        getFilesAndFolders('./root');
         ?>
     </main>
 

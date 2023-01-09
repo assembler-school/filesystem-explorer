@@ -1,9 +1,10 @@
 <?php
 
-function getFilesAndFolders($directory){
+function getFilesAndFolders($directory)
+{
     $all = glob("$directory/*");
 
-    if(count($all) == 0){
+    if (count($all) == 0) {
         echo "<div class='empty-root-folder-alert'>
                 <p>You have not created any file or folder</p>
                 <div class='empty-root-btns-container'>
