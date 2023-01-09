@@ -1,7 +1,4 @@
 <?php
+require_once('./getFilesAndFolders.php');
 
-echo json_encode([
-    "size" => 0,
-    "creationDate" => "loren",
-    "content" => "ipsum"
-]);
+$newDir = mkdir("./root/newFolder", 0700, true);
