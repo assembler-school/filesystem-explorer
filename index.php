@@ -13,7 +13,8 @@
 <body>
     <header>
         <nav>
-            <img src="ouricon" alt="icon" />
+            <!-- <img src="ouricon" alt="icon" /> -->
+            <p>LOGO</p>
             <input type="text" placeholder="search" name="search" />
         </nav>
     </header>
