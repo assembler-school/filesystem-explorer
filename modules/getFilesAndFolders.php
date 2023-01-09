@@ -7,8 +7,8 @@ function getFilesAndFolders($directory){
         echo "<div class='empty-root-folder-alert'>
                 <p>You have not created any file or folder</p>
                 <div class='empty-root-btns-container'>
-                    <button class='create-folder-btn'>Create folder</button>
-                    <button class='upload-file-btn'>Upload file</button>
+                    <button id='createFolderBtn' class='create-folder-btn'>Create folder</button>
+                    <button id='uploadFileBtn' class='upload-file-btn'>Upload file</button>
                 </div>
             </div>";
     }
