@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+}
+
+#bodyStyle {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center; 
+gap: 10px;
+}
+
+img{
+    border-radius: 50%;
+}
+
+header{
+padding: 10px;
+background-color: aqua;
+}
+
+#navigation{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content:space-between;
+}
+
+main{
+    display: grid;
+    grid-template-columns: auto auto auto;
+   /*  justify-content:space-between; */
+    padding: 10px;
+    height: 90vh;
+}
+#folders{
+    border-right: 1px solid black;
+    padding: 10px;
+}
+
+#show-files{
+    border-left: 1px solid black;
+    padding: 10px;
+}
+
+#files{
+    padding: 10px;
+}
+
+#logo-panel{
+    width: 4rem;
+}
