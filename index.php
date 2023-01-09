@@ -10,20 +10,32 @@
     <title>Local File System Explorer</title>
 </head>
 <body>
-    <div class="d-flex">
-        <div class="content-buttons">
-            <button class="create-element"></button>
-            <button class="upload-element"></button>
+    <header class="container-fluid" id="header">
+        <div class="content-buttons row ">
+            <div class="col-md-1"><button class="create-element">Create</button></div>
+
+            <div class="col-md-1"><button class="upload-element">Upload</button></div>
         </div>
+    </header>
+    <section class="text-center container-fluid">
+        <div class="bg-danger row">
+
+            <div class="col-md-4 border border-dark-1" id="root">
+                <p>pasdasdasdasd</p>
+            </div>
+
+            <div class="col-md-6">
+                <p>dasdasdasdasd</p>
+            </div>
+
+            <div class="col-md-2 border border-dark-1">
+                <p>dasdasdasdasd</p>
+            </div>
         
-        <div class="folder-box" id="root">
-
         </div>
+    </section>
 
-        <div class="info-box" id="info-section">
-            
-        </div>
-    </div>
+        
 
     
 
