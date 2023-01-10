@@ -26,7 +26,13 @@
                         <div class="buttons-options">.</div>
                     </div>
                     <div id="filesExplorerContainer">
-                        <div id="filesPath">.</div>
+                        <div id="filesPath">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum illo magnam, inventore distinctio praesentium delectus quia cumque! Deleniti praesentium dolores, velit error sunt, blanditiis exercitationem numquam quae, ipsa nemo modi.
+                            Autem impedit repellat minima illo quam, consequatur mollitia esse eaque ut ullam obcaecati recusandae itaque excepturi, consequuntur magni aut molestiae eum aliquam expedita eveniet ab. At id aliquam mollitia non.
+                            Laudantium, impedit. Cumque reiciendis dolor magnam aliquid inventore odio consequatur laudantium, cupiditate laborum perspiciatis rerum quisquam voluptas. Architecto, odio nisi? Libero quo nesciunt, soluta repudiandae tempore asperiores eaque dolorem velit?
+                            Officia a aspernatur voluptatum numquam mollitia, eligendi et enim soluta, maiores est, exercitationem corrupti quis rerum ut amet sunt. Optio, tempore? Voluptatem quidem magnam et impedit error quos mollitia facere.
+                            Ipsam mollitia optio repudiandae, iure adipisci ut nulla accusamus, a dolorum nesciunt temporibus dignissimos! Explicabo enim iure voluptatum, repellendus ut, repudiandae minus corrupti ducimus praesentium in, voluptatibus animi debitis? Natus?
+                        </div>
                         <div id="mediaFolderContainer">
                             <button class="media-folder-buttons">images</button>
                             <button class="media-folder-buttons">videos</button>
@@ -35,8 +41,19 @@
                             <button id="folderTrash">trash</button>
                         </div>
                     </div>
+                    <div id="informationFilesContainer">
+                        <ul id="informationFilesList">
+                            <li class="information-files">Created: </li>
+                            <li class="information-files">Last modified: </li>
+                            <li class="information-files">Extension: </li>
+                            <li class="information-files">Size</li>
+                            <li class="information-files">Path: </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="main-children">2</div>
+                <div id="secondChildrenContainer" class="main-children">
+                    <div id="secondChildrenChild"></div>
+                </div>
                 <div class="main-children">3</div>
             </div>
         </main>
