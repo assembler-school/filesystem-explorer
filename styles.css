@@ -7,6 +7,9 @@
     height: 95.2vh;
 }
 
+.folderElements {
+    list-style: none;
+}
 
 #content-box {
     height: 100%;
