@@ -29,7 +29,10 @@
 
 <section id="folders">
     <p> My folders </p>
+    <form action='prueba.php' method='get'>
+        <input type='text' name='valor'>
     <button>Create new folder</button>
+</form>
 </section>
 
 
@@ -48,7 +51,7 @@
 
 <?php
 // mkdir('nuevaCarpeta', 0700);
-fopen('text.txt', 'w');
+// fopen('text.txt', 'w');
 ?>
 </body>
 </html>
