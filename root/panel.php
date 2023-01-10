@@ -30,7 +30,6 @@
 
 <section id="folders">
     <p> My folders </p>
-    <button>Create new folder</button>
     <br><br>
 <div id="folder">
 
@@ -38,8 +37,7 @@
 
 forEach (glob("*") as $name){
 if(is_dir($name) && $name !== "panel.php"){
-    echo '<li><div class="select-folder" name-folder="'.$name .'"><img src="../image/folder.ico" alt="image folder" class="imageFolder"> ' . $name . '</div><span class="modify-name-folder"><i class="fa-solid fa-pen" actual-folder="'.$name .'"></i></span><span class="delete-folder"><i class="fa-solid fa-trash" id="delete-folder" actual-folder="'.$name .'"></i></span></li>';
-    
+    echo '<li><div class="select-folder" name-folder="'.$name .'"><img src="../image/folder.ico" alt="image folder" class="imageFolder" name-folder="'.$name .'"> ' . $name . '</div><span class="modify-name-folder"><i class="fa-solid fa-pen" actual-folder="'.$name .'"></i></span><span class="delete-folder"><i class="fa-solid fa-trash" id="delete-folder" actual-folder="'.$name .'"></i></span></li>'; 
 
 }
 }
@@ -51,8 +49,13 @@ if(is_dir($name) && $name !== "panel.php"){
 <section id="files">
     <p> My files </p>
     <div id="open-folder">
-</div>
-    <button>Upload new file</button>
+    </div>
+<form method="post" action="../assets/upload-file.php" enctype="multipart/form-data">
+    <input type="file" name="uploadFile" class="upload-new-file">
+    <input type="hidden" name="uploadFolder" value="">
+    <br>
+    <button id="upload-file">Upload new file</button>
+</form>
 </section>
 
 

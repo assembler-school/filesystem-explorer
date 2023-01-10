@@ -60,15 +60,39 @@ function selectFolders(event){
     let openFolder = event.srcElement.getAttribute('name-folder');
     fetch ("../assets/display-content.php?actualFolderName="+openFolder)
     .then (response => response.json())
-    .then (data => console.log(data))
-
+    .then (data => showelementosOfFolder(data))
 
     let nameOfFolder = document.createElement("p");
     nameOfFolder.textContent = openFolder;
     containerOpenFolder.appendChild(nameOfFolder);
-    
-
-   
-
+    let inputUploadFile = document.getElementsByName("uploadFolder")[0];
+    inputUploadFile.value = openFolder;
 
 }
+
+function showelementosOfFolder(data){
+    data.forEach(file =>{
+        const containerOpenFolder = document.querySelector("#open-folder");
+        let divFile = document.createElement("div");
+        let cutPath = file.lastIndexOf("/");
+        let pathFile = file.slice(cutPath+1);
+        divFile.textContent = pathFile;
+        containerOpenFolder.appendChild(divFile);
+        
+        console.log(pathFile);
+    })
+
+}
+
+
+
+
+
+const buttonNewFile = document.querySelector("#upload-file");
+buttonNewFile.addEventListener("click", addNewFile);
+
+function addNewFile(){
+    let NewFile = document.querySelectorAll(".upload-new-file"); 
+}
+
+ 
