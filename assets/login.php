@@ -1,20 +1,23 @@
 <?php
 
-$username = "admin";
-$inputPassword = "123456";
+$username = 'admin';
+$inputPassword = '123456';
 
+if ( !empty( $_POST[ 'user' ] ) && !empty( $_POST[ 'password' ] ) ) {
 
-if (isset($_POST["user"]) && isset($_POST["password"])) {
-    
-    if ($_POST["user"] == $username && $_POST["password"] == $inputPassword) {
-       
+    if ( $_POST[ 'user' ] === $username && $_POST[ 'password' ] === $inputPassword ) {
+
         session_start();
-        $_SESSION["user"] = $_POST["user"];
-        $_SESSION["password"] = $_POST["password"];
 
-        header("Location: ../root/panel.php");
+        $_SESSION[ 'user' ] = $_POST[ 'user' ];
+
+        header( 'Location: ../root/panel.php' );
     } else {
-        header("Location: ./index.php?msg=errorLogin");
-}}
-?>
+        header( 'Location: ../index.php?msg=errorLogin' );
+    }
 
+}else{
+    header( 'Location: ../index.php?msg=emptyFields');
+}
+
+?>

@@ -46,6 +46,9 @@
 
 </section>
 
-
+<?php
+// mkdir('nuevaCarpeta', 0700);
+fopen('text.txt', 'w');
+?>
 </body>
 </html>

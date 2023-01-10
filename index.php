@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if(!empty($_SESSION['user'])){
+    header('location: root/panel.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,22 +16,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
-
 </head>
 <body>
-    <div id="bodyStyle">
-<img src="image/logo.webp" alt="Logo">
-<form id="form" method="post" action="assets/login.php">
-    <label for="username">Username:</label>
-    <input type="text" name="user" id="username"> <br><br>
+    <div id="loginBody"> 
+        <img id="logoLogin" src="image/logo.webp" alt="Logo"/>
+        <form id="form" method="post" action="assets/login.php">
+            <div class="usernameLogin marginLogin">
+                <label for="username">Username</label><br>
+                <input type="text" name="user" id="username" maxlength='20' required>
+            </div>
+            <div class="passwordLogin marginLogin">
+                <label for="password">Password</label><br>
+                <input type="password" name="password" id="password" required>
+            </div>
 
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password"> <br><br>
-   
-   <button type="submit">Log in</button>
-   <button>Sing up</button>
-
-</form>
-</div>
+                <?php
+                    if(isset($_GET['msg'])){
+                        switch($_GET['msg']){
+                            case 'errorLogin':
+                                echo '<p id="errorMessageLogin">Username or password is wrong!</p>';
+                                break;
+                            case 'emptyFields':
+                                echo '<p id="errorMessageLogin">All fields must be filled!</p>';
+                                break;       
+                            } 
+                    }
+                ?>
+            <div class="buttonsLogin marginLogin"> 
+                <button type="submit">Log in</button>
+                <button>Sing up</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
