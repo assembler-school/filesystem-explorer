@@ -33,14 +33,15 @@
     <button>Create new folder</button>
     <br><br>
 <div id="folder">
+
     <?php
 
 forEach (glob("*") as $name){
 if(is_dir($name) && $name !== "panel.php"){
-    echo '<li><img src="../image/folder.ico" alt="image folder" class="imageFolder"> ' . $name . '  <i class="fa-solid fa-pen"></i><i class="fa-solid fa-trash"></i></li>';
+    echo '<li><img src="../image/folder.ico" alt="image folder" class="imageFolder"> ' . $name . '<span class="modify-name-folder"><i class="fa-solid fa-pen" actual-folder="'.$name .'"></i></span><span class="delete-folder"><i class="fa-solid fa-trash" id="delete-folder" actual-folder="'.$name .'"></i></span></li>';
+    
 
 }
-  
 }
 ?>
 </div>

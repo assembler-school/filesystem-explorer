@@ -10,5 +10,38 @@ function createNewFolder(){
     .then (data => console.log(data))
 }
 
-const modifyNameFolder = document.querySelector("#modify-name-folder");
-const deleteFolder = document.querySelector("#delete-folder");
+const modifyNameFolder = document.querySelectorAll(".modify-name-folder");
+const deleteFolder = document.querySelectorAll(".delete-folder");
+
+
+
+modifyNameFolder.forEach((item)=>{
+    item.addEventListener("click", modifyNameFolders)});
+
+
+deleteFolder.forEach((item)=>{
+    item.addEventListener("click", deleteFolders)});
+
+function modifyNameFolders(event){
+    let newName = prompt("Put new folder name, please");
+    let actualFolderName = event.srcElement.getAttribute('actual-folder');
+
+   fetch ("../assets/modifyFolder.php?nameFolder="+newName+"&actualFolderName="+actualFolderName)
+    .then (response => response.json())
+    .then (data => console.log(data)) 
+
+
+}
+
+function deleteFolders(event){
+const popUpDeleteConfirm = confirm("Do you want delete this folder?");
+
+if(popUpDeleteConfirm){
+    let actualFolderName = event.srcElement.getAttribute('actual-folder');
+     fetch ("../assets/deleteFolder.php?actualFolderName="+actualFolderName)
+    .then (response => response.json())
+    .then (data => console.log(data))
+}
+
+   
+}

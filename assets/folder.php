@@ -6,8 +6,6 @@ $newFolderName = $_GET['nameFolder'];
  error_reporting(E_ALL);
 
  $myObj->error = "Se ha producido un error";
- 
  $myJSON = json_encode($myObj);
- 
  echo $myJSON;
 ?>
