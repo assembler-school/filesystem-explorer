@@ -38,7 +38,7 @@
 
 forEach (glob("*") as $name){
 if(is_dir($name) && $name !== "panel.php"){
-    echo '<li><img src="../image/folder.ico" alt="image folder" class="imageFolder"> ' . $name . '<span class="modify-name-folder"><i class="fa-solid fa-pen" actual-folder="'.$name .'"></i></span><span class="delete-folder"><i class="fa-solid fa-trash" id="delete-folder" actual-folder="'.$name .'"></i></span></li>';
+    echo '<li><div class="select-folder" name-folder="'.$name .'"><img src="../image/folder.ico" alt="image folder" class="imageFolder"> ' . $name . '</div><span class="modify-name-folder"><i class="fa-solid fa-pen" actual-folder="'.$name .'"></i></span><span class="delete-folder"><i class="fa-solid fa-trash" id="delete-folder" actual-folder="'.$name .'"></i></span></li>';
     
 
 }
@@ -50,6 +50,8 @@ if(is_dir($name) && $name !== "panel.php"){
 
 <section id="files">
     <p> My files </p>
+    <div id="open-folder">
+</div>
     <button>Upload new file</button>
 </section>
 

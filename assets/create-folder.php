@@ -1,6 +1,6 @@
 <?php
 $newFolderName = $_GET['nameFolder'];
- mkdir("../root/$newFolderName", 0700);
+ mkdir("../root/$newFolderName", 0777);
  ini_set('display_errors', 1);
  ini_set('display_startup_errors', 1);
  error_reporting(E_ALL);
