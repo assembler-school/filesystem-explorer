@@ -1,4 +1,8 @@
-/* font-family: 'Poppins', 'Righteous' */
+* {
+    font-family: 'Poppins', 'Righteous';
+}
+
+
 #header {
     padding: 1em;
 }
@@ -7,6 +11,9 @@
     height: 95.2vh;
 }
 
+.folderElements {
+    list-style-type: none;
+}
 
 #content-box {
     height: 100%;
