@@ -17,9 +17,27 @@
         </header>
         <main>
             <div id="mainContainer">
-                <div class="mainChildren">1</div>
-                <div class="mainChildren">2</div>
-                <div class="mainChildren">3</div>
+                <div class="main-children">
+                    <input type="text" id="searchInput" placeholder="Search">
+                    <div id="buttonsOptionsContainer">
+                        <div class="buttons-options">.</div>
+                        <div class="buttons-options">.</div>
+                        <div class="buttons-options">.</div>
+                        <div class="buttons-options">.</div>
+                    </div>
+                    <div id="filesExplorerContainer">
+                        <div id="filesPath">.</div>
+                        <div id="mediaFolderContainer">
+                            <button class="media-folder-buttons">images</button>
+                            <button class="media-folder-buttons">videos</button>
+                            <button class="media-folder-buttons">audios</button>
+                            <button class="media-folder-buttons">documents</button>
+                            <button id="folderTrash">trash</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-children">2</div>
+                <div class="main-children">3</div>
             </div>
         </main>
         <footer></footer>
