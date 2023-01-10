@@ -3,6 +3,7 @@
 function createFolder()
 {
     $currentPath = $_GET['path'];
+    $filePath = $_GET['filepath'];
 
     // $pathName = str_replace('\\', '/', dirname(__DIR__))  . $currentPath;
 
@@ -15,7 +16,7 @@ function createFolder()
     echo json_encode([
         "ok" => true,
         "dir" => $dir,
-        "path" => $currentPath.'/newFolder'
+        "path" => $filePath.'/newFolder'.$version
     ]);
 }
 createFolder();

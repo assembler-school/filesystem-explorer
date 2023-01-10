@@ -21,28 +21,32 @@
 
     <main>
         <?php
-        
+
         session_start();
         require_once('./modules/getFilesAndFolders.php');
-        
-        if(isset($_SESSION['curr_path'])){
-           
-            $breadCrumbs = explode("/",$_SESSION['curr_path']);
+
+        // breadcrumbs and handle navigation
+
+        if (isset($_SESSION['curr_path'])) {
+            $breadCrumbs = explode("/", $_SESSION['curr_path']);
+            $initialRoute = '';
 
             echo "<div class='bread-crumbs-container'>";
             foreach ($breadCrumbs as $path) {
-                echo "<a>$path</a>/";
+                $initialRoute = $initialRoute . $path . "/";
+                echo "<a onclick=(navigateToFolder(event)) path='$initialRoute'>$path</a>";
             }
             echo "</div>";
 
             getFilesAndFolders($_SESSION['curr_path']);
-        } else{
+        } else {
             echo "<div class='bread-crumbs-container'>";
-            echo '<p>./root/</p>';
+            echo '<p>./root</p>';
             echo "</div>";
             getFilesAndFolders('./root');
         }
-        
+
+        // breadcrumbs and handle navigation
         ?>
     </main>
 
