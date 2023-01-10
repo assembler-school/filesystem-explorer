@@ -11,8 +11,8 @@
     <body>
         <header>
             <nav id="navBar">
-                <div id="companyLogo">LOGO</div>
-                <div id="userLogo">user</div>
+                <img id="companyLogo" src="images/logo.png" alt="company logo">
+                <img id="userLogo" src="images/encarnita.jpg" alt="user image">
             </nav>
         </header>
         <main>
@@ -20,18 +20,14 @@
                 <div class="main-children">
                     <input type="text" id="searchInput" placeholder="Search">
                     <div id="buttonsOptionsContainer">
-                        <div class="buttons-options">.</div>
+                        <img id="addFolderImage" class="buttons-options" src="images/addFolder.png" alt="create folder icon">
                         <div class="buttons-options">.</div>
                         <div class="buttons-options">.</div>
                         <div class="buttons-options">.</div>
                     </div>
                     <div id="filesExplorerContainer">
                         <div id="filesPath">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum illo magnam, inventore distinctio praesentium delectus quia cumque! Deleniti praesentium dolores, velit error sunt, blanditiis exercitationem numquam quae, ipsa nemo modi.
-                            Autem impedit repellat minima illo quam, consequatur mollitia esse eaque ut ullam obcaecati recusandae itaque excepturi, consequuntur magni aut molestiae eum aliquam expedita eveniet ab. At id aliquam mollitia non.
-                            Laudantium, impedit. Cumque reiciendis dolor magnam aliquid inventore odio consequatur laudantium, cupiditate laborum perspiciatis rerum quisquam voluptas. Architecto, odio nisi? Libero quo nesciunt, soluta repudiandae tempore asperiores eaque dolorem velit?
-                            Officia a aspernatur voluptatum numquam mollitia, eligendi et enim soluta, maiores est, exercitationem corrupti quis rerum ut amet sunt. Optio, tempore? Voluptatem quidem magnam et impedit error quos mollitia facere.
-                            Ipsam mollitia optio repudiandae, iure adipisci ut nulla accusamus, a dolorum nesciunt temporibus dignissimos! Explicabo enim iure voluptatum, repellendus ut, repudiandae minus corrupti ducimus praesentium in, voluptatibus animi debitis? Natus?
+                            
                         </div>
                         <div id="mediaFolderContainer">
                             <button class="media-folder-buttons">images</button>
@@ -59,8 +55,8 @@
                             <p class="titleSecond">Modified</p>
                         </div>
                         <div id="pathSecondChild">
-                            <img>
-                            <img>
+                            <img id="arrowLeft" src="images/arrowLeft.png" alt="left arrow">
+                            <img id="folderIcon" src="images/folderIconSmall.png" alt="folder icon">
                             <p id="pathSecond">Directorio de la muerte</p>
                         </div>
                         <div id="contentSecondChild">
@@ -70,7 +66,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="main-children">3</div>
+                <div class="main-children">
+                    <p id="previewText">preview</p>
+                </div>
             </div>
         </main>
         <footer></footer>
