@@ -12,20 +12,21 @@
 <body>
     <header class="container-fluid" id="header">
         <div class="content-buttons row ">
-            <div class="col-md-1"><button class="create-element">Create</button></div>
+            <div class="col-md-1" id="create-bttn"><button class="create-element">Create</button></div>
 
             <div class="col-md-1"><button class="upload-element">Upload</button></div>
         </div>
     </header>
-    <section class="text-center container-fluid">
-        <div class="bg-danger row">
+    <section class="container-fluid" id="section-content">
+        <div class="bg-danger row" id="content-box">
 
-            <div class="col-md-4 border border-dark-1" id="root">
-                <p>pasdasdasdasd</p>
+            <div class="col-md-3 border border-dark-1" id="root">
+                
+                
             </div>
 
-            <div class="col-md-6">
-                <p>dasdasdasdasd</p>
+            <div class="col-md-7" >
+                <p></p>
             </div>
 
             <div class="col-md-2 border border-dark-1">

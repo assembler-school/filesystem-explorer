@@ -1,1 +1,16 @@
 /* font-family: 'Poppins', 'Righteous' */
+#header {
+    padding: 1em;
+}
+
+#section-content {
+    height: 95.2vh;
+    background-color: aqua;
+    
+}
+
+
+#content-box {
+    height: 100%;
+    padding: 1.5em;
+}
