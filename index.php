@@ -1,5 +1,6 @@
 <?php
 include "functions.php";
+include "create.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +21,28 @@ include "functions.php";
 
         <div class="content-buttons row ">
 
-            <div class="col-md-1">
+            <div class="col-md-2">
 
                 <form action="" enctype="multipart/form-data" method="POST">
-                    <button class="create-element" id="create-bttn">Create</button>
+                    <!-- <button id="create-bttn" name="create">Create</button> -->
+                    <select name="create" id="create-bttn">
+                        <option value="folder">Folder</option>
+                        <option value="doc">DOC</option>
+                        <option value="csv">CSV</option>
+                        <option value="jpg">JPG</option>
+                        <option value="png">PNG</option>
+                        <option value="txt">TXT</option>
+                        <option value="ppt">PPT</option>
+                        <option value="odt">ODT</option>
+                        <option value="pdf">PDF</option>
+                        <option value="zip">ZIP</option>
+                        <option value="rar">RAR</option>
+                        <option value="exe">EXE</option>
+                        <option value="svg">SVG</option>
+                        <option value="mp3">MP3</option>
+                        <option value="mp4">MP4</option>
+                    </select>
+                    <input type="submit" value="create">
                 </form>
 
             </div>
@@ -52,7 +71,7 @@ include "functions.php";
 
 
             <div class="col-md-2 border border-dark-1">
-                <?php createElements(); ?>
+                <?php echo createElements(); ?>
             </div>
 
         </div>
@@ -65,7 +84,7 @@ include "functions.php";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
-    <script src="app.js" defer></script>
+    <script src="script.js" defer></script>
 
 </body>
 
