@@ -12,7 +12,7 @@ function getFilesAndFolders($directory)
                     <button id='uploadFileBtn' class='upload-file-btn'>Upload file</button>
                 </div>
             </div>";
-    } else{
+    } else {
         echo "<div class='btns-container'>
                 <button id='createFolderBtn' class='create-folder-btn'>Create folder</button>
                 <button id='uploadFileBtn' class='upload-file-btn'>Upload file</button>

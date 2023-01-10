@@ -1,7 +1,6 @@
 const createFolderBtn = document.getElementById("createFolderBtn");
 
 createFolderBtn.addEventListener("click", () => {
-  // window.location.href = "../filesystem-explorer/modules/createFolder.php";
   fetch("./modules/createFolder.php", {
     method: "GET",
   })

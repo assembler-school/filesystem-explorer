@@ -109,11 +109,11 @@ aside {
   left: 15px;
 }
 
-/* .folder-container,
+.folder-container,
 .file-container {
   height: 100px;
   width: 100px;
-  background-color: antiquewhite;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,9 +127,10 @@ aside {
 }
 
 .folder {
-  background-color: aquamarine;
+  background-image: url('../fileIcons/folderIcon.png');
+  background-size: contain;
 }
 
 .file {
   background-color: yellow;
-} */
+}
