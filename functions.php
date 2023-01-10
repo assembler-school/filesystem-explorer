@@ -1,7 +1,8 @@
 <?php
 
-$ruta = "root";
+
   function rootFolder($ruta){
+    $ruta = "root";
     
     if (is_dir($ruta)){
         // Abre un gestor de directorios para la ruta indicada
