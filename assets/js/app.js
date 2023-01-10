@@ -78,14 +78,15 @@ function showelementosOfFolder(data){
         let pathFile = file.slice(cutPath+1);
         divFile.textContent = pathFile;
         containerOpenFolder.appendChild(divFile);
-        
+        divFile.className += "elemtoOfFolder";
+        divFile.setAttribute("filePath", file);
         console.log(pathFile);
     })
 
+let folderElement = document.querySelectorAll(".elemtoOfFolder");
+folderElement.forEach((item)=>{
+    item.addEventListener("click", showInfoElement)});
 }
-
-
-
 
 
 const buttonNewFile = document.querySelector("#upload-file");
@@ -95,4 +96,18 @@ function addNewFile(){
     let NewFile = document.querySelectorAll(".upload-new-file"); 
 }
 
- 
+
+
+function showInfoElement(event){
+    console.log("hola")
+    let atrituboFile = event.srcElement.getAttribute("filePath")
+    fetch ("../assets/display-info-file.php?filePath="+atrituboFile)
+    .then (response => response.json())
+    .then (data => console.log(data))
+    
+}
+
+
+
+
+
