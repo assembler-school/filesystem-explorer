@@ -1,3 +1,4 @@
+/*+++++++++++++++++++++++++++ ROOT +++++++++++++++++++++++++++++*/
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +13,7 @@ body {
   justify-content: space-between;
 }
 
+/*+++++++++++++++++++++++++++ HEADER +++++++++++++++++++++++++++++*/
 header {
   height: 10%;
   width: 100%;
@@ -21,18 +23,37 @@ header {
   justify-content: center;
 }
 
-main {
-  width: 100%;
-  min-height: 60%;
-  position: relative;
-}
-
 nav {
   width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
+/*+++++++++++++++++++++++++++ MAIN +++++++++++++++++++++++++++++*/
+main {
+  width: 100%;
+  height: 60%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 100px));
+  overflow-y: scroll ;
+}
+
+/* bread crumbs */
+
+.bread-crumbs-container{
+  position: fixed;
+  width: 100%;
+  left: 15px;
+}
+
+.bread-crumbs-container *{
+  cursor:pointer;
+  margin: 2px;
+}
+
+/* bread crumbs */
 
 aside {
   height: 30%;
@@ -63,20 +84,20 @@ aside {
   width: 50%;
 }
 
-.file-content-container{
-    height:65%;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 10px;
+.file-content-container {
+  height: 65%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-.file-content-container div{
-    width: 100%;
-    height: 90%;
-    border: 1px solid grey;
+.file-content-container div {
+  width: 100%;
+  height: 90%;
+  border: 1px solid grey;
 }
 
 .empty-root-folder-alert {
@@ -103,7 +124,7 @@ aside {
   justify-content: space-between;
 }
 
-.btns-container{
+.btns-container {
   position: absolute;
   bottom: 0;
   left: 15px;
@@ -111,6 +132,7 @@ aside {
 
 .folder-container,
 .file-container {
+  margin-top: 20px;
   height: 100px;
   width: 100px;
   background-color: white;
@@ -118,6 +140,7 @@ aside {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .folder,
@@ -127,8 +150,10 @@ aside {
 }
 
 .folder {
-  background-image: url('../fileIcons/folderIcon.png');
+  background-image: url("../fileIcons/folderIcon.png");
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .file {

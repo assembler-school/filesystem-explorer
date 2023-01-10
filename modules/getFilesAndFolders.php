@@ -1,6 +1,6 @@
 <?php
 
-function getFilesAndFolders($directory)
+function getFilesAndFolders($directory = './root')
 {
     $all = glob("$directory/*");
 
@@ -27,11 +27,13 @@ function getFilesAndFolders($directory)
                 <p>$file</p>
             </div>";
         }
+
         if (is_dir($ff)) {
             $dir = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($ff));
+            $path = $directory . "/" . $dir;
             echo "<div class='folder-container'>
-                    <div class='folder'></div>
-                    <p>$dir</p>
+                    <div class='folder' path='$path' onclick='navigateToFolder(event)'></div>
+                    <p class='folder-name' onclick='openRenameFolderInput(event)'>$dir</p>
                     </div>";
         }
     }
