@@ -27,7 +27,9 @@
                     </div>
                     <div id="filesExplorerContainer">
                         <div id="filesPath">
-                            
+                            <ul id="filesList">
+                                
+                            </ul>
                         </div>
                         <div id="mediaFolderContainer">
                             <button class="media-folder-buttons">images</button>

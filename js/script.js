@@ -1,9 +1,35 @@
 const addFolderImage = document.querySelector("#addFolderImage");
+const ul = document.querySelector("#filesList");
 let nameDirectory = "";
+let inputValue;
+let nameFolder;
+let li;
+addFolderImage.addEventListener("click", showImageFolder);
 
-addFolderImage.addEventListener("click", showPopUpCreateFolder);
 
-function showPopUpCreateFolder(){
+function getInputValue(){
+    nameFolder= inputValue.value;
+    const p =  document.createElement("p");
+    p.textContent = nameFolder;
+    li.replaceChild(p, inputValue);
+}
+
+function showImageFolder(e){
+    
+    li = document.createElement("li");
+    const img = document.createElement("img");
+    img.setAttribute("src", "images/folderIconSmall.png");
+    img.setAttribute("alt", "Folder");
+    const input = document.createElement("input");
+    input.setAttribute("id", "folderValues");
+    input.setAttribute("type", "text");
+    input.setAttribute("value", "New Folder");
+    ul.appendChild(li);
+    li.appendChild(img);
+    li.appendChild(input);
+    inputValue = document.querySelector("#folderValues");
+    inputValue.addEventListener("focusout", getInputValue);
+    input.select();
 
 }
 
