@@ -51,7 +51,7 @@ include "create.php";
 
                 <form action="#" enctype="multipart/form-data" method="POST">
                     <input type="file" name="file" id="">
-                    <input type="submit" value="enviar">
+                    <input type="submit" value="Upload">
                 </form>
 
             </div>
