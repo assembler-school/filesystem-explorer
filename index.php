@@ -52,7 +52,23 @@
                     </div>
                 </div>
                 <div id="secondChildrenContainer" class="main-children">
-                    <div id="secondChildrenChild"></div>
+                    <div id="secondChildrenChild">
+                        <div id="titleSecondChild">
+                            <p class="titleSecond">Name</p>
+                            <p class="titleSecond">Size</p>
+                            <p class="titleSecond">Modified</p>
+                        </div>
+                        <div id="pathSecondChild">
+                            <img>
+                            <img>
+                            <p id="pathSecond">Directorio de la muerte</p>
+                        </div>
+                        <div id="contentSecondChild">
+                            <p>directorio</p>
+                            <p>30mb</p>
+                            <p>Dic 32 26:65</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="main-children">3</div>
             </div>
