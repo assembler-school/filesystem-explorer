@@ -14,22 +14,38 @@ include "functions.php";
 </head>
 <body>
     <header class="container-fluid" id="header">
+        
         <div class="content-buttons row ">
-            <div class="col-md-1" id="create-bttn"><button class="create-element">Create</button></div>
 
-            <div class="col-md-1"><button class="upload-element">Upload</button></div>
+            <div class="col-md-1">
+
+                <form action="" enctype="multipart/form-data" method="POST">
+                    <button class="create-element" id="create-bttn">Create</button>
+                </form>
+
+            </div>
+
+            <div class="col-md-1">
+
+                <form action="" enctype="multipart/form-data" method="POST">
+                    <button class="upload-element">Upload</button>
+                </form>
+                
+            </div>
+
         </div>
     </header>
     <section class="container-fluid" id="section-content">
         <div class="row" id="content-box">
 
             <div class="col-md-3 border border-dark-1" id="root">
-                <?php rootFolder($ruta); ?>
+                <?php viewElements($route); ?>
             </div>
+           
+                <div class="col-md-7" id="created-elements">
+                <?php createElements(); ?>
+                </div>
 
-            <div class="col-md-7" >
-                <p></p>
-            </div>
 
             <div class="col-md-2 border border-dark-1">
                 <p>dasdasdasdasd</p>

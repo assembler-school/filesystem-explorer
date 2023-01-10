@@ -1,37 +1,69 @@
 <?php
 
-    $ruta = "root";
-  function rootFolder($ruta){
+    $route = "root";
+  function viewElements($route){
 
-    
-    if (is_dir($ruta)){
-        
-        $gestor = opendir($ruta);
+    if (is_dir($route)){
+        $manager = opendir($route);
         echo "<ul>";
 
         
-        while (($archivo = readdir($gestor)) !== false)  {
-                
-            $ruta_completa = $ruta . "/" . $archivo;
+        while (($file = readdir($manager)) !== false)  {
 
-            
-            if ($archivo != "." && $archivo != "..") {
+            $complete_route = $route . "/" . $file;
+
+            if ($file != "." && $file != "..") {
                 
-                if (is_dir($ruta_completa)) {
-                    echo "<li class='folderElements'>" . $archivo . "</li>";
-                    rootFolder($ruta_completa);
+                if (is_dir($complete_route)) {
+                    echo "<li class='folderElements'>" . $file . "</li>";
+                    viewElements($complete_route);
                 } else {
-                    echo "<li class='folderElements'>" . $archivo . "</li>";
+                    echo "<li class='folderElements'>" . $file . "</li>";
                 }
             }
         }
 
-        closedir($gestor);
+        closedir($manager);
         echo "</ul>";
     } else {
-        echo "No es una ruta de directorio valida<br/>";
+        echo "Not a valid directory path<br/>";
     }
 }
 
+function createElements() {
+    
+    try {
+        $newFileName = "root/7-create-write-file.txt";
+        // $fileContent = 'This is the content of the "3-create-write-file.txt" file.';
+    
+        // Now the file is created, but it's empty.
+        $file = fopen($newFileName, "w");
+    
+        // Here we add the content to the file
+        fwrite($file, "Content of the file");
+    
+        // You can add new content to the file
+        // fwrite($file, "\nNew content in a new line.");
+    
+        $file = fopen($newFileName, "r");
+    
+        // Print the content
+        $content = fread($file, filesize($newFileName));
+        // echo nl2br($content);
+        ;
+        
+    
+        // Close the file buffer
+        fclose($file);
+    } catch (Throwable $t) {
+        echo $t->getMessage();
+    }
+    
+    
+}
+
+
+
+// echo json_encode(createElements());
 
 ?>
