@@ -2,7 +2,7 @@
 include "functions.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +24,6 @@ include "functions.php";
         <div class="row" id="content-box">
 
             <div class="col-md-3 border border-dark-1" id="root">
-            
                 <?php rootFolder($ruta); ?>
             </div>
 
