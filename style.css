@@ -81,3 +81,14 @@ main{
 #logo-panel{
     width: 4rem;
 }
+
+#folder{
+    width: 100%;
+}
+img.imageFolder{
+    width: 5%;
+}
+
+#folder li{
+list-style: none;
+}

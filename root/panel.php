@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Welcome</title>
 </head>
 <body>
@@ -30,6 +31,19 @@
 <section id="folders">
     <p> My folders </p>
     <button>Create new folder</button>
+    <br><br>
+<div id="folder">
+    <?php
+
+forEach (glob("*") as $name){
+if(is_dir($name) && $name !== "panel.php"){
+    echo '<li><img src="../image/folder.ico" alt="image folder" class="imageFolder"> ' . $name . '  <i class="fa-solid fa-pen"></i><i class="fa-solid fa-trash"></i></li>';
+
+}
+  
+}
+?>
+</div>
 </section>
 
 
@@ -46,9 +60,11 @@
 
 </section>
 
-<?php
-// mkdir('nuevaCarpeta', 0700);
-fopen('text.txt', 'w');
-?>
+<div>
+<input id="folder-name" type="text" placeholder="New folder">
+<button id="button-folder-name">Create new folder</button>
+</div>
+
+<script src="../assets/js/app.js"></script>
 </body>
 </html>
