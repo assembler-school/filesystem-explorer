@@ -12,14 +12,19 @@ function getFilesAndFolders($directory)
                     <button id='uploadFileBtn' class='upload-file-btn'>Upload file</button>
                 </div>
             </div>";
+    } else{
+        echo "<div class='btns-container'>
+                <button id='createFolderBtn' class='create-folder-btn'>Create folder</button>
+                <button id='uploadFileBtn' class='upload-file-btn'>Upload file</button>
+            </div>";
     }
 
     foreach ($all as $ff) {
         if (is_file($ff)) {
             $file = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($ff));
             echo "<div class='file-container'>
-            <div class='file $ff[-1]$ff[-2]$ff[-3]'></div>
-            <p>$file</p>
+                <div class='file $ff[-1]$ff[-2]$ff[-3]'></div>
+                <p>$file</p>
             </div>";
         }
         if (is_dir($ff)) {

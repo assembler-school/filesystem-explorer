@@ -103,6 +103,12 @@ aside {
   justify-content: space-between;
 }
 
+.btns-container{
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+}
+
 /* .folder-container,
 .file-container {
   height: 100px;
