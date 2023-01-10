@@ -13,65 +13,69 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
+    <header class="container-fluid" id="header">
+        <div class="content-buttons row ">
+            <div class="col-md-1" id="create-bttn"><button class="create-element">Create</button></div>
+
+            <div class="col-md-1"><button class="upload-element">Upload</button></div>
+        </div>
+    </header>
+    <section class="container-fluid" id="section-content">
+        <div class="row" id="content-box">
+
+            <div class="col-md-3 border border-dark-1" id="root">
+            <?php
+
+
+            function rootFolder($ruta){
+            $ruta = "root";
+            
+            if (is_dir($ruta)){
+                // Abre un gestor de directorios para la ruta indicada
+                $gestor = opendir($ruta);
+                echo "<ul>";
+
+                // Recorre todos los elementos del directorio
+                while (($archivo = readdir($gestor)) !== false)  {
+                        
+                    $ruta_completa = $ruta . "/" . $archivo;
+
+                    // Se muestran todos los archivos y carpetas excepto "." y ".."
+                    if ($archivo != "." && $archivo != "..") {
+                        // Si es un directorio se recorre recursivamente
+                        if (is_dir($ruta_completa)) {
+                            echo "<li>" . $archivo . "</li>";
+                            rootFolder($ruta_completa);
+                        } else {
+                            echo "<li>" . $archivo . "</li>";
+                        }
+                    }
+                }
+                
+                // Cierra el gestor de directorios
+                closedir($gestor);
+                echo "</ul>";
+            } else {
+                echo "No es una ruta de directorio valida<br/>";
+            }
+            }
+
+
+            ?>
+
             </div>
 
-            <ul class="list-unstyled components">
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
- 
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <p>Hola</p>
-                            <!-- <a href="#">Home 1</a> -->
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </nav>
+            <div class="col-md-7" >
+                <p></p>
+            </div>
 
-    </div>
-    <section class="container-fluid">
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4"></div>
-
+            <div class="col-md-2 border border-dark-1">
+                <p>dasdasdasdasd</p>
+            </div>
+        
         </div>
     </section>
+
 
 
 
