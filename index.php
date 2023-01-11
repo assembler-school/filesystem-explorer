@@ -1,6 +1,7 @@
 <?php
 include "functions.php";
-include "create.php";
+include "CRUD/create.php";
+include "CRUD/upload.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,10 +48,11 @@ include "create.php";
 
             </div>
 
-            <div class="col-md-1">
+            <div class="col-md-10">
 
-                <form action="#" enctype="multipart/form-data" method="POST">
-                    <input type="file" name="file" id="">
+                <form action="index.php" enctype="multipart/form-data" method="POST">
+                    <input type="file" name="nombre" id="">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                     <input type="submit" value="Upload">
                 </form>
 
@@ -58,28 +60,27 @@ include "create.php";
 
         </div>
     </header>
+
     <section class="container-fluid" id="section-content">
         <div class="row" id="content-box">
 
             <div class="col-md-3 border border-dark-1" id="root">
-                <?php viewElements($route); ?>
             </div>
 
-            <div class="col-md-7" id="created-elements">
-                <?php uploadElements($ruta); ?>
+
+            <div class="col-md-7" id="content-element">
+                <div class="row text-center">
+
+                    <?php echo $listar ?>
+                </div>
             </div>
 
 
             <div class="col-md-2 border border-dark-1">
-                <?php echo createElements(); ?>
             </div>
 
         </div>
     </section>
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">

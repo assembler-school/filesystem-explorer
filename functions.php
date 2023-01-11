@@ -1,128 +1,164 @@
 <?php
 
-    $route = "root";
-  function viewElements($route){
+// $route = "root";
 
-    if (is_dir($route)){
-        $manager = opendir($route);
-        echo "<ul>";
-
+//   function viewElements($route){
+//     if (is_dir($route)){
+//         $manager = opendir($route);
+//         echo "<ul>";
         
-        while (($file = readdir($manager)) !== false)  {
+//         while (($file = readdir($manager)) !== false)  {
 
-            $complete_route = $route . "/" . $file;
+//             $complete_route = $route . "/" . $file;
 
-            if ($file != "." && $file != "..") {
+//             if ($file != "." && $file != "..") {
+//                 if (is_dir($complete_route)) {
+//                     echo "<li class='folderElements'>" . $file . "</li>";
+//                     viewElements($complete_route);
+//                 } else {
+//                     echo "<li class='folderElements'>" . $file . "</li>";
+//                 }
+//             }
+//         }
+
+//         closedir($manager);
+//         echo "</ul>";
+//     } else {
+//         echo "Not a valid directory path<br/>";
+//     }
+// }
+
+
+// $ruta = "files";
+
+// function uploadElements($ruta){
+//     $file = $_FILES['nombre'];
+//     $nombre_archivo = $_FILES['nombre']['name'];
+//     $tipo_archivo = $_FILES['nombre']['type'];
+//     $tamano_archivo = $_FILES['nombre']['size'];
+
+
+//     echo '<pre>';
+//     print_r($file);
+//     echo '</pre>';
+
+//     $patch = $_SERVER['DOCUMENT_ROOT'] . '/PHP-ASSEMBLER/EJERCICIOS/EJERCICIO4/filesystem-explorer/files/';
+
+//     if (is_dir($ruta)){
+//         // Abre un gestor de directorios para la ruta indicada
+//         $gestor = opendir($ruta);
+//         // Recorre todos los archivos del directorio
+//         while (($archivo = readdir($gestor)) !== false)  {
+//             // Solo buscamos archivos sin entrar en subdirectorios
+//             if (is_file($ruta . "/" . $archivo)) {
+//                 if($tipo_archivo == 'image/jpeg'){
+//                     echo "<h2>". $archivo ."</h2><a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/jpg-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'application/pdf'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/pdf-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'text/csv'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/csv-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'application/msword'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/doc-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'application/x-msdownload'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/exe-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'audio/mpeg'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/mp3-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'video/mp4'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/mp4-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'application/octet-stream'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/odt-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'image/png'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/png-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'application/vnd.ms-powerpoint'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/ppt-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'application/octet-stream'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/rar-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'image/svg+xml'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/svg-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'application/x-zip-compressed'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/zip-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+               
                 
-                if (is_dir($complete_route)) {
-                    echo "<li class='folderElements'>" . $file . "</li>";
-                    viewElements($complete_route);
-                } else {
-                    echo "<li class='folderElements'>" . $file . "</li>";
-                }
-            }
-        }
+//             }            
+//         }
+        
+//         move_uploaded_file($file['tmp_name'], $patch . $nombre_archivo );
+        
+//         // Cierra el gestor de directorios
+//         closedir($gestor);
+//     } else {
+//         echo "No es una ruta de directorio valida<br/>";
+//     }
 
-        closedir($manager);
-        echo "</ul>";
-    } else {
-        echo "Not a valid directory path<br/>";
-    }
-}
+// }
 
 // $create = $_POST['create'];
 
-function createElements() {
-    if(!isset($_POST['create'])){
-        $newFileName = "root/7-create-write-file.txt";
-        // $fileContent = 'This is the content of the "3-create-write-file.txt" file.';
+// function createElements($route) {
+//     if(!isset($_POST['create'])){
+//         $newFileName = "root/7-create-write-file.txt";
+//         // $fileContent = 'This is the content of the "3-create-write-file.txt" file.';
     
-        // Now the file is created, but it's empty.
-        $file = fopen($newFileName, "w");
+//         // Now the file is created, but it's empty.
+//         $file = fopen($newFileName, "w");
     
-        // Here we add the content to the file
-        fwrite($file, "Content of the file");
+//         // Here we add the content to the file
+//         fwrite($file, "Content of the file");
     
-        // You can add new content to the file
-        // fwrite($file, "\nNew content in a new line.");
+//         // You can add new content to the file
+//         // fwrite($file, "\nNew content in a new line.");
     
-        $file = fopen($newFileName, "r");
+//         $file = fopen($newFileName, "r");
     
-        // Print the content
-        $content = fread($file, filesize($newFileName));
-        echo nl2br($content);
-        // echo json_encode($content);
+//         // Print the content
+//         $content = fread($file, filesize($newFileName));
+//         echo nl2br($content);
+//         // echo json_encode($content);
     
-        // Close the file buffer
-        fclose($file);
-    }else{
-        echo "error";
-    }
-}
-
-
-$ruta = "root";
-function uploadElements($ruta){
-
-    if (is_dir($ruta)){
-        // Abre un gestor de directorios para la ruta indicada
-        $gestor = opendir($ruta);
-
-        // Recorre todos los archivos del directorio
-        while (($archivo = readdir($gestor)) !== false)  {
-            // Solo buscamos archivos sin entrar en subdirectorios
-            if (is_file($ruta."/".$archivo)) {
-                echo "<a href='".$ruta."/".$archivo."'></a
-                
-                <img src='".$ruta."/".$archivo."' width='200px' alt='".$archivo."' title='".$archivo."'>";
-            }            
-        }
-
-        // Cierra el gestor de directorios
-        closedir($gestor);
-    } else {
-        echo "No es una ruta de directorio valida<br/>";
-    }
-
-
-
-    // ----------------------------------------------------------------------------------------
-    // $file = $_FILES['file'];
-
-    // print_r($file);
-
-    // $patch = $_SERVER['DOCUMENT_ROOT'] . '/PHP-ASSEMBLER/EJERCICIOS/EJERCICIO4/root' . '/' . $file['file'];
-
-    // echo '<ul> ';
-    // foreach($roles as $rol){
-    //     echo '<li>'.$rol.'</li>';
-        
-    // }
-    // echo '</ul>';
-    // echo '<img src="./root/'.$file['file'].'">';
-
-// -----------------------------------------------------
-    // $target_dir = "./files/";
-    // $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    // $uploadOk = 1;
-    // $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    // // Check if image file is a actual image or fake image
-    // if (isset($_POST["submit"])) {
-    //     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    //     if ($check !== false) {
-    //         echo "<p>File is an image - " . $check["mime"] . ".</p>";
-    //         $uploadOk = 1;
-    //         if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file)) {
-    //             echo "<p>El fichero es válido y se subió con éxito.</p>";
-    //         } else {
-    //             echo "<p>¡Posible ataque de subida de ficheros!</p>";
-    //         }
-    //     } else {
-    //         echo "File is not an image.";
-    //         $uploadOk = 0;
-    //     }
-    // }
-}
-
+//         // Close the file buffer
+//         fclose($file);
+//     }else{
+//         echo "error";
+//     }
+// }
 
 ?>
