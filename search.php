@@ -42,7 +42,7 @@ function array_search_partial($arr, $keyword) {
             </div>
             <div id="search"> 
             <form method="GET" action="search.php">
-                <input type="text" name="q" class="search" placeholder="Search">
+                <input type="text" name="q" value='<?php echo $search;?>' class="search" placeholder="Search">
             </form>
             </div>
             <div id="user"> 
@@ -50,6 +50,11 @@ function array_search_partial($arr, $keyword) {
             </div>
         </nav>
     </header>
+    <section class="pop-up-file hidden">
+            <div class="close-popup-file" id="close-popup"><i class="fa-solid fa-xmark"></i></div>
+            <div id="view-content"> </div>
+            <div class="cover"></div>
+        </section>
     <main class="search-main">
         <section class="view-files">
 
@@ -68,12 +73,16 @@ function array_search_partial($arr, $keyword) {
                     <div class="folder-search">'.$folderWithoutSlash."</div>";
 
                     foreach($indexFile as $indexResult){
-                        if(strpos($arrayFile[$indexResult], $arrayFolder[$folderResult]) !== false){
-                            $positionSlash = strpos($arrayFile[$indexResult], "/", 5);
-                            $fileWithoutSlash = substr($arrayFile[$indexResult], $positionSlash + 1);
+                        $positionSlash = strpos($arrayFile[$indexResult], "/", 5);
+                        $fileWithoutSlash = substr($arrayFile[$indexResult], $positionSlash + 1);
 
-                            echo '<div class="file-search" filePath="'.$arrayFile[$indexResult].'">'. $fileWithoutSlash ."</div>";
-                        }
+                        if(strpos($arrayFile[$indexResult], $arrayFolder[$folderResult]) !== false){
+                            echo '<div class="file-search" filePath="'.$arrayFile[$indexResult].'">'. $fileWithoutSlash .'</div>';
+                            continue;
+                        }       
+
+                        echo '<div class="file-search no-folder" filePath="'.$arrayFile[$indexResult].'">'. $fileWithoutSlash .'</div>';
+                        
                     }
 
                     echo '</div>';
@@ -88,20 +97,39 @@ function array_search_partial($arr, $keyword) {
             }
         }else{
             if(sizeof($indexFile) === 0){
-            echo "No results";
+            echo "<h1>Upppsss!! We couldn't find this file or folder 😔</h1>";
             }else{
                 echo '<h1>Search Results</h1>';
                 foreach($indexFile as $indexResult){
-                    echo '<div class="file-search" filePath="'.$arrayFile[$indexResult].'">'.$arrayFile[$indexResult]."</div>";
+                    $positionSlashFile= strpos($arrayFile[$indexResult], "/", 5);
+                    $fileWithoutSlash = substr($arrayFile[$indexResult], $positionSlashFile);
+                    echo '<div class="file-search no-folder" filePath="'.$arrayFile[$indexResult].'">'.$fileWithoutSlash."</div>";
                 }
             }
         }  
         ?>
 
         </section>
-        <section id="view-content">
-
-        </section>
         </main>
         <script src="assets/js/results.js"></script>
+        <script>
+            const file = document.querySelectorAll('.file-search');
+            const btnClosePopUp = document.getElementById("close-popup");
+
+            file.forEach(item => {
+                item.addEventListener('click', displayPopUp);
+            })
+
+            function displayPopUp(){
+                const viewContent = document.querySelector('.pop-up-file');
+                viewContent.classList.toggle('hidden');
+            }
+
+            btnClosePopUp.addEventListener('click', closePopUp);
+
+            function closePopUp(){
+                const viewContent = document.querySelector('.pop-up-file');
+                viewContent.classList.toggle('hidden');
+            }
+        </script>
 </body>
