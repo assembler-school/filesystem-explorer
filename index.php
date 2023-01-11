@@ -24,33 +24,13 @@ include "CRUD/upload.php";
 
             <div class="col-md-2">
 
-                <form action="" enctype="multipart/form-data" method="POST">
-                    <!-- <button id="create-bttn" name="create">Create</button> -->
-                    <select name="create" id="create-bttn">
-                        <option value="folder">Folder</option>
-                        <option value="doc">DOC</option>
-                        <option value="csv">CSV</option>
-                        <option value="jpg">JPG</option>
-                        <option value="png">PNG</option>
-                        <option value="txt">TXT</option>
-                        <option value="ppt">PPT</option>
-                        <option value="odt">ODT</option>
-                        <option value="pdf">PDF</option>
-                        <option value="zip">ZIP</option>
-                        <option value="rar">RAR</option>
-                        <option value="exe">EXE</option>
-                        <option value="svg">SVG</option>
-                        <option value="mp3">MP3</option>
-                        <option value="mp4">MP4</option>
-                    </select>
-                    <input type="submit" value="create">
-                </form>
+                <button class="create-button">Create</button>
 
             </div>
 
             <div class="col-md-10">
 
-                <form action="index.php" enctype="multipart/form-data" method="POST">
+                <form action="#" enctype="multipart/form-data" method="POST">
                     <input type="file" name="nombre" id="">
                     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                     <input type="submit" value="Upload">
