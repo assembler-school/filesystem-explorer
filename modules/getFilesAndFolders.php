@@ -12,22 +12,22 @@ function getFilesAndFolders($directory = './root')
     if (count($all) == 0) {
         echo "
             <div class='empty-root-folder-alert'>
-                <p>You have not created any file or folder</p>
+                <p>Oops, it seems you have not created any folder or updated any file...</p>
                 <div class='empty-root-btns-container'>
-                    <button id='createFolderBtn' path='$currentPath' class='create-folder-btn'>Create folder</button>
-                    <button id='uploadFileBtn' class='upload-file-btn'>Upload file</button>
+                    <img src='assets/fileIcons/noFolderIcon.png' id='createFolderBtn' path='$currentPath' class='create-folder-btn'/>
+                    <img src='assets/fileIcons/uploadIcon.png' id='uploadFileBtn' class='upload-file-btn'/>
                 </div>
             </div>
             <div class='btns-container' style='display:none'>
-                <button id='createFolderBtn' path='$currentPath' class='create-folder-btn'>Create folder</button>
-                <button id='uploadFileBtn' class='upload-file-btn'>Upload file</button>
+                <img src='assets/fileIcons/noFolderIcon.png' id='createFolderBtn' path='$currentPath' class='create-folder-btn'/>
+                <img src='assets/fileIcons/uploadIcon.png' id='uploadFileBtn' class='upload-file-btn'/>
             </div>
             ";
     } else {
         echo "
             <div class='btns-container'>
-                <button id='createFolderBtn' path='$currentPath' class='create-folder-btn'>Create folder</button>
-                <button id='uploadFileBtn' class='upload-file-btn'>Upload file</button>
+                <img src='assets/fileIcons/noFolderIcon.png' id='createFolderBtn' path='$currentPath' class='create-folder-btn'>
+                <img src='assets/fileIcons/uploadIcon.png' id='uploadFileBtn' class='upload-file-btn'>
             </div>";
     }
 

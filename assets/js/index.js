@@ -56,6 +56,7 @@ function openRenameFolderInput(event) {
   let text = event.target.innerText;
   let folderContainer = folderName.parentElement;
   let input = document.createElement("input");
+  input.classList.add('rename-input')
 
   input.type = "text";
   input.value = text;
@@ -148,6 +149,7 @@ function renameDirFromMenu() {
   let folderContainer = currentFolder.parentElement;
   
   let input = document.createElement("input");
+  input.classList.add('rename-input')
   input.type = "text";
   input.value = text;
   input.classList.add("rename-input");
