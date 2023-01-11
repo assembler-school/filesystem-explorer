@@ -1,7 +1,11 @@
 <?php
 $directoryName = $_REQUEST["directoryName"];
-$old_umask = umask(0);
-$resultado = mkdir("../files/".$directoryName, 0777);
+
+if(is_dir("../files/".$directoryName)){
+    
+}
+
+$resultado = mkdir("../files/".$directoryName);
 
 if ($resultado) {
     echo json_encode("Se ha creado el directorio $directoryName");
