@@ -18,7 +18,9 @@
                 <img src="../image/logo.webp" alt="Logo" id="logo-panel">
             </div>
             <div id="search"> 
-            <input type="text" name="search" class="search" placeholder="Search">
+                <form method="get" action="../search.php">
+            <input type="text" name="q" class="search" placeholder="Search">
+</form>
             </div>
             <div id="user"> 
             <img src="" alt="User image">
