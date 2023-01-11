@@ -9,6 +9,8 @@ if($path[strlen($path) - 1]  === '/'){
 
 $_SESSION['curr_path'] = $path;
 
+// echo $_SESSION['curr_path'];
+
 echo json_encode([
     "ok" => true,
     "path" => $path

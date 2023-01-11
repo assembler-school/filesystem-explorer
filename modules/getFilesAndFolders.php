@@ -45,7 +45,7 @@ function getFilesAndFolders($directory = './root')
             $path = $directory . "/" . $dir;
             echo "
                 <div class='folder-container'>
-                    <div class='folder' path='$path' onclick='navigateToFolder(event)'></div>
+                    <div class='folder' path='$path' oncontextmenu='openMenu(event)' onclick='navigateToFolder(event)'></div>
                     <p class='folder-name' onclick='openRenameFolderInput(event)'>$dir</p>
                 </div>";
         }

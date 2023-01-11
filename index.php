@@ -10,7 +10,7 @@
     <script src="assets/js/index.js?v=<?php echo time(); ?>" defer></script>
 </head>
 
-<body>
+<body oncontextmenu="return false;">
     <header>
         <nav>
             <!-- <img src="ouricon" alt="icon" /> -->
@@ -29,10 +29,11 @@
 
         if (isset($_SESSION['curr_path'])) {
             $breadCrumbs = explode("/", $_SESSION['curr_path']);
+
             $initialRoute = '';
 
             echo "<div class='bread-crumbs-container'>";
-            foreach ($breadCrumbs as $key => $path) {
+            foreach ($breadCrumbs as $path) {
                 $initialRoute = $initialRoute . $path . "/";
                 echo "<a onclick=(navigateToFolder(event)) path='$initialRoute'>$path</a>";
             }
@@ -55,6 +56,15 @@
         require_once('./modules/getFileInfo.php');
         getFileInfo()
         ?>
+    </aside>
+
+    <aside class="menu hidden">
+
+        <div>Rename</div>
+        <div>Copy</div>
+        <div>Cut</div>
+        <div>Delete</div>
+
     </aside>
 </body>
 
