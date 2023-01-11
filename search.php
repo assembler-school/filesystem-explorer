@@ -1,28 +1,26 @@
 <?php
 $search = $_GET["q"];
-$array = array();
-$arrayTwo = array();
-
+$arrayFolder = array();
+$arrayFile = array();
 
 foreach(glob("root/*") as $result){
-    array_push($array, $result);
-foreach (glob("$result/*") as $file){
-    array_push($arrayTwo, $file);
-    /* $arrayTwo["$result"][] += $file; */
+    array_push($arrayFolder, $result);
+    foreach (glob("$result/*") as $file){
+        array_push($arrayFile, $file);
+    }
 }
-};
-$res = array_merge($array, $arrayTwo); 
+
 function array_search_partial($arr, $keyword) {
     $arrayResultSearch = array();
     foreach($arr as $index => $string) {
         if (stripos($string, $keyword) !== FALSE){
-            /* echo $index; */
             array_push($arrayResultSearch, $index);
         }    
     }
     return $arrayResultSearch;
 }
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,39 +33,74 @@ function array_search_partial($arr, $keyword) {
     <title>Welcome</title>
 </head>
 <body>
-<header>
+    <header>
         <nav id="navigation">
             <div id="logo"> 
-                <img src="./image/logo.webp" alt="Logo" id="logo-panel">
+                <a href='/root'>
+                    <img src="./image/logo.webp" alt="Logo" id="logo-panel">
+                </a>
             </div>
             <div id="search"> 
             <form method="GET" action="search.php">
-            <input type="text" name="q" class="search" placeholder="Search">
+                <input type="text" name="q" class="search" placeholder="Search">
             </form>
             </div>
             <div id="user"> 
-            <img src="" alt="User image">
+                <img src="" alt="User image">
             </div>
-</nav>
-</header>
-<main class="search-main">
-    <section id="view-files">
+        </nav>
+    </header>
+    <main class="search-main">
+        <section class="view-files">
 
-<?php
-$indexFile = array_search_partial($arrayTwo, $search);
-if(sizeof($indexFile) === 0){
-    echo "No results";
-}
-foreach($indexFile as $indexResult){
-    echo $arrayTwo[$indexResult]."</br>";
-}
+        <?php
+        $indexFile = array_search_partial($arrayFile, $search);
+        $indexFolder = array_search_partial($arrayFolder, $search);
 
-?>
-</section>
+        if(sizeof($indexFolder) >= 1){
+            echo '<h1>Search Results</h1>';
+            foreach($indexFolder as $folderResult){
+                $positionSlashFolder = strpos($arrayFolder[$folderResult], "/");
+                $folderWithoutSlash = substr($arrayFolder[$folderResult], $positionSlashFolder);
 
-<section it="view-content">
+                if(sizeof($indexFile) >= 1){
+                    echo '<div class="complete-path-search">
+                    <div class="folder-search">'.$folderWithoutSlash."</div>";
 
-</section>
+                    foreach($indexFile as $indexResult){
+                        if(strpos($arrayFile[$indexResult], $arrayFolder[$folderResult]) !== false){
+                            $positionSlash = strpos($arrayFile[$indexResult], "/", 5);
+                            $fileWithoutSlash = substr($arrayFile[$indexResult], $positionSlash + 1);
 
-</main>
+                            echo '<div class="file-search">'. $fileWithoutSlash ."</div>";
+                        }
+                    }
+
+                    echo '</div>';
+                }else{
+                    echo '<div class="complete-path-search">
+                    <div class="folder-search">'
+                    .$folderWithoutSlash.
+                    '</div>
+                    </div>';
+
+                }
+            }
+        }else{
+            if(sizeof($indexFile) === 0){
+            echo "No results";
+            }else{
+                echo '<h1>Search Results</h1>';
+                foreach($indexFile as $indexResult){
+                    echo '<div class="file-search">'.$arrayFile[$indexResult]."</div>";
+                }
+            }
+        }  
+        ?>
+
+        </section>
+        <section class="view-content">
+
+        </section>
+        </main>
 </body>
