@@ -66,13 +66,13 @@
       <!-- <td><i class="fa-solid fa-trash"></i><i class="fa-regular fa-pen-to-square"></i></td> -->    
     <?php
 
-  $carpeta = "";
 
     checkRequest();
 
     function checkRequest() {
 
-    
+      $folder = "root/";
+
       if (isset($_REQUEST['name'])){
 
         echo "<script>
@@ -81,7 +81,7 @@
 
         </script>"; 
 
-        $folder = $_REQUEST['name'];
+        $folder = $folder . $_REQUEST['name'];
         displayDirectories($folder);
         // checkRequest();
 
@@ -93,7 +93,6 @@
 
         </script>";
 
-        $folder = "root/";
         displayDirectories($folder);
         // checkRequest();
       }
@@ -105,13 +104,12 @@
   
         if (!strpos(basename($dir), '.')) {
   
-          echo "<tr>\n<th scope='row'>3</th>\n<td><form method='post' action='" . $_SERVER['PHP_SELF'] . "'><button type='submit' name='". basename($dir)."'class='folder'>" . basename($dir) . "</button></form></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><i class='fa-solid fa-trash'></i><i class='fa-regular fa-pen-to-square'></i></td></tr>";
+          echo "<tr>\n<th scope='row'>3</th>\n<td><form method='GET'><input type='hidden' name='name' value='". basename($dir)."'class='folder'><button type='submit'>" . basename($dir) . "</button></form></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><i class='fa-solid fa-trash'></i><i class='fa-regular fa-pen-to-square'></i></td></tr>";
   
         } else {
   
           echo "<tr>\n<th scope='row'>3</th>\n<td><a href='root/" . basename($dir) . "'>" . basename($dir) . "</a></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><i class='fa-solid fa-trash'></i><i class='fa-regular fa-pen-to-square'></i></td></tr>";
         }
-        $carpeta=basename($dir);
       }
       
     }
