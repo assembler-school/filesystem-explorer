@@ -204,6 +204,11 @@ main{
 #filesList {
     list-style: none;
 }
+
+.text-directory{
+    margin-bottom: 24px;
+}
+
 ::placeholder { color: white; }
 
 textarea:focus, input:focus{

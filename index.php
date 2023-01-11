@@ -27,9 +27,7 @@
                     </div>
                     <div id="filesExplorerContainer">
                         <div id="filesPath">
-                            <ul id="filesList">
-                                
-                            </ul>
+                            <ul id="filesList"><?php require_once "./modules/printFiles.php"?></ul>
                         </div>
                         <div id="mediaFolderContainer">
                             <button class="media-folder-buttons">images</button>
@@ -62,7 +60,7 @@
                             <p id="pathSecond">Directorio de la muerte</p>
                         </div>
                         <div id="contentSecondChild">
-                            <p>directorio</p>
+                            <div id="folderFilesContainer"></div>
                             <p>30mb</p>
                             <p>Dic 32 26:65</p>
                         </div>
