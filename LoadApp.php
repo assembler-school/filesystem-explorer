@@ -1,5 +1,6 @@
 <?php
 define("ROOT", "./root");
+require_once './utils.php"';
 
 function loadFiles($parent, $path)
 {
@@ -10,7 +11,8 @@ function loadFiles($parent, $path)
   foreach ($files as $file) {
     paintFile($path, $file);
   }
-};
+}
+;
 
 function paintFile($path, $file)
 {
@@ -30,68 +32,79 @@ function paintFile($path, $file)
 
     createFileRow($absolutePath, null, $file, false, false);
   }
-};
+}
+;
 
 function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRoot)
 {
-?> <tr>
+  ?>
+  <tr>
     <td>
       <?php
       echo getTypeIcon(filetype($absolutePath), $fileName);
       if ($isFolder) {
         if ($isRoot) {
-      ?>
-          <a class="folder-btn link" href="?p=<?php echo $fileName ?>"><?php echo $fileName ?></a>
-    </td>
-  <?php
+          ?>
+          <a class="folder-btn link" href="?p=<?php echo $fileName ?>">
+            <?php echo $fileName ?>
+          </a>
+        </td>
+        <?php
         } else {
-  ?>
-    <a class="folder-btn link" href="?p=<?php echo $relativePath ?>"><?php echo $fileName ?></a>
-    </td>
-  <?php
+          ?>
+        <a class="folder-btn link" href="?p=<?php echo $relativePath ?>">
+          <?php echo $fileName ?>
+        </a>
+        </td>
+        <?php
         }
       } else {
-  ?>
-  <a class="link" href=<?php echo "openFile.php?name=$fileName" ?>><?php echo $fileName ?></a>
-  </td>
-<?php
+        ?>
+      <a class="link" href=<?php echo "openFile.php?name=$fileName" ?>>
+        <?php echo $fileName ?>
+      </a>
+      </td>
+      <?php
       }
       date_default_timezone_set('Europe/Madrid');
-?>
-<td><?php echo formatBytes(filesize($absolutePath)) ?></td>
-<td>
-  <?php $fecha_f = filemtime($absolutePath);
-  echo date("D d M Y", $fecha_f) ?>
-</td>
-<td>
-  <form action="deleteFile.php">
-    <button type="submit" class="border border-0 bg-transparent">
-      <i class="bi bi-trash"></i>
-    </button>
-  </form>
-  <?php
-  $filetmp = (explode('.', $fileName));
-  $fileExtension = strtolower(end($filetmp));
-  if ($fileExtension === 'zip' || $fileExtension === 'rar') {
-  ?>
-    <form action="unzipFile.php" method="POST">
-      <input name="file" type="hidden" value="<?php echo $fileName ?>">
-      <button type="submit" class="border border-0 bg-transparent">
-        <i class="bi bi-file-zip"></i>
-      </button>
-    </form>
-  <?php
-  }
-  ?>
-</td>
+      ?>
+    <td><?php echo Utils::formatSize(filesize($absolutePath)) ?></td>
+    <td>
+      <?php $fecha_f = filemtime($absolutePath);
+      echo date("D d M Y", $fecha_f) ?>
+    </td>
+    <td>
+      <!--DELETE -->
+      <form id="form">
+        <button type="submit" class="border border-0 bg-transparent">
+          <i class="bi bi-trash"></i>
+        </button>
+      </form>
+
+      <!--UNZIP -->
+      <?php
+      $filetmp = (explode('.', $fileName));
+      $fileExtension = strtolower(end($filetmp));
+      if ($fileExtension === 'zip' || $fileExtension === 'rar') {
+        ?>
+        <form action="unzipFile.php" method="POST">
+          <input name="file" type="hidden" value="<?php echo $fileName ?>">
+          <button type="submit" class="border border-0 bg-transparent">
+            <i class="bi bi-file-zip"></i>
+          </button>
+        </form>
+        <?php
+      }
+      ?>
+    </td>
   </tr>
-<?php
+  <?php
 }
 
 function paintBackDir()
 {
   $parent = getParent()
-?>
+    ?>
   <tr>
     <td>
       <a class="folder-btn link text-primary fw-bold" href="?p=<?php echo $parent ?>">
@@ -103,7 +116,7 @@ function paintBackDir()
     <td></td>
     <td></td>
   </tr>
-<?php
+  <?php
 }
 
 function getParent()
@@ -115,15 +128,6 @@ function getParent()
   return $string;
 }
 
-function formatBytes($size, $precision = 2)
-{
-  if ($size > 0) {
-    $base = log($size, 1024);
-    $suffixes = array('b', 'kb', 'mb', 'gb', 'tb');
-    return round(pow(1024, $base - floor($base)), $precision) . ' ' . $suffixes[floor($base)];
-  } else return '';
-}
-
 function getTypeIcon($type, $fileName)
 {
   if ($type == 'file') {
@@ -133,7 +137,8 @@ function getTypeIcon($type, $fileName)
 
     if (!in_array($fileExtension, $fileExtensionsKnown)) {
       drawIcon("other");
-    } else drawIcon($fileExtension);
+    } else
+      drawIcon($fileExtension);
   } else if ($type == 'dir') {
     drawIcon("dir");
   }

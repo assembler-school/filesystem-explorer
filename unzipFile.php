@@ -1,34 +1,21 @@
 <?php
-
+require_once('./utils.php');
 session_start();
 define("ROOT", "./root");
 
 $fileName = $_REQUEST['file'];
-$relativePath = $_SESSION['relativePath'];
-$absolutePath = $_SESSION['absolutePath'];
-echo $absolutePath;
-$filetmp = (explode('.', $fileName));
-$fileExtension = strtolower(end($filetmp));
-
+$fileExtension = Utils::getFileExtension($fileName);
 if (isset($_SESSION['relativePath'])) {
   $returnPath = $_SESSION['relativePath'];
 }
 
+$pathToExtract = $_SESSION['absolutePath'];
+$file = $_SESSION['absolutePath'] . '/' . $fileName;
+
 if ($fileExtension == 'rar') {
-  $archive = RarArchive::open($absolutePath . '/' . $fileName);
-  $entries = $archive->getEntries();
-  foreach ($entries as $entry) {
-    $entry->extract($_SESSION['absolutePath']);
-  }
-  $archive->close();
+  Utils::formatRar($file, $pathToExtract);
 } else {
-$zip = new ZipArchive;
-if ($zip->open($absolutePath . '/' . $fileName) === TRUE) {
-    $zip->extractTo($absolutePath);
-    $zip->close();
-} else {
-    echo 'failed to unzip file';
-}
+  Utils::formatZip($file, $pathToExtract);
 }
 
 header("Location: index.php?p=$returnPath");

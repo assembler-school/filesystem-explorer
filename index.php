@@ -1,6 +1,6 @@
 <?php
 require_once('./htmlTags.php');
-require_once('./LoadApp.php');
+require_once('./loadApp.php');
 session_start();
 
 $folderPath = './root';
@@ -24,7 +24,9 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
         <input type="hidden" name="path" value=<?php echo ROOT ?>>
         <button type="submit" class="home-btn folder-btn"><i class="bi bi-house"></i></button>
       </form>
-      <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon text-white"></span>
       </button>
 
@@ -78,8 +80,3 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
     </table>
   </article>
   <?php getFooter(); ?>
-  <script>
-    function submit() {
-      document.getElementById('uploadForm').submit();
-    }
-  </script>
