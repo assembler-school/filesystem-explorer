@@ -7,6 +7,17 @@ let inputCounter = 0;
 
 addFolderImage.addEventListener("click", showImageFolder);
 
+window.addEventListener("DOMContentLoaded", loadFolder);
+
+function loadFolder(){
+    fetch("modules/printFiles.php")
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);  
+    })
+    .catch((err) => console.log("Request failed: ", err));
+}
+
 function getInputValue(data){
     if(data ==="Exist"){
         inputValue.select();
