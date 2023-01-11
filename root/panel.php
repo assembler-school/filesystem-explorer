@@ -18,7 +18,7 @@
                 <img src="../image/logo.webp" alt="Logo" id="logo-panel">
             </div>
             <div id="search"> 
-            <input type="text">
+            <input type="text" name="search" class="search" placeholder="Search">
             </div>
             <div id="user"> 
             <img src="" alt="User image">
@@ -38,9 +38,10 @@
 forEach (glob("*") as $name){
 if(is_dir($name) && $name !== "panel.php"){
     echo '<li><div class="select-folder" name-folder="'.$name .'"><img src="../image/folder.ico" alt="image folder" class="imageFolder" name-folder="'.$name .'"> ' . $name . '</div><span class="modify-name-folder"><i class="fa-solid fa-pen" actual-folder="'.$name .'"></i></span><span class="delete-folder"><i class="fa-solid fa-trash" id="delete-folder" actual-folder="'.$name .'"></i></span></li>'; 
-
 }
 }
+$root = "../root";
+print_r(scandir($root));
 ?>
 
 </div>
