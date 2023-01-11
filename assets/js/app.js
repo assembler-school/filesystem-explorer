@@ -80,7 +80,26 @@ function showelementosOfFolder(data){
         containerOpenFolder.appendChild(divFile);
         divFile.className += "elemtoOfFolder";
         divFile.setAttribute("filePath", file);
+    let bodyTable = document.createElement("table");
+    let tableRow = document.createElement("tr");
+    let tabletColumnCreate = document.createElement("td");
+    let tabletColumnModify = document.createElement("td");
+    let tabletColumnSize = document.createElement("td");
+
+    containerOpenFolder.appendChild(bodyTable);
+    bodyTable.appendChild(tableRow);
+    tableRow.appendChild(tabletColumnCreate);
+    tableRow.appendChild(tabletColumnModify);
+    tableRow.appendChild(tabletColumnSize);
+
+    
+    tabletColumnCreate.textContent = "pruebe";
+    tabletColumnModify.textContent = "pruebe";
+    tabletColumnSize.textContent = "pruebe";
+
     })
+
+
 
 let folderElement = document.querySelectorAll(".elemtoOfFolder");
 folderElement.forEach((item)=>{
@@ -92,7 +111,7 @@ const buttonNewFile = document.querySelector("#upload-file");
 buttonNewFile.addEventListener("click", addNewFile);
 
 function addNewFile(){
-    let NewFile = document.querySelectorAll(".upload-new-file"); 
+    let NewFile = document.querySelectorAll(".upload-new-file");  
 }
 
 

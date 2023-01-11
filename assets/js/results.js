@@ -36,7 +36,7 @@ function showInfoElement(event){
     }
 }
 
-function createFileContent(typeFile, data, path){
+function createFileContent(typeFile, data, pathTxt){
     const containerContent = document.querySelector("#view-content");
 
     while(containerContent.firstChild){
@@ -45,10 +45,8 @@ function createFileContent(typeFile, data, path){
     if(typeFile === "txt"){
         let elementTxt = document.createElement("div");
         elementTxt.textContent = data;
-        containerContent.appendChild(elementTxt);
-        fetch ("assets/display-info-file.php?filePath="+path)
-            .then (response => response.json())
-            .then (data => console.log(data))
+        containerContent.appendChild(elementTxt); 
+
     
     } else if(typeFile === "img"){
         let elementImg = document.createElement("img");
