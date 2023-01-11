@@ -66,22 +66,60 @@
       <!-- <td><i class="fa-solid fa-trash"></i><i class="fa-regular fa-pen-to-square"></i></td> -->    
     <?php
 
+  $carpeta = "";
+
+    checkRequest();
+
+    function checkRequest() {
+
     
-    if (isset())
+      if (isset($_REQUEST['name'])){
 
-    $folder = "root/";
+        echo "<script>
+        
+        alert(asdadasasd);
 
-    foreach (glob("$folder/*") as $dir) {
+        </script>"; 
 
-      if (!strpos(basename($dir), '.')) {
-
-        echo "<tr>\n<th scope='row'>3</th>\n<td><button href='./index.php' class='folder'>" . basename($dir) . "</button></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><i class='fa-solid fa-trash'></i><i class='fa-regular fa-pen-to-square'></i></td></tr>";
+        $folder = $_REQUEST['name'];
+        displayDirectories($folder);
+        // checkRequest();
 
       } else {
 
-        echo "<tr>\n<th scope='row'>3</th>\n<td><a href='root/" . basename($dir) . "'>" . basename($dir) . "</a></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><i class='fa-solid fa-trash'></i><i class='fa-regular fa-pen-to-square'></i></td></tr>";
+        echo "<script>
+        
+        alert('else');
+
+        </script>";
+
+        $folder = "root/";
+        displayDirectories($folder);
+        // checkRequest();
       }
+     
     }
+    function displayDirectories($folder){
+
+      foreach (glob("$folder/*") as $dir) {
+  
+        if (!strpos(basename($dir), '.')) {
+  
+          echo "<tr>\n<th scope='row'>3</th>\n<td><form method='post' action='" . $_SERVER['PHP_SELF'] . "'><button type='submit' name='". basename($dir)."'class='folder'>" . basename($dir) . "</button></form></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><i class='fa-solid fa-trash'></i><i class='fa-regular fa-pen-to-square'></i></td></tr>";
+  
+        } else {
+  
+          echo "<tr>\n<th scope='row'>3</th>\n<td><a href='root/" . basename($dir) . "'>" . basename($dir) . "</a></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><i class='fa-solid fa-trash'></i><i class='fa-regular fa-pen-to-square'></i></td></tr>";
+        }
+        $carpeta=basename($dir);
+      }
+      
+    }
+
+
+
+    # $folder = "root/";
+
     
     // echo "<script type='text/javascript'>"; 
     // echo "\n"; 
