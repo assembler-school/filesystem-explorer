@@ -1,10 +1,10 @@
 <?php
 $directoryName = $_REQUEST["directoryName"];
 
-$resultado = mkdir(__DIR__ . "/$nombre_directorio");
+$resultado = mkdir("../files/". $directoryName);
 
 if ($resultado) {
-    echo "Se ha creado el directorio $nombre_directorio";
+    echo json_encode("Se ha creado el directorio $directoryName");
 } else {
-    echo "Error creando directorio";
+    echo json_encode("Error creando directorio");
 }

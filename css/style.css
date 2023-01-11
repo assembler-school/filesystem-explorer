@@ -201,6 +201,9 @@ main{
     font-size: 0.8rem;
 }
 
+#filesList {
+    list-style: none;
+}
 ::placeholder { color: white; }
 
 textarea:focus, input:focus{

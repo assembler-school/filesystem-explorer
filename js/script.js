@@ -1,6 +1,5 @@
 const addFolderImage = document.querySelector("#addFolderImage");
 const ul = document.querySelector("#filesList");
-let nameDirectory = "";
 let inputValue;
 let nameFolder;
 let li;
@@ -12,6 +11,7 @@ function getInputValue(){
     const p =  document.createElement("p");
     p.textContent = nameFolder;
     li.replaceChild(p, inputValue);
+    createFolder();
 }
 
 function showImageFolder(e){
@@ -34,13 +34,13 @@ function showImageFolder(e){
 }
 
 function createFolder() {
-    fetch("modules/createFolder.php" + "?" + "directoryName=" + nameDirectory, {
+    fetch("modules/createFolder.php" + "?" + "directoryName=" + nameFolder, {
             method: "GET",
         })
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            renderFileInfo(data);
+            // renderFileInfo(data);
         })
         .catch((err) => console.log("Request failed: ", err));
 }
