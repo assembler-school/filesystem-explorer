@@ -5,6 +5,10 @@ const noFilerOrFoldersAlert = document.querySelector(
 );
 const btnsContainer = document.querySelectorAll(".btns-container");
 const menu = document.querySelector(".menu");
+const deleteBtn = document.querySelector("#delete-btn");
+
+let pathToDelete;
+let folderToDelete;
 
 for (let btn of createFolderBtn) {
   console.log(btn);
@@ -12,6 +16,7 @@ for (let btn of createFolderBtn) {
 }
 
 document.body.addEventListener("click", closeMenu);
+deleteBtn.addEventListener("click", deleteDir);
 
 function createFolder(e) {
   currentDirectory = "." + e.target.getAttribute("path");
@@ -60,7 +65,7 @@ function openRenameFolderInput(event) {
 }
 
 function navigateToFolder(event) {
-  console.log(event.target.getAttribute("path"))
+  console.log(event.target.getAttribute("path"));
   let path = event.target.getAttribute("path");
   console.log(path);
   fetch(`./modules/savePathToSession.php?path=${path}`, {
@@ -98,14 +103,28 @@ function rename(e) {
 }
 
 function openMenu(event) {
-  console.log(event);
+  pathToDelete = event.target.getAttribute("path");
+  folderToDelete = event.target;
   menu.classList.remove("hidden");
-  console.log(event.pageX);
-
   menu.style.left = event.pageX - 10 + "px";
   menu.style.top = event.pageY - 10 + "px";
 }
 
 function closeMenu() {
   menu.classList.add("hidden");
+}
+
+function deleteDir() {
+  fetch(`./modules/deleteDir.php?path=${pathToDelete}`, {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.ok) {
+        filesAndFoldersContainer.removeChild(folderToDelete.parentElement);
+      }
+    })
+    .catch((err) => console.log("Request: ", err));
+
+  // window.location.href = `./modules/deleteDir.php?path=${pathToDelete}`;
 }

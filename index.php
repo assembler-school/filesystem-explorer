@@ -63,7 +63,7 @@
         <div>Rename</div>
         <div>Copy</div>
         <div>Cut</div>
-        <div>Delete</div>
+        <div id="delete-btn">Delete</div>
 
     </aside>
 </body>
