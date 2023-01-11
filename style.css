@@ -59,7 +59,7 @@ background-color: aqua;
 
 main{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 20% 50% 30%;
     padding: 10px;
     height: 90vh;
 }
@@ -80,4 +80,28 @@ main{
 
 #logo-panel{
     width: 4rem;
+}
+
+#folder{
+    width: 100%;
+}
+img.imageFolder{
+    height: 1rem;
+}
+
+#folder li{
+list-style: none;
+display: flex;
+}
+
+.select-folder{
+    width: 60%;
+}
+
+.modify-name-folder{
+    margin-right: 10px;
+}
+
+.fa-solid{
+font-size: 0.8rem; 
 }
