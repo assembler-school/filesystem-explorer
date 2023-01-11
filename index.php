@@ -60,7 +60,7 @@
 
     <aside class="menu hidden">
 
-        <div>Rename</div>
+        <div id="rename-btn">Rename</div>
         <div>Copy</div>
         <div>Cut</div>
         <div id="delete-btn">Delete</div>

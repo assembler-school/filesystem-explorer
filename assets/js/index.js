@@ -6,9 +6,10 @@ const noFilerOrFoldersAlert = document.querySelector(
 const btnsContainer = document.querySelectorAll(".btns-container");
 const menu = document.querySelector(".menu");
 const deleteBtn = document.querySelector("#delete-btn");
+const renameBtn = document.querySelector("#rename-btn");
 
 let pathToDelete;
-let folderToDelete;
+let currentFolder;
 
 for (let btn of createFolderBtn) {
   console.log(btn);
@@ -17,6 +18,7 @@ for (let btn of createFolderBtn) {
 
 document.body.addEventListener("click", closeMenu);
 deleteBtn.addEventListener("click", deleteDir);
+renameBtn.addEventListener("click", renameDirFromMenu);
 
 function createFolder(e) {
   currentDirectory = "." + e.target.getAttribute("path");
@@ -95,6 +97,16 @@ function rename(e) {
     .then((data) => {
       console.log(data.newPath);
       if (data.ok) {
+        let folderContainer = folder.parentElement;
+        let input = folderContainer.children[1];
+
+        let folderName = document.createElement("p");
+        folderName.innerText = input.value;
+        folderName.addEventListener("click", openRenameFolderInput);
+
+        folderContainer.removeChild(input);
+        folderContainer.appendChild(folderName);
+
         folder.setAttribute("path", data.newPath);
       }
     })
@@ -104,7 +116,7 @@ function rename(e) {
 
 function openMenu(event) {
   pathToDelete = event.target.getAttribute("path");
-  folderToDelete = event.target;
+  currentFolder = event.target;
   menu.classList.remove("hidden");
   menu.style.left = event.pageX - 10 + "px";
   menu.style.top = event.pageY - 10 + "px";
@@ -121,10 +133,28 @@ function deleteDir() {
     .then((response) => response.json())
     .then((data) => {
       if (data.ok) {
-        filesAndFoldersContainer.removeChild(folderToDelete.parentElement);
+        filesAndFoldersContainer.removeChild(currentFolder.parentElement);
       }
     })
     .catch((err) => console.log("Request: ", err));
 
   // window.location.href = `./modules/deleteDir.php?path=${pathToDelete}`;
+}
+
+function renameDirFromMenu() {
+  let folderName = currentFolder.parentElement.children[1];
+
+  let text = folderName.innerText;
+  let folderContainer = currentFolder.parentElement;
+  
+  let input = document.createElement("input");
+  input.type = "text";
+  input.value = text;
+  input.classList.add("rename-input");
+  input.addEventListener("focusout", rename);
+
+  folderContainer.removeChild(folderName);
+  folderContainer.appendChild(input);
+  
+  input.focus();
 }
