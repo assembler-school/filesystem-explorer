@@ -36,7 +36,7 @@ function array_search_partial($arr, $keyword) {
     <header>
         <nav id="navigation">
             <div id="logo"> 
-                <a href='/root'>
+                <a href='./root'>
                     <img src="./image/logo.webp" alt="Logo" id="logo-panel">
                 </a>
             </div>
@@ -72,7 +72,7 @@ function array_search_partial($arr, $keyword) {
                             $positionSlash = strpos($arrayFile[$indexResult], "/", 5);
                             $fileWithoutSlash = substr($arrayFile[$indexResult], $positionSlash + 1);
 
-                            echo '<div class="file-search">'. $fileWithoutSlash ."</div>";
+                            echo '<div class="file-search" filePath="'.$arrayFile[$indexResult].'">'. $fileWithoutSlash ."</div>";
                         }
                     }
 
@@ -92,15 +92,16 @@ function array_search_partial($arr, $keyword) {
             }else{
                 echo '<h1>Search Results</h1>';
                 foreach($indexFile as $indexResult){
-                    echo '<div class="file-search">'.$arrayFile[$indexResult]."</div>";
+                    echo '<div class="file-search" filePath="'.$arrayFile[$indexResult].'">'.$arrayFile[$indexResult]."</div>";
                 }
             }
         }  
         ?>
 
         </section>
-        <section class="view-content">
+        <section id="view-content">
 
         </section>
         </main>
+        <script src="assets/js/results.js"></script>
 </body>

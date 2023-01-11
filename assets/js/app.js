@@ -164,7 +164,8 @@ function createFileContent(typeFile, data){
         elementAudioSource.setAttribute("type", "audio/mpeg");
         containerContent.appendChild(elementAudio);
         elementAudio.appendChild(elementAudioSource);
+}
+}
 
-}
-}
+
 
