@@ -42,6 +42,7 @@ if(is_dir($name) && $name !== "panel.php"){
 }
 }
 ?>
+
 </div>
 </section>
 
@@ -61,6 +62,7 @@ if(is_dir($name) && $name !== "panel.php"){
 
 <section id="show-files">
     <p> file </p>
+    <div id="display-content"></div>
     <button>Modify</button>
     <button>Delete</button>
 

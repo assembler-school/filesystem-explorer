@@ -6,7 +6,7 @@ $file = $_GET['filePath'];
     echo "$file was created: " . date("F d Y H:i:s.", filectime($resultsFolder));
 
 } */
-
 $content = file_get_contents($file);
 echo json_encode($content);
+
 ?>
