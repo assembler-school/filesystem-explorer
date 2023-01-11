@@ -7,23 +7,29 @@ let inputCounter = 0;
 
 addFolderImage.addEventListener("click", showImageFolder);
 
-function getInputValue(){
-    checkDirectoryName();
-    nameFolder= inputValue.value;
-    const p =  document.createElement("p");
-    p.textContent = nameFolder;
-    li.replaceChild(p, inputValue);
-    createFolder();
+function getInputValue(data){
+    if(data ==="Exist"){
+        inputValue.select();
+    } else{
+        nameFolder= inputValue.value;
+        const p =  document.createElement("p");
+        p.textContent = nameFolder;
+        li.replaceChild(p, inputValue);
+        addFolderImage.addEventListener("click", showImageFolder);
+        createFolder();
+    }
+   
+    
 }
 
 function checkDirectoryName(){
-    fetch("modules/checkDirectoryName.php" + "?" + "directoryName=" + nameFolder, {
+    fetch("modules/checkDirectoryName.php" + "?" + "directoryName=" + inputValue.value, {
         method: "GET",
     })
     .then((response) => response.json())
     .then((data) => {
         console.log(data);
-        // renderFileInfo(data);
+        getInputValue(data);
     })
     .catch((err) => console.log("Request failed: ", err));
 }
@@ -41,8 +47,9 @@ function showImageFolder(){
     li.appendChild(img);
     li.appendChild(input);
     inputValue = document.querySelector("#folderValues");
-    inputValue.addEventListener("focusout", getInputValue);
+    inputValue.addEventListener("focusout", checkDirectoryName);
     input.select();
+    addFolderImage.removeEventListener("click", showImageFolder);
 }
 
 function createFolder() {
