@@ -32,7 +32,7 @@
             $initialRoute = '';
 
             echo "<div class='bread-crumbs-container'>";
-            foreach ($breadCrumbs as $path) {
+            foreach ($breadCrumbs as $key => $path) {
                 $initialRoute = $initialRoute . $path . "/";
                 echo "<a onclick=(navigateToFolder(event)) path='$initialRoute'>$path</a>";
             }

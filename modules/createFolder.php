@@ -5,18 +5,62 @@ function createFolder()
     $currentPath = $_GET['path'];
     $filePath = $_GET['filepath'];
 
+    /////////////////////////////////////
+
+    $all = glob("$currentPath/*");
+
+    /////////////////////////////////////   
     // $pathName = str_replace('\\', '/', dirname(__DIR__))  . $currentPath;
+    $counts = 0;
+    $folderNums = [];
 
-    $version = time();
+    for ($i = 0; $i < count($all); $i++) {
+        // if ($i === 0) {
+        //     $counts +=  array_count_values($all)[$currentPath . "/newFolder"];
+        // } else {
+        //     $counts +=  array_count_values($all)[$currentPath . "/newFolder(" . $i + 1 . ")"];
+        // }
+        $currentFolderNums = [];
+        for ($j = 0; $j < strlen($all[$i]); $j++) {
+            if ($all[$i][$j] === '(') {
+                array_push($currentFolderNums, $all[$i][$j + 1]);
+            }
+            if ($all[$i][$j] === ')' && $all[$i][$j - 2] !== '(') {
+                array_push($currentFolderNums, $all[$i][$j - 1]);
+            }
+            array_push($folderNums, [implode($currentFolderNums)]);
+        }
+    }
 
-    mkdir("$currentPath/newFolder$version", 0700, false);
+    if (count($folderNums)) {
+        if (count(max($folderNums))) {
+            $counts = intval(max($folderNums)[0]);
+            if ($counts == 0) {
+                $counts = 1;
+            }
+        } else {
+            $counts = 1;
+        }
+    }
 
-    $dir = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename("$currentPath/newFolder"));
+    if ($counts > 0) {
+        mkdir($currentPath . '/newFolder(' . $counts + 1 . ')', 0700, false);
+        $dir = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($currentPath . '/newFolder(' . $counts + 1 . ')'));
 
-    echo json_encode([
-        "ok" => true,
-        "dir" => $dir,
-        "path" => $filePath.'/newFolder'.$version
-    ]);
+        echo json_encode([
+            "ok" => true,
+            "dir" => $dir,
+            "path" => $filePath . '/newFolder(' . $counts + 1 . ')'
+        ]);
+    } else {
+        mkdir("$currentPath/newFolder", 0700, false);
+        $dir = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename("$currentPath/newFolder"));
+
+        echo json_encode([
+            "ok" => true,
+            "dir" => $dir,
+            "path" => $filePath . '/newFolder'
+        ]);
+    }
 }
 createFolder();

@@ -32,12 +32,14 @@ nav {
 
 /*+++++++++++++++++++++++++++ MAIN +++++++++++++++++++++++++++++*/
 main {
-  width: 100%;
+  width: 95%;
   height: 60%;
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 100px));
-  overflow-y: scroll ;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 150px));
+  grid-template-rows: repeat(auto-fill, minmax(150px, 150px));
+  overflow-y: auto ;
+  overflow-x: hidden;
 }
 
 /* bread crumbs */
@@ -160,6 +162,10 @@ aside {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.rename-input{
+  width: 80%;
 }
 
 .file {
