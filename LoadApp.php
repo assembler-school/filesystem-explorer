@@ -8,7 +8,19 @@ function loadFiles($parent, $path)
   if (substr_count($path, "/") > 1) {
     paintBackDir($parent);
   }
+  $dirs = [];
+  $filesInDir = [];
   foreach ($files as $file) {
+    if (filetype($path . '/' . $file) == 'dir')
+      array_push($dirs, $file);
+    else
+      array_push($filesInDir, $file);
+  }
+
+  foreach ($dirs as $dir) {
+    paintFile($path, $dir);
+  }
+  foreach ($filesInDir as $file) {
     paintFile($path, $file);
   }
 }
@@ -38,7 +50,7 @@ function paintFile($path, $file)
 function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRoot)
 {
   ?>
-  <tr>
+  <tr data-file="true">
     <td>
       <?php
       echo getTypeIcon(filetype($absolutePath), $fileName);

@@ -36,7 +36,7 @@ class Utils
       $suffixes = array('bytes', 'kb', 'mb', 'gb', 'tb');
       return round(pow(1024, $base - floor($base)), $precision) . ' ' . $suffixes[floor($base)];
     } else
-      return 0;
+      return '';
   }
 
   public static function formatHtml($data)

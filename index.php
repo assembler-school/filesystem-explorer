@@ -78,5 +78,11 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
         <?php loadFiles('./root', $folderPath ? $folderPath : ROOT); ?>
       </tbody>
     </table>
+    <form onsubmit="deleteAll(event);">
+      <button type="submit" class="btn btn-outline-danger">
+        <i class="bi bi-trash2"></i>
+        Delete All
+      </button>
+    </form>
   </article>
   <?php getFooter(); ?>
