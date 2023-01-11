@@ -1,10 +1,64 @@
+body {
+  background-color: #f7f7f7;
+}
 
 .folder-btn {
-    background-color: transparent;
-    border: none;
-    padding: 0;
+  background-color: transparent;
+  border: none;
+  padding: 0;
 }
 
 .home-btn {
-    color: white;
+  color: white;
+}
+
+.icon {
+  max-width: 22px;
+  max-height: 22px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.pre {
+  background-color: white;
+  padding: 10px 30px;
+  overflow: scroll;
+}
+
+.p {
+  margin-left: 30px;
+}
+
+
+/* CUSTOM INPUT TYPE FILE */
+input[type="file"] {
+  display: none;
+}
+/* LABEL */
+.custom-file-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: white;
+}
+/* /////////////////// */
+
+.custom-file-create {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: white;
+}
+i {
+  font-size: 1.3em;
+}
+label {
+  font-size: 1.3em;
+}
+
+form {
+  display: inline-block;
 }

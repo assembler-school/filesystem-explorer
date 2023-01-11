@@ -7,7 +7,7 @@ $fileTmpName  = $_FILES['userfile']['tmp_name'];
 $fileType = $_FILES['userfile']['type'];
 
 $errors = [];
-$fileExtensionsAllowed = ['jpeg', 'jpg', 'png', 'txt'];
+$fileExtensionsAllowed = ['jpg', 'png', 'txt', 'docx', 'csv', 'ppt', 'odt', 'pdf', 'zip', 'rar', 'exe', 'svg', 'mp3', 'mp4'];
 $filetmp = (explode('.', $fileName));
 $fileExtension = strtolower(end($filetmp));
 

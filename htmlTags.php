@@ -3,6 +3,7 @@ function getHeader()
 { ?>
   <!DOCTYPE html>
   <html lang="en">
+
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +20,8 @@ function getHeader()
 function getFooter()
 { ?>
   <footer>
-    <p class= "text-end me-5">Designed by....</p>
+    <p class="text-end me-5">Designed by....</p>
   </footer>
+  </body>
+  </html>
 <?php } ?>
