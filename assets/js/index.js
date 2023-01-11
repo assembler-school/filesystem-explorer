@@ -121,10 +121,16 @@ function openMenu(event) {
   menu.classList.remove("hidden");
   menu.style.left = event.pageX - 10 + "px";
   menu.style.top = event.pageY - 10 + "px";
+  setTimeout(() => {
+    menu.style.opacity = 1
+  }, 10);
 }
 
 function closeMenu() {
-  menu.classList.add("hidden");
+  menu.style.opacity = 0
+  setTimeout(() => {
+    menu.classList.add("hidden");
+  }, 300);
 }
 
 function deleteDir() {

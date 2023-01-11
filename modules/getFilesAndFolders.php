@@ -12,7 +12,7 @@ function getFilesAndFolders($directory = './root')
     if (count($all) == 0) {
         echo "
             <div class='empty-root-folder-alert'>
-                <p>Oops, it seems you have not created any folder or updated any file...</p>
+                <p>Oops, it seems you have not created any folder or uploaded any file...</p>
                 <div class='empty-root-btns-container'>
                     <img src='assets/fileIcons/noFolderIcon.png' id='createFolderBtn' path='$currentPath' class='create-folder-btn'/>
                     <img src='assets/fileIcons/uploadIcon.png' id='uploadFileBtn' class='upload-file-btn'/>

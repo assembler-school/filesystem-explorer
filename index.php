@@ -16,8 +16,8 @@
 <body oncontextmenu="return false;">
     <header>
         <nav>
-            <!-- <img src="ouricon" alt="icon" /> -->
-            <p>LOGO</p>
+            <p>FILESYSTEM <span>X</span>-PLORER</p>
+            <p>SIZE/TOTAL SIZE</p>
             <input type="text" placeholder="search" name="search" />
         </nav>
     </header>
@@ -54,20 +54,18 @@
         ?>
     </main>
 
-    <!-- <aside>
+    <aside class="details-container">
         <?php
         require_once('./modules/getFileInfo.php');
         getFileInfo()
         ?>
-    </aside> -->
+    </aside>
 
     <aside class="menu hidden">
-
-        <div id="rename-btn">Rename</div>
-        <div>Copy</div>
-        <div>Cut</div>
-        <div id="delete-btn">Delete</div>
-
+        <img src="./assets/fileIcons/renameIcon.png" id="rename-btn" />
+        <img src="./assets/fileIcons/copyIcon.png" id="copy-btn" />
+        <img src="./assets/fileIcons/cutIcon.png" id="cut-btn" />
+        <img src="./assets/fileIcons/deleteIcon.png" id="delete-btn" />
     </aside>
 </body>
 
