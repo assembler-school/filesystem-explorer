@@ -5,9 +5,10 @@ $file = "/login.php";
 $creationDate = date("Y-m-d H:i:s", filectime($file));
 $lastModification = date("Y-m-d H:i:s", filemtime($file));
 $size = filesize($file);
-/* 
-echo $lastModification;
-echo $creationDate; */
-echo $size;
+
+$information = array("creation" => $creationDate, "modify"=> $lastModification, "size"=> $size);
+
+echo json_encode($information);
+
 
 ?>

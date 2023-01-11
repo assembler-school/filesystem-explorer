@@ -18,7 +18,7 @@ function showInfoElement(event){
             let pathTxt = "../"+atrituboFile;
             fetch ("assets/display-info-file.php?filePath="+pathTxt)
             .then (response => response.json())
-            .then (data => createFileContent("txt", data))
+            .then (data => createFileContent("txt", data, atrituboFile))
             
             break
         case "img":
@@ -36,17 +36,19 @@ function showInfoElement(event){
     }
 }
 
-function createFileContent(typeFile, data){
+function createFileContent(typeFile, data, path){
     const containerContent = document.querySelector("#view-content");
 
     while(containerContent.firstChild){
         containerContent.removeChild(containerContent.lastChild);
     }
     if(typeFile === "txt"){
-        
         let elementTxt = document.createElement("div");
         elementTxt.textContent = data;
         containerContent.appendChild(elementTxt);
+        fetch ("assets/display-info-file.php?filePath="+path)
+            .then (response => response.json())
+            .then (data => console.log(data))
     
     } else if(typeFile === "img"){
         let elementImg = document.createElement("img");

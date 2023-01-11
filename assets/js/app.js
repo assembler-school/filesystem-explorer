@@ -80,7 +80,6 @@ function showelementosOfFolder(data){
         containerOpenFolder.appendChild(divFile);
         divFile.className += "elemtoOfFolder";
         divFile.setAttribute("filePath", file);
-        console.log(pathFile);
     })
 
 let folderElement = document.querySelectorAll(".elemtoOfFolder");
@@ -102,7 +101,6 @@ function showInfoElement(event){
     let atrituboFile = event.srcElement.getAttribute("filePath")
     let cutExtension = atrituboFile.lastIndexOf(".");
     let pathExtension = atrituboFile.slice(cutExtension+1);
-    console.log(pathExtension);
 
     let formatImg = ["jpg", "png", "webp"];
 
@@ -113,7 +111,7 @@ function showInfoElement(event){
         case "txt":
             fetch ("../assets/display-info-file.php?filePath="+atrituboFile)
             .then (response => response.json())
-            .then (data => createFileContent("txt", data))
+            .then (data => createFileContent("txt", data, atrituboFile))
             break
         case "img":
             createFileContent("img", atrituboFile);
@@ -130,7 +128,7 @@ function showInfoElement(event){
     }
 }
 
-function createFileContent(typeFile, data){
+function createFileContent(typeFile, data, path){
     const containerContent = document.querySelector("#display-content");
 
     while(containerContent.firstChild){
@@ -141,6 +139,9 @@ function createFileContent(typeFile, data){
         let elementTxt = document.createElement("div");
         elementTxt.textContent = data;
         containerContent.appendChild(elementTxt);
+        fetch("../assets/display-information-file.php?pathFile="+path)
+        .then(response=> response.json())
+        .then(data => console.log(data))
     
     } else if(typeFile === "img"){
         let elementImg = document.createElement("img");
