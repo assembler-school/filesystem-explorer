@@ -1,6 +1,25 @@
 <?php
 
-$fileexample="root/hola.html";
+// $fileexample="root/hola.html";
+
+$directoryArray = new ArrayObject(array());
+
+// echo var_dump($directoryArray);
+
+$scan = scandir("root");
+
+unset($scan[0], $scan[1]);
+
+// echo var_dump($scan);
+
+// foreach($scan as $valor){
+//     echo var_dump($valor);
+//   }
+
+
+// foreach($scan as $valor){
+//   readFileData("root/".$valor);
+// }
 
 function readFileData($file){
     $fileObj = (object) [
@@ -9,7 +28,8 @@ function readFileData($file){
         "modified" => filemtime($file),
         "created" => filectime($file),
       ];
-    echo json_encode($fileObj);
+      $directoryArray->append($fileObj);
 }
 
-readFileData($fileexample);
+// readFileData($fileexample);
+// echo ($directoryArray);

@@ -44,28 +44,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark.php</td>
-      <td>23-2-2021</td>
-      <td>25-3-2022</td>
-      <td>234</td>
-      <td><i class="fa-solid fa-trash"></i><i class="fa-regular fa-pen-to-square"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob.html</td>
-      <td>24-5-2021</td>
-      <td>25-5-2021</td>
-      <td>2345</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>30-4-2022</td>
-      <td>5-5-2022</td>
-      <td>23242324</td>
-    </tr>
+    
+      <!-- <td><i class="fa-solid fa-trash"></i><i class="fa-regular fa-pen-to-square"></i></td> -->
+    
+    <?php
+      foreach (glob("root/*") as $nombre_fichero) {
+        echo "<tr>\n<th scope='row'>3</th>\n<td><a href='root/".basename($nombre_fichero)."'>".basename($nombre_fichero)."</a></td>\n<td><i class='fa-solid fa-trash'></i><i class='fa-regular fa-pen-to-square'></i></td></tr>";
+    }
+    ?>
   </tbody>
 </table>
     
