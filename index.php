@@ -1,5 +1,5 @@
 <?php
-include "functions.php";
+// include "functions.php";
 include "CRUD/create.php";
 include "CRUD/upload.php";
 ?>
@@ -24,8 +24,7 @@ include "CRUD/upload.php";
 
             <div class="col-md-2">
 
-                <form action="" enctype="multipart/form-data" method="POST">
-                    <!-- <button id="create-bttn" name="create">Create</button> -->
+                <!-- <form action="" enctype="multipart/form-data" method="POST">
                     <select name="create" id="create-bttn">
                         <option value="folder">Folder</option>
                         <option value="doc">DOC</option>
@@ -44,7 +43,7 @@ include "CRUD/upload.php";
                         <option value="mp4">MP4</option>
                     </select>
                     <input type="submit" value="create">
-                </form>
+                </form> -->
 
             </div>
 
@@ -71,7 +70,7 @@ include "CRUD/upload.php";
             <div class="col-md-7" id="content-element">
                 <div class="row text-center">
 
-                    <?php echo $listar ?>
+                    <?php  echo $listar ?>
                 </div>
             </div>
 
