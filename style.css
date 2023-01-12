@@ -53,13 +53,13 @@ background-color: aqua;
 
 #navigation{
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 20% 60% 20%;
     justify-content:space-between;
 }
 
 main{
     display: grid;
-    grid-template-columns: 20% 50% 30%;
+    grid-template-columns: 20% 80%;
     padding: 10px;
     height: 90vh;
 }
@@ -104,6 +104,16 @@ display: flex;
 
 .fa-solid{
 font-size: 0.8rem; 
+}
+
+#tableFolder{
+    width:100%;
+}
+
+#tableFolder{
+    margin-bottom:10px;
+    font-size:14px;
+    text-align:right;
 }
 
 /* Search */
