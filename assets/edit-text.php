@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 $file = $_POST["filePath"];
 $text = $_POST["text"];
@@ -8,6 +11,6 @@ fwrite($openFile, $text);
 fclose($openFile);
 
 $redirection = str_replace("../", "", $file);
-header("location: ../text-editor.php?filePath=$redirection");
+header("location: ../text-editor.php?pathFile=$redirection");
 
 ?>

@@ -36,14 +36,13 @@
     <h1>Text editor</h1>
 
     <form method="POST" action="./assets/edit-text.php"> 
-    <textarea name="text">
-        <?php 
+    <textarea name="text"><?php 
         $file = $_GET["pathFile"];
         $content = file_get_contents("./".$file);
         echo $content;
         ?> 
         </textarea>
-        <input name="pathFile" type="hidden" value="<?php echo "../$file"; ?>" >
+        <input name="filePath" type="hidden" value="<?php echo "../$file"; ?>" >
 
     <button>Save changes</button>
 </form>
