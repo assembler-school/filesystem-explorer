@@ -5,7 +5,7 @@ session_start();
 $folderPath = './root';
 if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
   $_SESSION['relativePath'] = $_REQUEST['p'];
-  $_SESSION['absolutePath'] = $folderPath . '/' . $_REQUEST['p'];
+  $_SESSION['absolutePath'] = $folderPath . '/' . $_REQUEST['p']; 
   $folderPath = $folderPath . '/' . $_REQUEST['p'];
 } else {
   $_SESSION['relativePath'] = '';

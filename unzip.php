@@ -5,6 +5,7 @@ define("ROOT", "./root");
 
 $fileName = $_REQUEST['file'];
 $fileExtension = Utils::getFileExtension($fileName);
+
 if (isset($_SESSION['relativePath'])) {
   $returnPath = $_SESSION['relativePath'];
 }

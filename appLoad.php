@@ -53,7 +53,7 @@ function paintFile($path, $file)
 function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRoot)
 {
   ?>
-  <tr data-file="true">
+  <tr data-file="<?php echo $fileName ?>">
     <td>
       <?php
       echo getTypeIcon(filetype($absolutePath), $fileName);
@@ -90,7 +90,7 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
     </td>
     <td>
       <!--DELETE -->
-      <form id="form">
+      <form onsubmit="deleteForm(event);">
         <button type="submit" class="border border-0 bg-transparent">
           <i class="bi bi-trash"></i>
         </button>
