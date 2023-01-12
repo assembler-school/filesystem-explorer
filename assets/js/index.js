@@ -7,6 +7,8 @@ const btnsContainer = document.querySelectorAll(".btns-container");
 const menu = document.querySelector(".menu");
 const deleteBtn = document.querySelector("#delete-btn");
 const renameBtn = document.querySelector("#rename-btn");
+const uploadFileBtn = document.querySelector("#uploadFileBtn");
+const uploadInput = document.getElementById("upload-input");
 
 let pathToDelete;
 let currentFolder;
@@ -19,10 +21,11 @@ for (let btn of createFolderBtn) {
 document.body.addEventListener("click", closeMenu);
 deleteBtn.addEventListener("click", deleteDir);
 renameBtn.addEventListener("click", renameDirFromMenu);
+uploadFileBtn.addEventListener("click", uploadFile);
+uploadInput.addEventListener("change", submitUploadForm);
 
 function createFolder(e) {
   currentDirectory = "." + e.target.getAttribute("path");
-  console.log(currentDirectory);
   filePath = e.target.getAttribute("path");
   fetch(
     `./modules/createFolder.php?path=${currentDirectory}&filepath=${filePath}`,
@@ -56,7 +59,7 @@ function openRenameFolderInput(event) {
   let text = event.target.innerText;
   let folderContainer = folderName.parentElement;
   let input = document.createElement("input");
-  input.classList.add('rename-input')
+  input.classList.add("rename-input");
 
   input.type = "text";
   input.value = text;
@@ -122,12 +125,12 @@ function openMenu(event) {
   menu.style.left = event.pageX - 10 + "px";
   menu.style.top = event.pageY - 10 + "px";
   setTimeout(() => {
-    menu.style.opacity = 1
+    menu.style.opacity = 1;
   }, 10);
 }
 
 function closeMenu() {
-  menu.style.opacity = 0
+  menu.style.opacity = 0;
   setTimeout(() => {
     menu.classList.add("hidden");
   }, 300);
@@ -153,9 +156,9 @@ function renameDirFromMenu() {
 
   let text = folderName.innerText;
   let folderContainer = currentFolder.parentElement;
-  
+
   let input = document.createElement("input");
-  input.classList.add('rename-input')
+  input.classList.add("rename-input");
   input.type = "text";
   input.value = text;
   input.classList.add("rename-input");
@@ -163,6 +166,44 @@ function renameDirFromMenu() {
 
   folderContainer.removeChild(folderName);
   folderContainer.appendChild(input);
-  
+
   input.focus();
+}
+
+function uploadFile() {
+  uploadInput.click();
+}
+
+function submitUploadForm(e) {
+  let file = e.target.files[0];
+  const form_data = new FormData();
+  form_data.append("file", file);
+
+  fetch(`./modules/uploadFiles.php`, {
+    method: "POST",
+    body: form_data,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      let file = document.createElement("div");
+      file.classList.add("file-container");
+
+      let fileImg = document.createElement("div");
+      fileImg.classList.add("file");
+      fileImg.classList.add(data.extension.toLowerCase());
+      file.addEventListener("contextmenu", openMenu);
+
+      let fileName = document.createElement("p");
+      fileName.classList.add("folder-name");
+      fileName.addEventListener("click", openRenameFolderInput);
+      fileName.innerText = data.fileName;
+
+      file.appendChild(fileImg);
+      file.appendChild(fileName);
+
+      filesAndFoldersContainer.appendChild(file);
+
+      console.log(data);
+    })
+    .catch((err) => console.log("Request: ", err));
 }

@@ -35,9 +35,9 @@ function getFilesAndFolders($directory = './root')
         if (is_file($ff)) {
             $file = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($ff));
             echo "<div class='file-container'>
-                <div class='file $ff[-1]$ff[-2]$ff[-3]'></div>
-                <p>$file</p>
-            </div>";
+                    <div class='file $ff[-1]$ff[-2]$ff[-3]'></div>
+                    <p>$file</p>
+                </div>";
         }
 
         if (is_dir($ff)) {

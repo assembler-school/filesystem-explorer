@@ -67,6 +67,10 @@
         <img src="./assets/fileIcons/cutIcon.png" id="cut-btn" />
         <img src="./assets/fileIcons/deleteIcon.png" id="delete-btn" />
     </aside>
+
+    <form id="upload-form">
+        <input class="hidden" type="file" id="upload-input" />
+    </form>
 </body>
 
 </html>
