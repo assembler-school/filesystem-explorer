@@ -43,8 +43,10 @@ function createFolder()
         }
     }
 
+    $old_umask = umask(0);
+
     if ($counts > 0) {
-        mkdir($currentPath . '/newFolder(' . $counts + 1 . ')', 0700, false);
+        mkdir($currentPath . '/newFolder(' . $counts + 1 . ')', 0777, false);
         $dir = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($currentPath . '/newFolder(' . $counts + 1 . ')'));
 
         echo json_encode([
@@ -53,7 +55,7 @@ function createFolder()
             "path" => $filePath . '/newFolder(' . $counts + 1 . ')'
         ]);
     } else {
-        mkdir("$currentPath/newFolder", 0700, false);
+        mkdir("$currentPath/newFolder", 0777, false);
         $dir = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename("$currentPath/newFolder"));
 
         echo json_encode([
