@@ -46,6 +46,7 @@ function deleteFolders(event) {
     }
 }
 
+
 const selectFolder = document.querySelectorAll(".select-folder");
 
 
@@ -229,9 +230,12 @@ function showInfoElement(event){
     }
 
     displayPopUp();
+    const btnDeleteFile = document.querySelector("#delete-file");
+    btnDeleteFile.addEventListener("click", deleteFile(atrituboFile));
+
 }
 
-function createFileContent(typeFile, data, pathTxt) {
+function createFileContent(typeFile, data) {
     const containerContent = document.querySelector("#view-content");
 
     while (containerContent.firstChild) {
@@ -268,16 +272,32 @@ function createFileContent(typeFile, data, pathTxt) {
     }
 }
 
+
+function deleteFile(filePath){
+    const popUpDeleteConfirm = confirm("Do you want delete this file?");
+        
+    if (popUpDeleteConfirm) {
+    fetch("../assets/delete-file.php?filePath="+filePath);
+    location.reload();
+}
+}
+
+
 const btnClosePopUp = document.getElementById("close-popup");
 
 function displayPopUp() {
     const viewContent = document.querySelector('.pop-up-file');
     viewContent.classList.toggle('hidden');
+
 }
 
 function closePopUp() {
     const viewContent = document.querySelector('.pop-up-file');
     viewContent.classList.toggle('hidden');
+    const containerContent = document.querySelector("#view-content");
+    while (containerContent.firstChild) {
+        containerContent.removeChild(containerContent.lastChild);
+    }
 }
 
 btnClosePopUp.addEventListener('click', closePopUp);
