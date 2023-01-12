@@ -10,8 +10,16 @@ createFolder.addEventListener("click", createNewFolder);
 
 function createNewFolder() {
 
+    console.log("hola")
+
     let folderName = folderNameToCreate.value;
-    fetch('../filesystem-explorer/upload-file.php?nameFolder='+folderName);
+    
+    console.log(folderName);
+
+    fetch ("../filesystem-explorer/create-folder.php?nameFolder="+folderName)
+    .then(response => response.json())
+    .then(data => console.log(data))
+
 
 }
 
