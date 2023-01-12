@@ -1,0 +1,15 @@
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+
+const alert = (message, type) => {
+  const wrapper = document.createElement('div')
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible mt-3 col-2 offset-md-5" role="alert">`,
+    `   <div>${message}</div>`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    '</div>'
+  ].join('')
+  setTimeout(() => {
+    alertPlaceholder.firstChild.remove();
+  }, 5000);
+  alertPlaceholder.append(wrapper)
+}

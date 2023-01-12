@@ -41,7 +41,8 @@ class Utils
       return '';
   }
 
-  public static function getBreadcrumb($path) {
+  public static function getBreadcrumb($path)
+  {
     return explode('/', $path);
   }
 
@@ -77,7 +78,7 @@ class Utils
     return $striped_content;
   }
 
-   public static function formatPdf($file)
+  public static function formatPdf($file)
   {
     $a = new PDF2Text();
     $a->setFilename($file);

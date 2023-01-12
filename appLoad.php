@@ -97,11 +97,8 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
       </form>
 
       <!--DELETE -->
-      <form onsubmit="deleteFile(event);" class="me-2">
-        <button type="submit" class="border border-0 bg-transparent">
-          <i class="bi bi-x-circle-fill"></i>
-        </button>
-      </form>
+      <button type="submit" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
+        onclick="type_file(event);" data-file="<?php echo $fileName ?>"><i class="bi bi-x-circle-fill"></i></button>
 
       <!--UNZIP -->
       <?php

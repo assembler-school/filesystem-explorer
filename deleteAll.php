@@ -1,23 +1,33 @@
 <?php
-
 session_start();
 require_once './utils.php';
-
-$path = $_SESSION['absolutePath']; 
+$path = $_SESSION['absolutePath'];
 $files = glob($path . '/*');
-
 $msg = '';
-if (count($files) > 0) {
-  foreach ($files as $file) {
-    if (is_file($file)) {
+
+function delete_files($dir)
+{
+
+  foreach (glob($dir . '/*') as $file) {
+    if (is_dir($file))
+      delete_files($file);
+    else
       unlink($file);
-    } else {
-      rmdir($file);
-    }
   }
-  $msg = 'ok';
+  rmdir($dir);
+}
+
+
+if (count($files) > 0) {
+  foreach (glob($path . '/*') as $file) {
+    if (is_dir($file))
+      delete_files($file);
+    else
+      unlink($file);
+  }
+  $msg = 1;
 } else {
-  $msg = 'No files to remove';
-} 
+  $msg = 0;
+}
 
 echo json_encode($msg);
