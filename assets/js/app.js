@@ -62,40 +62,52 @@ function selectFolders(event){
     .then (response => response.json())
     .then (data => showelementosOfFolder(data))
 
-    let nameOfFolder = document.createElement("p");
-    nameOfFolder.textContent = openFolder;
-    containerOpenFolder.appendChild(nameOfFolder);
     let inputUploadFile = document.getElementsByName("uploadFolder")[0];
     inputUploadFile.value = openFolder;
+    
+         //Table
+         let bodyTable = document.createElement("table");
+         let tableRow = document.createElement("tr");
+         let rowHead = document.createElement("th");
 
+         containerOpenFolder.appendChild(bodyTable);
+         bodyTable.appendChild(tableRow);
+         bodyTable.id = "tableFolder";
+
+         for(let i=0; i<4; i++){
+        let nameHead = "";
+            switch(i){
+                case 0:
+                    nameHead = "File name:";
+                    break
+                case 1: 
+                    nameHead = "Created date:";
+                    break
+                case 2:
+                    nameHead = "Modified date:";
+                    break
+                case 3:
+                    nameHead = "Size:";
+                    break
+            }
+            tableRow.appendChild(document.createElement("th")).textContent = nameHead;
+         }
+        
 }
 
 function showelementosOfFolder(data){
     data.forEach(file =>{
-        const containerOpenFolder = document.querySelector("#open-folder");
-        let divFile = document.createElement("div");
+        const containerOpenFolder = document.querySelector("#tableFolder");
+        let trFile = document.createElement("tr");
         let cutPath = file.lastIndexOf("/");
         let pathFile = file.slice(cutPath+1);
-        divFile.textContent = pathFile;
-        containerOpenFolder.appendChild(divFile);
-        divFile.className += "elemtoOfFolder";
-        divFile.setAttribute("filePath", file);
-    let bodyTable = document.createElement("table");
-    let tableRow = document.createElement("tr");
-    let tabletColumnCreate = document.createElement("td");
-    let tabletColumnModify = document.createElement("td");
-    let tabletColumnSize = document.createElement("td");
+        containerOpenFolder.appendChild(trFile);
+        trFile.className += "elemtoOfFolder";
+        trFile.setAttribute("filePath", file);
 
-    containerOpenFolder.appendChild(bodyTable);
-    bodyTable.appendChild(tableRow);
-    tableRow.appendChild(tabletColumnCreate);
-    tableRow.appendChild(tabletColumnModify);
-    tableRow.appendChild(tabletColumnSize);
-
-    
-    tabletColumnCreate.textContent = "pruebe";
-    tabletColumnModify.textContent = "pruebe";
-    tabletColumnSize.textContent = "pruebe";
+       fetch("../assets/display-metadata-file.php?filePath="+file)
+       .then(response=>response.json())
+       .then(data=>constuctorTable(data, pathFile, trFile))
 
     })
 
@@ -105,6 +117,43 @@ let folderElement = document.querySelectorAll(".elemtoOfFolder");
 folderElement.forEach((item)=>{
     item.addEventListener("click", showInfoElement)});
 }
+
+function constuctorTable(data, pathFile, trFile){
+    for(let i=0; i<4; i++){
+let size = "";
+        if(data.size<=1024000){
+            let sizeKb = Math.round(data.size / 1024*10)/10;
+            size = sizeKb + "Kb"; 
+        }else {
+            let sizeMb = Math.round(data.size / 1024000*10)/10;
+            size = sizeMb + "MB"; 
+        }
+
+console.log(data.size)
+        let infoTd = "";
+            switch(i){
+                case 0:
+                    infoTd = pathFile;
+                    break
+                case 1: 
+                    infoTd = data.modify;
+                    break
+                case 2:
+                    infoTd = data.creation;
+                    break
+                case 3:
+                    infoTd = size;
+                    break
+            }
+            trFile.appendChild(document.createElement("td")).textContent = infoTd;
+         } 
+
+         console.log(data)
+
+}
+
+
+
 
 
 const buttonNewFile = document.querySelector("#upload-file");

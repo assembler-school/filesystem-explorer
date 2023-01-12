@@ -23,7 +23,6 @@
 </form>
             </div>
             <div id="user"> 
-            <img src="" alt="User image">
             <a href="../assets/close-session.php">
                 <button>Sign out</button>
             </a>
