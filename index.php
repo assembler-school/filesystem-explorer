@@ -91,6 +91,7 @@
       }
     }
 
+    echo var_dump(scandir("root"));
     ?>
   </tbody>
 </table>
