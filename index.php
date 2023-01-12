@@ -27,7 +27,6 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
       </button>
 
       <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
-        <form action="index.php" method="POST">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <?php if (strlen($_SESSION['relativePath']) !== 0) {
@@ -71,7 +70,6 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
               ?>
             </ol>
           </nav>
-        </form>
       </div>
       <form class="d-flex me-3" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
