@@ -71,8 +71,8 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
             </ol>
           </nav>
       </div>
-      <form class="d-flex me-3" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex me-3" role="search" onsubmit="searchFile(event)">
+        <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
       <form action="upload.php" method="POST" enctype="multipart/form-data" id="uploadForm">

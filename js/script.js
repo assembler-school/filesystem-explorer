@@ -45,3 +45,22 @@ function deleteForm(e) {
       alert("Can't connect to backend try latter");
     });
 }
+
+function searchFile(e) {
+  e.preventDefault();
+  const searchValue = searchBar.value
+
+  const searchData = new FormData();
+  searchData.append('search', searchValue)
+  fetch("./search.php",
+  {'method': 'POST',
+    'body': searchData
+})
+.then(res=> res.json())
+.then(res=> {
+  console.log(res)
+})
+.catch(function () {
+  alert("Can't connect to backend try latter");
+});
+}
