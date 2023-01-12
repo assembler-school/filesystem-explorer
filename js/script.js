@@ -23,9 +23,8 @@ function deleteAll(e) {
     });
 }
 
-function deleteFile(e) {
+function deleteFile(e, fileName) {
   e.preventDefault();
-  const fileName = e.target.parentNode.parentNode.getAttribute('data-file');
   const file = new FormData();
   file.append("fileName", fileName);
   const config = {

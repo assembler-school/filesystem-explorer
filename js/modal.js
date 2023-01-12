@@ -15,9 +15,8 @@ function type_file(e) {
   } else {
     name = e.target.getAttribute('data-file');
   }
-  console.log(name);
   form.onsubmit = function (event) {
-    return deleteFile(event);
+    return deleteFile(event, name);
   }
   title.textContent = `Delete ${name}`;
 }
