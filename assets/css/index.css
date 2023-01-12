@@ -259,7 +259,7 @@ aside {
   transform: rotateY(10deg);
 }
 
-.folder-name {
+.folder-name, .file-container p {
   cursor: pointer;
 }
 
@@ -267,10 +267,6 @@ aside {
   width: 80%;
   padding: 5px;
   font-size: 1.1em;
-}
-
-.file {
-  background-color: yellow;
 }
 
 .menu {
@@ -318,4 +314,67 @@ aside {
   outline: none;
   padding: 2px;
   border-radius: 15px;
+}
+
+.file {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition-duration: 0.3s;
+}
+
+.jpg {
+  background-image: url("../fileIcons/jpg.png");
+}
+
+.doc {
+  background-image: url("../fileIcons/doc.png");
+}
+
+.csv {
+  background-image: url("../fileIcons/csv.png");
+}
+
+.png {
+  background-image: url("../fileIcons/png.png");
+}
+
+.txt {
+  background-image: url("../fileIcons/txt.png");
+}
+
+.ppt {
+  background-image: url("../fileIcons/ppt.png");
+}
+
+.odt {
+  background-image: url("../fileIcons/odt.png");
+}
+
+.pdf {
+  background-image: url("../fileIcons/pdf.png");
+}
+
+.zip {
+  background-image: url("../fileIcons/zip.png");
+}
+
+.rar {
+  background-image: url("../fileIcons/rar.png");
+}
+
+.exe {
+  background-image: url("../fileIcons/exe.png");
+}
+
+.svg {
+  background-image: url("../fileIcons/svg.png");
+}
+
+.mp3 {
+  background-image: url("../fileIcons/mp3.png");
+}
+
+.mp4 {
+  background-image: url("../fileIcons/mp4.png");
 }

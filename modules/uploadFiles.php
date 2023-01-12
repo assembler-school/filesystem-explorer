@@ -15,9 +15,5 @@ if (isset($_FILES['file'])) {
 
 	move_uploaded_file($_FILES['file']['tmp_name'], $currentPath . '/' . $newFileName);
 
-	$data = array(
-		'image_source' => $currentPath . '/' . $newFileName
-	);
-
-	echo json_encode(["path" => $data, "extension" => $extension, "fileName" => $_FILES['file']['name']]);
+	echo json_encode(["extension" => $extension, "fileName" => $_FILES['file']['name']]);
 }

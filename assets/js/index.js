@@ -99,7 +99,6 @@ function rename(e) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.newPath);
       if (data.ok) {
         let folderContainer = folder.parentElement;
         let input = folderContainer.children[1];
@@ -124,6 +123,7 @@ function openMenu(event) {
   menu.classList.remove("hidden");
   menu.style.left = event.pageX - 10 + "px";
   menu.style.top = event.pageY - 10 + "px";
+
   setTimeout(() => {
     menu.style.opacity = 1;
   }, 10);

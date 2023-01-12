@@ -1,16 +1,9 @@
 <?php
 
 $dirToDelete = $_GET['path'];
-
-$dirToDelete;
-
- if(is_dir(".$dirToDelete")){
-    rrmdir(".$dirToDelete");
-} else{
-     echo 'not a dir';
- }
-
  
+  rrmdir(".$dirToDelete"); 
+
  function rrmdir($dir) {
     if (is_dir($dir)) {
       $objects = scandir($dir);
@@ -22,5 +15,8 @@ $dirToDelete;
       reset($objects);
       rmdir($dir);
       echo json_encode(["ok"=>true]);
-    } 
+    } else {
+      unlink($dir); 
+      echo json_encode(["ok"=>true]);
+    }
   }

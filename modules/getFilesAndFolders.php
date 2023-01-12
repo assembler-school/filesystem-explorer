@@ -34,9 +34,12 @@ function getFilesAndFolders($directory = './root')
     foreach ($all as $ff) {
         if (is_file($ff)) {
             $file = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($ff));
+            $extension = strtolower($ff[-3].$ff[-2].$ff[-1]);
+
+
             echo "<div class='file-container'>
-                    <div class='file $ff[-1]$ff[-2]$ff[-3]'></div>
-                    <p>$file</p>
+                    <div oncontextmenu='openMenu(event)' path='$ff' class='file $extension'></div>
+                    <p onclick='openRenameFolderInput(event)'>$file</p>
                 </div>";
         }
 
