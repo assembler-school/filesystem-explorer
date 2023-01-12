@@ -30,7 +30,6 @@ header {
   align-items: center;
   justify-content: center;
   color: var(--color-secondary);
- 
 }
 
 nav {
@@ -45,20 +44,21 @@ nav {
   border-bottom: 1px solid rgb(222, 222, 222);
 }
 
-nav p{
+nav p {
   color: grey;
   font-size: 1.25em;
+  pointer-events: none;
 }
 
-span{
+span {
   font-weight: bolder;
 }
 
-nav input{
+nav input {
   border-radius: 25px;
   outline: none;
   border: none;
-  border: 1px solid rgb(222, 222, 222);
+  border: 1px solid grey;
   padding: 10px;
 }
 
@@ -130,7 +130,6 @@ aside {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-
 }
 
 .file-details-container-items {
@@ -176,23 +175,25 @@ aside {
   left: 0;
   bottom: 0;
   right: 0;
-  border:3px solid var(--bg--primary);
+  border: 3px solid var(--bg--primary);
   border-radius: 15px;
   padding: 15px;
 }
 
-.create-folder-btn, .upload-file-btn{
+.create-folder-btn,
+.upload-file-btn {
   width: 100px;
   cursor: pointer;
   transition-duration: 0.3s;
 }
-.create-folder-btn:hover, .upload-file-btn:hover{
+.create-folder-btn:hover,
+.upload-file-btn:hover {
   transform: scale(1.05);
 }
 
-.empty-root-folder-alert p{
+.empty-root-folder-alert p {
   line-height: 1.5em;
-  width:60%;
+  width: 60%;
   text-align: center;
   font-size: 2em;
 }
@@ -204,13 +205,13 @@ aside {
   justify-content: space-between;
 }
 
-.btns-container{
+.btns-container {
   position: fixed;
   bottom: 25px;
   right: 50px;
 }
 
-.btns-container img{
+.btns-container img {
   margin: 10px;
 }
 
@@ -219,9 +220,12 @@ aside {
   margin-top: 25px;
   height: 150px;
   width: 150px;
-  background-color: var(--bg--primary);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 55%,
+    rgba(66, 133, 244, 1) 55%
+  );
   color: var(--color-secondary);
-  border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -229,11 +233,6 @@ aside {
   text-align: center;
   transition-duration: 0.3s;
   perspective: 100px;
-}
-
-.folder-container:hover,
-.file-container:hover{
-  background-color: #2876f2;
 }
 
 .folder,
@@ -251,11 +250,11 @@ aside {
   transition-duration: 0.3s;
 }
 
-.folder:hover{
+.folder:hover {
   transform: rotateY(10deg);
 }
 
-.folder-name{
+.folder-name {
   cursor: pointer;
 }
 
@@ -296,7 +295,7 @@ aside {
   transition-duration: 0.3s;
 }
 
-.menu img:hover{
+.menu img:hover {
   transform: rotate(5deg);
 }
 

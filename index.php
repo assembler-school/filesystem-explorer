@@ -17,7 +17,7 @@
     <header>
         <nav>
             <p>FILESYSTEM <span>X</span>-PLORER</p>
-            <p>SIZE/TOTAL SIZE</p>
+            <p>SIZE / TOTAL SIZE</p>
             <input type="text" placeholder="search" name="search" />
         </nav>
     </header>
