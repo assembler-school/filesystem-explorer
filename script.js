@@ -8,6 +8,7 @@ const folderNameToCreate = document.querySelector('.folder-name');
 createFolder.addEventListener("click", createNewFolder);
 
 
+
 function createNewFolder() {
 
     console.log("hola")
@@ -20,7 +21,7 @@ function createNewFolder() {
     .then(response => response.json())
     .then(data => console.log(data))
 
-
+    location.reload();
 }
 
 

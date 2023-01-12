@@ -21,7 +21,7 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <form class="d-flex upload-file">
+      <form class="d-flex upload-file" method="POST" action="upload-file.php" enctype="multipart/form-data">
         <input class="form-control me-2 file-to-upload" type="file" name="file" placeholder="File name..." >
         <button class="btn btn-secondary" type="submit" name="submit">Upload</button>
       </form>
@@ -41,20 +41,6 @@
 <table class="table caption-top">
 <button class="btn btn-outline-secondary"><a class="home" href="./index.php">Files & folders</a></button>
 <?php
-
-// echo "<script>"; 
-// echo "\n"; 
-// echo "const home = document.querySelector('.home')";
-// echo "\n"; 
-// echo "home.addEventListener('click', openHome => document.cookie = 'folder = home')";
-// echo "\n";   
-// echo "</script>";
-
-
-// $folder = $_COOKIE['folder'];
-
-// echo $folder;
-
 
 ?>
 
@@ -103,29 +89,7 @@
           echo "<tr>\n<th scope='row'>3</th>\n<td><a href='root/" . basename($dir) . "'>" . basename($dir) . "</a></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><i class='fa-solid fa-trash'></i><i class='fa-regular fa-pen-to-square'></i></td></tr>";
         }
       }
-      
     }
-
-
-
-    # $folder = "root/";
-
-    
-    // echo "<script type='text/javascript'>"; 
-    // echo "\n"; 
-    // echo "const folder = document.querySelector('.folder')";
-    // echo "\n"; 
-    // echo "folder.addEventListener('click', openFolder => document.cookie = 'folder = this.textContent')";
-    // echo "\n"; 
-    
-      
-    // echo "</script>";
-
-    // $folder = $_COOKIE['folder'];
-
-    // echo $folder;
-
-
 
     ?>
   </tbody>
