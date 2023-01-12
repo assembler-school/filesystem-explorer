@@ -170,7 +170,7 @@ function constuctorTable(data, pathFile, trFile) {
                         img.src = "../image/txt.png";
                         break
                     case "img":
-                        img.src = "../image/img2.png";
+                        img.src = "../image/img2.jpeg";
                         break
                 }
                 tdRow.prepend(img);
@@ -204,7 +204,7 @@ function addNewFile() {
 
 
 function showInfoElement(event){
-    let atrituboFile = event.srcElement.getAttribute("filePath")
+    let atrituboFile = event.currentTarget.getAttribute("filePath")
     let pathExtension = getPathExtension(atrituboFile);
 
     switch(pathExtension){
