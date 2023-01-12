@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wisus Drive</title>
         <script src="js/script.js" defer></script>
+        <script src="js/uploadFile.js" defer></script>
+        <script src="js/selectElement.js" defer></script>
         <link rel="stylesheet" href="./css/style.css" type="text/css">
     </head>
     <body>
@@ -20,14 +22,14 @@
                 <div class="main-children">
                     <input type="text" id="searchInput" placeholder="Search">
                     <div id="buttonsOptionsContainer">
-                        <img id="addFolderImage" class="buttons-options" src="images/addFolder.png" alt="create folder icon">
-                        <div class="buttons-options">.</div>
-                        <div class="buttons-options">.</div>
-                        <div class="buttons-options">.</div>
+                        <img id="addFolderImage" class="buttons-options" title="Create a new folder" src="images/addFolder.png" alt="create folder icon">
+                        <img id="uploadFile" class="buttons-options" title="Upload a file" src="images/upload.png" alt="upload file icon">
+                        <img id="deleteFile" class="buttons-options" title="Delete a file" src="images/deleteIcon.png" alt="delete file icon">
+                        <img id="renameFile" class="buttons-options" title="Rename a folder or file" src="images/renameIcon.png" alt="rename file icon">
                     </div>
                     <div id="filesExplorerContainer">
                         <div id="filesPath">
-                            <ul id="filesList"><?php require_once "./modules/printFiles.php"?></ul>
+                            <ul id="filesList"><?php require_once "./modules/printFilesFirstChild.php"?></ul>
                         </div>
                         <div id="mediaFolderContainer">
                             <button class="media-folder-buttons">images</button>
@@ -39,11 +41,11 @@
                     </div>
                     <div id="informationFilesContainer">
                         <ul id="informationFilesList">
-                            <li class="information-files">Created: </li>
-                            <li class="information-files">Last modified: </li>
-                            <li class="information-files">Extension: </li>
-                            <li class="information-files">Size</li>
-                            <li class="information-files">Path: </li>
+                            <li id="creationInfo" class="information-files">Created: </li>
+                            <li id="modifiedInfo" class="information-files">Last modified: </li>
+                            <li id="extensioinInfo" class="information-files">Extension: </li>
+                            <li id="sizeInfo" class="information-files">Size</li>
+                            <li id="pathInfo" class="information-files">Path: </li>
                         </ul>
                     </div>
                 </div>
@@ -57,10 +59,11 @@
                         <div id="pathSecondChild">
                             <img id="arrowLeft" src="images/arrowLeft.png" alt="left arrow">
                             <img id="folderIcon" src="images/folderIconSmall.png" alt="folder icon">
-                            <p id="pathSecond">Directorio de la muerte</p>
+                            <p id="pathSecondFolderTitle"></p>
                         </div>
                         <div id="contentSecondChild">
-                            <div id="folderFilesContainer"></div>
+                            <div id="folderFilesContainer">
+                                <ul id="filesListSecondChild"><?php require_once "./modules/printFilesSecondChild.php"?></ul></div>
                             <p>30mb</p>
                             <p>Dic 32 26:65</p>
                         </div>
@@ -70,7 +73,11 @@
                     <p id="previewText">preview</p>
                 </div>
             </div>
+            <form id="formUploadFile" action="modules/uploadFiles.php" method="POST" enctype="multipart/form-data">
+                    <input id="inputUploadFile" onchange="this.form.submit()" type='file' name='file'>
+                </div>
+            </form>
         </main>
         <footer></footer>
     </body>
-</html>
+    </html>
