@@ -1,5 +1,5 @@
 <?php
-require_once ('./utils.php');
+require_once('./utils.php');
 define("ROOT", "./root");
 
 function loadFiles($parent, $path)
@@ -34,9 +34,9 @@ function paintFile($path, $file)
 
     if (isset($_REQUEST['p'])) { // En navegacion entre carpetas
 
-      $relativePath = 
-        strlen($_REQUEST['p']) > 0 
-        ? $_REQUEST['p'] . '/' . $file 
+      $relativePath =
+        strlen($_REQUEST['p']) > 0
+        ? $_REQUEST['p'] . '/' . $file
         : $file;
       createFileRow($absolutePath, $relativePath, $file, true, false);
     } else { // Primera apertura sin navegación
@@ -162,5 +162,27 @@ function getTypeIcon($type, $fileName)
 function drawIcon($fileExtension)
 {
   echo "<img src='./assets/$fileExtension.png' class='icon me-2' alt='$fileExtension' />";
+}
+
+function updateNavigationBreadcrum($dirName)
+{
+  ?>
+  <script>
+    const breadcrumb = document.querySelector('#breadcrumb');
+
+    const li = document.createElement('li');
+    li.classList.add('breadcrumb-item');
+    li.setAttribute('aria-current', 'page');
+
+    const a = document.createElement('a');
+    a.classList.add('link');
+    a.classList.add('text-white');
+    a.href = '?b=<?php echo $dirName ?>';
+    a.textContent = '<?php echo $dirName ?>';
+
+    li.append(a);
+    breadcrumb.append(li);
+  </script>
+  <?php
 }
 ?>

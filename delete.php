@@ -13,11 +13,11 @@ if (!is_dir($path)) {
 } else {
   $files = glob($path . '/*');
   foreach ($files as $file) {
-        if (is_dir($file)) {
-            rmdir($file);
-        } else {
-            unlink($file);
-        }
+    if (is_dir($file)) {
+      rmdir($file);
+    } else {
+      unlink($file);
+    }
   }
   rmdir($path);
   $msg = 'ok';

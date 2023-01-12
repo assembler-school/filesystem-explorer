@@ -5,7 +5,7 @@ session_start();
 $folderPath = './root';
 if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
   $_SESSION['relativePath'] = $_REQUEST['p'];
-  $_SESSION['absolutePath'] = $folderPath . '/' . $_REQUEST['p']; 
+  $_SESSION['absolutePath'] = $folderPath . '/' . $_REQUEST['p'];
   $folderPath = $folderPath . '/' . $_REQUEST['p'];
 } else {
   $_SESSION['relativePath'] = '';
@@ -13,7 +13,7 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
 }
 
 ?>
-  <?php include('./header.php') ?>
+<?php include('./header.php') ?>
 
 <body>
   <header>
@@ -33,10 +33,45 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
         <form action="index.php" method="POST">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item text-white">
-                <input type="hidden" value=<?php echo ROOT ?>>
-                <input class="folder-btn home-btn" type="submit" value="root">
-              </li>
+              <?php if (strlen($_SESSION['relativePath']) !== 0) {
+                ?>
+                <li class="breadcrumb-item active"><a class="text-white" href="?p=">Home</a></li>
+                <?php
+              } else {
+                ?>
+                <li class="breadcrumb-item text-white">Home</li>
+                <?php
+              }
+
+              $array = Utils::getBreadcrumb($_SESSION['relativePath']);
+              $array = array_values($array);
+
+              for ($i = 0; $i < count($array); $i++) {
+                if (strlen($array[$i]) !== 0) {
+                  if ((count($array) - $i) > 1) {
+                    ?>
+                    <li class="breadcrumb-item <?php echo 'active' ?>">
+                      <a class="text-white" href="?p=<?php
+                      for ($x = 0; $x <= $i; $x++) {
+                        echo $array[$x];
+                        if ($i > 0 && $x < $i)
+                          echo '/';
+                      }
+                      ?>">
+                        <?php echo $array[$i] ?>
+                      </a>
+                    </li>
+                    <?php
+                  } else {
+                    ?>
+                    <li class="breadcrumb-item text-white">
+                      <?php echo $array[$i] ?>
+                    </li>
+                    <?php
+                  }
+                }
+              }
+              ?>
             </ol>
           </nav>
         </form>

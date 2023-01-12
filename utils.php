@@ -41,6 +41,10 @@ class Utils
       return '';
   }
 
+  public static function getBreadcrumb($path) {
+    return explode('/', $path);
+  }
+
   public static function formatHtml($data)
   {
     $data = ltrim($data);
