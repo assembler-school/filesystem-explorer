@@ -21,11 +21,17 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <form action="upload-file.php" class="d-flex" method="GET" enctype="multipart/form-data">
-        <input class="form-control me-2 create-text" type="file" name="file" placeholder="File name to create..." aria-label="Search">
+      <form class="d-flex upload-file">
+        <input class="form-control me-2 file-to-upload" type="file" name="file" placeholder="File name..." >
         <button class="btn btn-secondary" type="submit" name="submit">Upload</button>
-        <!-- <button class="btn btn-success submit" type="submit">Submit</button> -->
       </form>
+      <div class="d-flex create-folder">
+        <input class="form-control me-2 folder-name" type="text" name="folder" placeholder="Folder name..." >
+        <button class="btn btn-secondary create-btn">Create Folder</button>
+      </div>
+      
+
+
     </div>
   </div>
 </nav>
@@ -75,26 +81,12 @@
 
       if (isset($_REQUEST['name'])){
 
-        echo "<script>
-        
-        alert(asdadasasd);
-
-        </script>"; 
-
         $folder = $folder . $_REQUEST['name']."/";
         displayDirectories($folder);
-        // checkRequest();
 
       } else {
 
-        echo "<script>
-        
-        alert('else');
-
-        </script>";
-
         displayDirectories($folder);
-        // checkRequest();
       }
      
     }
