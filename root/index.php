@@ -29,7 +29,11 @@
             </div>
 </nav>
 </header>
-
+<section class="pop-up-file hidden">
+            <div class="close-popup-file" id="close-popup"><i class="fa-solid fa-xmark"></i></div>
+            <div id="view-content"> </div>
+            <div class="cover"></div>
+</section>
 <main>
 
 <section id="folders">
@@ -46,7 +50,10 @@ if(is_dir($name) && $name !== "index.php"){
 }
 
 ?>
-
+<div>
+<input id="folder-name" type="text" placeholder="New folder">
+<button id="button-folder-name">Create new folder</button>
+</div>
 </div>
 </section>
 
@@ -64,18 +71,13 @@ if(is_dir($name) && $name !== "index.php"){
 </section>
 
 
-<section id="show-files">
+<!-- <section id="show-files">
     <p> file </p>
     <div id="display-content"></div>
     <button>Modify</button>
     <button>Delete</button>
 
-</section>
-
-<div>
-<input id="folder-name" type="text" placeholder="New folder">
-<button id="button-folder-name">Create new folder</button>
-</div>
+</section> -->
 
 <script src="../assets/js/app.js"></script>
 </body>
