@@ -7,22 +7,27 @@ session_start();
     if (file_exists($_POST['name-folder']) === true) {
       echo json_encode('El archivo o directorio ya existe');
     } else {
-      if (@mkdir("./root/" . $_POST['name-folder'], 0777) === false) {
+      if (@mkdir("root/" . $_POST['name-folder'], 0777, true)  === false) {
+        echo "error";
+      }
+      elseif (@mkdir($_SESSION["altPath"] . "/" . $_POST['name-folder'], 0777, true) === false) {
         echo "error";
       }
     }
 
-    if (!file_exists($_POST['name-folder']) === true) {
-      @mkdir($_SESSION["absPath"] . "/" . $_POST['name-folder'] , 0777);
-    } 
-    // else {
-    //   if (file_exists("./root/" . $_POST['name-folder'])) {
-    //     @mkdir($_SESSION["absPath"] . "/" . $_POST['name-folder'] , 0777);
-    //     }
-    // }
   }
 
+  // if (empty($_SESSION["altPath"]) === false) {
 
+  //   if (file_exists($_SESSION["altPath"]) === true) {
+  //     echo json_encode('El archivo o directorio ya existe');
+  //   } else {
+      // if (@mkdir("root/" . $_SESSION["altPath"] . "/" . $_POST['name-folder'], 0777, true) === false) {
+      //   echo "error";
+      // }
+  //   }
+
+  // }
 
 
 
