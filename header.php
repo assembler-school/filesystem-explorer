@@ -1,6 +1,3 @@
-<?php
-function getHeader()
-{ ?>
   <!DOCTYPE html>
   <html lang="en">
 
@@ -15,13 +12,3 @@ function getHeader()
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js" defer></script>
   </head>
-<?php }
-
-function getFooter()
-{ ?>
-  <footer>
-    <p class="text-end me-5">Designed by....</p>
-  </footer>
-  </body>
-  </html>
-<?php } ?>

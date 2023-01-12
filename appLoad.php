@@ -1,12 +1,12 @@
 <?php
+require_once ('./utils.php');
 define("ROOT", "./root");
-require_once './utils.php"';
 
 function loadFiles($parent, $path)
 {
   $files = array_diff(scandir($path), array('.', '..'));
   if (substr_count($path, "/") > 1) {
-    paintBackDir($parent);
+    paintBackRow($parent);
   }
   $dirs = [];
   $filesInDir = [];
@@ -34,7 +34,10 @@ function paintFile($path, $file)
 
     if (isset($_REQUEST['p'])) { // En navegacion entre carpetas
 
-      $relativePath = $_REQUEST['p'] . '/' . $file;
+      $relativePath = 
+        strlen($_REQUEST['p']) > 0 
+        ? $_REQUEST['p'] . '/' . $file 
+        : $file;
       createFileRow($absolutePath, $relativePath, $file, true, false);
     } else { // Primera apertura sin navegación
 
@@ -72,7 +75,7 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
         }
       } else {
         ?>
-      <a class="link" href=<?php echo "openFile.php?name=$fileName" ?>>
+      <a class="link" href=<?php echo "open.php?name=$fileName" ?>>
         <?php echo $fileName ?>
       </a>
       </td>
@@ -113,7 +116,7 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
   <?php
 }
 
-function paintBackDir()
+function paintBackRow()
 {
   $parent = getParent()
     ?>

@@ -1,5 +1,7 @@
 <?php
-require_once "./pdf.php";
+
+require_once('./pdf.php');
+
 class Utils
 {
 
@@ -47,7 +49,6 @@ class Utils
     return $data;
   }
 
-  // Deprecated
   public static function formatDocx($fileName)
   {
     $striped_content = '';
@@ -72,7 +73,7 @@ class Utils
     return $striped_content;
   }
 
-  public static function formatPdf($file)
+   public static function formatPdf($file)
   {
     $a = new PDF2Text();
     $a->setFilename($file);

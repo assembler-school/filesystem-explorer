@@ -1,7 +1,6 @@
 <?php
 session_start();
 define("ROOT", "./root");
-require_once('./htmlTags.php');
 require_once('./utils.php');
 
 $fileName = $_REQUEST['name'];
@@ -9,9 +8,8 @@ $relativePath = $_SESSION['relativePath'];
 $absolutePath = $_SESSION['absolutePath'];
 $GLOBALS['fileExtensionsAllowed'] = ['jpg', 'png', 'txt', 'docx', 'csv', 'ppt', 'odt', 'pdf', 'zip', 'rar', 'exe', 'svg', 'mp3', 'mp4'];
 
-getHeader();
+include('./header.php');
 ?>
-
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -26,7 +24,7 @@ getHeader();
   <article class="container-fluid mt-3">
     <?php openFile($absolutePath . '/' . $fileName, $fileName); ?>
   </article>
-  <?php getFooter(); ?>
+  <?php include('./footer.php') ?>
   <?php
 
 

@@ -1,9 +1,13 @@
 <?php
+
 session_start();
-$path = $_SESSION['absolutePath'];
+require_once './utils.php';
+
+$path = $_SESSION['absolutePath']; 
 $files = glob($path . '/*');
 
-if ($files) {
+$msg = '';
+if (count($files) > 0) {
   foreach ($files as $file) {
     if (is_file($file)) {
       unlink($file);
@@ -11,6 +15,9 @@ if ($files) {
       rmdir($file);
     }
   }
-}
+  $msg = 'ok';
+} else {
+  $msg = 'No files to remove';
+} 
 
-echo json_encode('ok');
+echo json_encode($msg);

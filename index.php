@@ -1,6 +1,5 @@
 <?php
-require_once('./htmlTags.php');
-require_once('./loadApp.php');
+require_once('./appLoad.php');
 session_start();
 
 $folderPath = './root';
@@ -14,7 +13,7 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
 }
 
 ?>
-<?php getHeader(); ?>
+  <?php include('./header.php') ?>
 
 <body>
   <header>
@@ -85,4 +84,4 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
       </button>
     </form>
   </article>
-  <?php getFooter(); ?>
+  <?php include('./footer.php') ?>
