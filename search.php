@@ -15,11 +15,11 @@
 
 // search();
 
+$directoriesFolders = [];
 
 function search2($e){
-    $directoriesFolders = array();
-    foreach (glob($e) as $name_fichero){
-        $fichero = $name_fichero;
+    global $directoriesFolders;
+    foreach (glob($e) as $fichero){
         if (!strpos($fichero, '.')) {
             array_push($directoriesFolders, $fichero);
             search2($fichero . "/*");
@@ -27,8 +27,8 @@ function search2($e){
             array_push($directoriesFolders, $fichero);
      }
     }
-    var_dump($directoriesFolders);
-    $findings = array();
+    print_r($directoriesFolders);
+    $findings = [];
     foreach ($directoriesFolders as $directory){
         if (strpos($directory, "ho")){
             array_push($findings, $directory);
