@@ -1,5 +1,6 @@
 <?php
 require_once('./utils.php');
+require_once('./js/alert.js');
 session_start();
 define("ROOT", "./root");
 
@@ -19,4 +20,4 @@ if ($fileExtension == 'rar') {
   Utils::formatZip($file, $pathToExtract);
 }
 
-header("Location: index.php?p=$returnPath");
+header("Location: index.php?p=$returnPath&rar");

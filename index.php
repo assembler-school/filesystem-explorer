@@ -137,4 +137,24 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
     </div>
   </div>
 
-  <?php include('./footer.php') ?>
+  <?php include('./footer.php');
+  if (isset($_REQUEST['rar'])) {
+    ?>
+    <script>
+      const alert = document.getElementById('liveAlertPlaceholder');
+      const wrapper = document.createElement('div')
+      wrapper.innerHTML = [
+        `<div class="alert alert-success alert-dismissible mt-3 col-2 offset-md-5" role="alert">`,
+        `   <div class="fw-bold">File extracted succesfully</div>`,
+        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+      ].join('')
+      setTimeout(() => {
+        alert.firstChild.remove();
+      }, 5000);
+      alert.append(wrapper)
+    </script>
+    <?php
+  }
+
+  ?>

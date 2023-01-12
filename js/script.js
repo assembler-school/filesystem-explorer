@@ -13,13 +13,13 @@ function deleteAll(e) {
         document.querySelectorAll('[data-file]').forEach(node => {
           node.remove();
         });
-        alert('Files deleted succesfully!', 'success');
+        custom_alert('Files deleted succesfully!', 'success');
       } else {
-        alert('No files', 'warning');
+        custom_alert('No files', 'warning');
       }
     })
     .catch(function () {
-      alert("Can't connect to backend, try latter", 'danger');
+      custom_alert("Can't connect to backend, try latter", 'danger');
     });
 }
 
@@ -38,10 +38,10 @@ function deleteFile(e, fileName) {
       if (res === 'ok') {
         document.querySelector(`[data-file='${fileName}']`).remove();
       }
-      alert('File deleted succesfully!', 'success');
+      custom_alert('File deleted succesfully!', 'success');
     })
     .catch(function () {
-      alert("Can't connect to backend, try latter", 'danger');
+      custom_alert("Can't connect to backend, try latter", 'danger');
     });
 }
 
@@ -61,7 +61,7 @@ function searchFile(e) {
       console.log(res)
     })
     .catch(function () {
-      alert("Can't connect to backend, try latter", 'danger');
+      custom_alert("Can't connect to backend, try latter", 'danger');
     });
 }
 
@@ -84,7 +84,7 @@ function renameFile(e) {
       }
     })
     .catch(function () {
-      alert("Can't connect to backend, try latter", 'danger');
+      custom_alert("Can't connect to backend, try latter", 'danger');
     });
 }
 

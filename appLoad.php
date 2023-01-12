@@ -44,7 +44,6 @@ function paintFile($path, $file)
       createFileRow($absolutePath, null, $file, true, true);
     }
   } else { // Si es un archivo
-
     createFileRow($absolutePath, null, $file, false, false);
   }
 }
@@ -74,8 +73,9 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
         <?php
         }
       } else {
+        $fileHref = str_replace(' ', '%20', $fileName);
         ?>
-      <a class="link" href=<?php echo "open.php?name=$fileName" ?>>
+      <a class="link" href=<?php echo "open.php?name=$fileHref " ?>>
         <?php echo $fileName ?>
       </a>
       </td>
