@@ -205,6 +205,7 @@ function addNewFile() {
 
 function showInfoElement(event){
     let atrituboFile = event.srcElement.getAttribute("filePath")
+    
     let pathExtension = getPathExtension(atrituboFile);
 
     switch(pathExtension){
