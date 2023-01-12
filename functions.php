@@ -1,32 +1,30 @@
 <?php
 
-// $route = "root";
+$route = "./root";
 
-//   function viewElements($route){
-//     if (is_dir($route)){
-//         $manager = opendir($route);
-//         echo "<ul>";
+  function viewElements($route){
+    if (is_dir($route)){
+        $manager = opendir($route);
+        echo "<ul>";
         
-//         while (($file = readdir($manager)) !== false)  {
+        while (($file = readdir($manager)) !== false)  {
 
-//             $complete_route = $route . "/" . $file;
+            $complete_route = $route . "/" . $file;
 
-//             if ($file != "." && $file != "..") {
-//                 if (is_dir($complete_route)) {
-//                     echo "<li class='folderElements'>" . $file . "</li>";
-//                     viewElements($complete_route);
-//                 } else {
-//                     echo "<li class='folderElements'>" . $file . "</li>";
-//                 }
-//             }
-//         }
+            if ($file != "." && $file != "..") {
+                if (is_dir($complete_route) or is_file($complete_route)) {
+                    echo "<li class='folderElements'><a href='?go=$file'>$file</a></li>";
+                    viewElements($complete_route);
+                } else {
+                    echo "<li class='folderElements'>" . $file . "</li>";
+                }
+            }
+        }
 
-//         closedir($manager);
-//         echo "</ul>";
-//     } else {
-//         echo "Not a valid directory path<br/>";
-//     }
-// }
+        closedir($manager);
+        echo "</ul>";
+    } 
+}
 
 
 // $ruta = "files";
@@ -101,16 +99,6 @@
 //                                 "<img src='./assets/icons/dark/ppt-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
 //                         "</a>";
 //                 }
-//                 if($tipo_archivo === 'application/octet-stream'){
-//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
-//                                 "<img src='./assets/icons/dark/rar-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
-//                         "</a>";
-//                 }
-//                 if($tipo_archivo === 'image/svg+xml'){
-//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
-//                                 "<img src='./assets/icons/dark/svg-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
-//                         "</a>";
-//                 }
 //                 if($tipo_archivo === 'application/x-zip-compressed'){
 //                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
 //                                 "<img src='./assets/icons/dark/zip-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
@@ -157,7 +145,17 @@
 //         // Close the file buffer
 //         fclose($file);
 //     }else{
-//         echo "error";
+//         echo "error";               }
+//                 if($tipo_archivo === 'application/octet-stream'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/rar-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//                 }
+//                 if($tipo_archivo === 'image/svg+xml'){
+//                     echo "<a href='" . $ruta . "/" . $archivo . "'>" .
+//                                 "<img src='./assets/icons/dark/svg-dark.png' width='150px' alt='" . $archivo . "' title='" . $archivo . "'>" .
+//                         "</a>";
+//  
 //     }
 // }
 
