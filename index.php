@@ -19,7 +19,7 @@ if(!empty($_SESSION['user'])){
 </head>
 <body>
     <div id="loginBody"> 
-        <img id="logoLogin" src="image/logo.webp" alt="Logo"/>
+        <img id="logoLogin" src="image/logoNew.png" alt="Logo"/>
         <form id="form" method="post" action="assets/login.php">
             <div class="usernameLogin marginLogin">
                 <label for="username">Username</label><br>

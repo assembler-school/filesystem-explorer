@@ -16,7 +16,7 @@
         <nav id="navigation">
             <div id="logo"> 
                 <a href='./root'>
-                    <img src="./image/logo.webp" alt="Logo" id="logo-panel">
+                    <img src="./image/logoNew.png" alt="Logo" id="logo-panel">
                 </a>
             </div>
             <div id="search"> 
@@ -25,10 +25,32 @@
             </form>
             </div>
             <div id="user"> 
-                <img src="" alt="User image">
+            <a href="./assets/close-session.php">
+                <button>Sign out</button>
+            </a>
             </div>
         </nav>
     </header>
-    <textarea>It was a dark and stormy night...</textarea>
+
+<div class="text-editor">
+    <h1>Text editor</h1>
+
+    <form method="POST" action="./assets/edit-text.php"> 
+    <textarea name="text">
+        <?php 
+        $file = $_GET["pathFile"];
+        $content = file_get_contents("./".$file);
+        echo $content;
+        ?> 
+        </textarea>
+        <input name="pathFile" type="hidden" value="<?php echo "../$file"; ?>" >
+
+    <button>Save changes</button>
+</form>
+</div>
+
+
+
+
 </body>
 </html>

@@ -209,10 +209,9 @@ function showInfoElement(event){
 
     switch(pathExtension){
         case "txt":
-            let pathTxt = "../" + atrituboFile;
-            fetch("assets/display-info-file.php?filePath=" + pathTxt)
-                .then(response => response.json())
-                .then(data => createFileContent("txt", data, atrituboFile))
+            let cutPath = atrituboFile.indexOf("/");
+            let pathFile = atrituboFile.slice(cutPath + 1);
+            window.location.replace("../text-editor.php?pathFile="+pathFile)
 
             break
         case "img":

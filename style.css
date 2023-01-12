@@ -48,7 +48,7 @@ gap: 10px;
 
 header{
 padding: 10px;
-background-color: aqua;
+background-color: #F9DCC4;
 }
 
 #navigation{
@@ -113,7 +113,11 @@ font-size: 0.8rem;
 #tableFolder{
     margin-bottom:10px;
     font-size:14px;
-    text-align:right;
+    text-align: left;
+}
+
+#tableFolder img{
+    height:18px;
 }
 
 /* Search */
@@ -193,4 +197,17 @@ width: calc(100% - 20px);
 
 .file-search.no-folder {
     padding: 10px 0px;
+}
+
+
+/* editor de texto */
+
+.text-editor{
+    width: 100%;
+}
+
+.text-editor textarea{
+    width: 80%;
+    height: 50vh;
+    margin: 5% 10%;
 }

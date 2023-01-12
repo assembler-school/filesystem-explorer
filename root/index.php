@@ -15,7 +15,7 @@
     <header>
         <nav id="navigation">
             <div id="logo"> 
-                <img src="../image/logo.webp" alt="Logo" id="logo-panel">
+                <img src="../image/logoNew.png" alt="Logo" id="logo-panel">
             </div>
             <div id="search"> 
                 <form method="get" action="../search.php">
@@ -71,13 +71,6 @@ if(is_dir($name) && $name !== "index.php"){
 </section>
 
 
-<!-- <section id="show-files">
-    <p> file </p>
-    <div id="display-content"></div>
-    <button>Modify</button>
-    <button>Delete</button>
-
-</section> -->
 
 <script src="../assets/js/app.js"></script>
 </body>
