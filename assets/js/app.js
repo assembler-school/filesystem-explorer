@@ -210,7 +210,7 @@ function showInfoElement(event){
         case "txt":
             let cutPath = atrituboFile.indexOf("/");
             let pathFile = atrituboFile.slice(cutPath + 1);
-            window.location.replace("../text-editor.php?pathFile="+pathFile)
+            window.location.replace("../text-editor.php?pathFile="+pathFile);
             break
         case "img":
             createFileContent("img", atrituboFile);

@@ -44,12 +44,11 @@
         </textarea>
         <input name="filePath" type="hidden" value="<?php echo "../$file"; ?>" >
 
-    <button>Save changes</button>
+    <button>Save changes</button> <button id="delete-txt" filePath="<?php echo "../$file"; ?>">Delete file</button>
 </form>
 </div>
 
 
-
-
+<script src="assets/js/txt-editor.js"></script>
 </body>
 </html>
