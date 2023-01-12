@@ -1,5 +1,5 @@
 
-function submit() {
+function uploadFile() {
   document.getElementById('uploadForm').submit();
 }
 

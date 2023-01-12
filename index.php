@@ -19,10 +19,7 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <h4 class="text-white m-0 ms-4">File Explorer</h4>
-      <form class="navbar-brand m-0 ms-3 me-3 text-white" action="index.php" method="POST">
-        <input type="hidden" name="path" value=<?php echo ROOT ?>>
-        <button type="submit" class="home-btn folder-btn"><i class="bi bi-house"></i></button>
-      </form>
+        <a href="?p=" class="home-btn folder-btn m-3"><i class="bi bi-house"></i></a>
       <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -80,15 +77,15 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
-      <form action="uploadFile.php" method="POST" enctype="multipart/form-data" id="uploadForm">
+      <form action="upload.php" method="POST" enctype="multipart/form-data" id="uploadForm">
         <input type="hidden" name="MAX_FILE_SIZE" value="100000">
         <label for="file-upload" class="custom-file-upload m-2 me-4">
           <i class="bi bi-cloud-upload m-2"></i>Upload
         </label>
-        <input name="userfile" type="file" id="file-upload" onchange="submit();">
+        <input name="userfile" type="file" id="file-upload" onchange="uploadFile();">
       </form>
 
-      <form action="createFile.php" method="POST" id="createForm">
+      <form action="create.php" method="POST" id="createForm">
         <label for="file-create" class="custom-file-create m-2 me-4">
           <i class="bi bi-plus-square m-2"></i></i>Create
         </label>

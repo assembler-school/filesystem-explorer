@@ -102,7 +102,7 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
       $fileExtension = strtolower(end($filetmp));
       if ($fileExtension === 'zip' || $fileExtension === 'rar') {
         ?>
-        <form action="unzipFile.php" method="POST">
+        <form action="unzip.php" method="POST">
           <input name="file" type="hidden" value="<?php echo $fileName ?>">
           <button type="submit" class="border border-0 bg-transparent">
             <i class="bi bi-file-zip"></i>
