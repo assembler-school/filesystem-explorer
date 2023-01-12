@@ -57,7 +57,6 @@
     <aside class="details-container">
         <?php
         require_once('./modules/getFileInfo.php');
-        getFileInfo()
         ?>
     </aside>
 

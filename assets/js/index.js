@@ -122,7 +122,7 @@ function openMenu(event) {
   currentFolder = event.target;
   menu.classList.remove("hidden");
   menu.style.left = event.pageX - 10 + "px";
-  menu.style.top = event.pageY - 10 + "px";
+  menu.style.top = event.pageY  - 10 + "px";
 
   setTimeout(() => {
     menu.style.opacity = 1;
