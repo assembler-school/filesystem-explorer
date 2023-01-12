@@ -54,7 +54,7 @@ function array_search_partial($arr, $keyword) {
             <div class="close-popup-file" id="close-popup"><i class="fa-solid fa-xmark"></i></div>
             <div id="view-content"> </div>
             <div class="cover"></div>
-        </section>
+    </section>
     <main class="search-main">
         <section class="view-files">
 
@@ -108,28 +108,7 @@ function array_search_partial($arr, $keyword) {
             }
         }  
         ?>
-
         </section>
         </main>
         <script src="assets/js/results.js"></script>
-        <script>
-            const file = document.querySelectorAll('.file-search');
-            const btnClosePopUp = document.getElementById("close-popup");
-
-            file.forEach(item => {
-                item.addEventListener('click', displayPopUp);
-            })
-
-            function displayPopUp(){
-                const viewContent = document.querySelector('.pop-up-file');
-                viewContent.classList.toggle('hidden');
-            }
-
-            btnClosePopUp.addEventListener('click', closePopUp);
-
-            function closePopUp(){
-                const viewContent = document.querySelector('.pop-up-file');
-                viewContent.classList.toggle('hidden');
-            }
-        </script>
 </body>

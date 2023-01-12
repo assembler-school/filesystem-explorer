@@ -53,7 +53,7 @@ background-color: aqua;
 
 #navigation{
     display: grid;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 20% 80%;
     justify-content:space-between;
 }
 
