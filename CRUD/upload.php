@@ -47,4 +47,7 @@ if (isset($_FILES['nombre']['error'])) { //Valida si no hay errores
     }
 }
 
+
+
+
 ?>

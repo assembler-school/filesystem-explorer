@@ -1,7 +1,17 @@
 <?php
-// include "functions.php";
-include "CRUD/create.php";
-include "CRUD/upload.php";
+require_once("CRUD/create.php");
+require_once( "CRUD/upload.php");
+require_once( "CRUD/folder-list.php");
+
+
+$raiz = './root';
+if(isset($_REQUEST['route'])){
+    $raiz = $raiz . '/' . $_REQUEST['route'];
+}
+echo 'carpeta es: ' .$raiz;
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,26 +34,10 @@ include "CRUD/upload.php";
 
             <div class="col-md-2">
 
-                <!-- <form action="" enctype="multipart/form-data" method="POST">
-                    <select name="create" id="create-bttn">
-                        <option value="folder">Folder</option>
-                        <option value="doc">DOC</option>
-                        <option value="csv">CSV</option>
-                        <option value="jpg">JPG</option>
-                        <option value="png">PNG</option>
-                        <option value="txt">TXT</option>
-                        <option value="ppt">PPT</option>
-                        <option value="odt">ODT</option>
-                        <option value="pdf">PDF</option>
-                        <option value="zip">ZIP</option>
-                        <option value="rar">RAR</option>
-                        <option value="exe">EXE</option>
-                        <option value="svg">SVG</option>
-                        <option value="mp3">MP3</option>
-                        <option value="mp4">MP4</option>
-                    </select>
-                    <input type="submit" value="create">
-                </form> -->
+                <form method="POST" class="nombre-fom">
+                    <input type="text" name="nombre" />
+                    <input type="submit" name="crear" class="refresh" />
+                </form>
 
             </div>
 
@@ -64,18 +58,19 @@ include "CRUD/upload.php";
         <div class="row" id="content-box">
 
             <div class="col-md-3 border border-dark-1" id="root">
+                <?php viewElements($root,"./root");?>
             </div>
 
 
             <div class="col-md-7" id="content-element">
                 <div class="row text-center">
 
-                    <?php  echo $listar ?>
+                    <?php  viewElements($root, $raiz);?>
                 </div>
             </div>
 
 
-            <div class="col-md-2 border border-dark-1">
+            <div class="col-md-2 border border-dark-1" id="prueba">
             </div>
 
         </div>
