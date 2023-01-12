@@ -1,15 +1,26 @@
 <?php
+// session_start();
+
 require_once("CRUD/create.php");
 require_once( "CRUD/upload.php");
 require_once( "CRUD/folder-list.php");
 
-$raiz = './root';
-if(isset($_REQUEST['route'])){
-    $raiz = $raiz . '/' . $_REQUEST['route'];
-}
-echo 'carpeta es: ' .$raiz;
 
-holaaaa
+// $raiz = './root';
+// if(isset($_REQUEST['route'])){
+//     $raiz = $raiz . '/' . $_REQUEST['route'];
+// }
+// echo 'carpeta es: ' .$raiz;
+
+
+$folderEstructure = './root';
+if(isset($_REQUEST['route'])){
+    $_SESSION["altPath"] = $_REQUEST["route"];
+    $_SESSION["absPath"] = $folderEstructure . '/' . $_REQUEST["route"];
+    $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,22 +40,49 @@ holaaaa
     <header class="container-fluid" id="header">
 
         <div class="content-buttons row ">
-
             <div class="col-md-2">
+
+                <input type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" value="Create">
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">New folder</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form method="POST" target="" class="create-form">
+                                <div class="modal-body text-center">
+                                    <input type="text" size="25" placeholder="Folder name" name="name-folder">
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="submit" value="Save changes" class="refresh">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="col-md-2">
 
                 <form method="POST" class="nombre-fom">
                     <input type="text" name="nombre" />
                     <input type="submit" name="crear" class="refresh" />
                 </form>
 
-            </div>
+            </div> -->
 
             <div class="col-md-10">
 
                 <form action="index.php" enctype="multipart/form-data" method="POST">
                     <input type="file" name="nombre" id="">
                     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
-                    <input type="submit" value="Upload">
+                    <input type="submit" value="Upload" class="refresh">
                 </form>
 
             </div>
@@ -56,14 +94,13 @@ holaaaa
         <div class="row" id="content-box">
 
             <div class="col-md-3 border border-dark-1" id="root">
-                <?php viewElements($root,"./root");?>
+                <?php viewElements($root, "./root");?>
             </div>
 
 
             <div class="col-md-7" id="content-element">
                 <div class="row text-center">
-
-                    <?php  viewElements($root, $raiz);?>
+                    <?php  viewElements($root, $folderEstructure);?>
                 </div>
             </div>
 
@@ -77,7 +114,7 @@ holaaaa
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
-    <script src="script.js" defer></script>
+    <script src="script.js?v=<?php echo (rand()); ?>" defer></script>
 
 </body>
 

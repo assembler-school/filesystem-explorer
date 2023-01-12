@@ -1,4 +1,4 @@
-let camposForm = document.querySelector('.nombre-fom').elements;
+let camposForm = document.querySelector('.create-form').elements;
 let prueba = document.querySelector('#prueba');
 
 let btn = document.querySelector('.refresh');
@@ -7,7 +7,7 @@ btn.addEventListener('submit', function(e){
 e.preventDefault();
 let formData ={};
 
-for(let i = 0; i< camposForm.lentht; i++){
+for(let i = 0; i< camposForm.lenght; i++){
 	formData[camposForm[i].name] = camposForm[i].value;
 }
 

@@ -1,4 +1,5 @@
 <?php
+// session_start();
 
 if (isset($_FILES['nombre']['error'])) { //Valida si no hay errores
     $dir = "root/"; //Directorio de carga

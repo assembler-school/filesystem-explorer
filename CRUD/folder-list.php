@@ -1,4 +1,36 @@
 <?php
+// session_start();
+
+// $root = "./root";
+
+//   function viewElements($root){
+//     if (is_dir($root)){
+//         $manager = opendir($root);
+//         echo "<ul>";
+        
+//         while (($file = readdir($manager)) !== false)  {
+
+//             $complete_route = $root . "/" . $file;
+
+//             if ($file != "." && $file != "..") {
+//                 if (is_dir($complete_route)) {
+//                     echo "<li class='folderElements'><a href='?route=$file'>" . $file . "</a></li>";
+//                      viewElements($complete_route);
+//                 } else {
+//                     echo "<li class='folderElements'><a href='?route=$file'>" . $file . "</a></li>";
+//                 }
+//             }
+//         }
+
+//         closedir($manager);
+//         echo "</ul>";
+//     } else {
+//         echo "Not a valid directory path<br/>";
+//     }
+// }
+
+// -----------------------------------------------------------------
+
 
 $root = "./root";
 
@@ -14,9 +46,9 @@ $root = "./root";
             if ($file != "." && $file != "..") {
                 if (is_dir($complete_route)) {
                     echo "<li class='folderElements'><a href='?route=$file'>" . $file . "</a></li>";
-                    
+                //    viewElements($complete_route);
                 } else {
-                    echo "<li class='folderElements'>prueba</li>";
+                    echo "<li class='folderElements'><a href='?route=$file'>" . $file . "</a></li>";
                 }
             }
         }
@@ -28,7 +60,7 @@ $root = "./root";
     }
 }
 
-
+// ----------------------------------------------------------------------------
 
 // function showFiles($raiz){
 //     $dir = opendir($route);
