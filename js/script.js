@@ -23,7 +23,7 @@ function deleteAll(e) {
     });
 }
 
-function deleteForm(e) {
+function deleteFile(e) {
   e.preventDefault();
   const fileName = e.target.parentNode.parentNode.getAttribute('data-file');
   const file = new FormData();
@@ -53,14 +53,38 @@ function searchFile(e) {
   const searchData = new FormData();
   searchData.append('search', searchValue)
   fetch("./search.php",
-  {'method': 'POST',
-    'body': searchData
-})
-.then(res=> res.json())
-.then(res=> {
-  console.log(res)
-})
-.catch(function () {
-  alert("Can't connect to backend try latter");
-});
+    {
+      'method': 'POST',
+      'body': searchData
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+    })
+    .catch(function () {
+      alert("Can't connect to backend try latter");
+    });
+}
+
+function renameFile(e) {
+  e.preventDefault();
+  const fileName = e.target.parentNode.parentNode.getAttribute('data-file');
+  const file = new FormData();
+  file.append("fileName", fileName);
+  const config = {
+    'method': 'POST',
+    'body': file,
+  }
+  console.log(fileName);
+  fetch("./rename.php", config)
+    .then(res => res.json())
+    .then(res => {
+      if (res === 'ok') {
+
+
+      }
+    })
+    .catch(function () {
+      alert("Can't connect to backend try latter");
+    });
 }

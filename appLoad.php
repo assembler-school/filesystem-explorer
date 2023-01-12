@@ -6,7 +6,7 @@ function loadFiles($parent, $path)
 {
   $files = array_diff(scandir($path), array('.', '..'));
   if (substr_count($path, "/") > 1) {
-    paintBackRow($parent);
+    paintBackRow();
   }
   $dirs = [];
   $filesInDir = [];
@@ -89,10 +89,17 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
       echo date("D d M Y", $fecha_f) ?>
     </td>
     <td>
-      <!--DELETE -->
-      <form onsubmit="deleteForm(event);">
+      <!-- RENAME -->
+      <form onsubmit="renameFile(event);" class="me-2">
         <button type="submit" class="border border-0 bg-transparent">
-          <i class="bi bi-trash"></i>
+          <i class="bi bi-pen-fill"></i>
+        </button>
+      </form>
+
+      <!--DELETE -->
+      <form onsubmit="deleteFile(event);" class="me-2">
+        <button type="submit" class="border border-0 bg-transparent">
+          <i class="bi bi-x-circle-fill"></i>
         </button>
       </form>
 
@@ -102,15 +109,16 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
       $fileExtension = strtolower(end($filetmp));
       if ($fileExtension === 'zip' || $fileExtension === 'rar') {
         ?>
-        <form action="unzip.php" method="POST">
+        <form action="unzip.php" method="POST" class="me-2">
           <input name="file" type="hidden" value="<?php echo $fileName ?>">
           <button type="submit" class="border border-0 bg-transparent">
-            <i class="bi bi-file-zip"></i>
+            <i class="bi bi-file-earmark-zip-fill"></i>
           </button>
         </form>
         <?php
       }
       ?>
+
     </td>
   </tr>
   <?php
