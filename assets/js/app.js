@@ -116,13 +116,12 @@ function showelementosOfFolder(data) {
 
     })
 
-
-
     let folderElement = document.querySelectorAll(".elemtoOfFolder");
     folderElement.forEach((item) => {
         item.addEventListener("click", showInfoElement)
     });
 }
+
 
 function constuctorTable(data, pathFile, trFile) {
     for (let i = 0; i < 4; i++) {
@@ -178,7 +177,6 @@ function constuctorTable(data, pathFile, trFile) {
             }
             trFile.appendChild(tdRow);
          } 
-
 }
 
 
@@ -190,7 +188,6 @@ function getPathExtension(path){
     if(formatImg.includes(pathExtension)){
         pathExtension = "img";
     }
-
     return pathExtension;
 }
 
@@ -203,6 +200,7 @@ function addNewFile() {
 }
 
 
+const btnDeleteFile = document.querySelector("#delete-file");
 
 function showInfoElement(event){
     let atrituboFile = event.currentTarget.getAttribute("filePath")
@@ -213,7 +211,6 @@ function showInfoElement(event){
             let cutPath = atrituboFile.indexOf("/");
             let pathFile = atrituboFile.slice(cutPath + 1);
             window.location.replace("../text-editor.php?pathFile="+pathFile)
-
             break
         case "img":
             createFileContent("img", atrituboFile);
@@ -230,8 +227,8 @@ function showInfoElement(event){
     }
 
     displayPopUp();
-    const btnDeleteFile = document.querySelector("#delete-file");
-    btnDeleteFile.addEventListener("click", deleteFile(atrituboFile));
+    btnDeleteFile.setAttribute("filePath", atrituboFile)
+    btnDeleteFile.addEventListener("click", deleteFile); 
 
 }
 
@@ -273,10 +270,10 @@ function createFileContent(typeFile, data) {
 }
 
 
-function deleteFile(filePath){
+function deleteFile(event){
     const popUpDeleteConfirm = confirm("Do you want delete this file?");
-        
     if (popUpDeleteConfirm) {
+        let filePath = event.srcElement.getAttribute("filePath");
     fetch("../assets/delete-file.php?filePath="+filePath);
     location.reload();
 }
