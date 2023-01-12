@@ -3,9 +3,15 @@ const ul = document.querySelector("#filesList");
 const folderFilesContainer = document.querySelector("#folderFilesContainer");
 const filesPath = document.querySelector("#filesPath");
 let inputValue;
+let inputRename;
+let reNameFolder;
 let nameFolder;
 let li;
+let inputEdit;
 let inputCounter = 0;
+
+
+ul.addEventListener("dblclick", renameFiles);
 
 addFolderImage.addEventListener("click", showImageFolder);
 /* filesPath.addEventListener("dblclick", renameFolder);
@@ -52,7 +58,56 @@ function loadFolderImages(){
     span.textContent = nameFolder;
 } */
 
-function showImageFolder(){
+function renameFiles(e) {
+    if (e.target.matches(".text-list")) {
+        let inputValue = e.target;
+        let padre = e.target.parentNode;
+        inputRename = document.createElement("input");
+        inputRename.setAttribute("id", "folderValues");
+        inputRename.setAttribute("class", "folder-list-input");
+        inputRename.setAttribute("type", "text");
+        inputRename.setAttribute("value", inputValue.textContent);
+        padre.replaceChild(inputRename, inputValue);
+        inputRename.addEventListener("focusout", checkDirectoryReName);
+        inputRename.select();
+    }
+}
+
+function checkDirectoryReName(){
+    fetch("modules/checkDirectoryName.php" + "?" + "directoryName=" + inputRename.value, {
+        method: "GET",
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            getInputRenameValue(data);
+        })
+        .catch((err) => console.log("Request failed: ", err));
+}
+
+function getInputRenameValue(data){ 
+    if (data === "Exist") {
+        inputRename.select();
+    } else {
+        reNameFolder = inputRename.value;
+        console.log(reNameFolder);
+        const p = document.createElement("p");
+        p.classList.add("folder-list-p");
+        p.textContent = reNameFolder;
+        li.setAttribute("data-path", reNameFolder + "/");
+        // li = document.querySelector("#folderValues");
+        inputRename.remove();
+        li.appendChild(p);
+       
+        renameFolder();
+    }
+}
+
+function renameFolder(){
+    console.log("hola")
+};
+
+function showImageFolder() {
     li = document.createElement("li");
     li.setAttribute("id", "folderValues");
     li.setAttribute("class", "first-list");
@@ -74,27 +129,27 @@ function showImageFolder(){
     addFolderImage.removeEventListener("click", showImageFolder);
 }
 
-function checkDirectoryName(){
+function checkDirectoryName() {
     fetch("modules/checkDirectoryName.php" + "?" + "directoryName=" + inputValue.value, {
         method: "GET",
     })
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-        getInputValue(data);
-    })
-    .catch((err) => console.log("Request failed: ", err));
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            getInputValue(data);
+        })
+        .catch((err) => console.log("Request failed: ", err));
 }
 
-function getInputValue(data){
-    if(data ==="Exist"){
+function getInputValue(data) {
+    if (data === "Exist") {
         inputValue.select();
-    } else{
+    } else {
         nameFolder = inputValue.value;
-        const p =  document.createElement("p");
+        const p = document.createElement("p");
         p.classList.add("folder-list-p");
         p.textContent = nameFolder;
-        li.setAttribute("data-path", nameFolder+"/");
+        li.setAttribute("data-path", nameFolder + "/");
         li = document.querySelector("#folderValues");
         inputValue.remove();
         li.appendChild(p);
@@ -106,12 +161,12 @@ function getInputValue(data){
 
 function createFolder() {
     fetch("modules/createFolder.php" + "?" + "directoryName=" + dataPath + nameFolder, {
-            method: "GET",
-        })
+        method: "GET",
+    })
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            if(data==="Error creando directorio"){
+            if (data === "Error creando directorio") {
                 console.log("estoy dentro")
                 li.remove();
                 img.remove();

@@ -12,7 +12,6 @@ filesPath.addEventListener("click", printFolderTitleName);
 
 function selectElementChildren(event) {
     let selectedElementChildren = event.target.parentNode;
-    console.log(selectedElementChildren);
     if (selectedElementChildren.classList.contains("first-list")) {
         let firstList = selectedElementChildren;
         firstList.style.backgroundColor = "yellow";
@@ -20,7 +19,6 @@ function selectElementChildren(event) {
 }
 function selectElementFather(event) {
     let selectedElementFather = event.target;
-    console.log(selectedElementFather);
     if (selectedElementFather.classList.contains("first-list")) {
         let firstList = selectedElementFather;
         firstList.style.backgroundColor = "yellow";
@@ -30,7 +28,6 @@ function selectElementFather(event) {
 function printFolderTitleName(event) {
     let selectedElement = event.target.parentNode;
     dataPath = selectedElement.getAttribute('data-path');
-    console.log(dataPath);
     printInfoFiles();
     if (selectedElement.getAttribute('type') == "folder") {
         pathSecondFolderTitle.textContent = "files/" + dataPath;
