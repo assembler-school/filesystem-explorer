@@ -1,6 +1,5 @@
 <?php
 
-
 $newFolderName = $_GET['nameFolder'];
 
 $folder = json_encode($newFolderName);
