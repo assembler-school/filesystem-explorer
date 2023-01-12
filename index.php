@@ -1,13 +1,18 @@
 <?php
-require_once("CRUD/create.php");
-require_once( "CRUD/upload.php");
-require_once( "CRUD/folder-list.php");
+require_once("./CRUD/create.php");
+require_once( "./CRUD/upload.php");
+require_once( "./CRUD/folder-list.php");
 
-$raiz = './root';
+
+
+$folderEstructure = './root';
 if(isset($_REQUEST['route'])){
-    $raiz = $raiz . '/' . $_REQUEST['route'];
+    $_SESSION["altPath"] = $_REQUEST["route"];
+    $_SESSION["absPath"] = $folderEstructure . '/' . $_REQUEST["route"];
+    $submitData = $_POST["name-folder"];
+    $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
+    
 }
-echo 'carpeta es: ' .$raiz;
 
 ?>
 <!DOCTYPE html>
@@ -45,12 +50,12 @@ echo 'carpeta es: ' .$raiz;
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <form method="POST" target="">
+                            <form method="POST" target="" class="create-form">
                                 <div class="modal-body text-center">
                                     <input type="text" size="25" placeholder="Folder name" name="name-folder">
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="submit" value="Save changes" id="refresh">
+                                    <input type="submit" value="Save changes" class="refresh">
                                 </div>
                             </form>
                         </div>
@@ -75,14 +80,14 @@ echo 'carpeta es: ' .$raiz;
         <div class="row" id="content-box">
 
             <div class="col-md-3 border border-dark-1" id="root">
-                <?php viewElements($root,"./root");?>
+                <?php viewElements($root);?>
             </div>
 
 
             <div class="col-md-7 border border-dark-1" id="content-element">
                 <div class="row text-center">
 
-                    <?php  viewElements($root, $raiz);?>
+                    <?php  viewElements($folderEstructure);?>
                 </div>
             </div>
 

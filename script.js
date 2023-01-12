@@ -1,31 +1,31 @@
-let camposForm = document.querySelector('.nombre-fom').elements;
-let prueba = document.querySelector('#prueba');
+// let camposForm = document.querySelector('.create-form').elements;
+// let prueba = document.querySelector('#prueba');
 
-let btn = document.querySelector('.refresh');
+// let btn = document.querySelector('.refresh');
 
-btn.addEventListener('submit', function(e){
-e.preventDefault();
-let formData ={};
+// btn.addEventListener('submit', function(e){
+// // e.preventDefault();
+// let formData ={};
 
-for(let i = 0; i< camposForm.lentht; i++){
-	formData[camposForm[i].name] = camposForm[i].value;
-}
+// for(let i = 0; i< camposForm.lenght; i++){
+// 	formData[camposForm[i].name] = camposForm[i].value;
+// }
 
-let datos = formData;
-fetch('CRUD/create.php',{
-	method:'POST',
-	body:JSON.stringify(datos)
-})
-.then(function(response) {
-            if (response.ok) {
-                prueba.innerHTML = "se ha creado el archivo";
+// let datos = formData;
+// fetch('CRUD/create.php',{
+// 	method:'POST',
+// 	body:JSON.stringify(datos)
+// })
+// .then(function(response) {
+//             if (response.ok) {
+//                 prueba.innerHTML = "se ha creado el archivo";
                 
-            } else {
-                prueba.innerHTML = "Ha ocurrido un error";
-            }
-        });
+//             } else {
+//                 prueba.innerHTML = "Ha ocurrido un error";
+//             }
+//         });
 
-})
+// })
 
 
 

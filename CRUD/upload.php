@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_FILES['nombre']['error'])) { //Valida si no hay errores
-    $dir = "root/"; //Directorio de carga
+    $dir = "./root/"; //Directorio de carga
     $tamanio = 40000; //Tamaño permitido en kb
     $permitidos = array("jpg", "pdf", "csv", "doc", "exe", "mp3", "mp4", "odt", "png", "ppt", "rar", "zip", "svg"); //Archivos permitidos
     $ruta_carga = $dir . $_FILES['nombre']['name'];
