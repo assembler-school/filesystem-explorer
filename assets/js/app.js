@@ -128,13 +128,13 @@ let size = "";
             let sizeMb = Math.round(data.size / 1024000*10)/10;
             size = sizeMb + "MB"; 
         }
-
-console.log(data.size)
+        
         let infoTd = "";
             switch(i){
                 case 0:
                     infoTd = pathFile;
                     break
+
                 case 1: 
                     infoTd = data.modify;
                     break
@@ -145,15 +145,48 @@ console.log(data.size)
                     infoTd = size;
                     break
             }
-            trFile.appendChild(document.createElement("td")).textContent = infoTd;
-         } 
+            let tdRow = document.createElement("td");
+            tdRow.textContent = infoTd;
 
-         console.log(data)
+
+            if(i===0){
+                let extension = getPathExtension(pathFile);
+                console.log(extension)
+               let img = document.createElement("img");
+               
+                switch(extension){
+                    case "mp3":
+                    img.src = "../image/mp3.png";
+                        break
+                    case "mp4":
+                    img.src = "../image/mp4.png";
+                        break
+                    case "txt":
+                        img.src = "../image/txt.png";
+                        break
+                    case "img":
+                        img.src = "../image/img2.png";
+                        break
+                }
+                tdRow.prepend(img);
+            }
+            trFile.appendChild(tdRow);
+         } 
 
 }
 
 
+function getPathExtension(path){
+    let cutExtension = path.lastIndexOf(".");
+    let pathExtension = path.slice(cutExtension+1);
+    let formatImg = ["jpg", "png", "webp"];
 
+    if(formatImg.includes(pathExtension)){
+        pathExtension = "img";
+    }
+
+    return pathExtension;
+}
 
 
 const buttonNewFile = document.querySelector("#upload-file");
@@ -167,14 +200,8 @@ function addNewFile(){
 
 function showInfoElement(event){
     let atrituboFile = event.srcElement.getAttribute("filePath")
-    let cutExtension = atrituboFile.lastIndexOf(".");
-    let pathExtension = atrituboFile.slice(cutExtension+1);
+    let pathExtension = getPathExtension(atrituboFile);
 
-    let formatImg = ["jpg", "png", "webp"];
-
-    if(formatImg.includes(pathExtension)){
-        pathExtension = "img";
-    }
     switch(pathExtension){
         case "txt":
             fetch ("../assets/display-info-file.php?filePath="+atrituboFile)
