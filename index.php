@@ -21,7 +21,7 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <form action="upload.php" class="d-flex" method="POST" enctype="multipart/form-data">
+      <form action="upload-file.php" class="d-flex" method="GET" enctype="multipart/form-data">
         <input class="form-control me-2 create-text" type="file" name="file" placeholder="File name to create..." aria-label="Search">
         <button class="btn btn-secondary" type="submit" name="submit">Upload</button>
         <!-- <button class="btn btn-success submit" type="submit">Submit</button> -->
@@ -81,7 +81,7 @@
 
         </script>"; 
 
-        $folder = $folder . $_REQUEST['name'];
+        $folder = $folder . $_REQUEST['name']."/";
         displayDirectories($folder);
         // checkRequest();
 
