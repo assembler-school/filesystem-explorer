@@ -1,12 +1,13 @@
 <?php
-require_once("./functions.php");
-require_once("./CRUD/create.php");
-require_once("./CRUD/upload.php");
+require_once("CRUD/create.php");
+require_once( "CRUD/upload.php");
+require_once( "CRUD/folder-list.php");
 
-$mainFolder = "./root";
-if (isset($_REQUEST["go"])) {
-    $mainFolder = $mainFolder . "/" . $_REQUEST["go"];
+$raiz = './root';
+if(isset($_REQUEST['route'])){
+    $raiz = $raiz . '/' . $_REQUEST['route'];
 }
+echo 'carpeta es: ' .$raiz;
 
 ?>
 <!DOCTYPE html>
@@ -74,19 +75,19 @@ if (isset($_REQUEST["go"])) {
         <div class="row" id="content-box">
 
             <div class="col-md-3 border border-dark-1" id="root">
-                <?php viewElements($mainFolder) ?>
+                <?php viewElements($root,"./root");?>
             </div>
 
 
             <div class="col-md-7 border border-dark-1" id="content-element">
                 <div class="row text-center">
 
-                <?php echo $listar ?>
+                    <?php  viewElements($root, $raiz);?>
                 </div>
             </div>
 
 
-            <div class="col-md-2 border border-dark-1">
+            <div class="col-md-2 border border-dark-1" id="prueba">
             </div>
 
         </div>
