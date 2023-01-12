@@ -3,15 +3,13 @@ require_once("CRUD/create.php");
 require_once( "CRUD/upload.php");
 require_once( "CRUD/folder-list.php");
 
-
 $raiz = './root';
 if(isset($_REQUEST['route'])){
     $raiz = $raiz . '/' . $_REQUEST['route'];
 }
 echo 'carpeta es: ' .$raiz;
 
-
-
+holaaaa
 ?>
 <!DOCTYPE html>
 <html lang="en">
