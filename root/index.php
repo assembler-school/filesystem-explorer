@@ -42,7 +42,7 @@
 <section id="folders">
     <p> My folders </p>
     <br><br>
-<div id="folder"><div>
+<div id="folder">
 </div>
 <input id="folder-name" type="text" placeholder="New folder">
 <button id="button-folder-name">Create new folder</button>
