@@ -34,7 +34,7 @@
                 <i class="fa-solid fa-xmark" id="close-popup"></i>
                 <i class="fa-solid fa-trash" id="delete-file"></i>
             </div>
-            <div id="view-content"> </div>
+            <div id="view-content"></div>
             <div class="cover"></div>
 </section>
 <main>
@@ -65,15 +65,14 @@
 
 
 <section id="files">
-    <p> My files </p>
-    <div id="open-folder">
+<div id="open-folder">
     </div>
-<form method="post" action="../assets/upload-file.php" enctype="multipart/form-data">
+<!-- <form method="post" action="../assets/upload-file.php" enctype="multipart/form-data">
     <input type="file" name="uploadFile" class="upload-new-file">
     <input type="hidden" name="uploadFolder" value="">
     <br>
     <button id="upload-file">Upload new file</button>
-</form>
+</form> -->
 </section>
 
 
