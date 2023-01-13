@@ -139,26 +139,20 @@ function deleteFolders(event) {
 }
 
 function selectFolders(event) {
-    const containerOpenFolder = document.querySelector("#files");
+    let openFolder = event.srcElement.getAttribute('name-folder');
 
-    while (containerOpenFolder.firstChild) {
-        containerOpenFolder.removeChild(containerOpenFolder.lastChild);
+    createFilesTab(openFolder);
+}
+
+function createFilesTab(folderName){
+    while (divFiles.firstChild) {
+        divFiles.removeChild(divFiles.lastChild);
     }
 
-    let openFolder = event.srcElement.getAttribute('name-folder');
-    fetch("../assets/display-content.php?actualFolderName=" + openFolder)
-        .then(response => response.json())
-        .then(data => showelementosOfFolder(data))
-
-    // let inputUploadFile = document.getElementsByName("uploadFolder")[0];
-    // inputUploadFile.value = openFolder;
-
-    //Table
     let bodyTable = document.createElement("table");
     let tableRow = document.createElement("tr");
-    let rowHead = document.createElement("th");
 
-    containerOpenFolder.appendChild(bodyTable);
+    divFiles.appendChild(bodyTable);
     bodyTable.appendChild(tableRow);
     bodyTable.id = "tableFolder";
 
@@ -181,8 +175,11 @@ function selectFolders(event) {
         tableRow.appendChild(document.createElement("th")).textContent = nameHead;
     }
 
-    createButtonsFile(openFolder);
+    createButtonsFile(folderName);
 
+    fetch("../assets/display-content.php?actualFolderName=" + folderName)
+        .then(response => response.json())
+        .then(data => showelementosOfFolder(data))
 }
 
 function createButtonsFile(folderPath) {
@@ -213,7 +210,7 @@ function createButtonsFile(folderPath) {
     divOptionsFolder.appendChild(btnCreateFolder);
     btnCreateFolder.prepend(iCreateFolder);
 
-    btnCreateFile.addEventListener('click', uploadNewFile);
+    btnCreateFile.addEventListener('click', createPopUpUpload);
 }
 
 function showelementosOfFolder(data) {
@@ -338,23 +335,64 @@ function showInfoElement(event) {
 
 }
 
-function uploadNewFile() {
-    console.log('upload')
+function createPopUpUpload(event){
+    const pathFile = event.currentTarget.getAttribute('folder-path');
+
     const divViewContent = document.querySelector('#view-content');
     const trashBtn = document.querySelector('#delete-file');
 
     trashBtn.style.display = 'none';
+
+    let elForm = document.createElement('form');
+    elForm.setAttribute('enctype', 'multipart/form-data');
+    elForm.method = 'post';
 
     let divBackgroundUpload = document.createElement('div');
     divBackgroundUpload.className = 'upload-file-pop-up';
 
     let inputFile = document.createElement('input');
     inputFile.type = 'file';
+    inputFile.name = 'uploadFile';
 
+    let inputPath = document.createElement('input');
+    inputPath.type = 'hidden';
+    inputPath.name = 'uploadFolder';
+    inputPath.value = pathFile;
 
-    divViewContent.prepend(divBackgroundUpload);
+    let btnUpload = document.createElement('button');
+    btnUpload.textContent = 'Upload File';
+    btnUpload.id = 'btn-upload-file';
+
+    divViewContent.prepend(elForm);
+    elForm.appendChild(divBackgroundUpload)
     divBackgroundUpload.appendChild(inputFile);
+    divBackgroundUpload.appendChild(inputPath);
+    divBackgroundUpload.appendChild(btnUpload);
 
+    elForm.addEventListener('submit', (e) => {
+        e.preventDefault(); 
+        
+        let formData = new FormData(elForm);
+
+        fetch('../assets/upload-file.php', {
+             method: "POST", 
+             body: formData
+          })
+          .then(response => response.json())
+          .then(info => {
+            if(info.status){
+            trashBtn.style.display = 'initial';
+
+            closePopUp();
+  
+            createFilesTab(pathFile);
+
+            alert(info.msg);
+        }else{
+            alert(info.msgh);
+        }
+          });   
+    });
 
     displayPopUp();
 }

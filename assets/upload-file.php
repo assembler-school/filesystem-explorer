@@ -11,8 +11,12 @@ $location = "../root/$root/".$filename;
 
 /* Save the uploaded file to the local filesystem */
 if ( move_uploaded_file($_FILES['uploadFile']['tmp_name'], $location) ) { 
-  echo 'Success'; 
+  $status['status'] = true;
+  $status['msg'] = 'File upload';
 } else { 
-  echo 'Failure'; 
+  $status['status'] = false;
+  $status['msg'] = 'There was an error!';
 }
+
+echo json_encode($status);
 ?>
