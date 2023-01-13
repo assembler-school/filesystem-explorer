@@ -43,9 +43,9 @@
     <p> My folders </p>
     <br><br>
 <div id="folder"><div>
+</div>
 <input id="folder-name" type="text" placeholder="New folder">
 <button id="button-folder-name">Create new folder</button>
-</div>
 </div>
 
 <br><br>
