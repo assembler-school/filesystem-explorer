@@ -41,22 +41,61 @@ session_start();
 
 
 $currentDir = $_SESSION["absPath"];
+session_start();
 
-  
-if(is_dir($currentDir)) {
-  mkdir($currentDir . "/" . $submitData ,0777 , true);
+
+if (empty($_POST['nombre']) === false) {
+    /* Si existe un archivo o directorio con ese nombre no lo sobreescribiremos */
+    if (file_exists($_POST['nombre']) === true) {
+      echo json_encode('El archivo o directorio ya existe');
+    } else {
+      if (@mkdir("root/" . $_POST['nombre'], 0777) === false) {
+        echo json_encode('No se pudo crear el directorio');
+      }
+    }
   
 }
 
-var_dump($currentDir);
+  // if (empty($_SESSION["altPath"]) === false) {
+
+  //   if (file_exists($_SESSION["altPath"]) === true) {
+  //     echo json_encode('El archivo o directorio ya existe');
+  //   } else {
+      // if (@mkdir("root/" . $_SESSION["altPath"] . "/" . $_POST['name-folder'], 0777, true) === false) {
+      //   echo "error";
+      // }
+  //   }
+
+  // }
+
+
+
+  // if (file_exists("./root/" . $_POST['name-folder'])) {
+  //   @mkdir($_SESSION["absPath"] . "/" . $_POST['name-folder'] , 0777);
+  //   }
+
+
+
+
+// -----------------------------------------------------------------
+
+// if (empty($_POST['name-folder']) === false) {
+//     /* Si existe un archivo o directorio con ese nombre no lo sobreescribiremos */
+//     if (file_exists($_POST['name-folder']) === true) {
+//       echo json_encode('El archivo o directorio ya existe');
+//     } else {
+//       if (@mkdir("root/" . $_POST['name-folder'], 0777) === false) {
+//         echo json_encode('No se pudo crear el directorio');
+//       }
+//     }
+  
+// }
 
 
 
 
 
-
-
-
+// --------------------------------------------------------------------------
 // if(!isset($_POST['create'])){
 //     $newFileName = "root/7-create-write-file.txt";
 //     // $fileContent = 'This is the content of the "3-create-write-file.txt" file.';

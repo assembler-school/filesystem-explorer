@@ -33,7 +33,6 @@ if(isset($_REQUEST['route'])){
     <header class="container-fluid" id="header">
 
         <div class="content-buttons row ">
-
             <div class="col-md-2">
 
                 <input type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" value="Create">
