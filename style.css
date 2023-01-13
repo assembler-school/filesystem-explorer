@@ -2,3 +2,7 @@ a {
     text-decoration: none;
 
 }
+
+.delete-btn, .edit-btn {
+    all: unset;
+}

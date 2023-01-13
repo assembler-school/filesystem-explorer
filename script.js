@@ -26,3 +26,22 @@ function createNewFolder() {
 
 
 
+const deleteFiles = document.querySelectorAll(".delete-btn");
+
+
+deleteFiles.forEach(element => {
+    element.addEventListener("click", deleteFolder)
+});
+
+function deleteFolder(event){
+    console.log("funciona");
+    const popUpDeleteConfirm = confirm("Do you want to delete this folder?");
+    console.log(popUpDeleteConfirm);
+    if (popUpDeleteConfirm){
+        let actualFolderName = event.srcElement.getAttribute("actual-folder");
+        console.log(actualFolderName);
+        fetch("../delete.php?actualFolderName=./"+actualFolderName)
+        .then(response=>response.json())
+        .then(data =>console.log(data));
+    }
+}
