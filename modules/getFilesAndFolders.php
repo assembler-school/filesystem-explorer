@@ -36,11 +36,11 @@ function getFilesAndFolders($directory = './root')
     foreach ($all as $ff) {
         if (is_file($ff)) {
             $file = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($ff));
-            $extension = strtolower($ff[-3].$ff[-2].$ff[-1]);
+            $extension = strtolower($ff[-3] . $ff[-2] . $ff[-1]);
 
 
             echo "<div class='file-container'>
-                    <div oncontextmenu='openMenu(event)' path='$ff' class='file $extension'></div>
+                    <div oncontextmenu='openMenu(event)' onclick='printInfo(event)' ondblclick='togglePreviewModalVisibility(event)' path='$ff' class='file $extension'></div>
                     <p onclick='openRenameFolderInput(event)'>$file</p>
                 </div>";
         }
@@ -50,7 +50,7 @@ function getFilesAndFolders($directory = './root')
             $path = $directory . "/" . $dir;
             echo "
                 <div class='folder-container'>
-                    <div class='folder' path='$path' oncontextmenu='openMenu(event)' onclick='navigateToFolder(event)'></div>
+                    <div class='folder' path='$path' oncontextmenu='openMenu(event)' ondblclick='navigateToFolder(event)' onclick='printInfo(event)'></div>
                     <p class='folder-name' onclick='openRenameFolderInput(event)'>$dir</p>
                 </div>";
         }

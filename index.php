@@ -86,11 +86,16 @@
     </div>
 
     <aside class="menu hidden">
-        <img src="./assets/fileIcons/renameIcon.png" id="rename-btn" />
-        <img src="./assets/fileIcons/infoIcon.png" id="infoBtn" />
-        <img src="./assets/fileIcons/cutIcon.png" id="cut-btn" />
+        <img src="./assets/fileIcons/renameIcon.png" id="renameBtn" />
+        <!-- <img src="./assets/fileIcons/infoIcon.png" id="infoBtn" /> -->
+        <!-- <img src="./assets/fileIcons/viewMoreIcon.png" id="viewMoreBtn" /> -->
         <img src="./assets/fileIcons/deleteIcon.png" id="delete-btn" />
     </aside>
+
+    <div class="preview-modal hidden" id="previewModal">
+        <img src="./assets/fileIcons/dismissIcon.png" class="close-preview-modal-btn" id="closePreviewModal">
+        <div class="preview-container"></div>
+    </div>
 
     <form id="upload-form">
         <input class="hidden" type="file" id="upload-input" />

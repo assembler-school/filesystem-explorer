@@ -156,6 +156,7 @@ aside p:first-child {
 aside p:nth-child(2n) {
   border-bottom: 1px solid rgb(199, 199, 199);
   padding-top: 0px;
+  transition-duration: 0.2s;
 }
 
 aside p:nth-child(2n-1) {
@@ -313,7 +314,7 @@ aside p:nth-child(2n-1) {
   position: absolute;
   z-index: 999;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -353,10 +354,10 @@ aside p:nth-child(2n-1) {
   align-items: center;
   justify-content: center;
   gap: 25px;
-  border:2px solid var(--bg--primary);
+  border: 2px solid var(--bg--primary);
   background-color: white;
   border-radius: 25px;
-  box-shadow: 14px 15px 26px -9px rgba(0,0,0,0.75);
+  box-shadow: 14px 15px 26px -9px rgba(0, 0, 0, 0.75);
 }
 
 .confirmation-btn-container {
@@ -370,11 +371,6 @@ aside p:nth-child(2n-1) {
 .confirmation-btn-container img {
   height: 100%;
   cursor: pointer;
-}
-
-
-.hidden {
-  display: none;
 }
 
 .rename-input {
@@ -392,6 +388,51 @@ aside p:nth-child(2n-1) {
   background-repeat: no-repeat;
   background-position: center;
   transition-duration: 0.3s;
+}
+
+.preview-modal {
+  height: 80vh;
+  width: 70vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  /* border: 2px solid var(--bg--primary); */
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 14px 15px 26px -9px rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  transition-duration: 0.3s;
+}
+
+.preview-container {
+  height: 80%;
+  width: 80%;
+  border: 1px solid rgb(218, 218, 218);
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-container img{
+    height: 80%;
+}
+
+.close-preview-modal-btn {
+  cursor: pointer;
+  height: 25px;
+  position: absolute;
+  padding: 25px;
+  top: 0;
+  right: 0;
 }
 
 .jpg {
@@ -450,3 +491,10 @@ aside p:nth-child(2n-1) {
   background-image: url("../fileIcons/mp4.png");
 }
 
+.hidden {
+  display: none;
+}
+
+.video{
+    width: 80%;
+}

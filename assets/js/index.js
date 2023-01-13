@@ -6,13 +6,17 @@ const noFilerOrFoldersAlert = document.querySelector(
 const btnsContainer = document.querySelectorAll(".btns-container");
 const menu = document.querySelector(".menu");
 const deleteBtn = document.querySelector("#delete-btn");
-const renameBtn = document.querySelector("#rename-btn");
-const uploadFileBtn = document.querySelector("#uploadFileBtn");
+const renameBtn = document.querySelector("#renameBtn");
+const uploadFileBtn = document.querySelectorAll(".upload-file-btn");
 const uploadInput = document.getElementById("upload-input");
 const infoBtn = document.querySelector("#infoBtn");
 const confirmationModal = document.querySelector("#confirmationModal");
 const checkBtn = document.querySelector("#checkBtn");
 const dismissBtn = document.querySelector("#dismissBtn");
+const previewModal = document.querySelector("#previewModal");
+const closePreviewModal = document.querySelector("#closePreviewModal");
+const viewMoreBtn = document.querySelector("#viewMoreBtn");
+const previewContainer = document.querySelector(".preview-container");
 
 const infoName = document.querySelector("#infoName");
 const infoType = document.querySelector("#infoType");
@@ -27,14 +31,20 @@ for (let btn of createFolderBtn) {
   btn.addEventListener("click", createFolder);
 }
 
+for (let btn of uploadFileBtn) {
+  btn.addEventListener("click", uploadFile);
+}
+
 document.body.addEventListener("click", closeMenu);
 deleteBtn.addEventListener("click", toggleConfirmationVisibility);
 dismissBtn.addEventListener("click", toggleConfirmationVisibility);
 checkBtn.addEventListener("click", deleteDir);
 renameBtn.addEventListener("click", renameDirFromMenu);
-uploadFileBtn.addEventListener("click", uploadFile);
 uploadInput.addEventListener("change", submitUploadForm);
-infoBtn.addEventListener("click", printInfo);
+// infoBtn.addEventListener("click", printInfo);
+closePreviewModal.addEventListener("click", togglePreviewModalVisibility);
+closePreviewModal.addEventListener("click", stopMusicOrVideo);
+// viewMoreBtn.addEventListener("click", togglePreviewModalVisibility);
 
 function createFolder(e) {
   currentDirectory = "." + e.target.getAttribute("path");
@@ -50,7 +60,7 @@ function createFolder(e) {
       if (data.ok) {
         const folder = document.createElement("div");
         folder.classList.add("folder-container");
-        folder.innerHTML = `<div class='folder' path=${data.path} onclick="navigateToFolder(event)" oncontextmenu='openMenu(event)'"></div>
+        folder.innerHTML = `<div class='folder' path=${data.path} ondblclick="navigateToFolder(event)" onclick="printInfo(event)" oncontextmenu='openMenu(event)'"></div>
                               <p onclick='openRenameFolderInput(event)'>${data.dir}</p>`;
 
         filesAndFoldersContainer.insertAdjacentElement("beforeend", folder);
@@ -130,7 +140,7 @@ function rename(e) {
 function openMenu(event) {
   pathToDelete = event.target.getAttribute("path");
   currentFolder = event.target;
-  infoBtn.setAttribute("path", event.target.getAttribute("path"));
+  //   infoBtn.setAttribute("path", event.target.getAttribute("path"));
   menu.classList.remove("hidden");
   menu.style.left = event.pageX - 10 + "px";
   menu.style.top = event.pageY - 10 + "px";
@@ -187,6 +197,7 @@ function renameDirFromMenu() {
 }
 
 function uploadFile() {
+  console.log("click");
   uploadInput.click();
 }
 
@@ -209,6 +220,8 @@ function submitUploadForm(e) {
       fileImg.classList.add(data.extension.toLowerCase());
       fileImg.setAttribute("path", data.path);
       file.addEventListener("contextmenu", openMenu);
+      file.addEventListener("click", printInfo);
+      file.addEventListener("dblclick", togglePreviewModalVisibility);
 
       let fileName = document.createElement("p");
       fileName.classList.add("folder-name");
@@ -223,8 +236,8 @@ function submitUploadForm(e) {
     .catch((err) => console.log("Request: ", err));
 }
 
-function printInfo(e) {
-  let path = e.target.getAttribute("path");
+function printInfo(event) {
+  let path = event.target.getAttribute("path");
 
   fetch(`./modules/getInfo.php?path=${path}`, {
     method: "GET",
@@ -236,6 +249,92 @@ function printInfo(e) {
       infoSize.innerText = data.size;
       infoUpdate.innerText = data.lastUpdateDate;
       infoCreation.innerText = data.creationDate;
+
+      infoName.style.color = "#4285f4";
+      infoType.style.color = "#4285f4";
+      infoSize.style.color = "#4285f4";
+      infoUpdate.style.color = "#4285f4";
+      infoCreation.style.color = "#4285f4";
+
+      setTimeout(() => {
+        infoName.style.color = "grey";
+        infoType.style.color = "grey";
+        infoSize.style.color = "grey";
+        infoUpdate.style.color = "grey";
+        infoCreation.style.color = "grey";
+      }, 200);
     })
     .catch((err) => console.log("Request: ", err));
+}
+
+function togglePreviewModalVisibility(event) {
+  let currentFile = event.target.getAttribute("path");
+  previewModal.classList.toggle("hidden");
+
+  if (!previewModal.classList.contains("hidden")) {
+    setTimeout(() => {
+      previewModal.style.opacity = 1;
+    }, 10);
+  } else {
+    previewModal.style.opacity = 0;
+  }
+
+  let splittedPath = currentFile?.split(".");
+
+  let extension =
+    splittedPath && splittedPath[splittedPath.length - 1].toLowerCase();
+
+  switch (extension) {
+    case "png":
+      previewContainer.innerHTML = `
+        <img src=${currentFile} alt=""/>
+        `;
+      break;
+    case "jpg":
+      previewContainer.innerHTML = `
+        <img src=${currentFile} alt=""/>
+        `;
+      break;
+    case "svg":
+      previewContainer.innerHTML = `
+        <img src=${currentFile} alt=""></img>
+        `;
+      break;
+    case "mp3":
+      previewContainer.innerHTML = `
+       <audio controls id="player">
+        <source src=${currentFile} type="audio/ogg">
+        <source src=${currentFile} type="audio/mpeg">
+        Your browser does not support the audio element.
+       </audio>
+        `;
+      break;
+    case "mp4":
+      previewContainer.innerHTML = `
+       <video controls autoplay id="player" class="video">
+        <source src=${currentFile} type="video/mp4">
+        <source src=${currentFile} type="video/ogg">
+        Your browser does not support the video tag.
+       </video>
+        `;
+      break;
+    case "pdf":
+      previewContainer.innerHTML = `
+       <iframe src=${currentFile} width='700' height='550' allowfullscreen webkitallowfullscreen></iframe>
+        `;
+      break;
+    default:
+      previewContainer.innerHTML = `
+       <h1>Can not preview this file</h1>
+        `;
+      break;
+  }
+}
+
+function stopMusicOrVideo() {
+  const player = document.querySelector("#player");
+  if (player) {
+    player.pause();
+    player.currentTime = 0;
+  }
 }
