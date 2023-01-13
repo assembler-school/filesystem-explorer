@@ -342,52 +342,45 @@ const btnDeleteFile = document.querySelector("#delete-file");
 
 
 // Trash container
-
-function displayTrash(){
-
-    fetch('../root/index.php')
-        .then(response => response.json())
-        .then(data => displayFolderTrash(data));
-}
-
-function displayFolderTrash(){
-    let elLi = document.createElement('li');
-    let elDiv = document.createElement('div');
-    let elImgFolder = document.createElement('img');
-
-        elDiv.className = 'trash-folder';
-        elDiv.setAttribute('name-folder', trash);
-        elDiv.textContent = folder;
-        elImgFolder.src = '../image/folder.ico';
-        elImgFolder.className = 'imageFolderTrash';
-        elImgFolder.alt = 'image Folder Trash';
-
-        divFolders.prepend(elLi);
-        elLi.appendChild(elDiv);
-        elDiv.prepend(elImgFolder);
-
-}
+const trashContainer = document.querySelector("#trash-folder");
+trashContainer.addEventListener("click", showTrash);
 
 
-
-const trashContainer = document.querySelector("#trash-container");
-trashContainer.addEventListener("click", addTrash);
-
-function addTrash(event){
-    let fileTrash = event.srcElement.getAttribute("filePath");
-    console.log(fileTrash)
-    fetch("../assets/add-trash.php?filePath="+fileTrash)
+function addTrash(){
+    let basura = document.querySelector("#delete-file");
+    let atrBasura = basura.getAttribute("filePath");
+    let cutPath = atrBasura.indexOf("/");
+    let pathFile = atrBasura.slice(cutPath + 1);
+    /* let pathFileAtr = pathFile.setAttribute("pathFile", pathFile); */
+    fetch("../assets/add-trash.php?filePath="+atrBasura)
         .then(response => response.json())
         .then(data => console.log(data))
+
+/* 
+Mover archivo a carpeta trash:
+- archvo: ruta 
+- carpeta basura: ruta 
+- mover (function) 
+- function con php 
+- llamamos con js para no recargar la pagina
+
+// Function PHP
+GET, atributo, qrparametro - para archivo ruta
+ruta carpata - escribimos manualmente 
+rename - method 
+// JS
+- Mediante atrubuto agarramos la ruta del archivo*/
 }
+
+
 
 
 function deleteFile(filePath){
     const popUpDeleteConfirm = confirm("Do you want delete this file?");
         
     if (popUpDeleteConfirm) {
-    fetch("../assets/delete-file.php?filePath="+filePath);
-    location.reload();
+    /* fetch("../assets/delete-file.php?filePath="+filePath); */
+   /*  location.reload(); */
     addTrash();
 }
 }

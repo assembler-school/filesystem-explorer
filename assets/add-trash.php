@@ -2,11 +2,8 @@
 
 $fileToMove = $_GET['filePath'];
 
-$from = $_GET['name-folder'];
+$nombreDoc = $_GET['pathFile']
 
-$to = $_GET['name-folder="Trash"'];
-
-
-move_uploaded_file($from, $to);
+rename($fileToMove, "../root/Trash/Nombre.png");
 
 ?>
