@@ -334,6 +334,33 @@ const btnDeleteFile = document.querySelector("#delete-file");
 
 // Trash container
 
+function displayTrash(){
+
+    fetch('../root/index.php')
+        .then(response => response.json())
+        .then(data => displayFolderTrash(data));
+}
+
+function displayFolderTrash(){
+    let elLi = document.createElement('li');
+    let elDiv = document.createElement('div');
+    let elImgFolder = document.createElement('img');
+
+        elDiv.className = 'trash-folder';
+        elDiv.setAttribute('name-folder', trash);
+        elDiv.textContent = folder;
+        elImgFolder.src = '../image/folder.ico';
+        elImgFolder.className = 'imageFolderTrash';
+        elImgFolder.alt = 'image Folder Trash';
+
+        divFolders.prepend(elLi);
+        elLi.appendChild(elDiv);
+        elDiv.prepend(elImgFolder);
+
+}
+
+
+
 const trashContainer = document.querySelector("#trash-container");
 trashContainer.addEventListener("click", addTrash);
 
@@ -355,8 +382,6 @@ function deleteFile(filePath){
     addTrash();
 }
 }
-
-
 
 
     const btnClosePopUp = document.getElementById("close-popup");

@@ -50,7 +50,12 @@
 
 <br><br>
 <div id="trash-container">
-<i class="fa-solid fa-trash"></i><p id="trash-p">Trash</p>
+    <?php
+    
+    $trash = mkdir("../root/Trash", 0777);
+    echo "<div>$trash</div>";
+
+    ?> 
 </div>
 
 </section>
