@@ -65,8 +65,12 @@
                             <div id="folderFilesContainer">
                                 <ul id="filesListSecondChild"></ul>
                             </div>
-                            <p>30mb</p>
-                            <p>Dic 32 26:65</p>
+                            <div id="sizeFilesContainer">
+                                <ul id="sizeListSecondChild"></ul>
+                            </div>
+                            <div id="modificationFilesContainer">
+                                <ul id="modificationListSecondChild"></ul>
+                            </div>
                         </div>
                     </div>
                 </div>

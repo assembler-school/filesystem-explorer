@@ -219,7 +219,7 @@ main {
     text-align: start;
 }
 
-#filesListSecondChild{
+#filesListSecondChild, #sizeListSecondChild, #modificationListSecondChild{
     list-style: none;
     text-align: start;
     padding: 5% 0;

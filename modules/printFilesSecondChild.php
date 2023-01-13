@@ -13,7 +13,6 @@ if(is_dir("../files/".$dataPath)){
             $fileExt = pathinfo($readFolder, PATHINFO_EXTENSION);
             $fileActualExt = strtolower($fileExt);
             $dataNewPath = $dataPath."/".$readFolder;
-            
             if($fileActualExt==false){
                 array_push($arrayPrint, "<li class='first-list' data-path='$dataNewPath/' type='folder'><img class='folder-second-list-img' src='images/folderIconSmallx2.png' alt='folder'><span class='text-second-list'>$readFolder</span></li>");
             } else {
@@ -22,6 +21,9 @@ if(is_dir("../files/".$dataPath)){
                 $readFolderExt = strtoupper(end($readFolderArray));
                 if($fileActualExt==="png"){
                     array_push($arrayPrint, "<li class='first-list' data-path='$dataNewPath/' ><img class='folder-second-list-img' src='images/pngIcon.png' alt='folder'><span class='text-second-list'>$readFolder</span><span class='extesion-file'>$readFolderExt</span></li>");
+                }
+                if($fileActualExt==="txt"){
+                    array_push($arrayPrint, "<li class='first-list' data-path='$dataNewPath/' ><img class='folder-second-list-img' src='images/txtIcon.png' alt='folder'><span class='text-second-list'>$readFolder</span><span class='extesion-file'>$readFolderExt</span></li>");
                 }
             }
         }

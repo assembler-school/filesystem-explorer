@@ -11,9 +11,8 @@ let inputEdit;
 let inputCounter = 0;
 let oldDirectoryName;
 
-ul.addEventListener("dblclick", renameFiles);
-
 addFolderImage.addEventListener("click", showImageFolder);
+ul.addEventListener("dblclick", renameFiles);
 
 function renameFiles(e) {
     if (e.target.matches(".text-list")) {
@@ -133,6 +132,8 @@ function setDataPath(){
 }
 
 function createFolder() {
+    console.log(dataPath);
+    console.log(nameFolder);
     fetch("modules/createFolder.php" + "?" + "directoryName=" + dataPath + nameFolder, {
         method: "GET",
     })
