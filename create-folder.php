@@ -8,6 +8,4 @@ echo $folder;
 
 mkdir("./root/$newFolderName", 0777);
 
-
-
 ?>
