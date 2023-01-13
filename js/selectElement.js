@@ -54,6 +54,7 @@ function printInfoFiles() {
             renderFileInfo(data);
         })
         .catch((err) => console.log("Request failed: ", err));
+    
 }
 
 function renderFileInfo(data) {
