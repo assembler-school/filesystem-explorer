@@ -7,7 +7,7 @@
         <title>Wisus Drive</title>
         <script src="js/script.js" defer></script>
         <script src="js/uploadFile.js" defer></script>
-        <scritype= src="js/selectElement.js" defer></script>
+        <script src="js/selectElement.js" defer></script>
         <link rel="stylesheet" href="./css/style.css" type="text/css">
     </head>
     <body>
