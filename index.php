@@ -5,10 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wisus Drive</title>
-        <script src="js/script.js" defer></script>
-        <script src="js/uploadFile.js" defer></script>
-        <script src="js/selectElement.js" defer></script>
-        <link rel="stylesheet" href="./css/style.css" type="text/css">
+        <script src="js/script.js?v=<?php echo time(); ?>" defer></script>
+        <script src="js/uploadFile.js?v=<?php echo time(); ?>" defer></script>
+        <script src="js/selectElement.js?v=<?php echo time(); ?>" defer></script>
+        <link rel="stylesheet" href="./css/style.css?v=<?php echo time(); ?>" type="text/css">
     </head>
     <body>
         <header>

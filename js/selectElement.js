@@ -7,6 +7,9 @@ const pathSecondFolderTitle = document.querySelector("#pathSecondFolderTitle");
 const filesListSecondChild = document.querySelector("#filesListSecondChild");
 let dataPath = "";
 
+
+folderFilesContainer.addEventListener("dblclick", selectElementChildren);
+folderFilesContainer.addEventListener("dblclick", selectElementFather);
 filesPath.addEventListener("click", selectElementChildren);
 filesPath.addEventListener("click", selectElementFather);
 
