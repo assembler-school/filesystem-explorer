@@ -4,47 +4,59 @@ const extensioinInfo = document.getElementById("extensioinInfo");
 const sizeInfo = document.getElementById("sizeInfo");
 const pathInfo = document.getElementById("pathInfo");
 const pathSecondFolderTitle = document.querySelector("#pathSecondFolderTitle");
+const filesListSecondChild = document.querySelector("#filesListSecondChild");
 let dataPath = "";
 
 filesPath.addEventListener("click", selectElementChildren);
 filesPath.addEventListener("click", selectElementFather);
-filesPath.addEventListener("click", printFolderTitleName);
 
 function selectElementChildren(event) {
     let selectedElementChildren = event.target.parentNode;
     if (selectedElementChildren.classList.contains("first-list")) {
         let firstList = selectedElementChildren;
         firstList.style.backgroundColor = "yellow";
+        dataPath = selectedElementChildren.getAttribute('data-path');
+        printFolderTitleName(selectedElementChildren);
+        printFilesSecondChild(selectedElementChildren);
     }
 }
+
 function selectElementFather(event) {
     let selectedElementFather = event.target;
     if (selectedElementFather.classList.contains("first-list")) {
         let firstList = selectedElementFather;
         firstList.style.backgroundColor = "yellow";
+        dataPath = selectedElementFather.getAttribute('data-path');
+        printFolderTitleName(selectedElementFather);
+        printFilesSecondChild(selectedElementFather);
     }
 }
 
-function printFolderTitleName(event) {
-    let selectedElement = event.target.parentNode;
-    dataPath = selectedElement.getAttribute('data-path');
-    printInfoFiles();
+function printFolderTitleName(selectedElement) {
+    getInfoFiles();
     if (selectedElement.getAttribute('type') == "folder") {
         pathSecondFolderTitle.textContent = "files/" + dataPath;
-       /*  fetch("modules/printFilesSecondChild.php" + "?" + "dataPath=" + "files/" + dataPath, {
+    }
+}
+
+function printFilesSecondChild() {
+    let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+    console.log(dataPathWithoutSlash);
+    filesListSecondChild.innerHTML = "";
+    fetch("modules/printFilesSecondChild.php" + "?" + "dataPathSecond=" + dataPathWithoutSlash, {
             method: "GET",
         })
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            getInputValue(data);
+            data.forEach(element =>
+                filesListSecondChild.innerHTML += element);
         })
-        .catch((err) => console.log("Request failed: ", err)); */
-    }
+        .catch((err) => console.log("Request failed: ", err));
 }
 
-function printInfoFiles() {
-    dataPathWithoutSlash = dataPath.substring(0, dataPath.length-1);
+function getInfoFiles() {
+    let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     fetch("modules/fileInfo.php" + "?" + "path=" + dataPathWithoutSlash, {
             method: "GET",
         })
@@ -58,8 +70,8 @@ function printInfoFiles() {
 }
 
 function renderFileInfo(data) {
-    if(data["size"]>1000){
-        sizeInfo.innerHTML = "Size: " + Math.round(data["size"]/1024) + "Mb";
+    if (data["size"] > 1000) {
+        sizeInfo.innerHTML = "Size: " + Math.round(data["size"] / 1024) + "Mb";
     } else {
         sizeInfo.innerHTML = "Size: " + data["size"] + "Kb";
     }

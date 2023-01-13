@@ -10,7 +10,8 @@ $fileInfo = [
     "size" => 0,
     "creationDate" => "",
     "modificationDate" => "",
-    "extension" => ""
+    "extension" => "",
+    "name" => ""
 ];
 
 if ($file == false) {
@@ -22,6 +23,7 @@ $fileInfo["size"] = filesize($filename);
 $fileInfo["creationDate"] = date("Y/m/d H:i:s", filectime($filename));
 $fileInfo["modificationDate"] = date("Y/m/d H:i:s", filemtime($filename));
 $fileInfo["extension"] = pathinfo($filename, PATHINFO_EXTENSION);
+$fileInfo["name"] = $filename;
 
 fclose($file);
 

@@ -63,7 +63,8 @@
                         </div>
                         <div id="contentSecondChild">
                             <div id="folderFilesContainer">
-                                <ul id="filesListSecondChild"><?php require_once "./modules/printFilesSecondChild.php"?></ul></div>
+                                <ul id="filesListSecondChild"></ul>
+                            </div>
                             <p>30mb</p>
                             <p>Dic 32 26:65</p>
                         </div>
@@ -75,9 +76,8 @@
             </div>
             <form id="formUploadFile" action="modules/uploadFiles.php" method="POST" enctype="multipart/form-data">
                     <input id="inputUploadFile" onchange="this.form.submit()" type='file' name='file'>
-                </div>
             </form>
         </main>
         <footer></footer>
     </body>
-    </html>
+</html>
