@@ -120,6 +120,20 @@ font-size: 0.8rem;
     height:18px;
 }
 
+#create-new-folder{
+    position: relative;
+}
+
+#create-new-folder i{
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+    background: #FCD5CE;
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px;
+}
+
 /* Search */
 
 #search{

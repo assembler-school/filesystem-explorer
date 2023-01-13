@@ -1,11 +1,13 @@
 <?php
-$newFolderName = $_GET['nameFolder'];
- mkdir("../root/$newFolderName", 0777);
- ini_set('display_errors', 1);
- ini_set('display_startup_errors', 1);
- error_reporting(E_ALL);
+$newFolderName = '../root/'.$_GET[ 'nameFolder' ];
 
- $myObj->error = "Se ha producido un error";
- $myJSON = json_encode($myObj);
- echo $myJSON;
+if ( file_exists( $newFolderName ) ) {
+    $status['exists'] = true;
+    $status['msg'] = 'This folder Already Exist!';
+} else {
+    $status['exists'] = false;
+    mkdir( $newFolderName, 0777 );
+}
+
+echo json_encode( $status );
 ?>
