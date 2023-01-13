@@ -3,9 +3,16 @@ const title = document.querySelector('#modalTitle');
 
 function type_all() {
   form.onsubmit = function (event) {
-    return deleteAll(event);
+    return deleteAll(event, 'folder');
   }
   title.textContent = 'Delete all directories and files';
+}
+
+function type_trash() {
+  form.onsubmit = function (event) {
+    return deleteAll(event, 'trash');
+  }
+  title.textContent = 'Delete Trash';
 }
 
 function type_file(e) {

@@ -1,13 +1,19 @@
 <?php
 session_start();
 require_once './utils.php';
-$path = $_SESSION['absolutePath'];
+$type = $_GET['el'];
+
+if ($type === 'folder') {
+  $path = $_SESSION['absolutePath'];
+} else {
+  $path = './trash';
+}
+
 $files = glob($path . '/*');
 $msg = '';
 
 function delete_files($dir)
 {
-
   foreach (glob($dir . '/*') as $file) {
     if (is_dir($file))
       delete_files($file);
@@ -19,13 +25,14 @@ function delete_files($dir)
 
 
 if (count($files) > 0) {
-  foreach (glob($path . '/*') as $file) {
+  foreach ($files as $file) {
     if (is_dir($file))
       delete_files($file);
     else
       unlink($file);
   }
-  $msg = 1;
+  if ($path === './trash') $msg = 2;
+  else $msg = 1;
 } else {
   $msg = 0;
 }

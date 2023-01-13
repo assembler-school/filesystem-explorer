@@ -3,17 +3,18 @@ function uploadFile() {
   document.getElementById('uploadForm').submit();
 }
 
-function deleteAll(e) {
+function deleteAll(e, element) {
   e.preventDefault();
-  fetch('./deleteAll.php')
+  fetch(`./deleteAll.php?el=${element}`)
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       if (res === 1) {
         document.querySelectorAll('[data-file]').forEach(node => {
           node.remove();
         });
         custom_alert('Files deleted succesfully!', 'success');
+      } else if (res === 2) {
+        custom_alert('The trash is empty', 'success');
       } else {
         custom_alert('No files', 'warning');
       }

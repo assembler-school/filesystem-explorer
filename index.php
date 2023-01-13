@@ -14,7 +14,6 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
 
 ?>
 <?php include('./header.php') ?>
-
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -112,7 +111,12 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
       onclick="type_all();">
       <i class="bi bi-trash2"></i>
-      Delete All
+      Delete All Files
+    </button>
+    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
+      onclick="type_trash();">
+      <i class="bi bi-recycle"></i>
+      Empty Trash
     </button>
   </article>
 
