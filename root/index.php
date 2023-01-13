@@ -58,12 +58,12 @@
 <section id="files">
 <div id="open-folder">
     </div>
-<form method="post" action="../assets/upload-file.php" enctype="multipart/form-data">
+<!-- <form method="post" action="../assets/upload-file.php" enctype="multipart/form-data">
     <input type="file" name="uploadFile" class="upload-new-file">
     <input type="hidden" name="uploadFolder" value="">
     <br>
     <button id="upload-file">Upload new file</button>
-</form>
+</form> -->
 </section>
 
 

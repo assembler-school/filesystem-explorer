@@ -139,7 +139,7 @@ function deleteFolders(event) {
 }
 
 function selectFolders(event) {
-    const containerOpenFolder = document.querySelector("#open-folder");
+    const containerOpenFolder = document.querySelector("#files");
 
     while (containerOpenFolder.firstChild) {
         containerOpenFolder.removeChild(containerOpenFolder.lastChild);
@@ -150,8 +150,8 @@ function selectFolders(event) {
         .then(response => response.json())
         .then(data => showelementosOfFolder(data))
 
-    let inputUploadFile = document.getElementsByName("uploadFolder")[0];
-    inputUploadFile.value = openFolder;
+    // let inputUploadFile = document.getElementsByName("uploadFolder")[0];
+    // inputUploadFile.value = openFolder;
 
     //Table
     let bodyTable = document.createElement("table");
@@ -181,13 +181,15 @@ function selectFolders(event) {
         tableRow.appendChild(document.createElement("th")).textContent = nameHead;
     }
 
-    createButtonsFile();
+    createButtonsFile(openFolder);
 
 }
 
-function createButtonsFile() {
+function createButtonsFile(folderPath) {
     const h1Files = document.querySelector('#choose-folder-h1');
-    h1Files.remove();
+    if(h1Files !== null){
+        h1Files.remove();
+    }
 
     let divOptionsFolder = document.createElement('div');
     divOptionsFolder.className = 'buttons-files';
@@ -196,6 +198,7 @@ function createButtonsFile() {
     let iCreateFile = document.createElement('i');
     iCreateFile.className = 'fa-solid fa-file';
     btnCreateFile.textContent = 'New File';
+    btnCreateFile.setAttribute('folder-path', folderPath)
 
     let btnCreateFolder = document.createElement('span');
     let iCreateFolder = document.createElement('i');
@@ -209,7 +212,10 @@ function createButtonsFile() {
 
     divOptionsFolder.appendChild(btnCreateFolder);
     btnCreateFolder.prepend(iCreateFolder);
+
+    btnCreateFile.addEventListener('click', uploadNewFile);
 }
+
 function showelementosOfFolder(data) {
     data.forEach(file => {
         const containerOpenFolder = document.querySelector("#tableFolder");
@@ -300,15 +306,6 @@ function getPathExtension(path) {
     return pathExtension;
 }
 
-
-const buttonNewFile = document.querySelector("#upload-file");
-buttonNewFile.addEventListener("click", addNewFile);
-
-function addNewFile() {
-    let NewFile = document.querySelectorAll(".upload-new-file");
-}
-
-
 const btnDeleteFile = document.querySelector("#delete-file");
 
 function showInfoElement(event) {
@@ -339,6 +336,27 @@ function showInfoElement(event) {
     btnDeleteFile.setAttribute("filePath", atrituboFile)
     btnDeleteFile.addEventListener("click", deleteFile);
 
+}
+
+function uploadNewFile() {
+    console.log('upload')
+    const divViewContent = document.querySelector('#view-content');
+    const trashBtn = document.querySelector('#delete-file');
+
+    trashBtn.style.display = 'none';
+
+    let divBackgroundUpload = document.createElement('div');
+    divBackgroundUpload.className = 'upload-file-pop-up';
+
+    let inputFile = document.createElement('input');
+    inputFile.type = 'file';
+
+
+    divViewContent.prepend(divBackgroundUpload);
+    divBackgroundUpload.appendChild(inputFile);
+
+
+    displayPopUp();
 }
 
 function createFileContent(typeFile, data) {
