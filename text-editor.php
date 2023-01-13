@@ -49,6 +49,7 @@
 </div>
 
 
-<script src="assets/js/txt-editor.js"></script>
+
+
 </body>
 </html>

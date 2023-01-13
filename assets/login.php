@@ -11,7 +11,7 @@ if ( !empty( $_POST[ 'user' ] ) && !empty( $_POST[ 'password' ] ) ) {
 
         $_SESSION[ 'user' ] = $_POST[ 'user' ];
 
-        header( 'Location: ../root' );
+        header( 'Location: ../root/' );
     } else {
         header( 'Location: ../index.php?msg=errorLogin' );
     }
