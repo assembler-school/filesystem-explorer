@@ -46,8 +46,7 @@ function deleteFile(e, fileName) {
 }
 
 function searchFile(e) {
-  e.preventDefault();
-  const searchValue = searchBar.value
+  const searchValue = e.target.value;
 
   const searchData = new FormData();
   searchData.append('search', searchValue)

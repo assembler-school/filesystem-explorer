@@ -23,8 +23,7 @@ function loadFiles($parent, $path)
   foreach ($filesInDir as $file) {
     paintFile($path, $file);
   }
-}
-;
+};
 
 function paintFile($path, $file)
 {
@@ -97,7 +96,7 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
       </form>
 
       <!--DELETE -->
-      <button type="submit" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
+      <button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
         onclick="type_file(event);" data-file="<?php echo $fileName ?>"><i class="bi bi-x-circle-fill"></i></button>
 
       <!--UNZIP -->

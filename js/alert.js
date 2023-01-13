@@ -7,9 +7,10 @@ const custom_alert = (message, type) => {
     `   <div class="fw-bold">${message}</div>`,
     '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
     '</div>'
-  ].join('')
+  ].join('');
+  alertPlaceholder.append(wrapper);
+
   setTimeout(() => {
     alertPlaceholder.firstChild.remove();
   }, 2000);
-  alertPlaceholder.append(wrapper)
 }

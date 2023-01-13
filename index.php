@@ -71,10 +71,10 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
           </ol>
         </nav>
       </div>
-      <form class="d-flex me-3" role="search" onsubmit="searchFile(event)">
-        <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light" type="submit">Search</button>
-      </form>
+      <div class="d-flex">
+        <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search"
+          onkeyup="searchFile(event)">
+      </div>
       <form action="upload.php" method="POST" enctype="multipart/form-data" id="uploadForm">
         <input type="hidden" name="MAX_FILE_SIZE" value="100000">
         <label for="file-upload" class="custom-file-upload m-2 me-4">
@@ -121,7 +121,7 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle">Delete</h5>
+          <h5 class="modal-title" id="modalTitle"></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
