@@ -41,18 +41,18 @@
 
 <section id="folders">
     <p> My folders </p>
-    <br><br>
 <div id="folder">
-</div>
-<input id="folder-name" type="text" placeholder="New folder">
-<button id="button-folder-name">Create new folder</button>
 </div>
 
 <br><br>
 <div id="trash-container">
 <i class="fa-solid fa-trash"></i><p id="trash-p">Trash</p>
 </div>
-
+<div class='fixed-button'>
+<div id='create-new-folder'>
+<i class="fa-solid fa-plus"></i>
+</div>
+</div>
 </section>
 
 

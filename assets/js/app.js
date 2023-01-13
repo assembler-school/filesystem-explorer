@@ -1,7 +1,8 @@
 const divFolders = document.getElementById('folder');
-const createFolder = document.querySelector("#button-folder-name");
+// const createFolder = document.querySelector("#button-folder-name");
+const btnCreateFolder = document.querySelector("#create-new-folder");
 
-createFolder.addEventListener("click", createNewFolder);
+btnCreateFolder.addEventListener("click", createNewFolder);
 
 window.addEventListener('load', getInfoFolders);
 
@@ -16,8 +17,6 @@ function getInfoFolders() {
 }
 
 function displayFolderIndex(data) {
-    console.log(data)
-
     foldersArray = data;
 
     foldersArray.forEach(folder => {
@@ -63,7 +62,7 @@ function displayFolderIndex(data) {
     const modifyNameFolder = document.querySelectorAll(".modify-name-folder");
     const selectFolder = document.querySelectorAll(".select-folder");
     const deleteFolder = document.querySelectorAll(".delete-folder");
-    
+
     modifyNameFolder.forEach((item) => {
         item.addEventListener("click", modifyNameFolders)
     });
@@ -79,11 +78,21 @@ function displayFolderIndex(data) {
 }
 
 function createNewFolder() {
-    let folderName = document.querySelector("#folder-name").value;
-    console.log(folderName)
-    fetch("../assets/create-folder.php?nameFolder=" + folderName)
-        .then(response => response.json())
-        .then(data => console.log(data))
+    // let folderName = document.querySelector("#folder-name").value;
+
+    let newName = prompt(`Assign a new to the new folder.`);
+
+    if (newName) {
+    fetch("../assets/create-folder.php?nameFolder=" + newName)
+        .then(response => response.json(),
+        reject => alert('There was an error, we couldnt create the folder!'))
+        .then(info => {
+            if (info.exists) {
+                alert(info.msg); 
+            }else{
+                getInfoFolders(); 
+            }});
+    }
 }
 
 function modifyNameFolders(event) {
@@ -112,7 +121,7 @@ function deleteFolders(event) {
                 if (response.status === 200) {
                     getInfoFolders();
                 } else {
-                    alert('There was an error, we couldnt change the name of the folder!');
+                    alert('There was an error, we couldnt delete the folder!');
                 }
             })
     }
