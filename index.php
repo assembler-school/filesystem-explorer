@@ -6,13 +6,25 @@ require_once( "CRUD/folder-list.php");
 
 $folderEstructure = './root';
 if(isset($_REQUEST['route'])){
-    $_SESSION["altPath"] = $_REQUEST["route"];
+    // $_SESSION["altPath"] = $_REQUEST["route"];
     $_SESSION["absPath"] = $folderEstructure . '/' . $_REQUEST["route"];
     $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
-}else{
-    $_SESSION["altPath"] = '';
-    $_SESSION["absPath"]  = '';
 }
+
+
+
+
+// if(isset($_REQUEST['route'])){  
+//     if(isset($_SESSION["altPath"])){
+//         $_SESSION["altPath"] = '';
+//     }
+//     $_SESSION["altPath"] = $_REQUEST["route"];
+//     // $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
+// }else{
+//     $_SESSION["altPath"] = '';
+// }
+
+
 
 ?>
 
@@ -60,16 +72,6 @@ if(isset($_REQUEST['route'])){
                 </div>
             </div>
 
-
-            <!-- <div class="col-md-2">
-
-                <form method="POST" class="nombre-fom">
-                    <input type="text" name="nombre" />
-                    <input type="submit" name="crear" class="refresh" />
-                </form>
-
-            </div> -->
-
             <div class="col-md-10">
 
                 <form action="index.php" enctype="multipart/form-data" method="POST">
@@ -87,7 +89,7 @@ if(isset($_REQUEST['route'])){
         <div class="row" id="content-box">
 
             <div class="col-md-3 border border-dark-1" id="root">
-                <?php viewElements($root, "./root");?>
+                <?php viewElements($root, 'root');?>
             </div>
 
 

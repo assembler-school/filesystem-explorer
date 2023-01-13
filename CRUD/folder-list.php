@@ -1,6 +1,6 @@
 <?php
-
-$root = "root";
+// session_start();
+$root = 'root';
 
   function viewElements($root){
     if (is_dir($root)){
@@ -18,6 +18,7 @@ $root = "root";
                 } else {
                     echo "<li class='folderElements'><a href='?route=$complete_route'>" . $file . "</a></li>";
                 }
+                
             }
         }
 
@@ -27,5 +28,6 @@ $root = "root";
         echo "Not a valid directory path<br/>";
     }
 }
+
 
 ?>
