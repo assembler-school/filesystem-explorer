@@ -56,12 +56,42 @@ function searchFile(e) {
       'body': searchData
     })
     .then(res => res.json())
-    .then(res => {
-      console.log(res)
+    .then(resultFiles => {
+      let data_files = [];
+      const files = document.querySelectorAll(`tr[data-file]`);
+      files.forEach(node => {
+        data_files.push(node.getAttribute('data-file'));
+      });
+      console.log("Resultados:  " + resultFiles);
+      //console.log("Nodos en pantalla:  " + data_files);
+
+      data_files.forEach(name => {
+        resultFiles.forEach(nameResult => {
+          if (name == nameResult) {
+            data_files = arrayRemove(data_files, name);
+          }
+        });
+      });
+      //console.log("Nodos para eliminar:  " + data_files);
+      files.forEach(node => {
+        if (data_files.find(name => name.toUpperCase() == node.getAttribute('data-file').toUpperCase())) {
+          node.style.display = 'none';
+        } else {
+          node.style.display = 'revert';
+        }
+      });
+
     })
     .catch(function () {
       custom_alert("Can't connect to backend, try latter", 'danger');
     });
+
+  function arrayRemove(arr, value) {
+    return arr.filter(function (ele) {
+      return ele != value;
+    });
+  }
+
 }
 
 function renameFile(e) {
