@@ -5,35 +5,34 @@ $directoriesFolders = [];
 $findings = [];
 
 $searchParam = "ho";
+    
+function search2($e, $searchParam)
+    {
+        global $directoriesFolders;
+        global $findings;
 
-function search2($e, $searchParam) {
+        foreach (glob($e) as $name_fichero) {
+            $fichero = $name_fichero;
+            if (!strpos($fichero, '.')) {
+                array_push($directoriesFolders, $fichero);
+                search2($fichero . "/*", $searchParam);
 
-    global $directoriesFolders;
-    global $findings;
-
-    foreach (glob($e) as $name_fichero){
-        $fichero = $name_fichero;
-        if (!strpos($fichero, '.')) {
-            array_push($directoriesFolders, $fichero);
-            search2($fichero . "/*", $searchParam);
-            
-        } else {
-            array_push($directoriesFolders, $fichero);
-     }
-    }
-
-    foreach ($directoriesFolders as $directory){
-        if (!in_array($directory, $findings)){
-            
-            if (strpos($directory, $searchParam)){
-                array_push($findings, $directory);
+            } else {
+                array_push($directoriesFolders, $fichero);
             }
         }
+        foreach ($directoriesFolders as $directory) {
+            if (!in_array($directory, $findings)) {
+
+                if (strpos($directory, $searchParam)) {
+                    array_push($findings, $directory);
+                }
+            }
+        }
+
+        return array($directoriesFolders, $findings);
+
     }
-
-    return array ($directoriesFolders, $findings);
-
-}
 
 search2("root/*", $searchParam);
 

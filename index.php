@@ -91,7 +91,8 @@
       }
     }
 
-    echo var_dump(scandir("root"));
+    print_r(glob("root/cheddar/*"))[1];
+
     ?>
   </tbody>
 </table>
