@@ -11,6 +11,7 @@ let inputEdit;
 let inputCounter = 0;
 
 
+
 ul.addEventListener("dblclick", renameFiles);
 
 addFolderImage.addEventListener("click", showImageFolder);
@@ -70,6 +71,7 @@ function renameFiles(e) {
         padre.replaceChild(inputRename, inputValue);
         inputRename.addEventListener("focusout", checkDirectoryReName);
         inputRename.select();
+        console.log({dataPath});
     }
 }
 
@@ -90,27 +92,34 @@ function getInputRenameValue(data){
         inputRename.select();
     } else {
         reNameFolder = inputRename.value;
-        console.log(reNameFolder);
         const p = document.createElement("p");
         p.classList.add("folder-list-p");
         p.textContent = reNameFolder;
-        li.setAttribute("data-path", reNameFolder + "/");
-        // li = document.querySelector("#folderValues");
+        li = document.querySelector("#folderValues");
         inputRename.remove();
-        li.appendChild(p);
+        
        
         renameFolder();
     }
 }
 
 function renameFolder(){
-    console.log("hola")
+    // fetch("modules/reNameFolder.php" + "?" + "directoryName=" + reNameFolder , {
+    //     method: "GET",
+    // })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //         console.log(data);
+    //     })
+    //     .catch((err) => console.log("Request failed: ", err));
+    console.log("hola");
 };
 
 function showImageFolder() {
     li = document.createElement("li");
     li.setAttribute("id", "folderValues");
     li.setAttribute("class", "first-list");
+    li.setAttribute("type", "folder");
     const img = document.createElement("img");
     img.setAttribute("src", "images/folderIconSmallx3.png");
     img.setAttribute("alt", "Folder");
