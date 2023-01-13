@@ -1,20 +1,17 @@
 <?php
-// session_start();
 
-if (isset($_FILES['nombre']['error'])) { //Valida si no hay errores
-    $dir = "root/"; //Directorio de carga
-    $tamanio = 40000; //Tamaño permitido en kb
+if (isset($_FILES['nombre']['error'])) { 
+    $dir = "root/"; 
+    $tamanio = 40000; 
     $permitidos = array("jpg", "pdf", "csv", "doc", "exe", "mp3", "mp4", "odt", "png", "ppt", "rar", "zip", "svg"); //Archivos permitidos
     $ruta_carga = $dir . $_FILES['nombre']['name'];
-    //Obtenemos la extensión del archivo
     $arregloArchivo = explode(".", $_FILES['nombre']['name']);
     $extension = strtolower(end($arregloArchivo));
     
-    if (in_array($extension, $permitidos)) { //Valida si la extensión es permitida
+    if (in_array($extension, $permitidos)) { 
         
-        if ($_FILES['nombre']['size'] < ($tamanio * 1024)) { //Valida el tamaño
+        if ($_FILES['nombre']['size'] < ($tamanio * 1024)) { 
             
-            //Valida si no existe la carpeta y la crea
             if (!file_exists($dir)) {
                 mkdir($dir, 0777);
             }
@@ -31,24 +28,4 @@ if (isset($_FILES['nombre']['error'])) { //Valida si no hay errores
         echo "Archivo no permitido";
     }
 } 
-
-    $listar = null;
-    $directorio = opendir('root/');
-    while($elemento = readdir($directorio)){
-        if($elemento != '.' && $elemento != '..'){
-        if(is_dir('root/' . $elemento)){
-            $listar .= "<div class='col-md-4'>
-                            <a href='root/$elemento'>$elemento/</a>
-                        </div>";
-        }else{
-            $listar .= "<div class='col-md-4'>
-                            <a href='root/$elemento'>$elemento</a>
-                        </div>";
-        }
-    }
-}
-
-
-
-
 ?>

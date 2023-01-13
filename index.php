@@ -1,29 +1,23 @@
 <?php
-// session_start();
 
 require_once("CRUD/create.php");
 require_once( "CRUD/upload.php");
 require_once( "CRUD/folder-list.php");
-
-
-// $raiz = './root';
-// if(isset($_REQUEST['route'])){
-//     $raiz = $raiz . '/' . $_REQUEST['route'];
-// }
-// echo 'carpeta es: ' .$raiz;
-
 
 $folderEstructure = './root';
 if(isset($_REQUEST['route'])){
     $_SESSION["altPath"] = $_REQUEST["route"];
     $_SESSION["absPath"] = $folderEstructure . '/' . $_REQUEST["route"];
     $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
-
+}else{
+    $_SESSION["altPath"] = '';
+    $_SESSION["absPath"]  = '';
 }
 
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -51,15 +45,14 @@ if(isset($_REQUEST['route'])){
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">New folder</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form method="POST" target="" class="create-form">
                                 <div class="modal-body text-center">
-                                    <input type="text" size="25" placeholder="Folder name" name="name-folder">
+                                    <input type="text" size="25" placeholder="Folder name" name="name-folder" class="nameFolder">
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="submit" value="Save changes" class="refresh">
+                                    <input type="submit" name="enviar" value="Save changes" class="refresh">
                                 </div>
                             </form>
                         </div>
@@ -100,7 +93,7 @@ if(isset($_REQUEST['route'])){
 
             <div class="col-md-7" id="content-element">
                 <div class="row text-center">
-                    <?php  viewElements($root, $folderEstructure);?>
+                    <?php  viewElements($folderEstructure);?>
                 </div>
             </div>
 
