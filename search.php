@@ -1,41 +1,44 @@
 <?php
-// function search(){
-    
-//     foreach (glob("root/h*") as $nombre_fichero) {
-//         echo $nombre_fichero;
-//     }
-//     foreach (glob("root/*/h*") as $nombre_fichero) {
-//         echo $nombre_fichero;
-//     }
-//     foreach (glob("root/*/*/h*") as $nombre_fichero) {
-//         echo $nombre_fichero;
-//     }
 
-// }
+$directoriesFolders = [];
 
-// search();
+$findings = [];
 
+$searchParam = "ho";
 
-function search2($e){
-    $directoriesFolders = array();
+function search2($e, $searchParam) {
+
+    global $directoriesFolders;
+    global $findings;
+
     foreach (glob($e) as $name_fichero){
         $fichero = $name_fichero;
         if (!strpos($fichero, '.')) {
             array_push($directoriesFolders, $fichero);
-            search2($fichero . "/*");
+            search2($fichero . "/*", $searchParam);
+            
         } else {
             array_push($directoriesFolders, $fichero);
      }
     }
-    var_dump($directoriesFolders);
-    $findings = array();
+
     foreach ($directoriesFolders as $directory){
-        if (strpos($directory, "ho")){
-            array_push($findings, $directory);
+        if (!in_array($directory, $findings)){
+            
+            if (strpos($directory, $searchParam)){
+                array_push($findings, $directory);
+            }
         }
     }
 
-    // print_r ($findings);
+    return array ($directoriesFolders, $findings);
+
 }
 
-search2("root/*");
+search2("root/*", $searchParam);
+
+print_r($directoriesFolders);
+
+echo "<br><br>";
+
+print_r($findings);

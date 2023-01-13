@@ -10,8 +10,10 @@ if(isset($_POST["submit"])){
     $fileActualExt = strtolower(end($fileExt));
 
     $fileNameNew=uniqid('', true).".".$fileActualExt;
-    $fileDestination = "root/".$fileNameNew;
+    $fileDestination = "root/".$fileName;
 
     move_uploaded_file($fileTmpName, $fileDestination);
+
+    header("Location: ./index.php");
 
 }
