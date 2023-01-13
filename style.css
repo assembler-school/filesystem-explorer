@@ -84,14 +84,18 @@ main{
 
 #folder{
     width: 100%;
+    cursor: pointer;
 }
 img.imageFolder{
     height: 1rem;
+    margin-right: 5px;
 }
 
 #folder li{
 list-style: none;
 display: flex;
+margin-bottom: 10px;
+justify-content: space-between;
 }
 
 .select-folder{
@@ -132,6 +136,23 @@ font-size: 0.8rem;
     color: #fff;
     border-radius: 20px;
     padding: 5px;
+    cursor:pointer;
+}
+.buttons-files{
+    margin-bottom: 20px;
+}
+
+.buttons-files span{
+    border-radius: 10px;
+    padding: 5px;
+    background: #FEC89A;
+    color: #fff;
+    box-shadow: 2px 2px 2px #b5b5b5;
+    margin-right: 10px;
+}
+
+.buttons-files span i{
+    margin-right:5px;
 }
 
 /* Search */

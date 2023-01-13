@@ -34,7 +34,7 @@
                 <i class="fa-solid fa-xmark" id="close-popup"></i>
                 <i class="fa-solid fa-trash" id="delete-file"></i>
             </div>
-            <div id="view-content"> </div>
+            <div id="view-content"></div>
             <div class="cover"></div>
 </section>
 <main>
@@ -46,12 +46,6 @@
 
 <br><br>
 <div id="trash-container">
-    <?php
-    
-    $trash = mkdir("../root/Trash", 0777);
-    echo "<div>$trash</div>";
-
-    ?> 
 </div>
 <div class='fixed-button'>
 <div id='create-new-folder'>
@@ -62,8 +56,7 @@
 
 
 <section id="files">
-    <p> My files </p>
-    <div id="open-folder">
+<div id="open-folder">
     </div>
 <form method="post" action="../assets/upload-file.php" enctype="multipart/form-data">
     <input type="file" name="uploadFile" class="upload-new-file">
