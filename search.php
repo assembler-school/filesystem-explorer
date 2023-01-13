@@ -37,7 +37,7 @@ function array_search_partial($arr, $keyword) {
         <nav id="navigation">
             <div id="logo"> 
                 <a href='./root'>
-                    <img src="./image/logo.webp" alt="Logo" id="logo-panel">
+                    <img src="./image/logoNew.png" alt="Logo" id="logo-panel">
                 </a>
             </div>
             <div id="search"> 

@@ -215,3 +215,9 @@ width: calc(100% - 20px);
     height: 50vh;
     margin: 5% 10%;
 }
+
+#trash-container{
+    display: inline-block;
+    
+    color: red;
+}

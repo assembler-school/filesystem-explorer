@@ -47,6 +47,12 @@
 <button id="button-folder-name">Create new folder</button>
 </div>
 </div>
+
+<br><br>
+<div id="trash-container">
+<i class="fa-solid fa-trash"></i><h2 id="trash-p">Trash</p>
+</div>
+
 </section>
 
 

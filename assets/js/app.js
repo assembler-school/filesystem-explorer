@@ -178,9 +178,7 @@ function deleteFolders(event) {
                 .then(response => response.json())
                 .then(data => constuctorTable(data, pathFile, trFile))
 
-        })
-
-
+    })
 
         let folderElement = document.querySelectorAll(".elemtoOfFolder");
         folderElement.forEach((item) => {
@@ -241,9 +239,8 @@ function deleteFolders(event) {
                 tdRow.prepend(img);
             }
             trFile.appendChild(tdRow);
-        }
-
-    }
+         } 
+}
 
 
     function getPathExtension(path) {
@@ -251,12 +248,11 @@ function deleteFolders(event) {
         let pathExtension = path.slice(cutExtension + 1);
         let formatImg = ["jpg", "png", "webp"];
 
-        if (formatImg.includes(pathExtension)) {
-            pathExtension = "img";
-        }
-
-        return pathExtension;
+    if(formatImg.includes(pathExtension)){
+        pathExtension = "img";
     }
+    return pathExtension;
+}
 
 
     const buttonNewFile = document.querySelector("#upload-file");
@@ -267,40 +263,37 @@ function deleteFolders(event) {
     }
 
 
+const btnDeleteFile = document.querySelector("#delete-file");
 
     function showInfoElement(event) {
         let atrituboFile = event.currentTarget.getAttribute("filePath")
         let pathExtension = getPathExtension(atrituboFile);
 
-        switch (pathExtension) {
-            case "txt":
-                let cutPath = atrituboFile.indexOf("/");
-                let pathFile = atrituboFile.slice(cutPath + 1);
-                window.location.replace("../text-editor.php?pathFile=" + pathFile)
-
-                break
-            case "img":
-                createFileContent("img", atrituboFile);
-                break
-            case "mp4":
-                createFileContent("mp4", atrituboFile);
-                break
-            case "mp3":
-                createFileContent("mp3", atrituboFile);
-                break
-            default:
-                console.log("no podemos descargar este archivo")
-                break
-        }
-
-        displayPopUp();
-
-        btnDeleteFile.setAttribute('filePath', atrituboFile);
-
-        btnDeleteFile.addEventListener("click", deleteFile);
+    switch(pathExtension){
+        case "txt":
+            let cutPath = atrituboFile.indexOf("/");
+            let pathFile = atrituboFile.slice(cutPath + 1);
+            window.location.replace("../text-editor.php?pathFile="+pathFile);
+            break
+        case "img":
+            createFileContent("img", atrituboFile);
+            break
+        case "mp4":
+            createFileContent("mp4", atrituboFile);
+            break
+        case "mp3":
+            createFileContent("mp3", atrituboFile);
+            break
+        default:
+            console.log("no podemos descargar este archivo")
+            break
     }
 
-    const btnDeleteFile = document.querySelector("#delete-file");
+    displayPopUp();
+    btnDeleteFile.setAttribute("filePath", atrituboFile)
+    btnDeleteFile.addEventListener("click", deleteFile); 
+
+}
 
     function createFileContent(typeFile, data) {
         const containerContent = document.querySelector("#view-content");
@@ -340,16 +333,14 @@ function deleteFolders(event) {
     }
 
 
-    function deleteFile(event) {
-        const popUpDeleteConfirm = confirm("Do you want delete this file?");
-
-        if (popUpDeleteConfirm) {
-            let filePath = event.srcElement.getAttribute('filePath');
-            console.log(filePath)
-            // fetch("../assets/delete-file.php?filePath="+filePath);
-            // location.reload();
-        }
-    }
+function deleteFile(filePath){
+    const popUpDeleteConfirm = confirm("Do you want delete this file?");
+        
+    if (popUpDeleteConfirm) {
+    fetch("../assets/delete-file.php?filePath="+filePath);
+    location.reload();
+}
+}
 
 
     const btnClosePopUp = document.getElementById("close-popup");
