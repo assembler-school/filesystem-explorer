@@ -1,5 +1,7 @@
 <?php
 
+$dataPath = $_REQUEST["dataPath"];
+
 /*     if(isset($_POST["file"])){ */
         $file = $_FILES["file"];
 
@@ -15,7 +17,7 @@
         if($fileError === 0){
             if($fileSize < 100000000){
                 $fileNameNew = uniqid('', true).".".$fileActualExt;
-                $fileDestination = "../files/".$fileNameNew;
+                $fileDestination = "../files/".$dataPath.$fileNameNew;
                 move_uploaded_file($fileTmp, $fileDestination);
                 header("Location: ../index.php?uploadsuccess");
             }else{

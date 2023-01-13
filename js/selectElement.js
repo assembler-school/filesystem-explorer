@@ -13,7 +13,6 @@ filesPath.addEventListener("click", selectElementFather);
 function selectElementChildren(event) {
     let selectedElementChildren = event.target.parentNode;
     if (selectedElementChildren.classList.contains("first-list")) {
-        console.log(selectedElementChildren)
         let firstList = selectedElementChildren;
         firstList.style.backgroundColor = "yellow";
         dataPath = selectedElementChildren.getAttribute('data-path');
@@ -25,7 +24,6 @@ function selectElementChildren(event) {
 function selectElementFather(event) {
     let selectedElementFather = event.target;
     if (selectedElementFather.classList.contains("first-list")) {
-        console.log(selectedElementFather)
         let firstList = selectedElementFather;
         firstList.style.backgroundColor = "yellow";
         dataPath = selectedElementFather.getAttribute('data-path');
@@ -43,12 +41,14 @@ function printFolderTitleName(selectedElement) {
 
 function printFilesSecondChild() {
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+    console.log(dataPathWithoutSlash);
     filesListSecondChild.innerHTML = "";
     fetch("modules/printFilesSecondChild.php" + "?" + "dataPathSecond=" + dataPathWithoutSlash, {
             method: "GET",
         })
         .then((response) => response.json())
         .then((data) => {
+            console.log(data);
             data.forEach(element =>
                 filesListSecondChild.innerHTML += element);
         })
@@ -62,6 +62,7 @@ function getInfoFiles() {
         })
         .then((response) => response.json())
         .then((data) => {
+            console.log(data);
             renderFileInfo(data);
         })
         .catch((err) => console.log("Request failed: ", err));

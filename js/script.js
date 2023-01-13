@@ -11,7 +11,6 @@ let inputEdit;
 let inputCounter = 0;
 let oldDirectoryName;
 
-
 ul.addEventListener("dblclick", renameFiles);
 
 addFolderImage.addEventListener("click", showImageFolder);
@@ -121,6 +120,16 @@ function getInputValue(data) {
         addFolderImage.addEventListener("click", showImageFolder);
         createFolder();
     }
+}
+function setDataPath(){
+    fetch("modules/uploadFiles.php" + "?" + "dataPath=" + dataPath , {
+        method: "GET",
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((err) => console.log("Request failed: ", err));
 }
 
 function createFolder() {
