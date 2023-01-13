@@ -44,12 +44,9 @@
         </textarea>
         <input name="filePath" type="hidden" value="<?php echo "../$file"; ?>" >
 
-    <button>Save changes</button>
+    <button type='submit'>Save changes</button><button id='delete-file'>Delete</button>
 </form>
 </div>
-
-
-
-
+<script src="./assets/js/app.js"></script>
 </body>
 </html>

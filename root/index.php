@@ -42,18 +42,7 @@
 <section id="folders">
     <p> My folders </p>
     <br><br>
-<div id="folder">
-
-    <?php
-
-forEach (glob("*") as $name){
-if(is_dir($name) && $name !== "index.php"){
-    echo '<li><div class="select-folder" name-folder="'.$name .'"><img src="../image/folder.ico" alt="image folder" class="imageFolder" name-folder="'.$name .'"> ' . $name . '</div><span class="modify-name-folder"><i class="fa-solid fa-pen" actual-folder="'.$name .'"></i></span><span class="delete-folder"><i class="fa-solid fa-trash" id="delete-folder" actual-folder="'.$name .'"></i></span></li>'; 
-}
-}
-
-?>
-<div>
+<div id="folder"><div>
 <input id="folder-name" type="text" placeholder="New folder">
 <button id="button-folder-name">Create new folder</button>
 </div>

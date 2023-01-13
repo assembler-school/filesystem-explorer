@@ -11,6 +11,8 @@ fwrite($openFile, $text);
 fclose($openFile);
 
 $redirection = str_replace("../", "", $file);
+
+if()
 header("location: ../text-editor.php?pathFile=$redirection");
 
 ?>
