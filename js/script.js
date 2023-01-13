@@ -106,28 +106,35 @@ function renameFile(e) {
     'method': 'POST',
     'body': file,
   }
-  fetch("./rename.php", config)
-  .then(res => res.json())
-  .then(res => {
-    console.log(res);
-    if(res == 1){
-      const completeName = newName + "." + oldName.split(".")[1];
-      const modify = document.querySelector(`tr[data-file='${oldName}']`);
-      modify.removeAttribute("data-file");
-      modify.setAttribute("data-file",completeName);
-      const link = modify.children[0].children[1];
-      link.textContent = completeName;
-      let href = link.href.split("=")[0];
-      href += `=${completeName}`;
-      console.log(href);
-      link.href = href;
-      custom_alert("The name has been changed successfully", "success");
 
-      
-    }else{
-      custom_alert("Can´t rename the file", 'danger');
-    }
-      
+  fetch("./rename.php", config)
+    .then(res => res.json())
+    .then(res => {
+      if (res.result == 1) {
+        const completeName = newName + "." + oldName.split(".")[1];
+        const modify = document.querySelector(`tr[data-file='${oldName}']`);
+        modify.removeAttribute("data-file");
+        const link = modify.children[0].children[1];
+
+        if (res.type === "file") {
+          modify.setAttribute("data-file", completeName);
+          link.textContent = completeName;
+          let href = link.href.split("=")[0];
+          href += `=${completeName}`;
+          link.href = href;
+        } else {
+          modify.setAttribute("data-file", newName);
+          link.textContent = newName;
+          let href = link.href.split("=")[0];
+          href += `=${newName}`;
+          href = href.replace(' ', '%20');
+          link.href = href;
+        }
+        custom_alert("The name has been changed successfully", "success");
+      } else {
+        custom_alert("Can´t rename the file", 'danger');
+      }
+
     })
     .catch(function () {
       custom_alert("Can't connect to backend, try latter", 'danger');

@@ -23,7 +23,8 @@ function loadFiles($parent, $path)
   foreach ($filesInDir as $file) {
     paintFile($path, $file);
   }
-};
+}
+;
 
 function paintFile($path, $file)
 {
@@ -45,81 +46,85 @@ function paintFile($path, $file)
   } else { // Si es un archivo
     createFileRow($absolutePath, null, $file, false, false);
   }
-};
+}
+;
 
 function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRoot)
 {
-?>
+  ?>
   <tr data-file="<?php echo $fileName ?>">
     <td>
       <?php
       echo getTypeIcon(filetype($absolutePath), $fileName);
+      $fileHref = str_replace(' ', '%20', $fileName);
+      $fileHrefRelativePath = str_replace(' ', '%20', $relativePath);
       if ($isFolder) {
         if ($isRoot) {
-      ?>
-          <a class="folder-btn link" href="?p=<?php echo $fileName ?>">
+          ?>
+          <a class="folder-btn link" href="?p=<?php echo $fileHref ?>">
             <?php echo $fileName ?>
           </a>
-    </td>
-  <?php
+        </td>
+        <?php
         } else {
-  ?>
-    <a class="folder-btn link" href="?p=<?php echo $relativePath ?>">
-      <?php echo $fileName ?>
-    </a>
-    </td>
-  <?php
+          ?>
+        <a class="folder-btn link" href="?p=<?php echo $fileHrefRelativePath ?>">
+          <?php echo $fileName ?>
+        </a>
+        </td>
+        <?php
         }
       } else {
-        $fileHref = str_replace(' ', '%20', $fileName);
-  ?>
-  <a class="link" href=<?php echo "open.php?name=$fileHref " ?>>
-    <?php echo $fileName ?>
-  </a>
-  </td>
-<?php
+        ?>
+      <a class="link" href=<?php echo "open.php?name=$fileHref " ?>>
+        <?php echo $fileName ?>
+      </a>
+      </td>
+      <?php
       }
       date_default_timezone_set('Europe/Madrid');
-?>
-<td><?php echo Utils::formatSize(filesize($absolutePath)) ?></td>
-<td>
-  <?php $fecha_f = filemtime($absolutePath);
-  echo date("D d M Y", $fecha_f) ?>
-</td>
-<td>
-  <!-- RENAME -->
-  <button type="button" data-file="<?php echo $fileName ?>" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#renameModal" onclick="rename_file(event);">
-    <i class="bi bi-pen-fill"></i>
-  </button>
-
-  <!--DELETE -->
-  <button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="type_file(event);" data-file="<?php echo $fileName ?>"><i class="bi bi-x-circle-fill"></i></button>
-
-  <!--UNZIP -->
-  <?php
-  $filetmp = (explode('.', $fileName));
-  $fileExtension = strtolower(end($filetmp));
-  if ($fileExtension === 'zip' || $fileExtension === 'rar') {
-  ?>
-    <form action="unzip.php" method="POST" class="me-2">
-      <input name="file" type="hidden" value="<?php echo $fileName ?>">
-      <button type="submit" class="border border-0 bg-transparent">
-        <i class="bi bi-file-earmark-zip-fill"></i>
+      ?>
+    <td><?php echo Utils::formatSize(filesize($absolutePath)) ?></td>
+    <td>
+      <?php $fecha_f = filemtime($absolutePath);
+      echo date("D d M Y", $fecha_f) ?>
+    </td>
+    <td>
+      <!-- RENAME -->
+      <button type="button" data-file="<?php echo $fileName ?>" class="border border-0 bg-transparent"
+        data-bs-toggle="modal" data-bs-target="#renameModal" onclick="rename_file(event);">
+        <i class="bi bi-pen-fill"></i>
       </button>
-    </form>
-  <?php
-  }
-  ?>
 
-</td>
+      <!--DELETE -->
+      <button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
+        onclick="type_file(event);" data-file="<?php echo $fileName ?>"><i class="bi bi-x-circle-fill"></i></button>
+
+      <!--UNZIP -->
+      <?php
+      $filetmp = (explode('.', $fileName));
+      $fileExtension = strtolower(end($filetmp));
+      if ($fileExtension === 'zip' || $fileExtension === 'rar') {
+        ?>
+        <form action="unzip.php" method="POST" class="me-2">
+          <input name="file" type="hidden" value="<?php echo $fileName ?>">
+          <button type="submit" class="border border-0 bg-transparent">
+            <i class="bi bi-file-earmark-zip-fill"></i>
+          </button>
+        </form>
+        <?php
+      }
+      ?>
+
+    </td>
   </tr>
-<?php
+  <?php
 }
 
 function paintBackRow()
 {
   $parent = getParent()
-?>
+    ?>
   <tr>
     <td>
       <a class="folder-btn link text-primary fw-bold" href="?p=<?php echo $parent ?>">
@@ -131,7 +136,7 @@ function paintBackRow()
     <td></td>
     <td></td>
   </tr>
-<?php
+  <?php
 }
 
 function getParent()
@@ -166,7 +171,7 @@ function drawIcon($fileExtension)
 
 function updateNavigationBreadcrum($dirName)
 {
-?>
+  ?>
   <script>
     const breadcrumb = document.querySelector('#breadcrumb');
 
@@ -183,6 +188,6 @@ function updateNavigationBreadcrum($dirName)
     li.append(a);
     breadcrumb.append(li);
   </script>
-<?php
+  <?php
 }
 ?>
