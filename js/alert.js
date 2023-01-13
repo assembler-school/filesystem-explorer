@@ -10,6 +10,6 @@ const custom_alert = (message, type) => {
   ].join('')
   setTimeout(() => {
     alertPlaceholder.firstChild.remove();
-  }, 5000);
+  }, 2000);
   alertPlaceholder.append(wrapper)
 }

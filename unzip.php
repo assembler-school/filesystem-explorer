@@ -13,11 +13,11 @@ if (isset($_SESSION['relativePath'])) {
 
 $pathToExtract = $_SESSION['absolutePath'];
 $file = $_SESSION['absolutePath'] . '/' . $fileName;
-
+$extracted;
 if ($fileExtension == 'rar') {
-  Utils::formatRar($file, $pathToExtract);
+  $extracted = Utils::formatRar($file, $pathToExtract, $fileName);
 } else {
-  Utils::formatZip($file, $pathToExtract);
+  $extracted = Utils::formatZip($file, $pathToExtract, $fileName);
 }
 
-header("Location: index.php?p=$returnPath&rar");
+header("Location: index.php?p=$returnPath&rar=$extracted");

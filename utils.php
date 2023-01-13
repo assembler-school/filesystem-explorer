@@ -101,24 +101,30 @@ class Utils
     }
   }
 
-  public static function formatRar($file, $pathToExtract)
+  public static function formatRar($file, $pathToExtract, $fileName)
   {
     $archive = RarArchive::open($file);
     $entries = $archive->getEntries();
+    if (!mkdir($pathToExtract . '/' . explode('.', $fileName)[0]))
+      return false;
     foreach ($entries as $entry) {
-      $entry->extract($pathToExtract);
+      $entry->extract($pathToExtract . '/' . explode('.', $fileName)[0]);
     }
     $archive->close();
+    return true;
   }
 
-  public static function formatZip($file, $pathToExtract)
+  public static function formatZip($file, $pathToExtract, $fileName)
   {
     $zip = new ZipArchive;
     if ($zip->open($file) === TRUE) {
-      $zip->extractTo($pathToExtract);
+      if (!mkdir($pathToExtract . '/' . explode('.', $fileName)[0]))
+        return false;
+      $zip->extractTo($pathToExtract . '/' . explode('.', $fileName)[0]);
       $zip->close();
     } else {
       echo 'failed to unzip file';
     }
+    return true;
   }
 }
