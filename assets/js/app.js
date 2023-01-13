@@ -61,13 +61,20 @@ function displayFolderIndex(data) {
     })
 
     const modifyNameFolder = document.querySelectorAll(".modify-name-folder");
+    const selectFolder = document.querySelectorAll(".select-folder");
+    const deleteFolder = document.querySelectorAll(".delete-folder");
+    
     modifyNameFolder.forEach((item) => {
         item.addEventListener("click", modifyNameFolders)
     });
 
-    const deleteFolder = document.querySelectorAll(".delete-folder");
+    
     deleteFolder.forEach((item) => {
         item.addEventListener("click", deleteFolders)
+    });
+
+    selectFolder.forEach((item) => {
+        item.addEventListener("click", selectFolders)
     });
 }
 
@@ -110,14 +117,6 @@ function deleteFolders(event) {
             })
     }
 }
-
-    const selectFolder = document.querySelectorAll(".select-folder");
-
-
-
-    selectFolder.forEach((item) => {
-        item.addEventListener("click", selectFolders)
-    });
 
     function selectFolders(event) {
         const containerOpenFolder = document.querySelector("#open-folder");
