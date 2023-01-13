@@ -61,7 +61,7 @@ if(is_dir($name) && $name !== "index.php"){
 
 <br><br>
 <div id="trash-container">
-<i class="fa-solid fa-trash"></i><h2 id="trash-p">Trash</p>
+<i class="fa-solid fa-trash"></i><p id="trash-p">Trash</p>
 </div>
 
 </section>

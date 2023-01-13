@@ -40,17 +40,16 @@ function deleteFolders(event) {
 
     if (popUpDeleteConfirm) {
         let actualFolderName = event.srcElement.getAttribute('actual-folder');
-        fetch("../assets/delete-folder.php?actualFolderName=" + actualFolderName)
+        fetch("../assets/delete-folder.php?actualFolderName="+actualFolderName)
             .then(response => response.json())
             .then(data => console.log(data))
     }
 }
 
 
+
+
 const selectFolder = document.querySelectorAll(".select-folder");
-
-
-
 selectFolder.forEach((item) => {
     item.addEventListener("click", selectFolders)
 });
@@ -270,14 +269,31 @@ function createFileContent(typeFile, data) {
 }
 
 
+// Trash container
+
+const trashContainer = document.querySelector("#trash-container");
+trashContainer.addEventListener("click", addTrash);
+
+function addTrash(event){
+    let fileTrash = event.srcElement.getAttribute("filePath");
+    console.log(fileTrash)
+    fetch("../assets/add-trash.php?filePath="+fileTrash)
+        .then(response => response.json())
+        .then(data => console.log(data))
+}
+
+
 function deleteFile(event){
     const popUpDeleteConfirm = confirm("Do you want delete this file?");
     if (popUpDeleteConfirm) {
         let filePath = event.srcElement.getAttribute("filePath");
     fetch("../assets/delete-file.php?filePath="+filePath);
     location.reload();
+    addTrash();
 }
 }
+
+
 
 
 const btnClosePopUp = document.getElementById("close-popup");

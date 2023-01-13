@@ -217,7 +217,8 @@ width: calc(100% - 20px);
 }
 
 #trash-container{
-    display: inline-block;
-    
+    display: inline;
     color: red;
 }
+
+
