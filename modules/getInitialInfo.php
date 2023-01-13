@@ -13,7 +13,15 @@ function getInfo($ff = './root')
     if (is_dir($ff)) {
         $name = $explodedSlash[count($explodedSlash) - 1];
         $type = 'Folder';
-        $size = getDirectorySize($ff);
+        $size = getSize($ff) / 1000;
+
+        if ($size < 1000) {
+            $size = round($size, 1) . "Kb";
+        } else {
+            $size = round($size / 1000, 1) . "Mb";
+        }
+
+
         $lastUpdateDate = date("d-m-y - H:i:s", filemtime($ff));
         $creationDate = date("d-m-y - H:i:s", filectime($ff));;
         echo "<div class='file-details-container'>
@@ -30,8 +38,8 @@ function getInfo($ff = './root')
                     <p id='infoCreation' class='file-details-item'>$creationDate</p>
                 </div>
             </div>";
-    } 
-    
+    }
+
     // else if (is_file($ff)) {
     //     $explodedDot = explode('.', $path);
     //     $name = explode('.', $explodedSlash[count($explodedSlash) - 1])[0];
@@ -52,7 +60,7 @@ function getInfo($ff = './root')
 
 getInfo($pathToff);
 
-function getDirectorySize($path)
+function getSize($path)
 {
     $bytestotal = 0;
     $path = realpath($path);

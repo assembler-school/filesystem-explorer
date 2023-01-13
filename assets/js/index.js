@@ -83,9 +83,7 @@ function openRenameFolderInput(event) {
 }
 
 function navigateToFolder(event) {
-  console.log(event.target.getAttribute("path"));
   let path = event.target.getAttribute("path");
-  console.log(path);
   fetch(`./modules/savePathToSession.php?path=${path}`, {
     method: "GET",
   })
@@ -209,6 +207,7 @@ function submitUploadForm(e) {
       let fileImg = document.createElement("div");
       fileImg.classList.add("file");
       fileImg.classList.add(data.extension.toLowerCase());
+      fileImg.setAttribute("path", data.path);
       file.addEventListener("contextmenu", openMenu);
 
       let fileName = document.createElement("p");
@@ -220,8 +219,6 @@ function submitUploadForm(e) {
       file.appendChild(fileName);
 
       filesAndFoldersContainer.appendChild(file);
-
-      console.log(data);
     })
     .catch((err) => console.log("Request: ", err));
 }

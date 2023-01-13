@@ -13,15 +13,21 @@ function getInfo($ff = './root')
     if (is_dir($ff)) {
         $name = $explodedSlash[count($explodedSlash) - 1];
         $type = 'Folder';
-        $size = getDirectorySize($ff);
+        $size = getSize($ff);
         $lastUpdateDate = date("d-m-y - H:i:s", filemtime($ff));
         $creationDate = date("d-m-y - H:i:s", filectime($ff));
-
     } else if (is_file($ff)) {
         $explodedDot = explode('.', $path);
         $name = explode('.', $explodedSlash[count($explodedSlash) - 1])[0];
         $type = $explodedDot[count($explodedDot) - 1];
-        $size = filesize($ff);
+        $size = filesize($ff) / 1000;
+
+        if ($size < 1000) {
+            $size = round($size, 1) . "Kb";
+        } else {
+            $size = round($size / 1000, 1) . "Mb";
+        }
+
         $lastUpdateDate = date("d-m-y - H:i:s", filemtime($ff));
         $creationDate = date("d-m-y - H:i:s", filectime($ff));
     }
@@ -38,7 +44,7 @@ function getInfo($ff = './root')
 
 getInfo($pathToff);
 
-function getDirectorySize($path)
+function getSize($path)
 {
     $bytestotal = 0;
     $path = realpath($path);
@@ -47,5 +53,12 @@ function getDirectorySize($path)
             $bytestotal += $object->getSize();
         }
     }
-    return $bytestotal;
+
+    if ($bytestotal < 1000) {
+        $bytestotal = round($bytestotal, 1) . "Kb";
+        return $bytestotal;
+    } else {
+        $bytestotal = round($bytestotal / 1000, 1) . "Mb";
+        return $bytestotal;
+    }
 }
