@@ -9,20 +9,32 @@ const deleteBtn = document.querySelector("#delete-btn");
 const renameBtn = document.querySelector("#rename-btn");
 const uploadFileBtn = document.querySelector("#uploadFileBtn");
 const uploadInput = document.getElementById("upload-input");
+const infoBtn = document.querySelector("#infoBtn");
+const confirmationModal = document.querySelector("#confirmationModal");
+const checkBtn = document.querySelector("#checkBtn");
+const dismissBtn = document.querySelector("#dismissBtn");
+
+const infoName = document.querySelector("#infoName");
+const infoType = document.querySelector("#infoType");
+const infoSize = document.querySelector("#infoSize");
+const infoUpdate = document.querySelector("#infoUpdate");
+const infoCreation = document.querySelector("#infoCreation");
 
 let pathToDelete;
 let currentFolder;
 
 for (let btn of createFolderBtn) {
-  console.log(btn);
   btn.addEventListener("click", createFolder);
 }
 
 document.body.addEventListener("click", closeMenu);
-deleteBtn.addEventListener("click", deleteDir);
+deleteBtn.addEventListener("click", toggleConfirmationVisibility);
+dismissBtn.addEventListener("click", toggleConfirmationVisibility);
+checkBtn.addEventListener("click", deleteDir);
 renameBtn.addEventListener("click", renameDirFromMenu);
 uploadFileBtn.addEventListener("click", uploadFile);
 uploadInput.addEventListener("change", submitUploadForm);
+infoBtn.addEventListener("click", printInfo);
 
 function createFolder(e) {
   currentDirectory = "." + e.target.getAttribute("path");
@@ -120,9 +132,10 @@ function rename(e) {
 function openMenu(event) {
   pathToDelete = event.target.getAttribute("path");
   currentFolder = event.target;
+  infoBtn.setAttribute("path", event.target.getAttribute("path"));
   menu.classList.remove("hidden");
   menu.style.left = event.pageX - 10 + "px";
-  menu.style.top = event.pageY  - 10 + "px";
+  menu.style.top = event.pageY - 10 + "px";
 
   setTimeout(() => {
     menu.style.opacity = 1;
@@ -134,6 +147,10 @@ function closeMenu() {
   setTimeout(() => {
     menu.classList.add("hidden");
   }, 300);
+}
+
+function toggleConfirmationVisibility() {
+  confirmationModal.classList.toggle("hidden");
 }
 
 function deleteDir() {
@@ -148,6 +165,7 @@ function deleteDir() {
     })
     .catch((err) => console.log("Request: ", err));
 
+  confirmationModal.classList.add("hidden");
   // window.location.href = `./modules/deleteDir.php?path=${pathToDelete}`;
 }
 
@@ -204,6 +222,23 @@ function submitUploadForm(e) {
       filesAndFoldersContainer.appendChild(file);
 
       console.log(data);
+    })
+    .catch((err) => console.log("Request: ", err));
+}
+
+function printInfo(e) {
+  let path = e.target.getAttribute("path");
+
+  fetch(`./modules/getInfo.php?path=${path}`, {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      infoName.innerText = data.name;
+      infoType.innerText = data.type;
+      infoSize.innerText = data.size;
+      infoUpdate.innerText = data.lastUpdateDate;
+      infoCreation.innerText = data.creationDate;
     })
     .catch((err) => console.log("Request: ", err));
 }

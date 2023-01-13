@@ -26,6 +26,11 @@
         <?php
 
         session_start();
+
+        if (!isset($_SESSION['curr_path'])) {
+            $_SESSION['curr_path'] = './root';
+        }
+
         require_once('./modules/getFilesAndFolders.php');
 
         // breadcrumbs and handle navigation
@@ -55,14 +60,34 @@
     </main>
 
     <aside class="details-container">
-        <?php
-        require_once('./modules/getFileInfo.php');
-        ?>
+        <?php require_once('./modules/getInitialInfo.php'); ?>
+        <!-- <div class='file-details-container'>
+            <div class='file-details-container-items'>
+                <p class='file-details-item'>Name</p>
+                <p id="info-name" class='file-details-item'>$name</p>
+                <p class='file-details-item'>Extension</p>
+                <p id="info-type" class='file-details-item'>$type</p>
+                <p class='file-details-item'>Size</p>
+                <p id="info-size" class='file-details-item'>$size</p>
+                <p class='file-details-item'>Last update</p>
+                <p id="info-update" class='file-details-item'>$lastUpdateDate</p>
+                <p class='file-details-item'>Created</p>
+                <p id="info-creation" class='file-details-item'>$creationDate</p>
+            </div>
+        </div> -->
     </aside>
+
+    <div class="confirmationModal hidden" id="confirmationModal">
+        <p>Are you sure?</p>
+        <div class="confirmation-btn-container">
+            <img id="checkBtn" src="./assets/fileIcons/checkIcon.png" alt="check" />
+            <img id="dismissBtn" src="./assets/fileIcons/dismissIcon.png" alt="dismiss" />
+        </div>
+    </div>
 
     <aside class="menu hidden">
         <img src="./assets/fileIcons/renameIcon.png" id="rename-btn" />
-        <img src="./assets/fileIcons/copyIcon.png" id="copy-btn" />
+        <img src="./assets/fileIcons/infoIcon.png" id="infoBtn" />
         <img src="./assets/fileIcons/cutIcon.png" id="cut-btn" />
         <img src="./assets/fileIcons/deleteIcon.png" id="delete-btn" />
     </aside>

@@ -143,7 +143,7 @@ aside {
   color: grey;
 }
 
-aside p{
+aside p {
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -156,6 +156,10 @@ aside p:first-child {
 aside p:nth-child(2n) {
   border-bottom: 1px solid rgb(199, 199, 199);
   padding-top: 0px;
+}
+
+aside p:nth-child(2n-1) {
+  color: rgb(70, 70, 70);
 }
 
 .file-details-container {
@@ -253,7 +257,7 @@ aside p:nth-child(2n) {
 
 .folder-container,
 .file-container {
-  margin-top: 25px;
+  margin-top: 30px;
   height: 150px;
   width: 150px;
   background: linear-gradient(
@@ -286,7 +290,8 @@ aside p:nth-child(2n) {
   transition-duration: 0.3s;
 }
 
-.folder:hover, .file:hover {
+.folder:hover,
+.file:hover {
   transform: rotateY(10deg);
 }
 
@@ -333,6 +338,40 @@ aside p:nth-child(2n) {
 .menu img:hover {
   transform: rotate(5deg);
 }
+
+.confirmationModal {
+  height: 200px;
+  width: 350px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  border:2px solid var(--bg--primary);
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 14px 15px 26px -9px rgba(0,0,0,0.75);
+}
+
+.confirmation-btn-container {
+  height: 50px;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.confirmation-btn-container img {
+  height: 100%;
+  cursor: pointer;
+}
+
 
 .hidden {
   display: none;
@@ -410,3 +449,4 @@ aside p:nth-child(2n) {
 .mp4 {
   background-image: url("../fileIcons/mp4.png");
 }
+
