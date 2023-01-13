@@ -1,28 +1,23 @@
 <?php
-
+session_start();
 require_once("CRUD/create.php");
 require_once( "CRUD/upload.php");
 require_once( "CRUD/folder-list.php");
 
 $folderEstructure = './root';
-if(isset($_REQUEST['route'])){
-    // $_SESSION["altPath"] = $_REQUEST["route"];
-    $_SESSION["absPath"] = $folderEstructure . '/' . $_REQUEST["route"];
-    $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
+if(!isset($_SESSION["basePath"])){
+    $_SESSION["basePath"] = $folderEstructure ;
 }
-
-
-
-
-// if(isset($_REQUEST['route'])){  
-//     if(isset($_SESSION["altPath"])){
-//         $_SESSION["altPath"] = '';
-//     }
-//     $_SESSION["altPath"] = $_REQUEST["route"];
-//     // $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
-// }else{
-//     $_SESSION["altPath"] = '';
-// }
+if(isset($_REQUEST['route'])){  
+    if(isset($_SESSION["altPath"])){
+        $_SESSION["altPath"] = '';
+    }
+    $_SESSION["altPath"] = $_REQUEST["route"];
+    $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
+}else{
+    $_SESSION["altPath"] = '';
+    
+}
 
 
 
@@ -74,7 +69,7 @@ if(isset($_REQUEST['route'])){
 
             <div class="col-md-10">
 
-                <form action="index.php" enctype="multipart/form-data" method="POST">
+                <form enctype="multipart/form-data" method="POST">
                     <input type="file" name="nombre" id="">
                     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                     <input type="submit" value="Upload" class="refresh">
@@ -89,13 +84,21 @@ if(isset($_REQUEST['route'])){
         <div class="row" id="content-box">
 
             <div class="col-md-3 border border-dark-1" id="root">
-                <?php viewElements($root, 'root');?>
+                <?php viewFolderStructure($root);?>
             </div>
 
 
             <div class="col-md-7" id="content-element">
                 <div class="row text-center">
-                    <?php  viewElements($folderEstructure);?>
+                    <?php  
+                            if($folderEstructure){
+                                viewFolderStructure($root);
+                            }else{
+                                viewFolderElements($completeRoot);
+                            }  
+                    ?>
+                    
+                    
                 </div>
             </div>
 
