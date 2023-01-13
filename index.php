@@ -14,14 +14,13 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
 
 ?>
 <?php include('./header.php') ?>
+
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <h4 class="text-white m-0 ms-4">File Explorer</h4>
       <a href="?p=" class="home-btn folder-btn m-3"><i class="bi bi-house"></i></a>
-      <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
-        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
+      <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon text-white"></span>
       </button>
 
@@ -29,11 +28,11 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <?php if (strlen($_SESSION['relativePath']) !== 0) {
-              ?>
+            ?>
               <li class="breadcrumb-item active"><a class="text-white" href="?p=">Home</a></li>
-              <?php
+            <?php
             } else {
-              ?>
+            ?>
               <li class="breadcrumb-item text-white">Home</li>
               <?php
             }
@@ -44,25 +43,25 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
             for ($i = 0; $i < count($array); $i++) {
               if (strlen($array[$i]) !== 0) {
                 if ((count($array) - $i) > 1) {
-                  ?>
+              ?>
                   <li class="breadcrumb-item <?php echo 'active' ?>">
                     <a class="text-white" href="?p=<?php
-                    for ($x = 0; $x <= $i; $x++) {
-                      echo $array[$x];
-                      if ($i > 0 && $x < $i)
-                        echo '/';
-                    }
-                    ?>">
+                                                    for ($x = 0; $x <= $i; $x++) {
+                                                      echo $array[$x];
+                                                      if ($i > 0 && $x < $i)
+                                                        echo '/';
+                                                    }
+                                                    ?>">
                       <?php echo $array[$i] ?>
                     </a>
                   </li>
-                  <?php
+                <?php
                 } else {
-                  ?>
+                ?>
                   <li class="breadcrumb-item text-white">
                     <?php echo $array[$i] ?>
                   </li>
-                  <?php
+            <?php
                 }
               }
             }
@@ -71,8 +70,7 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
         </nav>
       </div>
       <div class="d-flex">
-        <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search"
-          onkeyup="searchFile(event)">
+        <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search" onkeyup="searchFile(event)">
       </div>
       <form action="upload.php" method="POST" enctype="multipart/form-data" id="uploadForm">
         <input type="hidden" name="MAX_FILE_SIZE" value="100000">
@@ -108,13 +106,11 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
         <?php loadFiles('./root', $folderPath ? $folderPath : ROOT); ?>
       </tbody>
     </table>
-    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
-      onclick="type_all();">
+    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="type_all();">
       <i class="bi bi-trash2"></i>
       Delete All Files
     </button>
-    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
-      onclick="type_trash();">
+    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="type_trash();">
       <i class="bi bi-recycle"></i>
       Empty Trash
     </button>
@@ -125,7 +121,7 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle"></h5>
+          <h5 class="modal-title" id="deleteTitle"></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -140,6 +136,27 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
       </div>
     </div>
   </div>
+  <!-- RENAME MODAL  -->
+  <div class="modal" id="renameModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id ="renameForm" onsubmit="renameFile(event);">
+          <div class="modal-header">
+            <h5 class="modal-title" id="renameTitle"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Enter the new name</p>
+            <input type="text" name="rename" id="rename">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Rename</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <?php include('./footer.php');
 
@@ -150,7 +167,7 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
 
   if (isset($_REQUEST['rar'])) {
     if ($_REQUEST['rar'] == 1) {
-      ?>
+  ?>
       <script>
         const alert = document.getElementById('liveAlertPlaceholder');
         const wrapper = document.createElement('div')
@@ -166,11 +183,11 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
         alert.append(wrapper)
         window.history.pushState("", "", "<?php echo '/' . $project . '/' . $returnPath ?> ");
       </script>
-      <?php
+    <?php
     } else {
-      ?>
+    ?>
       <script>
-        const alert = document.getElementById('liveAlertPlaceholder');
+        const alert2 = document.getElementById('liveAlertPlaceholder');
         const wrapper = document.createElement('div')
         wrapper.innerHTML = [
           `<div class="alert alert-warning alert-dismissible mt-3 col-2 offset-md-5" role="alert">`,
@@ -179,12 +196,12 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
           '</div>'
         ].join('')
         setTimeout(() => {
-          alert.firstChild.remove();
+          alert2.firstChild.remove();
         }, 2000);
-        alert.append(wrapper)
+        alert2.append(wrapper)
         window.history.pushState("", "", "<?php echo '/' . $project . '/index.php?p=' . $returnPath ?> ");
       </script>
-      <?php
+  <?php
     }
   }
 

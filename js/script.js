@@ -97,21 +97,37 @@ function searchFile(e) {
 
 function renameFile(e) {
   e.preventDefault();
-  const fileName = e.target.parentNode.parentNode.getAttribute('data-file');
+  const newName = rename.value;
+  const oldName = document.querySelector("#renameTitle").getAttribute("data-file");
   const file = new FormData();
-  file.append("fileName", fileName);
+  file.append("newName", newName);
+  file.append("oldName", oldName);
   const config = {
     'method': 'POST',
     'body': file,
   }
-  console.log(fileName);
   fetch("./rename.php", config)
-    .then(res => res.json())
-    .then(res => {
-      if (res === 'ok') {
+  .then(res => res.json())
+  .then(res => {
+    console.log(res);
+    if(res == 1){
+      const completeName = newName + "." + oldName.split(".")[1];
+      const modify = document.querySelector(`tr[data-file='${oldName}']`);
+      modify.removeAttribute("data-file");
+      modify.setAttribute("data-file",completeName);
+      const link = modify.children[0].children[1];
+      link.textContent = completeName;
+      let href = link.href.split("=")[0];
+      href += `=${completeName}`;
+      console.log(href);
+      link.href = href;
+      custom_alert("The name has been changed successfully", "success");
 
-
-      }
+      
+    }else{
+      custom_alert("Can´t rename the file", 'danger');
+    }
+      
     })
     .catch(function () {
       custom_alert("Can't connect to backend, try latter", 'danger');

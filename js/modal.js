@@ -1,18 +1,21 @@
-const form = document.querySelector('#deleteForm');
-const title = document.querySelector('#modalTitle');
+const deleteForm = document.querySelector('#deleteForm');
+const renameForm =document.querySelector('#renameForm');
+const deleteTitle = document.querySelector('#deleteTitle');
+const renameTitle = document.querySelector('#renameTitle');
+const renameInput = document.querySelector('#rename');
 
 function type_all() {
-  form.onsubmit = function (event) {
+  deleteForm.onsubmit = function (event) {
     return deleteAll(event, 'folder');
   }
-  title.textContent = 'Delete all directories and files';
+  deleteTitle.textContent = 'Delete all directories and files';
 }
 
 function type_trash() {
-  form.onsubmit = function (event) {
+  deleteForm.onsubmit = function (event) {
     return deleteAll(event, 'trash');
   }
-  title.textContent = 'Delete Trash';
+  deleteTitle.textContent = 'Delete Trash';
 }
 
 function type_file(e) {
@@ -22,8 +25,20 @@ function type_file(e) {
   } else {
     name = e.target.getAttribute('data-file');
   }
-  form.onsubmit = function (event) {
+  deleteForm.onsubmit = function (event) {
     return deleteFile(event, name);
   }
-  title.textContent = `Delete ${name}`;
+  deleteTitle.textContent = `Delete ${name}`;
+}
+
+function rename_file(e) {
+  let name = '';
+  if (e.target.tagName == 'I') {
+    name = e.target.parentNode.getAttribute('data-file');
+  } else {
+    name = e.target.getAttribute('data-file');
+  }
+  renameInput.value = name.split(".")[0];
+  renameTitle.textContent = `Rename ${name}`;
+  renameTitle.setAttribute("data-file", name);
 }
