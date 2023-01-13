@@ -91,8 +91,6 @@
       }
     }
 
-    print_r(glob("root/cheddar/*"))[1];
-
     ?>
   </tbody>
 </table>
