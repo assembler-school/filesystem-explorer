@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 
 // if (!empty($_POST['name-folder'])) {
@@ -41,7 +41,7 @@ session_start();
 
 
 $currentDir = $_SESSION["absPath"];
-session_start();
+
 
 
 if (empty($_POST['nombre']) === false) {

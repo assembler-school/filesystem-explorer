@@ -1,18 +1,31 @@
 <?php
+session_start();
 require_once("./CRUD/create.php");
 require_once( "./CRUD/upload.php");
 require_once( "./CRUD/folder-list.php");
 
 
+// $folderEstructure = "root";
+// if(isset($_REQUEST['route'])){
+//     if(isset($_SESSION["altPath"])){
+//         $_SESSION["altPath"] = '';
+//     }
+//     $_SESSION["altPath"] = $_REQUEST["route"];
+//     $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
+// }else{
+//     $_SESSION["altPath"] = '';
+// }
 
-$folderEstructure = './root';
+
+
+$folderEstructure = 'root';
 if(isset($_REQUEST['route'])){
     $_SESSION["altPath"] = $_REQUEST["route"];
     $_SESSION["absPath"] = $folderEstructure . '/' . $_REQUEST["route"];
-    $submitData = $_POST["name-folder"];
     $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
     
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -64,7 +77,7 @@ if(isset($_REQUEST['route'])){
 
             <div class="col-md-10">
 
-                <form action="#" enctype="multipart/form-data" method="POST">
+                <form enctype="multipart/form-data" method="POST">
                     <input type="file" name="nombre">
                     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                     <input type="submit" value="Upload" class="refresh">
@@ -79,14 +92,18 @@ if(isset($_REQUEST['route'])){
         <div class="row" id="content-box">
 
             <div class="col-md-3 border border-dark-1" id="root">
-                <?php viewElements($root);?>
+                <?php viewFolderStructure($root);?>
             </div>
 
 
             <div class="col-md-7 border border-dark-1" id="content-element">
                 <div class="row text-center">
-
-                    <?php  viewElements($folderEstructure);?>
+                    <?php if("root") {
+                        viewFolderElements("./root");
+                    } 
+                        viewFolderElements($completeRoot);
+                    ?>
+                    
                 </div>
             </div>
 
@@ -102,7 +119,7 @@ if(isset($_REQUEST['route'])){
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
         </script>
     <script src="script.js?v=<?php echo (rand()); ?>" defer></script>
-
+                    
 </body>
 
 </html>
