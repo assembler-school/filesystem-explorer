@@ -61,17 +61,18 @@ function loadFolderImages(){
 
 function renameFiles(e) {
     if (e.target.matches(".text-list")) {
-        let inputValue = e.target;
+        let textValue = e.target;
+        /* oldDirectoryName = textValue.textContent; */
+        /* console.log(oldDirectoryName); */
         let padre = e.target.parentNode;
         inputRename = document.createElement("input");
         inputRename.setAttribute("id", "folderValues");
         inputRename.setAttribute("class", "folder-list-input");
         inputRename.setAttribute("type", "text");
-        inputRename.setAttribute("value", inputValue.textContent);
-        padre.replaceChild(inputRename, inputValue);
+        inputRename.setAttribute("value", textValue.textContent);
+        padre.replaceChild(inputRename, textValue);
         inputRename.addEventListener("focusout", checkDirectoryReName);
         inputRename.select();
-        console.log({dataPath});
     }
 }
 
@@ -87,31 +88,31 @@ function checkDirectoryReName(){
         .catch((err) => console.log("Request failed: ", err));
 }
 
-function getInputRenameValue(data){ 
+function getInputRenameValue(data){
     if (data === "Exist") {
         inputRename.select();
     } else {
         reNameFolder = inputRename.value;
-        const p = document.createElement("p");
-        p.classList.add("folder-list-p");
-        p.textContent = reNameFolder;
-        li = document.querySelector("#folderValues");
+        const span = document.createElement("span");
+        span.classList.add("text-list");
+        span.textContent = reNameFolder;
+        li = document.querySelector('[data-path="'+dataPath+'"]');
+        console.log(li);
         inputRename.remove();
-        
-       
+        li.appendChild(span);
         renameFolder();
     }
 }
 
 function renameFolder(){
-    // fetch("modules/reNameFolder.php" + "?" + "directoryName=" + reNameFolder , {
-    //     method: "GET",
-    // })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         console.log(data);
-    //     })
-    //     .catch((err) => console.log("Request failed: ", err));
+    fetch("modules/reNameFolder.php?directoryNewName=" + reNameFolder + "&directoryOldName=" + "hola", {
+         method: "GET",
+     })
+         .then((response) => response.json())
+         .then((data) => {
+             console.log(data);
+         })
+         .catch((err) => console.log("Request failed: ", err));
     console.log("hola");
 };
 
@@ -155,15 +156,14 @@ function getInputValue(data) {
         inputValue.select();
     } else {
         nameFolder = inputValue.value;
-        const p = document.createElement("p");
-        p.classList.add("folder-list-p");
-        p.textContent = nameFolder;
+        const span = document.createElement("span");
+        span.classList.add("text-list");
+        span.textContent = nameFolder;
         li.setAttribute("data-path", nameFolder + "/");
         li = document.querySelector("#folderValues");
         inputValue.remove();
-        li.appendChild(p);
+        li.appendChild(span);
         addFolderImage.addEventListener("click", showImageFolder);
-        /* showFoldersInMiddle(); */
         createFolder();
     }
 }
@@ -181,7 +181,6 @@ function createFolder() {
                 img.remove();
                 p.remove();
             }
-            // renderFileInfo(data);
         })
         .catch((err) => console.log("Request failed: ", err));
 }
