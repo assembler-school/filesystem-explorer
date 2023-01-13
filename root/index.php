@@ -45,8 +45,17 @@
 </div>
 
 <br><br>
-<div id="trash-container">
+
+<div id="trash-folder" folder-trash="trash">
+    <li id="li-trash">
+        <div id="trash-visual-folder">
+        <img src="../image/folder.ico" class="imageFolderTrash" alt="Folder Trash">
+        <p>Trash</p>
+        </div>
+    </li>
 </div>
+
+
 <div class='fixed-button'>
 <div id='create-new-folder'>
 <i class="fa-solid fa-plus"></i>

@@ -260,9 +260,23 @@ width: calc(100% - 20px);
     margin: 5% 10%;
 }
 
-#trash-container{
-    display: inline;
+#trash-folder{
     color: red;
 }
+
+#trash-folder li{
+    list-style: none;
+}
+
+#trash-folder img{
+    width: 10px;
+}
+
+#trash-visual-folder{
+    display: flex;
+    flex-direction: row;
+}
+
+
 
 
