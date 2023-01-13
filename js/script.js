@@ -2,6 +2,7 @@ const addFolderImage = document.querySelector("#addFolderImage");
 const ul = document.querySelector("#filesList");
 const folderFilesContainer = document.querySelector("#folderFilesContainer");
 const filesPath = document.querySelector("#filesPath");
+const renameFile = document.querySelector("#renameFile");
 let inputValue;
 let inputRename;
 let reNameFolder;
@@ -10,15 +11,17 @@ let li;
 let inputEdit;
 let inputCounter = 0;
 let oldDirectoryName;
+let textValue="";
+let padre="";
 
 addFolderImage.addEventListener("click", showImageFolder);
+renameFile.addEventListener("click", renameFiles);
 ul.addEventListener("dblclick", renameFiles);
 
-function renameFiles(e) {
-    if (e.target.matches(".text-list")) {
-        let textValue = e.target;
+function renameFiles() {
+    if(textValue!=""){
+        /* text value and padre are taken from selectElement */
         oldDirectoryName = textValue.textContent;
-        let padre = e.target.parentNode;
         inputRename = document.createElement("input");
         inputRename.setAttribute("id", "folderValues");
         inputRename.setAttribute("class", "folder-list-input");
