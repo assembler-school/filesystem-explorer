@@ -18,6 +18,7 @@ require_once( "./CRUD/folder-list.php");
 
 
 
+
 $folderEstructure = 'root';
 if(isset($_REQUEST['route'])){
     $_SESSION["altPath"] = $_REQUEST["route"];
@@ -26,6 +27,11 @@ if(isset($_REQUEST['route'])){
     
 }
 
+echo "<pre>";
+
+var_dump($_SESSION["altPath"], $_SESSION["absPath"], $_REQUEST["route"]);
+
+echo "</pre>";
 
 ?>
 <!DOCTYPE html>
@@ -98,10 +104,11 @@ if(isset($_REQUEST['route'])){
 
             <div class="col-md-7 border border-dark-1" id="content-element">
                 <div class="row text-center">
-                    <?php if("root") {
-                        viewFolderElements("./root");
-                    } 
+                    <?php
+                    
                         viewFolderElements($completeRoot);
+                    
+                        
                     ?>
                     
                 </div>

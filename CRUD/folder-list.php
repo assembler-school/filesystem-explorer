@@ -1,6 +1,6 @@
 <?php
 
-$root = "root";
+$root = "./root";
 
   function viewFolderStructure($root){
     if (is_dir($root)){
@@ -28,9 +28,9 @@ $root = "root";
     }
 }
 
-if(isset($_SESSION["absPath"]) && isset($_REQUEST["route"])) {
+if(isset($_SESSION) && isset($_REQUEST["route"])) {
     $completeRoot = $_REQUEST["route"];
-    var_dump($completeRoot);
+
 }
 
 
@@ -52,7 +52,7 @@ function viewFolderElements($completeRoot){
                 }
             }
         }
-
+        
         closedir($manager);
         echo "</ul>";
     } else {

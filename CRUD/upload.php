@@ -2,7 +2,7 @@
 
 if(isset($_SESSION) && isset($_REQUEST["route"])) {
     $completeRoot = $_REQUEST["route"] . "/";
-    var_dump($completeRoot);
+    
 }
 
 if (isset($_FILES['nombre']['error'])) { //Valida si no hay errores
