@@ -79,7 +79,7 @@
                 </div>
             </div>
             <form id="formUploadFile" action="modules/uploadFiles.php" method="POST" enctype="multipart/form-data">
-                    <input id="inputUploadFile" onchange="this.form.submit()" onclick=setDataPath() type='file' name='file'>
+                    <input id="inputUploadFile" onchange="this.form.submit()" type='file' name='file'>
             </form>
         </main>
         <footer></footer>

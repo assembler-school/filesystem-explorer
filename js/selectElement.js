@@ -95,9 +95,7 @@ function printFilesSecondChild() {
 }
 
 function getInfoFilesCorner() {
-    console.log(dataPath);
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
-    console.log(dataPathWithoutSlash);
     fetch("modules/fileInfo.php" + "?" + "path=" + dataPathWithoutSlash, {
             method: "GET",
         })

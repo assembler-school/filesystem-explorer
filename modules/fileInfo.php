@@ -50,8 +50,6 @@ if(is_dir($filename)){
         }
     }
     closedir($openedFolder);
-} else {
-    echo json_encode("The directory does not exist");
 }
 
 echo json_encode($fileInfo);

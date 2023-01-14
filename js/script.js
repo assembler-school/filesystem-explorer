@@ -130,20 +130,7 @@ function getInputValue(data) {
     }
 }
 
-function setDataPath() {
-    fetch("modules/uploadFiles.php" + "?" + "dataPath=" + dataPath, {
-            method: "GET",
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-        })
-        .catch((err) => console.log("Request failed: ", err));
-}
-
 function createFolder() {
-    console.log(dataPath);
-    console.log(nameFolder);
     fetch("modules/createFolder.php" + "?" + "directoryName=" + dataPath + nameFolder, {
             method: "GET",
         })
