@@ -8,19 +8,53 @@ function deleteAll(e, element) {
   fetch(`./deleteAll.php?el=${element}`)
     .then(res => res.json())
     .then(res => {
-      if (res === 1) {
+      if (res.folder == 'ok') {
         document.querySelectorAll('[data-file]').forEach(node => {
           node.remove();
         });
-        custom_alert('Files deleted succesfully!', 'success');
-      } else if (res === 2) {
-        custom_alert('The trash is empty', 'success');
-      } else {
-        custom_alert('No files', 'warning');
+        document.querySelector('#emptyAll').style.display = 'none';
+
+        const dirTr = document.createElement('tr');
+        let fullDirTd = document.createElement('td');
+        fullDirTd.textContent = 'No files were found';
+        fullDirTd.classList.add('fw-bold');
+        fullDirTd.classList.add('p-3');
+        dirTr.append(fullDirTd);
+        dirTr.innerHTML += '<td></td><td></td><td></td>';
+        const dirTbody = document.querySelector('#tbody');
+        dirTbody.append(dirTr);
+
+        const openTrash = document.querySelector('#openTrash');
+        openTrash.innerHTML = '';
+        openTrash.innerHTML = '<i class="bi-battery-charging"></i> Open Trash';
+
+        custom_alert('Files deleted succesfully from this folder!', 'success');
+      } else if (res.folder == 'is-empty') {
+        custom_alert('This folder is empty', 'warning');
+      } else if (res.trash == 'ok') {
+        document.querySelectorAll('[data-file]').forEach(node => {
+          node.remove();
+        });
+        document.querySelector('#emptyTrash').style.display = 'none';
+
+        const trashTr = document.createElement('tr');
+        let fullTrashTd = document.createElement('td');
+        fullTrashTd.textContent = 'No files were found';
+        fullTrashTd.classList.add('fw-bold');
+        fullTrashTd.classList.add('p-3');
+        trashTr.append(fullTrashTd);
+        trashTr.innerHTML += '<td></td><td></td><td></td>';
+        const trashTbody = document.querySelector('#tbody');
+        trashTbody.append(trashTr);
+
+        custom_alert('Files deleted succesfully from trash!', 'success');
+      } else if (res.trash == 'is-empty') {
+        custom_alert('The trash is empty', 'warning');
       }
     })
-    .catch(function () {
+    .catch(function (error) {
       custom_alert("Can't connect to backend, try latter", 'danger');
+      console.log(error);
     });
 }
 
@@ -38,10 +72,25 @@ function deleteFile(e, fileName) {
     .then(res => {
       if (res === 'ok') {
         document.querySelector(`[data-file='${fileName}']`).remove();
+        const openTrash = document.querySelector('#openTrash');
+        openTrash.innerHTML = '';
+        openTrash.innerHTML = '<i class="bi-battery-charging"></i> Open Trash';
+      }
+      if (document.querySelectorAll('tr[data-file]').length === 0) {
+        const tr = document.createElement('tr');
+        let td = document.createElement('td');
+        td.textContent = 'No files were found';
+        td.classList.add('fw-bold');
+        td.classList.add('p-3');
+        tr.append(td);
+        tr.innerHTML += '<td></td><td></td><td></td>';
+        const tbody = document.querySelector('#tbody');
+        tbody.append(tr);
       }
       custom_alert('File deleted succesfully!', 'success');
     })
-    .catch(function () {
+    .catch(function (error) {
+      console.log(error);
       custom_alert("Can't connect to backend, try latter", 'danger');
     });
 }
@@ -63,8 +112,6 @@ function searchFile(e) {
       files.forEach(node => {
         data_files.push(node.getAttribute('data-file'));
       });
-      console.log("Resultados:  " + resultFiles);
-      //console.log("Nodos en pantalla:  " + data_files);
 
       data_files.forEach(name => {
         resultFiles.forEach(nameResult => {
@@ -73,7 +120,6 @@ function searchFile(e) {
           }
         });
       });
-      //console.log("Nodos para eliminar:  " + data_files);
       files.forEach(node => {
         if (data_files.find(name => name.toUpperCase() == node.getAttribute('data-file').toUpperCase())) {
           node.style.display = 'none';
@@ -92,6 +138,52 @@ function searchFile(e) {
       return ele != value;
     });
   }
+}
+
+function advancedSearch(e) {
+  e.preventDefault();
+  const searchValue = searchBar.value;
+  searchBar.value = '';
+  const searchData = new FormData();
+  searchData.append('search', searchValue);
+  const fileExtensionsAllowed = ['jpg', 'png', 'txt', 'docx', 'csv', 'ppt', 'odt', 'pdf', 'zip', 'rar', 'exe', 'svg', 'mp3', 'mp4'];
+
+  fetch("./advancedSearch.php", { 'method': 'POST', 'body': searchData })
+    .then(res => res.json())
+    .then(resultFiles => {
+      const tbody = document.querySelector('#tbody');
+      tbody.innerHTML = '';
+      resultFiles.forEach(file => {
+        const array = file.split('\\');
+        const name = array[array.length - 1];
+        const data = new FormData();
+        data.append('name', name);
+        data.append('path', file)
+        fetch("./getSearchFiles.php", { 'method': 'POST', 'body': data })
+          .then(res => res.json())
+          .then(files => {
+            let array = name.split('.');
+            let extension = array[array.length - 1];
+            console.log(extension);
+            let icon = '';
+            if (fileExtensionsAllowed.includes(extension)) {
+              icon = extension;
+            } else icon = 'other';
+            let href = '';
+            if (files.type === 'dir') {
+              href = '?search&p=';
+            } else href = 'open.php?search&path=';
+            tbody.innerHTML += `<tr><td class="p-3"><img src='./assets/${icon}.png' class='icon me-2' alt='$fileExtension' />
+            ${name}</td><td class="p-3">${files.size}</td><td class="p-3">${files.time}</td>
+            <td class="p-3"><a class="folder-btn link text-white" target="_blank" href="${href}${files.relative}&name=${name}"><i class="bi bi-door-open"></i>
+            </a></td></tr>`;
+          });
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+      custom_alert("Can't connect to backend, try latter", 'danger');
+    });
 
 }
 
