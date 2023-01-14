@@ -12,27 +12,49 @@ let dataPath = "";
 
 
 folderFilesContainer.addEventListener("dblclick", selectElementChildren);
+folderFilesContainer.addEventListener("click", selectSecondElement);
 filesPath.addEventListener("click", selectElementChildren);
+filesPath.addEventListener("click", getTextValueAndPadre);
 arrowLeft.addEventListener("click", goBackDirectory);
 
 function selectElementChildren(event) {
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
-    let secondChild = event.target.lastChild;
-    let nextChild = event.target.nextElementSibling;
-  
     if (parentNode.classList.contains("first-list")) {
         let firstList = parentNode;
         firstList.style.backgroundColor = "yellow";
-        printFolderTitleName(parentNode);
         dataPath = parentNode.getAttribute('data-path');
+        printFolderTitleName(parentNode);
     } else if (currentNode.classList.contains("first-list")) {
         let firstList = currentNode;
         firstList.style.backgroundColor = "yellow";
-        printFolderTitleName(currentNode);
         dataPath = currentNode.getAttribute('data-path');
+        printFolderTitleName(currentNode);
     }
+    printFilesSecondChild();
+}
 
+function selectSecondElement(event){
+    let parentNode = event.target.parentNode;
+    let currentNode = event.target;
+    if (parentNode.classList.contains("first-list")) {
+        let firstList = parentNode;
+        firstList.style.backgroundColor = "yellow";
+        dataPath = parentNode.getAttribute('data-path');
+        printFolderTitleName(parentNode);
+    } else if (currentNode.classList.contains("first-list")) {
+        let firstList = currentNode;
+        firstList.style.backgroundColor = "yellow";
+        dataPath = currentNode.getAttribute('data-path');
+        printFolderTitleName(currentNode);
+    }
+}
+
+function getTextValueAndPadre(event){
+    let parentNode = event.target.parentNode;
+    let currentNode = event.target;
+    let secondChild = event.target.lastChild;
+    let nextChild = event.target.nextElementSibling;
     if (parentNode.classList.contains("text-list")){
         textValue = parentNode;
         padre = textValue.parentNode;
@@ -46,10 +68,7 @@ function selectElementChildren(event) {
         textValue = nextChild;
         padre = textValue.parentNode;
     }
-
-    printFilesSecondChild();
 }
-
 
 function printFolderTitleName(selectedElement) {
     getInfoFiles();
@@ -119,6 +138,9 @@ function goBackDirectory() {
     dataPath = dataPath + "/";
     if (dataPath == "/") {
         dataPath = "";
+        filesListSecondChild.innerHTML = "";
+        sizeListSecondChild.innerHTML = "";
+        modificationListSecondChild.innerHTML = "";
     } else {
         printFilesSecondChild();
     }
