@@ -61,23 +61,9 @@
 
     <aside class="details-container">
         <?php require_once('./modules/getInitialInfo.php'); ?>
-        <!-- <div class='file-details-container'>
-            <div class='file-details-container-items'>
-                <p class='file-details-item'>Name</p>
-                <p id="info-name" class='file-details-item'>$name</p>
-                <p class='file-details-item'>Extension</p>
-                <p id="info-type" class='file-details-item'>$type</p>
-                <p class='file-details-item'>Size</p>
-                <p id="info-size" class='file-details-item'>$size</p>
-                <p class='file-details-item'>Last update</p>
-                <p id="info-update" class='file-details-item'>$lastUpdateDate</p>
-                <p class='file-details-item'>Created</p>
-                <p id="info-creation" class='file-details-item'>$creationDate</p>
-            </div>
-        </div> -->
     </aside>
 
-    <div class="confirmationModal hidden" id="confirmationModal">
+    <div class="confirmation-modal hidden" id="confirmationModal">
         <p>Are you sure?</p>
         <div class="confirmation-btn-container">
             <img id="checkBtn" src="./assets/fileIcons/checkIcon.png" alt="check" />

@@ -340,9 +340,9 @@ aside p:nth-child(2n-1) {
   transform: rotate(5deg);
 }
 
-.confirmationModal {
-  height: 200px;
-  width: 350px;
+.confirmation-modal {
+  max-height: 200px;
+  max-width: 350px;
   position: absolute;
   left: 0;
   right: 0;
@@ -358,6 +358,7 @@ aside p:nth-child(2n-1) {
   background-color: white;
   border-radius: 25px;
   box-shadow: 14px 15px 26px -9px rgba(0, 0, 0, 0.75);
+  z-index: 9999;
 }
 
 .confirmation-btn-container {
