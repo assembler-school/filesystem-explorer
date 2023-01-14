@@ -11,15 +11,15 @@ let li;
 let inputEdit;
 let inputCounter = 0;
 let oldDirectoryName;
-let textValue="";
-let padre="";
+let textValue = "";
+let padre = "";
 
 addFolderImage.addEventListener("click", showImageFolder);
 renameFile.addEventListener("click", renameFiles);
 ul.addEventListener("dblclick", renameFiles);
 
 function renameFiles() {
-    if(textValue!=""){
+    if (textValue != "") {
         /* text value and padre are taken from selectElement */
         oldDirectoryName = textValue.textContent;
         inputRename = document.createElement("input");
@@ -33,19 +33,27 @@ function renameFiles() {
     }
 }
 
-function checkDirectoryReName(){
+function sameFolderName() {
+    padre.replaceChild(textValue, inputRename);
+}
+
+function checkDirectoryReName() {
+    if(inputRename.value == oldDirectoryName){
+        sameFolderName();
+    } else {
     fetch("modules/checkDirectoryName.php" + "?" + "directoryName=" + inputRename.value, {
-        method: "GET",
-    })
+            method: "GET",
+        })
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
             getInputRenameValue(data);
         })
         .catch((err) => console.log("Request failed: ", err));
+    }
 }
 
-function getInputRenameValue(data){
+function getInputRenameValue(data) {
     if (data === "Exist") {
         inputRename.select();
     } else {
@@ -53,7 +61,7 @@ function getInputRenameValue(data){
         const span = document.createElement("span");
         span.classList.add("text-list");
         span.textContent = reNameFolder;
-        li = document.querySelector('[data-path="'+dataPath+'"]');
+        li = document.querySelector('[data-path="' + dataPath + '"]');
         console.log(li);
         inputRename.remove();
         li.appendChild(span);
@@ -61,16 +69,15 @@ function getInputRenameValue(data){
     }
 }
 
-function renameFolder(){
+function renameFolder() {
     fetch("modules/reNameFolder.php?directoryNewName=" + reNameFolder + "&directoryOldName=" + oldDirectoryName, {
-         method: "GET",
-     })
-         .then((response) => response.json())
-         .then((data) => {
-             console.log(data);
-         })
-         .catch((err) => console.log("Request failed: ", err));
-    console.log("hola");
+            method: "GET",
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((err) => console.log("Request failed: ", err));
 };
 
 function showImageFolder() {
@@ -97,8 +104,8 @@ function showImageFolder() {
 
 function checkDirectoryName() {
     fetch("modules/checkDirectoryName.php" + "?" + "directoryName=" + inputValue.value, {
-        method: "GET",
-    })
+            method: "GET",
+        })
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
@@ -116,17 +123,18 @@ function getInputValue(data) {
         span.classList.add("text-list");
         span.textContent = nameFolder;
         li.setAttribute("data-path", nameFolder + "/");
-        li = document.querySelector('[data-path="'+nameFolder+"/"+'"]');
+        li = document.querySelector('[data-path="' + nameFolder + "/" + '"]');
         inputValue.remove();
         li.appendChild(span);
         addFolderImage.addEventListener("click", showImageFolder);
         createFolder();
     }
 }
-function setDataPath(){
-    fetch("modules/uploadFiles.php" + "?" + "dataPath=" + dataPath , {
-        method: "GET",
-    })
+
+function setDataPath() {
+    fetch("modules/uploadFiles.php" + "?" + "dataPath=" + dataPath, {
+            method: "GET",
+        })
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
@@ -138,8 +146,8 @@ function createFolder() {
     console.log(dataPath);
     console.log(nameFolder);
     fetch("modules/createFolder.php" + "?" + "directoryName=" + dataPath + nameFolder, {
-        method: "GET",
-    })
+            method: "GET",
+        })
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
