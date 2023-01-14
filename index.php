@@ -41,35 +41,35 @@
                     </div>
                     <div id="informationFilesContainer">
                         <ul id="informationFilesList">
-                            <li id="creationInfo" class="information-files">Created: </li>
-                            <li id="modifiedInfo" class="information-files">Last modified: </li>
+                            <li id="creationInfo" class="information-files">Creation date: </li>
+                            <li id="modifiedInfo" class="information-files">Last modificaton: </li>
                             <li id="extensioinInfo" class="information-files">Extension: </li>
-                            <li id="sizeInfo" class="information-files">Size</li>
+                            <li id="sizeInfo" class="information-files">Size:</li>
                             <li id="pathInfo" class="information-files">Path: </li>
                         </ul>
                     </div>
                 </div>
                 <div id="secondChildrenContainer" class="main-children">
                     <div id="secondChildrenChild">
-                        <div id="titleSecondChild">
-                            <p class="titleSecond">Name</p>
-                            <p class="titleSecond">Size</p>
-                            <p class="titleSecond">Modified</p>
-                        </div>
                         <div id="pathSecondChild">
                             <img id="arrowLeft" src="images/arrowLeft.png" alt="left arrow">
                             <img id="folderIcon" src="images/folderIconSmall.png" alt="folder icon">
                             <p id="pathSecondFolderTitle"></p>
                         </div>
+                        <div id="titleSecondChild">
+                            <p class="titleSecond">Name</p>
+                            <p class="titleSecond">Size</p>
+                            <p class="titleSecond">Modified</p>
+                        </div>
                         <div id="contentSecondChild">
                             <div id="folderFilesContainer">
-                                <ul id="filesListSecondChild"></ul>
+                                <div id="filesListSecondChild"></div>
                             </div>
                             <div id="sizeFilesContainer">
-                                <ul id="sizeListSecondChild"></ul>
+                                <div id="sizeListSecondChild"></div>
                             </div>
                             <div id="modificationFilesContainer">
-                                <ul id="modificationListSecondChild"></ul>
+                                <div id="modificationListSecondChild"></div>
                             </div>
                         </div>
                     </div>

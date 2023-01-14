@@ -1,6 +1,7 @@
 const creationInfo = document.getElementById("creationInfo");
 const modifiedInfo = document.getElementById("modifiedInfo");
 const extensioinInfo = document.getElementById("extensioinInfo");
+const folderFilesContainer = document.querySelector("#folderFilesContainer");
 const sizeInfo = document.getElementById("sizeInfo");
 const pathInfo = document.getElementById("pathInfo");
 const pathSecondFolderTitle = document.querySelector("#pathSecondFolderTitle");
@@ -13,11 +14,13 @@ let dataPath = "";
 
 folderFilesContainer.addEventListener("dblclick", selectElementChildren);
 folderFilesContainer.addEventListener("click", selectSecondElement);
-filesPath.addEventListener("click", selectElementChildren);
-filesPath.addEventListener("click", getTextValueAndPadre);
+ul.addEventListener("click", selectElementChildren);
+ul.addEventListener("click", getTextValueAndPadre);
 arrowLeft.addEventListener("click", goBackDirectory);
 
 function selectElementChildren(event) {
+    sizeListSecondChild.innerHTML = "";
+    modificationListSecondChild.innerHTML = "";
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
     if (parentNode.classList.contains("first-list")) {
@@ -34,44 +37,44 @@ function selectElementChildren(event) {
     printFilesSecondChild();
 }
 
-function selectSecondElement(event){
+function selectSecondElement(event) {
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
     if (parentNode.classList.contains("first-list")) {
         let firstList = parentNode;
         firstList.style.backgroundColor = "yellow";
         dataPath = parentNode.getAttribute('data-path');
-        printFolderTitleName(parentNode);
     } else if (currentNode.classList.contains("first-list")) {
         let firstList = currentNode;
         firstList.style.backgroundColor = "yellow";
         dataPath = currentNode.getAttribute('data-path');
-        printFolderTitleName(currentNode);
     }
+    getInfoFilesCorner();
 }
 
-function getTextValueAndPadre(event){
+function getTextValueAndPadre(event) {
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
     let secondChild = event.target.lastChild;
     let nextChild = event.target.nextElementSibling;
-    if (parentNode.classList.contains("text-list")){
+    if (parentNode.classList.contains("text-list")) {
         textValue = parentNode;
         padre = textValue.parentNode;
-    } else if (currentNode.classList.contains("text-list")){
+    } else if (currentNode.classList.contains("text-list")) {
         textValue = currentNode;
         padre = textValue.parentNode;
-    } else if (secondChild.classList.contains("text-list")){
+    } else if (secondChild.classList.contains("text-list")) {
         textValue = secondChild;
         padre = textValue.parentNode;
-    } else if (nextChild.classList.contains("text-list")){
+    } else if (nextChild.classList.contains("text-list")) {
         textValue = nextChild;
         padre = textValue.parentNode;
     }
 }
 
 function printFolderTitleName(selectedElement) {
-    getInfoFiles();
+    getInfoFilesCorner();
+    getInfoFilesSecond();
     if (selectedElement.getAttribute('type') == "folder") {
         pathSecondFolderTitle.textContent = "files/" + dataPath;
     }
@@ -91,21 +94,31 @@ function printFilesSecondChild() {
         .catch((err) => console.log("Request failed: ", err));
 }
 
-function getInfoFiles() {
+function getInfoFilesCorner() {
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     fetch("modules/fileInfo.php" + "?" + "path=" + dataPathWithoutSlash, {
             method: "GET",
         })
         .then((response) => response.json())
         .then((data) => {
-            renderFileInfo(data);
+            renderFileInfoCorner(data);
         })
         .catch((err) => console.log("Request failed: ", err));
 }
 
-function renderFileInfo(data) {
-    sizeListSecondChild.innerHTML = "";
-    modificationListSecondChild.innerHTML = "";
+function getInfoFilesSecond() {
+    let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+    fetch("modules/fileInfo.php" + "?" + "path=" + dataPathWithoutSlash, {
+            method: "GET",
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            renderFileInfoSecond(data);
+        })
+        .catch((err) => console.log("Request failed: ", err));
+}
+
+function renderFileInfoCorner(data) {
     if (data["size"] > 1000) {
         sizeInfo.innerHTML = "Size: " + Math.round(data["size"] / 1024) + "Mb";
     } else {
@@ -115,22 +128,33 @@ function renderFileInfo(data) {
     modifiedInfo.innerHTML = "Last modificaton: " + data["modificationDate"];
     pathInfo.innerHTML = "Path: " + "files/" + dataPath;
     extensioinInfo.innerHTML = "Extension: " + data["extension"];
-    console.log(data);
-    let dataLength = Object.keys(data).length;
-    for (let i = 0; i < dataLength; i++) {
-        if ("size" + `${i}` in data) {
-            let sizeVariable = "size" + i;
-            let modificationVariable = "modificationDate" + i;
-            let foundSize = data[sizeVariable];
-            let foundModificationDate = data[modificationVariable];
-            sizeListSecondChild.innerHTML += "<li>" + foundSize + "</li>";
-            modificationListSecondChild.innerHTML += "<li>" + foundModificationDate + "</li>";
+}
+
+function renderFileInfoSecond(data) {
+    if (dataPath != "") {
+        let dataLength = Object.keys(data).length;
+        for (let i = 0; i < dataLength; i++) {
+            if ("size" + `${i}` in data) {
+                let sizeVariable = "size" + i;
+                let modificationVariable = "modificationDate" + i;
+                let foundSize = data[sizeVariable];
+                let foundModificationDate = data[modificationVariable];
+                if (foundSize > 1000) {
+                    foundSize = Math.round(foundSize / 1024) + "Mb";
+                } else {
+                    foundSize = foundSize + "Kb";
+                }
+                sizeListSecondChild.innerHTML += "<div class='second-flex second-info'>" + foundSize + "</div>";
+                modificationListSecondChild.innerHTML += "<div class='second-flex second-info'>" + foundModificationDate + "</div>";
+            }
         }
     }
     /* fileContent.innerHTML = "Content: " + data["content"]; */
 }
 
 function goBackDirectory() {
+    sizeListSecondChild.innerHTML = "";
+    modificationListSecondChild.innerHTML = "";
     dataPath = dataPath.split("/");
     dataPath.pop();
     dataPath.pop();
@@ -139,10 +163,10 @@ function goBackDirectory() {
     if (dataPath == "/") {
         dataPath = "";
         filesListSecondChild.innerHTML = "";
-        sizeListSecondChild.innerHTML = "";
-        modificationListSecondChild.innerHTML = "";
     } else {
         printFilesSecondChild();
     }
+    getInfoFilesCorner();
+    getInfoFilesSecond();
     pathSecondFolderTitle.textContent = "files/" + dataPath;
 }

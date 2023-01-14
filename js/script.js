@@ -1,6 +1,5 @@
 const addFolderImage = document.querySelector("#addFolderImage");
 const ul = document.querySelector("#filesList");
-const folderFilesContainer = document.querySelector("#folderFilesContainer");
 const filesPath = document.querySelector("#filesPath");
 const renameFile = document.querySelector("#renameFile");
 let inputValue;
