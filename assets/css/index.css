@@ -360,7 +360,7 @@ aside p:nth-child(2n-1) {
   box-shadow: 14px 15px 26px -9px rgba(0, 0, 0, 0.75);
 }
 
-.confirmationModal p {
+.confirmation-modal p {
   font-size: 1.5em;
 }
 
