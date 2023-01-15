@@ -5,32 +5,26 @@ require_once( "./CRUD/upload.php");
 require_once( "./CRUD/folder-list.php");
 
 
-// $folderEstructure = "root";
-// if(isset($_REQUEST['route'])){
-//     if(isset($_SESSION["altPath"])){
-//         $_SESSION["altPath"] = '';
-//     }
-//     $_SESSION["altPath"] = $_REQUEST["route"];
-//     $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
-// }else{
-//     $_SESSION["altPath"] = '';
-// }
-
-
-
-
-$folderEstructure = 'root';
+$folderEstructure = "root";
 if(isset($_REQUEST['route'])){
+    if(isset($_SESSION["altPath"])){
+        $_SESSION["altPath"] = '';
+    }
     $_SESSION["altPath"] = $_REQUEST["route"];
     $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
-    
+}else{
+    $_SESSION["altPath"] = '';
 }
 
-echo "<pre>";
 
-var_dump($_SESSION["altPath"], $_SESSION["absPath"], $_REQUEST["route"]);
 
-echo "</pre>";
+// echo "<pre>";
+
+
+//     var_dump("./root");
+
+
+// echo "</pre>";
 
 ?>
 
@@ -81,11 +75,8 @@ echo "</pre>";
             </div>
 
             <div class="col-md-10">
-
                 <form enctype="multipart/form-data" method="POST">
                     <input type="file" name="nombre">
-                <form enctype="multipart/form-data" method="POST">
-                    <input type="file" name="nombre" id="">
                     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                     <input type="submit" value="Upload" class="refresh">
                 </form>
@@ -100,27 +91,25 @@ echo "</pre>";
 
             <div class="col-md-3 border border-dark-1" id="root">
                 <?php viewFolderStructure($root);?>
-                <?php viewFolderStructure($root);?>
             </div>
 
 
             <div class="col-md-7 border border-dark-1" id="content-element">
                 <div class="row text-center">
-                    <?php  
-                            if($folderEstructure){
-                                viewFolderStructure($root);
-                            }else{
-                                viewFolderElements($completeRoot);
-                            }  
-                    ?>
-                    
-                    
                     <?php
-                    
-                        viewFolderElements($completeRoot);
-                    
+                        if (is_dir("./root/")) {
+                            if ($dh = opendir("./root/")) {
+                                while (($file = readdir($dh)) !== false) {
+                                    echo "<li class='folderElements'><a href=' "." $root  "." $file "." '>" . $file . "</a></li>";
+                            }
+                                
+                                closedir($dh);
+                            }
+                        }
                         
-                    ?>
+                          
+                    ?>      
+                    
                     
                 </div>
             </div>
