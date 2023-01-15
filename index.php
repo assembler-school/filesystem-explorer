@@ -78,8 +78,8 @@
                     <p id="previewText">preview</p>
                 </div>
             </div>
-            <form id="formUploadFile" action="modules/uploadFiles.php" method="POST" enctype="multipart/form-data">
-                    <input id="inputUploadFile" onchange="this.form.submit()" type='file' name='file'>
+            <form id="formUploadFile" enctype="multipart/form-data">
+                    <input id="inputUploadFile"  type='file' name='file'>
             </form>
         </main>
         <footer></footer>
