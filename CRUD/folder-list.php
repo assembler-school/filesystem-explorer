@@ -1,8 +1,13 @@
 <?php
 
+if(!isset($_SESSION)) {
+    session_start();
+}
+
+$completeRoot = $_SESSION["basePath"];
+
 $root = "./root";
 $file = "";
-
 
     function viewFolderStructure($root)
     {
@@ -43,28 +48,20 @@ $file = "";
             echo "<ul>";
 
             while (($file = readdir($manager)) !== false) {
-
+                
                 $completeRoot = $completeRoot . "/" . $file;
 
                 if ($file != "." && $file != "..") {
                     if (is_dir($completeRoot)) {
                         echo "<li class='folderElements'><a href='?route=$file'>" . $file . "</a></li>";
                         viewFolderElements($completeRoot);
+                    
                     } else {
                         echo "<li class='folderElements'><a href='?route=$file'>" . $file . "</a></li>";
-                    var_dump("root/" . $file);
                     }
-                    if (is_dir("./root/" . $file)) {
-                        if ($dh = opendir($file)) {
-                            while (($file = readdir($dh)) !== false) {
-                                echo "filename: .".$file."<br />";
-                            }
-                            closedir($dh);
-                        }
-                    }
+                    
                 }
             }
-
 
             closedir($manager);
             echo "</ul>";
@@ -75,7 +72,11 @@ $file = "";
 
     }
 
+    // function viewFileInfo($info) {
+    //         echo filesize("./root/12345123");
 
+    //     echo "Not a valid directory path<br/>";
 
+    // }
 
 ?>

@@ -97,16 +97,7 @@ if(isset($_REQUEST['route'])){
             <div class="col-md-7 border border-dark-1" id="content-element">
                 <div class="row text-center">
                     <?php
-                        if (is_dir("./root/")) {
-                            if ($dh = opendir("./root/")) {
-                                while (($file = readdir($dh)) !== false) {
-                                    echo "<li class='folderElements'><a href=' "." $root  "." $file "." '>" . $file . "</a></li>";
-                            }
-                                
-                                closedir($dh);
-                            }
-                        }
-                        
+                    viewFolderElements($completeRoot);
                           
                     ?>      
                     
@@ -116,6 +107,23 @@ if(isset($_REQUEST['route'])){
 
 
             <div class="col-md-2 border border-dark-1" id="prueba">
+                    <?php
+                        $sizeInKb = filesize("./root/12345123/boton-de-panico.png") / 1024;
+                        $sizeInMb = $sizeInKb / 1024;
+
+                        if($sizeInKb < 1024) {
+                            echo round($sizeInKb, 1) . "KB"; 
+                            echo "creation date:" . date("F d Y H:i:s.", filectime("./root/12345123/boton-de-panico.png"));
+                            echo "updating date:" . date("F d Y H:i:s.", fileatime("./root/12345123/boton-de-panico.png"));
+                        }else {
+                            echo round($sizeInMb, 1) . "MB";
+                            echo "creation date:" . date("F d Y H:i:s.", filectime("./root/12345123/boton-de-panico.png"));
+                            echo "updating date:" . date("F d Y H:i:s.", fileatime("./root/12345123/boton-de-panico.png"));
+                        }
+                        
+
+                    ?>  
+                
             </div>
 
         </div>
