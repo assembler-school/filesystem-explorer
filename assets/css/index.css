@@ -341,8 +341,8 @@ aside p:nth-child(2n-1) {
 }
 
 .confirmationModal {
-  height: 200px;
-  width: 350px;
+  height: 250px;
+  width: 450px;
   position: absolute;
   left: 0;
   right: 0;
@@ -356,12 +356,16 @@ aside p:nth-child(2n-1) {
   gap: 25px;
   border: 2px solid var(--bg--primary);
   background-color: white;
-  border-radius: 25px;
+  border-radius: 15px;
   box-shadow: 14px 15px 26px -9px rgba(0, 0, 0, 0.75);
 }
 
+.confirmationModal p{
+    font-size: 1.5em;
+}
+
 .confirmation-btn-container {
-  height: 50px;
+  height: 60px;
   width: 60%;
   display: flex;
   align-items: center;
@@ -371,6 +375,11 @@ aside p:nth-child(2n-1) {
 .confirmation-btn-container img {
   height: 100%;
   cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.confirmation-btn-container img:hover{
+    transform: scale(1.05);
 }
 
 .rename-input {
@@ -415,15 +424,15 @@ aside p:nth-child(2n-1) {
 .preview-container {
   height: 80%;
   width: 80%;
-  border: 1px solid rgb(218, 218, 218);
+  /* border: 1px solid rgb(218, 218, 218); */
   overflow-y: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.preview-container img{
-    height: 80%;
+.preview-container img {
+  height: 80%;
 }
 
 .close-preview-modal-btn {
@@ -495,6 +504,16 @@ aside p:nth-child(2n-1) {
   display: none;
 }
 
-.video{
-    width: 80%;
+.video {
+  width: 80%;
+}
+
+.preview-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.preview-text-container{
+    margin-top: 25px;
 }

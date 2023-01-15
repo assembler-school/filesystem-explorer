@@ -94,6 +94,7 @@ function openRenameFolderInput(event) {
 
 function navigateToFolder(event) {
   let path = event.target.getAttribute("path");
+
   fetch(`./modules/savePathToSession.php?path=${path}`, {
     method: "GET",
   })
@@ -197,12 +198,12 @@ function renameDirFromMenu() {
 }
 
 function uploadFile() {
-  console.log("click");
   uploadInput.click();
 }
 
 function submitUploadForm(e) {
   let file = e.target.files[0];
+  console.log(e.target.files);
   const form_data = new FormData();
   form_data.append("file", file);
 
@@ -268,6 +269,7 @@ function printInfo(event) {
 }
 
 function togglePreviewModalVisibility(event) {
+  previewContainer.innerHTML = "";
   let currentFile = event.target.getAttribute("path");
   previewModal.classList.toggle("hidden");
 
@@ -323,6 +325,9 @@ function togglePreviewModalVisibility(event) {
        <iframe src=${currentFile} width='700' height='550' allowfullscreen webkitallowfullscreen></iframe>
         `;
       break;
+    case "txt":
+      readFile(currentFile);
+      break;
     default:
       previewContainer.innerHTML = `
        <h1>Can not preview this file</h1>
@@ -337,4 +342,23 @@ function stopMusicOrVideo() {
     player.pause();
     player.currentTime = 0;
   }
+}
+
+function readFile(path) {
+  fetch(`./modules/readTextFile.php?path=${path}`, {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      let previewTextContainer = document.createElement("div");
+      previewTextContainer.classList.add("preview-text-container");
+
+      for (let line of data.text) {
+        previewTextContainer.innerHTML += `<p>${line}</p>`;
+      }
+      previewContainer.appendChild(previewTextContainer);
+    })
+    .catch((err) => console.log("Request: ", err));
+
+  //   window.location.href = `./modules/readTextFile.php?path=${path}`;
 }
