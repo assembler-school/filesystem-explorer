@@ -17,8 +17,10 @@ function getInfo($ff = './root')
 
         if ($size < 1000) {
             $size = round($size, 1) . "Kb";
-        } else {
+        } else if ($size < 1000000) {
             $size = round($size / 1000, 1) . "Mb";
+        } else {
+            $size = round($size / 1000000, 1) . "Gb";
         }
 
 

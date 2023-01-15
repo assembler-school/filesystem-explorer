@@ -340,9 +340,9 @@ aside p:nth-child(2n-1) {
   transform: rotate(5deg);
 }
 
-.confirmationModal {
-  height: 250px;
-  width: 450px;
+.confirmation-modal {
+  max-height: 200px;
+  max-width: 350px;
   position: absolute;
   left: 0;
   right: 0;
@@ -360,8 +360,8 @@ aside p:nth-child(2n-1) {
   box-shadow: 14px 15px 26px -9px rgba(0, 0, 0, 0.75);
 }
 
-.confirmationModal p{
-    font-size: 1.5em;
+.confirmationModal p {
+  font-size: 1.5em;
 }
 
 .confirmation-btn-container {
@@ -375,11 +375,6 @@ aside p:nth-child(2n-1) {
 .confirmation-btn-container img {
   height: 100%;
   cursor: pointer;
-  transition-duration: 0.3s;
-}
-
-.confirmation-btn-container img:hover{
-    transform: scale(1.05);
 }
 
 .rename-input {
@@ -506,14 +501,4 @@ aside p:nth-child(2n-1) {
 
 .video {
   width: 80%;
-}
-
-.preview-container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.preview-text-container{
-    margin-top: 25px;
 }
