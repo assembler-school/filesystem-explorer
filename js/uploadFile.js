@@ -13,21 +13,43 @@ function uploadFileFunction() {
 const upload_image = (file) => {
     let formData = new FormData();
     formData.append("inputUploadFile", file);
-    console.log(formData)
-    console.log(dataPath)
     fetch('modules/uploadFiles.php?dataPath=' + dataPath, {
             method: "POST",
             body: formData
         }).then((response) => response.json())
         .then((data) => {
-            console.log(data);
+            data.forEach(element =>
+                console.log(element));
             if(dataPath!=""){
                 printFilesSecondChild();
-            } /* else {
-            printFilesFirstChild();
-            } */
+            } else {
+                appendUploadedFile(data);
+            }
         })
         .catch((err) => console.log("Request failed: ", err));
+}
+
+function appendUploadedFile(data){
+    if (data[2]=="jpeg"){
+        data[2]="jpg";
+    }
+
+    li = document.createElement("li");
+    li.setAttribute("class", "first-list");
+    li.setAttribute("data-path", data[1]+"/");
+    li.setAttribute("type", "file");
+    const img = document.createElement("img");
+    img.setAttribute("src", "images/"+data[2]+"Icon.png");
+    img.setAttribute("alt", "file");
+    img.classList.add("folder-list-img");
+    const span = document.createElement("span");
+    span.classList.add("text-list");
+    span.textContent = data[1];
+    li.appendChild(img);
+    li.appendChild(span);
+    filesList.appendChild(li);
+    /* newFileToPrint = "<li class='first-list' data-path="+data[1]+"/'><img class='folder-list-img' src='images/"+data[2]+"Icon.png' alt='folder'><span class='text-list'>"+data[1]+"</span></li>";
+ */
 }
 
 /* function printFilesFirstChild(){ No funciona porque ese archivo esta sujeto a index y devuelve echo. Necesitamos crar otro php justo para este que devuelve un array e imprimirlo.

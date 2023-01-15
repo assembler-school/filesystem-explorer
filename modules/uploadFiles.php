@@ -1,6 +1,7 @@
 <?php
 /* $dataPath = $_GET["dataPath"]; */
 $dataPath = $_REQUEST["dataPath"];
+$arrayData = array();
 
 if(isset($_FILES['inputUploadFile'])){
 /*     if(isset($_POST["file"])){ */
@@ -23,7 +24,11 @@ if(isset($_FILES['inputUploadFile'])){
                     $fileNameNew = uniqid('', true).".".$fileActualExt;
                     $fileDestination = "../files/".$dataPath.$fileNameNew;
                     move_uploaded_file($fileTmp, $fileDestination);
-                    echo json_encode ("File uploaded successfully");
+                    $succes = "File uploaded successfully";
+                    array_push($arrayData, $succes);
+                    array_push($arrayData, $fileNameNew);
+                    array_push($arrayData, $fileActualExt);
+                    echo json_encode ($arrayData);
                 }else{
                     echo json_encode ("Error. Your file is bigger than 100Mb");
                 }
