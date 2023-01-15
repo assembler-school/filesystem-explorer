@@ -10,31 +10,39 @@ const sizeListSecondChild = document.querySelector("#sizeListSecondChild");
 const modificationListSecondChild = document.querySelector("#modificationListSecondChild");
 const arrowLeft = document.querySelector("#arrowLeft");
 let dataPath = "";
+let typeDocument;
+let selectedElement;
 
 
-folderFilesContainer.addEventListener("dblclick", selectElementChildren);
+folderFilesContainer.addEventListener("dblclick", selectElement);
 folderFilesContainer.addEventListener("click", selectSecondElement);
-ul.addEventListener("click", selectElementChildren);
+ul.addEventListener("click", selectElement);
 ul.addEventListener("click", getTextValueAndPadre);
 arrowLeft.addEventListener("click", goBackDirectory);
 
-function selectElementChildren(event) {
-    sizeListSecondChild.innerHTML = "";
-    modificationListSecondChild.innerHTML = "";
+function selectElement(event) {
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
     if (parentNode.classList.contains("first-list")) {
         let firstList = parentNode;
         firstList.style.backgroundColor = "yellow";
         dataPath = parentNode.getAttribute('data-path');
+        typeDocument = parentNode.getAttribute('type');
+        selectedElement = parentNode;
         printFolderTitleName(parentNode);
     } else if (currentNode.classList.contains("first-list")) {
         let firstList = currentNode;
         firstList.style.backgroundColor = "yellow";
         dataPath = currentNode.getAttribute('data-path');
+        typeDocument = parentNode.getAttribute('type');
+        parentNode = currentNode;
         printFolderTitleName(currentNode);
     }
-    printFilesSecondChild();
+    if (typeDocument == "folder") {
+        sizeListSecondChild.innerHTML = "";
+        modificationListSecondChild.innerHTML = "";
+        printFilesSecondChild();
+    }
 }
 
 function selectSecondElement(event) {
@@ -77,6 +85,9 @@ function printFolderTitleName(selectedElement) {
     getInfoFilesSecond();
     if (selectedElement.getAttribute('type') == "folder") {
         pathSecondFolderTitle.textContent = "files/" + dataPath;
+    } else {
+        let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+        pathSecondFolderTitle.textContent = "files/" + dataPathWithoutSlash;
     }
 }
 
