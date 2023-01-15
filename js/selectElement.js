@@ -42,6 +42,8 @@ function selectElement(event) {
         sizeListSecondChild.innerHTML = "";
         modificationListSecondChild.innerHTML = "";
         printFilesSecondChild();
+    } else if (typeDocument == "file"){
+        showMedia();
     }
 }
 
