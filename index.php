@@ -75,7 +75,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="main-children">
+                <div id="previwContainer" class="main-children">
+                    <div id="previwChild"></div>
                     <p id="previewText">preview</p>
                 </div>
             </div>

@@ -59,6 +59,7 @@ function selectSecondElement(event) {
         firstList.style.backgroundColor = "yellow";
         dataPath = currentNode.getAttribute('data-path');
     }
+    showPreview();
     getInfoFilesCorner();
 }
 
@@ -80,6 +81,7 @@ function getTextValueAndPadre(event) {
         textValue = nextChild;
         padre = textValue.parentNode;
     }
+    showPreview();
 }
 
 function printFolderTitleName(selectedElement) {

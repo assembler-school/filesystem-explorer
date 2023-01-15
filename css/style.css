@@ -56,6 +56,26 @@ main {
     justify-content: space-evenly;
 }
 
+#previwContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#previwChild{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#previewText{
+    display: block;
+}
+
+.thumbnail-media{
+    max-width: 90%;
+}
+
 #searchInput {
     width: 80%;
     text-align: center;
@@ -315,6 +335,11 @@ main {
     top: 2vh;
     right: 2vh;
     height: 3vh;
+}
+
+#shownImage{
+    width: 60%;
+    
 }
 
 ::placeholder {
