@@ -3,11 +3,10 @@
 function printBreadCrumbs()
 
 {
-    include('./config.php');
     session_start();
 
-    if (!isset($_SESSION[$currentPath])) {
-        $_SESSION[$currentPath] = $rootPath;
+    if (!isset($_SESSION['curr_path'])) {
+        $_SESSION['curr_path'] = './root';
 
         echo "<div class='bread-crumbs-container'>";
         echo '<p>./root</p>';
