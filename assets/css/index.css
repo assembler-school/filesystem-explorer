@@ -502,3 +502,13 @@ aside p:nth-child(2n-1) {
 .video {
   width: 80%;
 }
+
+.preview-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.preview-text-container {
+  margin-top: 25px;
+}
