@@ -22,7 +22,6 @@ require_once( "./CRUD/folder-list.php");
 $folderEstructure = 'root';
 if(isset($_REQUEST['route'])){
     $_SESSION["altPath"] = $_REQUEST["route"];
-    $_SESSION["absPath"] = $folderEstructure . '/' . $_REQUEST["route"];
     $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
     
 }
@@ -34,8 +33,9 @@ var_dump($_SESSION["altPath"], $_SESSION["absPath"], $_REQUEST["route"]);
 echo "</pre>";
 
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -65,15 +65,14 @@ echo "</pre>";
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">New folder</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form method="POST" target="" class="create-form">
                                 <div class="modal-body text-center">
-                                    <input type="text" size="25" placeholder="Folder name" name="name-folder">
+                                    <input type="text" size="25" placeholder="Folder name" name="name-folder" class="nameFolder">
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="submit" value="Save changes" class="refresh">
+                                    <input type="submit" name="enviar" value="Save changes" class="refresh">
                                 </div>
                             </form>
                         </div>
@@ -85,6 +84,8 @@ echo "</pre>";
 
                 <form enctype="multipart/form-data" method="POST">
                     <input type="file" name="nombre">
+                <form enctype="multipart/form-data" method="POST">
+                    <input type="file" name="nombre" id="">
                     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                     <input type="submit" value="Upload" class="refresh">
                 </form>
@@ -99,11 +100,21 @@ echo "</pre>";
 
             <div class="col-md-3 border border-dark-1" id="root">
                 <?php viewFolderStructure($root);?>
+                <?php viewFolderStructure($root);?>
             </div>
 
 
             <div class="col-md-7 border border-dark-1" id="content-element">
                 <div class="row text-center">
+                    <?php  
+                            if($folderEstructure){
+                                viewFolderStructure($root);
+                            }else{
+                                viewFolderElements($completeRoot);
+                            }  
+                    ?>
+                    
+                    
                     <?php
                     
                         viewFolderElements($completeRoot);
