@@ -1,3 +1,9 @@
+<?php
+require_once('./modules/config.php');
+require_once('./modules/breadCrumbs.php');
+require_once('./modules/getFilesAndFolders.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,38 +30,17 @@
 
     <main>
         <?php
-
         session_start();
 
-        if (!isset($_SESSION['curr_path'])) {
-            $_SESSION['curr_path'] = './root';
-        }
-
-        require_once('./modules/getFilesAndFolders.php');
-
-        // breadcrumbs and handle navigation
-
-        if (isset($_SESSION['curr_path'])) {
-            $breadCrumbs = explode("/", $_SESSION['curr_path']);
-
-            $initialRoute = '';
-
-            echo "<div class='bread-crumbs-container'>";
-            foreach ($breadCrumbs as $path) {
-                $initialRoute = $initialRoute . $path . "/";
-                echo "<a onclick=(navigateToFolder(event)) path='$initialRoute'>$path</a>";
-            }
-            echo "</div>";
-
-            getFilesAndFolders($_SESSION['curr_path']);
+        if (!isset($_SESSION[$currentPath])) {
+            getFilesAndFolders($rootPath);
+            $_SESSION[$currentPath] = $rootPath;
+            printBreadCrumbs();
         } else {
-            echo "<div class='bread-crumbs-container'>";
-            echo '<p>./root</p>';
-            echo "</div>";
-            getFilesAndFolders('./root');
+            getFilesAndFolders($_SESSION[$currentPath]);
+            printBreadCrumbs();
         }
 
-        // breadcrumbs and handle navigation
         ?>
     </main>
 
