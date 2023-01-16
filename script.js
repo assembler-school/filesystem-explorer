@@ -45,3 +45,38 @@ function deleteFolder(event){
         .then(data =>console.log(data));
     }
 }
+
+// modify folder
+
+const edit = document.querySelectorAll(".edit-btn");
+
+
+
+// for (let i of edit){
+//     i.addEventListener("click", editName);
+//     oldname = i.getAttribute("actualFolder");
+// }
+
+for (let i of edit){
+    i.addEventListener("click", editName);
+    var oldname = i.getAttribute("actualFolder");
+    // console.log(oldname);
+}
+
+console.log(oldname)
+
+function editName(event){
+    
+    newname = prompt("Write the new name of the folder or file:");
+    // let data = {oldName: oldname , newName : newname};
+    var dataform = new FormData();
+    dataform.append("oldName", oldname);
+    dataform.append("newname", newname);
+    fetch ("./edit-folder.php",{
+        method : "POST",
+        body : dataform
+    })
+    .then(response=>response.json())
+    .then(data =>console.log(data));
+
+}
