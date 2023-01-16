@@ -217,12 +217,6 @@ function renameFile(e) {
         href += `=${res.name}`;
         href = href.replace(' ', '%20');
         link.href = href;
-        /*         modify.setAttribute("data-file", newName);
-                link.textContent = newName;
-                let href = link.href.split("=")[0];
-                href += `=${newName}`;
-                href = href.replace(' ', '%20');
-                link.href = href; */
       } else {
         let completeName = '';
         if (res.ext)
