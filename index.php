@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div id="previwContainer" class="main-children">
-                    <div id="previwChild"></div>
+                    <div id="previewChild"></div>
                     <p id="previewText">preview</p>
                 </div>
             </div>
