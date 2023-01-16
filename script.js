@@ -3,8 +3,8 @@
 
 // let btn = document.querySelector('.refresh');
 
-// btn.addEventListener('submit', function(e){
-// // e.preventDefault();
+// btn.addEventListener('click', function(e){
+// e.preventDefault();
 // let formData ={};
 
 // for(let i = 0; i< camposForm.lenght; i++){

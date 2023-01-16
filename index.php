@@ -1,30 +1,28 @@
 <?php
 session_start();
-require_once("./CRUD/create.php");
+require_once( "./CRUD/create.php");
 require_once( "./CRUD/upload.php");
 require_once( "./CRUD/folder-list.php");
 
 
-$folderEstructure = "root";
+$folderRoute = "./root";
 if(isset($_REQUEST['route'])){
-    if(isset($_SESSION["altPath"])){
-        $_SESSION["altPath"] = '';
-    }
+    $_SESSION["absPath"] = $_REQUEST["route"];
     $_SESSION["altPath"] = $_REQUEST["route"];
-    $folderEstructure = $folderEstructure . '/' . $_REQUEST['route'];
 }else{
     $_SESSION["altPath"] = '';
+    $_SESSION["absPath"] = "root";
 }
 
+echo
+    "<pre>";
 
+var_dump($_SESSION["absPath"] . " <==esto es la ruta absoluta") ; 
+var_dump($_SESSION["altPath"] . " <== esto es la ruta relativa") ;
+var_dump($_REQUEST["route"]  . " <== esto es el request");
+echo
+    "</pre>"
 
-// echo "<pre>";
-
-
-//     var_dump("./root");
-
-
-// echo "</pre>";
 
 ?>
 
@@ -39,6 +37,7 @@ if(isset($_REQUEST['route'])){
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Local File System Explorer</title>
 </head>
 
@@ -66,7 +65,7 @@ if(isset($_REQUEST['route'])){
                                     <input type="text" size="25" placeholder="Folder name" name="name-folder" class="nameFolder">
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="submit" name="enviar" value="Save changes" class="refresh">
+                                    <input type="submit" name="enviar" value="Save changes" class="refresh" id="create-folder">
                                 </div>
                             </form>
                         </div>
@@ -90,15 +89,16 @@ if(isset($_REQUEST['route'])){
         <div class="row" id="content-box">
 
             <div class="col-md-3 border border-dark-1" id="root">
-                <?php viewFolderStructure($root);?>
+                <?php 
+                viewFolderStructure($root );
+                ?>
             </div>
 
 
             <div class="col-md-7 border border-dark-1" id="content-element">
                 <div class="row text-center">
                     <?php
-                    viewFolderElements($completeRoot);
-                          
+                    viewFolderElements($completeRoot);    
                     ?>      
                     
                     
