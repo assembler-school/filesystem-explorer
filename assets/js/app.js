@@ -13,6 +13,10 @@ function getInfoFolders() {
         divFolders.removeChild(divFolders.lastChild);
     }
 
+    while(divFiles.firstChild){
+        divFiles.removeChild(divFiles.lastChild);
+    }
+
     fetch('../assets/display-folders.php')
         .then(response => response.json())
         .then(data => displayFolderIndex(data));
@@ -94,10 +98,10 @@ function displayFolderIndex(data) {
 function createNewFolder(pathNewFolder) {
     let newName = prompt(`Assign a new to the new folder.`);
 
-    if(pathNewFolder !== null){
+    if(typeof pathNewFolder !== 'object'){
         newName = pathNewFolder + "/" + newName;
     }
-
+    
     if (newName) {
         fetch("../assets/create-folder.php?nameFolder=" + newName)
             .then(response => response.json(),
@@ -106,7 +110,7 @@ function createNewFolder(pathNewFolder) {
                 if (info.exists) {
                     alert(info.msg);
                 } else {
-                    if(pathNewFolder !== null){
+                    if(typeof pathNewFolder !== 'object'){
                         createFilesTab(pathNewFolder);
                     }else{
                         getInfoFolders();
