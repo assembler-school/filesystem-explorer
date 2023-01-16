@@ -78,6 +78,18 @@ main{
     padding: 10px;
 }
 
+table{
+    border-spacing: 0;
+}
+
+.elemtoOfFolder{
+    padding:0 2px;
+}
+
+.elemtoOfFolder:hover{
+    background: #e1e1e1;
+}
+
 #logo-panel{
     width: 4rem;
 }

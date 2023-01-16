@@ -91,8 +91,12 @@ function displayFolderIndex(data) {
 
 // Option Folders
 
-function createNewFolder() {
+function createNewFolder(pathNewFolder) {
     let newName = prompt(`Assign a new to the new folder.`);
+
+    if(pathNewFolder !== null){
+        newName = pathNewFolder + "/" + newName;
+    }
 
     if (newName) {
         fetch("../assets/create-folder.php?nameFolder=" + newName)
@@ -102,7 +106,11 @@ function createNewFolder() {
                 if (info.exists) {
                     alert(info.msg);
                 } else {
-                    getInfoFolders();
+                    if(pathNewFolder !== null){
+                        createFilesTab(pathNewFolder);
+                    }else{
+                        getInfoFolders();
+                    }
                 }
             });
     }
@@ -181,6 +189,12 @@ function createFilesTab(folderName) {
 
     createButtonsFile(folderName);
 
+    let btnCreateInsideFolder = document.querySelector('#create-folder-inside')
+    let pathCreateNewFolder = btnCreateInsideFolder.getAttribute('folder-path');
+    btnCreateInsideFolder.addEventListener('click', () => {
+        createNewFolder(pathCreateNewFolder);
+    });
+
     fetch("../assets/display-content.php?actualFolderName=" + folderName)
         .then(response => response.json())
         .then(data => showelementosOfFolder(data))
@@ -198,7 +212,7 @@ function showelementosOfFolder(data) {
 
         fetch("../assets/display-metadata-file.php?filePath=" + file)
             .then(response => response.json())
-            .then(data => constuctorTable(data, pathFile, trFile))
+            .then(data => constructorTable(data, pathFile, trFile))
 
     })
 
@@ -208,7 +222,7 @@ function showelementosOfFolder(data) {
     });
 }
 
-function constuctorTable(data, pathFile, trFile) {
+function constructorTable(data, pathFile, trFile) {
     for (let i = 0; i < 4; i++) {
         let size = "";
         if (data.size <= 1024000) {
@@ -223,6 +237,7 @@ function constuctorTable(data, pathFile, trFile) {
         switch (i) {
             case 0:
                 infoTd = pathFile;
+
                 break
 
             case 1:
@@ -233,7 +248,7 @@ function constuctorTable(data, pathFile, trFile) {
                 break
             case 3:
                 infoTd = size;
-                break
+                break;
         }
         let tdRow = document.createElement("td");
         tdRow.textContent = infoTd;
@@ -280,7 +295,7 @@ function displayInsideFolder(folderName) {
     const btnFiles = document.querySelector('.buttons-files');
 
     const backSpan = document.createElement('span');
-    backSpan.textContent = '< go back';
+    backSpan.textContent = '< Go back';
     backSpan.setAttribute('back-path', backPath);
     backSpan.id = 'btn-backpath';
 
@@ -320,7 +335,9 @@ function createButtonsFile(folderPath) {
     let btnCreateFolder = document.createElement('span');
     let iCreateFolder = document.createElement('i');
     iCreateFolder.className = 'fa-solid fa-plus';
+    btnCreateFolder.id = 'create-folder-inside';
     btnCreateFolder.textContent = 'New Folder';
+    btnCreateFolder.setAttribute('folder-path', folderPath)
 
     divFiles.prepend(divOptionsFolder);
 
@@ -343,6 +360,7 @@ function getPathExtension(path) {
     if (formatImg.includes(pathExtension)) {
         pathExtension = "img";
     }
+
     return pathExtension;
 }
 
@@ -426,9 +444,9 @@ function createPopUpUpload(event) {
 
                     closePopUp();
 
-                    if (pathFile.match("/").length >= 1) {
+                    if (pathFile.match("/")) {
                         displayInsideFolder(pathFile);
-                    } else {
+                    } else {trashBtn
                         createFilesTab(pathFile);
                     }
 
@@ -486,55 +504,23 @@ function createFileContent(typeFile, data) {
     displayPopUp();
 }
 
-
-// Trash container
-// const trashContainer = document.querySelector("#trash-folder");
-// trashContainer.addEventListener("click", showTrash);
-
-
-<<<<<<< HEAD
-function addTrash(fileName){
-=======
 function addTrash() {
->>>>>>> 712b3970be79e5465002dac11ad4ccc63d0109ed
     let basura = document.querySelector("#delete-file");
     let atrBasura = basura.getAttribute("filePath");
     let cutPath = atrBasura.indexOf("/");
     let pathFile = atrBasura.slice(cutPath + 1);
     /* let pathFileAtr = pathFile.setAttribute("pathFile", pathFile); */
-<<<<<<< HEAD
-    fetch("../assets/add-trash.php?filePath="+pathFile)
-=======
     fetch("../assets/add-trash.php?filePath=" + atrBasura)
->>>>>>> 712b3970be79e5465002dac11ad4ccc63d0109ed
         .then(response => response.json())
         .then(data => console.log(data))
 
-    /* 
-    Mover archivo a carpeta trash:
-    - archvo: ruta 
-    - carpeta basura: ruta 
-    - mover (function) 
-    - function con php 
-    - llamamos con js para no recargar la pagina
-    
-    // Function PHP
-    GET, atributo, qrparametro - para archivo ruta
-    ruta carpata - escribimos manualmente 
-    rename - method 
-    // JS
-    - Mediante atrubuto agarramos la ruta del archivo*/
+    closePopUp();
 }
-
-
-
 
 function deleteFile(filePath) {
     const popUpDeleteConfirm = confirm("Do you want delete this file?");
 
     if (popUpDeleteConfirm) {
-        /* fetch("../assets/delete-file.php?filePath="+filePath); */
-        /*  location.reload(); */
         addTrash();
     }
 }
