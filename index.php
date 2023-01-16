@@ -79,21 +79,27 @@ if (!isset($_SESSION['moves'])) {
       <div class="d-flex">
         <form onsubmit="advancedSearch(event)">
           <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search"
-            onkeyup="searchFile(event)">
+            onkeyup="searchFile(event)" <?php if (isMoveActive()) {
+        ?> disabled<?php
+      } ?>>
           <input type="submit" style="display: none">
         </form>
       </div>
       <form action="upload.php" method="POST" enctype="multipart/form-data" id="uploadForm">
         <input type="hidden" name="MAX_FILE_SIZE" value="100000">
-        <label for="file-upload" class="custom-file-upload m-2 me-4">
+        <label for="file-upload" class="custom-file-upload m-2 me-4"   <?php if (isMoveActive()) {
+        ?> style="cursor: default; pointer-events: none"<?php
+      } ?>>
           <i class="bi bi-cloud-upload m-2"></i>Upload
         </label>
         <input name="userfile" type="file" id="file-upload" onchange="uploadFile();">
       </form>
-      <button class="custom-file-create m-2 me-4 folder-btn" data-bs-toggle='modal' data-bs-target='#createModal'>
+      <button class="custom-file-create m-2 me-4 folder-btn" data-bs-toggle='modal' data-bs-target='#createModal' id="openCreateModal"
+      <?php if (isMoveActive()) {
+        ?> disabled style="cursor:inherit; pointer-events: none"<?php
+      } ?>>
         <i class="bi bi-plus-square m-2"></i>Create
       </button>
-      <input name="userfile" type="file" id="file-upload">
     </nav>
   </header>
 

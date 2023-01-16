@@ -26,6 +26,13 @@ function addMoveAction(fileName, e) {
   copyFunction.forEach(node => {
     node.style.visibility = 'hidden';
   });
+  document.querySelector(`#searchBar`).setAttribute('disabled', '');
+  document.querySelector(`#openCreateModal`).setAttribute('disabled', '');
+  document.querySelector(`#openCreateModal`).style.cursor = 'default';
+  document.querySelector(`#openCreateModal`).style.pointerEvents = 'none';
+  document.querySelector(`#uploadForm label`).style.pointerEvents = 'none';
+  document.querySelector(`#uploadForm label`).style.cursor = 'default';
+
 }
 
 function addCopyAction(e) {
@@ -46,6 +53,12 @@ function addCopyAction(e) {
   moveFunction.forEach(node => {
     node.style.visibility = 'hidden';
   });
+  document.querySelector(`#searchBar`).setAttribute('disabled', '');
+  document.querySelector(`#openCreateModal`).setAttribute('disabled', '');
+  document.querySelector(`#openCreateModal`).style.cursor = 'default';
+  document.querySelector(`#openCreateModal`).style.pointerEvents = 'none';
+  document.querySelector(`#uploadForm label`).style.pointerEvents = 'none';
+  document.querySelector(`#uploadForm label`).style.cursor = 'default';
 }
 
 document.onkeydown = function (evt) {
@@ -100,6 +113,12 @@ function restartPaste() {
   allFiles.forEach(file => {
     file.parentNode.children[0].children[1].style.pointerEvents = 'inherit';
   });
+  document.querySelector(`#searchBar`).removeAttribute('disabled');
+  document.querySelector(`#openCreateModal`).removeAttribute('disabled');
+  document.querySelector(`#openCreateModal`).style.cursor = 'pointer';
+  document.querySelector(`#openCreateModal`).style.pointerEvents = 'inherit';
+  document.querySelector(`#uploadForm label`).style.pointerEvents = 'inherit';
+  document.querySelector(`#uploadForm label`).style.cursor = 'pointer';
 }
 
 function changeStylesWhenCopyOrMove() {
