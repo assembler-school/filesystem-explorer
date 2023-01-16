@@ -1,6 +1,16 @@
 <?php
 
+$nombreFile = $_GET['filePath'];
 
-rename('../root/Nuevo Nombre', '../root/Trash/Nuevo Nombre');
+$slash = '/';
+
+$fileToTrash = explode($slash, $nombreFile);
+
+
+rename($nombreFile, '../root/Trash/'.$fileToTrash[3]);
+
+
+/* 
+rename('../root/Nuevo Nombre/????', '../root/Trash/'.$nombreFile); */
 
 ?>

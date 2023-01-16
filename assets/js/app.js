@@ -440,13 +440,13 @@ const trashContainer = document.querySelector("#trash-folder");
 trashContainer.addEventListener("click", showTrash);
 
 
-function addTrash(){
+function addTrash(fileName){
     let basura = document.querySelector("#delete-file");
     let atrBasura = basura.getAttribute("filePath");
     let cutPath = atrBasura.indexOf("/");
     let pathFile = atrBasura.slice(cutPath + 1);
     /* let pathFileAtr = pathFile.setAttribute("pathFile", pathFile); */
-    fetch("../assets/add-trash.php?filePath="+atrBasura)
+    fetch("../assets/add-trash.php?filePath="+pathFile)
         .then(response => response.json())
         .then(data => console.log(data))
 
