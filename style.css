@@ -108,6 +108,7 @@ justify-content: space-between;
 
 .fa-solid{
 font-size: 0.8rem; 
+cursor:pointer;
 }
 
 #tableFolder{
@@ -149,6 +150,7 @@ font-size: 0.8rem;
     color: #fff;
     box-shadow: 2px 2px 2px #b5b5b5;
     margin-right: 10px;
+    cursor:pointer;
 }
 
 .buttons-files span i{
@@ -190,7 +192,7 @@ width: calc(100% - 20px);
 
 .pop-up-file{
     width: 80%;
-    margin: 2% 10%;
+    margin: 0 10%;
     height: 80%;
     position: absolute;
 }
@@ -210,6 +212,7 @@ width: calc(100% - 20px);
 
 .close-popup-file i.fa-solid.fa-trash{
     font-size: 22px;
+    cursor:pointer;
 }
 
 .cover{

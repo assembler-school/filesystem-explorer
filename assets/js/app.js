@@ -1,11 +1,13 @@
 const divFolders = document.getElementById('folder');
 const btnCreateFolder = document.querySelector("#create-new-folder");
 const divFiles = document.getElementById('files');
+const btnDeleteFile = document.querySelector("#delete-file");
 
 btnCreateFolder.addEventListener("click", createNewFolder);
 
 window.addEventListener('load', getInfoFolders);
 
+// Display Folders Left Side
 function getInfoFolders() {
     while (divFolders.firstChild) {
         divFolders.removeChild(divFolders.lastChild);
@@ -87,9 +89,9 @@ function displayFolderIndex(data) {
     });
 }
 
-function createNewFolder() {
-    // let folderName = document.querySelector("#folder-name").value;
+// Option Folders
 
+function createNewFolder() {
     let newName = prompt(`Assign a new to the new folder.`);
 
     if (newName) {
@@ -138,13 +140,15 @@ function deleteFolders(event) {
     }
 }
 
+// Display Files of the folder | middle
+
 function selectFolders(event) {
     let openFolder = event.srcElement.getAttribute('name-folder');
 
     createFilesTab(openFolder);
 }
 
-function createFilesTab(folderName){
+function createFilesTab(folderName) {
     while (divFiles.firstChild) {
         divFiles.removeChild(divFiles.lastChild);
     }
@@ -180,37 +184,6 @@ function createFilesTab(folderName){
     fetch("../assets/display-content.php?actualFolderName=" + folderName)
         .then(response => response.json())
         .then(data => showelementosOfFolder(data))
-}
-
-function createButtonsFile(folderPath) {
-    const h1Files = document.querySelector('#choose-folder-h1');
-    if(h1Files !== null){
-        h1Files.remove();
-    }
-
-    let divOptionsFolder = document.createElement('div');
-    divOptionsFolder.className = 'buttons-files';
-
-    let btnCreateFile = document.createElement('span');
-    let iCreateFile = document.createElement('i');
-    iCreateFile.className = 'fa-solid fa-file';
-    btnCreateFile.textContent = 'New File';
-    btnCreateFile.setAttribute('folder-path', folderPath)
-
-    let btnCreateFolder = document.createElement('span');
-    let iCreateFolder = document.createElement('i');
-    iCreateFolder.className = 'fa-solid fa-plus';
-    btnCreateFolder.textContent = 'New Folder';
-
-    divFiles.prepend(divOptionsFolder);
-
-    divOptionsFolder.appendChild(btnCreateFile);
-    btnCreateFile.prepend(iCreateFile);
-
-    divOptionsFolder.appendChild(btnCreateFolder);
-    btnCreateFolder.prepend(iCreateFolder);
-
-    btnCreateFile.addEventListener('click', createPopUpUpload);
 }
 
 function showelementosOfFolder(data) {
@@ -268,7 +241,6 @@ function constuctorTable(data, pathFile, trFile) {
 
         if (i === 0) {
             let extension = getPathExtension(pathFile);
-            console.log(extension)
             let img = document.createElement("img");
 
             switch (extension) {
@@ -291,6 +263,77 @@ function constuctorTable(data, pathFile, trFile) {
     }
 }
 
+// Get into folder inside a folder
+
+function displayInsideFolder(folderName) {
+    let pathFile = folderName;
+
+    if (folderName.includes("../root/")) {
+        pathFile = folderName.slice(8);
+    }
+
+    createFilesTab(pathFile);
+
+    let indexPreviousFolder = pathFile.lastIndexOf("/");
+    let backPath = pathFile.slice(0, indexPreviousFolder);
+
+    const btnFiles = document.querySelector('.buttons-files');
+
+    const backSpan = document.createElement('span');
+    backSpan.textContent = '< go back';
+    backSpan.setAttribute('back-path', backPath);
+    backSpan.id = 'btn-backpath';
+
+    btnFiles.prepend(backSpan);
+
+    backSpan.addEventListener('click', () => {
+        console.log(backPath)
+        console.log(backPath.lastIndexOf("/"));
+        if (backPath.lastIndexOf("/") === -1) {
+            while (backSpan.firstChild) {
+                backSpan.removeChild(backSpan.lastChild);
+            }
+            createFilesTab(backPath);
+        } else {
+            displayInsideFolder(backPath);
+        }
+    });
+}
+
+// Options files
+
+function createButtonsFile(folderPath) {
+    const h1Files = document.querySelector('#choose-folder-h1');
+    if (h1Files !== null) {
+        h1Files.remove();
+    }
+
+    let divOptionsFolder = document.createElement('div');
+    divOptionsFolder.className = 'buttons-files';
+
+    let btnCreateFile = document.createElement('span');
+    let iCreateFile = document.createElement('i');
+    iCreateFile.className = 'fa-solid fa-file';
+    btnCreateFile.textContent = 'New File';
+    btnCreateFile.setAttribute('folder-path', folderPath)
+
+    let btnCreateFolder = document.createElement('span');
+    let iCreateFolder = document.createElement('i');
+    iCreateFolder.className = 'fa-solid fa-plus';
+    btnCreateFolder.textContent = 'New Folder';
+
+    divFiles.prepend(divOptionsFolder);
+
+    divOptionsFolder.appendChild(btnCreateFile);
+    btnCreateFile.prepend(iCreateFile);
+
+    divOptionsFolder.appendChild(btnCreateFolder);
+    btnCreateFolder.prepend(iCreateFolder);
+
+    btnCreateFile.addEventListener('click', createPopUpUpload);
+}
+
+// Get info of the files
 
 function getPathExtension(path) {
     let cutExtension = path.lastIndexOf(".");
@@ -303,8 +346,6 @@ function getPathExtension(path) {
     return pathExtension;
 }
 
-const btnDeleteFile = document.querySelector("#delete-file");
-
 function showInfoElement(event) {
     let atrituboFile = event.currentTarget.getAttribute("filePath")
     let pathExtension = getPathExtension(atrituboFile);
@@ -314,28 +355,28 @@ function showInfoElement(event) {
             let cutPath = atrituboFile.indexOf("/");
             let pathFile = atrituboFile.slice(cutPath + 1);
             window.location.replace("../text-editor.php?pathFile=" + pathFile);
-            break
+            break;
         case "img":
             createFileContent("img", atrituboFile);
-            break
+            break;
         case "mp4":
             createFileContent("mp4", atrituboFile);
-            break
+            break;
         case "mp3":
             createFileContent("mp3", atrituboFile);
-            break
+            break;
         default:
-            console.log("no podemos descargar este archivo")
-            break
+            displayInsideFolder(atrituboFile);
+            break;
     }
 
-    displayPopUp();
     btnDeleteFile.setAttribute("filePath", atrituboFile)
     btnDeleteFile.addEventListener("click", deleteFile);
-
 }
 
-function createPopUpUpload(event){
+// Create Pop up Files
+
+function createPopUpUpload(event) {
     const pathFile = event.currentTarget.getAttribute('folder-path');
 
     const divViewContent = document.querySelector('#view-content');
@@ -370,31 +411,40 @@ function createPopUpUpload(event){
     divBackgroundUpload.appendChild(btnUpload);
 
     elForm.addEventListener('submit', (e) => {
-        e.preventDefault(); 
-        
+        e.preventDefault();
+
         let formData = new FormData(elForm);
 
         fetch('../assets/upload-file.php', {
-             method: "POST", 
-             body: formData
-          })
-          .then(response => response.json())
-          .then(info => {
-            if(info.status){
-            trashBtn.style.display = 'initial';
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.json())
+            .then(info => {
+                if (info.status) {
+                    trashBtn.style.display = 'initial';
 
-            closePopUp();
-  
-            createFilesTab(pathFile);
+                    closePopUp();
 
-            alert(info.msg);
-        }else{
-            alert(info.msgh);
-        }
-          });   
+                    if (pathFile.match("/").length >= 1) {
+                        displayInsideFolder(pathFile);
+                    } else {
+                        createFilesTab(pathFile);
+                    }
+
+                    alert(info.msg);
+                } else {
+                    alert(info.msgh);
+                }
+            });
     });
 
     displayPopUp();
+
+    let btnClosePopUp = document.getElementById('close-popup');
+    btnClosePopUp.addEventListener('click', () => {
+        trashBtn.style.display = 'initial';
+    })
 }
 
 function createFileContent(typeFile, data) {
@@ -432,51 +482,61 @@ function createFileContent(typeFile, data) {
         containerContent.appendChild(elementAudio);
         elementAudio.appendChild(elementAudioSource);
     }
+
+    displayPopUp();
 }
 
 
 // Trash container
-const trashContainer = document.querySelector("#trash-folder");
-trashContainer.addEventListener("click", showTrash);
+// const trashContainer = document.querySelector("#trash-folder");
+// trashContainer.addEventListener("click", showTrash);
 
 
+<<<<<<< HEAD
 function addTrash(fileName){
+=======
+function addTrash() {
+>>>>>>> 712b3970be79e5465002dac11ad4ccc63d0109ed
     let basura = document.querySelector("#delete-file");
     let atrBasura = basura.getAttribute("filePath");
     let cutPath = atrBasura.indexOf("/");
     let pathFile = atrBasura.slice(cutPath + 1);
     /* let pathFileAtr = pathFile.setAttribute("pathFile", pathFile); */
+<<<<<<< HEAD
     fetch("../assets/add-trash.php?filePath="+pathFile)
+=======
+    fetch("../assets/add-trash.php?filePath=" + atrBasura)
+>>>>>>> 712b3970be79e5465002dac11ad4ccc63d0109ed
         .then(response => response.json())
         .then(data => console.log(data))
 
-/* 
-Mover archivo a carpeta trash:
-- archvo: ruta 
-- carpeta basura: ruta 
-- mover (function) 
-- function con php 
-- llamamos con js para no recargar la pagina
-
-// Function PHP
-GET, atributo, qrparametro - para archivo ruta
-ruta carpata - escribimos manualmente 
-rename - method 
-// JS
-- Mediante atrubuto agarramos la ruta del archivo*/
+    /* 
+    Mover archivo a carpeta trash:
+    - archvo: ruta 
+    - carpeta basura: ruta 
+    - mover (function) 
+    - function con php 
+    - llamamos con js para no recargar la pagina
+    
+    // Function PHP
+    GET, atributo, qrparametro - para archivo ruta
+    ruta carpata - escribimos manualmente 
+    rename - method 
+    // JS
+    - Mediante atrubuto agarramos la ruta del archivo*/
 }
 
 
 
 
-function deleteFile(filePath){
+function deleteFile(filePath) {
     const popUpDeleteConfirm = confirm("Do you want delete this file?");
 
     if (popUpDeleteConfirm) {
-    /* fetch("../assets/delete-file.php?filePath="+filePath); */
-   /*  location.reload(); */
-    addTrash();
-}
+        /* fetch("../assets/delete-file.php?filePath="+filePath); */
+        /*  location.reload(); */
+        addTrash();
+    }
 }
 
 

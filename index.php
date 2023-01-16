@@ -2,7 +2,7 @@
 session_start();
 
 if(!empty($_SESSION['user'])){
-    header('location: root/panel.php');
+    header('location: root/index.php');
 }
 ?>
 <!DOCTYPE html>
