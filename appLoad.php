@@ -136,32 +136,35 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
         }
       } else {
         if (isMoveActive()) {
-          ?>
-        <a class="link text-white" href="#" data-change style="pointer-events: none" >
-          <?php echo $fileName ?>
-        </a>
-        <?php
+          if (isset($_SESSION['moves'][$fileName])) {
+            ?>
+          <a class="link text-white" href=<?php echo "open.php?name=$fileHref" ?> data-change
+            style="cursor: inherit; opacity: 0.2; pointer-events:none">
+            <?php echo $fileName ?>
+          </a>
+          <?php
+          } else if (isset($_SESSION['copies'][$fileName])) {
+            ?>
+            <a class="link text-white" href=<?php echo "open.php?name=$fileHref" ?> data-change
+              style="cursor: inherit; pointer-events:none">
+            <?php echo $fileName ?>
+            </a>
+          <?php
+          } else {
+            ?>
+            <a class="link text-white" href="#" data-change style="pointer-events: none">
+            <?php echo $fileName ?>
+            </a>
+          <?php
+          }
         } else {
           if ($options) {
-            if (isset($_SESSION['moves'][$fileName])) {
-              ?>
-            <a class="link text-white" href=<?php echo "open.php?name=$fileHref" ?> data-change style="cursor: inherit; opacity: 0.2; pointer-events:none">
-              <?php echo $fileName ?>
-            </a>
-            <?php
-            } else if (isset($_SESSION['copies'][$fileName])) {
-              ?>
-              <a class="link text-white" href=<?php echo "open.php?name=$fileHref" ?> data-change style="cursor: inherit; pointer-events:none"">
-              <?php echo $fileName ?>
-              </a>
-            <?php
-            } else {
-              ?>
-              <a class="link text-white" href=<?php echo "open.php?name=$fileHref" ?> data-change>
-              <?php echo $fileName ?>
-              </a>
-            <?php
-            }
+            ?>
+          <a class="link text-white" href=<?php echo "open.php?name=$fileHref" ?> data-change>
+            <?php echo $fileName ?>
+          </a>
+          <?php
+
           } else {
             ?>
           <span class="link text-white">

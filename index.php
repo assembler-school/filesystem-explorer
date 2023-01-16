@@ -90,12 +90,10 @@ if (!isset($_SESSION['moves'])) {
         </label>
         <input name="userfile" type="file" id="file-upload" onchange="uploadFile();">
       </form>
-      <form action="create.php" method="POST" id="createForm">
-        <label for="file-create" class="custom-file-create m-2 me-4">
-          <i class="bi bi-plus-square m-2"></i></i>Create
-        </label>
-        <input name="userfile" type="file" id="file-upload">
-      </form>
+      <button class="custom-file-create m-2 me-4 folder-btn" data-bs-toggle='modal' data-bs-target='#createModal'>
+        <i class="bi bi-plus-square m-2"></i>Create
+      </button>
+      <input name="userfile" type="file" id="file-upload">
     </nav>
   </header>
 
@@ -229,6 +227,31 @@ if (!isset($_SESSION['moves'])) {
       }
       ?>
   </article>
+
+  <!--CREATE-->
+  <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Insert the name and the extension</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="createForm" onsubmit="createFile(event)">
+          <div class="modal-body">
+            <input type="text" id="nameCreated">
+            <select name="select" id="fileType">
+              <option value="">folder</option>
+              <option value=".txt">.txt</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" id="createBtn" class="btn btn-primary" data-bs-dismiss="modal">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <!-- DELETE MODAL  -->
   <div class="modal" id="deleteModal">

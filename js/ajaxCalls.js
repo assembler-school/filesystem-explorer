@@ -4,6 +4,55 @@ function uploadFile() {
   document.getElementById('uploadForm').submit();
 }
 
+// CREATE /////////////////////////////////////////////////////////////////////////////
+
+function createFile(e) {
+  e.preventDefault();
+  const newType = fileType.value;
+  const completeFile = nameCreated.value + fileType.value;  //Nuevo documento de texto.txt
+  const fileNameHref = completeFile.replace(' ', '%20');
+  const createData = new FormData();
+  createData.append('name', completeFile)
+  createData.append('type', newType)
+
+  fetch("./create.php", {
+    'method': 'POST',
+    'body': createData,
+  })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      const tbody = document.querySelector('#tbody');
+      if (newType === '.txt') {
+        tbody.innerHTML += `<tr data-file='${completeFile}'><td class="p-3"><img src='./assets/txt.png' class='icon me-2' 
+        alt='txt' data-change/><a class="link text-white" href="open.php?name=${fileNameHref}" data-change>${completeFile}</a></td>
+        <td class="p-3"><p data-change></p></td><td class="p-3"><p data-change></p></td><td class="p-3" data-file="${completeFile}" 
+        data-type="file"><button type="button" class="border border-0 bg-transparent me-1" data-bs-toggle="modal" data-bs-target="#renameModal"
+        onclick="renameFileModal(event);" id="renameFunction" style="visibility:visible"><i class="bi bi-pencil text-white" data-change></i>
+        </button><form onsubmit="copyFile(event);" id="copyFunction" style="visibility:visible"><button type="submit" class="border border-0 bg-transparent me-1">
+        <i class="bi bi-clipboard text-white" id="copyIcon" data-change></i></button></form><form onsubmit="moveFile(event)" id="moveFunction" 
+        style="visibility: visible"><button type="submit" class="border border-0 bg-transparent me-1"><i class="bi bi-scissors text-white" id="moveIcon" data-change></i>
+        </button></form><form style="visibility: hidden" class="me-2"><button type="submit" class="border border-0 bg-transparent me-1">
+        <i class="bi bi-file-earmark-zip text-white me-2" data-change></i></button></form><button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
+        onclick="deleteFileModal(event);" id="deleteFunction" style="visibility:visible"><i class="bi bi-x-lg text-white" data-change></i>
+        </button></td></tr>`;
+      } else {
+        document.querySelector('tr[data-file]').insertAdjacentHTML('beforebegin', `<tr data-file='${completeFile}'><td class="p-3"><img src='./assets/dir.png' class='icon me-2' 
+        alt='txt' data-change/><a class="link text-white" href="?p=${fileNameHref}" data-change>${completeFile}</a></td>
+        <td class="p-3"><p data-change></p></td><td class="p-3"><p data-change></p></td><td class="p-3" data-file="${completeFile}" 
+        data-type="file"><button type="button" class="border border-0 bg-transparent me-1" data-bs-toggle="modal" data-bs-target="#renameModal"
+        onclick="renameFileModal(event);" id="renameFunction" style="visibility:visible"><i class="bi bi-pencil text-white" data-change></i>
+        </button><form onsubmit="copyFile(event);" id="copyFunction" style="visibility:visible"><button type="submit" class="border border-0 bg-transparent me-1">
+        <i class="bi bi-clipboard text-white" id="copyIcon" data-change></i></button></form><form onsubmit="moveFile(event)" id="moveFunction" 
+        style="visibility: visible"><button type="submit" class="border border-0 bg-transparent me-1"><i class="bi bi-scissors text-white" id="moveIcon" data-change></i>
+        </button></form><form style="visibility: hidden" class="me-2"><button type="submit" class="border border-0 bg-transparent me-1">
+        <i class="bi bi-file-earmark-zip text-white me-2" data-change></i></button></form><button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
+        onclick="deleteFileModal(event);" id="deleteFunction" style="visibility:visible"><i class="bi bi-x-lg text-white" data-change></i>
+        </button></td></tr>`);
+      }
+    });
+}
+
 // DELETE /////////////////////////////////////////////////////////////////////////////
 
 function deleteAll(e, element) {
