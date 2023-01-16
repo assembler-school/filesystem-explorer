@@ -2,6 +2,9 @@ const divFolders = document.getElementById('folder');
 const btnCreateFolder = document.querySelector("#create-new-folder");
 const divFiles = document.getElementById('files');
 const btnDeleteFile = document.querySelector("#delete-file");
+let btnRelocateFile = document.querySelector("#relocate-file");
+
+btnRelocateFile.addEventListener("click", relocateFileTo);
 
 btnCreateFolder.addEventListener("click", createNewFolder);
 
@@ -126,7 +129,13 @@ function modifyNameFolders(event) {
 
 function deleteFolders(event) {
     let actualFolderName = event.currentTarget.getAttribute('actual-folder');
-    const popUpDeleteConfirm = confirm(`Do you want delete "${actualFolderName}" folder?`);
+
+    if (actualFolderName == "Trash"){
+        alert("You can't delete this folder")
+    }else{
+        const popUpDeleteConfirm = confirm(`Do you want delete "${actualFolderName}" folder?`);
+    }
+
 
     if (popUpDeleteConfirm) {
         fetch("../assets/delete-folder.php?actualFolderName=" + actualFolderName)
@@ -372,6 +381,8 @@ function showInfoElement(event) {
 
     btnDeleteFile.setAttribute("filePath", atrituboFile)
     btnDeleteFile.addEventListener("click", deleteFile);
+
+    btnRelocateFile.setAttribute("filePath", atrituboFile);
 }
 
 // Create Pop up Files
@@ -426,7 +437,7 @@ function createPopUpUpload(event) {
 
                     closePopUp();
 
-                    if (pathFile.match("/").length >= 1) {
+                    if (pathFile.match("/")) {
                         displayInsideFolder(pathFile);
                     } else {
                         createFilesTab(pathFile);
@@ -492,40 +503,34 @@ function createFileContent(typeFile, data) {
 // trashContainer.addEventListener("click", showTrash);
 
 
-<<<<<<< HEAD
-function addTrash(fileName){
-=======
 function addTrash() {
->>>>>>> 712b3970be79e5465002dac11ad4ccc63d0109ed
     let basura = document.querySelector("#delete-file");
     let atrBasura = basura.getAttribute("filePath");
     let cutPath = atrBasura.indexOf("/");
     let pathFile = atrBasura.slice(cutPath + 1);
     /* let pathFileAtr = pathFile.setAttribute("pathFile", pathFile); */
-<<<<<<< HEAD
-    fetch("../assets/add-trash.php?filePath="+pathFile)
-=======
     fetch("../assets/add-trash.php?filePath=" + atrBasura)
->>>>>>> 712b3970be79e5465002dac11ad4ccc63d0109ed
         .then(response => response.json())
         .then(data => console.log(data))
 
-    /* 
-    Mover archivo a carpeta trash:
-    - archvo: ruta 
-    - carpeta basura: ruta 
-    - mover (function) 
-    - function con php 
-    - llamamos con js para no recargar la pagina
-    
-    // Function PHP
-    GET, atributo, qrparametro - para archivo ruta
-    ruta carpata - escribimos manualmente 
-    rename - method 
-    // JS
-    - Mediante atrubuto agarramos la ruta del archivo*/
 }
 
+/* let btnRelocateFile = document.querySelector("#relocate-file");
+btnRelocateFile.addEventListener("click", relocateFileTo);
+btnRelocateFile.setAttribute("filePath", ) */
+
+// Relocate documento
+
+function relocateFileTo(){
+    let relocateFile = document.querySelector("#relocate-file");
+    let filePath = relocateFile.getAttribute("filePath");
+    let folderName = prompt("Where do you want to move this file?", "Folder name");
+
+  fetch("../assets/relocate-file.php?filepath=" + filePath + "&folderName=" + folderName)
+         .then(response => response.json())
+         .then(data => console.log(data))
+
+}
 
 
 

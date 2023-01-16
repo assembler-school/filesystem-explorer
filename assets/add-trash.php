@@ -4,13 +4,9 @@ $nombreFile = $_GET['filePath'];
 
 $slash = '/';
 
-$fileToTrash = explode($slash, $nombreFile);
+$fileToTrash = explode($slash, $nombreFile); //devuelve array, elementos separados por /
 
 
 rename($nombreFile, '../root/Trash/'.$fileToTrash[3]);
-
-
-/* 
-rename('../root/Nuevo Nombre/????', '../root/Trash/'.$nombreFile); */
 
 ?>

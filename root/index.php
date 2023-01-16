@@ -33,6 +33,7 @@
             <div class="close-popup-file">
                 <i class="fa-solid fa-xmark" id="close-popup"></i>
                 <i class="fa-solid fa-trash" id="delete-file"></i>
+                <i class="fa-solid fa-window-restore" id="relocate-file"></i>
             </div>
             <div id="view-content"></div>
             <div class="cover"></div>
