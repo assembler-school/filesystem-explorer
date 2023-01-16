@@ -3,14 +3,14 @@ const inputUploadFile = document.querySelector("#inputUploadFile");
 
 uploadFile.addEventListener("click", uploadFileFunction);
 inputUploadFile.addEventListener('change', () => {
-    upload_image(inputUploadFile.files[0]);
+    uploadImage(inputUploadFile.files[0]);
 });
 
 function uploadFileFunction() {
     inputUploadFile.click();
 }
 
-const upload_image = (file) => {
+function uploadImage(file){
     let formData = new FormData();
     formData.append("inputUploadFile", file);
     fetch('modules/uploadFiles.php?dataPath=' + dataPath, {

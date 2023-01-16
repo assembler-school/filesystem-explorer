@@ -1,5 +1,4 @@
 <?php
-/* $dataPath = $_GET["dataPath"]; */
 $dataPath = $_REQUEST["dataPath"];
 $arrayData = array();
 

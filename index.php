@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wisus Drive</title>
         <script src="js/script.js?v=<?php echo time(); ?>" defer></script>
+        <script src="js/search.js?v=<?php echo time(); ?>" defer></script>
         <script src="js/showMedia.js?v=<?php echo time(); ?>" defer></script>
         <script src="js/uploadFile.js?v=<?php echo time(); ?>" defer></script>
         <script src="js/selectElement.js?v=<?php echo time(); ?>" defer></script>
@@ -21,7 +22,9 @@
         <main>
             <div id="mainContainer">
                 <div class="main-children">
-                    <input type="text" id="searchInput" placeholder="Search">
+                    <form id="searchInputForm" method="GET" action="search.php">
+                        <input id="searchInput" placeholder="Search" name="search" autocomplete="off">
+                    </form>
                     <div id="buttonsOptionsContainer">
                         <img id="addFolderImage" class="buttons-options" title="Create a new folder" src="images/addFolder.png" alt="create folder icon">
                         <img id="uploadFile" class="buttons-options" title="Upload a file" src="images/upload.png" alt="upload file icon">
@@ -86,7 +89,7 @@
                 </div>
             </div>
             <form id="formUploadFile" enctype="multipart/form-data">
-                    <input id="inputUploadFile"  type='file' name='file'>
+                    <input id="inputUploadFile" type='file' name='file'>
             </form>
         </main>
         <footer></footer>
