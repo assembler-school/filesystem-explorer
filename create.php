@@ -2,14 +2,17 @@
 session_start();
 
 $absolutePath = $_SESSION['absolutePath'];
-$fileName = $_POST['name'];
-$path = $absolutePath . "/" . $fileName;
-$type = $_POST['type'];
+$fileName = $_POST['nameCreated'];
+$path = $absolutePath . "/" . $fileName;  
+$type = $_POST['select'];
 
 if($type == ".txt"){
-    file_put_contents($path, "");
+    file_put_contents($path . $type, "");
 }else mkdir($path);
 
-echo json_encode("ok");
+if (isset($_SESSION['relativePath'])) {
+  $returnPath = $_SESSION['relativePath'];
+}
 
+header("Location: index.php?p=$returnPath");
 ?>

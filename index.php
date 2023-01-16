@@ -242,10 +242,10 @@ if (!isset($_SESSION['moves'])) {
           <h5 class="modal-title" id="exampleModalLabel">Insert the name and the extension</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form id="createForm" onsubmit="createFile(event)">
+        <form id="createForm" action="./create.php" method="POST">
           <div class="modal-body">
-            <input type="text" id="nameCreated">
-            <select name="select" id="fileType">
+            <input type="text" id="nameCreated" name="nameCreated">
+            <select name="select" id="fileType" name="fileType">
               <option value="">folder</option>
               <option value=".txt">.txt</option>
             </select>

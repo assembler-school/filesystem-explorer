@@ -6,7 +6,7 @@ function uploadFile() {
 
 // CREATE /////////////////////////////////////////////////////////////////////////////
 
-function createFile(e) {
+/* function createFile(e) {
   e.preventDefault();
   const newType = fileType.value;
   const completeFile = nameCreated.value + fileType.value;  //Nuevo documento de texto.txt
@@ -68,7 +68,7 @@ function createFile(e) {
         }
       }
     });
-}
+} */
 
 // DELETE /////////////////////////////////////////////////////////////////////////////
 
