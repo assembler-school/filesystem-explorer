@@ -10,9 +10,12 @@ const sizeListSecondChild = document.querySelector("#sizeListSecondChild");
 const modificationListSecondChild = document.querySelector("#modificationListSecondChild");
 const arrowLeft = document.querySelector("#arrowLeft");
 let dataPath = "";
+let firstList = "";
+let secondList = "";
+let firstListOld = "";
+let secondListOld = "";
 let typeDocument;
 let selectedElement;
-
 
 folderFilesContainer.addEventListener("dblclick", selectElement);
 folderFilesContainer.addEventListener("click", selectSecondElement);
@@ -20,18 +23,31 @@ ul.addEventListener("click", selectElement);
 ul.addEventListener("click", getTextValueAndPadre);
 arrowLeft.addEventListener("click", goBackDirectory);
 
+function putOffSelectElementColorFirst(){
+    if (firstListOld.style.backgroundColor === "yellow" && firstListOld !== firstList) {
+        firstListOld.style.backgroundColor = "#D9D9D9";
+    }
+}
+
+function putOffSelectElementColorSecond(){
+    if (secondListOld.style.backgroundColor === "yellow" && secondListOld !== secondList) {
+        secondListOld.style.backgroundColor = "#D9D9D9";
+    }
+}
+
 function selectElement(event) {
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
+    firstListOld = firstList;
     if (parentNode.classList.contains("first-list")) {
-        let firstList = parentNode;
+        firstList = parentNode;
         firstList.style.backgroundColor = "yellow";
         dataPath = parentNode.getAttribute('data-path');
         typeDocument = parentNode.getAttribute('type');
         selectedElement = parentNode;
         printFolderTitleName(parentNode);
     } else if (currentNode.classList.contains("first-list")) {
-        let firstList = currentNode;
+        firstList = currentNode;
         firstList.style.backgroundColor = "yellow";
         dataPath = currentNode.getAttribute('data-path');
         typeDocument = parentNode.getAttribute('type');
@@ -45,19 +61,26 @@ function selectElement(event) {
     } else if (typeDocument == "file"){
         showMedia();
     }
+    if(firstListOld != ""){
+        window.addEventListener("click", putOffSelectElementColorFirst);
+    }
 }
 
 function selectSecondElement(event) {
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
+    secondListOld = secondList;
     if (parentNode.classList.contains("first-list")) {
-        let firstList = parentNode;
-        firstList.style.backgroundColor = "yellow";
+        secondList = parentNode;
+        secondList.style.backgroundColor = "yellow";
         dataPath = parentNode.getAttribute('data-path');
     } else if (currentNode.classList.contains("first-list")) {
-        let firstList = currentNode;
-        firstList.style.backgroundColor = "yellow";
+        secondList = currentNode;
+        secondList.style.backgroundColor = "yellow";
         dataPath = currentNode.getAttribute('data-path');
+    }
+    if(secondListOld != ""){
+        window.addEventListener("click", putOffSelectElementColorSecond);
     }
     showPreview();
     getInfoFilesCorner();
