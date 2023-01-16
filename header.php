@@ -13,7 +13,8 @@
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/copy.js" defer></script>
   <script src="./js/alert.js" defer></script>
   <script src="./js/modal.js" defer></script>
-  <script src="./js/script.js" defer></script>
+  <script src="./js/ajaxCalls.js" defer></script>
 </head>

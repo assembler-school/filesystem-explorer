@@ -27,8 +27,14 @@ class Utils
   public static function getFileExtension($fileName)
   {
     $filetmp = (explode('.', $fileName));
-    $fileExtension = strtolower(end($filetmp));
-    return $fileExtension;
+
+    if (count($filetmp) === 1)
+      return null;
+
+    if (is_numeric(end($filetmp)))
+      return null;
+    else
+      return strtolower(end($filetmp));
   }
 
   public static function formatSize($size, $precision = 2)

@@ -33,9 +33,9 @@ function loadFiles($path, $options)
     </tr>
     <?php
   }
-?>
-<?php
-    return count($files);
+  ?>
+  <?php
+  return count($files);
 }
 
 function paintFile($path, $file, $options)
@@ -73,11 +73,25 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
       if ($isFolder) {
         if ($isRoot) {
           if ($options) {
-            ?>
-            <a class="folder-btn link text-white" href="?p=<?php echo $fileHref ?>">
-              <?php echo $fileName ?>
-            </a>
-            <?php
+            if (isset($_SESSION['moves'][$fileName])) {
+              ?>
+              <a class="folder-btn link text-white" href="#" data-change style="cursor: inherit; opacity: 0.2">
+                <?php echo $fileName ?>
+              </a>
+              <?php
+            } else if (isset($_SESSION['copies'][$fileName])) {
+              ?>
+                <a class="folder-btn link text-white" href="#" data-change style="cursor: inherit;">
+                <?php echo $fileName ?>
+                </a>
+              <?php
+            } else {
+              ?>
+                <a class="folder-btn link text-white" href="?p=<?php echo $fileHref ?>" data-change>
+                <?php echo $fileName ?>
+                </a>
+              <?php
+            }
           } else {
             ?>
             <span class="folder-btn link text-white">
@@ -90,11 +104,25 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
         <?php
         } else {
           if ($options) {
-            ?>
-          <a class="folder-btn link text-white" href="?p=<?php echo $fileHrefRelativePath ?>">
-            <?php echo $fileName ?>
-          </a>
-          <?php
+            if (isset($_SESSION['moves'][$fileName])) {
+              ?>
+            <a class="folder-btn link text-white" href="#" data-change style="cursor: inherit; opacity: 0.2">
+              <?php echo $fileName ?>
+            </a>
+            <?php
+            } else if (isset($_SESSION['copies'][$fileName])) {
+              ?>
+              <a class="folder-btn link text-white" href="#" data-change style="cursor: inherit;">
+              <?php echo $fileName ?>
+              </a>
+            <?php
+            } else {
+              ?>
+              <a class="folder-btn link text-white" href="?p=<?php echo $fileHrefRelativePath ?>" data-change>
+              <?php echo $fileName ?>
+              </a>
+            <?php
+            }
           } else {
             ?>
           <span class="folder-btn link text-white">
@@ -107,26 +135,56 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
         <?php
         }
       } else {
-        if ($options) {
+        if (isMoveActive()) {
           ?>
-        <a class="link text-white" href=<?php echo "open.php?name=$fileHref " ?>>
+        <a class="link text-white" href="#" data-change style="pointer-events: none" >
           <?php echo $fileName ?>
         </a>
         <?php
         } else {
+          if ($options) {
+            if (isset($_SESSION['moves'][$fileName])) {
+              ?>
+            <a class="link text-white" href=<?php echo "open.php?name=$fileHref" ?> data-change style="cursor: inherit; opacity: 0.2; pointer-events:none">
+              <?php echo $fileName ?>
+            </a>
+            <?php
+            } else if (isset($_SESSION['copies'][$fileName])) {
+              ?>
+              <a class="link text-white" href=<?php echo "open.php?name=$fileHref" ?> data-change style="cursor: inherit; pointer-events:none"">
+              <?php echo $fileName ?>
+              </a>
+            <?php
+            } else {
+              ?>
+              <a class="link text-white" href=<?php echo "open.php?name=$fileHref" ?> data-change>
+              <?php echo $fileName ?>
+              </a>
+            <?php
+            }
+          } else {
+            ?>
+          <span class="link text-white">
+            <?php echo $fileName ?>
+          </span>
+          <?php
+          }
           ?>
-        <span class="link text-white">
-          <?php echo $fileName ?>
-        </span>
+        </td>
         <?php
         }
-        ?>
-      </td>
-      <?php
       }
       ?>
+
+
     <td class="p-3">
-      <?php echo Utils::formatSize(filesize($absolutePath)) ?>
+      <?php
+      if (isset($_SESSION['moves'][$fileName])) {
+        echo '<p data-change style="opacity: 0.2">' . Utils::formatSize(filesize($absolutePath)) . '</p>';
+      } else {
+        echo '<p data-change>' . Utils::formatSize(filesize($absolutePath)) . '</p>';
+      }
+      ?>
     </td>
     <?php
     if ($options) {
@@ -134,7 +192,12 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
       ?>
       <td class="p-3">
         <?php $fecha_f = filemtime($absolutePath);
-        echo date("D d M Y", $fecha_f) ?>
+        if (isset($_SESSION['moves'][$fileName])) {
+          echo '<p data-change style="opacity: 0.2">' . date("D d M Y", $fecha_f) . '</p>';
+        } else {
+          echo '<p data-change>' . date("D d M Y", $fecha_f) . '</p>';
+        }
+        ?>
       </td>
       <?php
     } else {
@@ -145,35 +208,115 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
 
     if ($options) {
       ?>
-      <td class="p-3">
-        <!-- RENAME -->
-        <button type="button" data-file="<?php echo $fileName ?>" class="border border-0 bg-transparent"
-          data-bs-toggle="modal" data-bs-target="#renameModal" onclick="rename_file(event);">
-          <i class="bi bi-pencil text-white"></i>
-        </button>
+      <td class="p-3" data-file="<?php echo $fileName ?>" data-type="<?php echo $isFolder ? 'dir' : 'file' ?>">
 
-        <!--DELETE -->
-        <button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
-          onclick="type_file(event);" data-file="<?php echo $fileName ?>">
-          <i class="bi bi-x-lg text-white"></i>
+        <!-- RENAME -->
+        <button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#renameModal"
+          onclick="renameFileModal(event);" id="renameFunction" <?php
+          if (isMoveActive())
+            echo 'style="visibility:hidden"';
+          else
+            echo 'style="visibility:visible"'
+              ?>>
+            <i class="bi bi-pencil text-white" data-change></i>
           </button>
 
-        <!--UNZIP -->
-        <?php
-        $filetmp = (explode('.', $fileName));
-        $fileExtension = strtolower(end($filetmp));
-        if ($fileExtension === 'zip' || $fileExtension === 'rar') {
-          ?>
-          <form action="unzip.php" method="POST" class="me-2">
-            <input name="file" type="hidden" value="<?php echo $fileName ?>">
-            <button type="submit" class="border border-0 bg-transparent">
-              <i class="bi bi-file-earmark-zip text-white"></i>
+          <!-- COPY -->
+          <?php
+          if (isset($_SESSION['copies'][$fileName])) {
+            ?>
+          <form onsubmit="copyFile(event);" id="copyFunction">
+            <button type="submit" class="border border-0 bg-transparent" disabled style="cursor:inherit">
+              <i class="bi bi-clipboard text-primary" id="copyIcon" data-change></i>
             </button>
           </form>
           <?php
-        }
-        ?>
-      </td>
+          } else if (isMoveActive()) {
+            if (count($_SESSION['copies']) > 0 || count($_SESSION['moves']) > 0) {
+              ?>
+              <form onsubmit="copyFile(event);" id="copyFunction" style="visibility:hidden">
+                <button type="submit" class="border border-0 bg-transparent">
+                  <i class="bi bi-clipboard text-white" id="copyIcon" data-change></i>
+                </button>
+              </form>
+            <?php
+            }
+          } else {
+            ?>
+            <form onsubmit="copyFile(event);" id="copyFunction" style="visibility:visible">
+              <button type="submit" class="border border-0 bg-transparent">
+                <i class="bi bi-clipboard text-white" id="copyIcon" data-change></i>
+              </button>
+            </form>
+          <?php
+          }
+
+          // MOVE
+          if (isset($_SESSION['moves'][$fileName])) {
+            ?>
+          <form onsubmit="moveFile(event)" id="moveFunction">
+            <button type="submit" class="border border-0 bg-transparent" disabled>
+              <i class="bi bi-scissors text-white" id="moveIcon" style="cursor: inherit; opacity: 0.2;" data-change></i>
+            </button>
+          </form>
+          <?php
+          } else if (isMoveActive()) {
+            if (count($_SESSION['copies']) > 0 || count($_SESSION['moves']) > 0) {
+              ?>
+              <form onsubmit="moveFile(event)" id="moveFunction" style="visibility: hidden">
+                <button type="submit" class="border border-0 bg-transparent">
+                  <i class="bi bi-scissors text-white" id="moveIcon" data-change></i>
+                </button>
+              </form>
+            <?php
+            }
+          } else {
+            ?>
+            <form onsubmit="moveFile(event)" id="moveFunction" style="visibility: visible">
+              <button type="submit" class="border border-0 bg-transparent">
+                <i class="bi bi-scissors text-white" id="moveIcon" data-change></i>
+              </button>
+            </form>
+          <?php
+          }
+
+          //UNZIP
+          $filetmp = (explode('.', $fileName));
+          $fileExtension = strtolower(end($filetmp));
+          if ($fileExtension === 'zip' || $fileExtension === 'rar') {
+            ?>
+          <form action="unzip.php" method="POST" class="me-2" <?php
+          if ($_SESSION['moves'] || $_SESSION['copies'])
+            echo 'style="visibility:hidden"';
+          else
+            echo 'style="visibility:visible"'
+              ?> id="unzipFunction">
+              <input name="file" type="hidden" value="<?php echo $fileName ?>">
+            <button type="submit" class="border border-0 bg-transparent">
+              <i class="bi bi-file-earmark-zip text-white me-2" data-change></i>
+            </button>
+          </form>
+          <?php
+          } else { ?>
+          <form style="visibility: hidden" class="me-2">
+            <button type="submit" class="border border-0 bg-transparent">
+              <i class="bi bi-file-earmark-zip text-white me-2" data-change></i>
+            </button>
+          </form>
+          <?php
+          }
+          ?>
+        <!--DELETE -->
+        <button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
+          onclick="deleteFileModal(event);" id="deleteFunction" <?php
+          if (isMoveActive())
+            echo 'style="visibility:hidden"';
+          else
+            echo 'style="visibility:visible"'
+              ?>>
+            <i class="bi bi-x-lg text-white" data-change></i>
+          </button>
+        </td>
       <?php
     } else {
       ?>
@@ -236,7 +379,7 @@ function getTypeIcon($type, $fileName)
 
 function drawIcon($fileExtension)
 {
-  echo "<img src='./assets/$fileExtension.png' class='icon me-2' alt='$fileExtension' />";
+  echo "<img src='./assets/$fileExtension.png' class='icon me-2' alt='$fileExtension' data-change/>";
 }
 
 function updateNavigationBreadcrum($dirName)
@@ -259,5 +402,12 @@ function updateNavigationBreadcrum($dirName)
     breadcrumb.append(li);
   </script>
   <?php
+}
+
+function isMoveActive()
+{
+  if (count($_SESSION['moves']) > 0 || count($_SESSION['copies']) > 0)
+    return true;
+  return false;
 }
 ?>

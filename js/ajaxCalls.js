@@ -1,7 +1,10 @@
+// UPLOAD /////////////////////////////////////////////////////////////////////////////
 
 function uploadFile() {
   document.getElementById('uploadForm').submit();
 }
+
+// DELETE /////////////////////////////////////////////////////////////////////////////
 
 function deleteAll(e, element) {
   e.preventDefault();
@@ -13,7 +16,6 @@ function deleteAll(e, element) {
           node.remove();
         });
         document.querySelector('#emptyAll').style.display = 'none';
-
         const dirTr = document.createElement('tr');
         let fullDirTd = document.createElement('td');
         fullDirTd.textContent = 'No files were found';
@@ -23,11 +25,9 @@ function deleteAll(e, element) {
         dirTr.innerHTML += '<td></td><td></td><td></td>';
         const dirTbody = document.querySelector('#tbody');
         dirTbody.append(dirTr);
-
         const openTrash = document.querySelector('#openTrash');
         openTrash.innerHTML = '';
         openTrash.innerHTML = '<i class="bi-battery-charging"></i> Open Trash';
-
         custom_alert('Files deleted succesfully from this folder!', 'success');
       } else if (res.folder == 'is-empty') {
         custom_alert('This folder is empty', 'warning');
@@ -36,7 +36,6 @@ function deleteAll(e, element) {
           node.remove();
         });
         document.querySelector('#emptyTrash').style.display = 'none';
-
         const trashTr = document.createElement('tr');
         let fullTrashTd = document.createElement('td');
         fullTrashTd.textContent = 'No files were found';
@@ -46,7 +45,6 @@ function deleteAll(e, element) {
         trashTr.innerHTML += '<td></td><td></td><td></td>';
         const trashTbody = document.querySelector('#tbody');
         trashTbody.append(trashTr);
-
         custom_alert('Files deleted succesfully from trash!', 'success');
       } else if (res.trash == 'is-empty') {
         custom_alert('The trash is empty', 'warning');
@@ -66,7 +64,6 @@ function deleteFile(e, fileName) {
     'method': 'POST',
     'body': file,
   }
-
   fetch(`./delete.php`, config)
     .then(res => res.json())
     .then(res => {
@@ -94,6 +91,8 @@ function deleteFile(e, fileName) {
       custom_alert("Can't connect to backend, try latter", 'danger');
     });
 }
+
+// SEARCH //////////////////////////////////////////////////////////////////////////////////
 
 function searchFile(e) {
   const searchValue = e.target.value;
@@ -146,7 +145,7 @@ function advancedSearch(e) {
   searchBar.value = '';
   const searchData = new FormData();
   searchData.append('search', searchValue);
-  const fileExtensionsAllowed = ['jpg', 'png', 'txt', 'docx', 'csv', 'ppt', 'odt', 'pdf', 'zip', 'rar', 'exe', 'svg', 'mp3', 'mp4'];
+  const fileExtensionsAllowed = ['jpg', 'png', 'txt', 'docx', 'csv', 'ppt', 'odt', 'pdf', 'zip', 'rar', 'exe', 'svg', 'mp3', 'mp4', '0'];
 
   fetch("./advancedSearch.php", { 'method': 'POST', 'body': searchData })
     .then(res => res.json())
@@ -162,15 +161,16 @@ function advancedSearch(e) {
         fetch("./getSearchFiles.php", { 'method': 'POST', 'body': data })
           .then(res => res.json())
           .then(files => {
+            console.log(files);
             let array = name.split('.');
             let extension = array[array.length - 1];
-            console.log(extension);
             let icon = '';
             if (fileExtensionsAllowed.includes(extension)) {
               icon = extension;
             } else icon = 'other';
-            let href = '';
+
             if (files.type === 'dir') {
+              icon = 'dir';
               href = '?search&p=';
             } else href = 'open.php?search&path=';
             tbody.innerHTML += `<tr><td class="p-3"><img src='./assets/${icon}.png' class='icon me-2' alt='$fileExtension' />
@@ -187,11 +187,15 @@ function advancedSearch(e) {
 
 }
 
+// RENAME //////////////////////////////////////////////////////////////////////////////////////////////////
+
 function renameFile(e) {
   e.preventDefault();
   const newName = rename.value;
   const oldName = document.querySelector("#renameTitle").getAttribute("data-file");
   const file = new FormData();
+  console.log('Nuevo: ' + newName);
+  console.log('Viejo: ' + oldName);
   file.append("newName", newName);
   file.append("oldName", oldName);
   const config = {
@@ -202,34 +206,99 @@ function renameFile(e) {
   fetch("./rename.php", config)
     .then(res => res.json())
     .then(res => {
-      if (res.result == 1) {
-        const completeName = newName + "." + oldName.split(".")[1];
+      console.log(res);
+      if (res.type === 'dir') {
         const modify = document.querySelector(`tr[data-file='${oldName}']`);
         modify.removeAttribute("data-file");
         const link = modify.children[0].children[1];
-
-        if (res.type === "file") {
-          modify.setAttribute("data-file", completeName);
-          link.textContent = completeName;
-          let href = link.href.split("=")[0];
-          href += `=${completeName}`;
-          link.href = href;
-        } else {
-          modify.setAttribute("data-file", newName);
-          link.textContent = newName;
-          let href = link.href.split("=")[0];
-          href += `=${newName}`;
-          href = href.replace(' ', '%20');
-          link.href = href;
-        }
-        custom_alert("The name has been changed successfully", "success");
+        modify.setAttribute("data-file", res.name);
+        link.textContent = res.name;
+        let href = link.href.split("=")[0];
+        href += `=${res.name}`;
+        href = href.replace(' ', '%20');
+        link.href = href;
+        /*         modify.setAttribute("data-file", newName);
+                link.textContent = newName;
+                let href = link.href.split("=")[0];
+                href += `=${newName}`;
+                href = href.replace(' ', '%20');
+                link.href = href; */
       } else {
-        custom_alert("Can´t rename the file", 'danger');
+        let completeName = '';
+        if (res.ext)
+          completeName = res.name + "." + res.ext;
+        else
+          completeName = res.name;
+        const modify = document.querySelector(`tr[data-file='${oldName}']`);
+        modify.removeAttribute("data-file");
+        const link = modify.children[0].children[1];
+        modify.setAttribute("data-file", completeName);
+        link.textContent = completeName;
+        let href = link.href.split("=")[0];
+        href += `=${completeName}`;
+        href = href.replace(' ', '%20');
+        link.href = href;
       }
-
-    })
-    .catch(function () {
+      custom_alert("The name has been changed successfully", "success");
+    }) /* else {
+        custom_alert("Can´t rename the file", 'danger');
+      } */
+    .catch(function (error) {
+      console.log(error);
       custom_alert("Can't connect to backend, try latter", 'danger');
     });
 }
+
+// MOVE ///////////////////////////////////////////////////////////////////////////////////////
+
+function copyFile(e) {
+  e.preventDefault();
+  const fileName = e.target.parentNode.getAttribute("data-file");
+  //const fileType = e.target.parentNode.getAttribute("data-type");
+
+  const file = new FormData();
+  file.append('name', fileName);
+  file.append('action', 'copy');
+  //file.append('type', fileType);
+
+  const config = {
+    'method': 'POST',
+    'body': file,
+  }
+
+  fetch("./copy_path.php", config)
+    .then(res => res.json())
+    .then(res => {
+      addCopyAction(e);
+    })
+    .catch(function (error) {
+      console.log(error);
+      custom_alert("Can't connect to backend, try latter", 'danger');
+    });
+}
+
+function moveFile(e) {
+  e.preventDefault();
+  const fileName = e.target.parentNode.getAttribute("data-file");
+  const file = new FormData();
+  file.append('name', fileName);
+  file.append('action', 'move');
+  const config = {
+    'method': 'POST',
+    'body': file,
+  }
+
+  fetch("./copy_path.php", config)
+    .then(res => res.json())
+    .then(res => {
+      addMoveAction(fileName, e);
+    })
+    .catch(function (error) {
+      console.log(error);
+      custom_alert("Can't connect to backend, try latter", 'danger');
+    });
+}
+
+
+
 

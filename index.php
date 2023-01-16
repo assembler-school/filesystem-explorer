@@ -12,6 +12,11 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
   $_SESSION['absolutePath'] = ROOT;
 }
 
+if (!isset($_SESSION['moves'])) {
+  $_SESSION['copies'] = [];
+  $_SESSION['moves'] = [];
+}
+
 ?>
 <?php include('./header.php') ?>
 
@@ -94,7 +99,6 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
     </nav>
   </header>
 
-  <!-- DELETE ALERT -->
   <div id="liveAlertPlaceholder"></div>
 
   <?php
@@ -110,8 +114,9 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
     </div>
     <?php
   }
-  ?>
 
+
+  ?>
   <article class="container-fluid">
     <form action="index.php" method="POST" id="form"></form>
     <table class="table table-striped table-dark">
@@ -144,43 +149,85 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
       </tbody>
     </table>
     <?php
-    if (isset($_REQUEST['trash']) && $quantity > 0) {
-      ?>
+    $absolutePath = $_SESSION['absolutePath'];
+    if (count($_SESSION['moves']) > 0) {
+      foreach ($_SESSION['moves'] as $move) {
+        $route = explode('/', $move);
+        array_pop($route);
+        $movePath = implode('/', $route);
+      }
+    } else {
+      foreach ($_SESSION['copies'] as $move) {
+        $route = explode('/', $move);
+        array_pop($route);
+        $movePath = implode('/', $route);
+      }
+    }
+    ?>
+    <form action="./paste.php">
+      <button type="submit" class="btn btn-outline-success" id="pasteFunction" <?php
+      if (isMoveActive() && $absolutePath !== $movePath)
+        echo 'style="display:inherit"';
+      else
+        echo 'style="display:none"'
+          ?>>
+          <i class="bi bi-clipboard-check"></i>
+          Paste
+        </button>
+      </form>
+      <?php
+
+      if (isset($_REQUEST['trash']) && $quantity > 0) {
+        ?>
       <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
-        id="emptyTrash" onclick="type_trash();">
+        id="emptyTrash" onclick="deleteTrashModal();">
         <i class="bi bi-recycle"></i>
         Empty Trash
       </button>
       <?php
-    } else if (!isset($_REQUEST['trash'])) {
-      if ($quantity > 0) {
-        ?>
+      } else if (!isset($_REQUEST['trash'])) {
+        if ($quantity > 0) {
+          ?>
           <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
-            onclick="type_all();" id="emptyAll">
-            <i class="bi bi-trash3"></i>
-            Delete All Files
-          </button>
+            onclick="deleteAllModal();" id="emptyAll" <?php
+            if (isMoveActive())
+              echo 'style="visibility:hidden"';
+            else
+              echo 'style="visibility:visible"'
+                ?>>
+              <i class="bi bi-trash3"></i>
+              Delete All Files
+            </button>
         <?php
-      }
+        }
 
-      if (count(array_diff(scandir('./trash'), array('.', '..'))) > 0) {
-        ?>
-          <a class="btn btn-outline-primary" href="index.php?trash" id='openTrash'>
-            <i class="bi bi-battery-charging"></i>
-            Open Trash
-          </a>
+        if (count(array_diff(scandir('./trash'), array('.', '..'))) > 0) {
+          ?>
+          <a class="btn btn-outline-primary" href="index.php?trash" id='openTrash' <?php
+          if (isMoveActive())
+            echo 'style="visibility:hidden"';
+          else
+            echo 'style="visibility:visible"'
+              ?>>
+              <i class="bi bi-battery-charging"></i>
+              Open Trash
+            </a>
         <?php
-      } else {
-        ?>
-          <a class="btn btn-outline-primary" href="index.php?trash" id='openTrash'>
-            <i class="bi bi-battery"></i>
-            Open Trash
-          </a>
+        } else {
+          ?>
+          <a class="btn btn-outline-primary" href="index.php?trash" id='openTrash' <?php
+          if ($_SESSION['moves'] || $_SESSION['copies'])
+            echo 'style="visibility:hidden"';
+          else
+            echo 'style="visibility:visible"'
+              ?>>
+              <i class="bi bi-battery"></i>
+              Open Trash
+            </a>
         <?php
+        }
       }
-    }
-    ?>
-
+      ?>
   </article>
 
   <!-- DELETE MODAL  -->
@@ -271,5 +318,4 @@ if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
       <?php
     }
   }
-
   ?>
