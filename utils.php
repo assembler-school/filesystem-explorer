@@ -133,4 +133,33 @@ class Utils
     }
     return true;
   }
+
+  public static function move_files($dir)
+  {
+    $array = explode('/', $dir);
+    $finalDir = './trash/' . $array[count($array) - 1];
+    mkdir($finalDir);
+
+    foreach (glob($dir . '/*') as $file) {
+      if (is_dir($file))
+        move_files($file);
+      else {
+        $array = explode('/', $file);
+        $newPathFile = $finalDir . '/' . $array[count($array) - 1];
+        rename($file, $newPathFile);
+      }
+    }
+    rmdir($dir);
+  }
+
+  public static function delete_files($dir)
+  {
+    foreach (glob($dir . '/*') as $file) {
+      if (is_dir($file))
+        delete_files($file);
+      else
+        unlink($file);
+    }
+    rmdir($dir);
+  }
 }
