@@ -2,7 +2,6 @@
 
 session_start();
 
-
 if (count($_SESSION['moves']) > 0) {
   foreach ($_SESSION['moves'] as $key => $move) {
     $newPath = $_SESSION['absolutePath'];
@@ -27,7 +26,6 @@ if (count($_SESSION['moves']) > 0) {
     }
   }
   $_SESSION['copies'] = [];
-
 }
 
 if (isset($_SESSION['relativePath'])) {
