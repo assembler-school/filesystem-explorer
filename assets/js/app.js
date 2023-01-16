@@ -456,7 +456,7 @@ function createPopUpUpload(event) {
 
                     alert(info.msg);
                 } else {
-                    alert(info.msgh);
+                    alert(info.msg);
                 }
             });
     });
