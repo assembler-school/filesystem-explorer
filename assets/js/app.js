@@ -16,6 +16,10 @@ function getInfoFolders() {
         divFolders.removeChild(divFolders.lastChild);
     }
 
+    while(divFiles.firstChild){
+        divFiles.removeChild(divFiles.lastChild);
+    }
+
     fetch('../assets/display-folders.php')
         .then(response => response.json())
         .then(data => displayFolderIndex(data));
@@ -97,10 +101,10 @@ function displayFolderIndex(data) {
 function createNewFolder(pathNewFolder) {
     let newName = prompt(`Assign a new to the new folder.`);
 
-    if(pathNewFolder !== null){
+    if(typeof pathNewFolder !== 'object'){
         newName = pathNewFolder + "/" + newName;
     }
-
+    
     if (newName) {
         fetch("../assets/create-folder.php?nameFolder=" + newName)
             .then(response => response.json(),
@@ -109,7 +113,7 @@ function createNewFolder(pathNewFolder) {
                 if (info.exists) {
                     alert(info.msg);
                 } else {
-                    if(pathNewFolder !== null){
+                    if(typeof pathNewFolder !== 'object'){
                         createFilesTab(pathNewFolder);
                     }else{
                         getInfoFolders();
@@ -137,13 +141,8 @@ function modifyNameFolders(event) {
 
 function deleteFolders(event) {
     let actualFolderName = event.currentTarget.getAttribute('actual-folder');
-
-    if (actualFolderName == "Trash"){
-        alert("You can't delete this folder")
-    }else{
-        const popUpDeleteConfirm = confirm(`Do you want delete "${actualFolderName}" folder?`);
-    }
-
+    const popUpDeleteConfirm = confirm(`Do you want delete "${actualFolderName}" folder?`);
+    
 
     if (popUpDeleteConfirm) {
         fetch("../assets/delete-folder.php?actualFolderName=" + actualFolderName)
@@ -464,7 +463,7 @@ function createPopUpUpload(event) {
 
                     alert(info.msg);
                 } else {
-                    alert(info.msgh);
+                    alert(info.msg);
                 }
     }});
     });

@@ -6,7 +6,7 @@ if ( file_exists( $newFolderName ) ) {
     $status['msg'] = 'This folder Already Exist!';
 } else {
     $status['exists'] = false;
-    mkdir( $newFolderName, 0777 );
+    mkdir($newFolderName, 0777);
 }
 
 echo json_encode( $status );
