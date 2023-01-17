@@ -30,14 +30,12 @@ function getFilesAndFolders($directory = './root')
                 <img src='assets/fileIcons/noFolderIcon.png' id='createFolderBtn' path='$currentPath' class='create-folder-btn'>
                 <img src='assets/fileIcons/uploadIcon.png' id='uploadFileBtn' class='upload-file-btn'>
             </div>";
-        // <img src='assets/fileIcons/trashIcon.png' id='deleteFile' class='upload-file-btn'/>
     }
 
     foreach ($all as $ff) {
         if (is_file($ff)) {
             $file = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($ff));
             $extension = strtolower($ff[-3] . $ff[-2] . $ff[-1]);
-
 
             echo "<div class='file-container'>
                     <div oncontextmenu='openMenu(event)' onclick='printInfo(event)' ondblclick='togglePreviewModalVisibility(event)' path='$ff' class='file $extension'></div>
@@ -48,6 +46,7 @@ function getFilesAndFolders($directory = './root')
         if (is_dir($ff)) {
             $dir = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($ff));
             $path = $directory . "/" . $dir;
+            
             echo "
                 <div class='folder-container'>
                     <div class='folder' path='$path' oncontextmenu='openMenu(event)' ondblclick='navigateToFolder(event)' onclick='printInfo(event)'></div>

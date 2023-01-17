@@ -3,8 +3,6 @@
 function printBreadCrumbs()
 
 {
-    // session_start();
-
     if (!isset($_SESSION['curr_path'])) {
         $_SESSION['curr_path'] = './root';
 
@@ -16,10 +14,10 @@ function printBreadCrumbs()
         $initialRoute = '';
 
         echo "<div class='bread-crumbs-container'>";
-        foreach ($breadCrumbs as $path) {
-            $initialRoute = $initialRoute . $path . "/";
-            echo "<a onclick=(navigateToFolder(event)) path='$initialRoute'>$path</a>";
-        }
+            foreach ($breadCrumbs as $path) {
+                $initialRoute = $initialRoute . $path . "/";
+                echo "<a onclick=(navigateToFolder(event)) path='$initialRoute'>$path</a>";
+            }
         echo "</div>";
     }
 }

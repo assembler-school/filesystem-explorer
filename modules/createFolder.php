@@ -4,22 +4,12 @@ function createFolder()
 {
     $currentPath = $_GET['path'];
     $filePath = $_GET['filepath'];
-
-    /////////////////////////////////////
-
     $all = glob("$currentPath/*");
 
-    /////////////////////////////////////   
-    // $pathName = str_replace('\\', '/', dirname(__DIR__))  . $currentPath;
     $counts = 0;
     $folderNums = [];
 
     for ($i = 0; $i < count($all); $i++) {
-        // if ($i === 0) {
-        //     $counts +=  array_count_values($all)[$currentPath . "/newFolder"];
-        // } else {
-        //     $counts +=  array_count_values($all)[$currentPath . "/newFolder(" . $i + 1 . ")"];
-        // }
         $currentFolderNums = [];
         for ($j = 0; $j < strlen($all[$i]); $j++) {
             if ($all[$i][$j] === '(') {

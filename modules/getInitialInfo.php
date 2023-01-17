@@ -23,7 +23,6 @@ function getInfo($ff = './root')
             $size = round($size / 1000000, 1) . "Gb";
         }
 
-
         $lastUpdateDate = date("d-m-y - H:i:s", filemtime($ff));
         $creationDate = date("d-m-y - H:i:s", filectime($ff));;
         echo "<div class='file-details-container'>
@@ -41,23 +40,6 @@ function getInfo($ff = './root')
                 </div>
             </div>";
     }
-
-    // else if (is_file($ff)) {
-    //     $explodedDot = explode('.', $path);
-    //     $name = explode('.', $explodedSlash[count($explodedSlash) - 1])[0];
-    //     $type = $explodedDot[count($explodedDot) - 1];
-    //     $size = filesize($ff);
-    //     $lastUpdateDate = date("d-m-y - H:i:s", filemtime($ff));
-    //     $creationDate = date("d-m-y - H:i:s", filectime($ff));;
-    //     echo json_encode([
-    //         "ok" => true,
-    //         "name" => $name,
-    //         "type" => $type,
-    //         "size" => $size,
-    //         "lastUpdateDate" => $lastUpdateDate,
-    //         "creationDate" => $creationDate
-    //     ]);
-    // }
 }
 
 getInfo($pathToff);

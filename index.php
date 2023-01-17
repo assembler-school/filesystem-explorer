@@ -12,8 +12,8 @@ require_once('./modules/getFilesAndFolders.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP - File System Explorer</title>
-    <link rel="stylesheet" href="./assets/css/index.css?v=<?php echo time(); ?>">
-    <script src="assets/js/index.js?v=<?php echo time(); ?>" defer></script>
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <script src="assets/js/index.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -23,7 +23,6 @@ require_once('./modules/getFilesAndFolders.php');
     <header>
         <nav>
             <p>FILESYSTEM <span>X</span> PLORER</p>
-            <!-- <p class="size-nav-text">SIZE / TOTAL SIZE</p> -->
             <div class="search-input-group">
                 <input type="text" placeholder="search" name="search" id="searchInput" />
                 <img src="assets/fileIcons/search.png" id="searchInputBtn" />
@@ -61,8 +60,6 @@ require_once('./modules/getFilesAndFolders.php');
 
     <aside class="menu hidden">
         <img src="./assets/fileIcons/renameIcon.png" id="renameBtn" />
-        <!-- <img src="./assets/fileIcons/infoIcon.png" id="infoBtn" /> -->
-        <!-- <img src="./assets/fileIcons/viewMoreIcon.png" id="viewMoreBtn" /> -->
         <img src="./assets/fileIcons/deleteIcon.png" id="delete-btn" />
     </aside>
 

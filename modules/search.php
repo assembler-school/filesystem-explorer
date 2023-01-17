@@ -2,16 +2,6 @@
 
 $serchInputValue = $_GET['search'];
 
-// $directory = new \RecursiveDirectoryIterator("../root");
-// $iterator = new \RecursiveIteratorIterator($directory);
-// $files = array();
-
-// foreach ($iterator as $info) {
-//     $ff = $info->getPathname();
-
-//     array_push($files, $ff);
-// }
-
 $foldersArray = array();
 $filesArray = array();
 

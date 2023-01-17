@@ -1,10 +1,6 @@
 <?php
 $filename = $_GET['path'];
-
-
-
 $lines = [];
-
 $f = fopen("." . $filename, 'r');
 
 if (!$f) {

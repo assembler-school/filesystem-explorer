@@ -2,8 +2,6 @@
 
 $dirToDelete = $_GET['path'];
 
-rrmdir(".$dirToDelete");
-
 function rrmdir($dir)
 {
     if (is_dir($dir)) {
@@ -20,5 +18,7 @@ function rrmdir($dir)
         unlink($dir);
     }
 }
+
+rrmdir(".$dirToDelete");
 
 echo json_encode(["ok" => true]);
