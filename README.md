@@ -10,6 +10,7 @@
 
 >The file explorer is a tool that allows you to directly view and manipulate the files and directories associated with a path, so you must take into account from which path the user starts and which path they can access.
 
+![This is an image](/assets/wireframes/wireframe-1.png)
 
 ## Index <!-- omit in toc -->
 
