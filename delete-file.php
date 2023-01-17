@@ -6,5 +6,4 @@ unlink("$actualFolder");
 
 echo json_encode($actualFolder);
 
-
 ?>

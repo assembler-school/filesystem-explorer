@@ -9,5 +9,4 @@ rmdir("$actualFolder");
 
 echo json_encode($actualFolder);
 
-
 ?>

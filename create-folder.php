@@ -1,14 +1,11 @@
 <?php
 
-
 if (isset($_REQUEST["name"])){
     $name=$_REQUEST["name"];
     echo $name;
 }
 
-
 if ($name !== "" && isset($_GET['nameFolder'])){
-
     
     echo '<script language="javascript">alert("primera parte if");</script>';
     
@@ -33,6 +30,5 @@ if ($name !== "" && isset($_GET['nameFolder'])){
     mkdir("./root/$newFolderName", 0777);
 
 }
-
 
 ?>

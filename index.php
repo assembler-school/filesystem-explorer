@@ -38,8 +38,8 @@
 </header>
 
 <body>
-<table class="table caption-top">
-<button class="btn btn-outline-secondary"><a class="home" href="./index.php">Files & folders</a></button>
+<table class="table caption-top align-middle">
+<button class="btn btn-outline-secondary"><a class="home" href="./index.php">Files & Folders</a></button>
 <ul id="searchResults">
 
 </ul>
@@ -58,9 +58,8 @@
     </tr>
   </thead>
   <tbody>    
-      <!-- <td><i class="fa-solid fa-trash"></i><i class="fa-regular fa-pen-to-square"></i></td> -->    
-    <?php
 
+    <?php
 
     checkRequest();
 
@@ -137,6 +136,12 @@
             case "php":
               $extensionIcon = "extensions/php.png";
               break;
+            case "zip":
+              $extensionIcon = "extensions/zip.png";
+              break;
+            case "txt":
+              $extensionIcon = "extensions/txt.png";
+              break;
           }
 
           $size = filesize($dir);
@@ -161,7 +166,6 @@
     ?>
   </tbody>
 </table>
-
     
 </body>
 

@@ -31,13 +31,8 @@ function search2($e, $searchParam)
         }
 
         return array($directoriesFolders, $findings);
-
     }
 
 search2("root/*", $searchParam);
-
-// print_r($directoriesFolders);
-
-// echo "<br><br>";
 
 echo json_encode($findings);
