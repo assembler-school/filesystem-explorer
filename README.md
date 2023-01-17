@@ -20,7 +20,7 @@ The file explorer is a tool that allows you to directly view and manipulate the 
 
 Before start this project we have created:
 
-* **Wireframes of out files explorer**
+* **Wireframes of our files explorer**
 
 _Wireframe_ 
 
