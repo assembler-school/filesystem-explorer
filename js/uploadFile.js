@@ -3,14 +3,14 @@ const inputUploadFile = document.querySelector("#inputUploadFile");
 
 uploadFile.addEventListener("click", uploadFileFunction);
 inputUploadFile.addEventListener('change', () => {
-    uploadImage(inputUploadFile.files[0]);
+    uploadFunction(inputUploadFile.files[0]);
 });
 
 function uploadFileFunction() {
     inputUploadFile.click();
 }
 
-function uploadImage(file){
+function uploadFunction(file){
     let formData = new FormData();
     formData.append("inputUploadFile", file);
     fetch('modules/uploadFiles.php?dataPath=' + dataPath, {
@@ -18,6 +18,7 @@ function uploadImage(file){
             body: formData
         }).then((response) => response.json())
         .then((data) => {
+            console.log(data)
             data.forEach(element =>
                 console.log(element));
             if(dataPath!=""){
