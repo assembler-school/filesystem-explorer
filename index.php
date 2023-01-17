@@ -364,6 +364,22 @@ Utils::saveSession(SESSION);
           position: 'center',
           icon: 'success',
           title: '<?php echo $title ?>',
+          showConfirmButton: false,
+          timer: 4000,
+        });
+      window.history.pushState("", "", "<?php echo '/' . $project . '/index.php?p=' . $returnPath ?> ");
+    </script>
+    <?php
+  }
+
+  if (isset($_REQUEST['create'])) {
+    ?>
+    <script>
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'File has been created successfully!',
+          showConfirmButton: false,
           timer: 4000,
         });
       window.history.pushState("", "", "<?php echo '/' . $project . '/index.php?p=' . $returnPath ?> ");

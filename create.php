@@ -11,7 +11,8 @@ if ($type == ".txt") {
   $finalName = Utils::chooseName($path . $type, $fileName . $type);
   $finalPath = $absolutePath . '/' . $finalName;
   echo $finalPath;
-  file_put_contents(rtrim($finalPath, '.'), "");
+  file_put_contents(rtrim($finalPath, '.'), "Documento de texto");
+  
 } else {
   $finalName = Utils::chooseName($path, $fileName);
   $finalPath = $absolutePath . '/' . $finalName;
@@ -23,5 +24,5 @@ if (isset($_SESSION['relativePath']))
   $returnPath = $_SESSION['relativePath'];
 
 
-header("Location: index.php?p=$returnPath");
+header("Location: index.php?p=$returnPath&create");
 ?>

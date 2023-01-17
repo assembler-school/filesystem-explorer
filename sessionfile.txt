@@ -1,1 +1,1 @@
-relativePath|s:7:"Desktop";absolutePath|s:14:"./root/Desktop";copies|a:0:{}moves|a:0:{}recovers|a:1:{s:13:"Nueva carpeta";s:20:"./root/Nueva carpeta";}
+relativePath|s:0:"";absolutePath|s:6:"./root";copies|a:0:{}moves|a:0:{}recovers|a:1:{s:13:"Nueva carpeta";s:20:"./root/Nueva carpeta";}
