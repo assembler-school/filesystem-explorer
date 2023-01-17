@@ -7,7 +7,11 @@ if ($openedFolder = opendir('./files')) {
             $fileExt = pathinfo($readFolder, PATHINFO_EXTENSION);
             $fileActualExt = strtolower($fileExt);
             if($fileActualExt==false){
-                echo "<li class='first-list' data-path='$readFolder/' type='folder'><img class='folder-list-img' src='images/folderIconSmallx3.png' alt='folder'><span class='text-list'>$readFolder</span></li>";
+                if (is_dir($readFolder)) {
+                    echo "<li class='first-list' data-path='$readFolder/' type='folder'><img class='folder-list-img' src='images/folderIconSmallx3.png' alt='folder'><span class='text-list'>$readFolder</span></li>";
+                }else{
+                    echo "<li class='first-list' data-path='$readFolder/' type='folder'><img class='arrow-rigth' src='images/arrowRigth.png' alt='right arrow icon'><img class='folder-list-img' src='images/folderIconSmallx3.png' alt='folder'><span class='text-list'>$readFolder</span></li>";
+                }
             } else if($fileActualExt==="doc"){
                 echo "<li class='first-list' data-path='$readFolder/' type='file'><img class='folder-list-img' src='images/docIcon.png' alt='file'><span class='text-list'>$readFolder</span></li>";
             } else if($fileActualExt==="csv"){
@@ -44,5 +48,18 @@ if ($openedFolder = opendir('./files')) {
 
     closedir($openedFolder);
 }
+
+/* function dir_is_empty($dir) {
+    $handle = opendir($dir);
+    while (false !== ($entry = readdir($handle))) {
+    if ($entry != "." && $entry != "..") {
+        closedir($handle);
+        return false;
+    }
+    }
+    closedir($handle);
+    return true;
+} */
+
 
 ?>

@@ -1,14 +1,15 @@
-const creationInfo = document.getElementById("creationInfo");
-const modifiedInfo = document.getElementById("modifiedInfo");
-const extensioinInfo = document.getElementById("extensioinInfo");
-const folderFilesContainer = document.querySelector("#folderFilesContainer");
-const sizeInfo = document.getElementById("sizeInfo");
-const pathInfo = document.getElementById("pathInfo");
+const modificationListSecondChild = document.querySelector("#modificationListSecondChild");
 const pathSecondFolderTitle = document.querySelector("#pathSecondFolderTitle");
+const folderFilesContainer = document.querySelector("#folderFilesContainer");
 const filesListSecondChild = document.querySelector("#filesListSecondChild");
 const sizeListSecondChild = document.querySelector("#sizeListSecondChild");
-const modificationListSecondChild = document.querySelector("#modificationListSecondChild");
+const extensioinInfo = document.getElementById("extensioinInfo");
+const creationInfo = document.getElementById("creationInfo");
+const modifiedInfo = document.getElementById("modifiedInfo");
 const arrowLeft = document.querySelector("#arrowLeft");
+const sizeInfo = document.getElementById("sizeInfo");
+const pathInfo = document.getElementById("pathInfo");
+let avoidRechargeFirstList = false;
 const deleteFile = document.querySelector("#deleteFile");
 const folderTrash = document.querySelector("#folderTrash");
 let dataPath = "";
@@ -17,16 +18,22 @@ let secondList = "";
 let lastList = "";
 let firstListOld = "";
 let secondListOld = "";
-let typeDocument;
-let selectedElement;
-let sizeOnly;
+let firstListOld = "";
+let oldDataPath = "a";
 let modificationOnly;
+let secondList = "";
+let selectedElement;
+let firstList = "";
+let dataPath = "";
+let typeDocument;
+let sizeOnly;
 
-folderFilesContainer.addEventListener("dblclick", selectElement);
 folderFilesContainer.addEventListener("click", selectSecondElement);
-ul.addEventListener("click", selectElement);
-ul.addEventListener("click", getTextValueAndPadre);
+folderFilesContainer.addEventListener("dblclick", selectElementSecond);
 arrowLeft.addEventListener("click", goBackDirectory);
+ul.addEventListener("click", getTextValueAndPadre);
+ul.addEventListener("click", selectElementFirst);
+ul.addEventListener("click", showOnlyFile);
 folderTrash.addEventListener("click", printFilesTrash);
 
 
@@ -60,8 +67,10 @@ function moveFilesTrash() {
 }
 
 function putOffSelectElementColorFirst() {
-    if (firstListOld.style.backgroundColor === "yellow" && firstListOld !== firstList) {
-        firstListOld.style.backgroundColor = "#D9D9D9";
+    if (firstListOld != "") {
+        if (firstListOld.style.backgroundColor === "yellow" && firstListOld !== firstList) {
+            firstListOld.style.backgroundColor = "#D9D9D9";
+        }
     }
 }
 
@@ -71,10 +80,52 @@ function putOffSelectElementColorSecond() {
     }
 }
 
-function selectElement(event) {
+function selectElementFirst(event) {
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
     firstListOld = firstList;
+    oldDataPath = dataPath;
+    if (parentNode.classList.contains("first-list")) {
+        firstList = parentNode;
+        firstList.style.backgroundColor = "yellow";
+        dataPath = parentNode.getAttribute('data-path');
+        typeDocument = parentNode.getAttribute('type');
+        selectedElement = parentNode;
+        if (oldDataPath != dataPath) {
+            printFolderTitleName(parentNode);
+        }
+    } else if (currentNode.classList.contains("first-list")) {
+        firstList = currentNode;
+        firstList.style.backgroundColor = "yellow";
+        dataPath = currentNode.getAttribute('data-path');
+        typeDocument = parentNode.getAttribute('type');
+        parentNode = currentNode;
+        if (oldDataPath != dataPath) {
+            printFolderTitleName(currentNode);
+        }
+    }
+    if (typeDocument == "folder") {
+        if (oldDataPath != dataPath) {
+        sizeListSecondChild.innerHTML = "";
+        modificationListSecondChild.innerHTML = "";
+            printFilesSecondChild();
+        }
+    } else if (typeDocument == "file") {
+        showPreview();
+    }
+    if (firstListOld != "") {
+        window.addEventListener("click", putOffSelectElementColorFirst);
+    }
+    levelDirectory = (dataPath.match(/\//g) || []).length;
+    console.log(dataPath)
+    console.log(levelDirectory)
+}
+
+function selectElementSecond(event) {
+    let parentNode = event.target.parentNode;
+    let currentNode = event.target;
+    firstListOld = firstList;
+    oldDataPath = dataPath;
     if (parentNode.classList.contains("first-list")) {
         firstList = parentNode;
         firstList.style.backgroundColor = "yellow";
@@ -97,28 +148,40 @@ function selectElement(event) {
         modificationListSecondChild.innerHTML = "";
         printFilesSecondChild();
     } else if (typeDocument == "file") {
-        showOnlyFile();
         showMedia();
     }
     if (firstListOld != "") {
         window.addEventListener("click", putOffSelectElementColorFirst);
     }
+    levelDirectory = (dataPath.match(/\//g) || []).length;
+    console.log(dataPath)
+    console.log(levelDirectory)
 }
 
 let counter = 0;
 
-function showOnlyFile() {
-    let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
-    let arrayDataPath = dataPathWithoutSlash.split(".");
-    let dataPathExt = arrayDataPath.slice(-1);
-    arrayDataPath.pop();
-    if (dataPathExt == "jpeg") {
-        dataPathExt = "jpg";
+function showOnlyFile(event) {
+    let parentNode = event.target.parentNode;
+    let currentNode = event.target;
+    if (parentNode.classList.contains("first-list")) {
+        typeDocument = parentNode.getAttribute('type');
+    } else if (currentNode.classList.contains("first-list")) {
+        typeDocument = parentNode.getAttribute('type');
     }
-    dataPathExt = dataPathExt.toUpperCase();
-    arrayDataPath.join('.');
-    filesListSecondChild.innerHTML = "<div class='first-list second-flex' data-path='" + dataPath + "' type='file'><img class='folder-second-list-img' src='images/" + dataPathExt + "Icon.png' alt='document icon'><span class='text-second-list'>" + arrayDataPath + "</span><span class='extesion-file'>" + dataPathExt + "</span></div>";
-    counter = 1;
+
+    if (typeDocument == "file") {
+        let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+        let arrayDataPath = dataPathWithoutSlash.split(".");
+        let dataPathExt = arrayDataPath.slice(-1);
+        arrayDataPath.pop();
+        if (dataPathExt == "jpeg") {
+            dataPathExt = "jpg";
+        }
+        dataPathExt = dataPathExt.toUpperCase();
+        arrayDataPath.join('.');
+        filesListSecondChild.innerHTML = "<div class='first-list second-flex' data-path='" + dataPath + "' type='file'><img class='folder-second-list-img' src='images/" + dataPathExt + "Icon.png' alt='document icon'><span class='text-second-list'>" + arrayDataPath + "</span><span class='extesion-file'>" + dataPathExt + "</span></div>";
+        counter = 1;
+    }
 }
 
 function selectSecondElement(event) {
@@ -129,19 +192,28 @@ function selectSecondElement(event) {
         secondList = parentNode;
         secondList.style.backgroundColor = "yellow";
         dataPath = parentNode.getAttribute('data-path');
+        printFolderTitleName(parentNode);
         deleteFile.addEventListener("click", moveFilesTrash);
     } else if (currentNode.classList.contains("first-list")) {
         secondList = currentNode;
         secondList.style.backgroundColor = "yellow";
         dataPath = currentNode.getAttribute('data-path');
+        printFolderTitleName(currentNode);
         deleteFile.addEventListener("click", moveFilesTrash);
     }
     if (secondListOld != "") {
         window.addEventListener("click", putOffSelectElementColorSecond);
     }
+    if (typeDocument == "folder") {
+        hidePreview();
+    }
     lastList = secondList;
     showPreview();
     getInfoFilesCorner();
+    levelDirectory = (dataPath.match(/\//g) || []).length;
+    console.log(dataPath)
+    console.log(levelDirectory)
+
 }
 
 function getTextValueAndPadre(event) {
@@ -162,13 +234,12 @@ function getTextValueAndPadre(event) {
         textValue = nextChild;
         padre = textValue.parentNode;
     }
-    showPreview();
 }
 
 function printFolderTitleName(selectedElement) {
     getInfoFilesCorner();
     getInfoFilesSecond();
-    if (selectedElement.getAttribute('type') == "folder") {
+    if (selectedElement.getAttribute('type') === "folder") {
         pathSecondFolderTitle.textContent = "files/" + dataPath;
     } else {
         let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
@@ -197,6 +268,7 @@ function getInfoFilesCorner() {
     })
         .then((response) => response.json())
         .then((data) => {
+            console.log(data)
             renderFileInfoCorner(data);
         })
         .catch((err) => console.log("Request failed: ", err));
@@ -209,7 +281,9 @@ function getInfoFilesSecond() {
     })
         .then((response) => response.json())
         .then((data) => {
-            renderFileInfoSecond(data);
+            if (data != "Error in opening file") {
+                renderFileInfoSecond(data);
+            }
         })
         .catch((err) => console.log("Request failed: ", err));
 }
@@ -226,10 +300,15 @@ function renderFileInfoCorner(data) {
     }
     creationInfo.innerHTML = "Creation date: " + data["creationDate"];
     modifiedInfo.innerHTML = "Last modificaton: " + data["modificationDate"];
-    pathInfo.innerHTML = "Path: " + "files/" + dataPath;
+    if (dataPath.includes(".")) {
+        let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+        pathInfo.innerHTML = "Path: " + "files/" + dataPathWithoutSlash;
+    } else {
+        pathInfo.innerHTML = "Path: " + "files/" + dataPath;
+    }
     extensioinInfo.innerHTML = "Extension: " + data["extension"];
     modificationOnly = "<div class='second-flex second-info'>" + data["modificationDate"] + "</div>";
-    if(counter == 1){
+    if (counter == 1) {
         sizeListSecondChild.innerHTML = sizeOnly;
         modificationListSecondChild.innerHTML = modificationOnly;
         counter = 0;
