@@ -7,6 +7,13 @@ const extensioinInfo = document.getElementById("extensioinInfo");
 const creationInfo = document.getElementById("creationInfo");
 const modifiedInfo = document.getElementById("modifiedInfo");
 const arrowLeft = document.querySelector("#arrowLeft");
+const deleteFile = document.querySelector("#deleteFile");
+const folderTrash = document.querySelector("#folderTrash");
+let dataPath = "";
+let firstList = "";
+let secondList = "";
+let lastList = "";
+let firstListOld = "";
 const sizeInfo = document.getElementById("sizeInfo");
 const pathInfo = document.getElementById("pathInfo");
 let avoidRechargeFirstList = false;
@@ -26,6 +33,37 @@ let sizeOnly;
 folderFilesContainer.addEventListener("click", selectSecondElement);
 folderFilesContainer.addEventListener("dblclick", selectElementSecond);
 arrowLeft.addEventListener("click", goBackDirectory);
+folderTrash.addEventListener("click", printFilesTrash);
+
+
+function printFilesTrash() {
+    filesListSecondChild.textContent = "";
+
+    fetch("modules/printFilesTrash.php" ,{
+        method: "GET",
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach(element =>
+                filesListSecondChild.innerHTML += element);
+        })
+        .catch((err) => console.log("Request failed: ", err));
+}
+
+function moveFilesTrash() {
+    deleteFile.removeEventListener("click", moveFilesTrash);
+    let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+    console.log(dataPathWithoutSlash);
+    fetch("modules/moveFilesTrash.php" + "?" + "dataPath=" + dataPathWithoutSlash, {
+        method: "GET",
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            lastList.remove();
+        })
+        .catch((err) => console.log("Request failed: ", err));
+}
 ul.addEventListener("click", getTextValueAndPadre);
 ul.addEventListener("click", selectElementFirst);
 ul.addEventListener("click", showOnlyFile);
@@ -97,6 +135,7 @@ function selectElementSecond(event) {
         typeDocument = parentNode.getAttribute('type');
         selectedElement = parentNode;
         printFolderTitleName(parentNode);
+        deleteFile.addEventListener("click", moveFilesTrash);
     } else if (currentNode.classList.contains("first-list")) {
         firstList = currentNode;
         firstList.style.backgroundColor = "yellow";
@@ -104,6 +143,7 @@ function selectElementSecond(event) {
         typeDocument = parentNode.getAttribute('type');
         parentNode = currentNode;
         printFolderTitleName(currentNode);
+        deleteFile.addEventListener("click", moveFilesTrash);
     }
     if (typeDocument == "folder") {
         sizeListSecondChild.innerHTML = "";
@@ -152,16 +192,19 @@ function selectSecondElement(event) {
         secondList = parentNode;
         secondList.style.backgroundColor = "yellow";
         dataPath = parentNode.getAttribute('data-path');
+        deleteFile.addEventListener("click", moveFilesTrash);
         printFolderTitleName(parentNode);
     } else if (currentNode.classList.contains("first-list")) {
         secondList = currentNode;
         secondList.style.backgroundColor = "yellow";
         dataPath = currentNode.getAttribute('data-path');
+        deleteFile.addEventListener("click", moveFilesTrash);
         printFolderTitleName(currentNode);
     }
     if (secondListOld != "") {
         window.addEventListener("click", putOffSelectElementColorSecond);
     }
+    lastList = secondList;
     if (typeDocument == "folder") {
         hidePreview();
     }
@@ -208,8 +251,8 @@ function printFilesSecondChild() {
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     filesListSecondChild.innerHTML = "";
     fetch("modules/printFilesSecondChild.php" + "?" + "dataPathSecond=" + dataPathWithoutSlash, {
-            method: "GET",
-        })
+        method: "GET",
+    })
         .then((response) => response.json())
         .then((data) => {
             data.forEach(element =>
@@ -221,8 +264,8 @@ function printFilesSecondChild() {
 function getInfoFilesCorner() {
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     fetch("modules/fileInfo.php" + "?" + "path=" + dataPathWithoutSlash, {
-            method: "GET",
-        })
+        method: "GET",
+    })
         .then((response) => response.json())
         .then((data) => {
             console.log(data)
@@ -234,8 +277,8 @@ function getInfoFilesCorner() {
 function getInfoFilesSecond() {
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     fetch("modules/fileInfo.php" + "?" + "path=" + dataPathWithoutSlash, {
-            method: "GET",
-        })
+        method: "GET",
+    })
         .then((response) => response.json())
         .then((data) => {
             if (data != "Error in opening file") {

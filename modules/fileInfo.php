@@ -2,9 +2,10 @@
 
 $filePath = $_GET["path"];
 
-$filename = "../files/" . $filePath;
+$filename = "../files/".$filePath;
 
-$file = fopen($filename, "r");
+
+// $file = fopen($filename, "r");
 
 $fileInfo = [
     "size" => 0,
@@ -14,10 +15,10 @@ $fileInfo = [
     "name" => ""
 ];
 
-if ($file == false) {
-    echo json_encode ("Error in opening file");
-    exit();
-}
+// if ($file == false) {
+//     echo json_encode ("Error in opening file");
+//     exit();
+// }
 
 $fileInfo["size"] = filesize($filename);
 $fileInfo["creationDate"] = date("Y/m/d H:i:s", filectime($filename));
@@ -28,7 +29,7 @@ if($fileInfo["extension"] == ""){
 }
 $fileInfo["name"] = $filename;
 
-fclose($file);
+// fclose($file);
 
 if(is_dir($filename)){
     $openedFolder = opendir($filename);
@@ -38,15 +39,16 @@ if(is_dir($filename)){
         
         if ($readFolder != "." && $readFolder != "..") {
 
-            $file = fopen($filename."/".$readFolder, "r");
-            if ($file == false) {
-                echo json_encode ("Error in opening file");
-                exit();
-            }
+            // $file = fopen($filename."/".$readFolder, "r");
+            // if ($file == false) {
+            //     echo json_encode ("Error in opening file");
+            //     exit();
+            // }
+
             $fileInfo["size".$numberOfFiles] = filesize($filename."/".$readFolder);
             $fileInfo["modificationDate".$numberOfFiles] = date("Y/m/d H:i:s", filemtime($filename."/".$readFolder));
             $numberOfFiles += 1;
-            fclose($file);
+            // fclose($file);
         }
     }
     closedir($openedFolder);
