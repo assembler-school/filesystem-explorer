@@ -172,7 +172,7 @@ class Utils
       if (!is_dir($path)) {
         $results[] = $path;
       } else if ($value != "." && $value != "..") {
-        getDirContents($path, $results);
+        self::getDirContents($path, $results);
         $results[] = $path;
       }
     }
