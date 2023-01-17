@@ -314,7 +314,7 @@ aside p:nth-child(2n-1) {
 
 .folder:hover,
 .file:hover {
-  transform: rotateY(10deg);
+  transform: scale(1.05) rotateY(10deg);
 }
 
 .folder-name,
@@ -430,6 +430,7 @@ aside p:nth-child(2n-1) {
   box-shadow: 14px 15px 26px -9px rgba(0, 0, 0, 0.75);
   opacity: 0;
   transition-duration: 0.3s;
+  z-index: 99999999999;
 }
 
 .preview-container {
@@ -572,8 +573,8 @@ aside p:nth-child(2n-1) {
 
   .file-container,
   .folder-container {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
   }
 
   aside {
@@ -648,5 +649,14 @@ aside p:nth-child(2n-1) {
   .btns-container img {
     margin: 10px;
     width: 30px;
+  }
+
+  .preview-modal {
+    height: 70vh;
+    width: 90vw;
+  }
+
+  .empty-root-folder-alert p {
+    font-size: 1.25em;
   }
 }

@@ -29,8 +29,8 @@ function getFilesAndFolders($directory = './root')
             <div class='btns-container'>
                 <img src='assets/fileIcons/noFolderIcon.png' id='createFolderBtn' path='$currentPath' class='create-folder-btn'>
                 <img src='assets/fileIcons/uploadIcon.png' id='uploadFileBtn' class='upload-file-btn'>
-                <img src='assets/fileIcons/trashIcon.png' id='deleteFile' class='upload-file-btn'/>
             </div>";
+        // <img src='assets/fileIcons/trashIcon.png' id='deleteFile' class='upload-file-btn'/>
     }
 
     foreach ($all as $ff) {

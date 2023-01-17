@@ -23,7 +23,7 @@ require_once('./modules/getFilesAndFolders.php');
     <header>
         <nav>
             <p>FILESYSTEM <span>X</span>-PLORER</p>
-            <p class="size-nav-text">SIZE / TOTAL SIZE</p>
+            <!-- <p class="size-nav-text">SIZE / TOTAL SIZE</p> -->
             <div class="search-input-group">
                 <input type="text" placeholder="search" name="search" id="searchInput" />
                 <img src="assets/fileIcons/search.png" id="searchInputBtn" />
