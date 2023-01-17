@@ -19,6 +19,12 @@ function showMedia() {
     } else if (dataPath.includes(".png")) {
         showMediaContainer.style.display = "flex";
         showMediaChild.innerHTML = "<img id='xIcon' src='images/xIcon.png' alt='x icon'><img id='shownImage' src='./files/" + dataPathWithoutSlash + "' type='image/jpg'>";
+    } else if (dataPath.includes(".svg")) {
+        showMediaContainer.style.display = "flex";
+        showMediaChild.innerHTML = "<img id='xIcon' src='images/xIcon.png' alt='x icon'><img id='shownImage' src='./files/" + dataPathWithoutSlash + "' type='image/svg'>";
+    } else if (dataPath.includes(".pdf")) {
+        showMediaContainer.style.display = "flex";
+        showMediaChild.innerHTML = "<img id='xIcon' src='images/xIcon.png' alt='x icon'><iframe src='./files/" + dataPathWithoutSlash + "' width='700' height='550' allowfullscreen webkitallowfullscreen></iframe>";
     }
     xIcon = document.querySelector("#xIcon");
     xIcon.addEventListener("click", hideMedia);
@@ -51,7 +57,13 @@ function showPreview(){
         previewChild.innerHTML = "<img id='shownImage' class='thumbnail-media' src='./files/" + dataPathWithoutSlash + "' type='image/jpg'>";
     } else if (dataPath.includes(".png")) {
         setPreview();
-        previewChild.innerHTML = "<img id='shownImage' class='thumbnail-media' src='./files/" + dataPathWithoutSlash + "' type='image/jpg'>";
+        previewChild.innerHTML = "<img id='shownImage' class='thumbnail-media' src='./files/" + dataPathWithoutSlash + "' type='image/png'>";
+    } else if (dataPath.includes(".svg")) {
+        setPreview();
+        previewChild.innerHTML = "<img id='shownImage' class='thumbnail-media' src='./files/" + dataPathWithoutSlash + "' type='image/svg'>";
+    } else if (dataPath.includes(".pdf")) {
+        setPreview();
+        previewChild.innerHTML = "<iframe src='./files/" + dataPathWithoutSlash + "' width='90%' height='500' allowfullscreen webkitallowfullscreen></iframe>";
     }
 }
 
