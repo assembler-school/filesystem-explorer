@@ -88,12 +88,12 @@ Utils::saveSession(SESSION);
         </nav>
       </div>
       <div class="d-flex">
-        <form onsubmit="advancedSearch(event)">
+        <form onsubmit="advancedSearch(event)" class="d-flex">
           <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search"
             onkeyup="searchFile(event)" <?php if (isMoveActive()) {
               ?> disabled<?php
             } ?>>
-          <input type="submit" style="display: none">
+          <input type="submit" class="btn btn-primary" value="Advanced Search">
         </form>
       </div>
       <form action="upload.php" method="POST" enctype="multipart/form-data" id="uploadForm">
