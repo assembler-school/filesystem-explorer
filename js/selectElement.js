@@ -18,7 +18,7 @@ let lastList = "";
 let firstListOld = "";
 let secondListOld = "";
 let oldDataPath = "a";
-let modificationOnly;
+let modificationOnlyFile;
 let selectedElement;
 let typeDocument;
 let counter = 0;
@@ -31,9 +31,6 @@ arrowLeft.addEventListener("click", goBackDirectory);
 ul.addEventListener("click", getTextValueAndPadre);
 ul.addEventListener("click", selectElementFirst);
 ul.addEventListener("click", showOnlyFile);
-
-
-
 
 function putOffSelectElementColorFirst() {
     if (firstListOld != "") {
@@ -124,7 +121,7 @@ function selectElementSecond(event) {
     if (firstListOld != "") {
         window.addEventListener("click", putOffSelectElementColorFirst);
     }
-    
+
     levelDirectory = (dataPath.match(/\//g) || []).length;
     console.log(dataPath)
     console.log(levelDirectory)
@@ -138,7 +135,6 @@ function showOnlyFile(event) {
     } else if (currentNode.classList.contains("first-list")) {
         typeDocument = parentNode.getAttribute('type');
     }
-    
     if (typeDocument == "file") {
         let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
         let arrayDataPath = dataPathWithoutSlash.split(".");
@@ -148,9 +144,10 @@ function showOnlyFile(event) {
             dataPathExt = "jpg";
         }
         dataPathExt = dataPathExt.toUpperCase();
-        arrayDataPath.join('.');
-        filesListSecondChild.innerHTML = "<div class='first-list second-flex' data-path='" + dataPath + "' type='file'><img class='folder-second-list-img' src='images/" + dataPathExt + "Icon.png' alt='document icon'><span class='text-second-list'>" + arrayDataPath + "</span><span class='extesion-file'>" + dataPathExt + "</span></div>";
+        let arrayDataPathJoined = arrayDataPath.join('.');
+        filesListSecondChild.innerHTML = "<div class='first-list second-flex' data-path='" + dataPath + "' type='file'><img class='folder-second-list-img' src='images/" + dataPathExt + "Icon.png' alt='document icon'><span class='text-second-list'>" + arrayDataPathJoined + "</span><span class='extesion-file'>" + dataPathExt + "</span></div>";
         counter = 1;
+        showPreview();
     }
 }
 
@@ -197,9 +194,6 @@ function selectSecondElement(event) {
     showPreview();
     getInfoFilesCorner();
     levelDirectory = (dataPath.match(/\//g) || []).length;
-    console.log(dataPath)
-    console.log(levelDirectory)
-
 }
 
 function getTextValueAndPadre(event) {
@@ -237,8 +231,8 @@ function printFilesSecondChild() {
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     filesListSecondChild.innerHTML = "";
     fetch("modules/printFilesSecondChild.php" + "?" + "dataPathSecond=" + dataPathWithoutSlash, {
-        method: "GET",
-    })
+            method: "GET",
+        })
         .then((response) => response.json())
         .then((data) => {
             data.forEach(element =>
@@ -250,8 +244,8 @@ function printFilesSecondChild() {
 function getInfoFilesCorner() {
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     fetch("modules/fileInfo.php" + "?" + "path=" + dataPathWithoutSlash, {
-        method: "GET",
-    })
+            method: "GET",
+        })
         .then((response) => response.json())
         .then((data) => {
             console.log(data)
@@ -263,8 +257,8 @@ function getInfoFilesCorner() {
 function getInfoFilesSecond() {
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     fetch("modules/fileInfo.php" + "?" + "path=" + dataPathWithoutSlash, {
-        method: "GET",
-    })
+            method: "GET",
+        })
         .then((response) => response.json())
         .then((data) => {
             if (data != "Error in opening file") {
@@ -293,10 +287,10 @@ function renderFileInfoCorner(data) {
         pathInfo.innerHTML = "Path: " + "files/" + dataPath;
     }
     extensioinInfo.innerHTML = "Extension: " + data["extension"];
-    modificationOnly = "<div class='second-flex second-info'>" + data["modificationDate"] + "</div>";
+    modificationOnlyFile = "<div class='second-flex second-info'>" + data["modificationDate"] + "</div>";
     if (counter == 1) {
         sizeListSecondChild.innerHTML = sizeOnly;
-        modificationListSecondChild.innerHTML = modificationOnly;
+        modificationListSecondChild.innerHTML = modificationOnlyFile;
         counter = 0;
     }
 }

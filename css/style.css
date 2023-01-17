@@ -352,6 +352,10 @@ main {
     
 }
 
+.search-trash{
+    background-color: rgb(255, 137, 137);
+}
+
 .arrow-rigth{
     height: 1.5vh;
 }

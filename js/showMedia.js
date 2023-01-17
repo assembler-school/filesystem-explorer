@@ -31,21 +31,27 @@ function showMedia() {
     window.addEventListener('click', clickOutside);
 }
 
-function clickOutside(e){
-    if (!document.getElementById('showMediaChild').contains(e.target)){
+function clickOutside(e) {
+    if (!document.getElementById('showMediaChild').contains(e.target)) {
         hideMedia();
     }
 }
 
-function hideMedia(){
+function hideMedia() {
     showMediaContainer.style.display = "none";
     showMediaChild.innerHTML = "";
     xIcon.removeEventListener("click", hideMedia);
     window.removeEventListener("click", clickOutside);
 }
 
-function showPreview(){
-    let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+function showPreview() {
+    let dataPathWithoutSlash;
+    let slashOrNoSlash = dataPath.slice(-1)[0];
+    if (slashOrNoSlash == "/") {
+        dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+    } else {
+        dataPathWithoutSlash = dataPath;
+    }
     if (dataPath.includes(".mp4")) {
         setPreview();
         previewChild.innerHTML = "<video class='thumbnail-media' width='320' height='240' controls autoplay><source src='./files/" + dataPathWithoutSlash + "' type='video/mp4'>Sorry, your browser doesn't support the video element.</video>";
@@ -67,13 +73,13 @@ function showPreview(){
     }
 }
 
-function setPreview(){
+function setPreview() {
     previewText.style.display = "none";
     previewChild.style.display = "flex";
     ul.addEventListener("click", hidePreview);
 }
 
-function hidePreview(){
+function hidePreview() {
     if (typeDocument == "folder") {
         previewChild.innerHTML = "";
         previewChild.style.display = "none";

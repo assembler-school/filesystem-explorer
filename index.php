@@ -42,10 +42,10 @@
                             </div>
                         </div>
                         <div id="mediaFolderContainer">
-                            <button class="media-folder-buttons">images</button>
-                            <button class="media-folder-buttons">videos</button>
-                            <button class="media-folder-buttons">audios</button>
-                            <button class="media-folder-buttons">documents</button>
+                            <button id="imagesMedia" class="media-folder-buttons">images</button>
+                            <button id="videosMedia" class="media-folder-buttons">videos</button>
+                            <button id="audiosMedia" class="media-folder-buttons">audios</button>
+                            <button id="documentsMedia" class="media-folder-buttons">documents</button>
                             <button id="folderTrash">trash</button>
                         </div>
                     </div>
