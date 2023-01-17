@@ -685,11 +685,11 @@ let btnOpenTrash = document.querySelector("#trash-folder");
 btnOpenTrash.addEventListener("click", openTrashFolder);
 
 function openTrashFolder(){
-    createFilesTab();
-
+ createFilesTab("Trash");
+/* 
     fetch('../assets/display-trash.php')
         .then(response => response.json())
-        .then(data => showelementosOfFolder(data));
+        .then(data => createFilesTab(data));  */
 }
 
 
