@@ -178,6 +178,39 @@ background: #fff;
     position: relative;
 }
 
+/* Move Files */
+
+.move-btwn-folders{
+    background: #fff;
+    z-index: 200;
+    position: relative;
+    padding: 20px;
+}
+
+#span-folder-move{
+    font-weight: 800;
+}
+
+#span-folder-move, .inside-btwn div{
+    cursor:pointer;
+}
+
+.inside-btwn{
+    padding-bottom: 10px;
+}
+
+.inside-btwn div{
+    padding: 0 10px;
+}
+
+.inside-btwn div:before{
+    content: "";
+        display: list-item;
+        list-style: '- ';
+        background: #ccc;
+        position: absolute;
+}
+
 /* Search */
 
 #search{

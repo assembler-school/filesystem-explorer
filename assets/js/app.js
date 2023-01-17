@@ -4,7 +4,7 @@ const divFiles = document.getElementById('files');
 const btnDeleteFile = document.querySelector("#delete-file");
 let btnRelocateFile = document.querySelector("#relocate-file");
 
-btnRelocateFile.addEventListener("click", relocateFileTo);
+btnRelocateFile.addEventListener("click", moveFolders);
 
 btnCreateFolder.addEventListener("click", createNewFolder);
 
@@ -154,6 +154,81 @@ function deleteFolders(event) {
                 }
             })
     }
+}
+
+function moveFolders(folderPath){
+    fetch('../assets/display-content.php?actualFolderName=')
+        .then(response => response.json())
+        .then(data => listFoldersPopUp(data));
+}
+
+function listFoldersPopUp(data){
+    hideOptionPopUp('both');
+
+    const divViewContent = document.querySelector('#view-content');
+    const filePopUp = document.querySelector('#file-show-popup');
+
+    filePopUp.style.display = 'none';
+
+    let divPopUpMove = document.createElement('div');
+    divPopUpMove.className = 'move-btwn-folders';
+
+    let spanMoveTo = document.createElement('h2');
+    spanMoveTo.textContent = 'Move To';
+
+    divViewContent.prepend(divPopUpMove);
+    divPopUpMove.prepend(spanMoveTo);
+
+    data.forEach(folder => {
+        let indexSlashPath = folder.lastIndexOf('/');
+        let pathFolderNoSlash = folder.slice(indexSlashPath + 1);
+
+        if(!pathFolderNoSlash.includes('.')){
+            let divFolder = document.createElement('div');
+            divFolder.className = 'inside-btwn';
+
+            let spanFolder = document.createElement('span');
+            spanFolder.textContent = pathFolderNoSlash;
+            spanFolder.id = 'span-folder-move';
+            spanFolder.setAttribute('file-path', pathFolderNoSlash)
+
+            divPopUpMove.appendChild(divFolder);
+            divFolder.prepend(spanFolder);
+
+            showFolderInsideMove(pathFolderNoSlash, divFolder);
+
+            spanFolder.addEventListener('click', relocateFileTo);
+        }
+    })
+}
+
+function showFolderInsideMove(folderPath, divFolder, i){
+    fetch('../assets/display-content.php?actualFolderName='+folderPath)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(folder => {
+                let folderNoRoot = folder.slice(8);
+
+                let folderNameSlash = folder.lastIndexOf('/');
+                let folderName = folder.slice(folderNameSlash + 1);
+
+                if(!folderNoRoot.includes('.')){
+                    let insideDiv = document.createElement('div');
+                    insideDiv.className = 'inside-div-move';
+
+                    let spanInside = document.createElement('span');
+                    spanInside.textContent = folderName;
+                    spanInside.setAttribute('file-path', folderNoRoot);
+
+                    divFolder.appendChild(insideDiv);
+                    insideDiv.appendChild(spanInside);
+
+                    showFolderInsideMove(folderNoRoot, insideDiv);
+
+                    spanInside.addEventListener('click', relocateFileTo);
+                }
+            });
+        }); 
 }
 
 // Display Files of the folder | middle
@@ -312,7 +387,7 @@ function displayInsideFolder(folderName) {
     backSpan.addEventListener('click', () => {
         console.log(backPath)
         console.log(backPath.lastIndexOf("/"));
-        if (backPath.lastIndexOf("/") === -1) {
+        if (backPath.lastIndexOf("/") === -1) {style
             while (backSpan.firstChild) {
                 backSpan.removeChild(backSpan.lastChild);
             }
@@ -324,6 +399,36 @@ function displayInsideFolder(folderName) {
 }
 
 // Options files
+
+function hideOptionPopUp(option){
+    switch(option){
+        case 'delete':
+            btnDeleteFile.style.display = 'none';
+            break;
+        case 'move':
+            btnRelocateFile.style.display = 'none';
+            break;
+        case 'both':
+            btnRelocateFile.style.display = 'none';
+            btnDeleteFile.style.display = 'none';
+            break;
+    }
+}
+
+function showOptionPopUp(option){
+    switch(option){
+        case 'delete':
+            btnDeleteFile.style.display = 'initial';
+            break;
+        case 'move':
+            btnRelocateFile.style.display = 'initial';
+            break;
+        case 'both':
+            btnRelocateFile.style.display = 'initial';
+            btnDeleteFile.style.display = 'initial';
+            break;
+    }
+}
 
 function createButtonsFile(folderPath) {
     const h1Files = document.querySelector('#choose-folder-h1');
@@ -410,7 +515,7 @@ function createPopUpUpload(event) {
     const divViewContent = document.querySelector('#view-content');
     const trashBtn = document.querySelector('#delete-file');
 
-    trashBtn.style.display = 'none';
+    hideOptionPopUp('both');
 
     let elForm = document.createElement('form');
     elForm.setAttribute('enctype', 'multipart/form-data');
@@ -457,7 +562,7 @@ function createPopUpUpload(event) {
                     if (pathFile.match("/")) {
                     if (pathFile.match("/")) {
                         displayInsideFolder(pathFile);
-                    } else {trashBtn
+                    } else {
                         createFilesTab(pathFile);
                     }
 
@@ -482,29 +587,29 @@ function createFileContent(typeFile, data) {
     while (containerContent.firstChild) {
         containerContent.removeChild(containerContent.lastChild);
     }
+
     if (typeFile === "txt") {
         let elementTxt = document.createElement("div");
         elementTxt.textContent = data;
         containerContent.appendChild(elementTxt);
-
-
     } else if (typeFile === "img") {
         let elementImg = document.createElement("img");
         elementImg.src = data;
+        elementImg.id = 'file-show-popup';
         containerContent.appendChild(elementImg);
-
     } else if (typeFile === "mp4") {
         let elementVideo = document.createElement("video");
         elementVideo.controls = true;
+        elementVideo.id = 'file-show-popup';
         let elementSource = document.createElement("source");
         elementSource.src = data;
         elementSource.setAttribute("type", "video/mp4");
         containerContent.appendChild(elementVideo);
         elementVideo.appendChild(elementSource);
-
     } else if (typeFile === "mp3") {
         let elementAudio = document.createElement("audio");
         elementAudio.controls = true;
+        elementAudio.id = 'file-show-popup';
         let elementAudioSource = document.createElement("source");
         elementAudioSource.src = data;
         elementAudioSource.setAttribute("type", "audio/mpeg");
@@ -520,30 +625,31 @@ function addTrash() {
     let atrBasura = basura.getAttribute("filePath");
     let cutPath = atrBasura.indexOf("/");
     let pathFile = atrBasura.slice(cutPath + 1);
-    /* let pathFileAtr = pathFile.setAttribute("pathFile", pathFile); */
+
     fetch("../assets/add-trash.php?filePath=" + atrBasura)
         .then(response => response.json())
         .then(data => console.log(data))
 }
 
-/* let btnRelocateFile = document.querySelector("#relocate-file");
-btnRelocateFile.addEventListener("click", relocateFileTo);
-btnRelocateFile.setAttribute("filePath", ) */
-
 // Relocate documento
 
-function relocateFileTo(){
-    let relocateFile = document.querySelector("#relocate-file");
-    let filePath = relocateFile.getAttribute("filePath");
-    let folderName = prompt("Where do you want to move this file?", "Folder name");
+function relocateFileTo(path){
+    console.log(path.currentTarget.getAttribute('file-path'));
 
-  fetch("../assets/relocate-file.php?filepath=" + filePath + "&folderName=" + folderName)
-         .then(response => response.json())
-         .then(data => console.log(data))
+    let filePath = btnRelocateFile.getAttribute("filePath");
+    let newFilePath = path.currentTarget.getAttribute('file-path');
+    let confirmMove = confirm(`Where do you want to move this file to ${newFilePath}?`);
+
+    if(confirmMove){
+    fetch("../assets/relocate-file.php?filepath=" + filePath + "&folderName=" + newFilePath)
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('.move-btwn-folders').remove()
+            closePopUp();
+        });
+    }
 
 }
-
-
 
 function deleteFile(filePath) {
     const popUpDeleteConfirm = confirm("Do you want delete this file?");
@@ -552,7 +658,6 @@ function deleteFile(filePath) {
         addTrash();
     }
 }
-
 
 const btnClosePopUp = document.getElementById("close-popup");
 
@@ -566,6 +671,7 @@ function closePopUp() {
     const viewContent = document.querySelector('.pop-up-file');
     viewContent.classList.toggle('hidden');
     const containerContent = document.querySelector("#view-content");
+    showOptionPopUp('both');
     while (containerContent.firstChild) {
         containerContent.removeChild(containerContent.lastChild);
     }
