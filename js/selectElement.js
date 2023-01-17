@@ -22,10 +22,11 @@ let typeDocument;
 let sizeOnly;
 
 folderFilesContainer.addEventListener("click", selectSecondElement);
-folderFilesContainer.addEventListener("dblclick", selectElement);
+folderFilesContainer.addEventListener("dblclick", selectElementSecond);
 arrowLeft.addEventListener("click", goBackDirectory);
 ul.addEventListener("click", getTextValueAndPadre);
-ul.addEventListener("click", selectElement);
+ul.addEventListener("click", selectElementFirst);
+ul.addEventListener("click", showOnlyFile);
 
 function putOffSelectElementColorFirst() {
     if (firstListOld != "") {
@@ -41,7 +42,48 @@ function putOffSelectElementColorSecond() {
     }
 }
 
-function selectElement(event) {
+function selectElementFirst(event) {
+    let parentNode = event.target.parentNode;
+    let currentNode = event.target;
+    firstListOld = firstList;
+    oldDataPath = dataPath;
+    if (parentNode.classList.contains("first-list")) {
+        firstList = parentNode;
+        firstList.style.backgroundColor = "yellow";
+        dataPath = parentNode.getAttribute('data-path');
+        typeDocument = parentNode.getAttribute('type');
+        selectedElement = parentNode;
+        if (oldDataPath != dataPath) {
+            printFolderTitleName(parentNode);
+        }
+    } else if (currentNode.classList.contains("first-list")) {
+        firstList = currentNode;
+        firstList.style.backgroundColor = "yellow";
+        dataPath = currentNode.getAttribute('data-path');
+        typeDocument = parentNode.getAttribute('type');
+        parentNode = currentNode;
+        if (oldDataPath != dataPath) {
+            printFolderTitleName(currentNode);
+        }
+    }
+    if (typeDocument == "folder") {
+        if (oldDataPath != dataPath) {
+        sizeListSecondChild.innerHTML = "";
+        modificationListSecondChild.innerHTML = "";
+            printFilesSecondChild();
+        }
+    } else if (typeDocument == "file") {
+        showPreview();
+    }
+    if (firstListOld != "") {
+        window.addEventListener("click", putOffSelectElementColorFirst);
+    }
+    levelDirectory = (dataPath.match(/\//g) || []).length;
+    console.log(dataPath)
+    console.log(levelDirectory)
+}
+
+function selectElementSecond(event) {
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
     firstListOld = firstList;
@@ -64,35 +106,42 @@ function selectElement(event) {
     if (typeDocument == "folder") {
         sizeListSecondChild.innerHTML = "";
         modificationListSecondChild.innerHTML = "";
-        if (oldDataPath != dataPath) {
-            printFilesSecondChild();
-        }
+        printFilesSecondChild();
     } else if (typeDocument == "file") {
-        showOnlyFile();
         showMedia();
-        showPreview();
     }
     if (firstListOld != "") {
         window.addEventListener("click", putOffSelectElementColorFirst);
     }
     levelDirectory = (dataPath.match(/\//g) || []).length;
     console.log(dataPath)
+    console.log(levelDirectory)
 }
 
 let counter = 0;
 
-function showOnlyFile() {
-    let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
-    let arrayDataPath = dataPathWithoutSlash.split(".");
-    let dataPathExt = arrayDataPath.slice(-1);
-    arrayDataPath.pop();
-    if (dataPathExt == "jpeg") {
-        dataPathExt = "jpg";
+function showOnlyFile(event) {
+    let parentNode = event.target.parentNode;
+    let currentNode = event.target;
+    if (parentNode.classList.contains("first-list")) {
+        typeDocument = parentNode.getAttribute('type');
+    } else if (currentNode.classList.contains("first-list")) {
+        typeDocument = parentNode.getAttribute('type');
     }
-    dataPathExt = dataPathExt.toUpperCase();
-    arrayDataPath.join('.');
-    filesListSecondChild.innerHTML = "<div class='first-list second-flex' data-path='" + dataPath + "' type='file'><img class='folder-second-list-img' src='images/" + dataPathExt + "Icon.png' alt='document icon'><span class='text-second-list'>" + arrayDataPath + "</span><span class='extesion-file'>" + dataPathExt + "</span></div>";
-    counter = 1;
+
+    if (typeDocument == "file") {
+        let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+        let arrayDataPath = dataPathWithoutSlash.split(".");
+        let dataPathExt = arrayDataPath.slice(-1);
+        arrayDataPath.pop();
+        if (dataPathExt == "jpeg") {
+            dataPathExt = "jpg";
+        }
+        dataPathExt = dataPathExt.toUpperCase();
+        arrayDataPath.join('.');
+        filesListSecondChild.innerHTML = "<div class='first-list second-flex' data-path='" + dataPath + "' type='file'><img class='folder-second-list-img' src='images/" + dataPathExt + "Icon.png' alt='document icon'><span class='text-second-list'>" + arrayDataPath + "</span><span class='extesion-file'>" + dataPathExt + "</span></div>";
+        counter = 1;
+    }
 }
 
 function selectSecondElement(event) {
@@ -119,6 +168,9 @@ function selectSecondElement(event) {
     showPreview();
     getInfoFilesCorner();
     levelDirectory = (dataPath.match(/\//g) || []).length;
+    console.log(dataPath)
+    console.log(levelDirectory)
+
 }
 
 function getTextValueAndPadre(event) {
@@ -205,10 +257,10 @@ function renderFileInfoCorner(data) {
     }
     creationInfo.innerHTML = "Creation date: " + data["creationDate"];
     modifiedInfo.innerHTML = "Last modificaton: " + data["modificationDate"];
-    if(dataPath.includes(".")){
+    if (dataPath.includes(".")) {
         let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
         pathInfo.innerHTML = "Path: " + "files/" + dataPathWithoutSlash;
-    } else{
+    } else {
         pathInfo.innerHTML = "Path: " + "files/" + dataPath;
     }
     extensioinInfo.innerHTML = "Extension: " + data["extension"];

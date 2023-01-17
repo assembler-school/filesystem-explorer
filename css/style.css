@@ -351,6 +351,10 @@ main {
     
 }
 
+.arrow-rigth{
+    height: 1.5vh;
+}
+
 ::placeholder {
     color: white;
 }
