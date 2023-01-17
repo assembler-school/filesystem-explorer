@@ -10,10 +10,13 @@ $path = $root . '/' . $name;
 if ($action == 'copy') {
   if (!isset($_SESSION['copies'][$name]))
     $_SESSION['copies'][$name] = $path;
+    $size = count($_SESSION['copies']);
 } else {
   if (!isset($_SESSION['moves'][$name]))
     $_SESSION['moves'][$name] = $path;
+    $size = count($_SESSION['moves']);
 }
+
 Utils::saveSession(SESSION);
 
-echo json_encode('ok');
+echo json_encode($size);

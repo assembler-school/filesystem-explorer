@@ -212,8 +212,11 @@ function copyFile(e) {
 
   fetch("./copy_path.php", config)
     .then(res => res.json())
-    .then(() => {
+    .then((size) => {
       addCopyAction(e);
+      if(size==1){
+      new_alert('info', "Press ESC to cancel","",true, 0, false);
+      }
     })
     .catch(() => {
       new_alert('error', "Ooops ...", "Something went wrong!", true, 4000, true);
@@ -233,8 +236,11 @@ function moveFile(e) {
 
   fetch("./copy_path.php", config)
     .then(res => res.json())
-    .then(() => {
+    .then((size) => {
       addMoveAction(e);
+      if(size == 1){
+        new_alert('info', "Press ESC to cancel","",true, 0, false);
+      }
     })
     .catch(() => {
       new_alert('error', "Ooops ...", "Something went wrong!", true, 4000, true);

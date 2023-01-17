@@ -1,7 +1,6 @@
 <?php
 require_once('./utils.php');
 session_start();
-$isCopy;
 if (count($_SESSION['moves']) > 0) {
   foreach ($_SESSION['moves'] as $key => $move) {
     $newPath = $_SESSION['absolutePath'];
