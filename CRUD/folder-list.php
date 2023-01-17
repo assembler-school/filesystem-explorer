@@ -30,7 +30,7 @@ $complete_route = "";
                     if (is_dir($complete_route)) {
                         echo "<li class='folderElements'><a href='?route=$complete_route'>" . $file . "</a></li>";
                         viewFolderStructure($complete_route);
-                    
+                        
                     } else {
                         echo "<li class='folderElements'><a href='?route=$complete_route'>" . $file . "</a></li>";
                     }
@@ -50,22 +50,22 @@ $complete_route = "";
     }
 
 
-    function viewFolderElements($completeRoot) {
-        if (is_dir($completeRoot)) {
+    function viewFolderElements($root ) {
+        if (is_dir($root )) {
 
-            $manager = opendir($completeRoot);
+            $manager = opendir($root );
             echo "<ul>";
 
             while (($file = readdir($manager)) !== false) {
                 
-            $completeRoot = "root" . "/" . $file ;
-            echo($completeRoot);
+            $complete_route  = $root . "/" . $file ;
+            echo($root );
                 if ($file != "." && $file != "..") {
-                    if (is_dir($completeRoot)) {
-                        echo "<li class='folderElements'><a href='?route=$file'>" . $file . "</a></li>";
+                    if (is_dir($root)) {
+                        echo "<li class='nameFolder'><a href='?route=$complete_route'>" . $file . "</a></li>";
                     
                     } else {
-                        echo "<li class='folderElements'><a href='?route=$file'>" . $file . "</a></li>";
+                        echo "<li class='nameFolder'><a href='?route=$complete_route'>" . $file . "</a></li>";
                     }
                     
                 }

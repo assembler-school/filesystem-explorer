@@ -3,6 +3,7 @@ session_start();
 require_once( "./CRUD/create.php");
 require_once( "./CRUD/upload.php");
 require_once( "./CRUD/folder-list.php");
+require_once( "./CRUD/element-info.php");
 
 
 $folderRoute = "./root";
@@ -14,14 +15,14 @@ if(isset($_REQUEST['route'])){
     $_SESSION["absPath"] = "root";
 }
 
-echo
-    "<pre>";
+// echo
+//     "<pre>";
 
-var_dump($_SESSION["absPath"] . " <==esto es la ruta absoluta") ; 
-var_dump($_SESSION["altPath"] . " <== esto es la ruta relativa") ;
-var_dump($_REQUEST["route"]  . " <== esto es el request");
-echo
-    "</pre>"
+// var_dump($_SESSION["absPath"] . " <==esto es la ruta absoluta") ; 
+// var_dump($_SESSION["altPath"] . " <== esto es la ruta relativa") ;
+// var_dump($_REQUEST["route"]  . " <== esto es el request");
+// echo
+//     "</pre>"
 
 
 ?>
@@ -79,7 +80,6 @@ echo
                     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                     <input type="submit" value="Upload" class="refresh">
                 </form>
-
             </div>
 
         </div>
@@ -90,7 +90,7 @@ echo
 
             <div class="col-md-3 border border-dark-1" id="root">
                 <?php 
-                viewFolderStructure($root );
+                    viewFolderStructure($root);
                 ?>
             </div>
 
@@ -98,32 +98,31 @@ echo
             <div class="col-md-7 border border-dark-1" id="content-element">
                 <div class="row text-center">
                     <?php
-                    viewFolderElements($completeRoot);    
+                        viewFolderElements($completeRoot);    
                     ?>      
-                    
-                    
                 </div>
             </div>
 
 
-            <div class="col-md-2 border border-dark-1" id="prueba">
+            <div class="col-md-2 border border-dark-1" id="info">
+                <div>
+                    <form action="delete.php" method="POST" ></form>
+                    <input type="submit" value="Delete" name="delete">
+                </div>
                     <?php
-                        $sizeInKb = filesize("./root/12345123/boton-de-panico.png") / 1024;
-                        $sizeInMb = $sizeInKb / 1024;
-
-                        if($sizeInKb < 1024) {
-                            echo round($sizeInKb, 1) . "KB"; 
-                            echo "creation date:" . date("F d Y H:i:s.", filectime("./root/12345123/boton-de-panico.png"));
-                            echo "updating date:" . date("F d Y H:i:s.", fileatime("./root/12345123/boton-de-panico.png"));
+                        if (str_contains($_SESSION["absPath"], ".")) {
+                            showFileInfo($file);
                         }else {
-                            echo round($sizeInMb, 1) . "MB";
-                            echo "creation date:" . date("F d Y H:i:s.", filectime("./root/12345123/boton-de-panico.png"));
-                            echo "updating date:" . date("F d Y H:i:s.", fileatime("./root/12345123/boton-de-panico.png"));
+                            showFolderInfo($dir);
                         }
+                           
+                    
+                            
+            
                         
-
+                        
                     ?>  
-                
+                    
             </div>
 
         </div>
