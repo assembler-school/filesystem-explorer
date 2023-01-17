@@ -48,11 +48,11 @@
 <br><br>
 
 <div id="trash-folder" folder-trash="trash">
-    <li id="li-trash">
-        <div id="trash-visual-folder">
-        <img src="../image/folder.ico" class="imageFolderTrash" alt="Folder Trash">
+        <li id="li-trash">
+        <!-- <div id="trash-show-folder"> -->
+        <!-- <img src="../image/folder.ico" class="imageFolderTrash" alt="Folder Trash"> -->
         <p>Trash</p>
-        </div>
+       <!--  </div> -->
     </li>
 </div>
 

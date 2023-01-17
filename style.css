@@ -309,7 +309,7 @@ width: calc(100% - 20px);
 
 .text-editor textarea{
     width: 80%;
-    height: 50vh;
+    height: 45vh;
     margin: 5% 10%;
 }
 
@@ -328,6 +328,26 @@ width: calc(100% - 20px);
 #trash-visual-folder{
     display: flex;
     flex-direction: row;
+}
+
+#trash-folder p{
+    width: 60px;
+    border: 1px solid #ecdfdf;
+    border-radius: 20px;
+    padding: 3px;
+    text-align: center;
+    background-color: #ecdfdf;
+    color: rgb(136, 130, 130);
+}
+
+.button-edit-text{
+    border-radius: 10px;
+    border-color: #FEC89A;
+    padding: 5px;
+    background: #FEC89A;
+    color: #fff;
+    box-shadow: 2px 2px 2px #b5b5b5;
+    cursor:pointer;
 }
 
 

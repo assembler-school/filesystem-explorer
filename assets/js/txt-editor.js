@@ -13,3 +13,5 @@ function deleteFileTxt(event){
     window.location.replace("root");  
 }
 }
+
+
