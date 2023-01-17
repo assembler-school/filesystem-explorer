@@ -7,11 +7,8 @@ const extensioinInfo = document.getElementById("extensioinInfo");
 const creationInfo = document.getElementById("creationInfo");
 const modifiedInfo = document.getElementById("modifiedInfo");
 const arrowLeft = document.querySelector("#arrowLeft");
-<<<<<<<<< Temporary merge branch 1
 const sizeInfo = document.getElementById("sizeInfo");
 const pathInfo = document.getElementById("pathInfo");
-let avoidRechargeFirstList = false;
-=========
 const deleteFile = document.querySelector("#deleteFile");
 const folderTrash = document.querySelector("#folderTrash");
 let dataPath = "";
@@ -19,8 +16,6 @@ let firstList = "";
 let secondList = "";
 let lastList = "";
 let firstListOld = "";
-const sizeInfo = document.getElementById("sizeInfo");
-const pathInfo = document.getElementById("pathInfo");
 let secondListOld = "";
 let oldDataPath = "a";
 let modificationOnly;
@@ -166,31 +161,25 @@ function selectSecondElement(event) {
         secondList = parentNode;
         secondList.style.backgroundColor = "yellow";
         dataPath = parentNode.getAttribute('data-path');
-<<<<<<<<< Temporary merge branch 1
-        printFolderTitleName(parentNode);
-=========
         deleteFile.addEventListener("click", moveFilesTrash);
         printFolderTitleName(parentNode);
     } else if (currentNode.classList.contains("first-list")) {
         secondList = currentNode;
         secondList.style.backgroundColor = "yellow";
         dataPath = currentNode.getAttribute('data-path');
-<<<<<<<<< Temporary merge branch 1
-        printFolderTitleName(currentNode);
-=========
         deleteFile.addEventListener("click", moveFilesTrash);
         printFolderTitleName(currentNode);
     }
     if (secondListOld != "") {
         window.addEventListener("click", putOffSelectElementColorSecond);
     }
-    lastList = secondList;
+
     if (typeDocument == "folder") {
         hidePreview();
     }
-=========
+
     lastList = secondList;
->>>>>>>>> Temporary merge branch 2
+
     showPreview();
     getInfoFilesCorner();
     levelDirectory = (dataPath.match(/\//g) || []).length;
