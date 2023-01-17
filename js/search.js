@@ -4,7 +4,10 @@ const searchInputForm = document.querySelector("#searchInputForm");
 searchInput.addEventListener("keyup", searchElements);
 
 function searchElements() {
+    console.log("hola")
     if(lastList!=""){
+        console.log({lastList})
+        console.log("hola")
         lastList.style.backgroundColor = "#D9D9D9";
     }
     pathSecondFolderTitle.textContent = "";
