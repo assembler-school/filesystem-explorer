@@ -55,6 +55,7 @@ background-color: #F9DCC4;
     display: grid;
     grid-template-columns: 20% 60% 20%;
     justify-content:space-between;
+
 }
 
 main{
@@ -216,7 +217,7 @@ background: #fff;
 #search{
     height: 100%;
     display: flex;
-    align-items: center;
+    align-items: center; 
     width: 100%;
     justify-content: center;
 }
@@ -232,6 +233,27 @@ background: #fff;
     margin: 0;
     padding: 0 20px;
     font-size: 20px;
+    border-radius: 20px;
+    border-color: rgb(234, 220, 220);
+}
+
+#user{
+    display: flex;
+    align-items: center; 
+    margin-left: 70px;
+}
+
+#sing-out{
+    width: 75px;
+    border: 1px solid rgb(167, 158, 158);
+    border-radius: 20px;
+    padding: 3px;
+    text-align: center;
+    background-color: #ecdfdf;
+    color: rgb(136, 130, 130); 
+    cursor: pointer;
+    vertical-align: middle;
+
 }
 
 main.search-main{
@@ -351,5 +373,7 @@ width: calc(100% - 20px);
 }
 
 
-
+#relocate-file{
+    font-size: 25px;
+}
 

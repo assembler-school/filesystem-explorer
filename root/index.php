@@ -24,7 +24,7 @@
             </div>
             <div id="user"> 
             <a href="../assets/close-session.php">
-                <button>Sign out</button>
+                <button id="sing-out">Sign out</button>
             </a>
             </div>
 </nav>
