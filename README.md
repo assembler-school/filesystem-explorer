@@ -20,7 +20,7 @@ The file explorer is a tool that allows you to directly view and manipulate the 
 
 Before start this project we have created:
 
-* **Wireframes of our files explorer**
+### **Wireframes of our files explorer**
 
 _Wireframe_ 
 
@@ -35,7 +35,7 @@ _Final Page with opened folder_
 <img width="1381" alt="Captura de pantalla 2023-01-17 a las 23 30 34" src="https://user-images.githubusercontent.com/115942758/213035158-1c75a8f6-d4d5-42a1-8572-1900bf4e6fea.png">
 
 
-**Comparison of the original design (Wireframe) with the final result of the project**
+> **Comparison of the original design (Wireframe) with the final result of the project**
 
 As you can see, during the work we have modificated the page for better UX and UI design:
 
@@ -46,11 +46,11 @@ As you can see, during the work we have modificated the page for better UX and U
 - We will be relocated to search-page if we want to find any file r folder (enter the "first enter" in "search)
 
 
-* **Use case diagram**
+### **Use case diagram**
 
 <img width="793" alt="Captura de pantalla 2023-01-17 a las 22 39 33" src="https://user-images.githubusercontent.com/115942758/213028040-f01fc371-5080-4ab3-bec3-deab2ba0741c.png">
 
-**Comparison of the use case diagram with the actions that the user can finally perform:
+> **Comparison of the use case diagram with the actions that the user can finally perform:
 
 - Log in - yes, Sign up - no;
 - If you want Upload file, first you need to choose folder and just then a file;
