@@ -24,6 +24,9 @@ const infoSize = document.querySelector("#infoSize");
 const infoUpdate = document.querySelector("#infoUpdate");
 const infoCreation = document.querySelector("#infoCreation");
 
+const searchInputBtn = document.querySelector("#searchInputBtn");
+const searchInput = document.querySelector("#searchInput");
+
 let pathToDelete;
 let currentFolder;
 
@@ -45,6 +48,7 @@ uploadInput.addEventListener("change", submitUploadForm);
 closePreviewModal.addEventListener("click", togglePreviewModalVisibility);
 closePreviewModal.addEventListener("click", stopMusicOrVideo);
 // viewMoreBtn.addEventListener("click", togglePreviewModalVisibility);
+searchInputBtn.addEventListener("click", search);
 
 function createFolder(e) {
   currentDirectory = "." + e.target.getAttribute("path");
@@ -78,6 +82,7 @@ function createFolder(e) {
 
 function openRenameFolderInput(event) {
   let folderName = event.target;
+  selectItem(folderName);
   let text = event.target.innerText;
   let folderContainer = folderName.parentElement;
   let input = document.createElement("input");
@@ -90,11 +95,12 @@ function openRenameFolderInput(event) {
   folderContainer.removeChild(folderName);
   folderContainer.appendChild(input);
   input.focus();
+  input.select();
 }
 
 function navigateToFolder(event) {
   let path = event.target.getAttribute("path");
-
+  console.log(path);
   fetch(`./modules/savePathToSession.php?path=${path}`, {
     method: "GET",
   })
@@ -139,6 +145,7 @@ function rename(e) {
 }
 
 function openMenu(event) {
+  selectItem(event.target);
   pathToDelete = event.target.getAttribute("path");
   currentFolder = event.target;
   //   infoBtn.setAttribute("path", event.target.getAttribute("path"));
@@ -195,6 +202,7 @@ function renameDirFromMenu() {
   folderContainer.appendChild(input);
 
   input.focus();
+  input.select();
 }
 
 function uploadFile() {
@@ -239,7 +247,7 @@ function submitUploadForm(e) {
 
 function printInfo(event) {
   let path = event.target.getAttribute("path");
-
+  selectItem(event.target);
   fetch(`./modules/getInfo.php?path=${path}`, {
     method: "GET",
   })
@@ -361,4 +369,88 @@ function readFile(path) {
     .catch((err) => console.log("Request: ", err));
 
   //   window.location.href = `./modules/readTextFile.php?path=${path}`;
+}
+
+function selectItem(item) {
+  let folders = document.getElementsByClassName("folder");
+  let files = document.getElementsByClassName("file");
+
+  for (let folder of folders) {
+    folder.parentElement.classList.remove("selected");
+  }
+  for (let file of files) {
+    file.parentElement.classList.remove("selected");
+  }
+
+  item.parentElement.classList.add("selected");
+}
+
+function search() {
+  let inputValue = searchInput.value;
+  if (inputValue.length === 0) return;
+
+  fetch(`./modules/search.php?search=${inputValue}`, {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      let folders = data.folders;
+      let files = data.files;
+
+      let breadCrumbs = document.querySelector(".bread-crumbs-container");
+      filesAndFoldersContainer.innerHTML = "";
+      filesAndFoldersContainer.appendChild(breadCrumbs);
+
+      files.forEach((file) => {
+        let fileContainer = document.createElement("div");
+        fileContainer.classList.add("file-container");
+
+        let splittedFile = file.split(".");
+        let extension = splittedFile[splittedFile.length - 1].toLowerCase();
+        //
+        // splittedFile.shift();
+
+        let path =
+          "." +
+          splittedFile[splittedFile.length - 2] +
+          "." +
+          splittedFile[splittedFile.length - 1];
+        //
+
+        let splittedPath = path.split("/");
+        let fileName = splittedPath[splittedPath.length - 1];
+        let fileNameWithoutExtension = fileName.split(".");
+        fileNameWithoutExtension =
+          fileNameWithoutExtension[fileNameWithoutExtension.length - 2];
+
+        fileContainer.innerHTML = `
+            <div oncontextmenu='openMenu(event)' onclick='printInfo(event)' ondblclick='togglePreviewModalVisibility(event)' path=${path} class='file ${extension}'></div>
+            <p onclick='openRenameFolderInput(event)'>${fileNameWithoutExtension}.${extension}</p>
+        `;
+        filesAndFoldersContainer.appendChild(fileContainer);
+      });
+
+      folders.forEach((folder) => {
+        let folderContainer = document.createElement("div");
+        folderContainer.classList.add("folder-container");
+
+        let splittedfolder = folder.split(".");
+
+        let path = "." + splittedfolder[splittedfolder.length - 1];
+
+        let splittedPath = path.split("/");
+
+        let folderName = splittedPath[splittedPath.length - 1];
+
+        folderContainer.innerHTML = `
+                    <div class='folder' path='${path}' oncontextmenu='openMenu(event)' ondblclick='navigateToFolder(event)' onclick='printInfo(event)'></div>
+                    <p class='folder-name' onclick='openRenameFolderInput(event)'>${folderName}</p>         
+            `;
+        filesAndFoldersContainer.appendChild(folderContainer);
+      });
+    })
+    .catch((err) => console.log("Request: ", err));
+
+  //   window.location.href = `./modules/search.php?search=${inputValue}`;
 }

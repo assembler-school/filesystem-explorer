@@ -24,7 +24,10 @@ require_once('./modules/getFilesAndFolders.php');
         <nav>
             <p>FILESYSTEM <span>X</span>-PLORER</p>
             <p>SIZE / TOTAL SIZE</p>
-            <input type="text" placeholder="search" name="search" />
+            <div class="search-input-group">
+                <input type="text" placeholder="search" name="search" id="searchInput" />
+                <img src="assets/fileIcons/search.png" id="searchInputBtn" />
+            </div>
         </nav>
     </header>
 
@@ -51,8 +54,8 @@ require_once('./modules/getFilesAndFolders.php');
     <div class="confirmation-modal hidden" id="confirmationModal">
         <p>Are you sure?</p>
         <div class="confirmation-btn-container">
-            <img id="checkBtn" src="./assets/fileIcons/checkIcon.png" alt="check" />
-            <img id="dismissBtn" src="./assets/fileIcons/dismissIcon.png" alt="dismiss" />
+            <img id="checkBtn" src="./assets/fileIcons/ModalCheckIcon.png" alt="check" />
+            <img id="dismissBtn" src="./assets/fileIcons/ModalDismissIcon.png" alt="dismiss" />
         </div>
     </div>
 
@@ -64,7 +67,7 @@ require_once('./modules/getFilesAndFolders.php');
     </aside>
 
     <div class="preview-modal hidden" id="previewModal">
-        <img src="./assets/fileIcons/dismissIcon.png" class="close-preview-modal-btn" id="closePreviewModal">
+        <img src="./assets/fileIcons/ModalDismissIcon.png" class="close-preview-modal-btn" id="closePreviewModal">
         <div class="preview-container"></div>
     </div>
 

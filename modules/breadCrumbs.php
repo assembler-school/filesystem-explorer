@@ -3,7 +3,7 @@
 function printBreadCrumbs()
 
 {
-    session_start();
+    // session_start();
 
     if (!isset($_SESSION['curr_path'])) {
         $_SESSION['curr_path'] = './root';

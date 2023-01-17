@@ -2,7 +2,7 @@
 session_start();
 $path = $_GET['path'];
 
-if($path[strlen($path) - 1]  === '/'){
+if ($path[strlen($path) - 1]  === '/') {
     $path[strlen($path) - 1] = ' ';
     $path = str_replace(' ', '', $path);
 }

@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 $currentPath = '../root';
 $attributePath = './root';
 

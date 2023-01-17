@@ -71,8 +71,23 @@ span {
   font-weight: bolder;
 }
 
+.search-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.search-input-group img {
+  position: absolute;
+  right: 10px;
+  width: 25px;
+  cursor: pointer;
+}
+
 nav input {
   border-radius: 25px;
+  width: 100%;
   outline: none;
   border: none;
   border: 1px solid grey;
@@ -272,8 +287,14 @@ aside p:nth-child(2n-1) {
   align-items: center;
   justify-content: center;
   text-align: center;
-  transition-duration: 0.3s;
+  /* transition-duration: 0.3s; */
   perspective: 100px;
+}
+
+.folder-container p,
+.file-container p {
+  font-size: 0.9em;
+  padding-top: 5px;
 }
 
 .folder,
@@ -299,12 +320,6 @@ aside p:nth-child(2n-1) {
 .folder-name,
 .file-container p {
   cursor: pointer;
-}
-
-.rename-input {
-  width: 80%;
-  padding: 5px;
-  font-size: 1.1em;
 }
 
 .menu {
@@ -385,6 +400,7 @@ aside p:nth-child(2n-1) {
   outline: none;
   padding: 2px;
   border-radius: 15px;
+  margin-top: 15px;
 }
 
 .file {
@@ -511,4 +527,8 @@ aside p:nth-child(2n-1) {
 
 .preview-text-container {
   margin-top: 25px;
+}
+
+.selected {
+  border-bottom: 3px solid rgb(49, 141, 49);
 }
