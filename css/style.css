@@ -356,6 +356,15 @@ main {
     height: 1.5vh;
 }
 
+.container-modification{
+    display: flex;
+    justify-content: space-around;
+}
+.trash-second-list-img{
+    width: 20%;
+    height: 30%;
+}
+
 ::placeholder {
     color: white;
 }

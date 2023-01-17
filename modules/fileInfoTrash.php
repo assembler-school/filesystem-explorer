@@ -1,9 +1,13 @@
 <?php
 
+
+
 $filePath = $_GET["path"];
-
-$filename = "../trash/".$filePath;
-
+if($filePath === ""){
+    $filename = "../trash";
+} else {
+    $filename = "../trash/".$filePath;
+}
 
 // $file = fopen($filename, "r");
 

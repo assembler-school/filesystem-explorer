@@ -92,6 +92,7 @@ function selectElementFirst(event) {
 }
 
 function selectElementSecond(event) {
+    oneClick = false;
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
     firstListOld = firstList;
@@ -154,6 +155,7 @@ function showOnlyFile(event) {
 }
 
 function selectSecondElement(event) {
+    oneClick = true;
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
     secondListOld = secondList;
@@ -169,6 +171,18 @@ function selectSecondElement(event) {
         dataPath = currentNode.getAttribute('data-path');
         deleteFile.addEventListener("click", moveFilesTrash);
         printFolderTitleName(currentNode);
+    }else if (currentNode.classList.contains("trash-list")) {
+        secondList = currentNode;
+        secondList.style.backgroundColor = "yellow";
+        dataPath = currentNode.getAttribute('data-path');
+        deleteFile.addEventListener("click", moveFilesTrash);
+        printFolderTitleNameTrash(currentNode);
+    }else if ((parentNode.classList.contains("trash-list"))){
+        secondList = parentNode;
+        secondList.style.backgroundColor = "yellow";
+        dataPath = parentNode.getAttribute('data-path');
+        deleteFile.addEventListener("click", moveFilesTrash);
+        printFolderTitleNameTrash(parentNode);
     }
     if (secondListOld != "") {
         window.addEventListener("click", putOffSelectElementColorSecond);
@@ -310,20 +324,40 @@ function renderFileInfoSecond(data) {
 }
 
 function goBackDirectory() {
-    sizeListSecondChild.innerHTML = "";
-    modificationListSecondChild.innerHTML = "";
-    dataPath = dataPath.split("/");
-    dataPath.pop();
-    dataPath.pop();
-    dataPath = dataPath.join("/");
-    dataPath = dataPath + "/";
-    if (dataPath == "/") {
-        dataPath = "";
-        filesListSecondChild.innerHTML = "";
-    } else {
-        printFilesSecondChild();
+    if(pathSecondFolderTitle.textContent.includes("trash/")){
+        sizeListSecondChild.innerHTML = "";
+        modificationListSecondChild.innerHTML = "";
+        dataPath = dataPath.split("/");
+        dataPath.pop();
+        dataPath.pop();
+        dataPath = dataPath.join("/");
+        dataPath = dataPath + "/";
+        if (dataPath == "/") {
+            dataPath = "";
+        } else {
+            printFilesTrash();
+        }
+        getInfoFilesCornerTrash();
+        getInfoFilesSecondTrash();
+        pathSecondFolderTitle.textContent = "trash/" + dataPath;
     }
-    getInfoFilesCorner();
-    getInfoFilesSecond();
-    pathSecondFolderTitle.textContent = "files/" + dataPath;
+    if(pathSecondFolderTitle.textContent.includes("files/")){
+        sizeListSecondChild.innerHTML = "";
+        modificationListSecondChild.innerHTML = "";
+        dataPath = dataPath.split("/");
+        dataPath.pop();
+        dataPath.pop();
+        dataPath = dataPath.join("/");
+        dataPath = dataPath + "/";
+        if (dataPath == "/") {
+            dataPath = "";
+            filesListSecondChild.innerHTML = "";
+        } else {
+            printFilesSecondChild();
+        }
+        getInfoFilesCorner();
+        getInfoFilesSecond();
+        pathSecondFolderTitle.textContent = "files/" + dataPath;
+    }
+ 
 }
