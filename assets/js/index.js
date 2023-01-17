@@ -67,7 +67,7 @@ function createFolder(e) {
         folder.innerHTML = `<div class='folder' path=${data.path} ondblclick="navigateToFolder(event)" onclick="printInfo(event)" oncontextmenu='openMenu(event)'"></div>
                               <p onclick='openRenameFolderInput(event)'>${data.dir}</p>`;
 
-        filesAndFoldersContainer.insertAdjacentElement("beforeend", folder);
+        filesAndFoldersContainer.insertAdjacentElement("afterbegin", folder);
         noFilerOrFoldersAlert
           ? (noFilerOrFoldersAlert.style.display = "none")
           : null;
@@ -221,6 +221,7 @@ function submitUploadForm(e) {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       let file = document.createElement("div");
       file.classList.add("file-container");
 
@@ -241,6 +242,7 @@ function submitUploadForm(e) {
       file.appendChild(fileName);
 
       filesAndFoldersContainer.appendChild(file);
+      noFilerOrFoldersAlert.classList.add("hidden");
     })
     .catch((err) => console.log("Request: ", err));
 }

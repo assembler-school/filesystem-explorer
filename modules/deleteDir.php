@@ -1,22 +1,24 @@
 <?php
 
 $dirToDelete = $_GET['path'];
- 
-  rrmdir(".$dirToDelete"); 
 
- function rrmdir($dir) {
+rrmdir(".$dirToDelete");
+
+function rrmdir($dir)
+{
     if (is_dir($dir)) {
-      $objects = scandir($dir);
-      foreach ($objects as $object) {
-        if ($object != "." && $object != "..") {
-          if (filetype($dir."/".$object) == "dir") rrmdir($dir."/".$object); else unlink($dir."/".$object);
+        $objects = scandir($dir);
+        foreach ($objects as $object) {
+            if ($object != "." && $object != "..") {
+                if (filetype($dir . "/" . $object) == "dir") rrmdir($dir . "/" . $object);
+                else unlink($dir . "/" . $object);
+            }
         }
-      }
-      reset($objects);
-      rmdir($dir);
-      echo json_encode(["ok"=>true]);
+        reset($objects);
+        rmdir($dir);
     } else {
-      unlink($dir); 
-      echo json_encode(["ok"=>true]);
+        unlink($dir);
     }
-  }
+}
+
+echo json_encode(["ok" => true]);

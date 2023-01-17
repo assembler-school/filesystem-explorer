@@ -1,13 +1,14 @@
 <?php
-// session_start();
-$currentPath = '../root';
-$attributePath = './root';
+session_start();
+
 
 if (isset($_SESSION['curr_path'])) {
     $currentPath = '.' . $_SESSION['curr_path'];
     $attributePath = $_SESSION['curr_path'];
+} else {
+    $currentPath = '../root';
+    $attributePath = './root';
 }
-
 
 if (isset($_FILES['file'])) {
 
