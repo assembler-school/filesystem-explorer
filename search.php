@@ -4,8 +4,8 @@ $directoriesFolders = [];
 
 $findings = [];
 
-$searchParam = "ho";
-    
+$searchParam = $_REQUEST["searchParam"];
+
 function search2($e, $searchParam)
     {
         global $directoriesFolders;
@@ -36,8 +36,8 @@ function search2($e, $searchParam)
 
 search2("root/*", $searchParam);
 
-print_r($directoriesFolders);
+// print_r($directoriesFolders);
 
-echo "<br><br>";
+// echo "<br><br>";
 
-print_r($findings);
+echo json_encode($findings);

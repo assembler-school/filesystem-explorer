@@ -18,8 +18,8 @@
     <a class="navbar-brand" href="#">File Explorer</a>
       <form class="d-flex" role="search">
 
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-2 buscadorValue" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success buscador" type="submit">Search</button>
       </form>
       <form class="d-flex upload-file" method="POST" action="upload-file.php" enctype="multipart/form-data">
         <input class="form-control me-2 file-to-upload" type="file" name="file" placeholder="File name..." >
@@ -95,6 +95,10 @@
     ?>
   </tbody>
 </table>
+
+<ul id="searchResults">
+
+</ul>
     
 </body>
 

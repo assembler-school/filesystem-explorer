@@ -80,3 +80,31 @@ function editName(event){
     .then(data =>console.log(data));
 
 }
+
+
+const buscador = document.querySelector(".buscador");
+const buscadorValue = document.querySelector(".buscadorValue");
+const listSearch = document.querySelector("#searchResults");
+
+buscador.addEventListener("click", search);
+
+function search(e){
+    e.preventDefault();
+    var searchValue = buscadorValue.value;
+    fetch("search.php?searchParam="+searchValue)
+    .then(response=>response.json())
+    .then(data =>displayResults(data));
+}
+
+function displayResults(data){
+    if (listSearch.firstChild){
+        while(listSearch.firstChild){
+            listSearch.removeChild(listSearch.firstChild)
+        }
+    } 
+    data.forEach(element => {
+         const li = document.createElement("li");
+         li.innerHTML="<a href="+element+">"+element+"</a>";
+         listSearch.appendChild(li);   
+        });
+    }
