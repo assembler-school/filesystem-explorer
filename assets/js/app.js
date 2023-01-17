@@ -99,7 +99,7 @@ function displayFolderIndex(data) {
 // Option Folders
 
 function createNewFolder(pathNewFolder) {
-    let newName = prompt(`Assign a new to the new folder.`);
+    let newName = prompt(`Assign a name to the new folder.`);
 
     if(typeof pathNewFolder !== 'object'){
         newName = pathNewFolder + "/" + newName;
@@ -524,7 +524,6 @@ function addTrash() {
     fetch("../assets/add-trash.php?filePath=" + atrBasura)
         .then(response => response.json())
         .then(data => console.log(data))
-
 }
 
 /* let btnRelocateFile = document.querySelector("#relocate-file");
@@ -573,3 +572,19 @@ function closePopUp() {
 }
 
 btnClosePopUp.addEventListener('click', closePopUp);
+
+
+
+let btnOpenTrash = document.querySelector("#trash-folder");
+btnOpenTrash.addEventListener("click", openTrashFolder);
+
+function openTrashFolder(){
+    createFilesTab();
+
+    fetch('../assets/display-trash.php')
+        .then(response => response.json())
+        .then(data => showelementosOfFolder(data));
+}
+
+
+
