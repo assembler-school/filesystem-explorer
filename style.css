@@ -373,5 +373,7 @@ width: calc(100% - 20px);
 }
 
 
-
+#relocate-file{
+    font-size: 25px;
+}
 
