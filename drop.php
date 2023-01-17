@@ -12,7 +12,6 @@ $newPath = $currentPath . '/' . $newFolder . '/' . $oldFile;
 
 $finalName = Utils::chooseName($newPath, $oldFile);
 $finalPath = $currentPath . '/' . $newFolder . '/' . $finalName;
-echo $finalPath;
 Utils::moveFiles($oldPath, rtrim($finalPath, '.'));
 
 echo json_encode('ok');

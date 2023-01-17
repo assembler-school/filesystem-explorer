@@ -16,15 +16,7 @@ function deleteAll(e, element) {
           node.remove();
         });
         document.querySelector('#emptyAll').style.display = 'none';
-        const dirTr = document.createElement('tr');
-        let fullDirTd = document.createElement('td');
-        fullDirTd.textContent = 'No files were found';
-        fullDirTd.classList.add('fw-bold');
-        fullDirTd.classList.add('p-3');
-        dirTr.append(fullDirTd);
-        dirTr.innerHTML += '<td></td><td></td><td></td>';
-        const dirTbody = document.querySelector('#tbody');
-        dirTbody.append(dirTr);
+        createEmptyRow(true);
         const openTrash = document.querySelector('#openTrash');
         openTrash.innerHTML = '';
         openTrash.innerHTML = '<i class="bi-battery-charging"></i> Open Trash';
@@ -36,15 +28,7 @@ function deleteAll(e, element) {
           node.remove();
         });
         document.querySelector('#emptyTrash').style.display = 'none';
-        const trashTr = document.createElement('tr');
-        let fullTrashTd = document.createElement('td');
-        fullTrashTd.textContent = 'No files were found';
-        fullTrashTd.classList.add('fw-bold');
-        fullTrashTd.classList.add('p-3');
-        trashTr.append(fullTrashTd);
-        trashTr.innerHTML += '<td></td><td></td><td></td>';
-        const trashTbody = document.querySelector('#tbody');
-        trashTbody.append(trashTr);
+        createEmptyRow(true);
         custom_alert('Files deleted succesfully from trash!', 'success');
       } else if (res.trash == 'is-empty') {
         custom_alert('The trash is empty', 'warning');
@@ -73,17 +57,7 @@ function deleteFile(e, fileName) {
         openTrash.innerHTML = '';
         openTrash.innerHTML = '<i class="bi-battery-charging"></i> Open Trash';
       }
-      if (document.querySelectorAll('tr[data-file]').length === 0) {
-        const tr = document.createElement('tr');
-        let td = document.createElement('td');
-        td.textContent = 'No files were found';
-        td.classList.add('fw-bold');
-        td.classList.add('p-3');
-        tr.append(td);
-        tr.innerHTML += '<td></td><td></td><td></td>';
-        const tbody = document.querySelector('#tbody');
-        tbody.append(tr);
-      }
+      createEmptyRow(false);
       custom_alert('File deleted succesfully!', 'success');
     })
     .catch(function (err) {
@@ -268,6 +242,48 @@ function moveFile(e) {
     });
 }
 
+// RECOVER TRASH //////////////////////////////////////////////////////////////////////////
 
+function recoverFile(e) {
+  let name = '';
+  if (e.target.tagName == 'I') {
+    name = e.target.parentNode.parentNode.parentNode.getAttribute('data-file');
+  } else {
+    name = e.target.parentNode.parentNode.getAttribute('data-file');
+  }
 
+  fetch(`./recover.php?filename=${name}`)
+    .then(res => res.json())
+    .then(() => {
+      document.querySelector(`tr[data-file="${name}"]`).remove();
+      createEmptyRow(false);
+      custom_alert(`The file has been recovered!`, 'success');
+    })
+    .catch(function (err) {
+      console.error(err);
+      custom_alert(`Can't connect to backend!`, 'danger');
+    });
+}
+
+function createEmptyRow(isEmpty) {
+  if (isEmpty) {
+    createRow();
+  } else {
+    if (document.querySelectorAll('tr[data-file]').length === 0) {
+      createRow();
+    }
+  }
+
+  function createRow() {
+    const tr = document.createElement('tr');
+    let td = document.createElement('td');
+    td.textContent = 'No files were found';
+    td.classList.add('fw-bold');
+    td.classList.add('p-3');
+    tr.append(td);
+    tr.innerHTML += '<td></td><td></td><td></td>';
+    const tbody = document.querySelector('#tbody');
+    tbody.append(tr);
+  }
+}
 

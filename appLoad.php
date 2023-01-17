@@ -64,7 +64,7 @@ function paintFile($path, $file, $options)
 function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRoot, $options)
 {
   ?>
-  <tr draggable="true" data-file="<?php echo $fileName ?>" data-type="<?php echo $isFolder ? 'dir' : 'file' ?>">
+  <tr <?php if($options) echo "draggable='true'"  ?> data-file="<?php echo $fileName ?>" data-type="<?php echo $isFolder ? 'dir' : 'file' ?>">
     <td class="p-3" data-tr="<?php echo $fileName ?>">
       <?php
       echo getTypeIcon(filetype($absolutePath), $fileName);
@@ -326,7 +326,7 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
       <td class="p-3">
         <!-- SALVAR -->
         <button type="button" data-file="<?php echo $fileName ?>" class="border border-0 bg-transparent"
-          onclick="recover_file(event);">
+          onclick="recoverFile(event);">
           <i class="bi bi-capsule-pill text-white"></i>
         </button>
       </td>

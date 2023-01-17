@@ -2,6 +2,14 @@
 require_once('./appLoad.php');
 session_start();
 
+if (!file_exists("sessionfile.txt")) {
+  Utils::saveSession('sessionfile.txt');
+  chmod("sessionfile.txt", 0777);
+}
+
+$contents = file_get_contents('sessionfile.txt');
+session_decode($contents);
+
 $folderPath = './root';
 if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
   $_SESSION['relativePath'] = $_REQUEST['p'];
@@ -80,32 +88,34 @@ if (!isset($_SESSION['moves'])) {
         <form onsubmit="advancedSearch(event)">
           <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search"
             onkeyup="searchFile(event)" <?php if (isMoveActive()) {
-        ?> disabled<?php
-      } ?>>
+              ?> disabled<?php
+            } ?>>
           <input type="submit" style="display: none">
         </form>
       </div>
       <form action="upload.php" method="POST" enctype="multipart/form-data" id="uploadForm">
         <input type="hidden" name="MAX_FILE_SIZE" value="4000000">
-        <label for="file-upload" class="custom-file-upload m-2 me-4"   <?php if (isMoveActive()) {
-        ?> style="cursor: default; pointer-events: none"<?php
-      } ?>>
+        <label for="file-upload" class="custom-file-upload m-2 me-4" <?php if (isMoveActive()) {
+          ?>  style="cursor: default; pointer-events: none" <?php
+        } ?>>
           <i class="bi bi-cloud-upload m-2"></i>Upload
         </label>
         <input name="userfile" type="file" id="file-upload" onchange="uploadFile();">
       </form>
-      <button class="custom-file-create m-2 me-4 folder-btn" data-bs-toggle='modal' data-bs-target='#createModal' id="openCreateModal"
-      <?php if (isMoveActive()) {
-        ?> disabled style="cursor:inherit; pointer-events: none"<?php
-      } ?>>
+      <button class="custom-file-create m-2 me-4 folder-btn" data-bs-toggle='modal' data-bs-target='#createModal'
+        id="openCreateModal" <?php if (isMoveActive()) {
+          ?> disabled style="cursor:inherit; pointer-events: none" <?php
+        } ?>>
         <i class="bi bi-plus-square m-2"></i>Create
       </button>
     </nav>
   </header>
 
+
   <div id="liveAlertPlaceholder"></div>
 
   <?php
+
   if (isset($_REQUEST['trash'])) {
     ?>
     <div class="d-flex ms-3 mt-3 align-items-center">

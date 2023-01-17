@@ -19,12 +19,12 @@ if ($type === 'folder') { // FOLDER
       $name = Utils::getNameFile($oldPath);
       $finalName = Utils::chooseName($newPath, $name);
       Utils::moveFiles($oldPath, './trash/' . $finalName);
+      $_SESSION['recovers'][$name] = $oldPath;
     }
     $msg['folder'] = 'ok';
   } else {
     $msg['folder'] = 'is-empty';
   }
-
 } else { // TRASH
   if (count($files) > 0) {
     foreach ($files as $file) {
@@ -32,11 +32,13 @@ if ($type === 'folder') { // FOLDER
         Utils::deleteAll($file);
       else
         unlink($file);
+
+      unset($_SESSION['recovers'][Utils::getNameFile($file)]);
     }
     $msg['trash'] = 'ok';
   } else {
     $msg['trash'] = 'is-empty';
   }
 }
-
+Utils::saveSession('sessionfile.txt');
 echo json_encode($msg);

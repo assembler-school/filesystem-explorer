@@ -32,4 +32,4 @@ if (isset($_SESSION['relativePath'])) {
   $returnPath = $_SESSION['relativePath'];
 }
 
-//header("Location: index.php?p=$returnPath&paste");
+header("Location: index.php?p=$returnPath&paste");

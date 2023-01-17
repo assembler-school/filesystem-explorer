@@ -141,7 +141,7 @@ class Utils
 
   public static function copyFilesRecursively($old, $new)
   {
-    echo "Nombre . " . $new . '<br>'; 
+    echo "Nombre . " . $new . '<br>';
     mkdir(rtrim($new, '.'), 0777);
     foreach ($iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($old, \RecursiveDirectoryIterator::SKIP_DOTS), \RecursiveIteratorIterator::SELF_FIRST) as $item) {
       if ($item->isDir()) {
@@ -205,5 +205,12 @@ class Utils
   public static function getFilePermissions($file)
   {
     return substr(sprintf('%o', fileperms($file)), -4);
+  }
+
+  public static function saveSession($file)
+  {
+    $sessionfile = fopen($file, "w");
+    fputs($sessionfile, session_encode());
+    fclose($sessionfile);
   }
 }

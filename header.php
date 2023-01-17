@@ -17,4 +17,6 @@
   <script src="./js/alert.js" defer></script>
   <script src="./js/modal.js" defer></script>
   <script src="./js/ajaxCalls.js" defer></script>
+<!--   <script src="./js/session.js" defer></script>
+ -->  <script src="./js/drag.js" defer></script>
 </head>
