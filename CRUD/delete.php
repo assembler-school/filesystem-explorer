@@ -1,21 +1,38 @@
 <?php
 
-function deleteFile($delete) {
-    { 
-        if(isset($_POST["delete"])) {
-            $fileName = $_SESSION["absPath"];
-            $fileName2 = $_SESSION["altPath"];
-            echo $fileName;
-            echo $fileName2; 
-            if ( file_exists($fileName2)) {
-                unlink($fileName); 
-            }elseif(is_dir($fileName)) {
-                rmdir($fileName); 
-            }
+// $file = $_SESSION["absPath"];
+
+// $path = $_SESSION["absPath"];
+            
+//             if (is_dir($file)) {
+//                 rmdir($file);
+//                 echo ("Folder $file has been deleted.");
+//             }
+//             else {
+//                 unlink($file);
+//                 echo ("File $file has been deleted.");
+//             }
+//             // echo json_encode("File delete succefully!");
+
+
+
+
+$path = $_SESSION['absPath'];
+// array_map("unlink", glob($path));
+
+function delete($path){
+
+    if(isset($_POST['delete'])){
+        if (is_dir($path)){
+             rmdir($path);
         }
-       
-    } 
-    
+        else{
+             unlink($path);
+        }
+    }
 }
+delete($path);
+
+
 
 ?>

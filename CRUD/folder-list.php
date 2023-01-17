@@ -23,9 +23,6 @@ $complete_route = "";
                 
                 $complete_route = $root . "/" . $file;
                 
-                
-            
-
                 if ($file != "." && $file != "..") {
                     if (is_dir($complete_route)) {
                         echo "<li class='folderElements'><a href='?route=$complete_route'>" . $file . "</a></li>";
@@ -64,6 +61,7 @@ $complete_route = "";
                     if (is_dir($root)) {
                         echo "<li class='nameFolder'><a href='?route=$complete_route'>" . $file . "</a></li>";
                     
+                        
                     } else {
                         echo "<li class='nameFolder'><a href='?route=$complete_route'>" . $file . "</a></li>";
                     }
@@ -80,11 +78,5 @@ $complete_route = "";
 
     }
 
-    // function viewFileInfo($info) {
-    //         echo filesize("./root/12345123");
-
-    //     echo "Not a valid directory path<br/>";
-
-    // }
 
 ?>

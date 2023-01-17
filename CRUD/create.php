@@ -38,7 +38,6 @@ if (isset($_POST["enviar"])) {
             timer: 1500
         })
         </script>";
-        // echo "Directorio $rootPath creado correctamente";
       } else {
         echo "Ha ocurrido un error al crear el directorio";
       }

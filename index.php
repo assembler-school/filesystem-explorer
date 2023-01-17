@@ -1,9 +1,11 @@
 <?php
-session_start();
+
 require_once( "./CRUD/create.php");
 require_once( "./CRUD/upload.php");
 require_once( "./CRUD/folder-list.php");
 require_once( "./CRUD/element-info.php");
+require_once("./CRUD/delete.php");
+require_once("./CRUD/edit.php");
 
 
 $folderRoute = "./root";
@@ -14,16 +16,7 @@ if(isset($_REQUEST['route'])){
     $_SESSION["altPath"] = '';
     $_SESSION["absPath"] = "root";
 }
-
-// echo
-//     "<pre>";
-
-// var_dump($_SESSION["absPath"] . " <==esto es la ruta absoluta") ; 
-// var_dump($_SESSION["altPath"] . " <== esto es la ruta relativa") ;
-// var_dump($_REQUEST["route"]  . " <== esto es el request");
-// echo
-//     "</pre>"
-
+$absolutePath = $_SESSION["absPath"];
 
 ?>
 
@@ -50,9 +43,6 @@ if(isset($_REQUEST['route'])){
 
                 <input type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" value="Create">
                     
-
-
-                <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -98,7 +88,7 @@ if(isset($_REQUEST['route'])){
             <div class="col-md-7 border border-dark-1" id="content-element">
                 <div class="row text-center">
                     <?php
-                        viewFolderElements($completeRoot);    
+                        viewFolderElements($absolutePath);    
                     ?>      
                 </div>
             </div>
@@ -106,21 +96,21 @@ if(isset($_REQUEST['route'])){
 
             <div class="col-md-2 border border-dark-1" id="info">
                 <div>
-                    <form action="delete.php" method="POST" ></form>
-                    <input type="submit" value="Delete" name="delete">
+                    <form action="index.php" method="POST">
+                        <input type="submit" value="Delete" name="delete" class="delete-button"> 
+                    </form>
+                    <form action="index.php" method="POST">
+                        <input type="text" value="" name="edit">
+                        <input type="submit" value="Edit" name="btn-edit" >
+                    </form>
                 </div>
+
                     <?php
-                        if (str_contains($_SESSION["absPath"], ".")) {
-                            showFileInfo($file);
+                        if (str_contains($absolutePath, ".")) {
+                            showFileInfo($absolutePath);
                         }else {
-                            showFolderInfo($dir);
-                        }
-                           
-                    
-                            
-            
-                        
-                        
+                            showFolderInfo($absolutePath);
+                        }                    
                     ?>  
                     
             </div>

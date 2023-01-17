@@ -3,7 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-$file = $_SESSION['absPath'];
+// $file = $_SESSION['absPath'];
 
 function showFileInfo($file)
 {
@@ -28,7 +28,6 @@ $dir = $_SESSION['absPath'];
 
 function showFolderInfo($dir)
 {
-
     $path = $dir;
     $Directory = new RecursiveDirectoryIterator($path);
     $Iterator = new RecursiveIteratorIterator($Directory);
