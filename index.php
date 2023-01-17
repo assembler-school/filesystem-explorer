@@ -99,7 +99,7 @@ Utils::saveSession(SESSION);
       <form action="upload.php" method="POST" enctype="multipart/form-data" id="uploadForm">
         <input type="hidden" name="MAX_FILE_SIZE" value="4000000">
         <label for="file-upload" class="custom-file-upload m-2 me-4" <?php if (isMoveActive()) {
-          ?>  style="cursor: default; pointer-events: none" <?php
+          ?> style="cursor: default; pointer-events: none" <?php
         } ?>>
           <i class="bi bi-cloud-upload m-2"></i>Upload
         </label>
@@ -113,10 +113,6 @@ Utils::saveSession(SESSION);
       </button>
     </nav>
   </header>
-
-
-  <div id="liveAlertPlaceholder"></div>
-
   <?php
 
   if (isset($_REQUEST['trash'])) {
@@ -325,39 +321,53 @@ Utils::saveSession(SESSION);
     if ($_REQUEST['rar'] == 1) {
       ?>
       <script>
-        const alert = document.getElementById('liveAlertPlaceholder');
-        const wrapper = document.createElement('div')
-        wrapper.innerHTML = [
-          `<div class="alert alert-success alert-dismissible mt-3 col-2 offset-md-5" role="alert">`,
-          `   <div class="fw-bold">File extracted succesfully</div>`,
-          '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-          '</div>'
-        ].join('')
-        setTimeout(() => {
-          alert.firstChild.remove();
-        }, 2000);
-        alert.append(wrapper)
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'The file has been extracted succesfully!',
+          showConfirmButton: false,
+          timer: 4000
+        });
         window.history.pushState("", "", "<?php echo '/' . $project . '/' . $returnPath ?> ");
       </script>
       <?php
     } else {
       ?>
       <script>
-        const alert2 = document.getElementById('liveAlertPlaceholder');
-        const wrapper = document.createElement('div')
-        wrapper.innerHTML = [
-          `<div class="alert alert-warning alert-dismissible mt-3 col-2 offset-md-5" role="alert">`,
-          `   <div class="fw-bold">File already exists!</div>`,
-          '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-          '</div>'
-        ].join('')
-        setTimeout(() => {
-          alert2.firstChild.remove();
-        }, 2000);
-        alert2.append(wrapper)
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: "Warning!",
+          text: 'Files already exists!',
+          showConfirmButton: true,
+          timer: 4000,
+          timerProgressBar: true
+
+        });
         window.history.pushState("", "", "<?php echo '/' . $project . '/index.php?p=' . $returnPath ?> ");
       </script>
       <?php
     }
+  }
+
+  if (isset($_REQUEST['isCopy'])) {
+    ?>
+    <script>
+      <?php
+      $isCopy = $_REQUEST['isCopy'];
+      if ($isCopy == 'true')
+        $title = "Files copied successfully!";
+      else
+        $title = "Files moved successfully!";
+      ?>
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: '<?php echo $title ?>',
+          timer: 4000,
+        });
+      window.history.pushState("", "", "<?php echo '/' . $project . '/index.php?p=' . $returnPath ?> ");
+    </script>
+    <?php
   }
   ?>

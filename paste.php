@@ -1,7 +1,7 @@
 <?php
 require_once('./utils.php');
 session_start();
-
+$isCopy;
 if (count($_SESSION['moves']) > 0) {
   foreach ($_SESSION['moves'] as $key => $move) {
     $newPath = $_SESSION['absolutePath'];
@@ -11,6 +11,7 @@ if (count($_SESSION['moves']) > 0) {
     Utils::moveFiles($oldPath, $newPath . '/' . $finalName);
   }
   $_SESSION['moves'] = [];
+  $isCopy = 'false';
 } else {
   foreach ($_SESSION['copies'] as $key => $copy) {
     $newPath = $_SESSION['absolutePath'];
@@ -26,6 +27,7 @@ if (count($_SESSION['moves']) > 0) {
     }
   }
   $_SESSION['copies'] = [];
+  $isCopy = 'true';
 }
 Utils::saveSession(SESSION);
 
@@ -33,4 +35,4 @@ if (isset($_SESSION['relativePath'])) {
   $returnPath = $_SESSION['relativePath'];
 }
 
-header("Location: index.php?p=$returnPath&paste");
+header("Location: index.php?p=$returnPath&isCopy=$isCopy");

@@ -20,23 +20,23 @@ function deleteAll(e, element) {
         const openTrash = document.querySelector('#openTrash');
         openTrash.innerHTML = '';
         openTrash.innerHTML = '<i class="bi-battery-charging"></i> Open Trash';
-        custom_alert('Files deleted succesfully from this folder!', 'success');
+        new_alert('success', null, "All files deleted successfully!", false, 4000, false);
       } else if (res.folder == 'is-empty') {
-        custom_alert('This folder is empty', 'warning');
+        new_alert('warning', "Warning!", "Empty folder!", true, 4000, true);
       } else if (res.trash == 'ok') {
         document.querySelectorAll('[data-file]').forEach(node => {
           node.remove();
         });
         document.querySelector('#emptyTrash').style.display = 'none';
         createEmptyRow(true);
-        custom_alert('Files deleted succesfully from trash!', 'success');
+        new_alert('success', null, "All files deleted successfully!", false, 4000, false);
+
       } else if (res.trash == 'is-empty') {
-        custom_alert('The trash is empty', 'warning');
+        new_alert('warning', "Warning!", "Empty folder!", true, 4000, true);
       }
     })
-    .catch(function (err) {
-      console.error(err);
-      custom_alert(`Can't connect to backend!`, 'danger');
+    .catch(() => {
+      new_alert('error', "Ooops ...", "Something went wrong!", true, 4000, true);
     });
 }
 
@@ -58,10 +58,10 @@ function deleteFile(e, fileName) {
         openTrash.innerHTML = '<i class="bi-battery-charging"></i> Open Trash';
       }
       createEmptyRow(false);
-      custom_alert('File deleted succesfully!', 'success');
+      new_alert('success', null, "File deleted successfully!", false, 4000, false);
     })
-    .catch(function (err) {
-      custom_alert(`Can't connect to backend!`, 'danger');
+    .catch(() => {
+      new_alert('error', "Ooops ...", "Something went wrong!", true, 4000, true);
     });
 }
 
@@ -100,8 +100,8 @@ function searchFile(e) {
         }
       });
     })
-    .catch(function (err) {
-      custom_alert(`Can't connect to backend!`, 'danger');
+    .catch(() => {
+      new_alert('error', "Ooops ...", "Something went wrong!", true, 4000, true);
     });
 
   function arrayRemove(arr, value) {
@@ -152,8 +152,8 @@ function advancedSearch(e) {
           });
       });
     })
-    .catch(function (err) {
-      custom_alert(`Can't connect to backend!`, 'danger');
+    .catch(() => {
+      new_alert('error', "Ooops ...", "Something went wrong!", true, 4000, true);
     });
 
 }
@@ -177,11 +177,11 @@ function renameFile(e) {
     .then(async res => {
       const name = res;
       changeName(oldName, name);
-      custom_alert("The name has been changed successfully", "success");
+      new_alert('success', null, "File renamed successfully!", false, 4000, false);
     })
     .catch(function (err) {
       console.error(err);
-      custom_alert(`Can't connect to backend!`, 'danger');
+      new_alert('error', "Ooops ...", "Something went wrong!", true, 4000, true);
     });
 
   function changeName(oldName, newName) {
@@ -212,11 +212,11 @@ function copyFile(e) {
 
   fetch("./copy_path.php", config)
     .then(res => res.json())
-    .then(res => {
+    .then(() => {
       addCopyAction(e);
     })
-    .catch(function (err) {
-      custom_alert(`Can't connect to backend!`, 'danger');
+    .catch(() => {
+      new_alert('error', "Ooops ...", "Something went wrong!", true, 4000, true);
     });
 }
 
@@ -233,12 +233,11 @@ function moveFile(e) {
 
   fetch("./copy_path.php", config)
     .then(res => res.json())
-    .then(res => {
+    .then(() => {
       addMoveAction(e);
     })
-    .catch(function (err) {
-      console.error(err);
-      custom_alert(`Can't connect to backend!`, 'danger');
+    .catch(() => {
+      new_alert('error', "Ooops ...", "Something went wrong!", true, 4000, true);
     });
 }
 
@@ -257,11 +256,10 @@ function recoverFile(e) {
     .then(() => {
       document.querySelector(`tr[data-file="${name}"]`).remove();
       createEmptyRow(false);
-      custom_alert(`The file has been recovered!`, 'success');
+      new_alert('success', null, "File recovered successfully!", false, 4000, false);
     })
-    .catch(function (err) {
-      console.error(err);
-      custom_alert(`Can't connect to backend!`, 'danger');
+    .catch(() => {
+      new_alert('error', "Ooops ...", "Something went wrong!", true, 4000, true);
     });
 }
 
