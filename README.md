@@ -50,7 +50,7 @@ As you can see, during the work we have modificated the page for better UX and U
 
 <img width="793" alt="Captura de pantalla 2023-01-17 a las 22 39 33" src="https://user-images.githubusercontent.com/115942758/213028040-f01fc371-5080-4ab3-bec3-deab2ba0741c.png">
 
-> **Comparison of the use case diagram with the actions that the user can finally perform:
+> **Comparison of the use case diagram with the actions that the user can finally perform**:
 
 - Log in - yes, Sign up - no;
 - If you want Upload file, first you need to choose folder and just then a file;
