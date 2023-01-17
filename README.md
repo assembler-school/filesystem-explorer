@@ -48,5 +48,5 @@ PHP official [website](https://www.php.net/)
 ## Authors :pencil2:
 
 This project was made for [Assembler Institute of Technology](https://assemblerinstitute.com/) by:
-[** Valentino Traverso **](https://github.com/)
+[** Valentino Traverso **](https://github.com/valentraverso)
 [** Iuliia Shikhanova **](https://github.com/IuliiaNova)
