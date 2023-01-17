@@ -1,7 +1,49 @@
 <?php
 $search = $_GET["q"];
 $arrayFolder = array();
-$arrayFile = array();
+$arrayFile = array(); 
+
+// prueba glob
+
+/* $arrayGlob = glob("root/*");
+$keyWordTrash = array_search("root/Trash", $arrayGlob); 
+$keyWordIndex = array_search("root/index.php", $arrayGlob);
+    unset($arrayGlob[$keyWordTrash]);
+    unset($arrayGlob[$keyWordIndex]);
+    
+
+$allRootFolders = scandir("root");
+
+foreach($allRootFolders as $folders){
+        array_push($arrayFolder, $folders);
+    }
+
+$valorTrash = array_search("Trash", $arrayFolder); 
+$valorIndex = array_search("index.php", $arrayFolder);
+
+unset($arrayFolder[$valorTrash]);
+unset($arrayFolder[$valorIndex]);
+
+
+
+foreach($arrayFolder as $folder){
+    if(is_file($folder)){
+        array_push($arrayFile, $folder);
+    }if else(is_dir($folder)){
+        array_push($arrayFolder, $folders);
+        scandir($folder);
+    }
+}
+
+var_dump($arrayFolder);
+var_dump($arrayFile);
+
+ */
+
+
+
+/// fin prueba
+
 
 foreach(glob("root/*") as $result){
     array_push($arrayFolder, $result);

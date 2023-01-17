@@ -98,6 +98,7 @@ function displayFolderIndex(data) {
 
 // Option Folders
 
+
 function createNewFolder(pathNewFolder) {
     let newName = prompt(`Assign a name to the new folder.`);
 
@@ -387,7 +388,7 @@ function displayInsideFolder(folderName) {
     backSpan.addEventListener('click', () => {
         console.log(backPath)
         console.log(backPath.lastIndexOf("/"));
-        if (backPath.lastIndexOf("/") === -1) {
+        if (backPath.lastIndexOf("/") === -1) {style
             while (backSpan.firstChild) {
                 backSpan.removeChild(backSpan.lastChild);
             }
@@ -686,10 +687,6 @@ btnOpenTrash.addEventListener("click", openTrashFolder);
 
 function openTrashFolder(){
  createFilesTab("Trash");
-/* 
-    fetch('../assets/display-trash.php')
-        .then(response => response.json())
-        .then(data => createFilesTab(data));  */
 }
 
 
