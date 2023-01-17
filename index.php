@@ -15,7 +15,7 @@
 <header>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">File Explorer</a>
+    <a class="navbar-brand" href="#">RUBAL Explorer</a>
       <form class="d-flex" role="search">
 
         <input class="form-control me-2 buscadorValue" type="search" placeholder="Search" aria-label="Search">
@@ -26,8 +26,8 @@
         <button class="btn btn-secondary" type="submit" name="submit">Upload</button>
       </form>
       <div class="d-flex create-folder">
-        <input class="form-control me-2 folder-name" type="text" name="folder" placeholder="Folder name..." >
-        <button class="btn btn-secondary create-btn">Create Folder</button>
+        <input class="form-control me-2 folder-name" type="text" name="folder" placeholder="Folder or file name..." >
+        <button class="btn btn-secondary create-btn">Create</button>
       </div>
       
 
@@ -86,11 +86,47 @@
   
         if (!strpos(basename($dir), '.')) {
   
-          echo "<tr>\n<th scope='row'>3</th>\n<td><form method='GET'><input type='hidden' name='name' value='". basename($dir)."'class='folder'><button type='submit'>" . basename($dir) . "</button></form></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><button class='fa-solid fa-trash delete-btn' actual-folder='".$dir."'></button><button class='fa-regular fa-pen-to-square edit-btn' actualFolder =".$dir." ></button></td></tr>";
+          echo "<tr>\n<th scope='row'><img src='extensions/folder.png' width='50px'></th>\n<td><form method='GET'><input type='hidden' name='name' value='". basename($dir)."'class='folder'><button type='submit'>" . basename($dir) . "</button></form></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><button class='fa-solid fa-trash delete-btn' actual-folder='".$dir."'></button><button class='fa-regular fa-pen-to-square edit-btn' actualFolder =".$dir." ></button></td></tr>";
   
         } else {
+
+          $extensionIcon = "";
+
+          $dirEx = explode(".",$dir);
+
+          $extension = end($dirEx);
+
+          switch ($extension){
+            case "mp3":
+              $extensionIcon = "extensions/mp3.png";
+              break;
+            case "doc":
+              $extensionIcon = "extensions/doc.png";
+              break;
+            case "exe":
+              $extensionIcon = "extensions/exe.png";
+              break;
+            case "jpg":
+              $extensionIcon = "extensions/jpg.png";
+              break;
+            case "mp4":
+              $extensionIcon = "extensions/mp4.png";
+              break;
+            case "odt":
+              $extensionIcon = "extensions/odt.png";
+              break;
+            case "pdf":
+              $extensionIcon = "extensions/pdf.png";
+              break;
+            case "html":
+              $extensionIcon = "extensions/html.png";
+              break;
+            case "php":
+              $extensionIcon = "extensions/php.png";
+              break;
+          }
   
-          echo "<tr>\n<th scope='row'>3</th>\n<td><a href='root/" . basename($dir) . "'>" . basename($dir) . "</a></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><button class='fa-solid fa-trash delete-btn' actual-folder='".$dir."'></button><button class='fa-regular fa-pen-to-square edit-btn' actualFolder =".$dir." ></button></td></tr>";
+          echo "<tr>\n<th scope='row'><img src='".$extensionIcon."' width='50px'></th>\n<td><a href='root/" . basename($dir) . "'>" . basename($dir) . "</a></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><button class='fa-solid fa-trash delete-btn' actual-folder='".$dir."'></button><button class='fa-regular fa-pen-to-square edit-btn' actualFolder =".$dir." ></button></td></tr>";
         }
       }
     }

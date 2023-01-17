@@ -8,6 +8,18 @@ const folderNameToCreate = document.querySelector('.folder-name');
 createFolder.addEventListener("click", createNewFolder);
 
 
+let folder = document.querySelectorAll(".folder");
+
+folder.forEach(element=> element.addEventListener("click", nameFolder));
+
+let nombre;
+
+function nameFolder(e){
+    nombre =e.srcElement.getAttribute("value");
+}
+
+console.log(nombre)
+
 
 function createNewFolder() {
 
@@ -17,11 +29,11 @@ function createNewFolder() {
     
     console.log(folderName);
 
-    fetch ("../filesystem-explorer/create-folder.php?nameFolder="+folderName)
+    fetch ("../filesystem-explorer/create-folder.php?nameFolder="+folderName+"?name="+nombre)
     .then(response => response.json())
     .then(data => console.log(data))
 
-    location.reload();
+    window.location.reload();
 }
 
 
@@ -50,7 +62,7 @@ function deleteFolder(event){
             .then(data =>console.log(data));
         }
     }
-    location.reload();
+    window.location.reload();
 }
 
 // modify folder
@@ -86,6 +98,7 @@ function editName(event){
     .then(response=>response.json())
     .then(data =>console.log(data));
 
+    window.location.reload();
 }
 
 
@@ -124,3 +137,7 @@ function displayResults(data){
         
         });
         }
+
+        // create
+
+
