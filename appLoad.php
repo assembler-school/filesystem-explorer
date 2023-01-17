@@ -64,8 +64,8 @@ function paintFile($path, $file, $options)
 function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRoot, $options)
 {
   ?>
-  <tr data-file="<?php echo $fileName ?>">
-    <td class="p-3">
+  <tr draggable="true" data-file="<?php echo $fileName ?>" data-type="<?php echo $isFolder ? 'dir' : 'file' ?>">
+    <td class="p-3" data-tr="<?php echo $fileName ?>">
       <?php
       echo getTypeIcon(filetype($absolutePath), $fileName);
       $fileHref = str_replace(' ', '%20', $fileName);
@@ -87,14 +87,14 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
               <?php
             } else {
               ?>
-                <a class="folder-btn link text-white" href="?p=<?php echo $fileHref ?>" data-change>
+                <a class="folder-btn link text-white" href="?p=<?php echo $fileHref ?>" data-change data-tr="<?php echo $fileName ?>">
                 <?php echo $fileName ?>
                 </a>
               <?php
             }
           } else {
             ?>
-            <span class="folder-btn link text-white">
+            <span class="folder-btn link text-white" data-tr="<?php echo $fileName ?>">
               <?php echo $fileName ?>
             </span>
             <?php
@@ -118,7 +118,7 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
             <?php
             } else {
               ?>
-              <a class="folder-btn link text-white" href="?p=<?php echo $fileHrefRelativePath ?>" data-change>
+              <a class="folder-btn link text-white" href="?p=<?php echo $fileHrefRelativePath ?>" data-change data-tr="<?php echo $fileName ?>">
               <?php echo $fileName ?>
               </a>
             <?php
@@ -152,7 +152,7 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
           <?php
           } else {
             ?>
-            <a class="link text-white" href="#" data-change style="pointer-events: none">
+            <a class="link text-white" href="#" data-change style="pointer-events: none" data-tr="<?php echo $fileName ?>">
             <?php echo $fileName ?>
             </a>
           <?php
@@ -160,7 +160,7 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
         } else {
           if ($options) {
             ?>
-          <a class="link text-white" href=<?php echo "open.php?name=$fileHref" ?> data-change>
+          <a class="link text-white" href=<?php echo "open.php?name=$fileHref" ?> data-change data-tr="<?php echo $fileName ?>">
             <?php echo $fileName ?>
           </a>
           <?php
@@ -180,12 +180,12 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
       ?>
 
 
-    <td class="p-3">
+    <td class="p-3" data-tr="<?php echo $fileName ?>">
       <?php
       if (isset($_SESSION['moves'][$fileName])) {
         echo '<p data-change style="opacity: 0.2">' . Utils::formatSize(filesize($absolutePath)) . '</p>';
       } else {
-        echo '<p data-change>' . Utils::formatSize(filesize($absolutePath)) . '</p>';
+        echo '<p data-change data-tr="<?php echo $fileName ?>">' . Utils::formatSize(filesize($absolutePath)) . '</p>';
       }
       ?>
     </td>
@@ -198,30 +198,30 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
         if (isset($_SESSION['moves'][$fileName])) {
           echo '<p data-change style="opacity: 0.2">' . date("D d M Y", $fecha_f) . '</p>';
         } else {
-          echo '<p data-change>' . date("D d M Y", $fecha_f) . '</p>';
+          echo '<p data-change data-tr="<?php echo $fileName ?>">' . date("D d M Y", $fecha_f) . '</p>';
         }
         ?>
       </td>
       <?php
     } else {
       ?>
-      <td></td>
+      <td data-tr="<?php echo $fileName ?>"></td>
       <?php
     }
 
     if ($options) {
       ?>
-      <td class="p-3" data-file="<?php echo $fileName ?>" data-type="<?php echo $isFolder ? 'dir' : 'file' ?>">
+      <td class="p-3" data-file="<?php echo $fileName ?>" data-type="<?php echo $isFolder ? 'dir' : 'file' ?>" data-tr="<?php echo $fileName ?>">
 
         <!-- RENAME -->
-        <button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#renameModal"
+        <button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#renameModal" data-tr="<?php echo $fileName ?>"
           onclick="renameFileModal(event);" id="renameFunction" <?php
           if (isMoveActive())
             echo 'style="visibility:hidden"';
           else
             echo 'style="visibility:visible"'
               ?>>
-            <i class="bi bi-pencil text-white" data-change></i>
+            <i class="bi bi-pencil text-white" data-change data-tr="<?php echo $fileName ?>"></i>
           </button>
 
           <!-- COPY -->
@@ -246,9 +246,9 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
             }
           } else {
             ?>
-            <form onsubmit="copyFile(event);" id="copyFunction" style="visibility:visible">
-              <button type="submit" class="border border-0 bg-transparent">
-                <i class="bi bi-clipboard text-white" id="copyIcon" data-change></i>
+            <form onsubmit="copyFile(event);" id="copyFunction" style="visibility:visible" data-tr="<?php echo $fileName ?>">
+              <button type="submit" class="border border-0 bg-transparent" data-tr="<?php echo $fileName ?>">
+                <i class="bi bi-clipboard text-white" id="copyIcon" data-change data-tr="<?php echo $fileName ?>"></i>
               </button>
             </form>
           <?php
@@ -275,9 +275,9 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
             }
           } else {
             ?>
-            <form onsubmit="moveFile(event)" id="moveFunction" style="visibility: visible">
-              <button type="submit" class="border border-0 bg-transparent">
-                <i class="bi bi-scissors text-white" id="moveIcon" data-change></i>
+            <form onsubmit="moveFile(event)" id="moveFunction" style="visibility: visible" data-tr="<?php echo $fileName ?>">
+              <button type="submit" class="border border-0 bg-transparent" data-tr="<?php echo $fileName ?>">
+                <i class="bi bi-scissors text-white" id="moveIcon" data-change data-tr="<?php echo $fileName ?>"></i>
               </button>
             </form>
           <?php
@@ -288,15 +288,15 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
           $fileExtension = strtolower(end($filetmp));
           if ($fileExtension === 'zip' || $fileExtension === 'rar') {
             ?>
-          <form action="unzip.php" method="POST" class="me-2" <?php
+          <form action="unzip.php" method="POST" class="me-2" data-tr="<?php echo $fileName ?>"<?php
           if ($_SESSION['moves'] || $_SESSION['copies'])
             echo 'style="visibility:hidden"';
           else
             echo 'style="visibility:visible"'
               ?> id="unzipFunction">
-              <input name="file" type="hidden" value="<?php echo $fileName ?>">
-            <button type="submit" class="border border-0 bg-transparent">
-              <i class="bi bi-file-earmark-zip text-white me-2" data-change></i>
+              <input name="file" type="hidden" value="<?php echo $fileName ?>" data-tr="<?php echo $fileName ?>">
+            <button type="submit" class="border border-0 bg-transparent" data-tr="<?php echo $fileName ?>">
+              <i class="bi bi-file-earmark-zip text-white me-2" data-change data-tr="<?php echo $fileName ?>"></i>
             </button>
           </form>
           <?php
@@ -310,14 +310,14 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
           }
           ?>
         <!--DELETE -->
-        <button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
+        <button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal" data-tr="<?php echo $fileName ?>"
           onclick="deleteFileModal(event);" id="deleteFunction" <?php
           if (isMoveActive())
             echo 'style="visibility:hidden"';
           else
             echo 'style="visibility:visible"'
               ?>>
-            <i class="bi bi-x-lg text-white" data-change></i>
+            <i class="bi bi-x-lg text-white" data-change data-tr="<?php echo $fileName ?>"></i>
           </button>
         </td>
       <?php
