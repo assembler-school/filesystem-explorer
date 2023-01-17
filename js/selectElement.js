@@ -9,9 +9,12 @@ const filesListSecondChild = document.querySelector("#filesListSecondChild");
 const sizeListSecondChild = document.querySelector("#sizeListSecondChild");
 const modificationListSecondChild = document.querySelector("#modificationListSecondChild");
 const arrowLeft = document.querySelector("#arrowLeft");
+const deleteFile = document.querySelector("#deleteFile");
+const folderTrash = document.querySelector("#folderTrash");
 let dataPath = "";
 let firstList = "";
 let secondList = "";
+let lastList = "";
 let firstListOld = "";
 let secondListOld = "";
 let typeDocument;
@@ -22,14 +25,45 @@ folderFilesContainer.addEventListener("click", selectSecondElement);
 ul.addEventListener("click", selectElement);
 ul.addEventListener("click", getTextValueAndPadre);
 arrowLeft.addEventListener("click", goBackDirectory);
+folderTrash.addEventListener("click", printFilesTrash);
 
-function putOffSelectElementColorFirst(){
+
+function printFilesTrash() {
+    filesListSecondChild.textContent = "";
+
+    fetch("modules/printFilesTrash.php" ,{
+        method: "GET",
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach(element =>
+                filesListSecondChild.innerHTML += element);
+        })
+        .catch((err) => console.log("Request failed: ", err));
+}
+
+function moveFilesTrash() {
+    deleteFile.removeEventListener("click", moveFilesTrash);
+    let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+    console.log(dataPathWithoutSlash);
+    fetch("modules/moveFilesTrash.php" + "?" + "dataPath=" + dataPathWithoutSlash, {
+        method: "GET",
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            lastList.remove();
+        })
+        .catch((err) => console.log("Request failed: ", err));
+}
+
+function putOffSelectElementColorFirst() {
     if (firstListOld.style.backgroundColor === "yellow" && firstListOld !== firstList) {
         firstListOld.style.backgroundColor = "#D9D9D9";
     }
 }
 
-function putOffSelectElementColorSecond(){
+function putOffSelectElementColorSecond() {
     if (secondListOld.style.backgroundColor === "yellow" && secondListOld !== secondList) {
         secondListOld.style.backgroundColor = "#D9D9D9";
     }
@@ -46,6 +80,7 @@ function selectElement(event) {
         typeDocument = parentNode.getAttribute('type');
         selectedElement = parentNode;
         printFolderTitleName(parentNode);
+        deleteFile.addEventListener("click", moveFilesTrash);
     } else if (currentNode.classList.contains("first-list")) {
         firstList = currentNode;
         firstList.style.backgroundColor = "yellow";
@@ -53,17 +88,19 @@ function selectElement(event) {
         typeDocument = parentNode.getAttribute('type');
         parentNode = currentNode;
         printFolderTitleName(currentNode);
+        deleteFile.addEventListener("click", moveFilesTrash);
     }
     if (typeDocument == "folder") {
         sizeListSecondChild.innerHTML = "";
         modificationListSecondChild.innerHTML = "";
         printFilesSecondChild();
-    } else if (typeDocument == "file"){
+    } else if (typeDocument == "file") {
         showMedia();
     }
-    if(firstListOld != ""){
+    if (firstListOld != "") {
         window.addEventListener("click", putOffSelectElementColorFirst);
     }
+    lastList = firstList;
 }
 
 function selectSecondElement(event) {
@@ -74,14 +111,17 @@ function selectSecondElement(event) {
         secondList = parentNode;
         secondList.style.backgroundColor = "yellow";
         dataPath = parentNode.getAttribute('data-path');
+        deleteFile.addEventListener("click", moveFilesTrash);
     } else if (currentNode.classList.contains("first-list")) {
         secondList = currentNode;
         secondList.style.backgroundColor = "yellow";
         dataPath = currentNode.getAttribute('data-path');
+        deleteFile.addEventListener("click", moveFilesTrash);
     }
-    if(secondListOld != ""){
+    if (secondListOld != "") {
         window.addEventListener("click", putOffSelectElementColorSecond);
     }
+    lastList = secondList;
     showPreview();
     getInfoFilesCorner();
 }
@@ -122,8 +162,8 @@ function printFilesSecondChild() {
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     filesListSecondChild.innerHTML = "";
     fetch("modules/printFilesSecondChild.php" + "?" + "dataPathSecond=" + dataPathWithoutSlash, {
-            method: "GET",
-        })
+        method: "GET",
+    })
         .then((response) => response.json())
         .then((data) => {
             data.forEach(element =>
@@ -135,8 +175,8 @@ function printFilesSecondChild() {
 function getInfoFilesCorner() {
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     fetch("modules/fileInfo.php" + "?" + "path=" + dataPathWithoutSlash, {
-            method: "GET",
-        })
+        method: "GET",
+    })
         .then((response) => response.json())
         .then((data) => {
             renderFileInfoCorner(data);
@@ -147,8 +187,8 @@ function getInfoFilesCorner() {
 function getInfoFilesSecond() {
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     fetch("modules/fileInfo.php" + "?" + "path=" + dataPathWithoutSlash, {
-            method: "GET",
-        })
+        method: "GET",
+    })
         .then((response) => response.json())
         .then((data) => {
             renderFileInfoSecond(data);
