@@ -34,16 +34,23 @@ deleteFiles.forEach(element => {
 });
 
 function deleteFolder(event){
-    console.log("funciona");
     const popUpDeleteConfirm = confirm("Do you want to delete this folder?");
     console.log(popUpDeleteConfirm);
     if (popUpDeleteConfirm){
         let actualFolderName = event.srcElement.getAttribute("actual-folder");
         console.log(actualFolderName);
-        fetch("../delete.php?actualFolderName=./"+actualFolderName)
-        .then(response=>response.json())
-        .then(data =>console.log(data));
+        if (!actualFolderName.includes(".")){
+            
+            fetch("delete-folder.php?actualFolderName=./"+actualFolderName)
+            .then(response=>response.json())
+            .then(data =>console.log(data));
+        }else{
+            fetch("delete-file.php?actualFolderName=./"+actualFolderName)
+            .then(response=>response.json())
+            .then(data =>console.log(data));
+        }
     }
+    location.reload();
 }
 
 // modify folder
@@ -103,8 +110,17 @@ function displayResults(data){
         }
     } 
     data.forEach(element => {
-         const li = document.createElement("li");
-         li.innerHTML="<a href="+element+">"+element+"</a>";
-         listSearch.appendChild(li);   
+        if(element.includes(".")){
+            const li = document.createElement("li");
+            li.innerHTML="<a href="+element+">"+element+"</a>";
+            listSearch.appendChild(li);   
+           } else{
+            var file = element.split("/");
+            var fileName = file[file.length-1];
+            const li = document.createElement("li");
+            li.innerHTML="<a href=?name="+fileName+">"+fileName+"</a>";
+            listSearch.appendChild(li);
+           }
+        
         });
-    }
+        }

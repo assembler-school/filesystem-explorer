@@ -40,6 +40,9 @@
 <body>
 <table class="table caption-top">
 <button class="btn btn-outline-secondary"><a class="home" href="./index.php">Files & folders</a></button>
+<ul id="searchResults">
+
+</ul>
 <?php
 
 ?>
@@ -87,7 +90,7 @@
   
         } else {
   
-          echo "<tr>\n<th scope='row'>3</th>\n<td><a href='root/" . basename($dir) . "'>" . basename($dir) . "</a></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><button class='fa-solid fa-trash delete-btn'></button><button class='fa-regular fa-pen-to-square edit-btn' actualFolder =".$dir." ></button></td></tr>";
+          echo "<tr>\n<th scope='row'>3</th>\n<td><a href='root/" . basename($dir) . "'>" . basename($dir) . "</a></td>\n<td>" . date('d-m-Y H:i:s', filectime($dir)) . "</td>\n<td>" . date('d-m-Y H:i:s', filemtime($dir)) . "</td>\n<td>" . filesize($dir) . "</td><td><button class='fa-solid fa-trash delete-btn' actual-folder='".$dir."'></button><button class='fa-regular fa-pen-to-square edit-btn' actualFolder =".$dir." ></button></td></tr>";
         }
       }
     }
@@ -96,9 +99,6 @@
   </tbody>
 </table>
 
-<ul id="searchResults">
-
-</ul>
     
 </body>
 
