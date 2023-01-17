@@ -54,9 +54,9 @@ function displayFolderIndex(data) {
         iEdit.className = 'fa-solid fa-pen';
 
         spanDelete.className = 'delete-folder';
-        spanDelete.setAttribute('actual-folder', folder);
         iDelete.className = 'fa-solid fa-trash';
         iDelete.id = 'delete-folder';
+        spanDelete.setAttribute('filePath', folder);
 
         divFolders.prepend(elLi);
 
@@ -101,11 +101,11 @@ function displayFolderIndex(data) {
 function createNewFolder(pathNewFolder) {
     let newName = prompt(`Assign a name to the new folder.`);
 
-    if(typeof pathNewFolder !== 'object'){
-        newName = pathNewFolder + "/" + newName;
-    }
-    
-    if (newName !== null) {
+    if (newName !== 'null' && typeof newName !== 'object') {
+        if(typeof pathNewFolder !== 'object'){
+            newName = pathNewFolder + "/" + newName;
+        }
+
         fetch("../assets/create-folder.php?nameFolder=" + newName)
             .then(response => response.json(),
                 reject => alert('There was an error, we couldnt create the folder!'))
@@ -140,20 +140,26 @@ function modifyNameFolders(event) {
 }
 
 function deleteFolders(event) {
-    let actualFolderName = event.currentTarget.getAttribute('actual-folder');
+    let actualFolderName = event.currentTarget.getAttribute('filePath');
     const popUpDeleteConfirm = confirm(`Do you want delete "${actualFolderName}" folder?`);
     
+    if(popUpDeleteConfirm){
+        atrBasura = '../root/'+actualFolderName;
+        addTrash(atrBasura);
 
-    if (popUpDeleteConfirm) {
-        fetch("../assets/delete-folder.php?actualFolderName=" + actualFolderName)
-            .then(response => {
-                if (response.status === 200) {
-                    getInfoFolders();
-                } else {
-                    alert('There was an error, we couldnt delete the folder!');
-                }
-            })
+        getInfoFolders();
     }
+
+    // if (popUpDeleteConfirm) {
+    //     fetch("../assets/delete-folder.php?actualFolderName=" + actualFolderName)
+    //         .then(response => {
+    //             if (response.status === 200) {
+    //                 getInfoFolders();
+    //             } else {
+    //                 alert('There was an error, we couldnt delete the folder!');
+    //             }
+    //         })
+    // }
 }
 
 function moveFolders(folderPath){
@@ -385,8 +391,6 @@ function displayInsideFolder(folderName) {
     btnFiles.prepend(backSpan);
 
     backSpan.addEventListener('click', () => {
-        console.log(backPath)
-        console.log(backPath.lastIndexOf("/"));
         if (backPath.lastIndexOf("/") === -1) {
             while (backSpan.firstChild) {
                 backSpan.removeChild(backSpan.lastChild);
@@ -620,22 +624,9 @@ function createFileContent(typeFile, data) {
     displayPopUp();
 }
 
-function addTrash() {
-    let basura = document.querySelector("#delete-file");
-    let atrBasura = basura.getAttribute("filePath");
-    let cutPath = atrBasura.indexOf("/");
-    let pathFile = atrBasura.slice(cutPath + 1);
-
-    fetch("../assets/add-trash.php?filePath=" + atrBasura)
-        .then(response => response.json())
-        .then(data => console.log(data))
-}
-
 // Relocate documento
 
 function relocateFileTo(path){
-    console.log(path.currentTarget.getAttribute('file-path'));
-
     let filePath = btnRelocateFile.getAttribute("filePath");
     let newFilePath = path.currentTarget.getAttribute('file-path');
     let confirmMove = confirm(`Where do you want to move this file to ${newFilePath}?`);
@@ -644,19 +635,35 @@ function relocateFileTo(path){
     fetch("../assets/relocate-file.php?filepath=" + filePath + "&folderName=" + newFilePath)
         .then(response => response.json())
         .then(data => {
-            document.querySelector('.move-btwn-folders').remove()
+            if(data.code === 200){
+            document.querySelector('.move-btwn-folders').remove();
             closePopUp();
+            createFilesTab(data.redir);
+            }else if(data.code === 500){
+                alert(code.msg);
+            }
         });
     }
 
 }
 
-function deleteFile(filePath) {
+// Move to trash / delete
+
+function deleteFile() {
     const popUpDeleteConfirm = confirm("Do you want delete this file?");
 
     if (popUpDeleteConfirm) {
-        addTrash();
+        let basura = document.querySelector("#delete-file");
+        let atrBasura = basura.getAttribute("filePath");
+        addTrash(atrBasura);
+        closePopUp();
+        createFilesTab('Trash');
     }
+}
+
+function addTrash(atrBasura) {
+    fetch("../assets/add-trash.php?filePath=" + atrBasura)
+    .then(response => console.log(response))
 }
 
 const btnClosePopUp = document.getElementById("close-popup");
@@ -686,10 +693,6 @@ btnOpenTrash.addEventListener("click", openTrashFolder);
 
 function openTrashFolder(){
  createFilesTab("Trash");
-/* 
-    fetch('../assets/display-trash.php')
-        .then(response => response.json())
-        .then(data => createFilesTab(data));  */
 }
 
 
