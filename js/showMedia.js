@@ -42,16 +42,16 @@ function showPreview(){
     let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
     if (dataPath.includes(".mp4")) {
         setPreview();
-        previewChild.innerHTML = "<img id='xIcon' src='images/xIcon.png' alt='x icon'><video class='thumbnail-media' width='320' height='240' controls autoplay><source src='./files/" + dataPathWithoutSlash + "' type='video/mp4'>Sorry, your browser doesn't support the video element.</video>";
+        previewChild.innerHTML = "<video class='thumbnail-media' width='320' height='240' controls autoplay><source src='./files/" + dataPathWithoutSlash + "' type='video/mp4'>Sorry, your browser doesn't support the video element.</video>";
     } else if (dataPath.includes(".mp3")) {
         setPreview();
-        previewChild.innerHTML = "<img id='xIcon' src='images/xIcon.png' alt='x icon'><audio class='thumbnail-media' controls><source src='./files/" + dataPathWithoutSlash + "' type='audio/mpeg'>Sorry, your browser does not support the audio element.</audio>";
+        previewChild.innerHTML = "<audio class='thumbnail-media' controls><source src='./files/" + dataPathWithoutSlash + "' type='audio/mpeg'>Sorry, your browser does not support the audio element.</audio>";
     } else if (dataPath.includes(".jpg") || dataPath.includes(".jpeg")) {
         setPreview();
-        previewChild.innerHTML = "<img id='xIcon' src='images/xIcon.png' alt='x icon'><img id='shownImage' class='thumbnail-media' src='./files/" + dataPathWithoutSlash + "' type='image/jpg'>";
+        previewChild.innerHTML = "<img id='shownImage' class='thumbnail-media' src='./files/" + dataPathWithoutSlash + "' type='image/jpg'>";
     } else if (dataPath.includes(".png")) {
         setPreview();
-        previewChild.innerHTML = "<img id='xIcon' src='images/xIcon.png' alt='x icon'><img id='shownImage' class='thumbnail-media' src='./files/" + dataPathWithoutSlash + "' type='image/jpg'>";
+        previewChild.innerHTML = "<img id='shownImage' class='thumbnail-media' src='./files/" + dataPathWithoutSlash + "' type='image/jpg'>";
     }
 }
 
