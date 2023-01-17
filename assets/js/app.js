@@ -98,6 +98,7 @@ function displayFolderIndex(data) {
 
 // Option Folders
 
+
 function createNewFolder(pathNewFolder) {
     let newName = prompt(`Assign a name to the new folder.`);
 
