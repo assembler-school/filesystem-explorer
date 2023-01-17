@@ -106,7 +106,7 @@ function createNewFolder(pathNewFolder) {
         newName = pathNewFolder + "/" + newName;
     }
     
-    if (newName) {
+    if (newName !== null) {
         fetch("../assets/create-folder.php?nameFolder=" + newName)
             .then(response => response.json(),
                 reject => alert('There was an error, we couldnt create the folder!'))
