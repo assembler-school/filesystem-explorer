@@ -19,7 +19,9 @@ let selectedElement;
 let firstList = "";
 let dataPath = "";
 let typeDocument;
+let counter = 0;
 let sizeOnly;
+
 
 folderFilesContainer.addEventListener("click", selectSecondElement);
 folderFilesContainer.addEventListener("dblclick", selectElementSecond);
@@ -118,8 +120,6 @@ function selectElementSecond(event) {
     console.log(levelDirectory)
 }
 
-let counter = 0;
-
 function showOnlyFile(event) {
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
@@ -128,11 +128,11 @@ function showOnlyFile(event) {
     } else if (currentNode.classList.contains("first-list")) {
         typeDocument = parentNode.getAttribute('type');
     }
-
+    
     if (typeDocument == "file") {
         let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
         let arrayDataPath = dataPathWithoutSlash.split(".");
-        let dataPathExt = arrayDataPath.slice(-1);
+        let dataPathExt = arrayDataPath.slice(-1)[0];
         arrayDataPath.pop();
         if (dataPathExt == "jpeg") {
             dataPathExt = "jpg";
