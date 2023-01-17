@@ -58,11 +58,11 @@ As you can see, during the work we have modificated the page for better UX and U
 
 
 
-## Organizationd and distribution of the tasks
+## Organization and distribution of the tasks
 
 Sush as [**Valentino Traverso**](https://github.com/valentraverso) has more expirience in PHP, he has taken the leading role in this project. 
 
-*_The biggest part_* of the time we have used *peer coding* to see together how work diferent PHP methods and share experience:
+_The biggest part_ of the time we have used **peer coding** to see together how work diferent PHP methods and share experience:
 - Interfaces for Log in/Sign out, General Files Explorer page, Edit .txt document;
 
 Then, we shared tasks:
