@@ -33,7 +33,12 @@
                     </div>
                     <div id="filesExplorerContainer">
                         <div id="filesPath">
-                            <ul id="filesList"><?php require_once "./modules/printFilesFirstChild.php"?></ul>
+                            <div id="filesFolderFather">
+                                <div id="filesFolder" class="first-list" data-path='files/' type='folder'><img class='folder-list-img' src='images/folderIconSmallx3.png' alt='folder'><span class='text-list'>files</span>
+                                </div>
+                                <ul id="filesList"><?php require_once "./modules/printFilesFirstChild.php"?>
+                                </ul>
+                            </div>
                         </div>
                         <div id="mediaFolderContainer">
                             <button class="media-folder-buttons">images</button>

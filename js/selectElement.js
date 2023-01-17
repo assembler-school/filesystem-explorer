@@ -1,33 +1,37 @@
-const creationInfo = document.getElementById("creationInfo");
-const modifiedInfo = document.getElementById("modifiedInfo");
-const extensioinInfo = document.getElementById("extensioinInfo");
-const folderFilesContainer = document.querySelector("#folderFilesContainer");
-const sizeInfo = document.getElementById("sizeInfo");
-const pathInfo = document.getElementById("pathInfo");
+const modificationListSecondChild = document.querySelector("#modificationListSecondChild");
 const pathSecondFolderTitle = document.querySelector("#pathSecondFolderTitle");
+const folderFilesContainer = document.querySelector("#folderFilesContainer");
 const filesListSecondChild = document.querySelector("#filesListSecondChild");
 const sizeListSecondChild = document.querySelector("#sizeListSecondChild");
-const modificationListSecondChild = document.querySelector("#modificationListSecondChild");
+const extensioinInfo = document.getElementById("extensioinInfo");
+const creationInfo = document.getElementById("creationInfo");
+const modifiedInfo = document.getElementById("modifiedInfo");
 const arrowLeft = document.querySelector("#arrowLeft");
-let dataPath = "";
-let firstList = "";
-let secondList = "";
-let firstListOld = "";
+const sizeInfo = document.getElementById("sizeInfo");
+const pathInfo = document.getElementById("pathInfo");
+let avoidRechargeFirstList = false;
 let secondListOld = "";
-let typeDocument;
-let selectedElement;
-let sizeOnly;
+let firstListOld = "";
+let oldDataPath = "a";
 let modificationOnly;
+let secondList = "";
+let selectedElement;
+let firstList = "";
+let dataPath = "";
+let typeDocument;
+let sizeOnly;
 
-folderFilesContainer.addEventListener("dblclick", selectElement);
 folderFilesContainer.addEventListener("click", selectSecondElement);
-ul.addEventListener("click", selectElement);
-ul.addEventListener("click", getTextValueAndPadre);
+folderFilesContainer.addEventListener("dblclick", selectElement);
 arrowLeft.addEventListener("click", goBackDirectory);
+ul.addEventListener("click", getTextValueAndPadre);
+ul.addEventListener("click", selectElement);
 
 function putOffSelectElementColorFirst() {
-    if (firstListOld.style.backgroundColor === "yellow" && firstListOld !== firstList) {
-        firstListOld.style.backgroundColor = "#D9D9D9";
+    if (firstListOld != "") {
+        if (firstListOld.style.backgroundColor === "yellow" && firstListOld !== firstList) {
+            firstListOld.style.backgroundColor = "#D9D9D9";
+        }
     }
 }
 
@@ -41,6 +45,7 @@ function selectElement(event) {
     let parentNode = event.target.parentNode;
     let currentNode = event.target;
     firstListOld = firstList;
+    oldDataPath = dataPath;
     if (parentNode.classList.contains("first-list")) {
         firstList = parentNode;
         firstList.style.backgroundColor = "yellow";
@@ -59,14 +64,19 @@ function selectElement(event) {
     if (typeDocument == "folder") {
         sizeListSecondChild.innerHTML = "";
         modificationListSecondChild.innerHTML = "";
-        printFilesSecondChild();
+        if (oldDataPath != dataPath) {
+            printFilesSecondChild();
+        }
     } else if (typeDocument == "file") {
         showOnlyFile();
         showMedia();
+        showPreview();
     }
     if (firstListOld != "") {
         window.addEventListener("click", putOffSelectElementColorFirst);
     }
+    levelDirectory = (dataPath.match(/\//g) || []).length;
+    console.log(dataPath)
 }
 
 let counter = 0;
@@ -93,16 +103,22 @@ function selectSecondElement(event) {
         secondList = parentNode;
         secondList.style.backgroundColor = "yellow";
         dataPath = parentNode.getAttribute('data-path');
+        printFolderTitleName(parentNode);
     } else if (currentNode.classList.contains("first-list")) {
         secondList = currentNode;
         secondList.style.backgroundColor = "yellow";
         dataPath = currentNode.getAttribute('data-path');
+        printFolderTitleName(currentNode);
     }
     if (secondListOld != "") {
         window.addEventListener("click", putOffSelectElementColorSecond);
     }
+    if (typeDocument == "folder") {
+        hidePreview();
+    }
     showPreview();
     getInfoFilesCorner();
+    levelDirectory = (dataPath.match(/\//g) || []).length;
 }
 
 function getTextValueAndPadre(event) {
@@ -123,13 +139,12 @@ function getTextValueAndPadre(event) {
         textValue = nextChild;
         padre = textValue.parentNode;
     }
-    showPreview();
 }
 
 function printFolderTitleName(selectedElement) {
     getInfoFilesCorner();
     getInfoFilesSecond();
-    if (selectedElement.getAttribute('type') == "folder") {
+    if (selectedElement.getAttribute('type') === "folder") {
         pathSecondFolderTitle.textContent = "files/" + dataPath;
     } else {
         let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
@@ -158,6 +173,7 @@ function getInfoFilesCorner() {
         })
         .then((response) => response.json())
         .then((data) => {
+            console.log(data)
             renderFileInfoCorner(data);
         })
         .catch((err) => console.log("Request failed: ", err));
@@ -170,7 +186,9 @@ function getInfoFilesSecond() {
         })
         .then((response) => response.json())
         .then((data) => {
-            renderFileInfoSecond(data);
+            if (data != "Error in opening file") {
+                renderFileInfoSecond(data);
+            }
         })
         .catch((err) => console.log("Request failed: ", err));
 }
@@ -187,10 +205,15 @@ function renderFileInfoCorner(data) {
     }
     creationInfo.innerHTML = "Creation date: " + data["creationDate"];
     modifiedInfo.innerHTML = "Last modificaton: " + data["modificationDate"];
-    pathInfo.innerHTML = "Path: " + "files/" + dataPath;
+    if(dataPath.includes(".")){
+        let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
+        pathInfo.innerHTML = "Path: " + "files/" + dataPathWithoutSlash;
+    } else{
+        pathInfo.innerHTML = "Path: " + "files/" + dataPath;
+    }
     extensioinInfo.innerHTML = "Extension: " + data["extension"];
     modificationOnly = "<div class='second-flex second-info'>" + data["modificationDate"] + "</div>";
-    if(counter == 1){
+    if (counter == 1) {
         sizeListSecondChild.innerHTML = sizeOnly;
         modificationListSecondChild.innerHTML = modificationOnly;
         counter = 0;

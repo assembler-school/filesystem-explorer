@@ -12,6 +12,7 @@ let inputCounter = 0;
 let oldDirectoryName;
 let textValue = "";
 let padre = "";
+let levelDirectory = 0;
 
 addFolderImage.addEventListener("click", showImageFolder);
 renameFile.addEventListener("click", renameFiles);
@@ -37,18 +38,18 @@ function sameFolderName() {
 }
 
 function checkDirectoryReName() {
-    if(inputRename.value == oldDirectoryName){
+    if (inputRename.value == oldDirectoryName) {
         sameFolderName();
     } else {
-    fetch("modules/checkDirectoryName.php" + "?" + "directoryName=" + inputRename.value, {
-            method: "GET",
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-            getInputRenameValue(data);
-        })
-        .catch((err) => console.log("Request failed: ", err));
+        fetch("modules/checkDirectoryName.php" + "?" + "directoryName=" + inputRename.value, {
+                method: "GET",
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                getInputRenameValue(data);
+            })
+            .catch((err) => console.log("Request failed: ", err));
     }
 }
 
@@ -61,7 +62,10 @@ function getInputRenameValue(data) {
         span.classList.add("text-list");
         span.textContent = reNameFolder;
         li = document.querySelector('[data-path="' + dataPath + '"]');
-        console.log(li);
+        li.removeAttribute("data-path")
+        li.setAttribute("data-path", reNameFolder + "/");
+        firstList = li;
+        dataPath = reNameFolder;
         inputRename.remove();
         li.appendChild(span);
         renameFolder();
@@ -74,7 +78,8 @@ function renameFolder() {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
+            dataPath = firstList.getAttribute('data-path');
+            printFolderTitleName(firstList);
         })
         .catch((err) => console.log("Request failed: ", err));
 };
@@ -83,6 +88,9 @@ function showImageFolder() {
     li = document.createElement("li");
     li.setAttribute("class", "first-list");
     li.setAttribute("type", "folder");
+    li.setAttribute("level", levelDirectory);
+    let levelDown = li.getAttribute("level");
+    li.style.paddingLeft = levelDown*10+"%";
     const img = document.createElement("img");
     img.setAttribute("src", "images/folderIconSmallx3.png");
     img.setAttribute("alt", "Folder");
@@ -92,12 +100,21 @@ function showImageFolder() {
     input.setAttribute("class", "folder-list-input");
     input.setAttribute("type", "text");
     input.setAttribute("value", "New folder");
-    ul.appendChild(li);
     li.appendChild(img);
     li.appendChild(input);
+    if(firstList==""){
+        ul.insertBefore(li, firstList.nextSibling);
+    } else {
+        firstList.parentNode.insertBefore(li, firstList.nextSibling);
+    }
+    li.scrollIntoView();
     inputValue = input;
     inputValue.addEventListener("focusout", checkDirectoryName);
     input.select();
+    firstListOld = firstList;
+    firstList = li;
+    firstList.style.backgroundColor = "yellow";
+    putOffSelectElementColorFirst();
     addFolderImage.removeEventListener("click", showImageFolder);
 }
 
@@ -118,6 +135,7 @@ function getInputValue(data) {
         inputValue.select();
     } else {
         nameFolder = inputValue.value;
+        console.log(inputValue.value);
         const span = document.createElement("span");
         span.classList.add("text-list");
         span.textContent = nameFolder;

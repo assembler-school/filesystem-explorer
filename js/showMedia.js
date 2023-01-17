@@ -62,7 +62,10 @@ function setPreview(){
 }
 
 function hidePreview(){
-    previewChild.innerHTML = "";
-    previewText.style.display = "block";
-    ul.removeEventListener("click", hidePreview);
+    if (typeDocument == "folder") {
+        previewChild.innerHTML = "";
+        previewChild.style.display = "none";
+        previewText.style.display = "block";
+        ul.removeEventListener("click", hidePreview);
+    }
 }
