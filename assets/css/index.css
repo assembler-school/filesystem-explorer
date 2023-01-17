@@ -96,7 +96,7 @@ nav input {
 
 /*+++++++++++++++++++++++++++ MAIN +++++++++++++++++++++++++++++*/
 main {
-  width: 80%;
+  width: 70%;
   height: 85%;
   position: relative;
   display: grid;
@@ -531,4 +531,122 @@ aside p:nth-child(2n-1) {
 
 .selected {
   border-bottom: 3px solid rgb(49, 141, 49);
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 0;
+    width: 100%;
+  }
+
+  .size-nav-text {
+    display: none;
+  }
+
+  .search-input-group {
+    width: 30vw;
+  }
+
+  .search-input-group img {
+    width: 15px;
+  }
+  nav p {
+    font-size: 1em;
+  }
+
+  .bread-crumbs-container {
+    margin-top: 5px;
+    padding: 5px;
+  }
+
+  .bread-crumbs-container a {
+    font-size: 0.75em;
+  }
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 65vh;
+    width: 80%;
+    justify-content: center;
+  }
+
+  .file-container,
+  .folder-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  aside {
+    height: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    left: 2.5vw;
+    z-index: 999;
+    color: grey;
+  }
+
+  .file-details-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .file-details-container-items {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  aside p:first-child {
+    border-top: 1px solid rgba(199, 199, 199, 0);
+  }
+
+  aside p:nth-child(2n) {
+    border-bottom: 1px solid rgba(199, 199, 199, 0);
+    padding-top: 10px;
+    transition-duration: 0.2s;
+  }
+
+  aside p:nth-child(2n-1) {
+    color: rgb(70, 70, 70);
+  }
+
+  .file-details-container-items p {
+    font-size: 0.65em;
+  }
+
+  .btns-container {
+    height: 10vh;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    margin: auto;
+    top: auto;
+    right: 0;
+    left: 0;
+    bottom: 15vh;
+    right: 2.5vw;
+    z-index: 999;
+  }
+
+  .btns-container img {
+    margin: 10px;
+    width: 30px;
+  }
 }
