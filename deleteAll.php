@@ -40,5 +40,5 @@ if ($type === 'folder') { // FOLDER
     $msg['trash'] = 'is-empty';
   }
 }
-Utils::saveSession('sessionfile.txt');
+Utils::saveSession(SESSION);
 echo json_encode($msg);

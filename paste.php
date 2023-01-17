@@ -27,6 +27,7 @@ if (count($_SESSION['moves']) > 0) {
   }
   $_SESSION['copies'] = [];
 }
+Utils::saveSession(SESSION);
 
 if (isset($_SESSION['relativePath'])) {
   $returnPath = $_SESSION['relativePath'];

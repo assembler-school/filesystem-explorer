@@ -2,9 +2,9 @@
 
 require_once('./pdf.php');
 
+define("SESSION", "sessionfile.txt");
 class Utils
 {
-
   public static function getAbsolutePath($path)
   {
     function strpos_last($haystack, $needle)

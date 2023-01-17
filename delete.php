@@ -10,6 +10,6 @@ $finalName = Utils::chooseName($newPath, $fileName);
 Utils::moveFiles($oldPath, './trash/' . $finalName);
 
 $_SESSION['recovers'][$fileName] = $oldPath;
-Utils::saveSession('sessionfile.txt');
+Utils::saveSession(SESSION);
 echo json_encode('ok');
 ?>

@@ -16,6 +16,6 @@ else
   Utils::moveFiles($currentPath, './root/' . $fileName);
 
 unset($_SESSION['recovers'][$fileName]);
-Utils::saveSession('sessionfile.txt');
+Utils::saveSession(SESSION);
 
 echo json_encode('ok');

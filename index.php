@@ -1,13 +1,14 @@
 <?php
 require_once('./appLoad.php');
+require_once('./utils.php');
 session_start();
 
-if (!file_exists("sessionfile.txt")) {
-  Utils::saveSession('sessionfile.txt');
-  chmod("sessionfile.txt", 0777);
+if (!file_exists(SESSION)) {
+  Utils::saveSession(SESSION);
+  chmod(SESSION, 0777);
 }
 
-$contents = file_get_contents('sessionfile.txt');
+$contents = file_get_contents(SESSION);
 session_decode($contents);
 
 $folderPath = './root';
@@ -24,6 +25,8 @@ if (!isset($_SESSION['moves'])) {
   $_SESSION['copies'] = [];
   $_SESSION['moves'] = [];
 }
+
+Utils::saveSession(SESSION);
 
 ?>
 <?php include('./header.php') ?>

@@ -1,4 +1,5 @@
 <?php
+require_once('./utils.php');
 session_start();
 $action = $_POST['action'];
 
@@ -13,5 +14,6 @@ if ($action == 'copy') {
   if (!isset($_SESSION['moves'][$name]))
     $_SESSION['moves'][$name] = $path;
 }
+Utils::saveSession(SESSION);
 
 echo json_encode('ok');

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', (event) => {
 
   function handleDragStart(e) {
-    this.style.opacity = '0.3';
+    this.style.opacity = '0.8';
     dragSrcEl = this;
 
     e.dataTransfer.effectAllowed = 'move';
@@ -10,37 +10,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   function handleDragEnd(e) {
     this.style.opacity = '1';
-
-    items.forEach(function (item) {
-      item.classList.remove('over');
-    });
   }
 
   function handleDragOver(e) {
     if (e.preventDefault) {
       e.preventDefault();
     }
-
     return false;
   }
 
   function handleDragEnter(e) {
-    this.classList.add('over');
+
   }
 
   function handleDragLeave(e) {
-    this.classList.remove('over');
+
   }
 
   function handleDrop(e) {
     e.stopPropagation();
-    const to = document.querySelector(`tr[data-file='${e.target.getAttribute('data-tr')}']`);
-    console.log(to);
-    console.log(dragSrcEl);
-    if (to.getAttribute('data-type') === 'dir') {
-      const fileFrom = dragSrcEl.getAttribute('data-file');
-      const folderTo = to.getAttribute('data-file');
 
+    const to = document.querySelector(`tr[data-file='${e.target.getAttribute('data-tr')}']`);
+    const fileFrom = dragSrcEl.getAttribute('data-file');
+    const folderTo = to.getAttribute('data-file');
+    if ((to.getAttribute('data-type') === 'dir') && fileFrom !== folderTo) {
       fetch(`./drop.php?old=${fileFrom}&new=${folderTo}`)
         .then(res => res.json())
         .then(res => {

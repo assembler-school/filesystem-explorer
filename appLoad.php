@@ -185,7 +185,7 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
       if (isset($_SESSION['moves'][$fileName])) {
         echo '<p data-change style="opacity: 0.2">' . Utils::formatSize(filesize($absolutePath)) . '</p>';
       } else {
-        echo '<p data-change data-tr="<?php echo $fileName ?>">' . Utils::formatSize(filesize($absolutePath)) . '</p>';
+        echo "<p data-change data-tr='$fileName'>" . Utils::formatSize(filesize($absolutePath)) . '</p>';
       }
       ?>
     </td>
@@ -198,7 +198,7 @@ function createFileRow($absolutePath, $relativePath, $fileName, $isFolder, $isRo
         if (isset($_SESSION['moves'][$fileName])) {
           echo '<p data-change style="opacity: 0.2">' . date("D d M Y", $fecha_f) . '</p>';
         } else {
-          echo '<p data-change data-tr="<?php echo $fileName ?>">' . date("D d M Y", $fecha_f) . '</p>';
+          echo "<p data-change data-tr='$fileName'>" . date("D d M Y", $fecha_f) . '</p>';
         }
         ?>
       </td>
