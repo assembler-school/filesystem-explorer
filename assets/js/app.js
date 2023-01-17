@@ -387,7 +387,7 @@ function displayInsideFolder(folderName) {
     backSpan.addEventListener('click', () => {
         console.log(backPath)
         console.log(backPath.lastIndexOf("/"));
-        if (backPath.lastIndexOf("/") === -1) {style
+        if (backPath.lastIndexOf("/") === -1) {
             while (backSpan.firstChild) {
                 backSpan.removeChild(backSpan.lastChild);
             }
