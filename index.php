@@ -86,7 +86,7 @@ if (!isset($_SESSION['moves'])) {
         </form>
       </div>
       <form action="upload.php" method="POST" enctype="multipart/form-data" id="uploadForm">
-        <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+        <input type="hidden" name="MAX_FILE_SIZE" value="4000000">
         <label for="file-upload" class="custom-file-upload m-2 me-4"   <?php if (isMoveActive()) {
         ?> style="cursor: default; pointer-events: none"<?php
       } ?>>

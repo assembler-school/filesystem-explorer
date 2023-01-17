@@ -14,14 +14,11 @@ $msg = [];
 
 if ($type === 'folder') { // FOLDER
   if (count($files) > 0) {
-    foreach ($files as $file) {
-      if (is_dir($file))
-        Utils::move_files($file);
-      else {
-        $array = explode('/', $file);
-        $newPathFile = './trash/' . $array[count($array) - 1];
-        rename($file, $newPathFile);
-      }
+    foreach ($files as $oldPath) {
+      $newPath = Utils::changeFileRoute('./trash/', $oldPath);
+      $name = Utils::getNameFile($oldPath);
+      $finalName = Utils::chooseName($newPath, $name);
+      Utils::moveFiles($oldPath, './trash/' . $finalName);
     }
     $msg['folder'] = 'ok';
   } else {
@@ -32,7 +29,7 @@ if ($type === 'folder') { // FOLDER
   if (count($files) > 0) {
     foreach ($files as $file) {
       if (is_dir($file))
-        Utils::delete_files($file);
+        Utils::deleteAll($file);
       else
         unlink($file);
     }

@@ -6,60 +6,70 @@ const unzipFunction = document.querySelectorAll('#unzipFunction');
 const pasteBtn = document.querySelector('#pasteFunction');
 const emptyAll = document.querySelector('#emptyAll');
 const openTrash = document.querySelector('#openTrash');
+const searchBar = document.querySelector(`#searchBar`);
+const createModalBtn = document.querySelector(`#openCreateModal`);
+const uploadBtn = document.querySelector(`#uploadForm label`);
 
-function addMoveAction(fileName, e) {
-  //VISUAL
-  const targets = document.querySelectorAll(`tr[data-file='${fileName}'] td [data-change]`);
+function addMoveAction(e) {
+  const name = e.target.parentNode.getAttribute('data-file');
+  const targets = document.querySelectorAll(`tr[data-file='${name}'] td [data-change]`);    // add opacity to row
   targets.forEach(node => {
     node.style.opacity = 0.2
   });
-  e.target.children[0].setAttribute('disabled', '');
-  document.querySelector(`td[data-file='${fileName}']`).setAttribute('data-no-paste', '');
-  const allFiles = document.querySelectorAll(`td[data-type='file']`);
-  allFiles.forEach(file => {
-    file.parentNode.children[0].children[1].style.pointerEvents = 'none';
-  });
-  document.querySelector(`tr[data-file='${fileName}'] td a`).style.pointerEvents = 'none';
-  openTrash.style.visibility = 'hidden';
-  emptyAll.style.visibility = 'hidden';
-  changeStylesWhenCopyOrMove();
-  copyFunction.forEach(node => {
-    node.style.visibility = 'hidden';
-  });
-  document.querySelector(`#searchBar`).setAttribute('disabled', '');
-  document.querySelector(`#openCreateModal`).setAttribute('disabled', '');
-  document.querySelector(`#openCreateModal`).style.cursor = 'default';
-  document.querySelector(`#openCreateModal`).style.pointerEvents = 'none';
-  document.querySelector(`#uploadForm label`).style.pointerEvents = 'none';
-  document.querySelector(`#uploadForm label`).style.cursor = 'default';
+  e.target.children[0].setAttribute('disabled', '');      // disable cut button
+  hideExtraOptions(name, 'copy');
 
+  //document.querySelector(`td[data-file='${fileName}']`).setAttribute('data-no-paste', '');
 }
 
 function addCopyAction(e) {
-  //VISUAL
   const name = e.target.parentNode.getAttribute('data-file');
-  e.target.children[0].children[0].classList.remove('text-white');
-  e.target.children[0].children[0].classList.add('text-primary');
-  e.target.parentNode.setAttribute('data-no-paste', '');
-  const allFiles = document.querySelectorAll(`td[data-type='file']`);
+  const copyIcon = e.target.children[0].children[0];        // change copy actoin color
+  copyIcon.classList.remove('text-white');
+  copyIcon.classList.add('text-primary');
+  e.target.children[0].setAttribute('disabled', '');          // disable copy button
+  hideExtraOptions(name, 'move');
+
+  //e.target.parentNode.setAttribute('data-no-paste', '');
+}
+
+function hideExtraOptions(name, option) {
+
+  const allFiles = document.querySelectorAll(`td[data-type='file']`);           // avoid click on files
   allFiles.forEach(file => {
     file.parentNode.children[0].children[1].style.pointerEvents = 'none';
   });
-  e.target.children[0].setAttribute('disabled', '');
-  document.querySelector(`tr[data-file='${name}'] td a`).style.pointerEvents = 'none';
-  changeStylesWhenCopyOrMove();
+  document.querySelector(`tr[data-file='${name}'] td a`).style.pointerEvents = 'none';    // avoid click on folder if is selected
+  searchBar.setAttribute('disabled', '');
+  createModalBtn.setAttribute('disabled', '');    // disable general functions
+  createModalBtn.style.cursor = 'default';
+  createModalBtn.style.pointerEvents = 'none';
+  uploadBtn.style.pointerEvents = 'none';
+  uploadBtn.style.cursor = 'default';
   openTrash.style.visibility = 'hidden';
   emptyAll.style.visibility = 'hidden';
-  moveFunction.forEach(node => {
+
+  renameFunction.forEach(node => {          // disable specific functions
     node.style.visibility = 'hidden';
   });
-  document.querySelector(`#searchBar`).setAttribute('disabled', '');
-  document.querySelector(`#openCreateModal`).setAttribute('disabled', '');
-  document.querySelector(`#openCreateModal`).style.cursor = 'default';
-  document.querySelector(`#openCreateModal`).style.pointerEvents = 'none';
-  document.querySelector(`#uploadForm label`).style.pointerEvents = 'none';
-  document.querySelector(`#uploadForm label`).style.cursor = 'default';
+  deleteFunction.forEach(node => {
+    node.style.visibility = 'hidden';
+  });
+  unzipFunction.forEach(node => {
+    node.style.visibility = 'hidden';
+  });
+
+  if (option === 'move')
+    moveFunction.forEach(node => {
+      node.style.visibility = 'hidden';
+    });
+  else
+    copyFunction.forEach(node => {
+      node.style.visibility = 'hidden';
+    });
 }
+
+// CANCEL COPY OR MOVE
 
 document.onkeydown = function (evt) {
   evt = evt || window.event;
@@ -102,9 +112,9 @@ function restartPaste() {
   document.querySelectorAll('tr[data-file] [data-change]').forEach(el => {
     el.style.opacity = 1;
   });
-  document.querySelectorAll('[data-no-paste]').forEach(el => {
-    el.removeAttribute('data-no-paste');
-  });
+  /*   document.querySelectorAll('[data-no-paste]').forEach(el => {
+      el.removeAttribute('data-no-paste');
+    }); */
   openTrash.style.visibility = 'visible';
   emptyAll.style.visibility = 'visible';
   pasteBtn.style.display = 'none';
@@ -113,22 +123,11 @@ function restartPaste() {
   allFiles.forEach(file => {
     file.parentNode.children[0].children[1].style.pointerEvents = 'inherit';
   });
+
   document.querySelector(`#searchBar`).removeAttribute('disabled');
   document.querySelector(`#openCreateModal`).removeAttribute('disabled');
   document.querySelector(`#openCreateModal`).style.cursor = 'pointer';
   document.querySelector(`#openCreateModal`).style.pointerEvents = 'inherit';
   document.querySelector(`#uploadForm label`).style.pointerEvents = 'inherit';
   document.querySelector(`#uploadForm label`).style.cursor = 'pointer';
-}
-
-function changeStylesWhenCopyOrMove() {
-  renameFunction.forEach(node => {
-    node.style.visibility = 'hidden';
-  });
-  deleteFunction.forEach(node => {
-    node.style.visibility = 'hidden';
-  });
-  unzipFunction.forEach(node => {
-    node.style.visibility = 'hidden';
-  });
 }

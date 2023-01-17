@@ -26,15 +26,13 @@ class Utils
 
   public static function getFileExtension($fileName)
   {
-    $filetmp = (explode('.', $fileName));
+    return pathinfo($fileName, PATHINFO_EXTENSION);
+  }
 
-    if (count($filetmp) === 1)
-      return null;
-
-    if (is_numeric(end($filetmp)))
-      return null;
-    else
-      return strtolower(end($filetmp));
+  public static function getNameFile($path)
+  {
+    $array = explode('/', $path);
+    return array_pop($array);
   }
 
   public static function formatSize($size, $precision = 2)
@@ -134,32 +132,78 @@ class Utils
     return true;
   }
 
-  public static function move_files($dir)
+  public static function moveFiles($old, $new)
   {
-    $array = explode('/', $dir);
-    $finalDir = './trash/' . $array[count($array) - 1];
-    mkdir($finalDir);
-
-    foreach (glob($dir . '/*') as $file) {
-      if (is_dir($file))
-        move_files($file);
-      else {
-        $array = explode('/', $file);
-        $newPathFile = $finalDir . '/' . $array[count($array) - 1];
-        rename($file, $newPathFile);
-      }
+    if (file_exists($old) && ((!file_exists($new)) || is_writable($new))) {
+      rename($old, rtrim($new, '.'));
     }
-    rmdir($dir);
   }
 
-  public static function delete_files($dir)
+  public static function copyFilesRecursively($old, $new)
+  {
+    echo "Nombre . " . $new . '<br>'; 
+    mkdir(rtrim($new, '.'), 0777);
+    foreach ($iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($old, \RecursiveDirectoryIterator::SKIP_DOTS), \RecursiveIteratorIterator::SELF_FIRST) as $item) {
+      if ($item->isDir()) {
+        mkdir($new . DIRECTORY_SEPARATOR . $iterator->getSubPathname());
+      } else {
+        copy($item, $new . DIRECTORY_SEPARATOR . $iterator->getSubPathname());
+      }
+    }
+  }
+
+  public static function deleteAll($dir)
   {
     foreach (glob($dir . '/*') as $file) {
       if (is_dir($file))
-        delete_files($file);
+        self::deleteAll($file);
       else
         unlink($file);
     }
     rmdir($dir);
+  }
+
+  public static function getDirContents($dir, &$results = array())
+  {
+    $files = scandir($dir);
+
+    foreach ($files as $key => $value) {
+      $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+      if (!is_dir($path)) {
+        $results[] = $path;
+      } else if ($value != "." && $value != "..") {
+        getDirContents($path, $results);
+        $results[] = $path;
+      }
+    }
+    return $results;
+  }
+
+  public static function changeFileRoute($newPath, $oldPath)
+  {
+    $array = explode('/', $oldPath);
+    return $newPath . $array[count($array) - 1];
+  }
+
+  public static function chooseName($path, $name)
+  {
+    $actual_name = pathinfo($name, PATHINFO_FILENAME);
+    $original_name = $actual_name;
+    $extension = pathinfo($name, PATHINFO_EXTENSION);
+    $array = explode('/', $path);
+    array_pop($array);
+    $path = implode('/', $array);
+    $i = 1;
+    while (file_exists($path . '/' . $actual_name . "." . $extension)) {
+      $actual_name = (string) $original_name . " ($i)";
+      $name = $actual_name . "." . $extension;
+      $i++;
+    }
+    return $name;
+  }
+
+  public static function getFilePermissions($file)
+  {
+    return substr(sprintf('%o', fileperms($file)), -4);
   }
 }

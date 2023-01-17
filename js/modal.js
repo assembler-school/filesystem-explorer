@@ -48,7 +48,6 @@ function renameFileModal(e) {
       finalName = name;
     }
     let ext = array.pop();
-    console.log(ext);
     if (isNaN(ext)) {
       array.forEach((pos, index) => {
         if (index > 0) finalName += '.' + pos;

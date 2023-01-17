@@ -4,73 +4,7 @@ function uploadFile() {
   document.getElementById('uploadForm').submit();
 }
 
-// CREATE /////////////////////////////////////////////////////////////////////////////
-
-/* function createFile(e) {
-  e.preventDefault();
-  const newType = fileType.value;
-  const completeFile = nameCreated.value + fileType.value;  //Nuevo documento de texto.txt
-  const fileNameHref = completeFile.replace(' ', '%20');
-  const createData = new FormData();
-  createData.append('name', completeFile)
-  createData.append('type', newType)
-
-  fetch("./create.php", {
-    'method': 'POST',
-    'body': createData,
-  })
-    .then(res => res.json())
-    .then(res => {
-      console.log(res);
-      const tbody = document.querySelector('#tbody');
-      if (newType === '.txt') {
-        tbody.innerHTML += `<tr data-file='${completeFile}'><td class="p-3"><img src='./assets/txt.png' class='icon me-2' 
-        alt='txt' data-change/><a class="link text-white" href="open.php?name=${fileNameHref}" data-change>${completeFile}</a></td>
-        <td class="p-3"><p data-change></p></td><td class="p-3"><p data-change></p></td><td class="p-3" data-file="${completeFile}" 
-        data-type="file"><button type="button" class="border border-0 bg-transparent me-1" data-bs-toggle="modal" data-bs-target="#renameModal"
-        onclick="renameFileModal(event);" id="renameFunction" style="visibility:visible"><i class="bi bi-pencil text-white" data-change></i>
-        </button><form onsubmit="copyFile(event);" id="copyFunction" style="visibility:visible"><button type="submit" class="border border-0 bg-transparent me-1">
-        <i class="bi bi-clipboard text-white" id="copyIcon" data-change></i></button></form><form onsubmit="moveFile(event)" id="moveFunction" 
-        style="visibility: visible"><button type="submit" class="border border-0 bg-transparent me-1"><i class="bi bi-scissors text-white" id="moveIcon" data-change></i>
-        </button></form><form style="visibility: hidden" class="me-2"><button type="submit" class="border border-0 bg-transparent me-1">
-        <i class="bi bi-file-earmark-zip text-white me-2" data-change></i></button></form><button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
-        onclick="deleteFileModal(event);" id="deleteFunction" style="visibility:visible"><i class="bi bi-x-lg text-white" data-change></i>
-        </button></td></tr>`;
-      } else {
-        let first = document.querySelector('tr');
-        if (first.hasAttribute('data-file')) {
-          first.insertAdjacentHTML('beforebegin', `<tr data-file='${completeFile}'><td class="p-3"><img src='./assets/dir.png' class='icon me-2' 
-        alt='txt' data-change/><a class="link text-white" href="?p=${fileNameHref}" data-change>${completeFile}</a></td>
-        <td class="p-3"><p data-change></p></td><td class="p-3"><p data-change></p></td><td class="p-3" data-file="${completeFile}" 
-        data-type="file"><button type="button" class="border border-0 bg-transparent me-1" data-bs-toggle="modal" data-bs-target="#renameModal"
-        onclick="renameFileModal(event);" id="renameFunction" style="visibility:visible"><i class="bi bi-pencil text-white" data-change></i>
-        </button><form onsubmit="copyFile(event);" id="copyFunction" style="visibility:visible"><button type="submit" class="border border-0 bg-transparent me-1">
-        <i class="bi bi-clipboard text-white" id="copyIcon" data-change></i></button></form><form onsubmit="moveFile(event)" id="moveFunction" 
-        style="visibility: visible"><button type="submit" class="border border-0 bg-transparent me-1"><i class="bi bi-scissors text-white" id="moveIcon" data-change></i>
-        </button></form><form style="visibility: hidden" class="me-2"><button type="submit" class="border border-0 bg-transparent me-1">
-        <i class="bi bi-file-earmark-zip text-white me-2" data-change></i></button></form><button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
-        onclick="deleteFileModal(event);" id="deleteFunction" style="visibility:visible"><i class="bi bi-x-lg text-white" data-change></i>
-        </button></td></tr>`);
-        } else {
-          document.querySelector('#tbody').innerHTML = '';
-          document.querySelector('#tbody').insertAdjacentHTML('beforeend', `<tr data-file='${completeFile}'><td class="p-3"><img src='./assets/dir.png' class='icon me-2' 
-        alt='txt' data-change/><a class="link text-white" href="?p=${fileNameHref}" data-change>${completeFile}</a></td>
-        <td class="p-3"><p data-change></p></td><td class="p-3"><p data-change></p></td><td class="p-3" data-file="${completeFile}" 
-        data-type="file"><button type="button" class="border border-0 bg-transparent me-1" data-bs-toggle="modal" data-bs-target="#renameModal"
-        onclick="renameFileModal(event);" id="renameFunction" style="visibility:visible"><i class="bi bi-pencil text-white" data-change></i>
-        </button><form onsubmit="copyFile(event);" id="copyFunction" style="visibility:visible"><button type="submit" class="border border-0 bg-transparent me-1">
-        <i class="bi bi-clipboard text-white" id="copyIcon" data-change></i></button></form><form onsubmit="moveFile(event)" id="moveFunction" 
-        style="visibility: visible"><button type="submit" class="border border-0 bg-transparent me-1"><i class="bi bi-scissors text-white" id="moveIcon" data-change></i>
-        </button></form><form style="visibility: hidden" class="me-2"><button type="submit" class="border border-0 bg-transparent me-1">
-        <i class="bi bi-file-earmark-zip text-white me-2" data-change></i></button></form><button type="button" class="border border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#deleteModal"
-        onclick="deleteFileModal(event);" id="deleteFunction" style="visibility:visible"><i class="bi bi-x-lg text-white" data-change></i>
-        </button></td></tr>`);
-        }
-      }
-    });
-} */
-
-// DELETE /////////////////////////////////////////////////////////////////////////////
+// DELETE ALL AND TRASH ///////////////////////////////////////////////////////////////
 
 function deleteAll(e, element) {
   e.preventDefault();
@@ -116,9 +50,9 @@ function deleteAll(e, element) {
         custom_alert('The trash is empty', 'warning');
       }
     })
-    .catch(function (error) {
-      custom_alert("Can't connect to backend, try latter", 'danger');
-      console.log(error);
+    .catch(function (err) {
+      console.error(err);
+      custom_alert(`Can't connect to backend!`, 'danger');
     });
 }
 
@@ -152,9 +86,8 @@ function deleteFile(e, fileName) {
       }
       custom_alert('File deleted succesfully!', 'success');
     })
-    .catch(function (error) {
-      console.log(error);
-      custom_alert("Can't connect to backend, try latter", 'danger');
+    .catch(function (err) {
+      custom_alert(`Can't connect to backend!`, 'danger');
     });
 }
 
@@ -192,10 +125,9 @@ function searchFile(e) {
           node.style.display = 'revert';
         }
       });
-
     })
-    .catch(function () {
-      custom_alert("Can't connect to backend, try latter", 'danger');
+    .catch(function (err) {
+      custom_alert(`Can't connect to backend!`, 'danger');
     });
 
   function arrayRemove(arr, value) {
@@ -246,9 +178,8 @@ function advancedSearch(e) {
           });
       });
     })
-    .catch(function (error) {
-      console.log(error);
-      custom_alert("Can't connect to backend, try latter", 'danger');
+    .catch(function (err) {
+      custom_alert(`Can't connect to backend!`, 'danger');
     });
 
 }
@@ -260,8 +191,6 @@ function renameFile(e) {
   const newName = rename.value;
   const oldName = document.querySelector("#renameTitle").getAttribute("data-file");
   const file = new FormData();
-  console.log('Nuevo: ' + newName);
-  console.log('Viejo: ' + oldName);
   file.append("newName", newName);
   file.append("oldName", oldName);
   const config = {
@@ -271,42 +200,27 @@ function renameFile(e) {
 
   fetch("./rename.php", config)
     .then(res => res.json())
-    .then(res => {
-      console.log(res);
-      if (res.type === 'dir') {
-        const modify = document.querySelector(`tr[data-file='${oldName}']`);
-        modify.removeAttribute("data-file");
-        const link = modify.children[0].children[1];
-        modify.setAttribute("data-file", res.name);
-        link.textContent = res.name;
-        let href = link.href.split("=")[0];
-        href += `=${res.name}`;
-        href = href.replace(' ', '%20');
-        link.href = href;
-      } else {
-        let completeName = '';
-        if (res.ext)
-          completeName = res.name + "." + res.ext;
-        else
-          completeName = res.name;
-        const modify = document.querySelector(`tr[data-file='${oldName}']`);
-        modify.removeAttribute("data-file");
-        const link = modify.children[0].children[1];
-        modify.setAttribute("data-file", completeName);
-        link.textContent = completeName;
-        let href = link.href.split("=")[0];
-        href += `=${completeName}`;
-        href = href.replace(' ', '%20');
-        link.href = href;
-      }
+    .then(async res => {
+      const name = res;
+      changeName(oldName, name);
       custom_alert("The name has been changed successfully", "success");
-    }) /* else {
-        custom_alert("Can´t rename the file", 'danger');
-      } */
-    .catch(function (error) {
-      console.log(error);
-      custom_alert("Can't connect to backend, try latter", 'danger');
+    })
+    .catch(function (err) {
+      console.error(err);
+      custom_alert(`Can't connect to backend!`, 'danger');
     });
+
+  function changeName(oldName, newName) {
+    const modify = document.querySelector(`tr[data-file='${oldName}']`);
+    modify.removeAttribute("data-file");
+    modify.setAttribute("data-file", newName);
+    const link = modify.children[0].children[1];
+    link.textContent = newName;
+    let href = link.href.split("=")[0];
+    href += `=${newName}`;
+    href = href.replace(' ', '%20');
+    link.href = href;
+  }
 }
 
 // MOVE ///////////////////////////////////////////////////////////////////////////////////////
@@ -314,13 +228,9 @@ function renameFile(e) {
 function copyFile(e) {
   e.preventDefault();
   const fileName = e.target.parentNode.getAttribute("data-file");
-  //const fileType = e.target.parentNode.getAttribute("data-type");
-
   const file = new FormData();
   file.append('name', fileName);
   file.append('action', 'copy');
-  //file.append('type', fileType);
-
   const config = {
     'method': 'POST',
     'body': file,
@@ -331,9 +241,8 @@ function copyFile(e) {
     .then(res => {
       addCopyAction(e);
     })
-    .catch(function (error) {
-      console.log(error);
-      custom_alert("Can't connect to backend, try latter", 'danger');
+    .catch(function (err) {
+      custom_alert(`Can't connect to backend!`, 'danger');
     });
 }
 
@@ -351,11 +260,11 @@ function moveFile(e) {
   fetch("./copy_path.php", config)
     .then(res => res.json())
     .then(res => {
-      addMoveAction(fileName, e);
+      addMoveAction(e);
     })
-    .catch(function (error) {
-      console.log(error);
-      custom_alert("Can't connect to backend, try latter", 'danger');
+    .catch(function (err) {
+      console.error(err);
+      custom_alert(`Can't connect to backend!`, 'danger');
     });
 }
 
