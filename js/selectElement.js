@@ -9,7 +9,6 @@ const modifiedInfo = document.getElementById("modifiedInfo");
 const arrowLeft = document.querySelector("#arrowLeft");
 const sizeInfo = document.getElementById("sizeInfo");
 const pathInfo = document.getElementById("pathInfo");
-let avoidRechargeFirstList = false;
 const deleteFile = document.querySelector("#deleteFile");
 const folderTrash = document.querySelector("#folderTrash");
 let dataPath = "";
@@ -18,13 +17,9 @@ let secondList = "";
 let lastList = "";
 let firstListOld = "";
 let secondListOld = "";
-let firstListOld = "";
 let oldDataPath = "a";
 let modificationOnly;
-let secondList = "";
 let selectedElement;
-let firstList = "";
-let dataPath = "";
 let typeDocument;
 let sizeOnly;
 
@@ -34,37 +29,9 @@ arrowLeft.addEventListener("click", goBackDirectory);
 ul.addEventListener("click", getTextValueAndPadre);
 ul.addEventListener("click", selectElementFirst);
 ul.addEventListener("click", showOnlyFile);
-folderTrash.addEventListener("click", printFilesTrash);
 
 
-function printFilesTrash() {
-    filesListSecondChild.textContent = "";
 
-    fetch("modules/printFilesTrash.php" ,{
-        method: "GET",
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            data.forEach(element =>
-                filesListSecondChild.innerHTML += element);
-        })
-        .catch((err) => console.log("Request failed: ", err));
-}
-
-function moveFilesTrash() {
-    deleteFile.removeEventListener("click", moveFilesTrash);
-    let dataPathWithoutSlash = dataPath.substring(0, dataPath.length - 1);
-    console.log(dataPathWithoutSlash);
-    fetch("modules/moveFilesTrash.php" + "?" + "dataPath=" + dataPathWithoutSlash, {
-        method: "GET",
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-            lastList.remove();
-        })
-        .catch((err) => console.log("Request failed: ", err));
-}
 
 function putOffSelectElementColorFirst() {
     if (firstListOld != "") {
@@ -94,6 +61,7 @@ function selectElementFirst(event) {
         if (oldDataPath != dataPath) {
             printFolderTitleName(parentNode);
         }
+        deleteFile.addEventListener("click", moveFilesTrash);
     } else if (currentNode.classList.contains("first-list")) {
         firstList = currentNode;
         firstList.style.backgroundColor = "yellow";
@@ -103,11 +71,12 @@ function selectElementFirst(event) {
         if (oldDataPath != dataPath) {
             printFolderTitleName(currentNode);
         }
+        deleteFile.addEventListener("click", moveFilesTrash);
     }
     if (typeDocument == "folder") {
         if (oldDataPath != dataPath) {
-        sizeListSecondChild.innerHTML = "";
-        modificationListSecondChild.innerHTML = "";
+            sizeListSecondChild.innerHTML = "";
+            modificationListSecondChild.innerHTML = "";
             printFilesSecondChild();
         }
     } else if (typeDocument == "file") {
@@ -117,8 +86,7 @@ function selectElementFirst(event) {
         window.addEventListener("click", putOffSelectElementColorFirst);
     }
     levelDirectory = (dataPath.match(/\//g) || []).length;
-    console.log(dataPath)
-    console.log(levelDirectory)
+    lastList = firstList;
 }
 
 function selectElementSecond(event) {
@@ -153,6 +121,7 @@ function selectElementSecond(event) {
     if (firstListOld != "") {
         window.addEventListener("click", putOffSelectElementColorFirst);
     }
+    
     levelDirectory = (dataPath.match(/\//g) || []).length;
     console.log(dataPath)
     console.log(levelDirectory)

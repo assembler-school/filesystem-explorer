@@ -10,6 +10,7 @@
         <script src="js/showMedia.js?v=<?php echo time(); ?>" defer></script>
         <script src="js/uploadFile.js?v=<?php echo time(); ?>" defer></script>
         <script src="js/selectElement.js?v=<?php echo time(); ?>" defer></script>
+        <script src="js/trash.js?v=<?php echo time(); ?>" defer></script>
         <link rel="stylesheet" href="./css/style.css?v=<?php echo time(); ?>" type="text/css">
     </head>
     <body>
