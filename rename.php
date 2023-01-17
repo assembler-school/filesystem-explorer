@@ -25,4 +25,4 @@ if (is_dir($oldPath)) {
   $finalName = Utils::chooseName($newPath, $newName);
   $finalPath = $_SESSION['absolutePath'] . "/" . $finalName;
   rename($oldPath, rtrim($finalPath, '.'));
-  echo json_encode(rtrim($finalPath, '.'));
+  echo json_encode(rtrim($finalName, '.'));
