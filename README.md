@@ -30,6 +30,11 @@ _Final Page_
 
 <img width="1319" alt="Captura de pantalla 2023-01-17 a las 23 12 05" src="https://user-images.githubusercontent.com/115942758/213032659-ed9a4e8b-37f7-47a7-9ab9-7a7e5a28e404.png">
 
+_Final Page with opened folder_
+
+<img width="1381" alt="Captura de pantalla 2023-01-17 a las 23 30 34" src="https://user-images.githubusercontent.com/115942758/213035158-1c75a8f6-d4d5-42a1-8572-1900bf4e6fea.png">
+
+
 **Comparison of the original design (Wireframe) with the final result of the project**
 
 As you can see, during the work we have modificated the page for better UX and UI design:
