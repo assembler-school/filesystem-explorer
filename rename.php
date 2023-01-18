@@ -1,5 +1,5 @@
 <?php
-require_once("./utils.php");
+require_once("utils/utils.php");
 session_start();
 $newName = $_POST["newName"];
 $oldName = $_POST["oldName"];

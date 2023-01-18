@@ -1,5 +1,5 @@
 <?php
-require_once('./utils.php');
+require_once('utils/utils.php');
 session_start();
 if (count($_SESSION['moves']) > 0) {
   foreach ($_SESSION['moves'] as $key => $move) {

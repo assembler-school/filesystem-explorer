@@ -1,5 +1,5 @@
 <?php
-require_once('./utils.php');
+require_once('utils/utils.php');
 $search = $_POST['search'];
 $root = './root';
 

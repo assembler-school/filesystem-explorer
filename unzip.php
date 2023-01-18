@@ -1,5 +1,5 @@
 <?php
-require_once('./utils.php');
+require_once('utils/utils.php');
 require_once('./js/alert.js');
 session_start();
 define("ROOT", "./root");

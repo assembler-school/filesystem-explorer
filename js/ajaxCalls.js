@@ -119,7 +119,7 @@ function advancedSearch(e) {
   searchData.append('search', searchValue);
   const fileExtensionsAllowed = ['jpg', 'png', 'txt', 'docx', 'csv', 'ppt', 'odt', 'pdf', 'zip', 'rar', 'exe', 'svg', 'mp3', 'mp4', '0'];
 
-  fetch("./advancedSearch.php", { 'method': 'POST', 'body': searchData })
+  fetch("advancedSearch.php", { 'method': 'POST', 'body': searchData })
     .then(res => res.json())
     .then(resultFiles => {
       const tbody = document.querySelector('#tbody');

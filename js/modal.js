@@ -35,11 +35,11 @@ function renameFileModal(e) {
   let name = '';
   let type = '';
   if (e.target.tagName == 'I') {
+    name = e.target.parentNode.parentNode.parentNode.getAttribute('data-file');
+    type = e.target.parentNode.parentNode.parentNode.getAttribute('data-type');
+  } else {
     name = e.target.parentNode.parentNode.getAttribute('data-file');
     type = e.target.parentNode.parentNode.getAttribute('data-type');
-  } else {
-    name = e.target.parentNode.getAttribute('data-file');
-    type = e.target.parentNode.getAttribute('data-type');
   }
   let finalName = '';
   if (type === 'file') {

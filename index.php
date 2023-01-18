@@ -1,6 +1,6 @@
 <?php
-require_once('./appLoad.php');
-require_once('./utils.php');
+require_once('templates/load.php');
+require_once('utils/utils.php');
 session_start();
 
 if (!file_exists(SESSION)) {
@@ -11,7 +11,7 @@ if (!file_exists(SESSION)) {
 $contents = file_get_contents(SESSION);
 session_decode($contents);
 
-$folderPath = './root';
+$folderPath = ROOT;
 if (isset($_REQUEST['p']) && strlen($_REQUEST['p']) > 0) {
   $_SESSION['relativePath'] = $_REQUEST['p'];
   $_SESSION['absolutePath'] = $folderPath . '/' . $_REQUEST['p'];
@@ -29,7 +29,7 @@ if (!isset($_SESSION['moves'])) {
 Utils::saveSession(SESSION);
 
 ?>
-<?php include('./header.php') ?>
+<?php include('templates/header.php') ?>
 
 <body>
   <header>
@@ -310,7 +310,7 @@ Utils::saveSession(SESSION);
     </div>
   </div>
 
-  <?php include('./footer.php');
+  <?php include('templates/footer.php');
 
   if (isset($_SESSION['relativePath'])) {
     $returnPath = $_SESSION['relativePath'];

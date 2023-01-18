@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once './utils.php';
+require_once 'utils/utils.php';
 $type = $_GET['el'];
 
 if ($type === 'folder') {

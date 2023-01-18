@@ -22,17 +22,8 @@ if ($fileSize > 4000000) {
 
 if (empty($errors)) {
   $didUpload = move_uploaded_file($fileTmpName, $uploadDirectory);
+}
 
-  /*   if ($didUpload) {
-  echo "The file " . basename($fileName) . " has been uploaded";
-  } else {
-  echo "An error occurred. Please contact the administrator.";
-  } */
-} /*  else {
- foreach ($errors as $error) {
- echo $error . "These are the errors" . "\n";
- }
- } */
 
 if (isset($_SESSION['relativePath'])) {
   $returnPath = $_SESSION['relativePath'];

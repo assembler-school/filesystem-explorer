@@ -1,5 +1,5 @@
 <?php
-require_once('./utils.php');
+require_once('utils/utils.php');
 session_start();
 $currentPath = $_SESSION['absolutePath'];
 

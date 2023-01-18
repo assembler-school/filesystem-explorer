@@ -1,7 +1,7 @@
 <?php
 session_start();
 define("ROOT", "./root");
-require_once('./utils.php');
+require_once('utils/utils.php');
 
 if (isset($_GET['search'])) {
   $absolutePath = $_GET['path'];
@@ -13,7 +13,7 @@ if (isset($_GET['search'])) {
 }
 $GLOBALS['fileExtensionsAllowed'] = ['jpg', 'png', 'txt', 'docx', 'csv', 'ppt', 'odt', 'pdf', 'zip', 'rar', 'exe', 'svg', 'mp3', 'mp4'];
 
-include('./header.php');
+include('templates/header.php');
 ?>
 
 <body>
@@ -30,13 +30,13 @@ include('./header.php');
   <article class="container-fluid mt-3">
     <?php
     if (isset($_GET['search'])) {
-      openFile('./root/' . $absolutePath, $fileName);
+      openFile(ROOT . '/' . $absolutePath, $fileName);
     } else {
       openFile($absolutePath . '/' . $fileName, $fileName);
     }
     ?>
   </article>
-  <?php include('./footer.php') ?>
+  <?php include('templates/footer.php') ?>
   <?php
 
 

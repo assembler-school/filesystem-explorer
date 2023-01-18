@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once('./utils.php');
+require_once('utils/utils.php');
 $absolutePath = $_SESSION['absolutePath'];
 $fileName = $_POST['fileName'];
 $oldPath = $absolutePath . '/' . $fileName;
