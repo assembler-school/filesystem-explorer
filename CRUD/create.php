@@ -18,18 +18,17 @@ if(!isset($_SESSION)){
   if (isset($_POST["enviar"])){
     // $root = 'root';
     $nameFolder = $_POST["name-folder"];
-    $directorio = $_SESSION["altPath"] . '/' . $nameFolder ;
-    $rutaAbsoluta = $_SESSION["absPath"] . '/' . $nameFolder .'/';
-    $rutaAlternativa = $rutaAbsoluta . '/' . $nameFolder;
-    // $directorio2 = $_SESSION["altPath"] . '/' . $nameFolder;
+    $dir = $_SESSION["altPath"] . '/' . $nameFolder ;
+    $absRoute = $_SESSION["absPath"] . '/' . $nameFolder .'/';
+    $altRoute = $absRoute . '/' . $nameFolder;
   
-    if(!is_dir($directorio)){
-        $crear = mkdir($rutaAbsoluta,0777);
-        if($crear){
-            echo "Directorio $directorio creado correctamente";
+    if(!is_dir($dir)){
+        $crate = mkdir($absRoute,0777);
+        if($crate){
+            echo "Directorio $dir creado correctamente";
             header('Location: index.php'); 
         }else{
-            echo "Ha ocurrido un error al crear el directorio";
+            echo "Ha ocurrido un error al crear el dir";
         }
     }
 

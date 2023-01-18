@@ -5,14 +5,11 @@ if(!isset($_SESSION)){
 
 $absPath = $_SESSION["absPath"];
 
-    if (isset($_POST["btn-edit"])) {
-        $newNameFolder = $_POST["edit"];
-        $rutaAbsoluta = $_SESSION["absPath"];
-        $directorio = $_SESSION["altPath"] ;
+if (isset($_POST["btn-edit"])) {
+    $newNameFolder = $_POST["edit"];
+    $absRoot = $_SESSION["absPath"];
+    $dir = $_SESSION["altPath"];
 
-        rename($rutaAbsoluta, './root/'.$newNameFolder);
-    }
-
-
-
+    rename($absRoot, './root/' . $newNameFolder);
+}
 ?>
