@@ -21,9 +21,9 @@ function nameFolder(e){
 
 function createNewFolder() {
 
-    fetch("check-request.php")
-        .then(response => response.json())
-        .then(data => nombre = data)
+    // fetch("check-request.php")
+    //     .then(response => response.json())
+    //     .then(data => nombre = data)
 
     let folderName = folderNameToCreate.value;
 

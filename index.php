@@ -38,9 +38,11 @@
 <body>
 <table class="table caption-top align-middle">
 <button class="btn btn-outline-secondary"><a class="home" href="./index.php">Files & Folders</a></button>
+
 <ul id="searchResults">
 
 </ul>
+
   <thead>
     <tr>
       <th scope="col">Extension</th>
@@ -58,7 +60,6 @@
     require_once("check-request.php");
 
     function displayDirectories($folder){
-
 
       foreach (glob("$folder/*") as $dir) {
   
@@ -121,9 +122,9 @@
             case "txt":
               $extensionIcon = "extensions/txt.png";
               break;
-              case "png":
-                $extensionIcon = "extensions/png.png";
-                break;
+            case "png":
+              $extensionIcon = "extensions/png.png";
+              break;
           }
 
           $size = filesize($dir);

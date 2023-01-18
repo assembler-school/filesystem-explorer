@@ -1,10 +1,4 @@
-`#html` `#css` `#js` `#php` `#master-in-software-development`
-
 # PHP Local FileSystem explorer <!-- omit in toc -->
-
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
-</p>
 
 >In this project you will have to create a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system. 
 
@@ -34,13 +28,6 @@
 - You should try as much as possible that the commits and the planned tasks are the same
 Delete files that are not used or are not necessary to evaluate the project
 
-## Repository
-
-First of all you must fork this project into your GitHub account.
-
-To create a fork on GitHub is as easy as clicking the “fork” button on the repository page.
-
-<img src="https://docs.github.com/assets/cb-23088/images/help/repository/fork_button.png" alt="Fork on GitHub" width='450'>
 
 ## Technologies used
 
