@@ -5,11 +5,6 @@ if(!isset($_SESSION)) {
 }
 
 $completeRoot = $_SESSION["absPath"];
-// $newFolder = $_SESSION["altPath"];
-// if (isset($_SESSION) && isset($_REQUEST["route"])) {
-//     $newFolder = $_REQUEST["route"];
-// }
-
 
 $root = "root";
 $complete_route = "";
@@ -56,12 +51,10 @@ $complete_route = "";
             while (($file = readdir($manager)) !== false) {
                 
             $complete_route  = $root . "/" . $file ;
-            echo($root );
                 if ($file != "." && $file != "..") {
                     if (is_dir($root)) {
                         echo "<li class='nameFolder'><a href='?route=$complete_route'>" . $file . "</a></li>";
-                    
-                        
+                        // readfile($file);
                     } else {
                         echo "<li class='nameFolder'><a href='?route=$complete_route'>" . $file . "</a></li>";
                     }

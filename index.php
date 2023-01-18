@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once( "./CRUD/create.php");
 require_once( "./CRUD/upload.php");
@@ -15,6 +16,8 @@ if(isset($_REQUEST['route'])){
 }else{
     $_SESSION["altPath"] = '';
     $_SESSION["absPath"] = "root";
+
+    
 }
 $absolutePath = $_SESSION["absPath"];
 

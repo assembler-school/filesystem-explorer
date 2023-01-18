@@ -1,9 +1,12 @@
 <?php
+// if(!isset($_SESSION)) {
+//     session_start();
+// }
+
 
 // $file = $_SESSION["absPath"];
 
-// $path = $_SESSION["absPath"];
-            
+// echo $file;            
 //             if (is_dir($file)) {
 //                 rmdir($file);
 //                 echo ("Folder $file has been deleted.");
@@ -12,26 +15,29 @@
 //                 unlink($file);
 //                 echo ("File $file has been deleted.");
 //             }
-//             // echo json_encode("File delete succefully!");
+//             echo json_encode("File delete succefully!");
 
 
 
 
 $path = $_SESSION['absPath'];
-// array_map("unlink", glob($path));
 
-function delete($path){
 
+function deleteItem($path){
+    
     if(isset($_POST['delete'])){
         if (is_dir($path)){
-             rmdir($path);
+            array_map("rmdir", glob("$path/"));
+            rmdir($path);
         }
         else{
-             unlink($path);
+            array_map("unlink", glob("$path/"));
+            unlink($path);
         }
     }
 }
-delete($path);
+deleteItem($path);
+
 
 
 
