@@ -20,7 +20,7 @@ function showFileInfo($file)
         echo '<p><b>Creation date: </b><br>' . date("F d Y H:i:s.", filectime($file)) . '</p>';
         echo '<p><b>Updating date: </b><br>' . date("F d Y H:i:s.", fileatime($file)) . '</p>';
     }
-    echo 'Extension: ' .  $extension = pathinfo($file, PATHINFO_EXTENSION);
+    echo 'Extension: ' .  $file = pathinfo($file, PATHINFO_EXTENSION);
 }
 
 $dir = $_SESSION['absPath'];
