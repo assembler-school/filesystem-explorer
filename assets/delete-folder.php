@@ -1,6 +1,20 @@
 <?php
-$nombreActual = $_GET["actualFolderName"];
+$nombreActual = $_GET["filePath"];
 
-rmdir("../root/$nombreActual");
+function deleteFolder($dirPath){
+
+$files = glob($dirPath . '/*');
+foreach ($files as $file) {
+    if (is_dir($file)) {
+        deleteDir($file);
+    } else {
+        unlink($file);
+    }
+}
+
+rmdir($dirPath);
+}
+
+deleteFolder('../root/'.$nombreActual);
 
 ?>

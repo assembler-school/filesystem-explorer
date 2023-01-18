@@ -170,6 +170,13 @@ cursor:pointer;
     margin-right:5px;
 }
 
+#name-folder{
+    background: #fff;
+    box-shadow: 0px 0px;
+    color: #a5a5a5;
+    float: right;
+}
+
 /* Upload File */
 .upload-file-pop-up{
 background: #fff;

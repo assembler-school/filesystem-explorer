@@ -94,7 +94,6 @@ function displayFolderIndex(data) {
 
 // Option Folders
 
-
 function createNewFolder(pathNewFolder) {
     let newName = prompt(`Assign a name to the new folder.`);
 
@@ -138,13 +137,23 @@ function modifyNameFolders(event) {
 
 function deleteFolders(event) {
     let actualFolderName = event.currentTarget.getAttribute('filePath');
-    const popUpDeleteConfirm = confirm(`Do you want delete "${actualFolderName}" folder?`);
+
+    let popUpDeleteConfirm;
+    if (actualFolderName.includes('Trash/') === true) {
+        popUpDeleteConfirm = confirm("This folder will delete permanently, are you sure to delete it?");
+    } else {
+        popUpDeleteConfirm = confirm(`Do you want delete "${actualFolderName}" folder?`);
+    }
 
     if (popUpDeleteConfirm) {
-        atrBasura = '../root/' + actualFolderName;
-        addTrash(atrBasura);
-
-        getInfoFolders();
+        if (actualFolderName.includes('Trash/') === true) {
+            deleteFolderTrash(actualFolderName);
+            createFilesTab('Trash');
+        }else{
+            atrBasura = '../root/' + actualFolderName;
+            addTrash(atrBasura); 
+            getInfoFolders();
+        }
     }
 }
 
@@ -368,57 +377,43 @@ function displayInsideFolder(folderName) {
     let backPath = pathFile.slice(0, indexPreviousFolder);
 
     const btnFiles = document.querySelector('.buttons-files');
+    const btnAddFolder = document.querySelector('#create-folder-inside');
 
     const backSpan = document.createElement('span');
     backSpan.textContent = '< Go back';
     backSpan.setAttribute('back-path', backPath);
     backSpan.id = 'btn-backpath';
 
+    let btnDeleteInsideFolder = document.createElement('span');
+    let iDeleteFolder = document.createElement('i');
+    iDeleteFolder.className = 'fa-solid fa-trash';
+    btnDeleteInsideFolder.id = 'delete-folder-inside';
+    btnDeleteInsideFolder.textContent = 'Delete Folder';
+    btnDeleteInsideFolder.setAttribute('filePath', pathFile);
+
     btnFiles.prepend(backSpan);
+
+    btnAddFolder.insertAdjacentElement('afterend', btnDeleteInsideFolder);
+    btnDeleteInsideFolder.prepend(iDeleteFolder);
 
     backSpan.addEventListener('click', () => {
         if (backPath.lastIndexOf("/") === -1) {
             while (backSpan.firstChild) {
                 backSpan.removeChild(backSpan.lastChild);
             }
+            while (btnDeleteInsideFolder.firstChild) {
+                btnDeleteInsideFolder.removeChild(btnDeleteInsideFolder.lastChild);
+            }
             createFilesTab(backPath);
         } else {
             displayInsideFolder(backPath);
         }
     });
+
+    btnDeleteInsideFolder.addEventListener('click', deleteFolders);
 }
 
 // Options files
-
-function hideOptionPopUp(option) {
-    switch (option) {
-        case 'delete':
-            btnDeleteFile.style.display = 'none';
-            break;
-        case 'move':
-            btnRelocateFile.style.display = 'none';
-            break;
-        case 'both':
-            btnRelocateFile.style.display = 'none';
-            btnDeleteFile.style.display = 'none';
-            break;
-    }
-}
-
-function showOptionPopUp(option) {
-    switch (option) {
-        case 'delete':
-            btnDeleteFile.style.display = 'initial';
-            break;
-        case 'move':
-            btnRelocateFile.style.display = 'initial';
-            break;
-        case 'both':
-            btnRelocateFile.style.display = 'initial';
-            btnDeleteFile.style.display = 'initial';
-            break;
-    }
-}
 
 function createButtonsFile(folderPath) {
     const h1Files = document.querySelector('#choose-folder-h1');
@@ -440,7 +435,11 @@ function createButtonsFile(folderPath) {
     iCreateFolder.className = 'fa-solid fa-plus';
     btnCreateFolder.id = 'create-folder-inside';
     btnCreateFolder.textContent = 'New Folder';
-    btnCreateFolder.setAttribute('folder-path', folderPath)
+    btnCreateFolder.setAttribute('folder-path', folderPath);
+
+    let spanNameFolder = document.createElement('span');
+    spanNameFolder.id = 'name-folder';
+    spanNameFolder.textContent = folderPath;
 
     divFiles.prepend(divOptionsFolder);
 
@@ -449,6 +448,8 @@ function createButtonsFile(folderPath) {
 
     divOptionsFolder.appendChild(btnCreateFolder);
     btnCreateFolder.prepend(iCreateFolder);
+
+    divOptionsFolder.appendChild(spanNameFolder);
 
     btnCreateFile.addEventListener('click', createPopUpUpload);
 }
@@ -511,7 +512,11 @@ function relocateFileTo(path) {
                 if (data.code === 200) {
                     document.querySelector('.move-btwn-folders').remove();
                     closePopUp();
-                    createFilesTab(data.redir);
+                    if (data.redir.match("/")) {
+                        displayInsideFolder(data.redir);
+                    } else {
+                        createFilesTab(data.redir);
+                    }
                 } else if (data.code === 500) {
                     alert(code.msg);
                 }
@@ -525,33 +530,79 @@ function relocateFileTo(path) {
 function deleteFile() {
     let basura = document.querySelector("#delete-file");
     let atrBasura = basura.getAttribute("filePath");
+
+    let popUpDeleteConfirm;
     if (atrBasura.includes('/Trash/') === true) {
-        const popUpDeleteConfirm = confirm("This file will delete permanently, are you sure to delete it?");
+        popUpDeleteConfirm = confirm("This file will delete permanently, are you sure to delete it?");
     } else {
-        const popUpDeleteConfirm = confirm("Do you want delete this file?");
+        popUpDeleteConfirm = confirm("Do you want delete this file?");
     }
 
     if (popUpDeleteConfirm) {
-        if (atrBasura.includes('/Trash/') === true) {
-            fetch("../assets/delete-file.php?filePath=" + atrBasura)
-                .then(response => {
-                    closePopUp();
-                    createFilesTab('Trash');
-                });
-        } else {
-            fetch("../assets/add-trash.php?filePath=" + atrBasura)
-                .then(response => {
-                    closePopUp();
-                    createFilesTab('Trash');
-                });
-        }
+        addTrash(atrBasura);
     }
+}
+
+function addTrash(atrBasura) {
+    if (atrBasura.includes('/Trash/') === true) {
+        fetch("../assets/delete-file.php?filePath=" + atrBasura)
+            .then(response => {
+                if (atrBasura.split('.').length > 3) {
+                    closePopUp();
+                }
+                createFilesTab('Trash');
+            });
+    } else {
+        fetch("../assets/add-trash.php?filePath=" + atrBasura)
+            .then(response => {
+                if (atrBasura.split('.').length > 3) {
+                    closePopUp();
+                }
+                createFilesTab('Trash');
+            });
+    }
+}
+
+function deleteFolderTrash(atrBasura){
+    fetch("../assets/delete-folder.php?filePath=" + atrBasura)
+    .then(response => response.json())
 }
 
 function openTrashFolder() {
     createFilesTab("Trash");
 }
 
+// Pop Up Options
+
+function hideOptionPopUp(option) {
+    switch (option) {
+        case 'delete':
+            btnDeleteFile.style.display = 'none';
+            break;
+        case 'move':
+            btnRelocateFile.style.display = 'none';
+            break;
+        case 'both':
+            btnRelocateFile.style.display = 'none';
+            btnDeleteFile.style.display = 'none';
+            break;
+    }
+}
+
+function showOptionPopUp(option) {
+    switch (option) {
+        case 'delete':
+            btnDeleteFile.style.display = 'initial';
+            break;
+        case 'move':
+            btnRelocateFile.style.display = 'initial';
+            break;
+        case 'both':
+            btnRelocateFile.style.display = 'initial';
+            btnDeleteFile.style.display = 'initial';
+            break;
+    }
+}
 
 // Create Pop up Files
 
