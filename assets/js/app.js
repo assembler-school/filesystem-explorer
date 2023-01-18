@@ -683,10 +683,11 @@ function createPopUpUpload(event) {
 
                     closePopUp();
 
-                    if (pathFile.match("/")) {
-                        if (pathFile.match("/")) {
+                        if (pathFile.includes("/")) {
+                            console.log('subido')
                             displayInsideFolder(pathFile);
                         } else {
+                            console.log('subido carpeta')
                             createFilesTab(pathFile);
                         }
 
@@ -694,7 +695,6 @@ function createPopUpUpload(event) {
                     } else {
                         alert(info.msg);
                     }
-                }
             });
     });
 
