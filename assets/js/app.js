@@ -19,8 +19,23 @@ function getInfoFolders() {
     fetch('../assets/display-folders.php')
         .then(response => response.json())
         .then(data => displayFolderIndex(data));
+
+    let h1Files = document.createElement('h1');
+    h1Files.textContent = 'Welcome! Please choose a folder😁🖼️';
+    h1Files.id = 'choose-folder-h1';
+    
+    divFiles.prepend(h1Files);
 }
 
+function resetMainFolderTab(){
+    while (divFolders.firstChild) {
+        divFolders.removeChild(divFolders.lastChild);
+    }
+
+    fetch('../assets/display-folders.php')
+    .then(response => response.json())
+    .then(data => displayFolderIndex(data));
+}
 function displayFolderIndex(data) {
     foldersArray = data;
 
@@ -67,12 +82,6 @@ function displayFolderIndex(data) {
         divBtns.appendChild(spanDelete);
         spanDelete.appendChild(iDelete);
     })
-
-    let h1Files = document.createElement('h1');
-    h1Files.textContent = 'Welcome! Please choose a folder😁🖼️';
-    h1Files.id = 'choose-folder-h1';
-
-    divFiles.prepend(h1Files);
 
     const modifyNameFolder = document.querySelectorAll(".modify-name-folder");
     const selectFolder = document.querySelectorAll(".select-folder");
@@ -155,6 +164,7 @@ function deleteFolders(event) {
         }else{
             atrBasura = '../root/' + actualFolderName;
             addTrash(atrBasura); 
+            resetMainFolderTab();
         }
     }
 }
