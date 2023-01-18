@@ -1,15 +1,21 @@
 <?php
 session_start();
 define("ROOT", "./root");
-require_once('./utils.php');
+require_once('utils/utils.php');
 
-$fileName = $_REQUEST['name'];
-$relativePath = $_SESSION['relativePath'];
-$absolutePath = $_SESSION['absolutePath'];
+if (isset($_GET['search'])) {
+  $absolutePath = $_GET['path'];
+  $fileName = $_GET['name'];
+} else {
+  $fileName = $_REQUEST['name'];
+  $relativePath = $_SESSION['relativePath'];
+  $absolutePath = $_SESSION['absolutePath'];
+}
 $GLOBALS['fileExtensionsAllowed'] = ['jpg', 'png', 'txt', 'docx', 'csv', 'ppt', 'odt', 'pdf', 'zip', 'rar', 'exe', 'svg', 'mp3', 'mp4'];
 
-include('./header.php');
+include('templates/header.php');
 ?>
+
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -22,9 +28,15 @@ include('./header.php');
   </header>
 
   <article class="container-fluid mt-3">
-    <?php openFile($absolutePath . '/' . $fileName, $fileName); ?>
+    <?php
+    if (isset($_GET['search'])) {
+      openFile(ROOT . '/' . $absolutePath, $fileName);
+    } else {
+      openFile($absolutePath . '/' . $fileName, $fileName);
+    }
+    ?>
   </article>
-  <?php include('./footer.php') ?>
+  <?php include('templates/footer.php') ?>
   <?php
 
 
@@ -75,47 +87,47 @@ include('./header.php');
       case 'docx':
         ?>
         <pre class="pre">
-                  <code class="code">
-              <?php
-              echo Utils::formatDocx($path);
-              ?>
-                  </code>
-                </pre>
+                                          <code class="code">
+                                      <?php
+                                      echo Utils::formatDocx($path);
+                                      ?>
+                                          </code>
+                                        </pre>
         <?php
         break;
       case "rar":
         ?>
         <pre class="pre">
-                  <code class="code">
-              <?php
-              $archive = RarArchive::open($path);
-              $entries = $archive->getEntries();
-              foreach ($entries as $entry) {
-                $entry = str_replace('RarEntry for file "', "File: ", $entry);
-                echo "<p>" . $entry . "</p><br>";
-              }
-              $archive->close();
-              ?>
-                  </code>
-                </pre>
+                                          <code class="code">
+                                      <?php
+                                      $archive = RarArchive::open($path);
+                                      $entries = $archive->getEntries();
+                                      foreach ($entries as $entry) {
+                                        $entry = str_replace('RarEntry for file "', "File: ", $entry);
+                                        echo "<p>" . $entry . "</p><br>";
+                                      }
+                                      $archive->close();
+                                      ?>
+                                          </code>
+                                        </pre>
         <?php
         break;
       case "zip":
         ?>
         <pre class="pre">
-                <code class="code">
-              <?php
-              $zip = new ZipArchive;
-              if ($zip->open($path) === true) {
-                for ($i = 0; $i < $zip->numFiles; $i++) {
-                  $filename = $zip->getNameIndex($i);
-                  echo "<p>" . $filename . "</p><br>";
-                }
-                $zip->close();
-              }
-              ?>
-                </code>
-              </pre>
+                                        <code class="code">
+                                      <?php
+                                      $zip = new ZipArchive;
+                                      if ($zip->open($path) === true) {
+                                        for ($i = 0; $i < $zip->numFiles; $i++) {
+                                          $filename = $zip->getNameIndex($i);
+                                          echo "<p>" . $filename . "</p><br>";
+                                        }
+                                        $zip->close();
+                                      }
+                                      ?>
+                                        </code>
+                                      </pre>
         <?php
         break;
       case "jpg":
@@ -142,25 +154,25 @@ include('./header.php');
       case "txt":
       case "html":
         ?>
-          <pre class="pre">
-            <code class="code">
-        <?php
-        $fileStream = fopen($path, 'r') or die("Unable to open file.");
-        echo "<p>" . Utils::formatHtml(fread($fileStream, filesize($path))) . "</p>";
-        ?>
-            </code>
-          </pre>
+        <pre class="pre">
+                                    <code class="code">
+                                <?php
+                                $fileStream = fopen($path, 'r') or die("Unable to open file.");
+                                echo "<p>" . Utils::formatHtml(fread($fileStream, filesize($path))) . "</p>";
+                                ?>
+                                    </code>
+                                  </pre>
         <?php
         break;
       case "csv":
         ?>
-          <pre class="pre">
-            <code class="code">
-        <?php
-        Utils::formatCsv($path);
-        ?>
-            </code>
-          </pre>
+        <pre class="pre">
+                                    <code class="code">
+                                <?php
+                                Utils::formatCsv($path);
+                                ?>
+                                    </code>
+                                  </pre>
         <?php
         break;
       case "ppt":
@@ -169,14 +181,14 @@ include('./header.php');
         break;
       case "pdf":
         ?>
-          <pre class="pre">
-            <code class="code">
-        <?php
-        Utils::formatPdf($path);
-        ?>
-            </code>
-          </pre>
-        <?php
+        <pre class="pre">
+                                    <code class="code">
+                                <?php
+                                Utils::formatPdf($path);
+                                ?>
+                                    </code>
+                                  </pre>
+      <?php
     }
     ?>
     </code>
