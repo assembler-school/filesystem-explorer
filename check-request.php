@@ -11,12 +11,12 @@ function checkRequest() {
     $folder = $folder . $_REQUEST['name']."/";
     displayDirectories($folder);
 
-    echo json_encode($folder);
+    // echo json_encode($folder);
 
     } else {
 
     displayDirectories($folder);
-    echo "nothing";
+    // echo "nothing";
 
     }
     
