@@ -1,0 +1,386 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    margin: 0;
+}
+
+/* Login */
+
+#form{
+    width:30%;
+}
+
+#form input{
+    width:100%;
+    border: 0;
+    border-bottom:1px solid #000;
+}
+
+#form input:focus{
+    outline:none;
+    border: 0;
+    border-bottom:1px solid rgb(1, 1, 211);
+}
+
+#loginBody {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center; 
+gap: 10px;
+}
+
+#logoLogin{
+    border-radius: 50%;
+}
+
+#errorMessageLogin{
+    color:red;
+    font-weight: 800;
+}
+
+.marginLogin{
+    margin:20px 0;
+}
+
+/* Panel  */
+
+header{
+padding: 10px;
+background-color: #F9DCC4;
+}
+
+#navigation{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    justify-content:space-between;
+
+}
+
+main{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    padding: 10px;
+    height: 90vh;
+}
+
+#folders{
+    border-right: 1px solid black;
+    padding: 10px;
+}
+
+#show-files{
+    border-left: 1px solid black;
+    padding: 10px;
+}
+
+#files{
+    padding: 10px;
+}
+
+table{
+    border-spacing: 0;
+}
+
+.elemtoOfFolder{
+    padding:0 2px;
+}
+
+.elemtoOfFolder:hover{
+    background: #e1e1e1;
+}
+
+#logo-panel{
+    width: 4rem;
+}
+
+#folder{
+    width: 100%;
+    cursor: pointer;
+}
+img.imageFolder{
+    height: 1rem;
+    margin-right: 5px;
+}
+
+#folder li{
+list-style: none;
+display: flex;
+margin-bottom: 10px;
+justify-content: space-between;
+}
+
+.select-folder{
+    width: 60%;
+}
+
+.modify-name-folder{
+    margin-right: 10px;
+}
+
+.fa-solid{
+font-size: 0.8rem; 
+cursor:pointer;
+}
+
+#tableFolder{
+    width:100%;
+}
+
+#tableFolder{
+    margin-bottom:10px;
+    font-size:14px;
+    text-align: left;
+}
+
+#tableFolder img{
+    height:18px;
+}
+
+#create-new-folder{
+    position: relative;
+}
+
+#create-new-folder i{
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+    background: #FCD5CE;
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px;
+    cursor:pointer;
+}
+.buttons-files{
+    margin-bottom: 20px;
+}
+
+.buttons-files span{
+    border-radius: 10px;
+    padding: 5px;
+    background: #FEC89A;
+    color: #fff;
+    box-shadow: 2px 2px 2px #b5b5b5;
+    margin-right: 10px;
+    cursor:pointer;
+}
+
+.buttons-files span i{
+    margin-right:5px;
+}
+
+#name-folder{
+    background: #fff;
+    box-shadow: 0px 0px;
+    color: #a5a5a5;
+    float: right;
+}
+
+/* Upload File */
+.upload-file-pop-up{
+background: #fff;
+    width: 500px;
+    height: 500px;
+    z-index: 100;
+    position: relative;
+}
+
+/* Move Files */
+
+.move-btwn-folders{
+    background: #fff;
+    z-index: 200;
+    position: relative;
+    padding: 20px;
+}
+
+#span-folder-move{
+    font-weight: 800;
+}
+
+#span-folder-move, .inside-btwn div{
+    cursor:pointer;
+}
+
+.inside-btwn{
+    padding-bottom: 10px;
+}
+
+.inside-btwn div{
+    padding: 0 10px;
+}
+
+.inside-btwn div:before{
+    content: "";
+        display: list-item;
+        list-style: '- ';
+        background: #ccc;
+        position: absolute;
+}
+
+/* Search */
+
+#search{
+    height: 100%;
+    display: flex;
+    align-items: center; 
+    width: 100%;
+    justify-content: center;
+}
+
+#search form{
+    margin:0;
+    width: 80%;
+}
+
+#search input{
+    height: 80%;
+    width: 80%;
+    margin: 0;
+    padding: 0 20px;
+    font-size: 20px;
+    border-radius: 20px;
+    border-color: rgb(234, 220, 220);
+}
+
+#user{
+    display: flex;
+    align-items: center; 
+    margin-left: 70px;
+}
+
+#sing-out{
+    width: 75px;
+    border: 1px solid rgb(167, 158, 158);
+    border-radius: 20px;
+    padding: 3px;
+    text-align: center;
+    background-color: #ecdfdf;
+    color: rgb(136, 130, 130); 
+    cursor: pointer;
+    vertical-align: middle;
+
+}
+
+main.search-main{
+position: relative;
+display: inline-block;
+width: calc(100% - 20px);
+}
+
+.pop-up-file{
+    width: 80%;
+    margin: 0 10%;
+    height: 80%;
+    position: absolute;
+}
+
+.hidden{
+    display:none;
+}
+
+.close-popup-file i.fa-solid{
+    font-weight: 900;
+    color: #fff;
+    font-size: 30px;
+    z-index: 100;
+    position: relative;
+    padding: 5px;
+}
+
+.close-popup-file i.fa-solid.fa-trash{
+    font-size: 22px;
+    cursor:pointer;
+}
+
+.cover{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+}
+
+#view-content{
+    width: 100%;
+    position: relative;
+}
+
+#view-content video, #view-content audio, #view-content img{
+    position:absolute;
+    max-width:80%;
+    z-index:100;
+}
+
+.folder-search{
+    padding: 5px;
+    background: #f3f3f3;
+    font-weight: 800;
+}
+
+.file-search{ 
+    padding: 10px 15px;
+}
+
+.file-search.no-folder {
+    padding: 10px 0px;
+}
+
+
+/* editor de texto */
+
+.text-editor{
+    width: 100%;
+}
+
+.text-editor textarea{
+    width: 80%;
+    height: 45vh;
+    margin: 5% 10%;
+}
+
+#trash-folder{
+    color: red;
+}
+
+#trash-folder li{
+    list-style: none;
+}
+
+#trash-folder img{
+    width: 10px;
+}
+
+#trash-visual-folder{
+    display: flex;
+    flex-direction: row;
+}
+
+#trash-folder p{
+    width: 60px;
+    border: 1px solid #ecdfdf;
+    border-radius: 20px;
+    padding: 3px;
+    text-align: center;
+    background-color: #ecdfdf;
+    color: rgb(136, 130, 130);
+}
+
+.button-edit-text{
+    border-radius: 10px;
+    border-color: #FEC89A;
+    padding: 5px;
+    background: #FEC89A;
+    color: #fff;
+    box-shadow: 2px 2px 2px #b5b5b5;
+    cursor:pointer;
+}
+
+
+#relocate-file{
+    font-size: 25px;
+}
+

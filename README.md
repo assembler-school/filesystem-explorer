@@ -1,60 +1,90 @@
-`#html` `#css` `#js` `#php` `#master-in-software-development`
+# PHP Local FileSystem explorer  :technologist:
 
-# PHP Local FileSystem explorer <!-- omit in toc -->
+In this project we have created a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system.
 
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
-</p>
-
->In this project you will have to create a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system. 
-
->The file explorer is a tool that allows you to directly view and manipulate the files and directories associated with a path, so you must take into account from which path the user starts and which path they can access.
-
-
-## Index <!-- omit in toc -->
-
-- [Requirements](#requirements)
-- [Repository](#repository)
-- [Technologies used](#technologies-used)
-- [Project delivery](#project-delivery)
-- [Resources](#resources)
-
-## Requirements
-
-- You cannot use file third-party libraries
-- You will not be able to use global variables in PHP.
-- You must use GIT
-- You must use the PHP > v8
-- Create a clear and orderly directory structure
-- Both the code and the comments must be written in English
-- Use the camelCase code style to define variables and functions
-- In the case of using HTML, never use inline styles
-- In the case of using different programming languages ​​always define the implementation in separate terms
-- Remember that it is important to divide the tasks into several sub-tasks so that in this way you can associate each particular step of the construction with a specific commit
-- You should try as much as possible that the commits and the planned tasks are the same
-Delete files that are not used or are not necessary to evaluate the project
-
-## Repository
-
-First of all you must fork this project into your GitHub account.
-
-To create a fork on GitHub is as easy as clicking the “fork” button on the repository page.
-
-<img src="https://docs.github.com/assets/cb-23088/images/help/repository/fork_button.png" alt="Fork on GitHub" width='450'>
+The file explorer is a tool that allows you to directly view and manipulate the files and directories associated with a path, so we must take into account from which path the user starts and which path they can access.
 
 ## Technologies used
 
-\* HTML
+**For development**
 
-\* CSS
+- HTML
+- CSS
+- JS
+- PHP
 
-\* JS
+**For design and planning**
+- [Figma](https://www.figma.com/);
 
-\* PHP
+## Before start
 
-## Resources
+Before start this project we have created:
 
-- [File system](https://es.wikipedia.org/wiki/Administrador_de_archivos)
-- [PHP FileSystem W3C](https://www.w3schools.com/php/php_ref_filesystem.asp)
-- [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
-- [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
+### **Wireframes of our files explorer**
+
+_Wireframe_ 
+
+<img width="789" alt="Captura de pantalla 2023-01-17 a las 16 24 28" src="https://user-images.githubusercontent.com/115942758/213027634-c7e34342-bd89-4ae5-a396-633ef17f0e77.png">
+
+_Final Page_
+
+<img width="1319" alt="Captura de pantalla 2023-01-17 a las 23 12 05" src="https://user-images.githubusercontent.com/115942758/213032659-ed9a4e8b-37f7-47a7-9ab9-7a7e5a28e404.png">
+
+_Final Page with opened folder_
+
+<img width="1381" alt="Captura de pantalla 2023-01-17 a las 23 30 34" src="https://user-images.githubusercontent.com/115942758/213035158-1c75a8f6-d4d5-42a1-8572-1900bf4e6fea.png">
+
+
+> **Comparison of the original design (Wireframe) with the final result of the project**
+
+As you can see, during the work we have modificated the page for better UX and UI design:
+
+- Added buton "Sing out" if the user want close the session,
+- Added folder "Trash" if the user want to restore deleted file in the future,
+- The content of the file now we can see in pop-up after "click" at the file(in the wireframe if was situated at rhe right part of display),
+- We will be relocated to editor-page if we want to edit file in text format (.txt),
+- We will be relocated to search-page if we want to find any file r folder (enter the "first enter" in "search)
+
+
+### **Use case diagram**
+
+<img width="793" alt="Captura de pantalla 2023-01-17 a las 22 39 33" src="https://user-images.githubusercontent.com/115942758/213028040-f01fc371-5080-4ab3-bec3-deab2ba0741c.png">
+
+> **Comparison of the use case diagram with the actions that the user can finally perform**:
+
+- Log in - yes, Sign up - no;
+- If you want Upload file, first you need to choose folder and just then a file;
+- Added options: edit text file, relocate files between folders, create subfolders
+
+
+
+## Organization and distribution of the tasks
+
+Sush as [**Valentino Traverso**](https://github.com/valentraverso) has more expirience in PHP, he has taken the leading role in this project. 
+
+_The biggest part_ of the time we have used **peer coding** to see together how work diferent PHP methods and share experience:
+- Interfaces for Log in/Sign out, General Files Explorer page, Edit .txt document;
+
+Then, we shared tasks:
+[**Valentino Traverso**](https://github.com/valentraverso): created functions to search files and folders in subfolders;
+[**Iuliia Shikhanova**](https://github.com/IuliiaNova): created functions to move files between folders
+
+
+## Sources of information :bulb:
+
+PHP official [website](https://www.php.net/)
+
+
+## Goals of the project
+
+- Understand how works PHP in the real project,
+- Using of fetch to pass dates from PHP to JS,
+- Improve our knowledges in logic and programming,
+- Understand what is a file system and how it works,
+
+
+## Authors :pencil2:
+
+This project was made for [Assembler Institute of Technology](https://assemblerinstitute.com/) by:
+[**Valentino Traverso**](https://github.com/valentraverso) and 
+[**Iuliia Shikhanova**](https://github.com/IuliiaNova)
