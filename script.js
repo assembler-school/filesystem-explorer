@@ -1,59 +1,34 @@
-// let camposForm = document.querySelector('.create-form').elements;
-// let prueba = document.querySelector('#prueba');
+// let btnInfo = document.querySelector('.btn-delete');
 
-// let btn = document.querySelector('.refresh');
-
-// btn.addEventListener('submit', function(e){
-// // e.preventDefault();
-// let formData ={};
-
-// for(let i = 0; i< camposForm.lenght; i++){
-// 	formData[camposForm[i].name] = camposForm[i].value;
-// }
-
-// let datos = formData;
-// fetch('CRUD/create.php',{
-// 	method:'POST',
-// 	body:JSON.stringify(datos)
-// })
-// .then(function(response) {
-//             if (response.ok) {
-//                 prueba.innerHTML = "se ha creado el archivo";
-                
-//             } else {
-//                 prueba.innerHTML = "Ha ocurrido un error";
-//             }
-//         });
-
-// })
+// btnInfo.addEventListener('click', getFileInfo);
 
 
+// function getFileInfo(e){
+//     btnInfo.target;
+//    console.log('hola');
 
-
-// const createBttn = document.querySelector("#create-bttn");
-// let contentElements = document.querySelector("#created-elements");
-
-// createBttn.addEventListener("click", newElementCreated);
-
-
-// function newElementCreated(e) {
-//     e.preventDefault();
-
-//     var datos = new FormData();
-
-//     fetch("upload.php", {
-//         method: 'POST',
-//         body: datos,
-//         headers: {
-//             "Content-Type": "application/json"
-//           }
-//     })
-//     .then((res) => res.json())
-//     .then((data) => {
+  
+//     fetch('CRUD/delete.php')
+//     .then((res) =>res.json())
+//     .then((data) =>{
 //         console.log(data);
-       
-    
+        
 //     })
+//     .catch((err) => console.log('Request failed:', err));
+
 // }
 
+
+
+
+// function renderFileInfo(data){
+//     let fileSize = document.querySelector('#infoArchive');
+//     // let fileCreationDate = document.querySelector('#fileCreationDate');
+//     // let fileContent = document.querySelector('#fileContent');
+
+//     fileSize.innerHTML = 'HOLAAAAAAAAAAAAA' ;
+//     // fileCreationDate.innerHTML = 'Creation date:' + data['creationDate'];
+//     // fileContent.innerHTML = 'Content:' + data['content'];
+
+// }
 
