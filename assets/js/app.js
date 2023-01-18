@@ -275,11 +275,15 @@ function createFilesTab(folderName) {
 
     createButtonsFile(folderName);
 
+    if(!folderName.includes('Trash')){
     let btnCreateInsideFolder = document.querySelector('#create-folder-inside')
     let pathCreateNewFolder = btnCreateInsideFolder.getAttribute('folder-path');
     btnCreateInsideFolder.addEventListener('click', () => {
         createNewFolder(pathCreateNewFolder);
     });
+
+}
+
 
     fetch("../assets/display-content.php?actualFolderName=" + folderName)
         .then(response => response.json())
@@ -395,7 +399,11 @@ function displayInsideFolder(folderName) {
 
     btnFiles.prepend(backSpan);
 
-    btnAddFolder.insertAdjacentElement('afterend', btnDeleteInsideFolder);
+    if(!pathFile.includes('Trash')){
+        btnAddFolder.insertAdjacentElement('afterend', btnDeleteInsideFolder);
+    }else{
+        backSpan.insertAdjacentElement('afterend', btnDeleteInsideFolder);
+    }
     btnDeleteInsideFolder.prepend(iDeleteFolder);
 
     backSpan.addEventListener('click', () => {
@@ -426,6 +434,10 @@ function createButtonsFile(folderPath) {
     let divOptionsFolder = document.createElement('div');
     divOptionsFolder.className = 'buttons-files';
 
+    divFiles.prepend(divOptionsFolder);
+
+    if(!folderPath.includes('Trash')){
+
     let btnCreateFile = document.createElement('span');
     let iCreateFile = document.createElement('i');
     iCreateFile.className = 'fa-solid fa-file';
@@ -443,8 +455,6 @@ function createButtonsFile(folderPath) {
     spanNameFolder.id = 'name-folder';
     spanNameFolder.textContent = folderPath;
 
-    divFiles.prepend(divOptionsFolder);
-
     divOptionsFolder.appendChild(btnCreateFile);
     btnCreateFile.prepend(iCreateFile);
 
@@ -454,6 +464,7 @@ function createButtonsFile(folderPath) {
     divOptionsFolder.appendChild(spanNameFolder);
 
     btnCreateFile.addEventListener('click', createPopUpUpload);
+    }
 }
 
 // Get info of the files
