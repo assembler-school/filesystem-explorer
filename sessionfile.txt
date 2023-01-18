@@ -1,1 +1,1 @@
-relativePath|s:0:"";absolutePath|s:6:"./root";copies|a:0:{}moves|a:0:{}recovers|a:1:{s:13:"Nueva carpeta";s:20:"./root/Nueva carpeta";}
+relativePath|s:0:"";absolutePath|s:6:"./root";copies|a:0:{}moves|a:0:{}recovers|a:4:{s:13:"Nueva carpeta";s:20:"./root/Nueva carpeta";s:9:"dir1.dir1";s:16:"./root/dir1.dir1";s:29:"Local FileSystem explorer.odt";s:54:"./root/Project documents/Local FileSystem explorer.odt";s:29:"Local FileSystem explorer.pdf";s:54:"./root/Project documents/Local FileSystem explorer.pdf";}
