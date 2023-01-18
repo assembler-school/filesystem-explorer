@@ -100,6 +100,8 @@ function selectElementSecond(event) {
         dataPath = parentNode.getAttribute('data-path');
         typeDocument = parentNode.getAttribute('type');
         selectedElement = parentNode;
+        console.log({typeDocument})
+        console.log({firstList})
         printFolderTitleName(parentNode);
         deleteFile.addEventListener("click", moveFilesTrash);
     } else if (currentNode.classList.contains("first-list")) {
@@ -108,6 +110,8 @@ function selectElementSecond(event) {
         dataPath = currentNode.getAttribute('data-path');
         typeDocument = parentNode.getAttribute('type');
         parentNode = currentNode;
+        console.log({typeDocument})
+        console.log({firstList})
         printFolderTitleName(currentNode);
         deleteFile.addEventListener("click", moveFilesTrash);
     }
@@ -123,8 +127,6 @@ function selectElementSecond(event) {
     }
 
     levelDirectory = (dataPath.match(/\//g) || []).length;
-    console.log(dataPath)
-    console.log(levelDirectory)
 }
 
 function showOnlyFile(event) {
