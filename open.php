@@ -66,6 +66,7 @@ include('templates/header.php');
         case 'svg':
         case 'png':
         case 'mp3':
+        case 'pdf':
         case 'mp4':
           ?>
           <a class="link text-primary fw-bold me-3" target="_blank" href="<?php echo $path ?>">
