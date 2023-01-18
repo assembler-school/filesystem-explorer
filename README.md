@@ -39,23 +39,18 @@
 >Before:
 
 >1-idea 
-![This is an image](./assets/src/minimal-blue%20%E2%80%93%201.jpg)
+![This is an image](./assets/src/minimal-blue.jpg)
 
 
 >2-idea
 ![This is an image](./assets/src/Web%201920%20%E2%80%93%206.jpg)
 
 
-
 >Final result
-
-![This is an image](./assets/src/minimal-blue.jpg)
-
-
+![This is an image](./assets/src/minimal-blue%20%E2%80%93%201.jpg)
 
 
 ## Diagram
-
 
 ![This is an image](./assets/src/Diagram%20file_system.JPG)
 
