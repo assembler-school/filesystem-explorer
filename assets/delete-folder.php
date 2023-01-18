@@ -6,7 +6,7 @@ function deleteFolder($dirPath){
 $files = glob($dirPath . '/*');
 foreach ($files as $file) {
     if (is_dir($file)) {
-        deleteDir($file);
+        deleteFolder($file);
     } else {
         unlink($file);
     }

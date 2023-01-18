@@ -149,10 +149,12 @@ function deleteFolders(event) {
         if (actualFolderName.includes('Trash/') === true) {
             deleteFolderTrash(actualFolderName);
             createFilesTab('Trash');
+        }else if(actualFolderName.includes('/') === true){
+            atrBasura = '../root/' + actualFolderName;
+            addTrash(atrBasura);
         }else{
             atrBasura = '../root/' + actualFolderName;
             addTrash(atrBasura); 
-            getInfoFolders();
         }
     }
 }
@@ -558,7 +560,11 @@ function addTrash(atrBasura) {
                 if (atrBasura.split('.').length > 3) {
                     closePopUp();
                 }
-                createFilesTab('Trash');
+                if(atrBasura.split('/').length === 2){
+                    getInfoFolders();
+                }else{
+                    createFilesTab('Trash');
+                }
             });
     }
 }
