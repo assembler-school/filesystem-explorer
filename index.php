@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,9 +30,6 @@
         <input class="form-control me-2 folder-name" type="text" name="folder" placeholder="Folder or file name..." >
         <button class="btn btn-secondary create-btn">Create</button>
       </div>
-      
-
-
     </div>
   </div>
 </nav>
@@ -43,10 +41,6 @@
 <ul id="searchResults">
 
 </ul>
-<?php
-
-?>
-
   <thead>
     <tr>
       <th scope="col">Extension</th>
@@ -61,23 +55,8 @@
 
     <?php
 
-    checkRequest();
+    require_once("check-request.php");
 
-    function checkRequest() {
-
-      $folder = "root/";
-
-      if (isset($_REQUEST['name'])){
-
-        $folder = $folder . $_REQUEST['name']."/";
-        displayDirectories($folder);
-
-      } else {
-
-        displayDirectories($folder);
-      }
-     
-    }
     function displayDirectories($folder){
 
 
@@ -142,6 +121,9 @@
             case "txt":
               $extensionIcon = "extensions/txt.png";
               break;
+              case "png":
+                $extensionIcon = "extensions/png.png";
+                break;
           }
 
           $size = filesize($dir);

@@ -6,9 +6,7 @@ if (isset($_REQUEST["name"])){
 }
 
 if ($name !== "" && isset($_GET['nameFolder'])){
-    
-    echo '<script language="javascript">alert("primera parte if");</script>';
-    
+        
     $newFolderName = $_GET['nameFolder'];
 
     $folder = json_encode($newFolderName);
@@ -18,8 +16,6 @@ if ($name !== "" && isset($_GET['nameFolder'])){
     mkdir("./root/$name/$newFolderName", 0777);
 
 } else if ($name === "" && isset($_GET['nameFolder'])){
-
-    echo '<script language="javascript">alert("segunda parte if");</script>';
 
     $newFolderName = $_GET['nameFolder'];
     

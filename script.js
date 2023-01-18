@@ -11,24 +11,35 @@ let folder = document.querySelectorAll(".folder");
 
 folder.forEach( element => element.addEventListener("click", nameFolder));
 
-let nombre;
+let nombre = "";
 
 function nameFolder(e){
-    nombre =e.srcElement.getAttribute("value");
+    nombre = e.srcElement.getAttribute("value");
+    console.log(nombre);
+    return nombre;
 }
 
 function createNewFolder() {
 
-    console.log("hola")
+    fetch("check-request.php")
+        .then(response => response.json())
+        .then(data => nombre = data)
 
     let folderName = folderNameToCreate.value;
+
+    if (nombre === "") {
+
+        fetch ("../filesystem-explorer/create-folder.php?nameFolder="+folderName)
+            .then(response => response.json())
+            .then(data => console.log(data))
+
+    } else {
+
+        fetch ("../filesystem-explorer/create-folder.php?nameFolder="+folderName+"&name="+nombre)
+            .then(response => response.json())
+            .then(data => console.log(data))
+    }
     
-    console.log(folderName);
-
-    fetch ("../filesystem-explorer/create-folder.php?nameFolder="+folderName+"?name="+nombre)
-        .then(response => response.json())
-        .then(data => console.log(data))
-
     window.location.reload();
 }
 
@@ -66,7 +77,7 @@ const edit = document.querySelectorAll(".edit-btn");
 
 for (let i of edit){
     i.addEventListener("click", editName);
-    var oldname = i.getAttribute("actualFolder");
+    let oldname = i.getAttribute("actualFolder");
 }
 
 // -------------- EDIT NAME -------------------------
@@ -75,7 +86,7 @@ for (let i of edit){
 function editName(){
     
     newname = prompt("Write the new name of the folder or file:");
-    var dataform = new FormData();
+    let dataform = new FormData();
     dataform.append("oldName", oldname);
     dataform.append("newname", newname);
     fetch ("./edit-folder.php",{
@@ -99,7 +110,7 @@ buscador.addEventListener("click", search);
 function search(e){
 
     e.preventDefault();
-    var searchValue = buscadorValue.value;
+    let searchValue = buscadorValue.value;
     fetch("search.php?searchParam="+searchValue)
         .then(response=>response.json())
         .then(data =>displayResults(data));
@@ -126,8 +137,8 @@ function displayResults(data){
 
            } else {
 
-            var file = element.split("/");
-            var fileName = file[file.length-1];
+            let file = element.split("/");
+            let fileName = file[file.length-1];
             const li = document.createElement("li");
             li.innerHTML="<a href=?name="+fileName+">"+fileName+"</a>";
             listSearch.appendChild(li);
