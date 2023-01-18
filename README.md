@@ -1,10 +1,4 @@
-`#html` `#css` `#js` `#php` `#master-in-software-development`
-
 # PHP Local FileSystem explorer <!-- omit in toc -->
-
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
-</p>
 
 >In this project you will have to create a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system. 
 
@@ -34,13 +28,6 @@
 - You should try as much as possible that the commits and the planned tasks are the same
 Delete files that are not used or are not necessary to evaluate the project
 
-## Repository
-
-First of all you must fork this project into your GitHub account.
-
-To create a fork on GitHub is as easy as clicking the “fork” button on the repository page.
-
-<img src="https://docs.github.com/assets/cb-23088/images/help/repository/fork_button.png" alt="Fork on GitHub" width='450'>
 
 ## Technologies used
 
@@ -58,3 +45,11 @@ To create a fork on GitHub is as easy as clicking the “fork” button on the r
 - [PHP FileSystem W3C](https://www.w3schools.com/php/php_ref_filesystem.asp)
 - [PHP FileSystem Oficial](https://www.php.net/manual/es/book.filesystem.php)
 - [README Guidelines Example](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
+
+
+![wireframe](https://user-images.githubusercontent.com/119521997/213163669-40a794c4-4445-4cb4-a61c-60efe880d698.png)
+
+La organización ha sido relativamente sencilla durante todo el desarrollo del proyecto. Hemos hecho pair coding practicamente en todas las fases del mismo, y hemos dividido las tareas a realizar en subtareas más claras y concisas para poder desarrollar de forma más optioma y pudiendo poner atención a todos los detalles.
+
+Tal y como se puede apreciar en la imagen superior, esa es la primera idea que teniamos de como devia ser nuestro proyecto, pero finalmente realizamos algunos cambios tanto en el estilo como en el layout para poder aplicar todas las funcionalidades del proyecto de manera más eficiente y sencilla.
+
