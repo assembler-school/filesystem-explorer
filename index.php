@@ -31,7 +31,7 @@ $absolutPath = $_SESSION["absPath"];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>File System Explorer</title>
     <script src="script.js?v=<?php echo time(); ?>" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -93,7 +93,6 @@ $absolutPath = $_SESSION["absPath"];
                             <form enctype="multipart/form-data" method="POST" action="index.php">
                                 <div class="file-form">
                                     <div class="input-file"><input type="file" name="nombre"></div>
-                                    <!-- <input type="file" name="nombre"> -->
                                     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                                     <input type="submit" value="Upload" class="submit-upload" name="enviar2">
                                 </div>
