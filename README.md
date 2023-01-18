@@ -6,8 +6,7 @@
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-![app](https://user-images.githubusercontent.com/103459716/213249983-cfc3424c-5128-48db-8ea5-5a5b2c8ad167.png)
-
+![app](assets/readme/app.png)
 
 >In this project we create a system file explorer that allows the user to navigate, create directories and upload files in the same way as he would in his usual operating system. 
 
@@ -23,6 +22,7 @@
 
 ## Wireframe
 
+![app](assets/readme/wireframe.png)
 
 ## ShowCase Diagram
 ## Repository
