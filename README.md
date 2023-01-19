@@ -21,9 +21,13 @@ Clone repository:
 ```
 git clone https://github.com/DTPF/filesystem-explorer.git
 ```
+Create root directory to save files:
+```
+mkdir root
+```
 Grant permissions if it necessary (Mac and Linux) in root directory:
 ```
-sudo chmod -R 777 .root
+sudo chmod -R 777 root
 ```
 
 [PHP]: <https://www.php.net>
