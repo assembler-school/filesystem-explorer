@@ -24,10 +24,6 @@
 
 ![app](assets/readme/wireframe.png)
 
-## ShowCase Diagram
-
-![app](assets/readme/case.png)
-
 ## Repository
 
 First of all you must fork this project into your GitHub account.
