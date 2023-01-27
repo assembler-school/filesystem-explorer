@@ -1,0 +1,95 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.search-bar {
+    width: 20vw;
+}
+
+
+main{
+
+    width: 100%;
+}
+
+.aside{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    height: 50rem;
+    margin-top: 5%;
+    flex-wrap: nowrap;
+    align-items: center;
+
+}
+
+.asideContent{
+    margin-left: 5%;
+}
+
+.mainFolder{
+    position: fixed;
+    top: 15%;
+    right: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.folder ul {
+    display: none;
+    list-style-type: none;
+    font-size: 18px;
+}
+
+.folder{
+    list-style-type: none;
+}
+
+
+.folder:hover{
+    cursor: pointer;
+}
+
+#menu{
+    list-style-type: none;
+}
+
+
+li a {text-decoration : none; color : #2d2f31;}
+
+
+span {
+    padding : 30px;
+    background : #2d2f31; 
+    color : white;
+    font-size : 1.2em;
+    font-variant : small-caps;
+    cursor : pointer;
+    display: block;
+}
+
+span::after {
+    float: right;
+    right: 10%;
+    content: "+";
+}
+
+.slide {
+    clear:both;
+    width:100%;
+    height:0px;
+    overflow: hidden;
+    text-align: center;
+    transition: height .4s ease;
+}
+
+.slide li {padding : 30px;}
+
+#touch {position: absolute; opacity: 0; height: 0px;}    
+
+#touch:checked + .slide {height: 300px;} 
