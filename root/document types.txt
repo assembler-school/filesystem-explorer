@@ -1,0 +1,6 @@
+Documents typelist:
+
+
+1. images => .jpg, .jpg, .png
+2. music => .mp3, videoclips => mp4
+3. Project documents=> .docx, .odt, .pdf
